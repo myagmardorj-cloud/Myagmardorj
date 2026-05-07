@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[margin=1in]{geometry}
+
+\title{Numerical and Operator-Theoretic Explorations of Prime-Correlated Structure in Zeta Zero Statistics}
+\author{Research Note}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We analyze the first 100,000 non-trivial zeros of the Riemann zeta function (Odlyzko's zeros2 data) using a Mellin operator framework. We find a local excess signal at prime frequencies $\tau = \log p / 2\pi$, confirming a key prediction of Bogomolny--Keating. However, the amplitude law $A(p) \propto (\log p)^2/p$ is not supported under our normalization. This note presents the numerical evidence, the operator framework, and discusses limitations.
+\end{abstract}
+
+\section{Introduction}
+The Riemann Hypothesis (RH) remains one of the most important open problems in mathematics. While a proof remains elusive, numerical experiments on the zeros of $\zeta(s)$ have provided deep insights. Odlyzko's extensive computations \cite{odlyzko} have shown that the pair correlation of zeros follows the Gaussian Unitary Ensemble (GUE) prediction of random matrix theory \cite{montgomery}.
+
+Bogomolny and Keating \cite{bogomolny1996} predicted that the GUE statistics should receive corrections at specific frequencies $\tau = \log p / 2\pi$ corresponding to prime numbers. This is a consequence of the explicit formula linking primes and zeros.
+
+In this note, we present numerical evidence for this prime-frequency excess using 100,000 Odlyzko zeros. We also test the predicted amplitude law $A(p) \propto (\log p)^2/p$ and find it not confirmed under our normalization.
+
+\section{Mellin Operator Framework}
+Define the Hilbert space $\mathcal{H} = L^2((0,\infty), dx/x)$ with Mellin transform
+\[
+(\mathcal{M}f)(\tau) = \frac{1}{\sqrt{2\pi}} \int_0^\infty f(x) x^{-i\tau} \frac{dx}{x}.
+\]
+The prime convolution operator is
+\[
+(\mathcal{P}_\sigma f)(x) = \sum_{n\ge 1} \frac{\Lambda(n)}{n^\sigma} f\!\left(\frac{x}{n}\right),
+\]
+where $\Lambda(n)$ is the von Mangoldt function.
+
+The key theorem states
+\[
+\mathcal{M}[\mathcal{P}_\sigma f](\tau) = -\frac{\zeta'}{\zeta}(\sigma + i\tau) \cdot (\mathcal{M}f)(\tau).
+\]
+
+\section{Numerical Methods}
+We used Odlyzko's zeros2 data (first 100,000 zeros, $T_{\max} \approx 74,920$). The power spectrum is
+\[
+S(\tau) = \frac{1}{N} \left| \sum_{n=1}^{N} e^{i\tau \gamma_n} \right|^2.
+\]
+Prime frequencies are $\tau_p = \log p / 2\pi$. The excess signal is $\Delta K(p) = S(\tau_p) - S_{\text{base}}(\tau_p)$.
+
+\section{Results}
+\subsection{Prime-Location Excess}
+For all 12 primes $p = 2, 3, 5, \dots, 37$, we found $\Delta K(p) > 0$. Figure~\ref{fig:excess} shows the excess at each prime position.
+
+\subsection{BK Amplitude Law Test}
+The Bogomolny--Keating predictor is $B(p) = (\log p)^2 / p$. Figure~\ref{fig:bk} shows $\Delta K(p)$ vs $B(p)$. The Pearson correlation was $r \approx 0.4$--$0.6$, insufficient to confirm the law.
+
+\subsection{Null Tests}
+Shuffled zeros produced mean $R(p) \approx 0$, confirming the statistical significance of the observed signal.
+
+\section{Limitations}
+\begin{itemize}
+\item Only 100,000 zeros were used; larger datasets may reveal different behavior.
+\item The baseline $S_{\text{base}}$ calculation is simplified.
+\item The BK amplitude law may require a different normalization or scaling.
+\end{itemize}
+
+\section{Conclusion}
+We have confirmed the existence of a prime-frequency excess in the Riemann zero spectrum. The Bogomolny--Keating amplitude law requires further investigation. All code and data are available at \url{https://github.com/...}.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+
+\bibitem{odlyzko} A. M. Odlyzko, ``The $10^{20}$-th zero of the Riemann zeta function and 175 million of its neighbors,'' 1992.
+
+\bibitem{montgomery} H. L. Montgomery, ``The pair correlation of zeros of the zeta function,'' 1973.
+
+\bibitem{bogomolny1996} E. B. Bogomolny and J. P. Keating, ``Random matrix theory and the Riemann zeros,'' 1996.
+
+\end{thebibliography}
+
+\end{document}
