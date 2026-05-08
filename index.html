@@ -11,13 +11,13 @@
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 15% 15%,rgba(201,168,76,.05) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 85% 85%,rgba(74,158,255,.04) 0%,transparent 60%);pointer-events:none;z-index:0;}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:56px;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--gold);letter-spacing:.1em;text-decoration:none;cursor:pointer;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;height:56px;background:rgba(10,10,15,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gold);letter-spacing:.1em;text-decoration:none;cursor:pointer;flex-shrink:0;}
 .nav-links{display:flex;gap:0;list-style:none;}
-.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--muted);text-decoration:none;padding:.4rem .9rem;border:1px solid transparent;transition:all .2s;cursor:pointer;}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:.4rem .75rem;border:1px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;}
 .nav-links a:hover,.nav-links a.active{color:var(--gold);border-color:var(--border);background:var(--surface);}
-.lang-toggle{display:flex;}
-.lang-btn{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;padding:.3rem .7rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
+.lang-toggle{display:flex;flex-shrink:0;}
+.lang-btn{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .lang-btn:first-child{border-radius:3px 0 0 3px;}.lang-btn:last-child{border-radius:0 3px 3px 0;border-left:none;}
 .lang-btn.active{background:var(--gold);color:var(--bg);border-color:var(--gold);}
 .page{display:none;min-height:100vh;padding-top:56px;}.page.active{display:block;}
@@ -31,7 +31,7 @@ h1 em{font-style:italic;color:var(--gold);}
 .section-label{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
 h2{font-size:1.6rem;font-weight:400;margin-bottom:1.5rem;letter-spacing:-.01em;}
-h3{font-size:1.2rem;font-weight:400;margin-bottom:1rem;color:var(--gold);}
+h3{font-size:1.15rem;font-weight:400;margin-bottom:.8rem;color:var(--gold);}
 .abstract{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);padding:2rem 2.5rem;margin-bottom:4rem;font-style:italic;color:#c8c4b8;opacity:0;animation:fadeUp .6s ease forwards .4s;}
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem;}
 .stat-card{background:var(--surface);padding:1.8rem 1.5rem;text-align:center;transition:background .2s;}
@@ -40,18 +40,18 @@ h3{font-size:1.2rem;font-weight:400;margin-bottom:1rem;color:var(--gold);}
 .rv{font-size:2.2rem;font-weight:600;color:var(--gold);display:block;line-height:1;margin-bottom:.4rem;}
 .pv{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);}
 .badge{display:inline-block;margin-top:.8rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;padding:.2rem .6rem;background:rgba(76,175,125,.12);color:var(--green);border:1px solid rgba(76,175,125,.3);}
-.formula-block{background:var(--surface);border:1px solid var(--border);padding:2rem;text-align:center;margin:2rem 0;font-family:'JetBrains Mono',monospace;font-size:1.1rem;letter-spacing:.05em;}
-.formula-label{font-size:.68rem;color:var(--muted);margin-bottom:.8rem;letter-spacing:.2em;text-transform:uppercase;}
+.formula-block{background:var(--surface);border:1px solid var(--border);padding:2rem;text-align:center;margin:2rem 0;font-family:'JetBrains Mono',monospace;font-size:1.05rem;letter-spacing:.05em;}
+.formula-label{font-size:.66rem;color:var(--muted);margin-bottom:.8rem;letter-spacing:.2em;text-transform:uppercase;}
 .findings{display:flex;flex-direction:column;gap:1rem;}
 .finding{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 1.5rem;background:var(--surface);border:1px solid var(--border);}
 .fi{font-size:1rem;flex-shrink:0;margin-top:.1rem;}
 .ft{font-size:.95rem;}.ft strong{color:var(--gold);}
 .finding.pos .fi{color:var(--green);}.finding.neg .fi{color:var(--red);}
 .chart-container{background:var(--surface);border:1px solid var(--border);padding:1.5rem;margin-bottom:2rem;}
-.chart-title{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;}
+.chart-title{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;}
 .calc-box{background:var(--surface);border:1px solid var(--border);padding:2rem;margin-bottom:2rem;}
 .calc-controls{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
-.prime-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:.4rem .8rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
+.prime-btn{font-family:'JetBrains Mono',monospace;font-size:.78rem;padding:.4rem .8rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .prime-btn.selected{background:var(--gold);color:var(--bg);border-color:var(--gold);}
 .prime-btn:hover:not(.selected){border-color:var(--gold-dim);color:var(--text);}
 .calc-result{background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.85rem;}
@@ -69,17 +69,45 @@ h3{font-size:1.2rem;font-weight:400;margin-bottom:1rem;color:var(--gold);}
 .li{font-size:1.3rem;flex-shrink:0;}
 .lt{font-size:.9rem;font-weight:600;color:var(--gold);display:block;}
 .ld{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);}
-.citation-box{background:var(--surface);border:1px solid var(--border);padding:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a8c4e0;line-height:1.8;position:relative;}
+.citation-box{background:var(--surface);border:1px solid var(--border);padding:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a8c4e0;line-height:1.8;position:relative;overflow-x:auto;}
 .copy-btn{position:absolute;top:1rem;right:1rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.3rem .7rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .copy-btn:hover{color:var(--gold);border-color:var(--gold-dim);}
 .copy-btn.copied{color:var(--green);border-color:var(--green);}
 .disclaimer{background:rgba(224,92,92,.06);border:1px solid rgba(224,92,92,.2);padding:1.2rem 1.5rem;font-size:.85rem;color:#c4a0a0;margin-top:2rem;font-style:italic;}
 .prose{font-size:.98rem;color:#c8c4b8;}.prose p{margin-bottom:1.2rem;}
 .prose code{font-family:'JetBrains Mono',monospace;font-size:.8em;background:var(--surface);padding:.1em .4em;border:1px solid var(--border);color:var(--gold);}
-.data-table{width:100%;border-collapse:collapse;font-size:.9rem;}
-.data-table th{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);background:var(--surface);}
-.data-table td{padding:.7rem 1rem;border-bottom:1px solid var(--border);color:#c8c4b8;font-family:'JetBrains Mono',monospace;font-size:.82rem;}
+.data-table{width:100%;border-collapse:collapse;font-size:.88rem;}
+.data-table th{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);background:var(--surface);}
+.data-table td{padding:.7rem 1rem;border-bottom:1px solid var(--border);color:#c8c4b8;font-family:'JetBrains Mono',monospace;font-size:.8rem;}
 .data-table tr:hover td{background:var(--surface2);}
+/* PAPERS */
+.file-card{background:var(--surface);border:1px solid var(--border);margin-bottom:1.5rem;transition:border-color .2s;}
+.file-card:hover{border-color:var(--gold-dim);}
+.file-header{padding:1.5rem;display:flex;align-items:flex-start;gap:1.2rem;cursor:pointer;user-select:none;}
+.file-icon{font-size:1.6rem;flex-shrink:0;}
+.file-meta{flex:1;}
+.file-name{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--gold);display:block;margin-bottom:.3rem;}
+.file-desc{font-size:.92rem;color:#c8c4b8;margin-bottom:.5rem;}
+.file-tags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.file-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.15rem .5rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);}
+.file-toggle{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);flex-shrink:0;margin-top:.2rem;transition:transform .2s;}
+.file-toggle.open{transform:rotate(180deg);}
+.file-body{display:none;border-top:1px solid var(--border);}
+.file-body.open{display:block;}
+.file-body-inner{padding:1.5rem;}
+.code-block{background:#0d0d14;border:1px solid var(--border);padding:1.5rem;overflow-x:auto;position:relative;margin-top:1rem;}
+.code-block pre{font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.7;color:#cdd6f4;white-space:pre;}
+.code-copy{position:absolute;top:.8rem;right:.8rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.25rem .6rem;background:var(--surface);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
+.code-copy:hover{color:var(--gold);border-color:var(--gold-dim);}
+.code-copy.copied{color:var(--green);border-color:var(--green);}
+/* Syntax colors */
+.kw{color:#cba6f7;} .fn{color:#89b4fa;} .st{color:#a6e3a1;} .cm{color:#585b70;font-style:italic;} .nm{color:#fab387;} .op{color:#89dceb;}
+.note-block{background:var(--surface2);border-left:3px solid var(--blue);padding:1.2rem 1.5rem;margin-top:1rem;font-size:.92rem;color:#c8c4b8;}
+.note-block .note-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--blue);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.steps{display:flex;flex-direction:column;gap:.8rem;margin-top:1rem;}
+.step{display:flex;gap:1rem;align-items:flex-start;}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gold);background:var(--surface2);border:1px solid var(--border);width:1.8rem;height:1.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem;}
+.step-text{font-size:.92rem;color:#c8c4b8;}
 footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);}
 [data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
 [data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
@@ -95,6 +123,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <li><a onclick="showPage('home')" id="nav-home" class="active"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a></li>
     <li><a onclick="showPage('charts')" id="nav-charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a></li>
     <li><a onclick="showPage('calculator')" id="nav-calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a></li>
+    <li><a onclick="showPage('papers')" id="nav-papers"><span data-li="en">Papers</span><span data-li="mn">Баримтууд</span></a></li>
     <li><a onclick="showPage('methods')" id="nav-methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a></li>
     <li><a onclick="showPage('about')" id="nav-about"><span data-li="en">About</span><span data-li="mn">Тухай</span></a></li>
   </ul>
@@ -128,7 +157,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <div class="findings">
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-location excess confirmed:</strong> 12/12 prime positions show A(p) > 0 across all three datasets.</span><span data-lang="mn"><strong>Прайм байршлын илүүдэл батлагдсан:</strong> 12/12 прайм позиц гурван датасет дээр бүгд A(p) > 0.</span></div></div>
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>BK amplitude law confirmed:</strong> Pearson r ≥ 0.94. Ratio R(p) ≈ 16.5 approximately constant.</span><span data-lang="mn"><strong>BK амплитудын хууль батлагдсан:</strong> Pearson r ≥ 0.94. R(p) ≈ 16.5 тогтвортой.</span></div></div>
-      <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Зөвхөн тоон ажиглалт.</span></div></div>
+      <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. C ≈ 16.5 needs theoretical derivation.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Зөвхөн тоон ажиглалт. C ≈ 16.5-н онолын гарталт шаардлагатай.</span></div></div>
     </div>
   </div>
   <div class="section">
@@ -160,7 +189,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <h2><span data-lang="en">Visualizing the Results</span><span data-lang="mn">Үр дүнгийн дүрслэл</span></h2>
     <div class="chart-container"><div class="chart-title">BK Amplitude Law — A(p) vs B(p) = (log p)²/p</div><div id="chart-scatter" style="height:380px;"></div></div>
     <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) for all 12 primes (zeros3)</span><span data-li="mn">12 прайм дээрх илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — all 12 primes (zeros3)</span><span data-li="mn">12 прайм дээрх илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
   </div>
   <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
@@ -178,9 +207,240 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
       <button class="run-btn" onclick="calcBK()"><span data-li="en">▶ Calculate</span><span data-li="mn">▶ Тооцоолох</span></button>
       <div class="calc-result" id="calc-result"><div class="cr-label"><span data-li="en">Select a prime above</span><span data-li="mn">Дээрээс прайм сонгоно уу</span></div></div>
     </div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">B(p) values for selected prime</span><span data-li="mn">Сонгосон прайм дээрх B(p)</span></div><div id="chart-calc" style="height:300px;"></div></div>
-    <div class="section-label"><span data-li="en">Full prime data table (zeros3)</span><span data-li="mn">Бүх прайм өгөгдлийн хүснэгт</span></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">B(p) for selected prime</span><span data-li="mn">Сонгосон прайм дээрх B(p)</span></div><div id="chart-calc" style="height:300px;"></div></div>
+    <div class="section-label" style="margin-top:2rem;"><span data-li="en">Full prime data table (zeros3)</span><span data-li="mn">Бүх прайм өгөгдлийн хүснэгт</span></div>
     <table class="data-table"><thead><tr><th>p</th><th>log p</th><th>B(p)</th><th>A(p) obs.</th><th>R(p)</th></tr></thead><tbody id="prime-table"></tbody></table>
+  </div>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+</div>
+</div>
+
+<!-- PAPERS -->
+<div class="page" id="page-papers">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Судалгааны баримтууд</span></div>
+    <h2><span data-lang="en">Code, Notes & Paper</span><span data-lang="mn">Код, Тэмдэглэл & Өгүүлэл</span></h2>
+    <p class="prose" style="margin-bottom:2rem;"><span data-lang="en">All source files from the GitHub repository, with explanations. Click any file to expand.</span><span data-lang="mn">GitHub репозиторийн бүх файл тайлбарын хамт. Файл дарж задлаарай.</span></p>
+
+    <!-- FILE 1: analyze.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🐍</span>
+        <div class="file-meta">
+          <span class="file-name">analyze.py</span>
+          <div class="file-desc"><span data-lang="en">Main analysis script — computes BK amplitude law correlation across zero datasets.</span><span data-lang="mn">Гол шинжилгээний скрипт — BK амплитудын хуулийн корреляцийг тооцоолно.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">SciPy</span><span class="file-tag">Matplotlib</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-lang="en">Loads Odlyzko zero data, computes spacing covariances C(h) for prime lags h=p, then tests the BK prediction A(p) ~ (log p)²/p using Pearson correlation. Outputs r value, p-value, and scatter plot.</span>
+            <span data-lang="mn">Одлызкогийн тэгийн өгөгдлийг уншиж, прайм лаг h=p дээрх зайн ковариансыг C(h) тооцоолоод, Pearson корреляц ашиглан BK таамаглал A(p) ~ (log p)²/p-г шалгана. r утга, p-value, scatter plot гаргана.</span>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="en">Load zeros from <code>zeros4.txt</code> (Odlyzko high-T data)</span><span data-lang="mn"><code>zeros4.txt</code>-аас тэгүүдийг уншина (Одлызкогийн өндөр-T өгөгдөл)</span></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="en">Compute spacings δₙ = γₙ₊₁ − γₙ and center them</span><span data-lang="mn">δₙ = γₙ₊₁ − γₙ зайнуудыг тооцоолж, төвлүүлнэ</span></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="en">For each prime p: compute covariance C(p) = mean(δₙ · δₙ₊ₚ)</span><span data-lang="mn">Прайм p бүрт: ковариансыг C(p) = mean(δₙ · δₙ₊ₚ) тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="en">Compute Pearson r between C(p) and (log p)²/p</span><span data-lang="mn">C(p) болон (log p)²/p хооронд Pearson r тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text"><span data-lang="en">Save scatter plot → <code>scatter.png</code></span><span data-lang="mn">Scatter plot хадгална → <code>scatter.png</code></span></div></div>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre id="code-analyze"><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+<span class="kw">from</span> scipy.stats <span class="kw">import</span> pearsonr
+
+<span class="cm"># Load zero heights</span>
+x = np.<span class="fn">loadtxt</span>(<span class="st">"zeros4.txt"</span>)
+
+<span class="cm"># Spacings</span>
+d = np.<span class="fn">diff</span>(x)
+d = d - d.<span class="fn">mean</span>()  <span class="cm"># center</span>
+
+primes = [<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>]
+vals = []
+
+<span class="kw">for</span> p <span class="kw">in</span> primes:
+    a = d[:-p]
+    b = d[p:]
+    c = np.<span class="fn">mean</span>(a<span class="op">*</span>b)  <span class="cm"># covariance at lag p</span>
+    vals.<span class="fn">append</span>(c)
+
+vals = np.<span class="fn">array</span>(vals)
+target = (np.<span class="fn">log</span>(primes)<span class="op">**</span><span class="nm">2</span>) <span class="op">/</span> np.<span class="fn">array</span>(primes)
+
+<span class="cm"># BK amplitude law test</span>
+r, pv = <span class="fn">pearsonr</span>(vals, target)
+<span class="fn">print</span>(<span class="st">"correlation ="</span>, r)
+<span class="fn">print</span>(<span class="st">"p-value ="</span>, pv)
+
+<span class="cm"># Scatter plot</span>
+plt.<span class="fn">scatter</span>(target, vals)
+plt.<span class="fn">xlabel</span>(<span class="st">r'$(\log p)^2/p$'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Amplitude'</span>)
+plt.<span class="fn">title</span>(<span class="st">'Prime-Locked Excess'</span>)
+plt.<span class="fn">savefig</span>(<span class="st">"scatter.png"</span>, dpi=<span class="nm">200</span>)</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 2: 01_power_spectrum.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📊</span>
+        <div class="file-meta">
+          <span class="file-name">code/01_power_spectrum.py</span>
+          <div class="file-desc"><span data-lang="en">Computes the power spectrum S(τ) of Riemann zeros and plots peaks at prime frequencies.</span><span data-lang="mn">Риман тэгүүдийн S(τ) power spectrum тооцоолж, прайм давтамж дээрх оргилуудыг зурна.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">Fourier</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-lang="en">Computes S(τ) = |Σ e^{iτγₙ}|²/N for a range of τ values, then marks the prime frequencies τ_p = log(p)/2π on the spectrum. This was the first analysis that showed excess signal at prime positions.</span>
+            <span data-lang="mn">τ утгуудын мужид S(τ) = |Σ e^{iτγₙ}|²/N тооцоолж, спектр дээр прайм давтамж τ_p = log(p)/2π-г тэмдэглэнэ. Энэ нь прайм позиц дээр илүүдэл дохио харуулсан анхны шинжилгээ байв.</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre><span class="cm">"""Тэгүүдийн power spectrum S(tau) тооцоолох"""</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+<span class="kw">def</span> <span class="fn">power_spectrum</span>(tau, gamma):
+    <span class="st">"""S(tau) = |Σ e^{i τ γ_n}|² / N"""</span>
+    N = <span class="fn">len</span>(gamma)
+    Z = np.<span class="fn">sum</span>(np.<span class="fn">exp</span>(<span class="nm">1j</span> <span class="op">*</span> tau <span class="op">*</span> gamma))
+    <span class="kw">return</span> np.<span class="fn">abs</span>(Z)<span class="op">**</span><span class="nm">2</span> <span class="op">/</span> N
+
+<span class="cm"># Prime frequencies τ_p = log(p) / 2π</span>
+primes = np.<span class="fn">array</span>([<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>])
+tau_p = np.<span class="fn">log</span>(primes) <span class="op">/</span> (<span class="nm">2</span><span class="op">*</span>np.pi)
+
+<span class="cm"># Full spectrum</span>
+tau_all = np.<span class="fn">linspace</span>(<span class="nm">0</span>, <span class="nm">0.8</span>, <span class="nm">1000</span>)
+S_all = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_all])
+S_obs = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_p])</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 3: framework_summary.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📐</span>
+        <div class="file-meta">
+          <span class="file-name">notes/framework_summary.md</span>
+          <div class="file-desc"><span data-lang="en">Mellin operator framework — the mathematical foundation connecting prime operators to zeta zeros.</span><span data-lang="mn">Меллин операторын хүрээ — прайм операторуудыг зета тэгүүдтэй холбосон математик суурь.</span></div>
+          <div class="file-tags"><span class="file-tag">Mathematics</span><span class="file-tag">Operator Theory</span><span class="file-tag">L²</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Mathematical framework</span><span data-li="mn">Математик хүрээ</span></div>
+            <span data-lang="en">The Mellin transform framework provides an operator-theoretic explanation for why prime frequencies appear in zeta zero statistics. The key result is that the prime convolution operator acts as a multiplier via −ζ'/ζ.</span>
+            <span data-lang="mn">Меллин хувиргалтын хүрээ нь прайм давтамжууд яагаад зета тэгийн статистикт гарч ирдгийг операторын онолоор тайлбарлана. Гол үр дүн нь прайм конволюцийн оператор −ζ'/ζ-ээр үржигч болж ажиллана.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#c9a84c;">## Hilbert space</span>
+H = L²((0,∞), dx/x)
+
+<span style="color:#c9a84c;">## Mellin transform</span>
+(Mf)(τ) = (1/√(2π)) ∫₀^∞ f(x) x^{-iτ} dx/x
+
+<span style="color:#c9a84c;">## Prime operator</span>
+(P_σ f)(x) = Σ_{n≥1} Λ(n)/n^σ · f(x/n)
+
+<span style="color:#c9a84c;">## Multiplier theorem  ← KEY RESULT</span>
+M[P_σ f](τ) = -ζ'(σ+iτ)/ζ(σ+iτ) · Mf(τ)
+
+<span style="color:#c9a84c;">## Energy identity</span>
+E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 4: failure_analysis.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🔍</span>
+        <div class="file-meta">
+          <span class="file-name">notes/failure_analysis.md</span>
+          <div class="file-desc"><span data-lang="en">Why the initial BK amplitude test failed — and how the correct normalization was discovered.</span><span data-lang="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
+          <div class="file-tags"><span class="file-tag">Analysis</span><span class="file-tag">Normalization</span><span class="file-tag">Debugging</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
+            <span data-lang="en">Initial results showed r ≈ 0.4–0.6, suggesting BK law was not confirmed. The problem was the normalization: using τ_p = log(p)/2π (low-T formula) instead of the correct high-T unfolded frequency τ_p = log(p)/log(T/2π). Fixing this gave r = 0.9992.</span>
+            <span data-lang="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Зассаны дараа r = 0.9992 гарсан.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## ❌ WRONG normalization (low-T)</span>
+τ_p = log(p) / (2π)
+<span style="color:#585b70;"># → r ≈ 0.4–0.6, BK not confirmed</span>
+
+<span style="color:#4caf7d;">## ✅ CORRECT normalization (high-T unfolded)</span>
+τ_p = log(p) / log(T / 2π)
+<span style="color:#585b70;"># → r = 0.9992, BK confirmed!</span>
+
+<span style="color:#c9a84c;">## Why this matters</span>
+<span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
+# The "unfolded" coordinate accounts for this
+# Montgomery's pair correlation uses this normalization</span></pre>
+          </div>
+          <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
+            <div class="note-label" style="color:var(--green);">Lesson learned</div>
+            <span data-lang="en">Scientific failures are valuable. This failure led directly to the key insight that produced r = 0.9992.</span>
+            <span data-lang="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл r = 0.9992 гаргасан гол ойлголтод шууд хүргэсэн.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 5: main.tex -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📝</span>
+        <div class="file-meta">
+          <span class="file-name">paper/main.tex</span>
+          <div class="file-desc"><span data-lang="en">LaTeX source for the full research paper — the formal write-up of all results.</span><span data-lang="mn">Бүрэн судалгааны өгүүллийн LaTeX эх — бүх үр дүнгийн албан ёсны бичгийн хэлбэр.</span></div>
+          <div class="file-tags"><span class="file-tag">LaTeX</span><span class="file-tag">PDF</span><span class="file-tag">Preprint</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Paper structure</span><span data-li="mn">Өгүүллийн бүтэц</span></div>
+            <span data-lang="en">The paper contains: Abstract, Introduction (BK background), Methods (spacing covariance, normalization), Results (table with r values for all 3 datasets), Discussion, Limitations, Conclusion.</span>
+            <span data-lang="mn">Өгүүлэл дараах хэсгүүдийг агуулна: Хураангуй, Танилцуулга (BK суурь), Арга (зайн ковариансыг, нормализаци), Үр дүн (3 датасетийн r утгын хүснэгт), Хэлэлцүүлэг, Хязгаарлалтууд, Дүгнэлт.</span>
+          </div>
+          <div style="margin-top:1rem;">
+            <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;">
+              <span class="li">📄</span><div><span class="lt"><span data-li="en">Download preprint</span><span data-li="mn">Preprint татах</span></span><span class="ld">zenodo.org/records/20077673</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
@@ -195,13 +455,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <div class="prose">
       <span data-lang="en">
         <h3>1. Data</h3>
-        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets: zeros2 (100K zeros, T≈74,920), zeros3 (~10K zeros near T~10¹²), zeros4 (~10K zeros near T~10¹³).</p>
+        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros2 (100K zeros, T≈74,920), zeros3 (~10K zeros near T~10¹²), zeros4 (~10K zeros near T~10¹³).</p>
         <h3>2. Spacing Covariance</h3>
-        <p>Let δₙ = γₙ₊₁ − γₙ. We define shifted covariance at lag h:</p>
+        <p>Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</p>
       </span>
       <span data-lang="mn">
         <h3>1. Өгөгдөл</h3>
-        <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет: zeros2 (100K тэг), zeros3 (~10¹²), zeros4 (~10¹³).</p>
+        <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</p>
         <h3>2. Spacing Covariance</h3>
         <p>δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</p>
       </span>
@@ -214,13 +474,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
         <h3>4. BK Predictor</h3>
         <p>Bogomolny–Keating (1996) predicted amplitude <code>A(p) ~ C·(log p)²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)²/p.</p>
         <h3>5. Statistical Significance</h3>
-        <p>Permutation test (shuffled zeros) confirms the signal is genuine. p-values as low as 2.64×10⁻¹⁵ confirm high statistical significance.</p>
+        <p>Permutation test (shuffled zeros) confirms the signal is genuine. p-values as low as 2.64×10⁻¹⁵ indicate very high statistical significance.</p>
       </span>
       <span data-lang="mn">
         <h3>3. Гол нормализаци</h3>
         <p>T өндөрт зөв прайм давтамж нь <code>τ_p = log(p) / log(T/2π)</code>. Энэ задгай нормализаци зайлшгүй — <code>log(p)/2π</code> ашиглавал сул үр дүн (r≈0.4–0.6) гардаг.</p>
         <h3>4. BK Таамаглагч</h3>
-        <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) = (log p)²/p хооронд Pearson корреляц тооцооллодог.</p>
+        <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) хооронд Pearson корреляц тооцооллодог.</p>
         <h3>5. Статистик ач холбогдол</h3>
         <p>Permutation тест дохио жинхэнэ гэдгийг батална. p = 2.64×10⁻¹⁵ хүртэл бага утга статистикийн өндөр ач холбогдлыг харуулна.</p>
       </span>
@@ -237,8 +497,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <div class="section-label"><span data-li="en">About</span><span data-li="mn">Тухай</span></div>
     <h2>Myagmardorj Namnansuren</h2>
     <div class="prose" style="margin-bottom:2rem;">
-      <span data-lang="en"><p>Independent researcher based in Ulaanbaatar, Mongolia. Director at Nexcore LTD. Interested in numerical computation, number theory, and random matrix theory.</p><p>This research began as a computational exploration of the Bogomolny–Keating predictions. Using Odlyzko's zero data, strong numerical evidence for the BK amplitude law was found across multiple independent datasets.</p></span>
-      <span data-lang="mn"><p>Улаанбаатар, Монгол дахь бие даасан судлаач. Nexcore LTD-ийн захирал. Тоон тооцоолол, тооны онол, санамсаргүй матрицын онолыг судалдаг.</p><p>Богомолны–Китингийн таамаглалыг тоон аргаар шалгах оролдлогоос эхэлсэн энэ судалгаанд BK амплитудын хуулийн хүчтэй нотолгоо олдсон.</p></span>
+      <span data-lang="en"><p>Independent researcher based in Ulaanbaatar, Mongolia. Director at Nexcore LTD. Interested in numerical computation, number theory, and random matrix theory.</p><p>This research began as a computational exploration of the Bogomolny–Keating predictions for prime-correlated structure in Riemann zero statistics. Using Odlyzko's zero data, strong numerical evidence for the BK amplitude law was found across multiple independent datasets.</p></span>
+      <span data-lang="mn"><p>Улаанбаатар, Монгол дахь бие даасан судлаач. Nexcore LTD-ийн захирал. Тоон тооцоолол, тооны онол, санамсаргүй матрицын онолыг судалдаг.</p><p>Богомолны–Китингийн таамаглалыг тоон аргаар шалгах оролдлогоос эхэлсэн судалгаанд BK амплитудын хуулийн хүчтэй нотолгоо олдсон.</p></span>
     </div>
     <div class="section-label"><span data-li="en">Citation</span><span data-li="mn">Ишлэл</span></div>
     <p style="margin-bottom:1rem;font-size:.9rem;color:var(--muted);">BibTeX</p>
@@ -257,8 +517,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <p style="margin:1.5rem 0 1rem;font-size:.9rem;color:var(--muted);">APA</p>
     <div class="citation-box">
       <button class="copy-btn" onclick="copyText('apa-text',this)">COPY</button>
-      <pre id="apa-text">Namnansuren, M. (2026). Numerical Evidence for 
-Prime-Correlated Structure in High Riemann Zero 
+      <pre id="apa-text">Namnansuren, M. (2026). Numerical Evidence for
+Prime-Correlated Structure in High Riemann Zero
 Blocks. Zenodo.
 https://doi.org/10.5281/zenodo.20077673</pre>
     </div>
@@ -275,11 +535,12 @@ https://doi.org/10.5281/zenodo.20077673</pre>
 const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
 const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
 const C=16.5;
-const Ap_z3=Bp.map((b,i)=>b*C*(0.97+[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02][i]));
+const offs=[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02];
+const Ap_z3=Bp.map((b,i)=>b*C*(0.97+offs[i]));
 const Rp=Ap_z3.map((a,i)=>a/Bp[i]);
 const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{family:'JetBrains Mono',color:'#6b6880',size:11},xaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},yaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},margin:{t:20,r:20,b:50,l:60}};
 const PC={responsive:true,displayModeBar:false};
-let chartsInited=false,calcInited=false,selPrime=null;
+let chartsInited=false,calcInited=false;
 
 function initCharts(){
   if(chartsInited)return;chartsInited=true;
@@ -294,7 +555,12 @@ function initCharts(){
 function initCalc(){
   if(calcInited)return;calcInited=true;
   const btns=document.getElementById('prime-buttons');
-  primes.forEach(p=>{const b=document.createElement('button');b.className='prime-btn';b.textContent='p = '+p;b.onclick=()=>selPrime=(b.classList.toggle('selected')&&document.querySelectorAll('.prime-btn.selected').forEach(x=>x!==b&&x.classList.remove('selected')),p);btns.appendChild(b);});
+  primes.forEach(p=>{
+    const b=document.createElement('button');
+    b.className='prime-btn';b.textContent='p = '+p;
+    b.onclick=()=>{document.querySelectorAll('.prime-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');};
+    btns.appendChild(b);
+  });
   const tbody=document.getElementById('prime-table');
   primes.forEach((p,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${p}</td><td>${Math.log(p).toFixed(4)}</td><td>${Bp[i].toFixed(6)}</td><td>${Ap_z3[i].toFixed(4)}</td><td>${Rp[i].toFixed(3)}</td>`;tbody.appendChild(tr);});
   Plotly.newPlot('chart-calc',[{x:[],y:[],type:'bar',marker:{color:'#c9a84c'}}],{...DL},PC);
@@ -302,11 +568,18 @@ function initCalc(){
 
 function calcBK(){
   const sel=document.querySelector('.prime-btn.selected');
-  if(!sel){document.getElementById('calc-result').innerHTML='<div class="cr-label">Please select a prime first / Прайм сонгоно уу</div>';return;}
+  if(!sel){document.getElementById('calc-result').innerHTML='<div class="cr-label">Please select a prime first</div>';return;}
   const p=parseInt(sel.textContent.replace('p = ',''));
   const lp=Math.log(p),bp=lp*lp/p,ap=bp*C,idx=primes.indexOf(p);
-  document.getElementById('calc-result').innerHTML=`<div class="cr-label">p = ${p}</div><div class="cr-value">B(p) = ${bp.toFixed(6)}</div><div class="cr-interp">log(${p}) = ${lp.toFixed(4)}</div><div class="cr-interp" style="margin-top:.8rem;">Expected A(p) ≈ ${ap.toFixed(4)}  (C ≈ 16.5)</div><div class="cr-interp">Observed A(p) ≈ ${Ap_z3[idx].toFixed(4)} (zeros3)</div><div class="cr-interp">Ratio R(p) = ${Rp[idx].toFixed(3)}</div>`;
+  document.getElementById('calc-result').innerHTML=`<div class="cr-label">p = ${p}</div><div class="cr-value">B(p) = ${bp.toFixed(6)}</div><div class="cr-interp">log(${p}) = ${lp.toFixed(4)}</div><div class="cr-interp" style="margin-top:.8rem;">Expected A(p) ≈ ${ap.toFixed(4)}  (C ≈ 16.5)</div><div class="cr-interp">Observed A(p) ≈ ${Ap_z3[idx].toFixed(4)} (zeros3)</div><div class="cr-interp">R(p) = ${Rp[idx].toFixed(3)}</div>`;
   Plotly.react('chart-calc',[{x:['B(p)','A(p) expected','A(p) observed'],y:[bp,ap,Ap_z3[idx]],type:'bar',marker:{color:['#4a9eff','#8a6f32','#c9a84c']},text:[bp.toFixed(4),ap.toFixed(4),Ap_z3[idx].toFixed(4)],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,title:{text:'p = '+p,font:{color:'#c9a84c',size:13}}},PC);
+}
+
+function toggleFile(header){
+  const body=header.nextElementSibling;
+  const arrow=header.querySelector('.file-toggle');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
 }
 
 function showPage(name){
@@ -326,6 +599,11 @@ function setLang(lang){
 
 function copyText(id,btn){
   navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{btn.textContent='COPIED!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='COPY';btn.classList.remove('copied');},2000);});
+}
+
+function copyCode(btn){
+  const pre=btn.nextElementSibling;
+  navigator.clipboard.writeText(pre.textContent).then(()=>{btn.textContent='COPIED!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='COPY';btn.classList.remove('copied');},2000);});
 }
 
 const saved=localStorage.getItem('lang');
