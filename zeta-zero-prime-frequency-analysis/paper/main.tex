@@ -5,8 +5,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 
-\title{Numerical Evidence for BK-Type Prime-Lock Scaling\\
-in High Riemann Zero Blocks}
+\title{Persistent Prime-Indexed Excess Correlations\\
+in High Riemann Zero Blocks:\\
+An Empirical Observation}
 \author{Myagmardorj Namnansuren\\
 \small Nexcore LTD, Ulaanbaatar, Mongolia\\
 \small \texttt{myagmardorj@gmail.com}}
@@ -16,13 +17,13 @@ in High Riemann Zero Blocks}
 \maketitle
 
 \begin{abstract}
-We present \emph{numerical evidence} for prime-correlated structure
+We report \emph{persistent prime-indexed excess correlations}
 in the spacing statistics of high Riemann zero blocks. Using Odlyzko
 zero data at heights $T \sim 10^{12}$--$10^{13}$, we find that
 prime-indexed spacing covariances exhibit a statistically significant
-excess, with the amplitude scaling
-$A(p) \sim C(\log p)^2/p$ consistent with the
-Bogomolny--Keating (1996) prediction. The Pearson correlation between
+excess, with amplitude scaling empirically consistent with
+$A(p) \sim C(\log p)^2/p$, a form suggested by
+Bogomolny--Keating (1996). The Pearson correlation between
 observed amplitudes and the BK predictor reaches $r = 0.9992$
 ($p = 2.64 \times 10^{-15}$) on one block and $r = 0.9421$
 ($p = 5.0 \times 10^{-6}$) on another, with all 12 tested prime
@@ -30,12 +31,15 @@ positions showing positive excess in both cases.
 
 \medskip
 \noindent\textbf{Important caveat:}
-These are \emph{numerical observations only}. The results are
-consistent with the BK prediction but do \emph{not} constitute a
-rigorous proof of the BK law, and are certainly not a proof of the
-Riemann Hypothesis. Independent replication, peer review, and
-asymptotic analysis are needed before the BK amplitude law can be
-considered ``confirmed'' in the mathematical sense.
+These are \emph{computational observations only}. Fitting bias,
+normalization sensitivity, multiple-testing effects, finite-window
+artifacts, and dataset dependence have not been fully ruled out.
+The results are empirically consistent with the BK prediction
+but do \emph{not} constitute a confirmed theorem.
+Independent replication, bootstrap/random controls,
+window-stability tests, explicit-formula derivation,
+and peer review are all required before this can be
+considered a research-grade contribution.
 \end{abstract}
 
 \section{Introduction}
@@ -126,12 +130,13 @@ formula) gave $r \approx 0.4$--$0.6$, insufficient to claim
 any effect.
 
 \section{Conclusion}
-We have found strong numerical evidence that the
-Bogomolny--Keating amplitude scaling $A(p) \sim C(\log p)^2/p$
-is observable in high-height Riemann zero blocks, with
-correlation $r \geq 0.94$ across all tested datasets.
-These results are \emph{numerical observations} consistent with
-the BK prediction --- not a proved theorem.
+We observe persistent prime-indexed excess correlations
+in high-height Riemann zero blocks, with amplitude scaling
+empirically consistent with $A(p) \sim C(\log p)^2/p$
+(Pearson $r \geq 0.94$ across all tested datasets).
+These are computational observations --- not a confirmed theorem.
+Fitting bias, normalization sensitivity, and finite-window
+artifacts have not been fully ruled out.
 
 All code and data are available at
 \url{https://github.com/myagmardorj-cloud/Myagmardorj}.
