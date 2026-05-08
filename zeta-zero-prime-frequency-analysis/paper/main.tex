@@ -1,181 +1,168 @@
 \documentclass[11pt]{article}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{graphicx}
-\usepackage{natbib}
 \usepackage{booktabs}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 
-\title{Numerical Evidence for Prime-Correlated Structure\\
+\title{Numerical Evidence for BK-Type Prime-Lock Scaling\\
 in High Riemann Zero Blocks}
-\author{Myagmardorj Namnansuren}
-\date{\today}
+\author{Myagmardorj Namnansuren\\
+\small Nexcore LTD, Ulaanbaatar, Mongolia\\
+\small \texttt{myagmardorj@gmail.com}}
+\date{May 2026}
 
 \begin{document}
-
 \maketitle
 
 \begin{abstract}
-We present numerical evidence for prime-correlated structure in the 
-spacing statistics of Riemann zeta zeros, tested across multiple 
-high-height zero blocks. Using Odlyzko zero data at heights 
-$T \sim 10^{12}$--$10^{13}$, we find that prime-indexed spacing 
-covariances exhibit a statistically significant excess consistent 
-with the Bogomolny--Keating amplitude law 
-$A(p) \sim C(\log p)^2/p$. 
-The Pearson correlation between observed amplitudes and the 
-BK predictor reaches $r = 0.9992$ ($p = 2.64 \times 10^{-15}$) 
-on one block and $r = 0.9421$ ($p = 5.0 \times 10^{-6}$) on 
-another, with all 12 tested prime positions showing positive 
-excess in both cases. The effect is robust across datasets.
-This is \emph{not} a proof of the Riemann Hypothesis.
+We present \emph{numerical evidence} for prime-correlated structure
+in the spacing statistics of high Riemann zero blocks. Using Odlyzko
+zero data at heights $T \sim 10^{12}$--$10^{13}$, we find that
+prime-indexed spacing covariances exhibit a statistically significant
+excess, with the amplitude scaling
+$A(p) \sim C(\log p)^2/p$ consistent with the
+Bogomolny--Keating (1996) prediction. The Pearson correlation between
+observed amplitudes and the BK predictor reaches $r = 0.9992$
+($p = 2.64 \times 10^{-15}$) on one block and $r = 0.9421$
+($p = 5.0 \times 10^{-6}$) on another, with all 12 tested prime
+positions showing positive excess in both cases.
+
+\medskip
+\noindent\textbf{Important caveat:}
+These are \emph{numerical observations only}. The results are
+consistent with the BK prediction but do \emph{not} constitute a
+rigorous proof of the BK law, and are certainly not a proof of the
+Riemann Hypothesis. Independent replication, peer review, and
+asymptotic analysis are needed before the BK amplitude law can be
+considered ``confirmed'' in the mathematical sense.
 \end{abstract}
 
 \section{Introduction}
-The Riemann Hypothesis (RH) remains one of the most important 
-open problems in mathematics. Numerical experiments on the zeros 
-of $\zeta(s)$ have provided deep insights. Odlyzko's computations 
-\cite{odlyzko} showed that zero pair correlations follow the 
-Gaussian Unitary Ensemble (GUE) prediction of random matrix 
-theory \cite{montgomery}.
+The Riemann Hypothesis (RH) remains one of the most important open
+problems in mathematics \cite{clay}. Odlyzko's computations
+\cite{odlyzko} showed that zero pair correlations follow the
+Gaussian Unitary Ensemble (GUE) prediction of random matrix theory
+\cite{montgomery}.
 
-Bogomolny and Keating \cite{bogomolny1996} predicted that GUE 
-statistics receive arithmetic corrections at prime frequencies, 
+Bogomolny and Keating \cite{bogomolny1996} predicted that GUE
+statistics receive arithmetic corrections at prime frequencies,
 with amplitude law
 \[
 A(p) \sim C \frac{(\log p)^2}{p}.
 \]
 This follows from the explicit formula connecting primes and zeros.
 
-In this note we present numerical evidence confirming this 
-amplitude law on high-height zero blocks, using a spacing 
-covariance statistic with the correct high-$T$ normalization.
+In this note we present numerical evidence that this amplitude
+scaling is observable in high-height zero blocks. We emphasize that
+our results are \emph{numerical observations} and should be
+interpreted as such.
 
 \section{Methods}
 
 \subsection{Data}
 We used three Odlyzko zero datasets:
 \begin{itemize}
-\item \textbf{zeros2}: first 100,000 zeros, $T \approx 74{,}920$
+\item \textbf{zeros2}: 100,000 zeros near $T \approx 74{,}920$
 \item \textbf{zeros3}: block near $T \sim 10^{12}$
 \item \textbf{zeros4}: block near $T \sim 10^{13}$
 \end{itemize}
 
 \subsection{Spacing Covariance Statistic}
-Let $\delta_n = \gamma_{n+1} - \gamma_n$ be consecutive zero 
-spacings. Define the shifted covariance
+Let $\delta_n = \gamma_{n+1} - \gamma_n$. Define
 \[
-C(h) = \frac{1}{N-h} \sum_{n=1}^{N-h} 
-(\delta_n - \bar\delta)(\delta_{n+h} - \bar\delta),
+C(h) = \frac{1}{N-h} \sum_{n=1}^{N-h}
+(\delta_n - \bar\delta)(\delta_{n+h} - \bar\delta).
 \]
-and normalized residual
-\[
-A(h) = \frac{C(h) - \mu(h)}{\sigma(h)},
-\]
-where $\mu(h)$ and $\sigma(h)$ are local background mean and 
-standard deviation estimated from non-prime shifts.
 
 \subsection{Normalization}
-A key insight is that the correct prime frequency at height $T$ is
+A key finding is that the correct prime frequency at height $T$ is
 \[
 \tau_p = \frac{\log p}{\log(T/2\pi)},
 \]
-\emph{not} $\log p / 2\pi$. This unfolded normalization is 
-essential for detecting the BK signal at high $T$.
+\emph{not} $\log p / 2\pi$. The low-$T$ normalization gives
+$r \approx 0.4$--$0.6$; the high-$T$ unfolded normalization gives
+$r = 0.9992$ on the zeros3 block.
 
 \section{Results}
-
-\subsection{Prime-Location Excess}
-For all 12 primes $p = 2, 3, 5, \ldots, 37$, we find $A(p) > 0$ 
-on all three datasets. This is consistent with the BK prediction.
-
-\subsection{BK Amplitude Law}
-Table~\ref{tab:results} summarizes the Pearson correlation between 
-$A(p)$ and the BK predictor $B(p) = (\log p)^2/p$.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{lccc}
 \toprule
-Dataset & Zeros & $r$ & $p$-value \\
+Dataset & Block height & $r$ & $p$-value \\
 \midrule
-zeros2 & 100,000 & 0.9783 & $3.82 \times 10^{-186}$ \\
-zeros3 & $\sim 10^{12}$ block & 0.9992 & $2.64 \times 10^{-15}$ \\
-zeros4 & $\sim 10^{13}$ block & 0.9421 & $5.0 \times 10^{-6}$ \\
+zeros2 & $T \approx 74{,}920$ & 0.9783 & $3.82 \times 10^{-186}$ \\
+zeros3 & $T \sim 10^{12}$ & 0.9992 & $2.64 \times 10^{-15}$ \\
+zeros4 & $T \sim 10^{13}$ & 0.9421 & $5.0 \times 10^{-6}$ \\
 \bottomrule
 \end{tabular}
-\caption{Pearson correlation between observed amplitudes $A(p)$ 
-and BK predictor $B(p) = (\log p)^2/p$ for primes 
-$p = 2, 3, 5, \ldots, 37$.}
+\caption{Pearson correlation between observed $A(p)$ and BK predictor
+$B(p) = (\log p)^2/p$ for primes $p = 2, 3, \ldots, 37$.}
 \label{tab:results}
 \end{table}
 
-The ratio $R(p) = A(p)/B(p)$ is approximately constant 
-($\approx 16.4$--$16.9$) across primes on the zeros3 block, 
-consistent with a universal constant $C$ in the BK law.
-
-\subsection{Robustness}
-The signal persists across three independent zero blocks at 
-different heights, providing strong evidence for universality. 
-Shuffled zero tests confirm the signal is not an artifact.
+All 12 prime positions show $A(p) > 0$ across all three datasets.
+The ratio $R(p) = A(p)/B(p) \approx 16.5$ is approximately
+constant on the zeros3 block.
 
 \section{Discussion}
-The explicit formula \cite{bogomolny1996} predicts prime peaks 
-in zero statistics. Our results confirm:
+
+The numerical evidence is consistent with the BK prediction.
+However, several important caveats apply:
+
 \begin{enumerate}
-\item Prime-location excess ($A(p) > 0$) on all datasets
-\item BK amplitude scaling with $r \geq 0.94$ on all datasets
-\item Consistency of ratio $R(p) \approx 16.5$ (zeros3)
+\item These are \emph{experimental numerical observations}.
+\item The BK law has not been rigorously proved from these data.
+\item The constant $C \approx 16.5$ has no theoretical derivation here.
+\item Independent replication on different zero blocks is needed.
+\item Peer review has not been completed.
+\item This is \textbf{not} a proof of the Riemann Hypothesis.
 \end{enumerate}
 
-The high-$T$ normalization $\tau_p = \log p / \log(T/2\pi)$ 
-is crucial --- the earlier low-$T$ analysis ($r \approx 0.4$--$0.6$) 
-used incorrect normalization.
-
-\section{Limitations}
-\begin{itemize}
-\item These are experimental numerical observations only.
-\item This is \textbf{not} a proof of the Riemann Hypothesis.
-\item Theoretical derivation of the constant $C \approx 16.5$ 
-is needed.
-\item Larger and more diverse zero blocks should be tested.
-\item Peer review has not been completed.
-\end{itemize}
+The high-$T$ normalization $\tau_p = \log p / \log(T/2\pi)$ is
+crucial. Earlier work using $\tau_p = \log p / 2\pi$ (low-$T$
+formula) gave $r \approx 0.4$--$0.6$, insufficient to claim
+any effect.
 
 \section{Conclusion}
-We have found strong numerical evidence that the 
-Bogomolny--Keating amplitude law $A(p) \sim C(\log p)^2/p$ 
-holds in high-height Riemann zero blocks, with correlation 
-$r \geq 0.94$ across all tested datasets. The effect is 
-robust and statistically significant.
+We have found strong numerical evidence that the
+Bogomolny--Keating amplitude scaling $A(p) \sim C(\log p)^2/p$
+is observable in high-height Riemann zero blocks, with
+correlation $r \geq 0.94$ across all tested datasets.
+These results are \emph{numerical observations} consistent with
+the BK prediction --- not a proved theorem.
 
-All code and data are available at 
+All code and data are available at
 \url{https://github.com/myagmardorj-cloud/Myagmardorj}.
 
 \bibliographystyle{plain}
 \begin{thebibliography}{99}
 
-\bibitem{odlyzko} 
-A.~M. Odlyzko, 
-``The $10^{20}$-th zero of the Riemann zeta function 
+\bibitem{clay}
+Clay Mathematics Institute,
+``Millennium Prize Problems,'' 2000.
+\url{https://www.claymath.org/millennium-problems/}
+
+\bibitem{odlyzko}
+A.~M. Odlyzko,
+``The $10^{20}$-th zero of the Riemann zeta function
 and 175 million of its neighbors,'' 1992.
 
-\bibitem{montgomery} 
-H.~L. Montgomery, 
-``The pair correlation of zeros of the zeta function,'' 
+\bibitem{montgomery}
+H.~L. Montgomery,
+``The pair correlation of zeros of the zeta function,''
 \textit{Proc. Sympos. Pure Math.}, 24, 1973.
 
-\bibitem{bogomolny1996} 
-E.~B. Bogomolny and J.~P. Keating, 
-``Random matrix theory and the Riemann zeros I \& II,'' 
+\bibitem{bogomolny1996}
+E.~B. Bogomolny and J.~P. Keating,
+``Random matrix theory and the Riemann zeros I \& II,''
 \textit{Nonlinearity}, 1995--1996.
 
 \bibitem{hiary2011}
 G.~A. Hiary and A.~M. Odlyzko,
-``The zeta function on the critical line: numerical evidence 
-for moments and random matrix theory models,''
+``The zeta function on the critical line,''
 \textit{Math. Comp.}, 81, 2012.
 
 \end{thebibliography}
-
 \end{document}
