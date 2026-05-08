@@ -9,7 +9,7 @@
 
 ## Summary
 
-This work presents **numerical evidence** for BK-type prime-correlated structure in the spacing statistics of high Riemann zero blocks.
+This work reports **persistent prime-indexed excess correlations** in high Riemann zero spacing statistics, empirically consistent with a BK-type scaling law.
 
 > ⚠️ These are numerical observations only — not a confirmed theorem, not a proof of RH.  
 > Independent replication and peer review are needed.
@@ -28,17 +28,17 @@ The observed amplitude scaling:
 A(p) ~ C · (log p)² / p,   C ≈ 16.5
 ```
 
-is consistent with the Bogomolny–Keating (1996) prediction — but **has not been rigorously proved**.
+is empirically consistent with the Bogomolny–Keating (1996) prediction. This is a numerical observation; fitting bias, normalization sensitivity, and finite-window artifacts have not been fully ruled out.
 
 ---
 
 ## What this is
 
-✅ Strong numerical evidence for prime-correlated structure  
-✅ Consistent with BK (1996) prediction across 3 datasets  
+✅ Persistent prime-indexed excess observed across 3 datasets  
+✅ Empirically consistent with BK-type scaling — not a confirmed theorem  
 ✅ Effect robust under high-T normalization τ_p = log(p)/log(T/2π)  
 
-❌ Not a confirmed theorem  
+❌ Not a confirmed theorem (independent replication, bootstrap tests, explicit-formula derivation needed)  
 ❌ Not peer-reviewed  
 ❌ Not a proof of the Riemann Hypothesis  
 
