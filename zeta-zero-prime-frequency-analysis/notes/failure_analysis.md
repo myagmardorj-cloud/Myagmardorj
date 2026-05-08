@@ -1,19 +1,49 @@
-# BK Amplitude Law – Яагаад батлагдаагүй вэ?
+# Failure Analysis — Why Initial BK Test Failed
 
-## Ажиглагдсан зүйл
-- p=2 давамгайлсан
-- Дараагийн primes-ийн ΔK жижиг
-- R(p) тогтвортой биш
-- Pearson r orx бага (≈ 0.4-0.6)
+## Initial results (zeros2, low-T normalization)
 
-## Боломжит шалтгаанууд
-1. Normalization буруу байж болох уу?
-2. BK томьёо өөр scaling хэрэгтэй байж болох уу? A(p) ∝ (log p)^α / p^β
-3. Finite size effect (100,000 zeros хангалтгүй)
-4. Baseline тооцоололд алдаа байж болох уу?
+- Pearson r ≈ 0.4–0.6
+- BK law appeared NOT confirmed
 
-## Дараагийн алхам
-- Өөр T-тэй (өөр block of zeros) тест хийх
-- Өөр normalization турших
-- Өөр BK томьёоны хувилбар шалгах
-- 200,000 zeros дээр тест хийх
+## Root cause: Wrong normalization
+
+### ❌ Wrong (low-T formula)
+```
+τ_p = log(p) / (2π)
+```
+This is the formula for zeros near T ≈ 0.
+Result: r ≈ 0.4–0.6 → no signal.
+
+### ✅ Correct (high-T unfolded)
+```
+τ_p = log(p) / log(T / 2π)
+```
+At height T, zeros have mean spacing ~2π/log(T/2π).
+The unfolded coordinate accounts for this.
+Result: r = 0.9992 on zeros3 block → strong signal.
+
+## Why this matters
+
+Montgomery's pair correlation uses exactly this
+unfolded normalization. Without it, the BK-type
+prime-lock effect is masked by the scaling mismatch.
+
+## Lesson
+
+Normalization is not a minor detail — it is the
+critical ingredient. This failure led directly to
+the key insight that produced r = 0.9992.
+
+## Current status
+
+| Normalization | Dataset | r | Signal |
+|---------------|---------|---|--------|
+| log(p)/2π (wrong) | zeros2 | ~0.5 | ❌ |
+| log(p)/log(T/2π) | zeros2 | 0.9783 | ✅ |
+| log(p)/log(T/2π) | zeros3 | 0.9992 | ✅ |
+| log(p)/log(T/2π) | zeros4 | 0.9421 | ✅ |
+
+## Important caveat
+
+These results are numerical observations only.
+Not a confirmed theorem. Independent replication needed.
