@@ -14,13 +14,10 @@
     --gold-dim: #8a6f32;
     --text: #e8e4d9;
     --muted: #6b6880;
-    --accent: #4a9eff;
     --green: #4caf7d;
     --red: #e05c5c;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -29,18 +26,53 @@
     line-height: 1.7;
     min-height: 100vh;
   }
-
-  /* Animated background */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: 
+    background:
       radial-gradient(ellipse 80% 50% at 20% 20%, rgba(201,168,76,0.04) 0%, transparent 60%),
       radial-gradient(ellipse 60% 40% at 80% 80%, rgba(74,158,255,0.04) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
+
+  /* Language switcher */
+  .lang-bar {
+    position: fixed;
+    top: 0; right: 0;
+    z-index: 100;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    background: rgba(10,10,15,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom-left-radius: 4px;
+    border: 1px solid var(--border);
+    border-top: none; border-right: none;
+  }
+  .lang-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0.9rem;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn:first-child { border-radius: 3px 0 0 3px; }
+  .lang-btn:last-child { border-radius: 0 3px 3px 0; border-left: none; }
+  .lang-btn.active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+  .lang-btn:hover:not(.active) { color: var(--text); border-color: var(--gold-dim); }
+
+  /* Language content */
+  [data-lang] { display: none; }
+  body.en [data-lang="en"] { display: block; }
+  body.mn [data-lang="mn"] { display: block; }
+  [data-lang-inline] { display: none; }
+  body.en [data-lang-inline="en"] { display: inline; }
+  body.mn [data-lang-inline="mn"] { display: inline; }
 
   .container {
     max-width: 860px;
@@ -50,13 +82,11 @@
     z-index: 1;
   }
 
-  /* Header */
   header {
-    padding: 5rem 0 3rem;
+    padding: 6rem 0 3rem;
     border-bottom: 1px solid var(--border);
     margin-bottom: 4rem;
   }
-
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
@@ -67,7 +97,6 @@
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.1s;
   }
-
   h1 {
     font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 400;
@@ -77,12 +106,7 @@
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.2s;
   }
-
-  h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
+  h1 em { font-style: italic; color: var(--gold); }
   .subtitle {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
@@ -91,7 +115,6 @@
     animation: fadeUp 0.6s ease forwards 0.3s;
   }
 
-  /* Abstract */
   .abstract {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -104,13 +127,11 @@
     animation: fadeUp 0.6s ease forwards 0.4s;
   }
 
-  /* Results table */
   .section {
     margin-bottom: 4rem;
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.5s;
   }
-
   .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.68rem;
@@ -122,22 +143,9 @@
     align-items: center;
     gap: 1rem;
   }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  h2 { font-size: 1.6rem; font-weight: 400; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
 
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  h2 {
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  /* Results grid */
   .results-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -146,210 +154,41 @@
     border: 1px solid var(--border);
     margin-bottom: 2rem;
   }
+  .result-card { background: var(--surface); padding: 1.8rem 1.5rem; text-align: center; }
+  .result-card .dataset { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+  .result-card .r-value { font-size: 2rem; font-weight: 600; color: var(--gold); display: block; line-height: 1; margin-bottom: 0.4rem; }
+  .result-card .p-value { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+  .result-card .badge { display: inline-block; margin-top: 0.8rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 0.2rem 0.6rem; background: rgba(76,175,125,0.12); color: var(--green); border: 1px solid rgba(76,175,125,0.3); letter-spacing: 0.05em; }
 
-  .result-card {
-    background: var(--surface);
-    padding: 1.8rem 1.5rem;
-    text-align: center;
-  }
+  .formula-block { background: var(--surface); border: 1px solid var(--border); padding: 2rem; text-align: center; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; letter-spacing: 0.05em; }
+  .formula-block .formula-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; }
 
-  .result-card .dataset {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.8rem;
-  }
-
-  .result-card .r-value {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--gold);
-    display: block;
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .result-card .p-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-  }
-
-  .result-card .badge {
-    display: inline-block;
-    margin-top: 0.8rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
-    background: rgba(76,175,125,0.12);
-    color: var(--green);
-    border: 1px solid rgba(76,175,125,0.3);
-    letter-spacing: 0.05em;
-  }
-
-  /* Key findings */
-  .findings {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .finding {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.2rem 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-  }
-
-  .finding-icon {
-    font-size: 1rem;
-    flex-shrink: 0;
-    margin-top: 0.1rem;
-  }
-
-  .finding-text {
-    font-size: 0.95rem;
-  }
-
-  .finding-text strong {
-    color: var(--gold);
-  }
-
-  .finding.negative .finding-icon { color: var(--red); }
+  .findings { display: flex; flex-direction: column; gap: 1rem; }
+  .finding { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.5rem; background: var(--surface); border: 1px solid var(--border); }
+  .finding-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .finding-text { font-size: 0.95rem; }
+  .finding-text strong { color: var(--gold); }
   .finding.positive .finding-icon { color: var(--green); }
+  .finding.negative .finding-icon { color: var(--red); }
 
-  /* Formula */
-  .formula-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 2rem;
-    text-align: center;
-    margin: 2rem 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.1rem;
-    color: var(--text);
-    letter-spacing: 0.05em;
-  }
+  .timeline { display: flex; flex-direction: column; }
+  .timeline-item { display: flex; gap: 2rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+  .timeline-year { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--gold); min-width: 4rem; padding-top: 0.1rem; }
+  .timeline-content { font-size: 0.95rem; color: #b8b4a8; }
+  .timeline-content strong { color: var(--text); }
 
-  .formula-block .formula-label {
-    font-size: 0.7rem;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
+  .links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .link-card { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem; background: var(--surface); border: 1px solid var(--border); color: var(--text); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+  .link-card:hover { border-color: var(--gold-dim); background: #161620; }
+  .link-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .link-info .link-title { font-size: 0.9rem; font-weight: 600; color: var(--gold); display: block; }
+  .link-info .link-desc { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--muted); }
 
-  /* Timeline */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .disclaimer { background: rgba(224,92,92,0.06); border: 1px solid rgba(224,92,92,0.2); padding: 1.2rem 1.5rem; font-size: 0.85rem; color: #c4a0a0; margin-top: 2rem; font-style: italic; }
 
-  .timeline-item {
-    display: flex;
-    gap: 2rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-  }
+  footer { border-top: 1px solid var(--border); padding: 2.5rem 0; margin-top: 5rem; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); }
 
-  .timeline-year {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--gold);
-    min-width: 4rem;
-    padding-top: 0.1rem;
-  }
-
-  .timeline-content {
-    font-size: 0.95rem;
-    color: #b8b4a8;
-  }
-
-  .timeline-content strong {
-    color: var(--text);
-  }
-
-  /* Links */
-  .links-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .link-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.2rem 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .link-card:hover {
-    border-color: var(--gold-dim);
-    background: #161620;
-  }
-
-  .link-icon {
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-
-  .link-info .link-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--gold);
-    display: block;
-  }
-
-  .link-info .link-desc {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--muted);
-  }
-
-  /* Disclaimer */
-  .disclaimer {
-    background: rgba(224,92,92,0.06);
-    border: 1px solid rgba(224,92,92,0.2);
-    padding: 1.2rem 1.5rem;
-    font-size: 0.85rem;
-    color: #c4a0a0;
-    margin-top: 2rem;
-    font-style: italic;
-  }
-
-  /* Footer */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2.5rem 0;
-    margin-top: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-  }
-
-  /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .section:nth-child(2) { animation-delay: 0.5s; }
-  .section:nth-child(3) { animation-delay: 0.6s; }
-  .section:nth-child(4) { animation-delay: 0.7s; }
-  .section:nth-child(5) { animation-delay: 0.8s; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
   @media (max-width: 600px) {
     .results-grid { grid-template-columns: 1fr; }
@@ -358,29 +197,41 @@
   }
 </style>
 </head>
-<body>
+<body class="en">
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">ENG</button>
+  <button class="lang-btn" onclick="setLang('mn')">МОН</button>
+</div>
 
 <div class="container">
 
   <header>
-    <div class="eyebrow">Research Note · May 2026 · Mongolia</div>
-    <h1>Prime-Correlated Structure<br>in <em>High Riemann Zero Blocks</em></h1>
+    <div class="eyebrow">
+      <span data-lang-inline="en">Research Note · May 2026 · Mongolia</span>
+      <span data-lang-inline="mn">Судалгааны тэмдэглэл · 2026 оны 5-р сар · Монгол</span>
+    </div>
+    <h1>
+      <span data-lang="en">Prime-Correlated Structure<br>in <em>High Riemann Zero Blocks</em></span>
+      <span data-lang="mn">Өндөр Риман Тэгийн Блок дахь<br><em>Прайм-Корреляцийн Бүтэц</em></span>
+    </h1>
     <div class="subtitle">Myagmardorj Namnansuren · Nexcore LTD · Ulaanbaatar</div>
   </header>
 
   <div class="abstract">
-    Numerical evidence for the Bogomolny–Keating amplitude law 
-    A(p) ∼ C(log p)²/p in high Riemann zero blocks. 
-    Tested across three independent Odlyzko datasets at heights 
-    T ~ 10¹², 10¹³. Correlation r ≥ 0.94 in all cases. 
-    This is not a proof of the Riemann Hypothesis.
+    <span data-lang="en">Numerical evidence for the Bogomolny–Keating amplitude law A(p) ∼ C(log p)²/p in high Riemann zero blocks. Tested across three independent Odlyzko datasets at heights T ~ 10¹², 10¹³. Correlation r ≥ 0.94 in all cases. This is not a proof of the Riemann Hypothesis.</span>
+    <span data-lang="mn">Богомолны–Китингийн амплитудын хуулийн A(p) ∼ C(log p)²/p тоон нотолгоо өндөр Риман тэгийн блок дээр. Одлызкогийн гурван бие даасан датасет дээр T ~ 10¹², 10¹³ өндөрт тест хийгдсэн. Бүх тохиолдолд r ≥ 0.94. Энэ нь Риманы таамаглалын нотолгоо биш.</span>
   </div>
 
-  <!-- Results -->
   <div class="section">
-    <div class="section-label">Main Results</div>
-    <h2>BK Amplitude Law Correlation</h2>
-
+    <div class="section-label">
+      <span data-lang-inline="en">Main Results</span>
+      <span data-lang-inline="mn">Үндсэн үр дүн</span>
+    </div>
+    <h2>
+      <span data-lang="en">BK Amplitude Law Correlation</span>
+      <span data-lang="mn">BK Амплитудын Хуулийн Корреляци</span>
+    </h2>
     <div class="results-grid">
       <div class="result-card">
         <div class="dataset">zeros2</div>
@@ -401,79 +252,76 @@
         <div class="badge">High-T block</div>
       </div>
     </div>
-
     <div class="formula-block">
-      <div class="formula-label">Bogomolny–Keating Amplitude Law</div>
+      <div class="formula-label">
+        <span data-lang-inline="en">Bogomolny–Keating Amplitude Law</span>
+        <span data-lang-inline="mn">Богомолны–Китингийн Амплитудын Хууль</span>
+      </div>
       A(p)  ∼  C · (log p)² / p
     </div>
-
     <div class="findings">
       <div class="finding positive">
         <span class="finding-icon">✓</span>
         <div class="finding-text">
-          <strong>Prime-location excess confirmed:</strong> 
-          12/12 prime positions (p = 2, 3, 5, …, 37) show positive 
-          excess A(p) > 0 across all three datasets.
+          <span data-lang="en"><strong>Prime-location excess confirmed:</strong> 12/12 prime positions (p = 2, 3, 5, …, 37) show positive excess A(p) > 0 across all three datasets.</span>
+          <span data-lang="mn"><strong>Прайм байршлын илүүдэл батлагдсан:</strong> 12/12 прайм позиц (p = 2, 3, 5, …, 37) гурван датасет дээр бүгд A(p) > 0 эерэг илүүдэл харуулсан.</span>
         </div>
       </div>
       <div class="finding positive">
         <span class="finding-icon">✓</span>
         <div class="finding-text">
-          <strong>BK amplitude law confirmed:</strong> 
-          Pearson r ≥ 0.94 on all datasets. Ratio R(p) = A(p)/B(p) ≈ 16.5 
-          is approximately constant across primes.
+          <span data-lang="en"><strong>BK amplitude law confirmed:</strong> Pearson r ≥ 0.94 on all datasets. Ratio R(p) ≈ 16.5 is approximately constant across primes.</span>
+          <span data-lang="mn"><strong>BK амплитудын хууль батлагдсан:</strong> Бүх датасет дээр Pearson r ≥ 0.94. R(p) ≈ 16.5 харьцаа прайм тоонуудад тогтвортой байна.</span>
         </div>
       </div>
       <div class="finding negative">
         <span class="finding-icon">✗</span>
         <div class="finding-text">
-          <strong>Not a proof of RH:</strong> 
-          This is a numerical observation only. 
-          Theoretical derivation of the constant C ≈ 16.5 is needed.
+          <span data-lang="en"><strong>Not a proof of RH:</strong> This is a numerical observation only. Theoretical derivation of C ≈ 16.5 is needed.</span>
+          <span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Энэ нь зөвхөн тоон ажиглалт. C ≈ 16.5 константын онолын гарталт шаардлагатай.</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Context -->
   <div class="section">
-    <div class="section-label">Historical Context</div>
-    <h2>Standing on Giants' Shoulders</h2>
-
+    <div class="section-label">
+      <span data-lang-inline="en">Historical Context</span>
+      <span data-lang-inline="mn">Түүхэн хүрээ</span>
+    </div>
+    <h2>
+      <span data-lang="en">Standing on Giants' Shoulders</span>
+      <span data-lang="mn">Аварга судлаачдын мөрийг дагаж</span>
+    </h2>
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-year">1859</div>
-        <div class="timeline-content">
-          <strong>Riemann</strong> — Hypothesis proposed
-        </div>
+        <div class="timeline-content"><strong>Riemann</strong> — <span data-lang-inline="en">Hypothesis proposed</span><span data-lang-inline="mn">Таамаглал дэвшүүлсэн</span></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">1973</div>
-        <div class="timeline-content">
-          <strong>Montgomery</strong> — GUE connection discovered
-        </div>
+        <div class="timeline-content"><strong>Montgomery</strong> — <span data-lang-inline="en">GUE connection discovered</span><span data-lang-inline="mn">GUE холбоо нээсэн</span></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">1996</div>
-        <div class="timeline-content">
-          <strong>Bogomolny & Keating</strong> — Prime corrections predicted theoretically
-        </div>
+        <div class="timeline-content"><strong>Bogomolny & Keating</strong> — <span data-lang-inline="en">Prime corrections predicted theoretically</span><span data-lang-inline="mn">Прайм засваруудыг онолоор таамагласан</span></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2026</div>
-        <div class="timeline-content">
-          <strong>This work</strong> — BK amplitude law numerically confirmed 
-          on high-T zero blocks (r = 0.9992)
-        </div>
+        <div class="timeline-content"><strong><span data-lang-inline="en">This work</span><span data-lang-inline="mn">Энэ ажил</span></strong> — <span data-lang-inline="en">BK law confirmed on high-T blocks (r = 0.9992)</span><span data-lang-inline="mn">BK хууль өндөр-T блок дээр батлагдсан (r = 0.9992)</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Links -->
   <div class="section">
-    <div class="section-label">Resources</div>
-    <h2>Code, Data & Paper</h2>
-
+    <div class="section-label">
+      <span data-lang-inline="en">Resources</span>
+      <span data-lang-inline="mn">Холбоосууд</span>
+    </div>
+    <h2>
+      <span data-lang="en">Code, Data & Paper</span>
+      <span data-lang="mn">Код, Өгөгдөл & Өгүүлэл</span>
+    </h2>
     <div class="links-grid">
       <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank">
         <span class="link-icon">📄</span>
@@ -486,29 +334,27 @@
         <span class="link-icon">⌨️</span>
         <div class="link-info">
           <span class="link-title">GitHub</span>
-          <span class="link-desc">Full code & data</span>
+          <span class="link-desc"><span data-lang-inline="en">Full code & data</span><span data-lang-inline="mn">Бүх код & өгөгдөл</span></span>
         </div>
       </a>
       <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank">
         <span class="link-icon">💬</span>
         <div class="link-info">
           <span class="link-title">Math StackExchange</span>
-          <span class="link-desc">Discussion & peer comments</span>
+          <span class="link-desc"><span data-lang-inline="en">Discussion</span><span data-lang-inline="mn">Хэлэлцүүлэг</span></span>
         </div>
       </a>
       <a class="link-card" href="mailto:myagmardorj@gmail.com">
         <span class="link-icon">✉️</span>
         <div class="link-info">
-          <span class="link-title">Contact</span>
+          <span class="link-title"><span data-lang-inline="en">Contact</span><span data-lang-inline="mn">Холбоо барих</span></span>
           <span class="link-desc">myagmardorj@gmail.com</span>
         </div>
       </a>
     </div>
-
     <div class="disclaimer">
-      This is an independent numerical research note. 
-      It has not undergone formal peer review. 
-      It is not a proof of the Riemann Hypothesis.
+      <span data-lang="en">This is an independent numerical research note. It has not undergone formal peer review. It is not a proof of the Riemann Hypothesis.</span>
+      <span data-lang="mn">Энэ бол бие даасан тоон судалгааны тэмдэглэл. Албан ёсны peer review хийгдээгүй. Риманы таамаглалын нотолгоо биш.</span>
     </div>
   </div>
 
@@ -518,6 +364,21 @@
   </footer>
 
 </div>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', 
+        (lang === 'en' && btn.textContent === 'ENG') || 
+        (lang === 'mn' && btn.textContent === 'МОН')
+      );
+    });
+    localStorage.setItem('lang', lang);
+  }
+  const saved = localStorage.getItem('lang');
+  if (saved) setLang(saved);
+</script>
 
 </body>
 </html>
