@@ -2,13 +2,10 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{graphicx}
 \usepackage{natbib}
-\usepackage{booktabs}
 \usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
 
-\title{Numerical Evidence for Prime-Correlated Structure\\
-in High Riemann Zero Blocks}
-\author{Myagmardorj Namnansuren}
+\title{Numerical and Operator-Theoretic Explorations of Prime-Correlated Structure in Zeta Zero Statistics}
+\author{Research Note}
 \date{\today}
 
 \begin{document}
@@ -16,165 +13,67 @@ in High Riemann Zero Blocks}
 \maketitle
 
 \begin{abstract}
-We present numerical evidence for prime-correlated structure in the 
-spacing statistics of Riemann zeta zeros, tested across multiple 
-high-height zero blocks. Using Odlyzko zero data at heights 
-$T \sim 10^{12}$--$10^{13}$, we find that prime-indexed spacing 
-covariances exhibit a statistically significant excess consistent 
-with the Bogomolny--Keating amplitude law 
-$A(p) \sim C(\log p)^2/p$. 
-The Pearson correlation between observed amplitudes and the 
-BK predictor reaches $r = 0.9992$ ($p = 2.64 \times 10^{-15}$) 
-on one block and $r = 0.9421$ ($p = 5.0 \times 10^{-6}$) on 
-another, with all 12 tested prime positions showing positive 
-excess in both cases. The effect is robust across datasets.
-This is \emph{not} a proof of the Riemann Hypothesis.
+We analyze the first 100,000 non-trivial zeros of the Riemann zeta function (Odlyzko's zeros2 data) using a Mellin operator framework. We find a local excess signal at prime frequencies $\tau = \log p / 2\pi$, confirming a key prediction of Bogomolny--Keating. However, the amplitude law $A(p) \propto (\log p)^2/p$ is not supported under our normalization. This note presents the numerical evidence, the operator framework, and discusses limitations.
 \end{abstract}
 
 \section{Introduction}
-The Riemann Hypothesis (RH) remains one of the most important 
-open problems in mathematics. Numerical experiments on the zeros 
-of $\zeta(s)$ have provided deep insights. Odlyzko's computations 
-\cite{odlyzko} showed that zero pair correlations follow the 
-Gaussian Unitary Ensemble (GUE) prediction of random matrix 
-theory \cite{montgomery}.
+The Riemann Hypothesis (RH) remains one of the most important open problems in mathematics. While a proof remains elusive, numerical experiments on the zeros of $\zeta(s)$ have provided deep insights. Odlyzko's extensive computations \cite{odlyzko} have shown that the pair correlation of zeros follows the Gaussian Unitary Ensemble (GUE) prediction of random matrix theory \cite{montgomery}.
 
-Bogomolny and Keating \cite{bogomolny1996} predicted that GUE 
-statistics receive arithmetic corrections at prime frequencies, 
-with amplitude law
+Bogomolny and Keating \cite{bogomolny1996} predicted that the GUE statistics should receive corrections at specific frequencies $\tau = \log p / 2\pi$ corresponding to prime numbers. This is a consequence of the explicit formula linking primes and zeros.
+
+In this note, we present numerical evidence for this prime-frequency excess using 100,000 Odlyzko zeros. We also test the predicted amplitude law $A(p) \propto (\log p)^2/p$ and find it not confirmed under our normalization.
+
+\section{Mellin Operator Framework}
+Define the Hilbert space $\mathcal{H} = L^2((0,\infty), dx/x)$ with Mellin transform
 \[
-A(p) \sim C \frac{(\log p)^2}{p}.
+(\mathcal{M}f)(\tau) = \frac{1}{\sqrt{2\pi}} \int_0^\infty f(x) x^{-i\tau} \frac{dx}{x}.
 \]
-This follows from the explicit formula connecting primes and zeros.
-
-In this note we present numerical evidence confirming this 
-amplitude law on high-height zero blocks, using a spacing 
-covariance statistic with the correct high-$T$ normalization.
-
-\section{Methods}
-
-\subsection{Data}
-We used three Odlyzko zero datasets:
-\begin{itemize}
-\item \textbf{zeros2}: first 100,000 zeros, $T \approx 74{,}920$
-\item \textbf{zeros3}: block near $T \sim 10^{12}$
-\item \textbf{zeros4}: block near $T \sim 10^{13}$
-\end{itemize}
-
-\subsection{Spacing Covariance Statistic}
-Let $\delta_n = \gamma_{n+1} - \gamma_n$ be consecutive zero 
-spacings. Define the shifted covariance
+The prime convolution operator is
 \[
-C(h) = \frac{1}{N-h} \sum_{n=1}^{N-h} 
-(\delta_n - \bar\delta)(\delta_{n+h} - \bar\delta),
+(\mathcal{P}_\sigma f)(x) = \sum_{n\ge 1} \frac{\Lambda(n)}{n^\sigma} f\!\left(\frac{x}{n}\right),
 \]
-and normalized residual
-\[
-A(h) = \frac{C(h) - \mu(h)}{\sigma(h)},
-\]
-where $\mu(h)$ and $\sigma(h)$ are local background mean and 
-standard deviation estimated from non-prime shifts.
+where $\Lambda(n)$ is the von Mangoldt function.
 
-\subsection{Normalization}
-A key insight is that the correct prime frequency at height $T$ is
+The key theorem states
 \[
-\tau_p = \frac{\log p}{\log(T/2\pi)},
+\mathcal{M}[\mathcal{P}_\sigma f](\tau) = -\frac{\zeta'}{\zeta}(\sigma + i\tau) \cdot (\mathcal{M}f)(\tau).
 \]
-\emph{not} $\log p / 2\pi$. This unfolded normalization is 
-essential for detecting the BK signal at high $T$.
+
+\section{Numerical Methods}
+We used Odlyzko's zeros2 data (first 100,000 zeros, $T_{\max} \approx 74,920$). The power spectrum is
+\[
+S(\tau) = \frac{1}{N} \left| \sum_{n=1}^{N} e^{i\tau \gamma_n} \right|^2.
+\]
+Prime frequencies are $\tau_p = \log p / 2\pi$. The excess signal is $\Delta K(p) = S(\tau_p) - S_{\text{base}}(\tau_p)$.
 
 \section{Results}
-
 \subsection{Prime-Location Excess}
-For all 12 primes $p = 2, 3, 5, \ldots, 37$, we find $A(p) > 0$ 
-on all three datasets. This is consistent with the BK prediction.
+For all 12 primes $p = 2, 3, 5, \dots, 37$, we found $\Delta K(p) > 0$. Figure~\ref{fig:excess} shows the excess at each prime position.
 
-\subsection{BK Amplitude Law}
-Table~\ref{tab:results} summarizes the Pearson correlation between 
-$A(p)$ and the BK predictor $B(p) = (\log p)^2/p$.
+\subsection{BK Amplitude Law Test}
+The Bogomolny--Keating predictor is $B(p) = (\log p)^2 / p$. Figure~\ref{fig:bk} shows $\Delta K(p)$ vs $B(p)$. The Pearson correlation was $r \approx 0.4$--$0.6$, insufficient to confirm the law.
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Dataset & Zeros & $r$ & $p$-value \\
-\midrule
-zeros2 & 100,000 & 0.9783 & $3.82 \times 10^{-186}$ \\
-zeros3 & $\sim 10^{12}$ block & 0.9992 & $2.64 \times 10^{-15}$ \\
-zeros4 & $\sim 10^{13}$ block & 0.9421 & $5.0 \times 10^{-6}$ \\
-\bottomrule
-\end{tabular}
-\caption{Pearson correlation between observed amplitudes $A(p)$ 
-and BK predictor $B(p) = (\log p)^2/p$ for primes 
-$p = 2, 3, 5, \ldots, 37$.}
-\label{tab:results}
-\end{table}
-
-The ratio $R(p) = A(p)/B(p)$ is approximately constant 
-($\approx 16.4$--$16.9$) across primes on the zeros3 block, 
-consistent with a universal constant $C$ in the BK law.
-
-\subsection{Robustness}
-The signal persists across three independent zero blocks at 
-different heights, providing strong evidence for universality. 
-Shuffled zero tests confirm the signal is not an artifact.
-
-\section{Discussion}
-The explicit formula \cite{bogomolny1996} predicts prime peaks 
-in zero statistics. Our results confirm:
-\begin{enumerate}
-\item Prime-location excess ($A(p) > 0$) on all datasets
-\item BK amplitude scaling with $r \geq 0.94$ on all datasets
-\item Consistency of ratio $R(p) \approx 16.5$ (zeros3)
-\end{enumerate}
-
-The high-$T$ normalization $\tau_p = \log p / \log(T/2\pi)$ 
-is crucial --- the earlier low-$T$ analysis ($r \approx 0.4$--$0.6$) 
-used incorrect normalization.
+\subsection{Null Tests}
+Shuffled zeros produced mean $R(p) \approx 0$, confirming the statistical significance of the observed signal.
 
 \section{Limitations}
 \begin{itemize}
-\item These are experimental numerical observations only.
-\item This is \textbf{not} a proof of the Riemann Hypothesis.
-\item Theoretical derivation of the constant $C \approx 16.5$ 
-is needed.
-\item Larger and more diverse zero blocks should be tested.
-\item Peer review has not been completed.
+\item Only 100,000 zeros were used; larger datasets may reveal different behavior.
+\item The baseline $S_{\text{base}}$ calculation is simplified.
+\item The BK amplitude law may require a different normalization or scaling.
 \end{itemize}
 
 \section{Conclusion}
-We have found strong numerical evidence that the 
-Bogomolny--Keating amplitude law $A(p) \sim C(\log p)^2/p$ 
-holds in high-height Riemann zero blocks, with correlation 
-$r \geq 0.94$ across all tested datasets. The effect is 
-robust and statistically significant.
-
-All code and data are available at 
-\url{https://github.com/myagmardorj-cloud/Myagmardorj}.
+We have confirmed the existence of a prime-frequency excess in the Riemann zero spectrum. The Bogomolny--Keating amplitude law requires further investigation. All code and data are available at \url{https://github.com/...}.
 
 \bibliographystyle{plain}
 \begin{thebibliography}{99}
 
-\bibitem{odlyzko} 
-A.~M. Odlyzko, 
-``The $10^{20}$-th zero of the Riemann zeta function 
-and 175 million of its neighbors,'' 1992.
+\bibitem{odlyzko} A. M. Odlyzko, ``The $10^{20}$-th zero of the Riemann zeta function and 175 million of its neighbors,'' 1992.
 
-\bibitem{montgomery} 
-H.~L. Montgomery, 
-``The pair correlation of zeros of the zeta function,'' 
-\textit{Proc. Sympos. Pure Math.}, 24, 1973.
+\bibitem{montgomery} H. L. Montgomery, ``The pair correlation of zeros of the zeta function,'' 1973.
 
-\bibitem{bogomolny1996} 
-E.~B. Bogomolny and J.~P. Keating, 
-``Random matrix theory and the Riemann zeros I \& II,'' 
-\textit{Nonlinearity}, 1995--1996.
-
-\bibitem{hiary2011}
-G.~A. Hiary and A.~M. Odlyzko,
-``The zeta function on the critical line: numerical evidence 
-for moments and random matrix theory models,''
-\textit{Math. Comp.}, 81, 2012.
+\bibitem{bogomolny1996} E. B. Bogomolny and J. P. Keating, ``Random matrix theory and the Riemann zeros,'' 1996.
 
 \end{thebibliography}
 
