@@ -113,6 +113,36 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 [data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 @media(max-width:640px){.stat-grid{grid-template-columns:1fr;}.links-grid{grid-template-columns:1fr;}.nav-links{display:none;}footer{flex-direction:column;gap:.5rem;text-align:center;}}
+
+/* ROADMAP */
+.rm-item{background:var(--surface);border:1px solid var(--border);padding:1.2rem 1.5rem;}
+.rm-item.active{border-color:var(--gold-dim);}
+.rm-header{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;}
+.rm-icon{font-size:1.2rem;flex-shrink:0;}
+.rm-info{flex:1;}
+.rm-title{font-size:.95rem;display:block;margin-bottom:.2rem;}
+.rm-sub{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);}
+.rm-status{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .6rem;flex-shrink:0;}
+.done-tag{background:rgba(76,175,125,.12);color:var(--green);border:1px solid rgba(76,175,125,.3);}
+.active-tag{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3);}
+.todo-tag{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.rm-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.rm-fill{height:100%;border-radius:2px;transition:width .8s ease;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
+.read-card{display:flex;align-items:flex-start;gap:1rem;background:var(--surface);border:1px solid var(--border);padding:1.2rem 1.5rem;}
+.read-priority{font-family:'JetBrains Mono',monospace;font-size:.6rem;padding:.3rem .5rem;letter-spacing:.1em;flex-shrink:0;margin-top:.1rem;}
+.read-priority.high{background:rgba(224,92,92,.12);color:var(--red);border:1px solid rgba(224,92,92,.3);}
+.read-priority.mid{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3);}
+.read-priority.low{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.read-content{flex:1;}
+.read-title{font-size:1rem;color:var(--text);margin-bottom:.2rem;}
+.read-ref{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-bottom:.5rem;font-style:italic;}
+.read-why{font-size:.88rem;color:#c8c4b8;}
+.read-status{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);flex-shrink:0;white-space:nowrap;margin-top:.1rem;}
+.next-card{background:var(--surface);border:1px solid var(--border);padding:1.5rem;}
+.next-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);letter-spacing:.15em;margin-bottom:.5rem;}
+.next-title{font-size:1rem;margin-bottom:.5rem;}
+.next-desc{font-size:.88rem;color:#b8b4a8;}
 </style>
 </head>
 <body class="en">
@@ -125,6 +155,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <li><a onclick="showPage('calculator')" id="nav-calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a></li>
     <li><a onclick="showPage('papers')" id="nav-papers"><span data-li="en">Papers</span><span data-li="mn">Баримтууд</span></a></li>
     <li><a onclick="showPage('methods')" id="nav-methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a></li>
+    <li><a onclick="showPage('roadmap')" id="nav-roadmap"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a></li>
     <li><a onclick="showPage('about')" id="nav-about"><span data-li="en">About</span><span data-li="mn">Тухай</span></a></li>
   </ul>
   <div class="lang-toggle">
@@ -491,6 +522,198 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 </div>
 
 <!-- ABOUT -->
+
+<!-- ROADMAP -->
+<div class="page" id="page-roadmap">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Roadmap</span><span data-li="mn">Судалгааны зам</span></div>
+    <h2><span data-lang="en">The Path Forward</span><span data-lang="mn">Цаашдын зам</span></h2>
+    <p class="prose" style="margin-bottom:2.5rem;">
+      <span data-lang="en">From a computational idea to a published preprint — and the road ahead toward deeper understanding of the Riemann Hypothesis.</span>
+      <span data-lang="mn">Тооцоолооны санаанаас нийтлэгдсэн preprint хүртэл — мөн Риманы таамаглалын гүнзгий ойлголт руу цаашдын зам.</span>
+    </p>
+
+    <div class="section-label"><span data-li="en">Current Progress</span><span data-li="mn">Одоогийн явц</span></div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Numerical research completed</span><span data-li="mn">Тоон судалгаа дууссан</span></span>
+            <span class="rm-sub">zeros2, zeros3, zeros4 · r ≥ 0.94 · 12/12 primes</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Preprint published on Zenodo</span><span data-li="mn">Zenodo дээр preprint нийтэлсэн</span></span>
+            <span class="rm-sub">DOI: 10.5281/zenodo.20077673</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Research website launched</span><span data-li="mn">Судалгааны вэб хуудас нийтлэгдсэн</span></span>
+            <span class="rm-sub">research.nexcore.ltd · ENG/МОН</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Math community engaged</span><span data-li="mn">Математикийн хамт олонтой харилцсан</span></span>
+            <span class="rm-sub">Math StackExchange · Reddit · Odlyzko · Keating</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item active">
+        <div class="rm-header">
+          <span class="rm-icon">⏳</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">arXiv submission</span><span data-li="mn">arXiv нийтлэл</span></span>
+            <span class="rm-sub"><span data-li="en">Waiting for endorsement · Code: O86GNH</span><span data-li="mn">Endorsement хүлээж байна · Код: O86GNH</span></span>
+          </div>
+          <span class="rm-status active-tag">IN PROGRESS</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:40%;background:var(--gold);animation:pulse 2s infinite;"></div></div>
+      </div>
+
+      <div class="rm-item todo">
+        <div class="rm-header">
+          <span class="rm-icon">⬜</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Deepen theoretical understanding</span><span data-li="mn">Онолын мэдлэг гүнзгийрүүлэх</span></span>
+            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive C ≈ 16.5</span><span data-li="mn">Montgomery, BK 1996 уншиж, C ≈ 16.5 гаргах</span></span>
+          </div>
+          <span class="rm-status todo-tag">NEXT</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:5%;background:var(--muted);"></div></div>
+      </div>
+
+      <div class="rm-item todo">
+        <div class="rm-header">
+          <span class="rm-icon">⬜</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Approach Riemann Hypothesis</span><span data-li="mn">Риманы таамаглал руу ойртох</span></span>
+            <span class="rm-sub"><span data-li="en">Long-term goal · Formal mathematical proof framework</span><span data-li="mn">Урт хугацааны зорилго · Албан ёсны математик нотолгооны хүрээ</span></span>
+          </div>
+          <span class="rm-status todo-tag">FUTURE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:2%;background:var(--muted);"></div></div>
+      </div>
+
+    </div>
+
+    <!-- READING LIST -->
+    <div class="section-label"><span data-li="en">Reading List</span><span data-li="mn">Уншах жагсаалт</span></div>
+    <h3 style="margin-bottom:1.5rem;color:var(--text);font-size:1.3rem;"><span data-lang="en">Key Papers to Study Next</span><span data-lang="mn">Дараа уншах гол өгүүллүүд</span></h3>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
+
+      <div class="read-card">
+        <div class="read-priority high">HIGH</div>
+        <div class="read-content">
+          <div class="read-title">Montgomery (1973)</div>
+          <div class="read-ref">"The pair correlation of zeros of the zeta function"</div>
+          <div class="read-why"><span data-lang="en">Foundation of GUE connection. Essential for understanding why prime frequencies appear in zero statistics.</span><span data-lang="mn">GUE холбооны суурь. Прайм давтамжууд яагаад тэгийн статистикт гарч ирдгийг ойлгоход зайлшгүй.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority high">HIGH</div>
+        <div class="read-content">
+          <div class="read-title">Bogomolny & Keating (1996)</div>
+          <div class="read-ref">"Random matrix theory and the Riemann zeros I & II" — Nonlinearity</div>
+          <div class="read-why"><span data-lang="en">The original prediction of A(p) ~ C(log p)²/p. Understanding the derivation will explain C ≈ 16.5.</span><span data-lang="mn">A(p) ~ C(log p)²/p-н анхны таамаглал. Гарталтыг ойлговол C ≈ 16.5-г тайлбарлах болно.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority mid">MED</div>
+        <div class="read-content">
+          <div class="read-title">Hiary & Odlyzko (2012)</div>
+          <div class="read-ref">arXiv:1105.4312 — "The zeta function on the critical line"</div>
+          <div class="read-why"><span data-lang="en">Odlyzko's own numerical work on high zeros. Most directly relevant to our high-T analysis.</span><span data-lang="mn">Одлызкогийн өндөр тэгүүдийн тоон ажил. Манай өндөр-T шинжилгээтэй хамгийн холбоотой.</span></div>
+        </div>
+        <div class="read-status">✅ <span data-li="en">Referenced</span><span data-li="mn">Ишлэсэн</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority mid">MED</div>
+        <div class="read-content">
+          <div class="read-title">Keating & Snaith (2000)</div>
+          <div class="read-ref">"Random matrix theory and ζ(1/2+it)" — Commun. Math. Phys.</div>
+          <div class="read-why"><span data-lang="en">Extends BK theory. Key for understanding the constant C and its theoretical derivation from random matrix theory.</span><span data-lang="mn">BK онолыг өргөтгөнө. Санамсаргүй матрицын онолоос C константын онолын гарталтыг ойлгоход чухал.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority low">LOW</div>
+        <div class="read-content">
+          <div class="read-title">Connes (1999)</div>
+          <div class="read-ref">"Trace formula in noncommutative geometry and zeros of the Riemann zeta function"</div>
+          <div class="read-why"><span data-lang="en">Advanced operator-theoretic framework. Long-term reading toward deeper RH understanding.</span><span data-lang="mn">Дэвшилтэт операторын онолын хүрээ. RH-г гүнзгий ойлгох урт хугацааны уншлага.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Future</span><span data-li="mn">Ирээдүй</span></div>
+      </div>
+
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="section-label"><span data-li="en">Concrete Next Steps</span><span data-li="mn">Тодорхой дараагийн алхамууд</span></div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;">
+      <div class="next-card">
+        <div class="next-num">01</div>
+        <div class="next-title"><span data-lang="en">Read Montgomery 1973</span><span data-lang="mn">Montgomery 1973 уншах</span></div>
+        <div class="next-desc"><span data-lang="en">Focus on pair correlation formula and GUE connection. Take notes on normalization conventions.</span><span data-lang="mn">Pair correlation томьёо болон GUE холбоод анхаарлаа хандуулах.</span></div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">02</div>
+        <div class="next-title"><span data-lang="en">Read BK 1996 Part I</span><span data-lang="mn">BK 1996 I хэсэг уншах</span></div>
+        <div class="next-desc"><span data-lang="en">Find the exact formula for A(p). Identify where C comes from. Compare with our C ≈ 16.5.</span><span data-lang="mn">A(p)-н яг томьёог олох. C хаанаас гарч байгааг тодорхойлох.</span></div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">03</div>
+        <div class="next-title"><span data-lang="en">Test on more datasets</span><span data-lang="mn">Илүү олон датасет дээр тест</span></div>
+        <div class="next-desc"><span data-lang="en">Try Odlyzko's highest zero data (~10²¹). Does C ≈ 16.5 remain stable at extreme heights?</span><span data-lang="mn">~10²¹ өндөрт zeros туршиж үзэх. C ≈ 16.5 тогтвортой хэвээр байна уу?</span></div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">04</div>
+        <div class="next-title"><span data-lang="en">Derive C theoretically</span><span data-lang="mn">C-г онолоор гаргах</span></div>
+        <div class="next-desc"><span data-lang="en">Explain why C ≈ 16.5 from first principles using BK and random matrix theory.</span><span data-lang="mn">BK болон санамсаргүй матрицын онолоос C ≈ 16.5-г эхний зарчмаас тайлбарлах.</span></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <span data-lang="en">The Riemann Hypothesis has been open for 167 years. This roadmap represents a long journey — but every step matters.</span>
+      <span data-lang="mn">Риманы таамаглал 167 жил нээлттэй байна. Энэ зам урт аялалыг дүрслэнэ — гэхдээ алхам бүр чухал.</span>
+    </div>
+  </div>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+</div>
+</div>
 <div class="page" id="page-about">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
