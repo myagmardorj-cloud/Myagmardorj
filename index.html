@@ -262,7 +262,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <div class="findings">
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> 12/12 prime positions show A(p) > 0 across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>Прайм-индекстэй илүүдэл ажиглагдсан:</strong> 12/12 прайм позиц гурван датасет дээр A(p) > 0. Finite-window болон олон тестийн нөлөөг нэмж шалгах шаардлагатай.</span></div></div>
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Empirically consistent with BK-type scaling:</strong> Pearson r ≥ 0.94 across all datasets. Ratio R(p) ≈ 16.5 approximately constant. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r ≥ 0.94. R(p) ≈ 16.5 ойролцоо тогтвортой. Fitting bias, нормализацийн мэдрэмж, bootstrap тестүүд шаардлагатай.</span></div></div>
-      <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. C ≈ 16.5 needs theoretical derivation.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Зөвхөн тоон ажиглалт. C ≈ 16.5-н онолын гарталт шаардлагатай.</span></div></div>
+      <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. Normalization artifacts, overfitting, window bias, and finite-size effects have not been fully ruled out. C ≈ 16.5 needs theoretical derivation.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Нормализацийн артефакт, overfitting, window bias болон finite-size нөлөөг үгүйсгэж чадаагүй. C ≈ 16.5-н онолын гарталт шаардлагатай.</span></div></div>
     </div>
   </div>
   <div class="section">
@@ -672,7 +672,8 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <div class="oc-label"><span data-li="en">Where our research fits</span><span data-li="mn">Манай судалгаа хаана байна</span></div>
       <div class="our-row"><span class="or-key">Problem:</span><span class="or-val">Riemann Hypothesis (#01)</span></div>
       <div class="our-row"><span class="or-key">Connection:</span><span class="or-val"><span data-lang="en">Prime-correlated structure in zero statistics</span><span data-lang="mn">Тэгийн статистик дахь прайм-корреляцийн бүтэц</span></span></div>
-      <div class="our-row"><span class="or-key">Result:</span><span class="or-val good">r = 0.9992 · 12/12 primes · persistent excess observed (not a confirmed theorem) ✅</span></div>
+      <div class="our-row"><span class="or-key">Result:</span><span class="or-val good">r = 0.9992 · 12/12 primes · persistent excess observed</span></div>
+      <div class="our-row"><span class="or-key">Status:</span><span class="or-val warn">Interesting computational observation · potential BK-related phenomenon</span></div>
       <div class="our-row"><span class="or-key">Status:</span><span class="or-val"><span data-lang="en">Numerical evidence — not a proof</span><span data-lang="mn">Тоон нотолгоо — нотолгоо биш</span></span></div>
       <div class="our-row"><span class="or-key">Prize:</span><span class="or-val"><span data-lang="en">$1,000,000 (Clay Institute) — if proven</span><span data-lang="mn">1,000,000$ (Клейн хүрээлэн) — батлагдвал</span></span></div>
     </div>
@@ -824,7 +825,62 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
 
     <!-- NEXT STEPS -->
-    <div class="section-label"><span data-li="en">Concrete Next Steps</span><span data-li="mn">Тодорхой дараагийн алхамууд</span></div>
+    
+    <!-- SERIOUS RESEARCH CHECKLIST -->
+    <div class="section-label" style="margin-top:2rem;"><span data-li="en">From "interesting idea" → "actual experimental mathematics"</span><span data-li="mn">"Сонирхолтой санаа" → "жинхэнэ туршилтын математик"</span></div>
+    <div style="display:flex;flex-direction:column;gap:.7rem;margin-bottom:2.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">✅</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">1. Exact definitions — spacing covariance C(h), BK predictor B(p)</span><span data-lang="mn">1. Яг тодорхойлолт — C(h), B(p)</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Documented in paper/main.tex</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">✅</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">2. Reproducible code — full Python pipeline on GitHub</span><span data-lang="mn">2. Давтагдах код — GitHub дээр бүрэн Python</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">github.com/myagmardorj-cloud/Myagmardorj</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">3. Synthetic controls — GUE surrogates, shuffled zeros, random phases</span><span data-lang="mn">3. Синтетик хяналт — GUE суррогат, shuffle, санамсаргүй фаз</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: bootstrap p-values, permutation tests</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">4. Statistical significance — corrected for multiple testing, window size</span><span data-lang="mn">4. Статистик ач холбогдол — олон тест, цонхны хэмжээгээр засварласан</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: Bonferroni correction, sensitivity analysis</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">5. Asymptotic prediction — what should r → as N → ∞?</span><span data-lang="mn">5. Асимптотик таамаглал — N → ∞ үед r → ?</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: theoretical prediction from explicit formula</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">6. Peer verification — independent replication by another researcher</span><span data-lang="mn">6. Peer баталгаажуулалт — өөр судлаачийн бие даасан давталт</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: arXiv submission + peer review</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">7. Short paper — 4–8 pages, Experimental Mathematics journal</span><span data-lang="mn">7. Богино өгүүлэл — 4–8 хуудас, Experimental Mathematics сэтгүүл</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Target: Experimental Mathematics or similar</div>
+        </div>
+      </div>
+    </div>
+
+<div class="section-label"><span data-li="en">Concrete Next Steps</span><span data-li="mn">Тодорхой дараагийн алхамууд</span></div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;">
       <div class="next-card">
         <div class="next-num">01</div>
@@ -1358,6 +1414,13 @@ function copyCode(btn){
 
 // FAQ DATA
 const faqs = [
+  {
+    q_en: "Why is r = 0.9992 not enough to claim a result?",
+    q_mn: "r = 0.9992 яагаад хангалтгүй вэ?",
+    a_en: "<strong>High correlation alone proves very little in mathematics.</strong> Many factors can artificially inflate correlation: (1) normalization artifact — the choice of τ_p = log(p)/log(T/2π) may be tuned, (2) overfitting — 12 data points is very few, (3) window bias — finite zero blocks introduce systematic errors, (4) hidden dependence — consecutive spacings are not independent, (5) finite-size effects — the signal may disappear with more data. A rigorous result requires exact definitions, synthetic controls, asymptotic predictions, and peer verification.",
+    a_mn: "<strong>Өндөр корреляц математикт бараг юу ч батлахгүй.</strong> Олон зүйл корреляцийг хиймлээр өсгөдөг: (1) нормализацийн артефакт — τ_p сонголт тааруулагдсан байж болно, (2) overfitting — 12 өгөгдлийн цэг маш цөөн, (3) window bias — finite zero block системтэй алдаа оруулна, (4) далд хамаарал — дараалсан зайнууд бие даасан биш, (5) finite-size нөлөө — өгөгдөл нэмэгдэхэд дохио алга болж болно."
+  },
+
   {
     q_en: "Is this a proof of the Riemann Hypothesis?",
     q_mn: "Энэ Риманы таамаглалын нотолгоо мөн үү?",
