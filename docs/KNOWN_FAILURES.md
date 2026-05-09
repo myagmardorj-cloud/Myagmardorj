@@ -1,58 +1,80 @@
-# Known Failures and Limitations
+# Known Failures and Negative Results
 
-## 1. Wrong normalization (identified and fixed)
+**Status:** Active investigation  
+**Last updated:** May 2026  
+**Version:** v1.0.0-experimental
 
-Using tau_p = log(p) / (2*pi) instead of log(p)/log(T/2pi)
-gives r = 0.4-0.6 — no meaningful signal.
-See notes/failure_analysis.md for details.
+---
 
-## 2. Small N (N < 500)
+## Critical: Independent Replication Failure
 
-r is highly variable (std > 0.3). Results unreliable below N = 2,000.
+### Attempt 1 — zeros_ht.txt (Odlyzko 10¹² block)
 
-## 3. Low-height zeros (zeros2, T ~ 74,920)
+**Date:** May 2026  
+**File:** Odlyzko "Zeros number 10¹²+1 through 10¹²+10⁴" [text]  
+**N:** 10,000 zeros | T ≈ 267,653,396,932
 
-Signal is weaker: r = 0.9783 vs 0.9992 for zeros3.
-The high-T normalization is less precise at lower heights.
+**Result:**
+```
+Pearson r = 0.5113
+Naive p   = 8.93e-02
+```
 
-## 4. p-value reliability
+**Expected (original claim):** r ≈ 0.9992
 
-Reported p-values assume independent covariance estimates.
-Consecutive spacing covariances are correlated, so effective
-degrees of freedom < 12. True p-values are likely larger
-than reported.
+**Status:** ❌ Not reproduced
 
-## 5. Prime lags chosen in advance
+**Analysis:**  
+Independent replication on the Odlyzko 10¹² zero block produced 
+r = 0.51, not r = 0.9992 as originally reported. Both raw and 
+high-T unfolded normalizations were tested. Neither reproduced 
+the original result.
 
-We selected prime lags before computing C(h). This is not
-fully blind — see Test 5 (blind_test.py) for a partial check.
-A fully pre-registered analysis has not been done.
+**Implications:**  
+This failure is consistent with the selection bias warning stated 
+in LIMITATIONS.md: the high-T normalization was selected after 
+observing weak low-T results. The original r = 0.9992 may reflect 
+normalization tuning rather than a genuine signal.
 
-## 6. Window sensitivity
+**Next steps:**
+1. Locate and re-run the exact original code version that produced r = 0.9992
+2. Identify which normalization and dataset block was used originally
+3. Test whether r = 0.9992 was specific to one particular parameter choice
+4. Update paper/main.tex to reflect this replication failure
 
-Signal is stable across Hann, Blackman, Hamming windows
-(Test 4). However, for N < 500, results vary substantially.
+---
 
-## 7. C = 16.5 has no theoretical derivation
+## Previously Documented Negative Results
 
-The empirical constant C in A(p) ~ C*(log p)^2/p is
-estimated from data. Its value may depend on the normalization
-choice and dataset. No theoretical prediction exists in this work.
+### Low-T normalization (τ_p = log p / 2π)
+- **Result:** r ≈ 0.4–0.6
+- **Interpretation:** Normalization physically incorrect at high T
 
-## 8. Not independently replicated
+### Shuffled zero ordering
+- **Result:** r ≈ 0.0 ± 0.2
+- **Interpretation:** Signal depends on zero ordering
 
-No other researcher has independently confirmed these results
-by running the code on the same data.
+### GUE surrogate spectra
+- **Result:** r ≈ 0.0 ± 0.2
+- **Interpretation:** Signal exceeds pure GUE baseline
 
-## 9. Multiple testing not corrected
+### Composite-lag indices (non-primes)
+- **Result:** r ≈ 0
+- **Interpretation:** Effect appears prime-specific
 
-12 primes were tested simultaneously. No Bonferroni or
-FDR correction was applied to the reported p-values.
+### N < 500 zeros
+- **Result:** r fluctuates widely
+- **Interpretation:** Minimum N ≈ 1000 for stability
 
-## What we do NOT claim
+---
 
-- This is NOT a proof of the Riemann Hypothesis
-- This is NOT a confirmed mathematical theorem
-- r = 0.9992 alone does NOT establish the BK amplitude law
-- C = 16.5 is NOT theoretically derived
-- The effect has NOT been independently replicated
+## Statement
+
+These failures do not invalidate the computational observation —  
+they are essential scientific context. A result that cannot be  
+independently reproduced should not be treated as established.
+
+**This project makes no claim of proof of the Riemann Hypothesis.**  
+All results are exploratory computational observations requiring  
+further investigation.
+
