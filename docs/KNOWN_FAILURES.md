@@ -15,7 +15,7 @@
 | zeros6.txt | 2,001,052 | ~600K | 0.4509 | 0.68 ± 0.09 | MODERATE |
 
 **Key finding:** r is not universal. It varies by dataset, scale, and normalization.  
-**Original r = 0.9992 has not been reproduced on any tested file.**
+**Original r = 0.9992 (earlier result — not stable across datasets) has not been reproduced on any tested file.**
 
 ---
 
@@ -33,7 +33,7 @@ datasets and scales remains unresolved.
 ## 1. Replication Failure — zeros_ht.txt
 
 **File:** zeros_ht.txt (Odlyzko 10¹² block, N=10,000)  
-**Result:** r = 0.5113 (not r = 0.9992)  
+**Result:** r = 0.5113 (not r = 0.9992 (earlier result — not stable across datasets))  
 **Bootstrap:** Mean r = 0.09 ± 0.30, 95% CI [-0.49, 0.65] → UNSTABLE  
 **Status:** ❌ Original result not reproduced
 
@@ -79,14 +79,14 @@ C = -2.56 on high-T block suggests sign instability.
 ## 4. Independent Replication
 
 - Andrew Odlyzko: Form letter decline (high volume of requests)
-- Steven Clark (MSE): r = 0.9992 confirmed on unknown dataset — awaiting dataset identification
+- Steven Clark (MSE): r = 0.9992 (earlier result — not stable across datasets) confirmed on unknown dataset — awaiting dataset identification
 - Facebook requests: All AI-generated responses (r = sin(1) = 0.8414...)
 
 ---
 
 ## 5. Open Questions
 
-1. Which dataset produces r = 0.9992? (Steven Clark's file unknown)
+1. Which dataset produces r = 0.9992 (earlier result — not stable across datasets)? (Steven Clark's file unknown)
 2. Why does r decrease as N increases?
 3. Is C ≈ 3 theoretically meaningful?
 4. What is the effect of normalization choice on r?

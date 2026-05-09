@@ -293,7 +293,7 @@ body{padding-bottom:42px !important;}
     <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolny–Keating Amplitude Law</span><span data-li="mn">Богомолны–Китингийн Амплитудын Хууль</span></div>A(p)  ∼  C · (log p)² / p</div>
     <div class="findings">
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> prime-indexed excess patterns across tested prime ranges show A(p) > 0 across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>Прайм-индекстэй илүүдэл ажиглагдсан:</strong> 12/12 прайм позиц гурван датасет дээр A(p) > 0. Finite-window болон олон тестийн нөлөөг нэмж шалгах шаардлагатай.</span></div></div>
-      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Empirically consistent with BK-type scaling:</strong> Pearson r = 0.45–0.68 across all datasets. Bootstrap MODERATE at N=2M; UNSTABLE at smaller N. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r = 0.45–0.68. R(p) ≈ 16.5 ойролцоо тогтвортой. Fitting bias, нормализацийн мэдрэмж, bootstrap тестүүд шаардлагатай.</span></div></div>
+      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Empirically consistent with BK-type scaling:</strong> Pearson r = 0.45–0.68 across all datasets. Bootstrap MODERATE at N=2M; UNSTABLE at smaller N. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r = 0.45–0.68. Bootstrap N=2M дээр MODERATE; бага N дээр UNSTABLE. Нормализацийн мэдрэмж, fitting bias шаардлагатай.</span></div></div>
       <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. Normalization artifacts, overfitting, window bias, and finite-size effects have not been fully ruled out. C ≈ 3 (zeros1/zeros6) needs theoretical derivation.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Нормализацийн артефакт, overfitting, window bias болон finite-size нөлөөг үгүйсгэж чадаагүй. C ≈ 3 (zeros1/zeros6)-н онолын гарталт шаардлагатай.</span></div></div>
     </div>
   </div>
@@ -321,7 +321,7 @@ body{padding-bottom:42px !important;}
       <a class="link-card" href="landscape.html" style="border-color:rgba(168,85,247,.25);background:rgba(168,85,247,.04);border-radius:12px;"><span class="li">🗺</span><div><span class="lt" style="color:#a855f7;"><span data-li="en">Problem Landscape</span><span data-li="mn">Бодлогын газрын зураг</span></span><span class="ld"><span data-li="en">Clay Prize · 7 problems · connections</span><span data-li="mn">Clay шагнал · 7 бодлого · холбоосууд</span></span></div></a>
       <a class="link-card" href="verify.html" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);grid-column:span 2;"><span class="li">⚗️</span><div><span class="lt" style="color:var(--green);"><span data-li="en">Independent Analysis Lab</span><span data-li="mn">Бие даасан Шинжилгээний Лаб</span></span><span class="ld"><span data-li="en">Upload Odlyzko data → run in browser → compare results</span><span data-li="mn">Одлызко өгөгдөл upload → браузерт ажиллуул → үр дүн харьцуул</span></span></div></a>
     </div>
-    <div class="disclaimer"><span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span><span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span></div>
+    <div class="disclaimer"><span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span><span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span></div>
   </div>
   
 </div>
@@ -534,7 +534,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <div class="note-block">
             <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
             <span data-lang="en">Initial results showed r ≈ 0.4–0.6, suggesting weak agreement with BK predictions. The normalization differed: using τ_p = log(p)/2π (low-T formula) instead of the high-T unfolded frequency τ_p = log(p)/log(T/2π). Switching to the high-T formula substantially increased the observed correlation in this dataset.</span>
-            <span data-lang="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Зассаны дараа r = 0.9992 гарсан.</span>
+            <span data-lang="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарсан. Нормализаци зассаны дараа зарим датасет дээр r өсч байсан. Гэвч bootstrap шалгалтаар signal тогтворгүй байгаа нь илрэв.</span>
           </div>
           <div class="code-block" style="background:#0a0a12;">
             <button class="code-copy" onclick="copyCode(this)">COPY</button>
@@ -544,7 +544,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
 <span style="color:#4caf7d;">## high-T unfolded normalization</span>
 τ_p = log(p) / log(T / 2π)
-<span style="color:#585b70;"># → r = 0.9992</span>
+<span style="color:#585b70;"># → r varies by dataset (0.45–0.68)</span>
 
 <span style="color:#c9a84c;">## Why this matters</span>
 <span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
@@ -554,7 +554,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
             <div class="note-label" style="color:var(--green);">Lesson learned</div>
             <span data-lang="en">Scientific failures are valuable. This normalization change substantially increased the observed correlation in this dataset.</span>
-            <span data-lang="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл r = 0.9992 гаргасан гол ойлголтод шууд хүргэсэн.</span>
+            <span data-lang="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Нормализацийн сонголт үр дүнд ихээхэн нөлөөлдгийг харуулсан.</span>
           </div>
         </div>
       </div>
@@ -970,7 +970,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <div class="file-meta">
             <span class="file-name">zeros2</span>
             <div class="file-desc"><span data-lang="en">First 100,000 non-trivial zeros near T ≈ 74,920</span><span data-lang="mn">T ≈ 74,920 орчим анхны 100,000 тривиаль биш тэг</span></div>
-            <div class="file-tags"><span class="file-tag">100,000 zeros</span><span class="file-tag">T ≈ 74,920</span><span class="file-tag">r = 0.9783</span></div>
+            <div class="file-tags"><span class="file-tag">100,000 zeros</span><span class="file-tag">T ≈ 74,920</span><span class="file-tag">r = 0.6847 (zeros1)</span></div>
           </div>
           <span class="file-toggle">▼</span>
         </div>
@@ -996,7 +996,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <div class="file-meta">
             <span class="file-name">zeros3</span>
             <div class="file-desc"><span data-lang="en">~10,000 zeros near height T ~ 10¹². Used in main high-T analysis.</span><span data-lang="mn">T ~ 10¹² орчим ~10,000 тэг. Үндсэн өндөр-T шинжилгээнд ашиглагдсан.</span></div>
-            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹²</span><span class="file-tag">r = 0.9992 ⭐</span></div>
+            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹²</span><span class="file-tag">r = 0.5113 (zeros_ht)</span></div>
           </div>
           <span class="file-toggle">▼</span>
         </div>
@@ -1004,8 +1004,8 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <div class="file-body-inner">
             <div class="note-block" style="border-left-color:var(--green);">
               <div class="note-label" style="color:var(--green);">Best result</div>
-              <span data-lang="en">This dataset produced r = 0.9992 — original claim, not reproduced on tested files. High-T normalization τ_p = log(p)/log(T/2π) is essential.</span>
-              <span data-lang="mn">Энэ датасет r = 0.9992 — хамгийн хүчтэй корреляцийг гаргасан. Өндөр-T нормализаци τ_p = log(p)/log(T/2π) зайлшгүй.</span>
+              <span data-lang="en">High-T block. r = 0.5113 on this file; original r = 0.9992 claim not reproduced. High-T normalization τ_p = log(p)/log(T/2π) is essential.</span>
+              <span data-lang="mn">Өндөр-T блок. Энэ файл дээр r = 0.5113 гарсан; анхны r = 0.9992 нэхэмжлэл reproduce хийгдэхгүй байна.</span>
             </div>
             <div style="margin-top:1rem;">
               <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros3" target="_blank" style="display:inline-flex;border-radius:10px;">
@@ -1092,14 +1092,14 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
         </div>
         <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Key insight: high-T normalization</span><span data-lang="mn">Гол ойлголт: өндөр-T нормализаци</span></h3>
-        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Discovered that τ_p = log(p)/log(T/2π) (not log(p)/2π) is essential. r jumped from 0.4 to 0.9992.</span><span data-lang="mn">τ_p = log(p)/log(T/2π) (log(p)/2π биш) зайлшгүй гэдгийг нээсэн. r нь 0.4-өөс 0.9992 болтлоо өссөн.</span></p>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Discovered that τ_p = log(p)/log(T/2π) (not log(p)/2π) affects results significantly. Signal is dataset-dependent.</span><span data-lang="mn">τ_p = log(p)/log(T/2π) (log(p)/2π биш) үр дүнд ихээхэн нөлөөлдгийг нээсэн. Signal датасетаас хамааралтай.</span></p>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="margin-bottom:.8rem;">
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-07</span>
         </div>
-        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Initial analysis on zeros2 · r = 0.9783</span><span data-lang="mn">zeros2 дээрх анхны шинжилгээ · r = 0.9783</span></h3>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Initial analysis on zeros1 · r = 0.6847</span><span data-lang="mn">zeros1 дээрх анхны шинжилгээ · r = 0.6847</span></h3>
         <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">First test on 100,000 zeros. prime-indexed excess patterns across tested prime ranges positive. BK-type scaling observed.</span><span data-lang="mn">100,000 тэг дээрх анхны тест. 12/12 прайм позиц эерэг. BK-төрлийн scaling ажиглагдсан.</span></p>
       </div>
     </div>
@@ -1175,7 +1175,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
 
     <div class="disclaimer">
-      <span data-lang="en">Null tests reduce the likelihood of false positives but do not prove the BK law. Independent replication is still needed.</span>
+      <span data-lang="en">Null tests reduce the likelihood of false positives but do not prove the BK law. Independent independent replication is still needed.</span>
       <span data-lang="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан давталтжуулалт хэвээр шаардлагатай.</span>
     </div>
   </div>
@@ -1219,8 +1219,8 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           </div>
         </div>
         <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
-          <span data-lang="en">Post: "Numerical observation: BK-type prime-lock scaling in high Riemann zero blocks (r=0.9992) — looking for literature references"</span>
-          <span data-lang="mn">Пост: "Тоон ажиглалт: өндөр Риман тэгийн блок дахь BK-төрлийн прайм-lock scaling (r=0.9992) — уран зохиолын лавлагаа хайж байна"</span>
+          <span data-lang="en">Post: "Numerical observation: BK-type correlation in Riemann zero blocks — bootstrap unstable, seeking independent replication"</span>
+          <span data-lang="mn">Пост: "Тоон ажиглалт: Риман тэгийн блок дахь BK-төрлийн корреляц — bootstrap тогтворгүй, бие даасан давталт хайж байна"</span>
         </p>
         <a class="link-card" href="https://reddit.com/r/mathematics" target="_blank" style="display:inline-flex;border-radius:10px;">
           <span class="li">🔗</span><div><span class="lt">r/mathematics</span><span class="ld">reddit.com/r/mathematics</span></div>
@@ -1305,7 +1305,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Best r value</span><span data-lang="mn">Хамгийн сайн r</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">16.5</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">~3</div>
         <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">C constant</span><span data-lang="mn">C константа</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
@@ -1363,7 +1363,7 @@ Blocks. Zenodo.
 https://doi.org/10.5281/zenodo.20077673</pre>
     </div>
     <div class="disclaimer" style="margin-top:2rem;">
-      <span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span>
+      <span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span>
       <span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span>
     </div>
   </div>
@@ -1375,7 +1375,7 @@ https://doi.org/10.5281/zenodo.20077673</pre>
 
 
 <footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
-<span>Exploratory computational research. No proof of RH claimed.</span>
+<span>Computational observations only — not a theorem or proof of RH.</span>
 <div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a></div>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>

@@ -2,14 +2,14 @@
 
 ## Explicit Null Hypothesis
 
-> **H₀:** The observed correlation r ≈ 0.9992 arises from normalization
+> **H₀:** The observed correlation r = 0.9992 (earlier result — not reproduced across tested datasets) arises from normalization
 > artifacts, finite-window effects, or hidden statistical bias —
 > not from a genuine prime-indexed structure in Riemann zero statistics.
 
 The null has **not** been definitively rejected. Current controls
 (shuffled zeros, GUE surrogates, composite lags) produce r ≈ 0 and
 are consistent with rejection, but do not constitute proof.
-Independent replication and asymptotic analysis are required.
+Independent independent replication and asymptotic analysis are required.
 
 ---
 
@@ -44,7 +44,7 @@ Independent replication and asymptotic analysis are required.
 
 ## Theoretical
 
-8. No analytic derivation -- the empirical constant C ~ 16.5
+8. No analytic derivation -- the empirical constant C ~ 16.5 (earlier estimate)
    has no theoretical prediction or derivation in this work.
 
 9. Relation to BK (1996) is heuristic -- BK predicted

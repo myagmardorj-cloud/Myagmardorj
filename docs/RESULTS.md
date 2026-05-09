@@ -18,7 +18,7 @@ See controls/06_bootstrap.py for corrected confidence intervals.
 Consistency of the prime-correlated excess signal was observed
 across tested prime ranges (p = 2, 3, 5, ..., 37) on all datasets.
 
-Empirical ratio R(p) = C(p)/B(p) ~ 16.5 approximately constant
+Empirical ratio R(p) = C(p)/B(p) ~ ~3 in tested datasets; not universally stable
 across primes (zeros3). No theoretical derivation exists.
 
 ## Null control results
@@ -40,7 +40,7 @@ corrections to pair correlation statistics of zeta zeros.
 
 This is NOT evidence that:
 - The Riemann Hypothesis has been advanced
-- C = 16.5 has been theoretically explained
+- C = 16.5 (earlier estimate — not stable across datasets) has been theoretically explained
 - These results will replicate under asymptotic analysis
 
 See LIMITATIONS.md for full caveat list.

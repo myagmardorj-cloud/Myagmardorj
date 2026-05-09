@@ -1,5 +1,18 @@
 ## Quick Reproduction
 
+
+## Current Observed Correlations
+
+| Dataset | N | r | Bootstrap | Verdict |
+|---------|---|---|-----------|---------|
+| zeros1 | 100K | 0.6847 | 0.36 ± 0.26 | UNSTABLE |
+| zeros_ht | 10K | 0.5113 | 0.09 ± 0.30 | UNSTABLE |
+| zeros6 | 2M | 0.4509 | 0.68 ± 0.09 | MODERATE |
+
+Bootstrap analysis suggests only limited stability for zeros6.
+Earlier higher correlations (r = 0.9992 (earlier result — not reproduced across tested datasets)) were not robust under independent replication.
+C estimates near 3 in zeros1/zeros6, but not stable across all datasets.
+
 ```bash
 git clone https://github.com/myagmardorj-cloud/Myagmardorj
 cd Myagmardorj
@@ -82,7 +95,7 @@ pip install -r requirements.txt
 # http://www-users.cse.umn.edu/~odlyzko/zeta_tables/
 
 python scripts/analyze.py zeros3.txt
-# Expected: r ≈ 0.9992, naive p = 2.64e-15 (uncorrected — see Limitations)
+# Expected: r = 0.9992 (earlier result — not reproduced across tested datasets), naive p = 2.64e-15 (uncorrected — see Limitations)
 ```
 
 ---
@@ -95,7 +108,7 @@ BK predictor B(p) = (log p)²/p across 12 primes on three datasets:
 | Dataset | Height T  | Pearson r | Naive p-value†  |
 |---------|-----------|-----------|-----------------|
 | zeros2  | ~74,920   | 0.9783    | 3.82×10⁻¹⁸⁶     |
-| zeros3  | ~10¹²     | **0.9992**| 2.64×10⁻¹⁵      |
+| zeros3  | ~10¹²     | **0.9992** (not reproduced)| 2.64×10⁻¹⁵      |
 | zeros4  | ~10¹³     | 0.9421    | 5.0×10⁻⁶        |
 
 †Naive p-values assume independence. Effective DOF < 12 due to
@@ -144,8 +157,8 @@ Full list: [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md)
 | Multiple testing | 12 lags, no Bonferroni correction |
 | Finite window | Spectral leakage not fully excluded |
 | Asymptotics | r behavior as N→∞ unknown |
-| No derivation | Empirical constant C ≈ 3 (zeros1, zeros6) has no theoretical explanation |
-| No replication | No independent reproduction yet |
+| No derivation | Empirical constant C estimates near 3 in zeros1/zeros6, but not stable across all datasets. has no theoretical explanation |
+| No independent replication | No independent reproduction yet |
 
 ---
 
@@ -158,7 +171,7 @@ python scripts/analyze.py zeros3.txt
 
 | Check | Expected | Notes |
 |-------|----------|-------|
-| r (zeros3) | ≈ 0.9992 | Verify normalization formula |
+| r (zeros3) | ≈ 0.9992 (earlier, not reproduced) | Verify normalization formula |
 | Shuffled r | ≈ 0.0 ± 0.2 | Run controls/01 |
 | GUE r | ≈ 0.0 ± 0.2 | Run controls/02 |
 | Prime excess visible | Yes | 12/12 primes |

@@ -24,7 +24,7 @@ Null controls (shuffled zeros, GUE surrogates) yield r ~ 0.
 This is a computational observation, not a confirmed theorem.
 Fitting bias, normalization sensitivity, autocorrelation, multiple
 testing, and finite-window effects have not been fully ruled out.
-Independent replication and peer review are required.
+Independent independent replication and peer review are required.
 
 ---
 
