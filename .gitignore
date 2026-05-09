@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (large — download from Odlyzko)
+zeros2.txt
+zeros3.txt
+zeros4.txt
+*.dat
+
+# Generated outputs (regenerate with scripts)
+results_*.png
+results_*.pdf
+flagship_figure.*
+results/*/figures/
+results/*/*.png
+results/*/*.pdf
+results/*/*.csv
+# Keep: results/*/README.md  ← version freeze records
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
