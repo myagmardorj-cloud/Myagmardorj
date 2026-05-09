@@ -248,7 +248,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
   </div>
   <div class="abstract">
     <span data-lang="en">Computational observations consistent with the Bogomolny–Keating amplitude law A(p) ∼ C(log p)²/p in high Riemann zero blocks. Tested across three independent Odlyzko datasets at heights T ~ 10¹², 10¹³. Pearson r ≥ 0.94 across all tested datasets. These are computational observations empirically consistent with BK-type scaling — not a confirmed theorem, not a proof of RH. Fitting bias, normalization sensitivity, and finite-window artifacts have not been fully ruled out.</span>
-    <span data-lang="mn">Богомолны–Китингийн амплитудын хуулийн тоон нотолгоо өндөр Риман тэгийн блок дээр. Гурван бие даасан датасет дээр тест хийгдсэн. Бүх тохиолдолд r ≥ 0.94. Энэ нь BK-төрлийн scaling-тай нийцсэн тооцооллын ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
+    <span data-lang="mn">Богомолны–Китингийн амплитудын хуулийн тооцооллын ажиглалт өндөр Риман тэгийн блок дээр. Гурван бие даасан датасет дээр тест хийгдсэн. Бүх тохиолдолд r ≥ 0.94. Энэ нь BK-төрлийн scaling-тай нийцсэн тооцооллын ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
   </div>
   <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;margin-bottom:2rem;"><div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;">Known Limitations</div><p style="font-size:.84rem;color:var(--sub);margin:0;line-height:1.7;"><span data-lang="en">Numerical observations only. No theorem, proof, or asymptotic derivation is claimed. Observed correlations may be influenced by finite-range effects, normalization procedures, and statistical dependencies. Independent verification required.</span><span data-lang="mn">Зөвхөн тоон ажиглалт. Теорем, нотолгоо нэхэмжлэхгүй. Finite-range нөлөө, нормализаци, далд хамаарал нөлөөлж болно. Бие даасан баталгаажуулалт шаардлагатай.</span></p></div><div class="section">
     <div class="section-label"><span data-li="en">Main Results</span><span data-li="mn">Үндсэн үр дүн</span></div>
@@ -581,7 +581,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <h3>4. BK Predictor</h3>
         <p>Bogomolny–Keating (1996) predicted amplitude <code>A(p) ~ C·(log p)²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)²/p.</p>
         <h3>5. Statistical Significance</h3>
-        <p>Permutation test (shuffled zeros) confirms the signal is genuine. p-values as low as 2.64×10⁻¹⁵ indicate very high statistical significance.</p>
+        <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as 2.64×10⁻¹⁵ — but see bootstrap controls for corrected estimates.</p>
       </span>
       <span data-lang="mn">
         <h3>3. Гол нормализаци</h3>
@@ -589,7 +589,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <h3>4. BK Таамаглагч</h3>
         <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) хооронд Pearson корреляц тооцооллодог.</p>
         <h3>5. Статистик ач холбогдол</h3>
-        <p>Permutation тест дохио жинхэнэ гэдгийг батална. p = 2.64×10⁻¹⁵ хүртэл бага утга статистикийн өндөр ач холбогдлыг харуулна.</p>
+        <p>Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистикийн тодорхой артефакт биш гэж үзэж болно. Наив p = 2.64×10⁻¹⁵ — bootstrap-ийн засварласан тооцооллыг харна уу.</p>
       </span>
     </div>
   </div>
@@ -1088,7 +1088,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <div class="section-label"><span data-li="en">Null Tests</span><span data-li="mn">Null Тестүүд</span></div>
     <h2><span data-lang="en">Control & Shuffled Zero Tests</span><span data-lang="mn">Хяналт & Холилдсон Тэгийн Тестүүд</span></h2>
     <p class="prose" style="margin-bottom:2rem;">
-      <span data-lang="en">To confirm the signal is genuine and not a statistical artifact, we ran control tests using shuffled zeros and random data.</span>
+      <span data-lang="en">To assess whether the observed signal could be a statistical artifact, we ran control tests using shuffled zeros and random data.</span>
       <span data-lang="mn">Дохио жинхэнэ бөгөөд статистикийн артефакт биш гэдгийг баталгаажуулахын тулд холилдсон тэгүүд болон санамсаргүй өгөгдөл дээр хяналтын тест хийсэн.</span>
     </p>
 
@@ -1425,13 +1425,13 @@ const faqs = [
     q_en: "Is this a proof of the Riemann Hypothesis?",
     q_mn: "Энэ Риманы таамаглалын нотолгоо мөн үү?",
     a_en: "<strong>No.</strong> These are computational observations only. A proof of RH requires a rigorous mathematical argument — not computational observations, however consistent they are. The Riemann Hypothesis remains one of the Clay Millennium Prize Problems ($1,000,000 prize).",
-    a_mn: "<strong>Үгүй.</strong> Энэ зөвхөн тоон нотолгоо. RH-н нотолгоо нь хичнээн хүчтэй байсан ч тоон ажиглалт биш, чанд математик аргумент шаарддаг. Риманы таамаглал Clay Millennium Prize-ийн нэг ($1,000,000 шагнал) хэвээр байна."
+    a_mn: "<strong>Үгүй.</strong> Эдгээр зөвхөн тооцооллын ажиглалт. RH-н нотолгоо нь хичнээн хүчтэй байсан ч тоон ажиглалт биш, чанд математик аргумент шаарддаг. Риманы таамаглал Clay Millennium Prize-ийн нэг ($1,000,000 шагнал) хэвээр байна."
   },
   {
     q_en: "Is the BK amplitude law 'confirmed'?",
     q_mn: "BK амплитудын хууль 'батлагдсан' уу?",
     a_en: "<strong>No — not in the mathematical sense.</strong> We have computational observations (r = 0.9992) consistent with the BK prediction. But 'confirmed' in mathematics means a rigorous theorem with proof. Our results need independent replication, peer review, and asymptotic analysis.",
-    a_mn: "<strong>Үгүй — математикийн утгаараа биш.</strong> Бид BK таамаглалтай нийцсэн хүчтэй тоон нотолгоотой (r = 0.9992). Гэхдээ математикт 'батлагдсан' гэдэг нь нотолгоотой чанд теорем гэсэн утгатай. Манай үр дүн бие даасан баталгаажуулалт, peer review, асимптотик шинжилгээ шаарддаг."
+    a_mn: "<strong>Үгүй — математикийн утгаараа биш.</strong> Бид BK таамаглалтай нийцсэн тооцооллын ажиглалттай (r = 0.9992). Гэхдээ математикт 'батлагдсан' гэдэг нь нотолгоотой чанд теорем гэсэн утгатай. Манай үр дүн бие даасан баталгаажуулалт, peer review, асимптотик шинжилгээ шаарддаг."
   },
   {
     q_en: "What does r = 0.9992 mean?",
