@@ -3,10 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comparison | research.nexcore.ltd</title>
+<title>Prime-Correlation Analysis Lab — research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
-
+<script>
+function setVLang(lang) {
+  document.body.className = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    const isActive = (lang==='en' && b.id==='vl-en') || (lang==='mn' && b.id==='vl-mn');
+    b.classList.toggle('active', isActive);
+    b.style.background = isActive ? 'linear-gradient(135deg,#0055ff,var(--cyan))' : 'none';
+    b.style.color = isActive ? '#fff' : 'var(--muted)';
+    b.style.borderColor = isActive ? 'transparent' : 'rgba(255,255,255,.1)';
+  });
+  localStorage.setItem('vlang', lang);
+}
+const vsaved = localStorage.getItem('vlang');
+if (vsaved) setVLang(vsaved);
+</script>
 <style>
 :root{
   --bg:#070710;--surface:#0e0e1c;--surface2:#13131f;
@@ -126,48 +140,48 @@ body.mn [data-lang="mn"]{display:block;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
+/* MASTER NAV */
 
 /* MASTER NAV */
-.mnav{position:fixed;top:0;left:0;right:0;z-index:300;height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
-.mnav-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
-.mnav-links{display:flex;align-items:center;gap:0;}
-.mnav-links a,.mnav-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.35rem .65rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
-.mnav-links a:hover,.mnav-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-links a.cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
-.mnav-links a.vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
-.mnav-more{position:relative;}
-.mnav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.4rem;min-width:170px;z-index:400;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.mnav-dd.open{display:block;}
-.mnav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:#9999b8;text-decoration:none;padding:.38rem .85rem;border-radius:8px;transition:all .2s;cursor:pointer;}
-.mnav-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-lang{display:flex;flex-shrink:0;}
-.mnav-lb{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.28rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
-.mnav-lb:first-child{border-radius:4px 0 0 4px;}
-.mnav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
-.mnav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
-[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
-[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
-body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
-@media(max-width:640px){.mnav-links{display:none;}}
-@media(max-width:768px){
-  .mnav-links{gap:.3rem;flex-wrap:nowrap;overflow-x:auto;}
-  .mnav-links a,.mnav-links button{font-size:.72rem;padding:.28rem .45rem;}
-}
+.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;cursor:pointer;}
+.MN-links{display:flex;align-items:center;}
+.MN-links a,.MN-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;line-height:1;}
+.MN-links a:hover,.MN-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.MN-links a.MN-cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
+.MN-links a.MN-vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
+.MN-more{position:relative;}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.4rem;min-width:165px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
+.MN-lang{display:flex;flex-shrink:0;margin-left:.5rem;}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}
+.MN-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
+body{padding-top:54px !important;}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+[data-lang]{display:none;}
+body.en [data-lang="en"]{display:block;}
+body.mn [data-lang="mn"]{display:block;}
+body.en span[data-lang="en"]{display:inline;}
+body.mn span[data-lang="mn"]{display:inline;}
+@media(max-width:640px){.MN-links{display:none;}}
 
-body{padding-top:52px;}
 </style>
 </head>
 <body>
-<nav class="mnav">
-<a href="index.html" class="mnav-logo">research.nexcore.ltd</a>
-<div class="mnav-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="cur vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="mnav-more"><button onclick="mnavToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="mnav-dd"><a href="index.html#charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html#calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a href="index.html#methods"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html#nulltests"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html#data"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html#papers"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html#faq"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html#discussion"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html#about"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
-<div class="mnav-lang">
-  <button class="mnav-lb active" data-l="en" onclick="setLang('en')">ENG</button>
-  <button class="mnav-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+<nav class="MN">
+<a href="index.html" class="MN-logo">research.nexcore.ltd</a>
+<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
+<div class="MN-lang">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
-
-
 
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
@@ -175,7 +189,10 @@ body{padding-top:52px;}
 <div class="wrap">
   <header>
     <a class="back-link" href="/">← research.nexcore.ltd</a>
-    
+    <div style="display:flex;gap:0;margin-bottom:1rem;">
+      <button onclick="setVLang('en')" id="vl-en" class="lang-btn active">ENG</button>
+      <button onclick="setVLang('mn')" id="vl-mn" class="lang-btn">МОН</button>
+    </div>
     <h1>Prime-Correlation <span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний Лаб</span></h1>
     <p class="tagline"><span data-li="en">Run the exact analysis in your browser. Upload any Odlyzko zero data and check whether the prime-indexed excess pattern replicates in your data — no server, no installation.</span><span data-li="mn">Браузерт яг шинжилгээ ажиллуул. Одлызкогийн тэгийн өгөгдөл upload хийж прайм-индекстэй илүүдлийн хэв маяг өөрийн өгөгдөлд давтагдах эсэхийг шалга — сервер, суулгалт шаардахгүй.</span></p>
   </header>
@@ -504,31 +521,19 @@ function runAnalysis() {
   log('Analysis complete!', 'ok');
 }
 
-var setVLang = setLang; // unified lang toggle
-function mnavClose(){document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});}
-
-function mnavToggle(btn){
-  var dd=btn.nextElementSibling;
-  var open=dd.classList.toggle('open');
-  btn.classList.toggle('active',open);
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.mnav-more')){
-    document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});
-  }
-});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.mnav-lb,.lang-btn,.lb').forEach(function(b){
-    b.classList.toggle('active',
-      (l==='en'&&(b.dataset.l==='en'||b.textContent==='ENG'||b.id==='lb-en'||b.id==='btn-en'))||
-      (l==='mn'&&(b.dataset.l==='mn'||b.textContent==='МОН'||b.id==='lb-mn'||b.id==='btn-mn'))
-    );
+function setVLang(lang) {
+  document.body.className = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    const isActive = (lang==='en' && b.id==='vl-en') || (lang==='mn' && b.id==='vl-mn');
+    b.classList.toggle('active', isActive);
+    b.style.background = isActive ? 'linear-gradient(135deg,#0055ff,var(--cyan))' : 'none';
+    b.style.color = isActive ? '#fff' : 'var(--muted)';
+    b.style.borderColor = isActive ? 'transparent' : 'rgba(255,255,255,.1)';
   });
-  localStorage.setItem('lang',l);
+  localStorage.setItem('vlang', lang);
 }
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
-
+const vsaved = localStorage.getItem('vlang');
+if (vsaved) setVLang(vsaved);
 </script>
 </body>
 </html>

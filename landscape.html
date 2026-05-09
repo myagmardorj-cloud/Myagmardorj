@@ -82,7 +82,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .prob-desc{font-size:.72rem;color:var(--sub);line-height:1.5;flex:1;}
 .prob-tools{margin-top:.6rem;font-size:.65rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(255,255,255,.05);padding-top:.4rem;}
 .solved-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(0,229,160,.15);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.15rem .4rem;border-radius:4px;}
-.our-badge{display:block;margin-top:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.55rem;background:rgba(240,180,41,.12);color:var(--gold);border:1px solid rgba(240,180,41,.3);padding:.12rem .4rem;border-radius:4px;width:fit-content;}
+.our-badge{display:block;margin-top:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(240,180,41,.2);color:var(--gold);border:1px solid rgba(240,180,41,.4);padding:.15rem .4rem;border-radius:4px;width:fit-content;}
 @keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
 
 /* CONJECTURES GRID */
@@ -163,51 +163,46 @@ body.mn [data-li="mn"]{display:inline;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .nav-links{display:none;}
 }
+/* MASTER NAV */
 
-.mnav{position:fixed;top:0;left:0;right:0;z-index:300;height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
-.mnav-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
-.mnav-links{display:flex;align-items:center;gap:0;}
-.mnav-links a,.mnav-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.35rem .65rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
-.mnav-links a:hover,.mnav-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-links a.cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
-.mnav-links a.vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
-.mnav-more{position:relative;}
-.mnav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.4rem;min-width:160px;z-index:400;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.mnav-dd.open{display:block;}
-.mnav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:#9999b8;text-decoration:none;padding:.38rem .85rem;border-radius:8px;transition:all .2s;}
-.mnav-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-lb{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.28rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
-.mnav-lb:first-child{border-radius:4px 0 0 4px;}.mnav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
-.mnav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
-[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
-[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
-body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
-@media(max-width:640px){.mnav-links{display:none;}}
-body{padding-top:52px;}
+/* MASTER NAV */
+.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;cursor:pointer;}
+.MN-links{display:flex;align-items:center;}
+.MN-links a,.MN-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;line-height:1;}
+.MN-links a:hover,.MN-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.MN-links a.MN-cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
+.MN-links a.MN-vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
+.MN-more{position:relative;}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.4rem;min-width:165px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
+.MN-lang{display:flex;flex-shrink:0;margin-left:.5rem;}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}
+.MN-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
+body{padding-top:54px !important;}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+[data-lang]{display:none;}
+body.en [data-lang="en"]{display:block;}
+body.mn [data-lang="mn"]{display:block;}
+body.en span[data-lang="en"]{display:inline;}
+body.mn span[data-lang="mn"]{display:inline;}
+@media(max-width:640px){.MN-links{display:none;}}
+
 </style>
 </head>
 <body class="mn">
-<nav class="mnav">
-<a href="index.html" class="mnav-logo">research.nexcore.ltd</a>
-<div class="mnav-links">
-  <a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-  <a href="verify.html" class="vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
-  <a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
-  <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
-  <span class="mnav-more">
-    <button onclick="mnavToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
-    <div class="mnav-dd">
-      <a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-      <a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
-      <a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
-      <a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
-      <a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a>
-    </div>
-  </span>
-</div>
-<div style="display:flex;">
-  <button class="mnav-lb active" data-l="en" onclick="setLang('en')">ENG</button>
-  <button class="mnav-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+<nav class="MN">
+<a href="index.html" class="MN-logo">research.nexcore.ltd</a>
+<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
+<div class="MN-lang">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
 
@@ -530,16 +525,6 @@ function setLang(lang) {
 }
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved); else setLang('mn');
-</script>
-<script>
-function mnavToggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');btn.classList.toggle('active',dd.classList.contains('open'));}
-document.addEventListener('click',function(e){if(!e.target.closest('.mnav-more'))document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.mnav-lb,.lb,.lang-btn').forEach(function(b){b.classList.toggle('active',(l==='en'&&(b.dataset.l==='en'||b.textContent==='ENG'))||(l==='mn'&&(b.dataset.l==='mn'||b.textContent==='МОН')));});
-  localStorage.setItem('lang',l);
-}
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
 </script>
 </body>
 </html>
