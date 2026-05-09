@@ -19,10 +19,10 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 
 /* MESH */
 .mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-.orb{position:absolute;border-radius:50%;filter:blur(130px);opacity:.18;}
-.o1{width:600px;height:600px;background:radial-gradient(circle,#0033ff,transparent);top:-150px;left:-150px;animation:oa 22s ease-in-out infinite alternate;}
-.o2{width:450px;height:450px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-80px;animation:ob 18s ease-in-out infinite alternate;}
-.o3{width:280px;height:280px;background:radial-gradient(circle,#7700ff,transparent);top:45%;left:55%;animation:oc 16s ease-in-out infinite alternate;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.1;}
+.o1{width:600px;height:600px;background:radial-gradient(circle,#0033ff,transparent);top:-150px;left:-150px;animation:oa 38s ease-in-out infinite alternate;}
+.o2{width:450px;height:450px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-80px;animation:ob 32s ease-in-out infinite alternate;}
+.o3{width:280px;height:280px;background:radial-gradient(circle,#7700ff,transparent);top:45%;left:55%;animation:oc 30s ease-in-out infinite alternate;}
 @keyframes oa{to{transform:translate(100px,130px)}}
 @keyframes ob{to{transform:translate(-80px,-100px)}}
 @keyframes oc{to{transform:translate(-60px,80px)}}
@@ -46,7 +46,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 /* HEADER */
 .page-header{text-align:center;padding:1rem 0 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:1.2rem;}
-.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 1.5s infinite;}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 3s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .page-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.8rem;line-height:1.1;}
 .page-title .hl{background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
@@ -82,7 +82,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .prob-desc{font-size:.72rem;color:var(--sub);line-height:1.5;flex:1;}
 .prob-tools{margin-top:.6rem;font-size:.65rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(255,255,255,.05);padding-top:.4rem;}
 .solved-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(0,229,160,.15);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.15rem .4rem;border-radius:4px;}
-.our-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(240,180,41,.2);color:var(--gold);border:1px solid rgba(240,180,41,.4);padding:.15rem .4rem;border-radius:4px;animation:pulse-badge 2s infinite;}
+.our-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(240,180,41,.2);color:var(--gold);border:1px solid rgba(240,180,41,.4);padding:.15rem .4rem;border-radius:4px;animation:pulse-badge 4s infinite;}
 @keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
 
 /* CONJECTURES GRID */
@@ -106,7 +106,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .stat-val{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;line-height:1;margin-bottom:.3rem;}
 .stat-lbl{font-size:.72rem;color:var(--sub);}
 
-/* OUR WORK BOX */
+/* Computational Observation BOX */
 .our-box{background:linear-gradient(135deg,rgba(240,180,41,.06),rgba(0,212,255,.04));border:1px solid rgba(240,180,41,.25);border-radius:16px;padding:2rem;margin-bottom:3rem;}
 .our-box-title{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
 .our-table{width:100%;border-collapse:collapse;}
@@ -268,9 +268,9 @@ body.mn [data-li="mn"]{display:inline;}
     <div class="stat-box"><div class="stat-val" style="color:var(--orange);">270+</div><div class="stat-lbl"><span data-lang="en">Years oldest open</span><span data-lang="mn">Хамтын онцлойн тоо (жил)</span></div></div>
   </div>
 
-  <!-- OUR WORK -->
+  <!-- Computational Observation -->
   <div class="our-box">
-    <div class="our-box-title"><span data-li="en">★ Our research position</span><span data-li="mn">★ Манай судалгааны байр суурь</span></div>
+    <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.12);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--sub);">⚠️ <strong style="color:var(--red);">Note:</strong> <span data-lang="en">Numerical observations only — not a theorem, not a proof of RH. Independent verification required.</span><span data-lang="mn">Зөвхөн тоон ажиглалт — теорем биш, RH-н нотолгоо биш.</span></div><div class="our-box-title"><span data-li="en">★ Our research position</span><span data-li="mn">★ Манай судалгааны байр суурь</span></div>
     <table class="our-table">
       <thead>
         <tr>
@@ -281,10 +281,10 @@ body.mn [data-li="mn"]{display:inline;}
       <tbody>
         <tr><td>Problem</td><td>Riemann Hypothesis (#01)</td></tr>
         <tr><td>Connection</td><td><span data-lang="en">Prime-indexed excess in zero spacing statistics</span><span data-lang="mn">Тэгийн зайн статистик дахь прайм-индекстэй илүүдэл</span></td></tr>
-        <tr><td>Result</td><td class="good">r = 0.9992 · 12/12 primes · persistent excess observed</td></tr>
+        <tr><td>Result</td><td class="good">r = 0.9992 · prime-correlated excess observed · persistent excess observed</td></tr>
         <tr><td><span data-lang="en">Positioning</span><span data-lang="mn">Байр суурь</span></td><td class="warn"><span data-lang="en">Computational observation — empirically consistent with BK-type scaling</span><span data-lang="mn">Тооцооллын ажиглалт — BK-төрлийн scaling-тай нийцсэн</span></td></tr>
         <tr><td><span data-lang="en">What it is NOT</span><span data-lang="mn">Юу биш вэ</span></td><td class="bad"><span data-lang="en">Not a confirmed theorem · Not a proof of RH</span><span data-lang="mn">Батлагдсан теорем биш · RH-н нотолгоо биш</span></td></tr>
-        <tr><td>Prize</td><td><span data-lang="en">$1,000,000 (Clay Institute) — if RH observed</span><span data-lang="mn">$1,000,000 (Клейн хүрээлэн) — RH батлагдвал</span></td></tr>
+        <tr><td>Prize</td><td><span data-lang="en">$1,000,000 (Clay Institute) — if RH proven</span><span data-lang="mn">$1,000,000 (Клейн хүрээлэн) — RH батлагдвал</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -309,7 +309,7 @@ body.mn [data-li="mn"]{display:inline;}
         <div class="step-title"><span data-lang="en">Independent replication</span><span data-lang="mn">Бие даасан баталгаа</span></div>
         <ul class="step-items">
           <li>E_zero ≈ F[E_prime]</li>
-          <li>naive p-value (uncorrected) &lt; 0.01 <span data-lang="en">target</span><span data-lang="mn">зорилт</span></li>
+          <li>p-value &lt; 0.01 <span data-lang="en">target</span><span data-lang="mn">зорилт</span></li>
           <li>arXiv paper <span data-lang="en">submit</span><span data-lang="mn">илгээх</span></li>
           <li>Peer review</li>
         </ul>
@@ -432,7 +432,7 @@ clayProbs.forEach(p => {
   div.onclick = () => openModal(p);
   div.innerHTML = `
     ${p.solved ? '<span class="solved-badge">SOLVED 2003</span>' : ''}
-    ${p.our ? '<span class="our-badge">← OUR WORK</span>' : ''}
+    ${p.our ? '<span class="our-badge">← Computational Observation</span>' : ''}
     <span class="prob-tag ${p.tagClass}">${p.tag}</span>
     <div class="prob-name">
       <span data-lang="en">${p.name_en}</span>

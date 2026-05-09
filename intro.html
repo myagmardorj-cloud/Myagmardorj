@@ -17,9 +17,9 @@ body{background:var(--bg);color:var(--t);font-family:'Plus Jakarta Sans',sans-se
 
 /* MESH */
 .mesh{position:fixed;inset:0;pointer-events:none;z-index:0;}
-.orb{position:absolute;border-radius:50%;filter:blur(140px);opacity:.2;}
-.o1{width:700px;height:700px;background:radial-gradient(circle,#0033ff,transparent);top:-200px;left:-200px;animation:oa 25s ease-in-out infinite alternate;}
-.o2{width:500px;height:500px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-100px;animation:ob 20s ease-in-out infinite alternate;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.12;}
+.o1{width:700px;height:700px;background:radial-gradient(circle,#0033ff,transparent);top:-200px;left:-200px;animation:oa 40s ease-in-out infinite alternate;}
+.o2{width:500px;height:500px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-100px;animation:ob 35s ease-in-out infinite alternate;}
 .o3{width:300px;height:300px;background:radial-gradient(circle,#6600ff,transparent);top:40%;left:60%;animation:oc 18s ease-in-out infinite alternate;}
 @keyframes oa{to{transform:translate(120px,150px)}}
 @keyframes ob{to{transform:translate(-100px,-120px)}}
@@ -44,7 +44,7 @@ body{background:var(--bg);color:var(--t);font-family:'Plus Jakarta Sans',sans-se
 
 /* TYPOGRAPHY */
 .label{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c);display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:5px 14px;border-radius:100px;margin-bottom:1.5rem;}
-.label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c);animation:blink 1.5s infinite;}
+.label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c);animation:blink 3s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.04em;margin-bottom:1.2rem;}
 h2 .hl{background:linear-gradient(90deg,var(--c),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
@@ -205,7 +205,7 @@ span[data-mn]{display:none;}
       <div class="stat"><div class="stat-val" style="color:var(--gold);">16.5</div><div class="stat-lbl">C constant</div></div>
       <div class="stat"><div class="stat-val" style="color:var(--sub);">≥0.94</div><div class="stat-lbl"><span data-en>Min r</span><span data-mn>Хамгийн бага r</span></div></div>
     </div>
-    <p style="font-size:.82rem;color:var(--m);margin-top:1.2rem;font-style:italic;">
+    <p style="font-size:.78rem;color:var(--m);margin-top:1rem;font-style:italic;background:rgba(255,77,109,.05);border-left:2px solid var(--r);padding:.6rem .8rem;border-radius:0 6px 6px 0;"><strong style="color:var(--r);font-style:normal;">Known Limitations:</strong> 
       <span data-en>⚠️ Numerical observations only — not a confirmed theorem, not a proof of RH.</span>
       <span data-mn>⚠️ Зөвхөн тоон ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
     </p>
@@ -227,7 +227,7 @@ span[data-mn]{display:none;}
       <div class="page-item"><div class="page-num">1</div><div><div class="page-name"><span data-en>Results</span><span data-mn>Үр дүн</span></div><div class="page-desc"><span data-en>Main findings, BK formula, timeline</span><span data-mn>Үндсэн олдвор, BK томьёо, он цаг</span></div></div></div>
       <div class="page-item"><div class="page-num">2</div><div><div class="page-name"><span data-en>Charts</span><span data-mn>Графикууд</span></div><div class="page-desc"><span data-en>Interactive Plotly charts — scatter, bar, prime excess</span><span data-mn>Интерактив Plotly графикууд</span></div></div></div>
       <div class="page-item"><div class="page-num">3</div><div><div class="page-name"><span data-en>Calculator</span><span data-mn>Тооцоолуур</span></div><div class="page-desc"><span data-en>Compute B(p) = (log p)²/p for any prime</span><span data-mn>Аливаа прайм дээр B(p) тооцоол</span></div></div></div>
-      <div class="page-item" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);"><div class="page-num" style="color:var(--g);border-color:rgba(0,229,160,.3);background:rgba(0,229,160,.1);">⚗️</div><div><div class="page-name" style="color:var(--g);">Verification Lab</div><div class="page-desc"><span data-en>Upload Odlyzko data → run analysis in browser</span><span data-mn>Одлызко өгөгдөл upload → браузерт ажиллуул</span></div></div></div>
+      <div class="page-item" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);"><div class="page-num" style="color:var(--g);border-color:rgba(0,229,160,.3);background:rgba(0,229,160,.1);">⚗️</div><div><div class="page-name" style="color:var(--g);">Analysis Lab</div><div class="page-desc"><span data-en>Upload Odlyzko data → run analysis in browser</span><span data-mn>Одлызко өгөгдөл upload → браузерт ажиллуул</span></div></div></div>
       <div class="page-item"><div class="page-num">4</div><div><div class="page-name">Papers</div><div class="page-desc"><span data-en>Code files with syntax highlighting & explanations</span><span data-mn>Кодын файлууд тайлбарын хамт</span></div></div></div>
       <div class="page-item"><div class="page-num">5</div><div><div class="page-name">Roadmap</div><div class="page-desc"><span data-en>Progress bars, reading list, Clay Prize context</span><span data-mn>Явцын мөр, уншлагын жагсаалт, Clay шагнал</span></div></div></div>
     </div>
@@ -288,7 +288,7 @@ span[data-mn]{display:none;}
 <div class="inner">
   <div class="slide-content">
     <div class="label">
-      <span data-en>Historical context</span><span data-mn>Судалгааны хүрээ</span>
+      <span data-en>Historical context</span><span data-mn>Түүхэн хүрээ</span>
     </div>
     <h2><span data-en>167 years of <span class="hr">RH</span></span><span data-mn>RH-ийн <span class="hr">167 жил</span></span></h2>
     <div class="tl">
@@ -296,7 +296,7 @@ span[data-mn]{display:none;}
       <div class="tl-item"><div class="tl-dot done">✓</div><div class="tl-content"><div class="tl-year">1973</div><div class="tl-title">Montgomery</div><div class="tl-sub"><span data-en>GUE pair correlation discovered</span><span data-mn>GUE pair correlation нээгдсэн</span></div></div></div>
       <div class="tl-item"><div class="tl-dot done">✓</div><div class="tl-content"><div class="tl-year">1996</div><div class="tl-title">Bogomolny & Keating</div><div class="tl-sub"><span data-en>Prime corrections predicted: A(p) ~ C(log p)²/p</span><span data-mn>Прайм засваруудыг таамагласан</span></div></div></div>
       <div class="tl-item"><div class="tl-dot done">✓</div><div class="tl-content"><div class="tl-year">2000</div><div class="tl-title">Clay Institute</div><div class="tl-sub"><span data-en>$1,000,000 prize announced for RH proof</span><span data-mn>RH нотолгоонд $1,000,000 шагнал зарлагдсан</span></div></div></div>
-      <div class="tl-item"><div class="tl-dot now">●</div><div class="tl-content"><div class="tl-year">2026</div><div class="tl-title" style="color:var(--c);">Myagmardorj N. — Mongolia</div><div class="tl-sub"><span data-en>Persistent prime-indexed excess, empirically consistent with BK-type scaling (see RESULTS.md)</span><span data-mn>BK-төрлийн scaling-тай нийцсэн прайм-индекстэй илүүдэл (see RESULTS.md)</span></div></div></div>
+      <div class="tl-item"><div class="tl-dot now">●</div><div class="tl-content"><div class="tl-year">2026</div><div class="tl-title" style="color:var(--c);">Myagmardorj N. — Mongolia</div><div class="tl-sub"><span data-en>Persistent prime-indexed excess, empirically consistent with BK-type scaling (r=0.9992)</span><span data-mn>BK-төрлийн scaling-тай нийцсэн прайм-индекстэй илүүдэл (r=0.9992)</span></div></div></div>
       <div class="tl-item"><div class="tl-dot next">○</div><div class="tl-content"><div class="tl-year"><span data-en>Next</span><span data-mn>Дараа</span></div><div class="tl-title" style="color:var(--m);"><span data-en>Theoretical derivation of C ≈ 16.5</span><span data-mn>C ≈ 16.5-н онолын гарталт</span></div><div class="tl-sub"><span data-en>Independent replication · Peer review · arXiv</span><span data-mn>Бие даасан баталгаажуулалт · Peer review · arXiv</span></div></div></div>
     </div>
   </div>
