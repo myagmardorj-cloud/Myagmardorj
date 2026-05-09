@@ -387,179 +387,7 @@ body{padding-bottom:42px !important;}
   
 </div>
 
-<script>
-// CLAY PROBLEMS DATA
-const clayProbs = [
-  {id:'rh', tag:'RH', tagClass:'tag-rh', cardClass:'rh highlight',
-   name_en:'Riemann Hypothesis', name_mn:'Риманы Таамаглал',
-   desc_en:'All non-trivial zeros of ζ(s) have real part ½. Connected to prime distribution.',
-   desc_mn:'ζ(s)-ийн бүх тривиаль биш тэгүүд Re(s)=½ дээр байна. Прайм тархалттай холбоотой.',
-   tools:'RMT · GUE · L-функц · explicit formula',
-   our:true},
-  {id:'pnp', tag:'P≠NP', tagClass:'tag-pnp', cardClass:'pnp',
-   name_en:'P vs NP', name_mn:'P ба NP',
-   desc_en:'Can every verifiable problem be solved efficiently?',
-   desc_mn:'Хариуг шалгаж болдог бодлого болгоныг хурдан бодож болох уу?',
-   tools:'Boolean circuit · oracle · GCT'},
-  {id:'bsd', tag:'BSD', tagClass:'tag-bsd', cardClass:'bsd',
-   name_en:'Birch–Swinnerton-Dyer', name_mn:'Бирч–Суиннертон-Даер',
-   desc_en:'L(E,1)≠0 ↔ rank=0. Iwasawa theory framework.',
-   desc_mn:'L(E,1)≠0 ↔ rank=0. Ивасавагийн онол өргөтгөх.',
-   tools:'Elliptic curve · p-adic L-функц'},
-  {id:'ns', tag:'NS', tagClass:'tag-ns', cardClass:'ns',
-   name_en:'Navier–Stokes', name_mn:'Навье–Стокс',
-   desc_en:'Global regularity or blowup in 3D fluid equations.',
-   desc_mn:'Global regularity эсвэл жишээ жилжих олох.',
-   tools:'PDE · functional analysis · CFD'},
-  {id:'ym', tag:'YM', tagClass:'tag-ym', cardClass:'ym',
-   name_en:'Yang–Mills Mass Gap', name_mn:'Янг–Миллс Mass Gap',
-   desc_en:'Mass gap > 0 for quantum Yang-Mills theory.',
-   desc_mn:'Mass gap > 0 гэдгийг QFT хүрээнд нотлох.',
-   tools:'Quantum field theory · lattice gauge'},
-  {id:'hc', tag:'HC', tagClass:'tag-hc', cardClass:'hc',
-   name_en:'Hodge Conjecture', name_mn:'Ходж Таамаглал',
-   desc_en:'Hodge class = algebraic cycle in motivic cohomology.',
-   desc_mn:'Hodge class алгебрийн motivic cohomology.',
-   tools:'Algebraic geometry · K-theory'},
-  {id:'pc', tag:'PC ✓', tagClass:'tag-solved', cardClass:'pc',
-   name_en:"Poincaré Conjecture", name_mn:'Пуанкарегийн Т.',
-   desc_en:'SOLVED 2003 — Perelman via Ricci flow. Declined $1M prize.',
-   desc_mn:'ШИЙДЭГДСЭН — Перельман · Ricci flow · 2003',
-   tools:'Riemannian geometry · Ricci flow',
-   solved:true},
-];
 
-const conjProbs = [
-  {year:'GC 1742', name_en:'Goldbach', name_mn:'Гольдбахын Т.',
-   desc_en:'Every even number = sum of 2 primes. Chen(1966): p+p·q → p+p²',
-   desc_mn:'Тэгш тоо = 2 прайм нийлбэр. Chen(1966): p+p·q → p+p²',
-   status:'Circle method · sieve theory'},
-  {year:'TPC 1849', name_en:'Twin Prime', name_mn:'Ихэр Прайм Т.',
-   desc_en:'Infinitely many primes p with p+2 prime. Zhang(2013): gap<70M',
-   desc_mn:'Zhang(2013): gap<70M. Maynard(2014): gap<246',
-   status:'GPY sieve · Elliott-Halberstam'},
-  {year:'ABC', name_en:'ABC Conjecture', name_mn:'ABC Таамаглал',
-   desc_en:'Mochizuki IUT proof (2012) — нийтийн шалгалт үргэлжилж байна',
-   desc_mn:'Mochizuki IUT онол (2012) — нийтийн шалгалт үргэлжилж байна',
-   status:'Inter-universal Teichmüller'},
-  {year:'COL 1937', name_en:'Collatz', name_mn:'Коллатцын Т.',
-   desc_en:'Tao(2019): density 1 set → n+1 бүх p-д 1 хүрнэ?',
-   desc_mn:'Tao(2019): density 1 set → n+1 бүх p-д 1 хүрнэ?',
-   status:'Ergodic theory · cellular automata'},
-  {year:'GL', name_en:'Geom. Langlands', name_mn:'Геометрийн Ленглендс',
-   desc_en:'Ben-Zvi et al. 2024: geometric arithmetic Langlands proved',
-   desc_mn:'Ben-Zvi et al. 2024: геом. арифметик Ленгленд үлдсэн',
-   status:'D-module · perverse sheaf'},
-  {year:'LIC', name_en:'Linear Independence', name_mn:'Linear Independence',
-   desc_en:'γₙ/2π irrational numbers Q дээр линейн бие даасан эсэх?',
-   desc_mn:'γₙ/2π тооцоолол Q дээр шугаман бие даасан байна уу?',
-   status:'Transcendence theory · Baker'},
-  {year:'SZC', name_en:'Simple Zeros', name_mn:'Simple Zeros',
-   desc_en:'Риман zeros бүгд энгийн (кратнос 1) эсэх? Montgomery: >2/3 ✓',
-   desc_mn:'Риман zeros бүгд энгийн (кратнос 1) эсэх? Montgomery: >2/3 ✓',
-   status:'Pair correlation · RMT'},
-];
-
-// Render clay grid
-const clayGrid = document.getElementById('clay-grid');
-clayProbs.forEach(p => {
-  const div = document.createElement('div');
-  div.className = `prob-card ${p.cardClass}`;
-  div.onclick = () => openModal(p);
-  div.innerHTML = `
-    ${p.solved ? '<span class="solved-badge">SOLVED 2003</span>' : ''}
-    ${p.our ? '<span class="our-badge">Computational obs.</span>' : ''}
-    <span class="prob-tag ${p.tagClass}">${p.tag}</span>
-    <div class="prob-name">
-      <span data-lang="en">${p.name_en}</span>
-      <span data-lang="mn">${p.name_mn}</span>
-    </div>
-    <div class="prob-desc">
-      <span data-lang="en">${p.desc_en}</span>
-      <span data-lang="mn">${p.desc_mn}</span>
-    </div>
-    <div class="prob-tools">${p.tools}</div>
-  `;
-  clayGrid.appendChild(div);
-});
-
-// Render conjectures
-const conjGrid = document.getElementById('conj-grid');
-conjProbs.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'conj-card';
-  div.innerHTML = `
-    <div class="conj-year">${p.year}</div>
-    <div class="conj-name">
-      <span data-lang="en">${p.name_en}</span>
-      <span data-lang="mn">${p.name_mn}</span>
-    </div>
-    <div class="conj-desc">
-      <span data-lang="en">${p.desc_en}</span>
-      <span data-lang="mn">${p.desc_mn}</span>
-    </div>
-    <div class="conj-status">${p.status}</div>
-  `;
-  conjGrid.appendChild(div);
-});
-
-// Modal
-function openModal(p) {
-  const lang = document.body.className;
-  document.getElementById('m-tag').textContent = p.tag;
-  document.getElementById('m-tag').className = `modal-tag ${p.tagClass}`;
-  document.getElementById('m-title').textContent = lang==='mn' ? p.name_mn : p.name_en;
-  document.getElementById('m-body').textContent = lang==='mn' ? p.desc_mn : p.desc_en;
-  document.getElementById('m-tools').textContent = p.tools;
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal(e) {
-  if (e.target.id === 'modal') document.getElementById('modal').classList.remove('open');
-}
-
-// Language
-);
-  document.querySelectorAll('[data-li]').forEach(el => {
-    el.style.display = el.dataset.li === lang ? 'inline' : 'none';
-  });
-  localStorage.setItem('lang', lang);
-}
- else setLang('mn');
-
-function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
-function MN_toggle(btn){
-  var dd=btn.nextElementSibling;
-  var open=dd.classList.toggle('open');
-  btn.classList.toggle('MN-active',open);
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.MN-more')){
-    document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
-    document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-active');});
-  }
-});
-);
-  document.querySelectorAll('.lang-btn,.lb').forEach(function(b){
-    b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
-  });
-  var fl=document.getElementById('faq-list');
-  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
-  localStorage.setItem('lang',l);
-}
-
-
-
-function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
-function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
-document.addEventListener('click',function(e){if(!e.target.closest('.MN-more')){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
-  var fl=document.getElementById('faq-list');if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
-  localStorage.setItem('lang',l);
-}
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
-</script>
 
 
 <footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;box-sizing:border-box;">
@@ -567,5 +395,35 @@ function setLang(l){
 <div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a></div>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>
+<script>
+function MN_close(){
+  document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+}
+
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  var open=dd.classList.toggle('open');
+  btn.classList.toggle('MN-active',open);
+}
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) MN_close();
+});
+
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb,.lang-btn,.lb').forEach(function(b){
+    var txt=b.textContent.trim();
+    b.classList.toggle('MN-active',(l==='en'&&txt==='ENG')||(l==='mn'&&txt==='МОН'));
+    b.classList.toggle('active',(l==='en'&&txt==='ENG')||(l==='mn'&&txt==='МОН'));
+  });
+  var fl=document.getElementById('faq-list');
+  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
+  localStorage.setItem('lang',l);
+}
+
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
 </body>
 </html>

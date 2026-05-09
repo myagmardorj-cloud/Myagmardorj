@@ -6,10 +6,7 @@
 <title>Prime-Correlation Analysis Lab — research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
-<script>
-function setVLang(l){setLang(l);}
 
-</script>
 <style>
 :root{
   --bg:#070710;--surface:#0e0e1c;--surface2:#13131f;
@@ -324,329 +321,41 @@ body{padding-top:54px!important;padding-bottom:42px!important;}
 </div>
 </div>
 
-<script>
-const PRIMES_12 = [2,3,5,7,11,13,17,19,23,29,31,37];
-const PRIMES_8  = [2,3,5,7,11,13,17,19];
-const PRIMES_20 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71];
 
-let zeros = null;
-
-const DL = {
-  paper_bgcolor:'#0e0e1c', plot_bgcolor:'#0e0e1c',
-  font:{family:'Space Grotesk', color:'#5a5a7a', size:11},
-  xaxis:{gridcolor:'rgba(255,255,255,.05)', zerolinecolor:'rgba(255,255,255,.05)'},
-  yaxis:{gridcolor:'rgba(255,255,255,.05)', zerolinecolor:'rgba(255,255,255,.05)'},
-  margin:{t:16,r:16,b:50,l:60}
-};
-const PC = {responsive:true, displayModeBar:false};
-
-// File upload
-document.getElementById('file-input').addEventListener('change', e => {
-  const f = e.target.files[0];
-  if (f) loadFile(f);
-});
-
-const dz = document.getElementById('drop-zone');
-dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag'); });
-dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
-dz.addEventListener('drop', e => {
-  e.preventDefault(); dz.classList.remove('drag');
-  const f = e.dataTransfer.files[0];
-  if (f) loadFile(f);
-});
-
-function loadFile(f) {
-  const reader = new FileReader();
-  reader.onload = ev => {
-    const lines = ev.target.result.trim().split('\n');
-    zeros = [];
-    for (const l of lines) {
-      const v = parseFloat(l.trim());
-      if (!isNaN(v)) zeros.push(v);
-    }
-    dz.classList.add('has-file');
-    document.getElementById('upload-title').textContent =
-      `✅ ${f.name} — ${zeros.length.toLocaleString()} zeros loaded`;
-    document.getElementById('run-btn').disabled = false;
-    log(`Loaded ${zeros.length.toLocaleString()} zeros from ${f.name}`, 'ok');
-  };
-  reader.readAsText(f);
-}
-
-function log(msg, cls='') {
-  const box = document.getElementById('log-box');
-  box.classList.add('show');
-  const d = document.createElement('div');
-  d.className = 'log-line' + (cls ? ' log-'+cls : '');
-  d.textContent = '› ' + msg;
-  box.appendChild(d);
-  box.scrollTop = box.scrollHeight;
-}
-
-function pearsonr(x, y) {
-  const n = x.length;
-  const mx = x.reduce((a,b)=>a+b)/n;
-  const my = y.reduce((a,b)=>a+b)/n;
-  let num=0, dx2=0, dy2=0;
-  for (let i=0;i<n;i++){
-    const dxi=x[i]-mx, dyi=y[i]-my;
-    num+=dxi*dyi; dx2+=dxi*dxi; dy2+=dyi*dyi;
-  }
-  const r = num/Math.sqrt(dx2*dy2);
-  // t-test p-value approximation
-  const t = r*Math.sqrt((n-2)/(1-r*r));
-  const p = 2*(1 - tCDF(Math.abs(t), n-2));
-  return {r, p};
-}
-
-// Approximate t-distribution CDF using regularized incomplete beta
-function tCDF(t, df) {
-  const x = df/(df+t*t);
-  return 1 - 0.5*betai(df/2, 0.5, x);
-}
-function betai(a, b, x) {
-  // Simple continued fraction approximation
-  if (x < 0 || x > 1) return 0;
-  if (x === 0) return 0;
-  if (x === 1) return 1;
-  const lbeta = lgamma(a)+lgamma(b)-lgamma(a+b);
-  const front = Math.exp(Math.log(x)*a + Math.log(1-x)*b - lbeta) / a;
-  // Lentz continued fraction
-  let d=1-((a+b)*x)/(a+1), f=1+1e-30, c=f;
-  d=1/d; f=c*d;
-  for (let m=1;m<=100;m++){
-    let aa=m*(b-m)*x/((a+2*m-1)*(a+2*m));
-    d=1+aa*d; c=1+aa/c;
-    d=1/d; f*=c*d;
-    aa=-(a+m)*(a+b+m)*x/((a+2*m)*(a+2*m+1));
-    d=1+aa*d; c=1+aa/c;
-    d=1/d; f*=c*d;
-    if (Math.abs(c*d-1)<1e-8) break;
-  }
-  return front*f;
-}
-function lgamma(x) {
-  const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];
-  let y=x, tmp=x+5.5;
-  tmp-=(x+0.5)*Math.log(tmp);
-  let ser=1.000000000190015;
-  for(let j=0;j<6;j++) ser+=c[j]/++y;
-  return -tmp+Math.log(2.5066282746310005*ser/x);
-}
-
-function runAnalysis() {
-  if (!zeros) return;
-  document.getElementById('results').classList.remove('show');
-  document.getElementById('log-box').innerHTML = '';
-
-  const T = parseFloat(document.getElementById('height-T').value) || 74920;
-  const maxN = parseInt(document.getElementById('max-zeros').value) || 10000;
-  const pset = document.getElementById('prime-set').value;
-  const primes = pset==='8' ? PRIMES_8 : pset==='20' ? PRIMES_20 : PRIMES_12;
-
-  const data = zeros.slice(0, Math.min(maxN, zeros.length));
-  const N = data.length;
-
-  log(`Using ${N.toLocaleString()} zeros, T ≈ ${T.toExponential(2)}`);
-  log(`Testing ${primes.length} primes: ${primes.slice(0,6).join(', ')}...`);
-  log(`Normalization: τ_p = log(p)/log(T/2π)`);
-
-  // Spacings
-  const delta = [];
-  for (let i=0;i<N-1;i++) delta.push(data[i+1]-data[i]);
-  const mean_d = delta.reduce((a,b)=>a+b)/delta.length;
-  const cd = delta.map(d=>d-mean_d);
-
-  log(`Mean spacing: ${mean_d.toFixed(6)}`);
-
-  // Covariance at each prime lag
-  const Ap = [];
-  const Bp = [];
-  const tableRows = [];
-
-  for (const p of primes) {
-    // Lag = p (using prime directly as lag index)
-    let cov = 0;
-    const len = cd.length - p;
-    if (len < 10) { log(`Lag ${p} too large, skipping`,'err'); continue; }
-    for (let i=0;i<len;i++) cov += cd[i]*cd[i+p];
-    cov /= len;
-
-    const lp = Math.log(p);
-    const bp = lp*lp/p;
-
-    Ap.push(cov);
-    Bp.push(bp);
-    tableRows.push({p, cov, bp, ratio: cov/bp, pos: cov>0});
-  }
-
-  // Pearson correlation
-  const {r, p: pval} = pearsonr(Ap, Bp);
-  const posCount = tableRows.filter(x=>x.pos).length;
-  const C_est = Ap.reduce((a,b)=>a+b)/Ap.length / (Bp.reduce((a,b)=>a+b)/Bp.length);
-
-  log(`r = ${r.toFixed(4)}`, 'hi');
-  log(`p-value = ${pval.toExponential(3)}`, 'hi');
-  log(`${posCount}/${tableRows.length} primes positive`, posCount===tableRows.length?'ok':'');
-  log(`C ≈ ${C_est.toFixed(2)}`);
-
-  // Format p-value nicely
-  const pvStr = pval < 1e-10 ? pval.toExponential(2) : pval.toFixed(6);
-
-  // Update UI
-  const rEl = document.getElementById('res-r');
-  rEl.textContent = r.toFixed(4);
-  rEl.style.color = r > 0.9 ? 'var(--green)' : r > 0.7 ? 'var(--gold)' : 'var(--red)';
-
-  document.getElementById('res-pv').textContent = pvStr;
-  document.getElementById('res-pv').className = 'rs-val ' + (pval < 0.001 ? 'good' : 'warn');
-  document.getElementById('res-pos').textContent = `${posCount}/${tableRows.length}`;
-  document.getElementById('res-pos').className = 'rs-val ' + (posCount===tableRows.length?'good':'warn');
-  document.getElementById('res-n').textContent = N.toLocaleString();
-  document.getElementById('res-c').textContent = C_est.toFixed(2);
-  document.getElementById('cmp-yours').textContent = r.toFixed(4);
-
-  // Prime table
-  const tbody = document.getElementById('prime-tbody');
-  tbody.innerHTML = '';
-  for (const row of tableRows) {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${row.p}</td><td>${row.bp.toFixed(6)}</td><td>${row.cov.toFixed(6)}</td><td>${isNaN(row.ratio)?'—':row.ratio.toFixed(2)}</td><td class="${row.pos?'pos':'neg'}">${row.pos?'✅ +':'❌ −'}</td>`;
-    tbody.appendChild(tr);
-  }
-
-  // Scatter plot
-  Plotly.newPlot('scatter-chart', [
-    {x:Bp, y:Ap, mode:'markers+text', text:primes.map(p=>'p='+p),
-     textposition:'top center', marker:{color:'#00d4ff',size:10}, name:'Your result', type:'scatter'},
-    {x:[0, Math.max(...Bp)*1.1], y:[0, Math.max(...Bp)*1.1*C_est],
-     mode:'lines', line:{color:'#4d9fff',dash:'dash',width:1},
-     name:'Fit (C='+C_est.toFixed(1)+')', type:'scatter'}
-  ], {...DL,
-    xaxis:{...DL.xaxis,title:'B(p) = (log p)²/p'},
-    yaxis:{...DL.yaxis,title:'A(p) observed'},
-    legend:{bgcolor:'#0e0e1c',bordercolor:'rgba(255,255,255,.06)'}
-  }, PC);
-
-  // Bar chart
-  Plotly.newPlot('bar-chart', [{
-    x: primes.map(p=>'p='+p),
-    y: Ap,
-    type:'bar',
-    marker:{color: Ap.map(a=>a>0?'#00e5a0':'#ff4d6d')},
-    name:'A(p)'
-  }], {...DL,
-    xaxis:{...DL.xaxis,title:'Prime p'},
-    yaxis:{...DL.yaxis,title:'A(p)'},
-    shapes:[{type:'line',x0:-.5,x1:primes.length-.5,y0:0,y1:0,
-      line:{color:'rgba(255,255,255,.3)',width:1}}]
-  }, PC);
-
-  document.getElementById('results').classList.add('show');
-  log('Analysis complete!', 'ok');
-}
-
-function setVLang(l){setLang(l);}
-
-
-// Enable bootstrap button when file loaded
-const origLoad = loadFile;
-function loadFile(f) {
-  origLoad(f);
-  setTimeout(function(){
-    var bb = document.getElementById('boot-btn');
-    if(bb) bb.disabled = false;
-  }, 500);
-}
-
-function pearsonrArr(x, y) {
-  return pearsonr(x, y).r;
-}
-
-function runBootstrap() {
-  if (!zeros) return;
-  var N_BOOT = 200;
-  var br = document.getElementById('bootstrap-results');
-  br.style.display = 'block';
-  var logEl = document.getElementById('boot-log');
-  logEl.textContent = 'Running ' + N_BOOT + ' bootstrap iterations...';
-
-  var T = parseFloat(document.getElementById('height-T').value) || 74920;
-  var maxN = parseInt(document.getElementById('max-zeros').value) || 10000;
-  var pset = document.getElementById('prime-set').value;
-  var primes = pset==='8' ? PRIMES_8 : pset==='20' ? PRIMES_20 : PRIMES_12;
-  var data = zeros.slice(0, Math.min(maxN, zeros.length));
-  var N = data.length;
-  var subSize = Math.floor(N / 2);
-
-  function getR(subset) {
-    var delta = [];
-    for(var i=0;i<subset.length-1;i++) delta.push(subset[i+1]-subset[i]);
-    var md = delta.reduce(function(a,b){return a+b;})/delta.length;
-    var cd = delta.map(function(d){return d-md;});
-    var Ap=[], Bp=[];
-    for(var pi=0;pi<primes.length;pi++){
-      var p=primes[pi], cov=0, len=cd.length-p;
-      if(len<10) continue;
-      for(var i=0;i<len;i++) cov+=cd[i]*cd[i+p];
-      cov/=len;
-      Ap.push(cov); Bp.push(Math.log(p)*Math.log(p)/p);
-    }
-    return pearsonr(Ap,Bp).r;
-  }
-
-  setTimeout(function(){
-    var rs = [];
-    for(var i=0;i<N_BOOT;i++){
-      var idx = [];
-      while(idx.length < subSize){
-        var r = Math.floor(Math.random()*(N-1));
-        idx.push(r);
-      }
-      idx.sort(function(a,b){return a-b;});
-      var subset = idx.map(function(i){return data[i];});
-      rs.push(getR(subset));
-    }
-    rs.sort(function(a,b){return a-b;});
-    var mean = rs.reduce(function(a,b){return a+b;})/rs.length;
-    var std = Math.sqrt(rs.reduce(function(a,b){return a+(b-mean)*(b-mean);},0)/rs.length);
-    var ci_lo = rs[Math.floor(rs.length*0.025)];
-    var ci_hi = rs[Math.floor(rs.length*0.975)];
-    var pos = rs.filter(function(r){return r>0;}).length;
-    var high = rs.filter(function(r){return r>0.8;}).length;
-
-    document.getElementById('boot-mean').textContent = mean.toFixed(4);
-    document.getElementById('boot-std').textContent = std.toFixed(4);
-    document.getElementById('boot-ci-lo').textContent = ci_lo.toFixed(4);
-    document.getElementById('boot-ci-hi').textContent = ci_hi.toFixed(4);
-
-    var verdict, color;
-    if(std < 0.1 && mean > 0.7){ verdict='STABLE — signal robust'; color='var(--green)'; }
-    else if(std < 0.2){ verdict='MODERATE — interpret cautiously'; color='var(--gold)'; }
-    else { verdict='UNSTABLE — high variance'; color='var(--red)'; }
-
-    var vEl = document.getElementById('boot-verdict');
-    vEl.innerHTML = '<span style="color:'+color+';font-weight:600;">'+verdict+'</span><br><span style="font-size:.8rem;color:var(--sub);">'+pos+'/'+N_BOOT+' subsets r>0 &nbsp;|&nbsp; '+high+'/'+N_BOOT+' r>0.8 &nbsp;|&nbsp; n='+N_BOOT+'×'+subSize+' zeros</span>';
-    logEl.textContent = 'Bootstrap complete.';
-  }, 50);
-}
-
-
-function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
-function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
-document.addEventListener('click',function(e){if(!e.target.closest('.MN-more')){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
-  var fl=document.getElementById('faq-list');if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
-  localStorage.setItem('lang',l);
-}
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
-</script>
 <footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;box-sizing:border-box;">
 <span><span data-li="en">Exploratory computational research. No proof of RH claimed.</span><span data-li="mn">Тооцооллын судалгаа. RH-н нотолгоо нэхэмжлэхгүй.</span></span>
 <div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a></div>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>
+<script>
+function MN_close(){
+  document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+}
+
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  var open=dd.classList.toggle('open');
+  btn.classList.toggle('MN-active',open);
+}
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) MN_close();
+});
+
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb,.lang-btn,.lb').forEach(function(b){
+    var txt=b.textContent.trim();
+    b.classList.toggle('MN-active',(l==='en'&&txt==='ENG')||(l==='mn'&&txt==='МОН'));
+    b.classList.toggle('active',(l==='en'&&txt==='ENG')||(l==='mn'&&txt==='МОН'));
+  });
+  var fl=document.getElementById('faq-list');
+  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
+  localStorage.setItem('lang',l);
+}
+
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
 </body>
 </html>
