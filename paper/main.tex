@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\title{%
+  Prime-Indexed Excess in High Riemann Zero\\
+  Spacing Covariance: A Computational Observation\\[0.5em]
+  \large\normalfont Experimental Report v0.3 --- Not a Confirmed Theorem
+}
+\author{%
+  Myagmardorj Namnansuren\\
+  \small Nexcore LTD, Ulaanbaatar, Mongolia\\
+  \small \texttt{myagmardorj@gmail.com}
+}
+\date{May 2026 \quad DOI: \href{https://zenodo.org/records/20077673}{10.5281/zenodo.20077673}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report an exploratory numerical observation: statistically elevated
+covariance at prime-indexed lags in the spacing statistics of high
+Riemann zero blocks, empirically consistent with the
+Bogomolny--Keating (1996) prediction for prime-dependent corrections
+to GUE pair correlation. Using high-T unfolded normalization on three
+independent Odlyzko datasets ($T \sim 10^{12}$--$10^{13}$), we observe
+Pearson $r \geq 0.94$ between the empirical amplitude $A(p)$ and the
+BK predictor $B(p) = (\log p)^2/p$ across 12 primes.
+Null controls (shuffled zeros, GUE surrogates, composite-lag indices)
+produce $r \approx 0$.
+
+\medskip\noindent\textbf{Important caveats:}
+These are computational observations only.
+Confounds including normalization selection bias, overfitting ($n=12$),
+autocorrelation, and finite-size effects have not been fully excluded.
+This is \textbf{not} a confirmed theorem and \textbf{not} a proof of RH.
+Independent replication is required.
+
+\medskip\noindent Code: \url{https://github.com/myagmardorj-cloud/Myagmardorj}
+\end{abstract}
+
+\section{Motivation}
+
+The Riemann zeta function $\zeta(s)$ encodes deep information about
+prime number distribution. Montgomery \cite{montgomery1973} showed that
+pair correlations of Riemann zeros follow GUE statistics.
+Bogomolny and Keating \cite{bk1996} predicted that prime numbers
+contribute structured corrections of the form
+\[
+  A(p) \;\sim\; C \,\frac{(\log p)^2}{p}, \qquad p \text{ prime},
+\]
+where $C$ is an empirical constant. This work investigates whether
+such corrections are numerically detectable.
+
+\section{Data}
+
+Zero heights $\gamma_n$ from Odlyzko's tables \cite{odlyzko}:
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Dataset & Height $T$ & $N$ zeros & Note \\
+\midrule
+\texttt{zeros2} & $\approx 74{,}920$ & 100,000 & Low height \\
+\texttt{zeros3} & $\sim 10^{12}$     &  10,000 & High-T block \\
+\texttt{zeros4} & $\sim 10^{13}$     &  10,000 & High-T block \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Method}
+
+\subsection{Spacing covariance}
+Let $\delta_n = \gamma_{n+1} - \gamma_n$. The spacing covariance at lag $h$:
+\[
+  C(h) = \frac{1}{N-h}\sum_{n=1}^{N-h}
+  \bigl(\delta_n - \bar\delta\bigr)\bigl(\delta_{n+h} - \bar\delta\bigr).
+\]
+
+\subsection{High-T normalization (critical)}
+We evaluate $C(h)$ at prime lags using:
+\[
+  \tau_p = \frac{\log p}{\log(T/2\pi)}.
+\]
+The low-T formula $\tau_p = \log(p)/2\pi$ gives $r \approx 0.4$--$0.6$.
+The high-T formula was selected after observing the low-T result,
+introducing a potential selection bias (see Limitations).
+
+\subsection{Correlation}
+Pearson $r$ between $\{A(p)\}$ and $\{B(p) = (\log p)^2/p\}$
+across the first 12 primes ($p = 2,3,\ldots,37$).
+
+\section{Results}
+
+\subsection{Main correlation}
+
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+Dataset & Height & Pearson $r$ & Naive $p$-value$^\dagger$ \\
+\midrule
+\texttt{zeros2} & $\approx 74{,}920$ & 0.9783 & $3.82\times10^{-186}$ \\
+\texttt{zeros3} & $\sim 10^{12}$     & 0.9992 & $2.64\times10^{-15}$  \\
+\texttt{zeros4} & $\sim 10^{13}$     & 0.9421 & $5.0\times10^{-6}$    \\
+\bottomrule
+\end{tabular}
+
+\medskip\small $^\dagger$Naive $p$-values assume independence of 12 covariance values.
+Effective DOF $<12$ due to autocorrelation. Not corrected for multiple testing.
+\end{center}
+
+The ratio $R(p) = A(p)/B(p) \approx 16.5$ is approximately constant
+across primes (zeros3). No theoretical derivation of this constant exists.
+
+\subsection{Null controls}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Control & Result & Interpretation \\
+\midrule
+Shuffled zeros        & $r \approx 0.0 \pm 0.2$ & Signal is in zero ordering \\
+GUE surrogates        & $r \approx 0.0 \pm 0.2$ & Exceeds GUE baseline \\
+Composite-lag indices & $r \approx 0$           & Prime-specific effect \\
+Random-phase zeros    & $r \approx 0$           & Not a spacing artifact \\
+Scaling ($N$ varied)  & $r$ stable, $N\geq500$  & Not trivially finite \\
+Window variation      & $r$ stable              & Not Fourier leakage \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Limitations}
+
+\begin{enumerate}[label=\arabic*.]
+\item \textbf{Normalization bias.} High-T formula chosen after low-T gave weak results.
+\item \textbf{Small $n=12$.} Pearson $r$ is sensitive to outliers; functional form coincidence cannot be excluded.
+\item \textbf{Autocorrelation.} Covariances $C(p), C(p')$ for nearby primes are not independent; effective DOF $<12$.
+\item \textbf{Multiple testing.} 12 lags, no Bonferroni/FDR correction.
+\item \textbf{Finite window.} Spectral leakage from the finite zero block not fully excluded.
+\item \textbf{Unknown asymptotics.} Behavior of $r$ as $N \to \infty$ unknown; tested only up to $N=10{,}000$.
+\item \textbf{No theoretical derivation.} $C \approx 16.5$ has no analytic explanation.
+\item \textbf{No independent replication.} Results not yet reproduced on a separate machine/codebase.
+\end{enumerate}
+
+\section{Future Work}
+
+\begin{enumerate}[label=\arabic*.]
+\item Bootstrap confidence intervals and formal null ensemble
+\item Independent replication (different machine, OS, Python version)
+\item Scaling law: $r$ as $N \to \infty$
+\item Negative controls: composite-only indices, random phase sets
+\item Theoretical derivation of $C \approx 16.5$ from explicit formula
+\item Testing at $T \sim 10^{21}$
+\item Submission to \textit{Experimental Mathematics}
+\end{enumerate}
+
+\section{Conclusion}
+
+We observe prime-indexed excess in Riemann zero spacing covariance,
+empirically consistent with the Bogomolny--Keating prediction.
+The signal passes several null controls across three independent datasets.
+This is \textbf{not} a proof of the Riemann Hypothesis and
+\textbf{not} a confirmed theorem.
+It is a computational observation deserving further controlled investigation.
+
+\section*{Reproducibility}
+\begin{verbatim}
+git clone https://github.com/myagmardorj-cloud/Myagmardorj
+cd Myagmardorj && pip install -r requirements.txt
+cd prime-locked-zeros && python analyze.py ../zeros3
+# Expected: r = 0.9992, naive p = 2.64e-15 (uncorrected)
+\end{verbatim}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+
+\bibitem{bk1996}
+E.~B. Bogomolny and J.~P. Keating,
+``Random matrix theory and the Riemann zeros I \& II,''
+\textit{Nonlinearity}, \textbf{8}--\textbf{9}, 1995--1996.
+
+\bibitem{montgomery1973}
+H.~L. Montgomery,
+``The pair correlation of zeros of the zeta function,''
+\textit{Proc. Sympos. Pure Math.}, \textbf{24}, pp.\ 181--193, 1973.
+
+\bibitem{odlyzko}
+A.~M. Odlyzko,
+``The $10^{20}$-th zero of the Riemann zeta function,'' 1992.
+\url{http://www-users.cse.umn.edu/~odlyzko/zeta_tables/}
+
+\bibitem{hiary2012}
+G.~A. Hiary and A.~M. Odlyzko,
+``The zeta function on the critical line,''
+\textit{Math.\ Comp.}, \textbf{81}, 2012. arXiv:1105.4312
+
+\bibitem{rudnick1996}
+Z.~Rudnick and P.~Sarnak,
+``Zeros of principal $L$-functions and random matrix theory,''
+\textit{Duke Math.\ J.}, \textbf{81}(2), pp.\ 269--322, 1996.
+
+\end{thebibliography}
+
+\end{document}

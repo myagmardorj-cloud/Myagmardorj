@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Математикийн Нээгдээгүй Бодлогууд — research.nexcore.ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070710;--s1:#0e0e1c;--s2:#13131f;--s3:#1a1a2e;
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);
+  --cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;--red:#ff4d6d;
+  --gold:#f0b429;--purple:#a855f7;--orange:#fb923c;
+  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+
+/* MESH */
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.1;}
+.o1{width:600px;height:600px;background:radial-gradient(circle,#0033ff,transparent);top:-150px;left:-150px;animation:oa 38s ease-in-out infinite alternate;}
+.o2{width:450px;height:450px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-80px;animation:ob 32s ease-in-out infinite alternate;}
+.o3{width:280px;height:280px;background:radial-gradient(circle,#7700ff,transparent);top:45%;left:55%;animation:oc 30s ease-in-out infinite alternate;}
+@keyframes oa{to{transform:translate(100px,130px)}}
+@keyframes ob{to{transform:translate(-80px,-100px)}}
+@keyframes oc{to{transform:translate(-60px,80px)}}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);background-size:55px 55px;}
+
+/* LAYOUT */
+.wrap{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:2rem;}
+
+/* TOP NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.9rem 2rem;background:rgba(7,7,16,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);margin-bottom:3rem;}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+.nav-links{display:flex;gap:.5rem;}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--sub);text-decoration:none;padding:.35rem .75rem;border-radius:7px;transition:all .2s;}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,.05);}
+.lang-toggle{display:flex;}
+.lb{font-family:'Space Grotesk',sans-serif;font-size:.68rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
+.lb:first-child{border-radius:4px 0 0 4px;}
+.lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.lb.active{background:linear-gradient(135deg,#0044ff,var(--cyan));color:#fff;border-color:transparent;}
+
+/* HEADER */
+.page-header{text-align:center;padding:1rem 0 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:1.2rem;}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 3s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.page-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.8rem;line-height:1.1;}
+.page-title .hl{background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page-sub{font-size:.92rem;color:var(--sub);max-width:580px;margin:0 auto;}
+
+/* SECTION */
+.section{margin-bottom:3rem;}
+.sec-label{font-family:'Space Grotesk',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,.3),transparent);}
+.sec-label .star{color:var(--gold);}
+
+/* CLAY GRID */
+.clay-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.6rem;margin-bottom:1rem;}
+.prob-card{border-radius:12px;padding:1rem .8rem;border:1px solid;position:relative;cursor:pointer;transition:all .25s;min-height:180px;display:flex;flex-direction:column;}
+.prob-card:hover{transform:translateY(-4px);filter:brightness(1.1);}
+.prob-card.rh{background:rgba(240,180,41,.06);border-color:rgba(240,180,41,.3);}
+.prob-card.pnp{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25);}
+.prob-card.bsd{background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.25);}
+.prob-card.ns{background:rgba(0,229,160,.06);border-color:rgba(0,229,160,.25);}
+.prob-card.ym{background:rgba(251,146,60,.06);border-color:rgba(251,146,60,.25);}
+.prob-card.hc{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.25);}
+.prob-card.pc{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.1);opacity:.6;}
+.prob-card.highlight{box-shadow:0 0 0 2px var(--gold),0 0 30px rgba(240,180,41,.2);opacity:1 !important;}
+.prob-tag{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem;width:fit-content;}
+.tag-rh{background:rgba(240,180,41,.15);color:var(--gold);}
+.tag-pnp{background:rgba(168,85,247,.15);color:var(--purple);}
+.tag-bsd{background:rgba(0,212,255,.12);color:var(--cyan);}
+.tag-ns{background:rgba(0,229,160,.12);color:var(--green);}
+.tag-ym{background:rgba(251,146,60,.12);color:var(--orange);}
+.tag-hc{background:rgba(239,68,68,.12);color:var(--red);}
+.tag-solved{background:rgba(255,255,255,.08);color:var(--sub);}
+.prob-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:.4rem;line-height:1.2;}
+.prob-desc{font-size:.72rem;color:var(--sub);line-height:1.5;flex:1;}
+.prob-tools{margin-top:.6rem;font-size:.65rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(255,255,255,.05);padding-top:.4rem;}
+.solved-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(0,229,160,.15);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.15rem .4rem;border-radius:4px;}
+.our-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(240,180,41,.2);color:var(--gold);border:1px solid rgba(240,180,41,.4);padding:.15rem .4rem;border-radius:4px;animation:pulse-badge 4s infinite;}
+@keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* CONJECTURES GRID */
+.conj-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.6rem;}
+.conj-card{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:.8rem;transition:all .2s;cursor:pointer;}
+.conj-card:hover{border-color:rgba(255,255,255,.15);transform:translateY(-2px);}
+.conj-year{font-family:'Space Grotesk',sans-serif;font-size:.6rem;color:var(--muted);margin-bottom:.3rem;}
+.conj-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.8rem;margin-bottom:.3rem;color:var(--sub);}
+.conj-desc{font-size:.7rem;color:var(--muted);line-height:1.4;}
+.conj-status{margin-top:.5rem;font-size:.62rem;color:var(--muted);font-style:italic;}
+
+/* CONNECTIONS */
+.connections-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.conn-card{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;}
+.conn-eq{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;color:var(--cyan);margin-bottom:.5rem;letter-spacing:.05em;}
+.conn-desc{font-size:.78rem;color:var(--sub);line-height:1.5;}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:3rem;}
+.stat-box{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;}
+.stat-val{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;line-height:1;margin-bottom:.3rem;}
+.stat-lbl{font-size:.72rem;color:var(--sub);}
+
+/* Computational Observation BOX */
+.our-box{background:linear-gradient(135deg,rgba(240,180,41,.06),rgba(0,212,255,.04));border:1px solid rgba(240,180,41,.25);border-radius:16px;padding:2rem;margin-bottom:3rem;}
+.our-box-title{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.our-table{width:100%;border-collapse:collapse;}
+.our-table th{font-family:'Space Grotesk',sans-serif;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);}
+.our-table td{padding:.6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;color:var(--sub);}
+.our-table td.good{color:var(--green);font-weight:600;}
+.our-table td.warn{color:var(--gold);}
+.our-table td.bad{color:var(--red);}
+
+/* NEXT STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.step-box{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.3rem;}
+.step-n{font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;color:var(--cyan);letter-spacing:.12em;margin-bottom:.6rem;}
+.step-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.5rem;}
+.step-items{list-style:none;}
+.step-items li{font-size:.78rem;color:var(--sub);padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.step-items li::before{content:'→ ';color:var(--cyan);}
+
+/* QUOTE */
+.quote-box{text-align:center;padding:2rem;border-top:1px solid var(--border);margin-top:2rem;}
+.quote{font-style:italic;font-size:.95rem;color:var(--sub);max-width:700px;margin:0 auto .8rem;}
+.quote-src{font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--muted);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;margin-top:3rem;display:flex;justify-content:space-between;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--muted);}
+
+/* LANG */
+[data-lang]{display:none;}
+body.en [data-lang="en"]{display:block;}
+body.mn [data-lang="mn"]{display:block;}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.modal.open{display:flex;}
+.modal-box{background:var(--s1);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;max-width:500px;width:90%;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem;}
+.modal-close:hover{color:var(--text);}
+.modal-tag{font-family:'Space Grotesk',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;display:inline-block;padding:.25rem .6rem;border-radius:5px;}
+.modal-title{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.8rem;}
+.modal-body{font-size:.9rem;color:var(--sub);line-height:1.7;margin-bottom:1rem;}
+.modal-tools{font-size:.78rem;color:var(--muted);font-style:italic;border-top:1px solid var(--border);padding-top:.8rem;}
+
+@media(max-width:900px){
+  .clay-grid,.conj-grid{grid-template-columns:repeat(3,1fr);}
+  .connections-grid,.steps-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-row{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:600px){
+  .clay-grid,.conj-grid{grid-template-columns:repeat(2,1fr);}
+  .connections-grid,.steps-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body class="mn">
+
+<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<div class="grid-bg"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+    <div class="modal-tag" id="m-tag"></div>
+    <div class="modal-title" id="m-title"></div>
+    <div class="modal-body" id="m-body"></div>
+    <div class="modal-tools" id="m-tools"></div>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-logo" href="https://research.nexcore.ltd">research.nexcore.ltd</a>
+  <div class="nav-links">
+    <a class="nav-link" href="https://research.nexcore.ltd">← <span data-li="en">Back</span><span data-li="mn">Буцах</span></a>
+    <a class="nav-link" href="https://research.nexcore.ltd/verify.html">⚗️ Verify</a>
+    <a class="nav-link" href="https://research.nexcore.ltd/intro.html">✨ Intro</a>
+  </div>
+  <div style="display:flex;gap:.8rem;align-items:center;">
+    <div class="lang-toggle">
+      <button class="lb" id="lb-en" onclick="setLang('en')">ENG</button>
+      <button class="lb active" id="lb-mn" onclick="setLang('mn')">МОН</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-header">
+    <div class="eyebrow">
+      <span data-li="en">Clay Mathematics Institute · 2026</span>
+      <span data-li="mn">Клейгийн математикийн хүрээлэн · 2026</span>
+    </div>
+    <div class="page-title">
+      <span data-lang="en">Mathematics <span class="hl">Unsolved Problems</span></span>
+      <span data-lang="mn">Математикийн <span class="hl">Нээгдээгүй Бодлогууд</span></span>
+    </div>
+    <p class="page-sub">
+      <span data-lang="en">Next steps · Verified information · clay.math.org · 2026</span>
+      <span data-lang="mn">Дараагийн алхам · Зөвхөн баталгаажсан мэдээлэл · clay.math.org · 2026</span>
+    </p>
+  </div>
+
+  <!-- CLAY SECTION -->
+  <div class="section">
+    <div class="sec-label"><span class="star">★</span> <span data-li="en">CLAY MILLENNIUM PRIZE — 7 problems (1 solved)</span><span data-li="mn">CLAY MILLENNIUM PRIZE — 7 бодлого (1 шийдэгдсэн)</span></div>
+    <div class="clay-grid" id="clay-grid"></div>
+  </div>
+
+  <!-- CONJECTURES -->
+  <div class="section">
+    <div class="sec-label">◆ <span data-li="en">Famous open conjectures — 7 problems</span><span data-li="mn">Хамгийн чухал нээлттэй таамаглалууд — 7 бодлого</span></div>
+    <div class="conj-grid" id="conj-grid"></div>
+  </div>
+
+  <!-- CONNECTIONS -->
+  <div class="section">
+    <div class="sec-label"><span data-li="en">Why are problems connected?</span><span data-li="mn">Нийтлэг холбоос — Яагаад эдгээр бодлогууд хоорондоо уялдаатай вэ?</span></div>
+    <div class="connections-grid">
+      <div class="conn-card">
+        <div class="conn-eq">RH ↔ GC ↔ TPC ↔ LIC</div>
+        <div class="conn-desc">
+          <span data-lang="en">Prime number distribution · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
+          <span data-lang="mn">Прайм тооны тархалт · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
+        </div>
+      </div>
+      <div class="conn-card">
+        <div class="conn-eq">P≠NP ↔ BSD</div>
+        <div class="conn-desc">
+          <span data-lang="en">Elliptic curve rank counting · polynomial algorithm байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
+          <span data-lang="mn">Эллиптик муруйн rank тооцоолох · polynomial цагийн алгоритм байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
+        </div>
+      </div>
+      <div class="conn-card">
+        <div class="conn-eq">NS ↔ YM</div>
+        <div class="conn-desc">
+          <span data-lang="en">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
+          <span data-lang="mn">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
+        </div>
+      </div>
+      <div class="conn-card">
+        <div class="conn-eq">ABC ↔ BSD ↔ HC</div>
+        <div class="conn-desc">
+          <span data-lang="en">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
+          <span data-lang="mn">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-val" style="color:var(--red);">6</div><div class="stat-lbl"><span data-lang="en">Clay unsolved</span><span data-lang="mn">Clay нээлттэй бодлого</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--green);">1</div><div class="stat-lbl"><span data-lang="en">Clay solved (Perelman 2003)</span><span data-lang="mn">Clay шийдэгдсэн</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--sub);">7</div><div class="stat-lbl"><span data-lang="en">Famous conjectures</span><span data-lang="mn">Нэрт чухал таамаглал</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--gold);">$6M</div><div class="stat-lbl"><span data-lang="en">Clay total prize</span><span data-lang="mn">Clay нийт шагнал</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--orange);">270+</div><div class="stat-lbl"><span data-lang="en">Years oldest open</span><span data-lang="mn">Хамтын онцлойн тоо (жил)</span></div></div>
+  </div>
+
+  <!-- Computational Observation -->
+  <div class="our-box">
+    <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.12);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--sub);">⚠️ <strong style="color:var(--red);">Note:</strong> <span data-lang="en">Numerical observations only — not a theorem, not a proof of RH. Independent verification required.</span><span data-lang="mn">Зөвхөн тоон ажиглалт — теорем биш, RH-н нотолгоо биш.</span></div><div class="our-box-title"><span data-li="en">★ Our research position</span><span data-li="mn">★ Манай судалгааны байр суурь</span></div>
+    <table class="our-table">
+      <thead>
+        <tr>
+          <th><span data-li="en">Item</span><span data-li="mn">Зүйл</span></th>
+          <th><span data-li="en">Status</span><span data-li="mn">Статус</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Problem</td><td>Riemann Hypothesis (#01)</td></tr>
+        <tr><td>Connection</td><td><span data-lang="en">Prime-indexed excess in zero spacing statistics</span><span data-lang="mn">Тэгийн зайн статистик дахь прайм-индекстэй илүүдэл</span></td></tr>
+        <tr><td>Result</td><td class="good">r = 0.9992 · prime-correlated excess observed · persistent excess observed</td></tr>
+        <tr><td><span data-lang="en">Positioning</span><span data-lang="mn">Байр суурь</span></td><td class="warn"><span data-lang="en">Computational observation — empirically consistent with BK-type scaling</span><span data-lang="mn">Тооцооллын ажиглалт — BK-төрлийн scaling-тай нийцсэн</span></td></tr>
+        <tr><td><span data-lang="en">What it is NOT</span><span data-lang="mn">Юу биш вэ</span></td><td class="bad"><span data-lang="en">Not a confirmed theorem · Not a proof of RH</span><span data-lang="mn">Батлагдсан теорем биш · RH-н нотолгоо биш</span></td></tr>
+        <tr><td>Prize</td><td><span data-lang="en">$1,000,000 (Clay Institute) — if RH proven</span><span data-lang="mn">$1,000,000 (Клейн хүрээлэн) — RH батлагдвал</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="section">
+    <div class="sec-label"><span data-li="en">Next steps for our research</span><span data-li="mn">Хүнтөрлөхтийн дараагийн алхам</span></div>
+    <div class="steps-grid">
+      <div class="step-box">
+        <div class="step-n">1. <span data-li="en">COMPUTATION</span><span data-li="mn">ТООЦООЛОЛ</span></div>
+        <div class="step-title"><span data-lang="en">More data</span><span data-lang="mn">Илүү өгөгдөл</span></div>
+        <ul class="step-items">
+          <li>X=10⁷, N=1000 <span data-lang="en">zeros</span><span data-lang="mn">тэгүүд</span></li>
+          <li>prime residual spectrum</li>
+          <li><span data-lang="en">Repeat test</span><span data-lang="mn">Давтан нотлох</span></li>
+          <li>Bootstrap controls</li>
+          <li>Window-stability tests</li>
+        </ul>
+      </div>
+      <div class="step-box">
+        <div class="step-n">2. <span data-li="en">VERIFICATION</span><span data-li="mn">БАТАЛГАА</span></div>
+        <div class="step-title"><span data-lang="en">Independent replication</span><span data-lang="mn">Бие даасан баталгаа</span></div>
+        <ul class="step-items">
+          <li>E_zero ≈ F[E_prime]</li>
+          <li>p-value &lt; 0.01 <span data-lang="en">target</span><span data-lang="mn">зорилт</span></li>
+          <li>arXiv paper <span data-lang="en">submit</span><span data-lang="mn">илгээх</span></li>
+          <li>Peer review</li>
+        </ul>
+      </div>
+      <div class="step-box">
+        <div class="step-n">3. <span data-li="en">THEORY</span><span data-li="mn">ОНОЛ</span></div>
+        <div class="step-title"><span data-lang="en">Derive C ≈ 16.5</span><span data-lang="mn">C ≈ 16.5 онолоор гаргах</span></div>
+        <ul class="step-items">
+          <li>Goldston-Suriajaya</li>
+          <li>2020-<span data-lang="en">r framework</span><span data-lang="mn">р хүрээ</span></li>
+          <li><span data-lang="en">Formal derivation</span><span data-lang="mn">Формал нотолгоо</span></li>
+          <li>Explicit formula</li>
+        </ul>
+      </div>
+      <div class="step-box">
+        <div class="step-n">4. <span data-li="en">GOAL</span><span data-li="mn">ЗОРИЛТ</span></div>
+        <div class="step-title"><span data-lang="en">Toward RH</span><span data-lang="mn">RH руу</span></div>
+        <ul class="step-items">
+          <li>Montgomery ↔ H-L</li>
+          <li><span data-lang="en">New formula</span><span data-lang="mn">Нэгдсэн томьёо</span></li>
+          <li>RH <span data-lang="en">equivalent</span><span data-lang="mn">эквивалент</span></li>
+          <li>Clay Millennium Prize ($1,000,000)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <div class="quote">
+      <span data-lang="en">"Solving one problem is not the sum of solving a thousand problems. Numbers, space, structure, and information — all speak the same language."</span>
+      <span data-lang="mn">"Математикийн нэг бодлогыг шийдэх нь зуун бодлогын хааглыг нэгэн зэрэг онгойлгодог. Тоо, орон зай, хэлбэр, мэдээлэл — бүгд нэг хэлээр ярьдаг."</span>
+    </div>
+    <div class="quote-src">clay.math.org · arxiv.org · wikipedia.org · 2026</div>
+  </div>
+
+  <footer>
+    <span>Myagmardorj Namnansuren · Mongolia · 2026</span>
+    <span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span>
+    <span>DOI: 10.5281/zenodo.20077673</span>
+  </footer>
+</div>
+
+<script>
+// CLAY PROBLEMS DATA
+const clayProbs = [
+  {id:'rh', tag:'RH', tagClass:'tag-rh', cardClass:'rh highlight',
+   name_en:'Riemann Hypothesis', name_mn:'Риманы Таамаглал',
+   desc_en:'All non-trivial zeros of ζ(s) have real part ½. Connected to prime distribution.',
+   desc_mn:'ζ(s)-ийн бүх тривиаль биш тэгүүд Re(s)=½ дээр байна. Прайм тархалттай холбоотой.',
+   tools:'RMT · GUE · L-функц · explicit formula',
+   our:true},
+  {id:'pnp', tag:'P≠NP', tagClass:'tag-pnp', cardClass:'pnp',
+   name_en:'P vs NP', name_mn:'P ба NP',
+   desc_en:'Can every verifiable problem be solved efficiently?',
+   desc_mn:'Хариуг шалгаж болдог бодлого болгоныг хурдан бодож болох уу?',
+   tools:'Boolean circuit · oracle · GCT'},
+  {id:'bsd', tag:'BSD', tagClass:'tag-bsd', cardClass:'bsd',
+   name_en:'Birch–Swinnerton-Dyer', name_mn:'Бирч–Суиннертон-Даер',
+   desc_en:'L(E,1)≠0 ↔ rank=0. Iwasawa theory framework.',
+   desc_mn:'L(E,1)≠0 ↔ rank=0. Ивасавагийн онол өргөтгөх.',
+   tools:'Elliptic curve · p-adic L-функц'},
+  {id:'ns', tag:'NS', tagClass:'tag-ns', cardClass:'ns',
+   name_en:'Navier–Stokes', name_mn:'Навье–Стокс',
+   desc_en:'Global regularity or blowup in 3D fluid equations.',
+   desc_mn:'Global regularity эсвэл жишээ жилжих олох.',
+   tools:'PDE · functional analysis · CFD'},
+  {id:'ym', tag:'YM', tagClass:'tag-ym', cardClass:'ym',
+   name_en:'Yang–Mills Mass Gap', name_mn:'Янг–Миллс Mass Gap',
+   desc_en:'Mass gap > 0 for quantum Yang-Mills theory.',
+   desc_mn:'Mass gap > 0 гэдгийг QFT хүрээнд нотлох.',
+   tools:'Quantum field theory · lattice gauge'},
+  {id:'hc', tag:'HC', tagClass:'tag-hc', cardClass:'hc',
+   name_en:'Hodge Conjecture', name_mn:'Ходж Таамаглал',
+   desc_en:'Hodge class = algebraic cycle in motivic cohomology.',
+   desc_mn:'Hodge class алгебрийн motivic cohomology.',
+   tools:'Algebraic geometry · K-theory'},
+  {id:'pc', tag:'PC ✓', tagClass:'tag-solved', cardClass:'pc',
+   name_en:"Poincaré Conjecture", name_mn:'Пуанкарегийн Т.',
+   desc_en:'SOLVED 2003 — Perelman via Ricci flow. Declined $1M prize.',
+   desc_mn:'ШИЙДЭГДСЭН — Перельман · Ricci flow · 2003',
+   tools:'Riemannian geometry · Ricci flow',
+   solved:true},
+];
+
+const conjProbs = [
+  {year:'GC 1742', name_en:'Goldbach', name_mn:'Гольдбахын Т.',
+   desc_en:'Every even number = sum of 2 primes. Chen(1966): p+p·q → p+p²',
+   desc_mn:'Тэгш тоо = 2 прайм нийлбэр. Chen(1966): p+p·q → p+p²',
+   status:'Circle method · sieve theory'},
+  {year:'TPC 1849', name_en:'Twin Prime', name_mn:'Ихэр Прайм Т.',
+   desc_en:'Infinitely many primes p with p+2 prime. Zhang(2013): gap<70M',
+   desc_mn:'Zhang(2013): gap<70M. Maynard(2014): gap<246',
+   status:'GPY sieve · Elliott-Halberstam'},
+  {year:'ABC', name_en:'ABC Conjecture', name_mn:'ABC Таамаглал',
+   desc_en:'Mochizuki IUT proof (2012) — нийтийн шалгалт үргэлжилж байна',
+   desc_mn:'Mochizuki IUT онол (2012) — нийтийн шалгалт үргэлжилж байна',
+   status:'Inter-universal Teichmüller'},
+  {year:'COL 1937', name_en:'Collatz', name_mn:'Коллатцын Т.',
+   desc_en:'Tao(2019): density 1 set → n+1 бүх p-д 1 хүрнэ?',
+   desc_mn:'Tao(2019): density 1 set → n+1 бүх p-д 1 хүрнэ?',
+   status:'Ergodic theory · cellular automata'},
+  {year:'GL', name_en:'Geom. Langlands', name_mn:'Геометрийн Ленглендс',
+   desc_en:'Ben-Zvi et al. 2024: geometric arithmetic Langlands proved',
+   desc_mn:'Ben-Zvi et al. 2024: геом. арифметик Ленгленд үлдсэн',
+   status:'D-module · perverse sheaf'},
+  {year:'LIC', name_en:'Linear Independence', name_mn:'Linear Independence',
+   desc_en:'γₙ/2π irrational numbers Q дээр линейн бие даасан эсэх?',
+   desc_mn:'γₙ/2π тооцоолол Q дээр шугаман бие даасан байна уу?',
+   status:'Transcendence theory · Baker'},
+  {year:'SZC', name_en:'Simple Zeros', name_mn:'Simple Zeros',
+   desc_en:'Риман zeros бүгд энгийн (кратнос 1) эсэх? Montgomery: >2/3 ✓',
+   desc_mn:'Риман zeros бүгд энгийн (кратнос 1) эсэх? Montgomery: >2/3 ✓',
+   status:'Pair correlation · RMT'},
+];
+
+// Render clay grid
+const clayGrid = document.getElementById('clay-grid');
+clayProbs.forEach(p => {
+  const div = document.createElement('div');
+  div.className = `prob-card ${p.cardClass}`;
+  div.onclick = () => openModal(p);
+  div.innerHTML = `
+    ${p.solved ? '<span class="solved-badge">SOLVED 2003</span>' : ''}
+    ${p.our ? '<span class="our-badge">← Computational Observation</span>' : ''}
+    <span class="prob-tag ${p.tagClass}">${p.tag}</span>
+    <div class="prob-name">
+      <span data-lang="en">${p.name_en}</span>
+      <span data-lang="mn">${p.name_mn}</span>
+    </div>
+    <div class="prob-desc">
+      <span data-lang="en">${p.desc_en}</span>
+      <span data-lang="mn">${p.desc_mn}</span>
+    </div>
+    <div class="prob-tools">${p.tools}</div>
+  `;
+  clayGrid.appendChild(div);
+});
+
+// Render conjectures
+const conjGrid = document.getElementById('conj-grid');
+conjProbs.forEach(p => {
+  const div = document.createElement('div');
+  div.className = 'conj-card';
+  div.innerHTML = `
+    <div class="conj-year">${p.year}</div>
+    <div class="conj-name">
+      <span data-lang="en">${p.name_en}</span>
+      <span data-lang="mn">${p.name_mn}</span>
+    </div>
+    <div class="conj-desc">
+      <span data-lang="en">${p.desc_en}</span>
+      <span data-lang="mn">${p.desc_mn}</span>
+    </div>
+    <div class="conj-status">${p.status}</div>
+  `;
+  conjGrid.appendChild(div);
+});
+
+// Modal
+function openModal(p) {
+  const lang = document.body.className;
+  document.getElementById('m-tag').textContent = p.tag;
+  document.getElementById('m-tag').className = `modal-tag ${p.tagClass}`;
+  document.getElementById('m-title').textContent = lang==='mn' ? p.name_mn : p.name_en;
+  document.getElementById('m-body').textContent = lang==='mn' ? p.desc_mn : p.desc_en;
+  document.getElementById('m-tools').textContent = p.tools;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(e) {
+  if (e.target.id === 'modal') document.getElementById('modal').classList.remove('open');
+}
+
+// Language
+function setLang(lang) {
+  document.body.className = lang;
+  document.getElementById('lb-en').classList.toggle('active', lang==='en');
+  document.getElementById('lb-mn').classList.toggle('active', lang==='mn');
+  // Update dynamic content visibility
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+  });
+  document.querySelectorAll('[data-li]').forEach(el => {
+    el.style.display = el.dataset.li === lang ? 'inline' : 'none';
+  });
+  localStorage.setItem('lang', lang);
+}
+const saved = localStorage.getItem('lang');
+if (saved) setLang(saved); else setLang('mn');
+</script>
+</body>
+</html>
