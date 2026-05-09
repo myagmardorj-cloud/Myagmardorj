@@ -207,3 +207,23 @@ arXiv draft: [`docs/ARXIV_DRAFT.md`](docs/ARXIV_DRAFT.md)
 
 *Myagmardorj Namnansuren · Nexcore LTD · Ulaanbaatar, Mongolia · 2026*  
 *Experimental numerical study — not a confirmed theorem, not a proof of RH*
+
+## How to Cite
+
+```bibtex
+@software{myagmardorj2026,
+  author    = {Myagmardorj Namnansuren},
+  title     = {Prime-Indexed Excess in High Riemann Zero Spacing Covariance},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20077673},
+  url       = {https://github.com/myagmardorj-cloud/Myagmardorj}
+}
+```
+
+## Expected Runtime
+
+```
+python scripts/analyze.py zeros_ht.txt  →  ~10 seconds
+python controls/run_all.py              →  ~3 minutes
+```
