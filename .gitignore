@@ -37,3 +37,8 @@ results/*/*.csv
 .idea/
 *.swp
 *~
+
+# Allow these files
+!zeros6.txt
+!bootstrap_zeros*.txt
+!scatter_zeros*.png
