@@ -1380,6 +1380,17 @@ https://doi.org/10.5281/zenodo.20077673</pre>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>
 <script>
+
+function showPage(name){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var _p=document.getElementById('page-'+name);if(_p)_p.classList.add('active');
+  var _n=document.getElementById('nav-'+name);if(_n)_n.classList.add('active');
+  if(name==='charts')setTimeout(function(){if(typeof initCharts==='function')initCharts();},100);
+  if(name==='calculator')setTimeout(function(){if(typeof initCalc==='function')initCalc();},100);
+  if(name==='faq')setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},50);
+  window.scrollTo(0,0);
+}
+
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
 function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
 document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
