@@ -1,5 +1,7 @@
 # Prime-Indexed Excess in Riemann Zero Spacing Covariance
 
+> **This repository presents exploratory computational experiments and does not claim a proof of the Riemann Hypothesis.**
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20077673.svg)](https://zenodo.org/records/20077673)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-v0.3-green.svg)](CHANGELOG.md)
