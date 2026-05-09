@@ -46,12 +46,15 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margi
 .MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
 [data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
 @media(max-width:640px){.MN-links{display:none;}}
+
+.MN-dd a.MN-dd-active{color:#00d4ff !important;background:rgba(0,212,255,.08);}
+.MN-more button.MN-has-active{color:#00d4ff;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.15);}
 </style>
 </head>
 <body>
 <nav class="MN">
 <a href="index.html" class="MN-logo">research.nexcore.ltd</a>
-<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
+<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html" class="MN-cur"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
 <div class="MN-lang">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
@@ -64,12 +67,12 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margi
     All results are computational observations requiring independent replication.
   </div>
 
-  <h1>Mathematical Formalism</h1>
-  <p class="subtitle">Exact definitions, notation, and computational pipeline — v0.3 · May 2026</p>
+  <h1><span data-li="en">Mathematical Formalism</span><span data-li="mn">Математикийн Формализм</span></h1>
+  <p class="subtitle"><span data-li="en">Exact definitions, notation, and computational pipeline — v0.3 · May 2026</span><span data-li="mn">Яг тодорхойлолт, тэмдэглэгээ, тооцооллын дараалал — v0.3 · 2026 оны 5-р сар</span></p>
 
   <div class="section">
-    <div class="section-label">Definitions</div>
-    <h2>Basic Objects</h2>
+    <div class="section-label"><span data-li="en">Definitions</span><span data-li="mn">Тодорхойлолтууд</span></div>
+    <h2><span data-li="en">Basic Objects</span><span data-li="mn">Үндсэн объектууд</span></h2>
     <div class="def-block"><div class="def-label">Definition 1 — Riemann Zeros</div>Let \(\rho_n = \frac{1}{2} + i\gamma_n\) denote the non-trivial zeros of \(\zeta(s)\) with \(\gamma_n > 0\), ordered so that \(\gamma_1 \leq \gamma_2 \leq \cdots\)<div class="def-note">Source: Odlyzko zero tables. Three blocks used: zeros2 (T ≈ 74,920), zeros3 (T ~ 10¹²), zeros4 (T ~ 10¹³).</div></div>
     <div class="def-block"><div class="def-label">Definition 2 — Zero Spacings</div>\[\delta_n = \gamma_{n+1} - \gamma_n, \qquad \bar\delta = \frac{1}{N}\sum_{n=1}^{N}\delta_n\]<div class="def-note">Raw spacings, not unfolded. Mean spacing varies with height T.</div></div>
     <div class="def-block"><div class="def-label">Definition 3 — Spacing Covariance at Lag h</div>\[C(h) = \frac{1}{N-h}\sum_{n=1}^{N-h}\bigl(\delta_n - \bar\delta\bigr)\bigl(\delta_{n+h} - \bar\delta\bigr)\]<div class="def-note">The observable we compute. Evaluated at prime lags h = p.</div></div>
@@ -79,24 +82,24 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margi
   </div>
 
   <div class="section">
-    <div class="section-label">Observable</div>
-    <h2>Main Correlation</h2>
+    <div class="section-label"><span data-li="en">Observable</span><span data-li="mn">Ажиглагдах хэмжигдэхүүн</span></div>
+    <h2><span data-li="en">Main Correlation</span><span data-li="mn">Үндсэн корреляц</span></h2>
     <div class="math-block">\[r = \mathrm{Pearson}\bigl(\{A(p)\}_{p \leq 37},\; \{B(p)\}_{p \leq 37}\bigr)\]</div>
     <p style="font-size:.85rem;color:var(--sub);">Observed values: r = 0.9783 (zeros2), r = 0.9992 (zeros3), r = 0.9421 (zeros4). Independent replication on zeros_ht.txt gave r = 0.51 — original result not reproduced.</p>
   </div>
 
   <div class="section">
-    <div class="section-label">Statistical Limitations</div>
-    <h2>Why These Results Are Not Conclusive</h2>
-    <div class="warn-block"><div class="warn-label">Limitation 1 — Selection Bias</div><div style="font-size:.88rem;color:var(--sub);">The high-T normalization was chosen after observing that low-T gave weak results.</div></div>
-    <div class="warn-block"><div class="warn-label">Limitation 2 — Small Sample</div><div style="font-size:.88rem;color:var(--sub);">Pearson r with n = 12 data points is sensitive to outliers.</div></div>
-    <div class="warn-block"><div class="warn-label">Limitation 3 — Autocorrelation</div><div style="font-size:.88rem;color:var(--sub);">Covariances C(p) and C(p') for nearby primes are not independent. Effective DOF &lt; 12.</div></div>
-    <div class="warn-block"><div class="warn-label">Limitation 4 — Replication Failure</div><div style="font-size:.88rem;color:var(--sub);">Independent replication on Odlyzko 10¹² block gave r = 0.51, not r = 0.9992.</div></div>
+    <div class="section-label"><span data-li="en">Statistical Limitations</span><span data-li="mn">Статистикийн хязгаарлалтууд</span></div>
+    <h2><span data-li="en">Why These Results Are Not Conclusive</span><span data-li="mn">Яагаад эдгээр үр дүн дүгнэлт биш вэ</span></h2>
+    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 1 — Selection Bias</span><span data-li="mn">Хязгаарлалт 1 — Сонголтын bias</span></div><div style="font-size:.88rem;color:var(--sub);">The high-T normalization was chosen after observing that low-T gave weak results.</div></div>
+    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 2 — Small Sample</span><span data-li="mn">Хязгаарлалт 2 — Жижиг дээж</span></div><div style="font-size:.88rem;color:var(--sub);">Pearson r with n = 12 data points is sensitive to outliers.</div></div>
+    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 3 — Autocorrelation</span><span data-li="mn">Хязгаарлалт 3 — Автокорреляц</span></div><div style="font-size:.88rem;color:var(--sub);">Covariances C(p) and C(p') for nearby primes are not independent. Effective DOF &lt; 12.</div></div>
+    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 4 — Replication Failure</span><span data-li="mn">Хязгаарлалт 4 — Давталт амжилтгүй</span></div><div style="font-size:.88rem;color:var(--sub);">Independent replication on Odlyzko 10¹² block gave r = 0.51, not r = 0.9992.</div></div>
   </div>
 
   <div class="section">
-    <div class="section-label">Computational Pipeline</div>
-    <h2>Step-by-Step</h2>
+    <div class="section-label"><span data-li="en">Computational Pipeline</span><span data-li="mn">Тооцооллын дараалал</span></div>
+    <h2><span data-li="en">Step-by-Step</span><span data-li="mn">Алхам алхмаар</span></h2>
     <div class="pipeline">
       <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-text"><strong>Load zeros</strong> — Read γₙ from Odlyzko plain-text file.</div></div>
       <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-text"><strong>Compute spacings</strong> — δₙ = γₙ₊₁ − γₙ, center: δₙ ← δₙ − δ̄.</div></div>
@@ -108,7 +111,7 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margi
   </div>
 
   <div class="warn-block" style="margin-top:2rem;">
-    <div class="warn-label">Explicit Statement</div>
+    <div class="warn-label"><span data-li="en">Explicit Statement</span><span data-li="mn">Тодорхой мэдэгдэл</span></div>
     <div style="font-size:.92rem;color:var(--sub);">This computational study does not constitute a proof or disproof of the Riemann Hypothesis. Independent replication is required.</div>
   </div>
 </div>
