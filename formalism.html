@@ -7,29 +7,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
 <style>
-:root{
-  --bg:#070710;--surface:#0e0e1c;--surface2:#13131f;
-  --border:rgba(255,255,255,0.06);
-  --cyan:#00d4ff;--gold:#f0b429;--green:#00e5a0;--red:#ff4d6d;
-  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
-}
+:root{--bg:#070710;--surface:#0e0e1c;--surface2:#13131f;--border:rgba(255,255,255,0.06);--cyan:#00d4ff;--gold:#f0b429;--green:#00e5a0;--red:#ff4d6d;--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.7;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;background:rgba(7,7,16,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-back{font-size:.82rem;color:var(--sub);text-decoration:none;padding:.4rem .8rem;border:1px solid var(--border);border-radius:8px;transition:all .2s;}
-.nav-back:hover{color:var(--text);border-color:var(--cyan);}
-.container{max-width:800px;margin:0 auto;padding:5rem 2rem 4rem;}
-.disclaimer{background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);border-radius:10px;padding:1rem 1.5rem;font-size:.85rem;color:#d4909a;margin-bottom:3rem;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.7;padding-top:54px;padding-bottom:42px;}
+.container{max-width:820px;margin:0 auto;padding:2rem 2rem 4rem;}
+.disclaimer{background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);border-radius:10px;padding:1rem 1.5rem;font-size:.85rem;color:#d4909a;margin-bottom:2.5rem;}
 h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:.5rem;background:linear-gradient(90deg,var(--cyan),#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .subtitle{font-size:.95rem;color:var(--sub);margin-bottom:3rem;}
 .section{margin-bottom:3rem;}
 .section-label{font-family:'Space Grotesk',sans-serif;font-size:.62rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:.8rem;}
-h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margin-bottom:1.2rem;color:var(--text);}
-h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:.6rem;color:var(--text);}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margin-bottom:1.2rem;}
 .def-block{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;margin-bottom:1rem;}
 .def-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.5rem;letter-spacing:.08em;}
-.def-body{font-size:.92rem;color:var(--text);}
 .def-note{font-size:.82rem;color:var(--sub);margin-top:.5rem;font-style:italic;}
 .math-block{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;margin:1rem 0;text-align:center;overflow-x:auto;}
 .warn-block{background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:1rem 1.5rem;margin-bottom:1rem;}
@@ -39,142 +28,36 @@ h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-
 .pipe-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--cyan);min-width:2rem;padding-top:.1rem;}
 .pipe-text{font-size:.88rem;color:var(--sub);}
 .pipe-text strong{color:var(--text);}
-
-.lang-toggle{display:flex;flex-shrink:0;}
-.lang-btn{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
-.lang-btn:first-child{border-radius:3px 0 0 3px;}.lang-btn:last-child{border-radius:0 3px 3px 0;border-left:none;}
-.lang-btn.active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
-body.mn [data-lang="en"]{display:none;}
-body.en [data-lang="mn"]{display:none;}
-[data-lang="en"],[data-lang="mn"]{display:inline;}
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.75rem;color:var(--muted);margin-top:4rem;}
-
-/* ── SHARED NAV ── */
-.snav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;height:56px;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
-.snav-logo{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
-.snav-links{display:flex;gap:0;list-style:none;align-items:center;}
-.snav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.4rem .7rem;border-radius:8px;border:1px solid transparent;transition:all .2s;white-space:nowrap;cursor:pointer;}
-.snav-links a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.snav-links a.active-page{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2);}
-.snav-more{position:relative;}
-.snav-more-btn{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:#9999b8;background:none;border:1px solid transparent;border-radius:8px;padding:.4rem .7rem;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.snav-more-btn:hover,.snav-more-btn.open{color:#eeeef8;background:rgba(255,255,255,.05);}
-.snav-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:.4rem;min-width:160px;z-index:400;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.snav-dropdown.open{display:block;}
-.snav-dropdown a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:#9999b8;text-decoration:none;padding:.4rem .8rem;border-radius:8px;transition:all .2s;white-space:nowrap;}
-.snav-dropdown a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.snav-lang{display:flex;}
-.snav-lb{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.3rem .6rem;background:none;border:1px solid rgba(255,255,255,.1);color:#5a5a7a;cursor:pointer;transition:all .2s;}
-.snav-lb:first-child{border-radius:4px 0 0 4px;}
-.snav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
-.snav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
-@media(max-width:640px){.snav-links{display:none;}}
-
-
 /* MASTER NAV */
-.mnav{position:fixed;top:0;left:0;right:0;z-index:300;height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
-.mnav-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
-.mnav-links{display:flex;align-items:center;gap:0;}
-.mnav-links a,.mnav-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.35rem .65rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
-.mnav-links a:hover,.mnav-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-links a.cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
-.mnav-links a.vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
-.mnav-more{position:relative;}
-.mnav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.4rem;min-width:170px;z-index:400;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.mnav-dd.open{display:block;}
-.mnav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:#9999b8;text-decoration:none;padding:.38rem .85rem;border-radius:8px;transition:all .2s;cursor:pointer;}
-.mnav-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-lang{display:flex;flex-shrink:0;}
-.mnav-lb{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.28rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
-.mnav-lb:first-child{border-radius:4px 0 0 4px;}
-.mnav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
-.mnav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
-[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
-[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
-body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
-@media(max-width:640px){.mnav-links{display:none;}}
-@media(max-width:768px){
-  .mnav-links{gap:.3rem;flex-wrap:nowrap;overflow-x:auto;}
-  .mnav-links a,.mnav-links button{font-size:.72rem;padding:.28rem .45rem;}
-}
-
-body{padding-top:52px;}
-/* MASTER FOOTER */
-
-/* MASTER FOOTER */
-.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
-.MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
-.MF-center{display:flex;gap:0;align-items:center;}
-.MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
-.MF-center a:hover{color:#9999b8;}
-.MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
-.MF-right a{color:#5a5a7a;text-decoration:none;}
-.MF-right a:hover{color:#00d4ff;}
-body{padding-bottom:42px !important;}
-
-
-/* MASTER NAV */
-
-/* MASTER NAV */
-.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
-.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;cursor:pointer;}
+.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
 .MN-links{display:flex;align-items:center;}
-.MN-links a,.MN-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;line-height:1;}
+.MN-links a,.MN-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
 .MN-links a:hover,.MN-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
 .MN-links a.MN-cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
 .MN-links a.MN-vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
 .MN-more{position:relative;}
 .MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.4rem;min-width:165px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
 .MN-dd.open{display:block;}
-.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;}
 .MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
-.MN-lang{display:flex;flex-shrink:0;margin-left:.5rem;}
 .MN-lb{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
-.MN-lb:first-child{border-radius:4px 0 0 4px;}
-.MN-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}.MN-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
 .MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
-body{padding-top:54px !important;}
-[data-li]{display:none;}
-body.en [data-li="en"]{display:inline;}
-body.mn [data-li="mn"]{display:inline;}
-[data-lang]{display:none;}
-body.en [data-lang="en"]{display:block;}
-body.mn [data-lang="mn"]{display:block;}
-body.en span[data-lang="en"]{display:inline;}
-body.mn span[data-lang="mn"]{display:inline;}
+[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
 @media(max-width:640px){.MN-links{display:none;}}
-
-/* MASTER FOOTER */
-
-.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);}
-.MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
-.MF-center{display:flex;align-items:center;}
-.MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
-.MF-center a:hover{color:#9999b8;}
-.MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
-.MF-right a{color:#5a5a7a;text-decoration:none;}.MF-right a:hover{color:#00d4ff;}
-body{padding-bottom:42px !important;}
 </style>
 </head>
 <body>
 <nav class="MN">
 <a href="index.html" class="MN-logo">research.nexcore.ltd</a>
-<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">Судалгааны зам</span><span data-li="mn">Судалгааны зам</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></div></span></div>
+<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
 <div class="MN-lang">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
-
-
-
-
-<div style="background:rgba(255,77,109,.06);border-bottom:1px solid rgba(255,77,109,.15);padding:.4rem 1.5rem;text-align:center;font-size:.75rem;color:#c4808a;font-family:'Plus Jakarta Sans',sans-serif;position:sticky;top:52px;z-index:200;">This project presents exploratory computational observations — <strong>not a proof of the Riemann Hypothesis</strong>.</div>
-
-
-
 <div class="container">
-
   <div class="disclaimer">
     ⚠️ This page defines the mathematical objects used in this computational study.
     <strong>No proof of the Riemann Hypothesis is claimed.</strong>
@@ -184,227 +67,68 @@ body{padding-bottom:42px !important;}
   <h1>Mathematical Formalism</h1>
   <p class="subtitle">Exact definitions, notation, and computational pipeline — v0.3 · May 2026</p>
 
-  <!-- DEFINITIONS -->
   <div class="section">
     <div class="section-label">Definitions</div>
     <h2>Basic Objects</h2>
-
-    <div class="def-block">
-      <div class="def-label">Definition 1 — Riemann Zeros</div>
-      <div class="def-body">Let \(\rho_n = \frac{1}{2} + i\gamma_n\) denote the non-trivial zeros of \(\zeta(s)\) with \(\gamma_n > 0\), ordered so that \(\gamma_1 \leq \gamma_2 \leq \cdots\)</div>
-      <div class="def-note">Source: Odlyzko zero tables. Three blocks used: zeros2 (T ≈ 74,920), zeros3 (T ~ 10¹²), zeros4 (T ~ 10¹³).</div>
-    </div>
-
-    <div class="def-block">
-      <div class="def-label">Definition 2 — Zero Spacings</div>
-      <div class="def-body">\[\delta_n = \gamma_{n+1} - \gamma_n, \qquad \bar\delta = \frac{1}{N}\sum_{n=1}^{N}\delta_n\]</div>
-      <div class="def-note">Raw spacings, not unfolded. Mean spacing varies with height T.</div>
-    </div>
-
-    <div class="def-block">
-      <div class="def-label">Definition 3 — Spacing Covariance at Lag h</div>
-      <div class="def-body">\[C(h) = \frac{1}{N-h}\sum_{n=1}^{N-h}\bigl(\delta_n - \bar\delta\bigr)\bigl(\delta_{n+h} - \bar\delta\bigr)\]</div>
-      <div class="def-note">The observable we compute. Evaluated at prime lags h = p.</div>
-    </div>
-
-    <div class="def-block">
-      <div class="def-label">Definition 4 — High-T Unfolded Normalization</div>
-      <div class="def-body">\[\tau_p = \frac{\log p}{\log(T / 2\pi)}\]</div>
-      <div class="def-note">Critical: using \(\tau_p = \log p / 2\pi\) (low-T formula) gives r ≈ 0.4–0.6 with no visible pattern. The high-T formula was selected after observing this failure — introducing potential selection bias (see Limitations).</div>
-    </div>
-
-    <div class="def-block">
-      <div class="def-label">Definition 5 — BK Predictor</div>
-      <div class="def-body">\[B(p) = \frac{(\log p)^2}{p}\]</div>
-      <div class="def-note">From Bogomolny–Keating (1996). Predicts the form of prime-dependent corrections to pair correlation statistics.</div>
-    </div>
-
-    <div class="def-block">
-      <div class="def-label">Definition 6 — Empirical Amplitude</div>
-      <div class="def-body">\[A(p) = C(p)\]</div>
-      <div class="def-note">The spacing covariance evaluated at prime lag p. We test whether A(p) ~ B(p).</div>
-    </div>
+    <div class="def-block"><div class="def-label">Definition 1 — Riemann Zeros</div>Let \(\rho_n = \frac{1}{2} + i\gamma_n\) denote the non-trivial zeros of \(\zeta(s)\) with \(\gamma_n > 0\), ordered so that \(\gamma_1 \leq \gamma_2 \leq \cdots\)<div class="def-note">Source: Odlyzko zero tables. Three blocks used: zeros2 (T ≈ 74,920), zeros3 (T ~ 10¹²), zeros4 (T ~ 10¹³).</div></div>
+    <div class="def-block"><div class="def-label">Definition 2 — Zero Spacings</div>\[\delta_n = \gamma_{n+1} - \gamma_n, \qquad \bar\delta = \frac{1}{N}\sum_{n=1}^{N}\delta_n\]<div class="def-note">Raw spacings, not unfolded. Mean spacing varies with height T.</div></div>
+    <div class="def-block"><div class="def-label">Definition 3 — Spacing Covariance at Lag h</div>\[C(h) = \frac{1}{N-h}\sum_{n=1}^{N-h}\bigl(\delta_n - \bar\delta\bigr)\bigl(\delta_{n+h} - \bar\delta\bigr)\]<div class="def-note">The observable we compute. Evaluated at prime lags h = p.</div></div>
+    <div class="def-block"><div class="def-label">Definition 4 — High-T Unfolded Normalization</div>\[\tau_p = \frac{\log p}{\log(T / 2\pi)}\]<div class="def-note">Critical: using \(\tau_p = \log p / 2\pi\) (low-T formula) gives r ≈ 0.4–0.6. The high-T formula was selected after observing this — introducing potential selection bias.</div></div>
+    <div class="def-block"><div class="def-label">Definition 5 — BK Predictor</div>\[B(p) = \frac{(\log p)^2}{p}\]<div class="def-note">From Bogomolny–Keating (1996). Predicts the form of prime-dependent corrections to pair correlation statistics.</div></div>
+    <div class="def-block"><div class="def-label">Definition 6 — Empirical Amplitude</div>\[A(p) = C(p)\]<div class="def-note">The spacing covariance evaluated at prime lag p. We test whether A(p) ~ B(p).</div></div>
   </div>
 
-  <!-- OBSERVABLE -->
   <div class="section">
     <div class="section-label">Observable</div>
     <h2>Main Correlation</h2>
-    <p style="font-size:.92rem;color:var(--sub);margin-bottom:1rem;">We compute the Pearson correlation coefficient between the empirical amplitudes and the BK predictors across the first 12 primes (p = 2, 3, 5, ..., 37):</p>
-    <div class="math-block">
-      \[r = \mathrm{Pearson}\bigl(\{A(p)\}_{p \leq 37},\; \{B(p)\}_{p \leq 37}\bigr)\]
-    </div>
-    <p style="font-size:.82rem;color:var(--sub);">Observed values: r = 0.9783 (zeros2), r = 0.9992 (zeros3), r = 0.9421 (zeros4).</p>
+    <div class="math-block">\[r = \mathrm{Pearson}\bigl(\{A(p)\}_{p \leq 37},\; \{B(p)\}_{p \leq 37}\bigr)\]</div>
+    <p style="font-size:.85rem;color:var(--sub);">Observed values: r = 0.9783 (zeros2), r = 0.9992 (zeros3), r = 0.9421 (zeros4). Independent replication on zeros_ht.txt gave r = 0.51 — original result not reproduced.</p>
   </div>
 
-  <!-- NULL MODELS -->
-  <div class="section">
-    <div class="section-label">Null Models</div>
-    <h2>Control Distributions</h2>
-
-    <div class="def-block">
-      <div class="def-label">Null 1 — Permutation Test</div>
-      <div class="def-body">Randomly permute the zero spacings \(\{\delta_n\}\), recompute C(p) and r. Repeat N = 500 times. Expected: r ≈ 0 under H₀.</div>
-    </div>
-
-    <div class="def-block">
-      <div class="def-label">Null 2 — GUE Surrogate</div>
-      <div class="def-body">Replace zeros with synthetic Wigner–Dyson distributed spacings: \(s \sim \frac{\pi}{2}s\,e^{-\pi s^2/4}\). Compute r on surrogate. Repeat N = 300 times.</div>
-    </div>
-
-    <div class="def-block">
-      <div class="def-label">Null 3 — Composite Lags</div>
-      <div class="def-body">Replace prime lags {2,3,5,...,37} with composite lags {4,6,8,...,22}. Compute r. Expected: r ≈ 0 if signal is prime-specific.</div>
-    </div>
-  </div>
-
-  <!-- STATISTICAL LIMITATIONS -->
   <div class="section">
     <div class="section-label">Statistical Limitations</div>
     <h2>Why These Results Are Not Conclusive</h2>
-
-    <div class="warn-block">
-      <div class="warn-label">Limitation 1 — Selection Bias</div>
-      <div style="font-size:.88rem;color:var(--sub);">The high-T normalization was chosen after observing that low-T gave weak results. This post-hoc selection inflates the apparent correlation.</div>
-    </div>
-    <div class="warn-block">
-      <div class="warn-label">Limitation 2 — Small Sample</div>
-      <div style="font-size:.88rem;color:var(--sub);">Pearson r with n = 12 data points is sensitive to outliers. Functional form coincidence cannot be excluded.</div>
-    </div>
-    <div class="warn-block">
-      <div class="warn-label">Limitation 3 — Autocorrelation</div>
-      <div style="font-size:.88rem;color:var(--sub);">Covariances C(p) and C(p') for nearby primes are not independent. Effective degrees of freedom &lt; 12. Naive p-values are unreliable.</div>
-    </div>
-    <div class="warn-block">
-      <div class="warn-label">Limitation 4 — Unknown Asymptotics</div>
-      <div style="font-size:.88rem;color:var(--sub);">Behavior of r as N → ∞ is unknown. Tested only up to N = 10,000. Signal may be a finite-window artifact.</div>
-    </div>
-    <div class="warn-block">
-      <div class="warn-label">Limitation 5 — No Theoretical Derivation</div>
-      <div style="font-size:.88rem;color:var(--sub);">The empirical constant R(p) = A(p)/B(p) ≈ 16.5 has no analytic explanation. The connection to BK (1996) is heuristic.</div>
-    </div>
+    <div class="warn-block"><div class="warn-label">Limitation 1 — Selection Bias</div><div style="font-size:.88rem;color:var(--sub);">The high-T normalization was chosen after observing that low-T gave weak results.</div></div>
+    <div class="warn-block"><div class="warn-label">Limitation 2 — Small Sample</div><div style="font-size:.88rem;color:var(--sub);">Pearson r with n = 12 data points is sensitive to outliers.</div></div>
+    <div class="warn-block"><div class="warn-label">Limitation 3 — Autocorrelation</div><div style="font-size:.88rem;color:var(--sub);">Covariances C(p) and C(p') for nearby primes are not independent. Effective DOF &lt; 12.</div></div>
+    <div class="warn-block"><div class="warn-label">Limitation 4 — Replication Failure</div><div style="font-size:.88rem;color:var(--sub);">Independent replication on Odlyzko 10¹² block gave r = 0.51, not r = 0.9992.</div></div>
   </div>
 
-  <!-- PIPELINE -->
   <div class="section">
     <div class="section-label">Computational Pipeline</div>
     <h2>Step-by-Step</h2>
     <div class="pipeline">
-      <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-text"><strong>Load zeros</strong> — Read γₙ from Odlyzko plain-text file (one value per line).</div></div>
+      <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-text"><strong>Load zeros</strong> — Read γₙ from Odlyzko plain-text file.</div></div>
       <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-text"><strong>Compute spacings</strong> — δₙ = γₙ₊₁ − γₙ, center: δₙ ← δₙ − δ̄.</div></div>
-      <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-text"><strong>Compute C(p)</strong> — For each prime p ≤ 37: C(p) = mean(δₙ · δₙ₊ₚ) over n.</div></div>
+      <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-text"><strong>Compute C(p)</strong> — For each prime p ≤ 37: C(p) = mean(δₙ · δₙ₊ₚ).</div></div>
       <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-text"><strong>Compute B(p)</strong> — B(p) = (log p)² / p for each prime p.</div></div>
       <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-text"><strong>Pearson r</strong> — Correlate {C(p)} and {B(p)} across 12 primes.</div></div>
       <div class="pipe-step"><div class="pipe-num">06</div><div class="pipe-text"><strong>Null controls</strong> — Repeat with shuffled zeros, GUE surrogates, composite lags.</div></div>
-      <div class="pipe-step"><div class="pipe-num">07</div><div class="pipe-text"><strong>Report</strong> — r value, naive p-value (uncorrected), null comparison. All caveats stated explicitly.</div></div>
     </div>
   </div>
 
   <div class="warn-block" style="margin-top:2rem;">
     <div class="warn-label">Explicit Statement</div>
-    <div style="font-size:.92rem;color:var(--sub);">This computational study does not constitute a proof or disproof of the Riemann Hypothesis. The observations are empirically consistent with Bogomolny–Keating predictions but multiple confounds have not been excluded. Independent replication and asymptotic analysis are required.</div>
+    <div style="font-size:.92rem;color:var(--sub);">This computational study does not constitute a proof or disproof of the Riemann Hypothesis. Independent replication is required.</div>
   </div>
-
 </div>
 
-
-<script>
-function setLang(lang){
-  document.body.className = lang;
-  document.querySelectorAll('.lang-btn').forEach(b=>{
-    b.classList.toggle('active',(lang==='en'&&b.textContent==='ENG')||(lang==='mn'&&b.textContent==='МОН'));
-  });
-  localStorage.setItem('lang', lang);
-}
-const saved = localStorage.getItem('lang');
-if(saved) setLang(saved); else setLang('en');
-</script>
-<script>
-function snavToggle(btn){
-  const dd=document.getElementById('snav-dd');
-  const open=dd.classList.toggle('open');
-  btn.classList.toggle('open',open);
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.snav-more')){
-    const dd=document.getElementById('snav-dd');
-    const btn=document.querySelector('.snav-more-btn');
-    if(dd)dd.classList.remove('open');
-    if(btn)btn.classList.remove('open');
-  }
-});
-function snavLang(lang){
-  document.body.className=lang;
-  document.querySelectorAll('.snav-lb').forEach(b=>{
-    b.classList.toggle('active',(lang==='en'&&b.id==='snav-en')||(lang==='mn'&&b.id==='snav-mn'));
-  });
-  localStorage.setItem('lang',lang);
-}
-(function(){const s=localStorage.getItem('lang')||'en';snavLang(s);})();
-function mnavClose(){document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});}
-
-function mnavToggle(btn){
-  var dd=btn.nextElementSibling;
-  var open=dd.classList.toggle('open');
-  btn.classList.toggle('active',open);
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.mnav-more')){
-    document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});
-  }
-});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.mnav-lb,.lang-btn,.lb').forEach(function(b){
-    b.classList.toggle('active',
-      (l==='en'&&(b.dataset.l==='en'||b.textContent==='ENG'||b.id==='lb-en'||b.id==='btn-en'))||
-      (l==='mn'&&(b.dataset.l==='mn'||b.textContent==='МОН'||b.id==='lb-mn'||b.id==='btn-mn'))
-    );
-  });
-  localStorage.setItem('lang',l);
-}
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
-
-
-function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
-function MN_toggle(btn){
-  var dd=btn.nextElementSibling;
-  var open=dd.classList.toggle('open');
-  btn.classList.toggle('MN-active',open);
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.MN-more')){
-    document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
-    document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-active');});
-  }
-});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.MN-lb').forEach(function(b){
-    b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));
-  });
-  document.querySelectorAll('.lang-btn,.lb').forEach(function(b){
-    b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
-  });
-  var fl=document.getElementById('faq-list');
-  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
-  localStorage.setItem('lang',l);
-}
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
-
-</script>
-
-
-<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;box-sizing:border-box;">
-<span><span data-li="en">Exploratory computational research. No proof of RH claimed.</span><span data-li="mn">Тооцооллын судалгаа. RH-н нотолгоо нэхэмжлэхгүй.</span></span>
-<div style="display:flex;">
-  <a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-  <a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
-  <a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
-  <a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
-  <a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
-</div>
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
+<span>Exploratory computational research. No proof of RH claimed.</span>
+<div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a></div>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>
+
+<script>
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
+function setLang(l){
+  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
+  document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
+  localStorage.setItem('lang',l);
+}
+(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
+</script>
 </body>
 </html>
