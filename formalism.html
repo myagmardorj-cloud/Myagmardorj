@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -25,135 +25,130 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margi
 .warn-label{font-family:'Space Grotesk',sans-serif;font-size:.62rem;letter-spacing:.12em;color:var(--red);text-transform:uppercase;margin-bottom:.4rem;}
 .pipeline{display:flex;flex-direction:column;gap:.6rem;}
 .pipe-step{display:flex;gap:1rem;align-items:flex-start;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.2rem;}
-.pipe-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--cyan);min-width:2rem;padding-top:.1rem;}
+.pipe-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--cyan);min-width:2rem;}
 .pipe-text{font-size:.88rem;color:var(--sub);}
 .pipe-text strong{color:var(--text);}
-/* MASTER NAV */
+/* NAV */
 .MN{position:fixed;top:0;left:0;right:0;z-index:500;height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
 .MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
 .MN-links{display:flex;align-items:center;}
 .MN-links a,.MN-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
 .MN-links a:hover,.MN-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
 .MN-links a.MN-cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
-
 .MN-more{position:relative;}
-.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.4rem;min-width:165px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.4rem;min-width:165px;z-index:600;}
 .MN-dd.open{display:block;}
-.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;}
 .MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
 .MN-lb{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
 .MN-lb:first-child{border-radius:4px 0 0 4px;}.MN-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
 .MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
 [data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
 @media(max-width:640px){.MN-links{display:none;}}
-
-.MN-dd a.MN-dd-active{color:#00d4ff !important;background:rgba(0,212,255,.08);}
-.MN-more button.MN-has-active{color:#00d4ff;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.15);}
 </style>
 </head>
 <body>
 <nav class="MN">
 <a href="index.html" class="MN-logo">research.nexcore.ltd</a>
-<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Ò®Ñ€ Ð´Ò¯Ð½</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Ð¥Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ð»Ñ‚</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Ð¢Ð°Ð½Ð¸Ð»Ñ†ÑƒÑƒÐ»Ð³Ð°</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Ð¤Ð¾Ñ€Ð¼Ð°Ð» Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð¾Ð»Ñ‚</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More â–¾</span><span data-li="mn">Ð”ÑÐ»Ð³ÑÑ€ÑÐ½Ð³Ò¯Ð¹ â–¾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Ð“Ñ€Ð°Ñ„Ð¸ÐºÑƒÑƒÐ´</span></a><a href="index.html"><span data-li="en">Calculator</span><span data-li="mn">Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ð»</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">ÐÑ€Ð³Ð°Ñ‡Ð»Ð°Ð»</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Ð¥ÑÐ½Ð°Ð»Ñ‚Ñ‹Ð½ Ñ‚ÐµÑÑ‚</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Ó¨Ð³Ó©Ð³Ð´Ó©Ð»</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Ð­ÑˆÐ»ÑÐ»</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">ÐÑÑƒÑƒÐ»Ñ‚</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Ð¥ÑÐ»ÑÐ»Ñ†Ò¯Ò¯Ð»ÑÐ³</span></a><a href="index.html"><span data-li="en">Roadmap</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ð·Ð°Ð¼</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Ð¢Ó©ÑÐ»Ð¸Ð¹Ð½ Ñ‚ÑƒÑ…Ð°Ð¹</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ñ…Ò¯Ñ€ÑÑ</span></a></div></span></div>
-<div class="MN-lang">
+<div class="MN-links">
+<a href="index.html"><span data-li="en">Results</span><span data-li="mn">&#1198;&#1088; &#1076;&#1199;&#1085;</span></a>
+<a href="verify.html"><span data-li="en">Verify</span><span data-li="mn">&#1061;&#1072;&#1088;&#1100;&#1094;&#1091;&#1091;&#1083;&#1072;&#1083;&#1090;</span></a>
+<a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">&#1058;&#1072;&#1085;&#1080;&#1083;&#1094;&#1091;&#1091;&#1083;&#1075;&#1072;</span></a>
+<a href="formalism.html" class="MN-cur"><span data-li="en">Formalism</span><span data-li="mn">&#1060;&#1086;&#1088;&#1084;&#1072;&#1083; &#1090;&#1086;&#1076;&#1086;&#1088;&#1093;&#1086;&#1081;&#1083;&#1086;&#1083;&#1090;</span></a>
+<span class="MN-more">
+<button onclick="MN_toggle(this)"><span data-li="en">More &#9660;</span><span data-li="mn">&#1044;&#1101;&#1083;&#1075;&#1101;&#1088;&#1101;&#1085;&#1075;&#1199;&#1081; &#9660;</span></button>
+<div class="MN-dd">
+<a href="index.html"><span data-li="en">Charts</span><span data-li="mn">&#1043;&#1088;&#1072;&#1092;&#1080;&#1082;&#1091;&#1091;&#1076;</span></a>
+<a href="index.html"><span data-li="en">Calculator</span><span data-li="mn">&#1058;&#1086;&#1086;&#1094;&#1086;&#1086;&#1083;&#1086;&#1083;</span></a>
+<a href="index.html"><span data-li="en">Methods</span><span data-li="mn">&#1040;&#1088;&#1075;&#1072;&#1095;&#1083;&#1072;&#1083;</span></a>
+<a href="index.html"><span data-li="en">Controls</span><span data-li="mn">&#1061;&#1103;&#1085;&#1072;&#1083;&#1090;&#1099;&#1085; &#1090;&#1077;&#1089;&#1090;</span></a>
+<a href="index.html"><span data-li="en">Data</span><span data-li="mn">&#1054;&#1075;&#1257;&#1075;&#1076;&#1257;&#1083;</span></a>
+<a href="index.html"><span data-li="en">References</span><span data-li="mn">&#1069;&#1096;&#1083;&#1101;&#1083;</span></a>
+<a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">&#1040;&#1089;&#1091;&#1091;&#1083;&#1090;</span></a>
+<a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">&#1061;&#1101;&#1083;&#1101;&#1083;&#1094;&#1199;&#1199;&#1083;&#1101;&#1075;</span></a>
+<a href="index.html"><span data-li="en">Roadmap</span><span data-li="mn">&#1057;&#1091;&#1076;&#1072;&#1083;&#1075;&#1072;&#1072;&#1085;&#1099; &#1079;&#1072;&#1084;</span></a>
+<a href="index.html"><span data-li="en">About</span><span data-li="mn">&#1058;&#1257;&#1089;&#1083;&#1080;&#1081;&#1085; &#1090;&#1091;&#1093;&#1072;&#1081;</span></a>
+<a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">&#1057;&#1091;&#1076;&#1072;&#1083;&#1075;&#1072;&#1072;&#1085;&#1099; &#1093;&#1199;&#1088;&#1101;&#1101;</span></a>
+</div>
+</span>
+</div>
+<div style="display:flex;">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
-<button class="MN-lb" data-l="mn" onclick="setLang('mn')">ÐœÐžÐ</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">&#1052;&#1054;&#1053;</button>
 </div>
 </nav>
 
-
 <div class="container">
-  <div class="disclaimer">
-    âš ï¸ This page defines the mathematical objects used in this computational study.
-    <strong>No proof of the Riemann Hypothesis is claimed.</strong>
-    All results are computational observations requiring independent replication.
-  </div>
-
-  <h1><span data-li="en">Mathematical Formalism</span><span data-li="mn">ÐœÐ°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸ÐºÐ¸Ð¹Ð½ Ð¤Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð¼</span></h1>
-  <p class="subtitle"><span data-li="en">Exact definitions, notation, and computational pipeline â€” v0.3 Â· May 2026</span><span data-li="mn">Ð¯Ð³ Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð¾Ð»Ñ‚, Ñ‚ÑÐ¼Ð´ÑÐ³Ð»ÑÐ³ÑÑ, Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð´Ð°Ñ€Ð°Ð°Ð»Ð°Ð» â€” v0.3 Â· 2026 Ð¾Ð½Ñ‹ 5-Ñ€ ÑÐ°Ñ€</span></p>
-
-  <div class="section">
-    <div class="section-label"><span data-li="en">Definitions</span><span data-li="mn">Ð¢Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð¾Ð»Ñ‚ÑƒÑƒÐ´</span></div>
-    <h2><span data-li="en">Basic Objects</span><span data-li="mn">Ò®Ð½Ð´ÑÑÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚ÑƒÑƒÐ´</span></h2>
-    <div class="def-block"><div class="def-label">Definition 1 â€” Riemann Zeros</div>Let \(\rho_n = \frac{1}{2} + i\gamma_n\) denote the non-trivial zeros of \(\zeta(s)\) with \(\gamma_n > 0\), ordered so that \(\gamma_1 \leq \gamma_2 \leq \cdots\)<div class="def-note">Source: Odlyzko zero tables. Three blocks used: zeros2 (T â‰ˆ 74,920), zeros3 (T ~ 10Â¹Â²), zeros4 (T ~ 10Â¹Â³).</div></div>
-    <div class="def-block"><div class="def-label">Definition 2 â€” Zero Spacings</div>\[\delta_n = \gamma_{n+1} - \gamma_n, \qquad \bar\delta = \frac{1}{N}\sum_{n=1}^{N}\delta_n\]<div class="def-note">Raw spacings, not unfolded. Mean spacing varies with height T.</div></div>
-    <div class="def-block"><div class="def-label">Definition 3 â€” Spacing Covariance at Lag h</div>\[C(h) = \frac{1}{N-h}\sum_{n=1}^{N-h}\bigl(\delta_n - \bar\delta\bigr)\bigl(\delta_{n+h} - \bar\delta\bigr)\]<div class="def-note">The observable we compute. Evaluated at prime lags h = p.</div></div>
-    <div class="def-block"><div class="def-label">Definition 4 â€” High-T Unfolded Normalization</div>\[\tau_p = \frac{\log p}{\log(T / 2\pi)}\]<div class="def-note">Critical: using \(\tau_p = \log p / 2\pi\) (low-T formula) gives r â‰ˆ 0.4â€“0.6. The high-T formula was selected after observing this â€” introducing potential selection bias.</div></div>
-    <div class="def-block"><div class="def-label">Definition 5 â€” BK Predictor</div>\[B(p) = \frac{(\log p)^2}{p}\]<div class="def-note">From Bogomolnyâ€“Keating (1996). Predicts the form of prime-dependent corrections to pair correlation statistics.</div></div>
-    <div class="def-block"><div class="def-label">Definition 6 â€” Empirical Amplitude</div>\[A(p) = C(p)\]<div class="def-note">The spacing covariance evaluated at prime lag p. We test whether A(p) ~ B(p).</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-label"><span data-li="en">Observable</span><span data-li="mn">ÐÐ¶Ð¸Ð³Ð»Ð°Ð³Ð´Ð°Ñ… Ñ…ÑÐ¼Ð¶Ð¸Ð³Ð´ÑÑ…Ò¯Ò¯Ð½</span></div>
-    <h2><span data-li="en">Main Correlation</span><span data-li="mn">Ò®Ð½Ð´ÑÑÐ½ ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ†</span></h2>
-    <div class="math-block">\[r = \mathrm{Pearson}\bigl(\{A(p)\}_{p \leq 37},\; \{B(p)\}_{p \leq 37}\bigr)\]</div>
-    <p style="font-size:.85rem;color:var(--sub);">Observed values: r = 0.9783 (zeros2), r = 0.9992 (zeros3), r = 0.9421 (zeros4). Independent replication on zeros_ht.txt gave r = 0.51 â€” original result not reproduced.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-label"><span data-li="en">Statistical Limitations</span><span data-li="mn">Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸Ð¹Ð½ Ñ…ÑÐ·Ð³Ð°Ð°Ñ€Ð»Ð°Ð»Ñ‚ÑƒÑƒÐ´</span></div>
-    <h2><span data-li="en">Why These Results Are Not Conclusive</span><span data-li="mn">Ð¯Ð°Ð³Ð°Ð°Ð´ ÑÐ´Ð³ÑÑÑ€ Ò¯Ñ€ Ð´Ò¯Ð½ Ð´Ò¯Ð³Ð½ÑÐ»Ñ‚ Ð±Ð¸Ñˆ Ð²Ñ</span></h2>
-    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 1 â€” Selection Bias</span><span data-li="mn">Ð¥ÑÐ·Ð³Ð°Ð°Ñ€Ð»Ð°Ð»Ñ‚ 1 â€” Ð¡Ð¾Ð½Ð³Ð¾Ð»Ñ‚Ñ‹Ð½ bias</span></div><div style="font-size:.88rem;color:var(--sub);">The high-T normalization was chosen after observing that low-T gave weak results.</div></div>
-    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 2 â€” Small Sample</span><span data-li="mn">Ð¥ÑÐ·Ð³Ð°Ð°Ñ€Ð»Ð°Ð»Ñ‚ 2 â€” Ð–Ð¸Ð¶Ð¸Ð³ Ð´ÑÑÐ¶</span></div><div style="font-size:.88rem;color:var(--sub);">Pearson r with n = 12 data points is sensitive to outliers.</div></div>
-    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 3 â€” Autocorrelation</span><span data-li="mn">Ð¥ÑÐ·Ð³Ð°Ð°Ñ€Ð»Ð°Ð»Ñ‚ 3 â€” ÐÐ²Ñ‚Ð¾ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ†</span></div><div style="font-size:.88rem;color:var(--sub);">Covariances C(p) and C(p') for nearby primes are not independent. Effective DOF &lt; 12.</div></div>
-    <div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 4 â€” Replication Failure</span><span data-li="mn">Ð¥ÑÐ·Ð³Ð°Ð°Ñ€Ð»Ð°Ð»Ñ‚ 4 â€” Ð”Ð°Ð²Ñ‚Ð°Ð»Ñ‚ Ð°Ð¼Ð¶Ð¸Ð»Ñ‚Ð³Ò¯Ð¹</span></div><div style="font-size:.88rem;color:var(--sub);">Independent replication on Odlyzko 10Â¹Â² block gave r = 0.51, not r = 0.9992.</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-label"><span data-li="en">Computational Pipeline</span><span data-li="mn">Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð´Ð°Ñ€Ð°Ð°Ð»Ð°Ð»</span></div>
-    <h2><span data-li="en">Step-by-Step</span><span data-li="mn">ÐÐ»Ñ…Ð°Ð¼ Ð°Ð»Ñ…Ð¼Ð°Ð°Ñ€</span></h2>
-    <div class="pipeline">
-      <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-text"><strong>Load zeros</strong> â€” Read Î³â‚™ from Odlyzko plain-text file.</div></div>
-      <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-text"><strong>Compute spacings</strong> â€” Î´â‚™ = Î³â‚™â‚Šâ‚ âˆ’ Î³â‚™, center: Î´â‚™ â† Î´â‚™ âˆ’ Î´Ì„.</div></div>
-      <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-text"><strong>Compute C(p)</strong> â€” For each prime p â‰¤ 37: C(p) = mean(Î´â‚™ Â· Î´â‚™â‚Šâ‚š).</div></div>
-      <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-text"><strong>Compute B(p)</strong> â€” B(p) = (log p)Â² / p for each prime p.</div></div>
-      <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-text"><strong>Pearson r</strong> â€” Correlate {C(p)} and {B(p)} across 12 primes.</div></div>
-      <div class="pipe-step"><div class="pipe-num">06</div><div class="pipe-text"><strong>Null controls</strong> â€” Repeat with shuffled zeros, GUE surrogates, composite lags.</div></div>
-    </div>
-  </div>
-
-  <div class="warn-block" style="margin-top:2rem;">
-    <div class="warn-label"><span data-li="en">Explicit Statement</span><span data-li="mn">Ð¢Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹ Ð¼ÑÐ´ÑÐ³Ð´ÑÐ»</span></div>
-    <div style="font-size:.92rem;color:var(--sub);">This computational study does not constitute a proof or disproof of the Riemann Hypothesis. Independent replication is required.</div>
-  </div>
+<div class="disclaimer">
+<span data-li="en">&#9888;&#65039; This page defines the mathematical objects used in this computational study. <strong>No proof of the Riemann Hypothesis is claimed.</strong> All results are computational observations requiring independent replication.</span>
+<span data-li="mn">&#9888;&#65039; &#1069;&#1085;&#1101; &#1093;&#1091;&#1091;&#1076;&#1072;&#1089; &#1090;&#1086;&#1086;&#1094;&#1086;&#1086;&#1083;&#1083;&#1099;&#1085; &#1089;&#1091;&#1076;&#1072;&#1083;&#1075;&#1072;&#1072;&#1085;&#1076; &#1072;&#1096;&#1080;&#1075;&#1083;&#1072;&#1089;&#1072;&#1085; &#1084;&#1072;&#1090;&#1077;&#1084;&#1072;&#1090;&#1080;&#1082;&#1080;&#1081;&#1085; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1091;&#1091;&#1076;&#1099;&#1075; &#1090;&#1086;&#1076;&#1086;&#1088;&#1093;&#1086;&#1081;&#1083;&#1085;&#1086;. <strong>&#1056;&#1080;&#1084;&#1072;&#1085;&#1099; &#1090;&#1072;&#1072;&#1084;&#1072;&#1075;&#1083;&#1072;&#1083;&#1099;&#1085; &#1085;&#1086;&#1090;&#1086;&#1083;&#1075;&#1086;&#1086; &#1085;&#1101;&#1093;&#1101;&#1084;&#1078;&#1083;&#1101;&#1093;&#1075;&#1199;&#1081;.</strong> &#1041;&#1199;&#1093; &#1199;&#1088; &#1076;&#1199;&#1085; &#1073;&#1080;&#1077; &#1076;&#1072;&#1072;&#1089;&#1072;&#1085; &#1076;&#1072;&#1074;&#1090;&#1072;&#1083;&#1090; &#1096;&#1072;&#1072;&#1088;&#1076;&#1089;&#1072;&#1085; &#1090;&#1086;&#1086;&#1094;&#1086;&#1086;&#1083;&#1083;&#1099;&#1085; &#1072;&#1078;&#1080;&#1075;&#1083;&#1072;&#1083;&#1090; &#1102;&#1084;.</span>
 </div>
 
+<h1><span data-li="en">Mathematical Formalism</span><span data-li="mn">&#1052;&#1072;&#1090;&#1077;&#1084;&#1072;&#1090;&#1080;&#1082;&#1080;&#1081;&#1085; &#1060;&#1086;&#1088;&#1084;&#1072;&#1083;&#1080;&#1079;&#1084;</span></h1>
+<p class="subtitle"><span data-li="en">Exact definitions, notation, and computational pipeline &mdash; v0.3 &middot; May 2026</span><span data-li="mn">&#1071;&#1075; &#1090;&#1086;&#1076;&#1086;&#1088;&#1093;&#1086;&#1081;&#1083;&#1086;&#1083;&#1090;, &#1090;&#1101;&#1084;&#1076;&#1101;&#1075;&#1083;&#1101;&#1075;&#1101;&#1101;, &#1090;&#1086;&#1086;&#1094;&#1086;&#1086;&#1083;&#1083;&#1099;&#1085; &#1076;&#1072;&#1088;&#1072;&#1072;&#1083;&#1072;&#1083; &mdash; v0.3 &middot; 2026 &#1086;&#1085;&#1099; 5-&#1088; &#1089;&#1072;&#1088;</span></p>
 
+<div class="section">
+<div class="section-label"><span data-li="en">Definitions</span><span data-li="mn">&#1058;&#1086;&#1076;&#1086;&#1088;&#1093;&#1086;&#1081;&#1083;&#1086;&#1083;&#1090;&#1091;&#1091;&#1076;</span></div>
+<h2><span data-li="en">Basic Objects</span><span data-li="mn">&#1059;&#1085;&#1076;&#1089;&#1101;&#1085; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1091;&#1091;&#1076;</span></h2>
+<div class="def-block"><div class="def-label">Definition 1 &mdash; Riemann Zeros</div>Let \(\rho_n = \frac{1}{2} + i\gamma_n\) denote the non-trivial zeros of \(\zeta(s)\) with \(\gamma_n &gt; 0\), ordered so that \(\gamma_1 \leq \gamma_2 \leq \cdots\)<div class="def-note">Source: Odlyzko zero tables. Three blocks used: zeros2 (T &asymp; 74,920), zeros3 (T ~ 10&sup1;&sup2;), zeros4 (T ~ 10&sup1;&sup3;).</div></div>
+<div class="def-block"><div class="def-label">Definition 2 &mdash; Zero Spacings</div>\[\delta_n = \gamma_{n+1} - \gamma_n, \qquad \bar\delta = \frac{1}{N}\sum_{n=1}^{N}\delta_n\]<div class="def-note">Raw spacings, not unfolded. Mean spacing varies with height T.</div></div>
+<div class="def-block"><div class="def-label">Definition 3 &mdash; Spacing Covariance at Lag h</div>\[C(h) = \frac{1}{N-h}\sum_{n=1}^{N-h}\bigl(\delta_n - \bar\delta\bigr)\bigl(\delta_{n+h} - \bar\delta\bigr)\]<div class="def-note">The observable we compute. Evaluated at prime lags h = p.</div></div>
+<div class="def-block"><div class="def-label">Definition 4 &mdash; High-T Unfolded Normalization</div>\[\tau_p = \frac{\log p}{\log(T / 2\pi)}\]<div class="def-note">Critical: using \(\tau_p = \log p / 2\pi\) (low-T formula) gives r &asymp; 0.4&ndash;0.6. The high-T formula was selected after observing this &mdash; introducing potential selection bias.</div></div>
+<div class="def-block"><div class="def-label">Definition 5 &mdash; BK Predictor</div>\[B(p) = \frac{(\log p)^2}{p}\]<div class="def-note">From Bogomolny&ndash;Keating (1996). Predicts the form of prime-dependent corrections to pair correlation statistics.</div></div>
+<div class="def-block"><div class="def-label">Definition 6 &mdash; Empirical Amplitude</div>\[A(p) = C(p)\]<div class="def-note">The spacing covariance evaluated at prime lag p. We test whether A(p) ~ B(p).</div></div>
+</div>
 
+<div class="section">
+<div class="section-label"><span data-li="en">Observable</span><span data-li="mn">&#1040;&#1078;&#1080;&#1075;&#1083;&#1072;&#1075;&#1076;&#1072;&#1093; &#1093;&#1101;&#1084;&#1078;&#1080;&#1075;&#1076;&#1101;&#1093;&#1199;&#1199;&#1085;</span></div>
+<h2><span data-li="en">Main Correlation</span><span data-li="mn">&#1059;&#1085;&#1076;&#1089;&#1101;&#1085; &#1082;&#1086;&#1088;&#1088;&#1077;&#1083;&#1103;&#1094;</span></h2>
+<div class="math-block">\[r = \mathrm{Pearson}\bigl(\{A(p)\}_{p \leq 37},\; \{B(p)\}_{p \leq 37}\bigr)\]</div>
+<p style="font-size:.85rem;color:var(--sub);">Observed values: r = 0.9783 (zeros2), r = 0.9992 (zeros3), r = 0.9421 (zeros4). Independent replication on zeros_ht.txt gave r = 0.51 &mdash; original result not reproduced.</p>
+</div>
 
-<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;box-sizing:border-box;">
-<span><span data-li="en">Exploratory computational research. No proof of RH claimed.</span><span data-li="mn">Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ ÑÑƒÐ´Ð°Ð»Ð³Ð°Ð°. RH-Ð½ Ð½Ð¾Ñ‚Ð¾Ð»Ð³Ð¾Ð¾ Ð½ÑÑ…ÑÐ¼Ð¶Ð»ÑÑ…Ð³Ò¯Ð¹.</span></span>
-<div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Results</span><span data-li="mn">Ò®Ñ€ Ð´Ò¯Ð½</span></a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Verify</span><span data-li="mn">Ð¥Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ð»Ñ‚</span></a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Intro</span><span data-li="mn">Ð¢Ð°Ð½Ð¸Ð»Ñ†ÑƒÑƒÐ»Ð³Ð°</span></a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Landscape</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ñ…Ò¯Ñ€ÑÑ</span></a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Formalism</span><span data-li="mn">Ð¤Ð¾Ñ€Ð¼Ð°Ð» Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð¾Ð»Ñ‚</span></a></div>
-<span>v1.0.0 Â· <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
+<div class="section">
+<div class="section-label"><span data-li="en">Statistical Limitations</span><span data-li="mn">&#1057;&#1090;&#1072;&#1090;&#1080;&#1089;&#1090;&#1080;&#1082;&#1080;&#1081;&#1085; &#1093;&#1103;&#1079;&#1075;&#1072;&#1072;&#1088;&#1083;&#1072;&#1083;&#1090;&#1091;&#1091;&#1076;</span></div>
+<h2><span data-li="en">Why These Results Are Not Conclusive</span><span data-li="mn">&#1071;&#1072;&#1075;&#1072;&#1072;&#1076; &#1101;&#1076;&#1075;&#1101;&#1101;&#1088; &#1091;&#1088; &#1076;&#1199;&#1085; &#1076;&#1199;&#1075;&#1085;&#1101;&#1083;&#1090; &#1073;&#1080;&#1096; &#1074;&#1101;</span></h2>
+<div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 1 &mdash; Selection Bias</span><span data-li="mn">&#1061;&#1103;&#1079;&#1075;&#1072;&#1072;&#1088;&#1083;&#1072;&#1083;&#1090; 1 &mdash; &#1057;&#1086;&#1085;&#1075;&#1086;&#1083;&#1090;&#1099;&#1085; bias</span></div><div style="font-size:.88rem;color:var(--sub);">The high-T normalization was chosen after observing that low-T gave weak results.</div></div>
+<div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 2 &mdash; Small Sample</span><span data-li="mn">&#1061;&#1103;&#1079;&#1075;&#1072;&#1072;&#1088;&#1083;&#1072;&#1083;&#1090; 2 &mdash; &#1046;&#1080;&#1078;&#1080;&#1075; &#1076;&#1101;&#1101;&#1078;</span></div><div style="font-size:.88rem;color:var(--sub);">Pearson r with n = 12 data points is sensitive to outliers.</div></div>
+<div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 3 &mdash; Autocorrelation</span><span data-li="mn">&#1061;&#1103;&#1079;&#1075;&#1072;&#1072;&#1088;&#1083;&#1072;&#1083;&#1090; 3 &mdash; &#1040;&#1074;&#1090;&#1086;&#1082;&#1086;&#1088;&#1088;&#1077;&#1083;&#1103;&#1094;</span></div><div style="font-size:.88rem;color:var(--sub);">Covariances C(p) and C(p&prime;) for nearby primes are not independent. Effective DOF &lt; 12.</div></div>
+<div class="warn-block"><div class="warn-label"><span data-li="en">Limitation 4 &mdash; Replication Failure</span><span data-li="mn">&#1061;&#1103;&#1079;&#1075;&#1072;&#1072;&#1088;&#1083;&#1072;&#1083;&#1090; 4 &mdash; &#1044;&#1072;&#1074;&#1090;&#1072;&#1083;&#1090; &#1072;&#1084;&#1078;&#1080;&#1083;&#1090;&#1075;&#1199;&#1081;</span></div><div style="font-size:.88rem;color:var(--sub);">Independent replication on Odlyzko 10&sup1;&sup2; block gave r = 0.51, not r = 0.9992.</div></div>
+</div>
+
+<div class="section">
+<div class="section-label"><span data-li="en">Computational Pipeline</span><span data-li="mn">&#1058;&#1086;&#1086;&#1094;&#1086;&#1086;&#1083;&#1083;&#1099;&#1085; &#1076;&#1072;&#1088;&#1072;&#1072;&#1083;&#1072;&#1083;</span></div>
+<h2><span data-li="en">Step-by-Step</span><span data-li="mn">&#1040;&#1083;&#1093;&#1072;&#1084; &#1072;&#1083;&#1093;&#1084;&#1072;&#1072;&#1088;</span></h2>
+<div class="pipeline">
+<div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-text"><strong>Load zeros</strong> &mdash; Read &gamma;&#8345; from Odlyzko plain-text file.</div></div>
+<div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-text"><strong>Compute spacings</strong> &mdash; &delta;&#8345; = &gamma;&#8345;&#8330;&#8321; &minus; &gamma;&#8345;, center: &delta;&#8345; &larr; &delta;&#8345; &minus; &delta;&#772;.</div></div>
+<div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-text"><strong>Compute C(p)</strong> &mdash; For each prime p &le; 37: C(p) = mean(&delta;&#8345; &middot; &delta;&#8345;&#8330;&#120337;).</div></div>
+<div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-text"><strong>Compute B(p)</strong> &mdash; B(p) = (log p)&sup2; / p for each prime p.</div></div>
+<div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-text"><strong>Pearson r</strong> &mdash; Correlate {C(p)} and {B(p)} across 12 primes.</div></div>
+<div class="pipe-step"><div class="pipe-num">06</div><div class="pipe-text"><strong>Null controls</strong> &mdash; Repeat with shuffled zeros, GUE surrogates, composite lags.</div></div>
+</div>
+</div>
+
+<div class="warn-block" style="margin-top:2rem;">
+<div class="warn-label"><span data-li="en">Explicit Statement</span><span data-li="mn">&#1058;&#1086;&#1076;&#1086;&#1088;&#1093;&#1086;&#1081; &#1084;&#1101;&#1076;&#1101;&#1075;&#1076;&#1101;&#1083;</span></div>
+<div style="font-size:.92rem;color:var(--sub);">Computational observations only &mdash; not a theorem, not a proof of RH. Independent replication and robustness testing are required.</div>
+</div>
+</div>
+
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
+<span><span data-li="en">Exploratory computational research. No proof of RH claimed.</span><span data-li="mn">&#1058;&#1086;&#1086;&#1094;&#1086;&#1086;&#1083;&#1083;&#1099;&#1085; &#1089;&#1091;&#1076;&#1072;&#1083;&#1075;&#1072;&#1072;. RH-&#1085; &#1085;&#1086;&#1090;&#1086;&#1083;&#1075;&#1086;&#1086; &#1085;&#1101;&#1093;&#1101;&#1084;&#1078;&#1083;&#1101;&#1093;&#1075;&#1199;&#1081;.</span></span>
+<div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a></div>
+<span>v1.0.0 &middot; <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>
+
 <script>
-function MN_close(){
-  document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
-}
-
-function MN_toggle(btn){
-  var dd=btn.nextElementSibling;
-  var open=dd.classList.toggle('open');
-  btn.classList.toggle('MN-active',open);
-}
-
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.MN-more')) MN_close();
-});
-
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
 function setLang(l){
   document.body.classList.remove('en','mn');
   document.body.classList.add(l);
-  document.querySelectorAll('.MN-lb,.lang-btn,.lb').forEach(function(b){
-    var txt=b.textContent.trim();
-    b.classList.toggle('MN-active',(l==='en'&&txt==='ENG')||(l==='mn'&&txt==='ÐœÐžÐ'));
-    b.classList.toggle('active',(l==='en'&&txt==='ENG')||(l==='mn'&&txt==='ÐœÐžÐ'));
-  });
-  var fl=document.getElementById('faq-list');
-  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
+  document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
   localStorage.setItem('lang',l);
 }
-
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
 </body>
