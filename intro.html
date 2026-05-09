@@ -292,7 +292,7 @@ body{padding-top:54px !important;}
       <div class="feat">
         <div class="feat-icon">⚗️</div>
         <div class="feat-title"><span data-en>Live verification</span><span data-mn>Шууд харьцуулалт</span></div>
-        <div class="feat-desc"><span data-en>Anyone can verify results in browser — no install</span><span data-mn>Хэн ч браузерт үр дүнг баталгаажуулах боломжтой</span></div>
+        <div class="feat-desc"><span data-en>Anyone can verify results in browser — no install</span><span data-mn>Хэн ч браузерт үр дүнг харьцуулах боломжтой</span></div>
       </div>
       <div class="feat">
         <div class="feat-icon">📊</div>
@@ -389,7 +389,7 @@ body{padding-top:54px !important;}
     </h2>
     <p class="body-text" style="margin:0 auto 2rem;">
       <span data-en>All code is open source. Results are reproducible. Anyone can verify.</span>
-      <span data-mn>Бүх код нээлттэй эх сурвалжтай. Үр дүнг давтаж болно. Хэн ч баталгаажуулж чадна.</span>
+      <span data-mn>Бүх код нээлттэй эх сурвалжтай. Үр дүнг давтаж болно. Хэн ч ажиглалтжуулж чадна.</span>
     </p>
     <div class="cta-row" style="justify-content:center;">
       <a class="btn-primary" href="https://research.nexcore.ltd">
@@ -465,13 +465,15 @@ function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.cl
 function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
 document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
 </script>
-<footer style="height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;position:fixed;bottom:0;left:0;right:0;z-index:500;">
-<span><span data-en>Not a proof of RH</span><span data-mn>RH-н нотолгоо биш</span></span>
-<div style="display:flex;gap:0;">
-  <a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;"><span data-en>Results</span><span data-mn>Үр дүн</span></a>
-  <a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;"><span data-en>Intro</span><span data-mn>Танилцуулга</span></a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;"><span data-en>Verify</span><span data-mn>Харьцуулалт</span></a>
-  <a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;"><span data-en>Landscape</span><span data-mn>Судалгааны хүрээ</span></a>
-  <a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;"><span data-en>Formalism</span><span data-mn>Формал тодорхойлолт</span></a>
+
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;box-sizing:border-box;">
+<span><span data-li="en">Exploratory computational research. No proof of RH claimed.</span><span data-li="mn">Тооцооллын судалгаа. RH-н нотолгоо нэхэмжлэхгүй.</span></span>
+<div style="display:flex;">
+  <a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+  <a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
+  <a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
 </div>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>
