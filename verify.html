@@ -139,6 +139,16 @@ body.mn [data-lang="mn"]{display:block;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
+
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.2;}
+.o1{width:500px;height:500px;background:radial-gradient(circle,#0044ff,transparent);top:-150px;left:-100px;animation:oa 20s ease-in-out infinite alternate;}
+.o2{width:400px;height:400px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-80px;animation:ob 18s ease-in-out infinite alternate;}
+.o3{width:250px;height:250px;background:radial-gradient(circle,#7b00ff,transparent);top:40%;left:50%;animation:oc 15s ease-in-out infinite alternate;}
+@keyframes oa{to{transform:translate(80px,100px)}}
+@keyframes ob{to{transform:translate(-60px,-80px)}}
+@keyframes oc{to{transform:translate(-50px,60px)}}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;}
 </style>
 </head>
 <body>
