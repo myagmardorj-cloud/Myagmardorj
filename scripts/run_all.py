@@ -107,7 +107,7 @@ def main():
     print()
     if all_ok:
         print("All steps completed.")
-        print("Compare r values against REPRODUCIBILITY.md expected outputs.")
+        print("Compare r values against docs/REPRODUCIBILITY.md expected outputs.")
         print("Discrepancies? Open a GitHub Issue.")
     else:
         failed = [k for k, v in results.items() if not v]
