@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js">
+function navToggle(btn){const d=btn.nextElementSibling;d.classList.toggle('open');btn.classList.toggle('active',d.classList.contains('open'));}
+function navClose(){document.querySelectorAll('.nav-dd').forEach(d=>d.classList.remove('open'));}
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-more'))navClose();});
+</script>
 <style>
 :root{
   --bg:#070710;--surface:#0e0e1c;--surface2:#13131f;
@@ -23,6 +27,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--sub);text-decoration:none;padding:.4rem .75rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;}
 .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05);}.nav-links a.active{color:var(--cyan);background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2);}
 .lang-toggle{display:flex;flex-shrink:0;}
+.nav-more{position:relative;}
+.nav-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--sub);background:none;border:1px solid transparent;border-radius:8px;padding:.4rem .75rem;cursor:pointer;transition:all .2s;}
+.nav-more>button:hover{color:var(--text);background:rgba(255,255,255,.05);}
+.nav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid var(--border);border-radius:12px;padding:.4rem;min-width:155px;z-index:400;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
+.nav-dd.open{display:block;}
+.nav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--sub);text-decoration:none;padding:.38rem .8rem;border-radius:8px;cursor:pointer;}
+.nav-dd a:hover{color:var(--text);background:rgba(255,255,255,.05);}
 .lang-btn{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .lang-btn:first-child{border-radius:3px 0 0 3px;}.lang-btn:last-child{border-radius:0 3px 3px 0;border-left:none;}
 .lang-btn.active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
@@ -115,7 +126,7 @@ h3{font-size:1.15rem;font-weight:600;margin-bottom:.8rem;color:var(--cyan);font-
 .step-num{font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:700;color:var(--cyan);background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);width:1.8rem;height:1.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem;}
 .step-text{font-size:.92rem;color:#c8c4b8;}
 footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;display:flex;justify-content:space-between;align-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:var(--sub);}
-[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
+[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
 [data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 @media(max-width:640px){.stat-grid{grid-template-columns:1fr;}.links-grid{grid-template-columns:1fr;}.nav-links{display:none;}footer{flex-direction:column;gap:.5rem;text-align:center;}}
@@ -216,20 +227,25 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
   <span class="nav-logo" onclick="showPage('home')">research.nexcore.ltd</span>
   <ul class="nav-links">
     <li><a href="intro.html" style="color:var(--gold);border-color:rgba(240,180,41,.2);background:rgba(240,180,41,.06);border-radius:8px;"><span data-li="en">✨ Intro</span><span data-li="mn">✨ Танилцуулга</span></a></li>
-    <li><a href="landscape.html" style="color:var(--purple, #a855f7);border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06);border-radius:8px;"><span data-li="en">🗺 Landscape</span><span data-li="mn">🗺 Газрын зураг</span></a></li>
+    <li><a href="landscape.html" style="color:var(--purple,#a855f7);border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06);border-radius:8px;"><span data-li="en">🗺 Map</span><span data-li="mn">🗺 Газрын зураг</span></a></li>
     <li><a onclick="showPage('home')" id="nav-home" class="active"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a></li>
-    <li><a onclick="showPage('charts')" id="nav-charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a></li>
-    <li><a onclick="showPage('calculator')" id="nav-calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a></li>
-    <li><a onclick="showPage('papers')" id="nav-papers"><span data-li="en">Papers</span><span data-li="mn">Баримтууд</span></a></li>
     <li><a onclick="showPage('methods')" id="nav-methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a></li>
-    <li><a onclick="showPage('roadmap')" id="nav-roadmap"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a></li>
+    <li><a onclick="showPage('nulltests')" id="nav-nulltests"><span data-li="en">Controls</span><span data-li="mn">Хяналт</span></a></li>
     <li><a onclick="showPage('data')" id="nav-data"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a></li>
-    <li><a onclick="showPage('updates')" id="nav-updates"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a></li>
-    <li><a onclick="showPage('faq')" id="nav-faq"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a></li>
-    <li><a onclick="showPage('nulltests')" id="nav-nulltests"><span data-li="en">Null Tests</span><span data-li="mn">Null Тест</span></a></li>
-    <li><a onclick="showPage('discussion')" id="nav-discussion"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a></li>
-    <li><a onclick="showPage('livestats')" id="nav-livestats"><span data-li="en">Stats</span><span data-li="mn">Статистик</span></a></li>
     <li><a onclick="showPage('about')" id="nav-about"><span data-li="en">About</span><span data-li="mn">Тухай</span></a></li>
+    <li class="nav-more">
+      <button onclick="navToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+      <div class="nav-dd">
+        <a onclick="showPage('charts');navClose()"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+        <a onclick="showPage('calculator');navClose()"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+        <a onclick="showPage('papers');navClose()"><span data-li="en">References</span><span data-li="mn">Лавлагаа</span></a>
+        <a onclick="showPage('faq');navClose()"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
+        <a onclick="showPage('discussion');navClose()"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
+        <a onclick="showPage('roadmap');navClose()"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+        <a onclick="showPage('updates');navClose()"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a>
+        <a onclick="showPage('livestats');navClose()"><span data-li="en">Stats</span><span data-li="mn">Статистик</span></a>
+      </div>
+    </li>
     <li><a href="verify.html" style="background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;color:var(--green) !important;"><span data-li="en">⚗️ Verify</span><span data-li="mn">⚗️ Баталгаажуулах</span></a></li>
   </ul>
   <div class="lang-toggle">
@@ -1392,9 +1408,9 @@ function toggleFile(header){
 
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
-  document.getElementById('nav-'+name).classList.add('active');
+  document.querySelectorAll('.nav-links a,.nav-dd a').forEach(a=>a.classList.remove('active'));
+  var pg=document.getElementById('page-'+name);if(pg)pg.classList.add('active');
+  var nv=document.getElementById('nav-'+name);if(nv)nv.classList.add('active');
   if(name==='charts')setTimeout(initCharts,100);
   if(name==='faq')setTimeout(initFAQ,50);
   if(name==='livestats')setTimeout(loadZenodoStats,100);
