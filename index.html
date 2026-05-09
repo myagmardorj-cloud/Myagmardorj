@@ -1385,8 +1385,9 @@ function showPage(name){
   document.querySelectorAll('.nav-link').forEach(function(n){n.classList.remove('active');});
   var _p=document.getElementById('page-'+name);if(_p)_p.classList.add('active');
   var _n=document.getElementById('nav-'+name);if(_n)_n.classList.add('active');
-  if(name==='faq')setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},50);
+  if(name==='charts')setTimeout(function(){if(typeof initCharts==='function')initCharts();},100);
   if(name==='calculator')setTimeout(function(){if(typeof initCalc==='function')initCalc();},100);
+  if(name==='faq')setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},50);
   window.scrollTo(0,0);
 }
 
