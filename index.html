@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Results | research.nexcore.ltd</title>
+<title>research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
 <style>
@@ -23,13 +23,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--sub);text-decoration:none;padding:.4rem .75rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;}
 .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05);}.nav-links a.active{color:var(--cyan);background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2);}
 .lang-toggle{display:flex;flex-shrink:0;}
-.nav-more{position:relative;}
-.nav-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--sub);background:none;border:1px solid transparent;border-radius:8px;padding:.4rem .75rem;cursor:pointer;transition:all .2s;}
-.nav-more>button:hover{color:var(--text);background:rgba(255,255,255,.05);}
-.nav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid var(--border);border-radius:12px;padding:.4rem;min-width:155px;z-index:400;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.nav-dd.open{display:block;}
-.nav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--sub);text-decoration:none;padding:.38rem .8rem;border-radius:8px;cursor:pointer;}
-.nav-dd a:hover{color:var(--text);background:rgba(255,255,255,.05);}
 .lang-btn{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .lang-btn:first-child{border-radius:3px 0 0 3px;}.lang-btn:last-child{border-radius:0 3px 3px 0;border-left:none;}
 .lang-btn.active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
@@ -122,7 +115,7 @@ h3{font-size:1.15rem;font-weight:600;margin-bottom:.8rem;color:var(--cyan);font-
 .step-num{font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:700;color:var(--cyan);background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);width:1.8rem;height:1.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem;}
 .step-text{font-size:.92rem;color:#c8c4b8;}
 footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;display:flex;justify-content:space-between;align-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:var(--sub);}
-[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
+[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
 [data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 @media(max-width:640px){.stat-grid{grid-template-columns:1fr;}.links-grid{grid-template-columns:1fr;}.nav-links{display:none;}footer{flex-direction:column;gap:.5rem;text-align:center;}}
@@ -206,47 +199,9 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 .faq-a{display:none;padding:0 1.5rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
 .faq-a.open{display:block;}
 .faq-a strong{color:var(--text);}
-
-/* MASTER NAV */
-.mnav{position:fixed;top:0;left:0;right:0;z-index:300;height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
-.mnav-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
-.mnav-links{display:flex;align-items:center;gap:0;}
-.mnav-links a,.mnav-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.35rem .65rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
-.mnav-links a:hover,.mnav-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-links a.cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
-.mnav-links a.vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
-.mnav-more{position:relative;}
-.mnav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.4rem;min-width:170px;z-index:400;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.mnav-dd.open{display:block;}
-.mnav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:#9999b8;text-decoration:none;padding:.38rem .85rem;border-radius:8px;transition:all .2s;cursor:pointer;}
-.mnav-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.mnav-lang{display:flex;flex-shrink:0;}
-.mnav-lb{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.28rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
-.mnav-lb:first-child{border-radius:4px 0 0 4px;}
-.mnav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
-.mnav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
-[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
-[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
-body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
-@media(max-width:640px){.mnav-links{display:none;}}
-@media(max-width:768px){
-  .mnav-links{gap:.3rem;flex-wrap:nowrap;overflow-x:auto;}
-  .mnav-links a,.mnav-links button{font-size:.72rem;padding:.28rem .45rem;}
-}
-
-body{padding-top:52px;}
 </style>
 </head>
 <body class="en">
-<nav class="mnav">
-<a href="index.html" class="mnav-logo">research.nexcore.ltd</a>
-<div class="mnav-links"><a href="index.html" class="cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="mnav-more"><button onclick="mnavToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="mnav-dd"><a onclick="showPage('charts');mnavClose()"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a onclick="showPage('calculator');mnavClose()"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a onclick="showPage('methods');mnavClose()"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a onclick="showPage('nulltests');mnavClose()"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a onclick="showPage('data');mnavClose()"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a onclick="showPage('papers');mnavClose()"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a onclick="showPage('faq');mnavClose()"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a onclick="showPage('discussion');mnavClose()"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a onclick="showPage('roadmap');mnavClose()"><span data-li="en">Roadmap</span><span data-li="mn">Roadmap</span></a><a onclick="showPage('about');mnavClose()"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
-<div class="mnav-lang">
-  <button class="mnav-lb active" data-l="en" onclick="setLang('en')">ENG</button>
-  <button class="mnav-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
-</div>
-</nav>
-
 
 <!-- MESH BACKGROUND -->
 <div class="mesh">
@@ -257,7 +212,31 @@ body{padding-top:52px;}
 <div class="grid-bg"></div>
 
 
-
+<nav>
+  <span class="nav-logo" onclick="showPage('home')">research.nexcore.ltd</span>
+  <ul class="nav-links">
+    <li><a href="intro.html" style="color:var(--gold);border-color:rgba(240,180,41,.2);background:rgba(240,180,41,.06);border-radius:8px;"><span data-li="en">✨ Intro</span><span data-li="mn">✨ Танилцуулга</span></a></li>
+    <li><a href="landscape.html" style="color:var(--purple, #a855f7);border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06);border-radius:8px;"><span data-li="en">🗺 Landscape</span><span data-li="mn">🗺 Газрын зураг</span></a></li>
+    <li><a onclick="showPage('home')" id="nav-home" class="active"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a></li>
+    <li><a onclick="showPage('charts')" id="nav-charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a></li>
+    <li><a onclick="showPage('calculator')" id="nav-calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a></li>
+    <li><a onclick="showPage('papers')" id="nav-papers"><span data-li="en">Papers</span><span data-li="mn">Баримтууд</span></a></li>
+    <li><a onclick="showPage('methods')" id="nav-methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a></li>
+    <li><a onclick="showPage('roadmap')" id="nav-roadmap"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a></li>
+    <li><a onclick="showPage('data')" id="nav-data"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a></li>
+    <li><a onclick="showPage('updates')" id="nav-updates"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a></li>
+    <li><a onclick="showPage('faq')" id="nav-faq"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a></li>
+    <li><a onclick="showPage('nulltests')" id="nav-nulltests"><span data-li="en">Null Tests</span><span data-li="mn">Null Тест</span></a></li>
+    <li><a onclick="showPage('discussion')" id="nav-discussion"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a></li>
+    <li><a onclick="showPage('livestats')" id="nav-livestats"><span data-li="en">Stats</span><span data-li="mn">Статистик</span></a></li>
+    <li><a onclick="showPage('about')" id="nav-about"><span data-li="en">About</span><span data-li="mn">Тухай</span></a></li>
+    <li><a href="verify.html" style="background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;color:var(--green) !important;"><span data-li="en">⚗️ Verify</span><span data-li="mn">⚗️ Баталгаажуулах</span></a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">ENG</button>
+    <button class="lang-btn" onclick="setLang('mn')">МОН</button>
+  </div>
+</nav>
 
 <!-- HOME -->
 <div class="page active" id="page-home">
@@ -312,7 +291,7 @@ body{padding-top:52px;}
     </div>
     <div class="disclaimer"><span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span><span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан баталгаажуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -326,7 +305,7 @@ body{padding-top:52px;}
     <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
     <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — selected small-prime subset (zeros3)</span><span data-li="mn">Сонгосон жижиг прайм дэд олонлог дахь илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -346,7 +325,7 @@ body{padding-top:52px;}
     <div class="section-label" style="margin-top:2rem;"><span data-li="en">Full prime data table (zeros3)</span><span data-li="mn">Бүх прайм өгөгдлийн хүснэгт</span></div>
     <table class="data-table"><thead><tr><th>p</th><th>log p</th><th>B(p)</th><th>A(p) obs.</th><th>R(p)</th></tr></thead><tbody id="prime-table"></tbody></table>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -577,7 +556,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
 
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -621,7 +600,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -937,7 +916,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <span data-lang="mn">Риманы таамаглал 167 жил нээлттэй байна. Энэ зам урт аялалыг дүрслэнэ — гэхдээ алхам бүр чухал.</span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -1039,7 +1018,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </a>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -1093,7 +1072,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </div>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -1105,7 +1084,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <h2><span data-lang="en">Questions & Answers</span><span data-lang="mn">Асуулт & Хариулт</span></h2>
     <div style="display:flex;flex-direction:column;gap:1rem;" id="faq-list"></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -1168,7 +1147,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <span data-lang="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан баталгаажуулалт хэвээр шаардлагатай.</span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -1252,7 +1231,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </div>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -1317,7 +1296,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
     <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <div class="page" id="page-about">
@@ -1356,7 +1335,7 @@ https://doi.org/10.5281/zenodo.20077673</pre>
       <span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан баталгаажуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted,#5a5a7a);font-size:.7rem;">Computational observation · v0.3 · Not a proof of RH</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
@@ -1413,9 +1392,9 @@ function toggleFile(header){
 
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a,.nav-dd a').forEach(a=>a.classList.remove('active'));
-  var pg=document.getElementById('page-'+name);if(pg)pg.classList.add('active');
-  var nv=document.getElementById('nav-'+name);if(nv)nv.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.getElementById('nav-'+name).classList.add('active');
   if(name==='charts')setTimeout(initCharts,100);
   if(name==='faq')setTimeout(initFAQ,50);
   if(name==='livestats')setTimeout(loadZenodoStats,100);
@@ -1427,7 +1406,7 @@ function setLang(lang){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',(lang==='en'&&b.textContent==='ENG')||(lang==='mn'&&b.textContent==='МОН')));
   localStorage.setItem('lang',lang);
   // Reinit FAQ with new language
-  const fl=document.getElementById('faq-list');if(fl){fl.innerHTML='';initFAQ();}
+  const fl=document.getElementById('faq-list');if(fl){fl.innerHTML='';setTimeout(initFAQ,10);}
 }
 
 function copyText(id,btn){
@@ -1496,7 +1475,7 @@ const faqs = [
 function initFAQ() {
   const list = document.getElementById('faq-list');
   if (!list || list.children.length > 0) return;
-  const lang = document.body.className || 'en';
+  const lang = document.body.className.includes('mn') ? 'mn' : 'en';
   faqs.forEach((faq, i) => {
     const div = document.createElement('div');
     div.className = 'faq-item';
@@ -1566,42 +1545,6 @@ function subscribeNL() {
 
 const saved=localStorage.getItem('lang');
 if(saved)setLang(saved);
-
-function navToggle(btn){
-  const d=btn.nextElementSibling;
-  d.classList.toggle('open');
-  btn.classList.toggle('active',d.classList.contains('open'));
-}
-function navClose(){
-  document.querySelectorAll('.nav-dd').forEach(d=>d.classList.remove('open'));
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.nav-more'))navClose();
-});
-function mnavClose(){document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});}
-
-function mnavToggle(btn){
-  var dd=btn.nextElementSibling;
-  var open=dd.classList.toggle('open');
-  btn.classList.toggle('active',open);
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.mnav-more')){
-    document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});
-  }
-});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.mnav-lb,.lang-btn,.lb').forEach(function(b){
-    b.classList.toggle('active',
-      (l==='en'&&(b.dataset.l==='en'||b.textContent==='ENG'||b.id==='lb-en'||b.id==='btn-en'))||
-      (l==='mn'&&(b.dataset.l==='mn'||b.textContent==='МОН'||b.id==='lb-mn'||b.id==='btn-mn'))
-    );
-  });
-  localStorage.setItem('lang',l);
-}
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
-
 </script>
 </body>
 </html>
