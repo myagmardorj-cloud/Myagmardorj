@@ -38,7 +38,7 @@ Null controls (shuffled zeros, GUE surrogates, composite-lag indices)
 produce $r \approx 0$.
 
 \medskip\noindent\textbf{Important caveats:}
-These are computational observations only.
+These are computational observations only. Independent replication on the same dataset produced $r = 0.51$; the original result has not been reproduced.
 Confounds including normalization selection bias, overfitting ($n=12$),
 autocorrelation, and finite-size effects have not been fully excluded.
 This is \textbf{not} a confirmed theorem and \textbf{not} a proof of RH.
@@ -147,7 +147,7 @@ Window variation      & $r$ stable              & Not Fourier leakage \\
 \item \textbf{Finite window.} Spectral leakage from the finite zero block not fully excluded.
 \item \textbf{Unknown asymptotics.} Behavior of $r$ as $N \to \infty$ unknown; tested only up to $N=10{,}000$.
 \item \textbf{No theoretical derivation.} $C \approx 16.5$ has no analytic explanation.
-\item \textbf{No independent replication.} Results not yet reproduced on a separate machine/codebase.
+\item \textbf{Independent replication failed.} An attempt to reproduce $r = 0.9992$ on the Odlyzko $10^{12}$ zero block (\texttt{zeros\_ht.txt}, $N=10{,}000$, $T \approx 2.68 \times 10^{11}$) yielded $r = 0.51$, not $r = 0.9992$. The exact dataset and normalization parameters that produced the original result have not been fully documented. This is a critical unresolved issue.
 \end{enumerate}
 
 \section{Future Work}
