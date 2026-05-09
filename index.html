@@ -152,7 +152,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 
 /* CLAY */
 .clay-banner{background:linear-gradient(135deg,rgba(0,212,255,.06) 0%,rgba(7,7,16,0) 60%);border:1px solid rgba(0,212,255,.2);padding:2rem 2.5rem;margin-bottom:3rem;position:relative;overflow:hidden;}
-.clay-banner::before{content:'$1,000,000';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:4rem;color:rgba(201,168,76,.06);letter-spacing:-.05em;pointer-events:none;}
+.clay-banner::before{content:'$1,000,000';position:absolute;right:1.5rem;bottom:.8rem;font-family:'JetBrains Mono',monospace;font-size:2.4rem;color:rgba(201,168,76,.05);letter-spacing:-.05em;pointer-events:none;}
 .clay-title{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:.5rem;}
 .clay-name{font-size:1.5rem;margin-bottom:.5rem;}
 .clay-desc{font-size:.92rem;color:#c8c4b8;}
@@ -255,7 +255,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <h2><span data-lang="en">BK Amplitude Law — Numerical Evidence</span><span data-lang="mn">BK Амплитудын Хууль — Тоон Нотолгоо</span></h2>
     <div class="stat-grid">
       <div class="stat-card"><div class="ds">zeros2</div><span class="rv">0.9783</span><div class="pv">p = 3.82×10⁻¹⁸⁶</div><div class="badge">100K zeros</div></div>
-      <div class="stat-card"><div class="ds">zeros3 · ~10¹²</div><span class="rv">r ≈ 0.9992</span><div class="pv">p = 2.64×10⁻¹⁵</div><div class="badge">High-T block</div></div>
+      <div class="stat-card"><div class="ds">zeros3 · ~10¹²</div><span class="rv" style="font-size:1.5rem;font-weight:600;color:var(--text);">r ≈ 0.9992</span><div class="pv">p = 2.64×10⁻¹⁵</div><div class="badge">High-T block</div></div>
       <div class="stat-card"><div class="ds">zeros4 · ~10¹³</div><span class="rv">0.9421</span><div class="pv">p = 5.0×10⁻⁶</div><div class="badge">High-T block</div></div>
     </div>
     <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolny–Keating Amplitude Law</span><span data-li="mn">Богомолны–Китингийн Амплитудын Хууль</span></div>A(p)  ∼  C · (log p)² / p</div>
@@ -505,7 +505,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
 <span style="color:#4caf7d;">## ✅ CORRECT normalization (high-T unfolded)</span>
 τ_p = log(p) / log(T / 2π)
-<span style="color:#585b70;"># → r = 0.9992, BK confirmed!</span>
+<span style="color:#585b70;"># → r = 0.9992</span>
 
 <span style="color:#c9a84c;">## Why this matters</span>
 <span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
@@ -672,7 +672,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <div class="oc-label" style="color:var(--cyan);letter-spacing:.1em;"><span data-li="en">Where our research fits</span><span data-li="mn">Манай судалгаа хаана байна</span></div>
       <div class="our-row"><span class="or-key">Problem:</span><span class="or-val">Riemann Hypothesis (#01)</span></div>
       <div class="our-row"><span class="or-key">Connection:</span><span class="or-val"><span data-lang="en">Prime-correlated structure in zero statistics</span><span data-lang="mn">Тэгийн статистик дахь прайм-корреляцийн бүтэц</span></span></div>
-      <div class="our-row"><span class="or-key">Result:</span><span class="or-val good">r = 0.9992 · prime-correlated excess observed · persistent excess observed</span></div>
+      <div class="our-row"><span class="or-key">Result:</span><span class="or-val">r = 0.9992 · prime-correlated excess observed · persistent excess observed</span></div>
       <div class="our-row"><span class="or-key">Status:</span><span class="or-val warn">Interesting computational observation · potential BK-related phenomenon</span></div>
       <div class="our-row"><span class="or-key">Status:</span><span class="or-val"><span data-lang="en">Numerical evidence — not a proof</span><span data-lang="mn">Тоон нотолгоо — нотолгоо биш</span></span></div>
       <div class="our-row"><span class="or-key">Prize:</span><span class="or-val"><span data-lang="en">$1,000,000 (Clay Institute) — if proven</span><span data-lang="mn">1,000,000$ (Клейн хүрээлэн) — батлагдвал</span></span></div>
@@ -1037,7 +1037,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 · v1</span>
         </div>
         <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">research.nexcore.ltd launched</span><span data-lang="mn">research.nexcore.ltd нээгдсэн</span></h3>
-        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Full research website with interactive charts, BK calculator, verification lab, roadmap, and Clay Prize context.</span><span data-lang="mn">Интерактив графиктай, BK тооцоолуур, баталгаажуулалтын лаб, roadmap, Clay шагналын мэдээлэлтэй бүрэн судалгааны вэб.</span></p>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Full research website with interactive charts, BK calculator, correlation analysis tool, roadmap, and Clay Prize context.</span><span data-lang="mn">Интерактив графиктай, BK тооцоолуур, корреляц шинжилгээний хэрэгсэл, roadmap, Clay шагналын мэдээлэлтэй бүрэн судалгааны вэб.</span></p>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
