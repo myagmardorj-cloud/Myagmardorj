@@ -116,7 +116,7 @@ h3{font-size:1.15rem;font-weight:600;margin-bottom:.8rem;color:var(--cyan);font-
 .step-text{font-size:.92rem;color:#c8c4b8;}
 footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;display:flex;justify-content:space-between;align-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:var(--sub);}
 [data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
-[data-li]{display:none;}}}
+[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 @media(max-width:640px){.stat-grid{grid-template-columns:1fr;}.links-grid{grid-template-columns:1fr;}.nav-links{display:none;}footer{flex-direction:column;gap:.5rem;text-align:center;}}
 
@@ -200,22 +200,38 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 .faq-a.open{display:block;}
 .faq-a strong{color:var(--text);}
 
-/* ═══ UNIVERSAL LANG TOGGLE ═══ */
-[data-li="en"],[data-lang="en"],[data-en]{display:inline;}
-[data-li="mn"],[data-lang="mn"],[data-mn]{display:inline;}
-body.mn [data-li="en"],body.mn [data-lang="en"],body.mn [data-en]{display:none !important;}
-body.mn [data-li="mn"],body.mn [data-lang="mn"],body.mn [data-mn]{display:inline !important;}
-body.en [data-li="mn"],body.en [data-lang="mn"],body.en [data-mn]{display:none !important;}
-body.en [data-li="en"],body.en [data-lang="en"],body.en [data-en]{display:inline !important;}
-/* block-level elements */
-div[data-lang],p[data-lang],span[data-lang]{display:block;}
-span[data-lang]{display:inline;}
-body.mn div[data-lang="en"],body.mn p[data-lang="en"]{display:none !important;}
-body.mn div[data-lang="mn"],body.mn p[data-lang="mn"]{display:block !important;}
-body.en div[data-lang="mn"],body.en p[data-lang="mn"]{display:none !important;}
-body.en div[data-lang="en"],body.en p[data-lang="en"]{display:block !important;}
-
+/* LANG FIX */
+body.en [data-lang="mn"]{display:none!important;}
+body.en [data-li="mn"]{display:none!important;}
+body.mn [data-lang="en"]{display:none!important;}
+body.mn [data-li="en"]{display:none!important;}
+body.en div[data-lang="mn"],body.en p[data-lang="mn"],body.en span[data-lang="mn"]{display:none!important;}
+body.mn div[data-lang="en"],body.mn p[data-lang="en"],body.mn span[data-lang="en"]{display:none!important;}
 </style>
+
+<script id="unified-lang">
+(function(){
+  // Single setLang that handles all attribute variants
+  window.setLang = window.setVLang = function(lang){
+    // Set body class
+    document.body.className = document.body.className
+      .replace(/en|mn/g,'').trim() + ' ' + lang;
+    // Sync all lang buttons (any variant)
+    document.querySelectorAll(
+      '[onclick*="setLang"],[onclick*="setVLang"],[data-l],[class*="lang-btn"],[class*="lang-b"],[class*="lb-"],[class*="-lb"]'
+    ).forEach(function(b){
+      var txt = b.textContent.trim();
+      var dl = b.dataset && b.dataset.l;
+      var active = dl ? dl===lang : (lang==='en' ? txt==='ENG' : txt==='МОН');
+      b.classList.toggle('active', active);
+    });
+    localStorage.setItem('lang', lang);
+  };
+  var saved = localStorage.getItem('lang') || 'en';
+  document.addEventListener('DOMContentLoaded', function(){ window.setLang(saved); });
+})();
+</script>
+
 </head>
 <body class="en">
 
@@ -1417,7 +1433,12 @@ function showPage(name){
   if(name==='calculator')setTimeout(initCalc,100);
 }
 
-
+function setLang(lang){
+  document.body.className=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',(lang==='en'&&b.textContent==='ENG')||(lang==='mn'&&b.textContent==='МОН')));
+  localStorage.setItem('lang',lang);
+  // Reinit FAQ with new language
+  const fl=document.getElementById('faq-list');if(fl){fl.innerHTML='';initFAQ();}
 }
 
 function copyText(id,btn){
@@ -1556,24 +1577,6 @@ function subscribeNL() {
 
 const saved=localStorage.getItem('lang');
 if(saved)setLang(saved);
-</script>
-<script>
-
-function setLang(lang){
-  const body = document.body;
-  body.classList.remove('en','mn');
-  body.classList.add(lang);
-  document.querySelectorAll('.unav-lb,.lang-btn,.lb').forEach(b=>{
-    const bl = b.dataset.l || (b.id && b.id.includes('en') ? 'en' : b.id && b.id.includes('mn') ? 'mn' : null);
-    if(bl) b.classList.toggle('active', bl===lang);
-  });
-  localStorage.setItem('lang', lang);
-}
-(function(){
-  const saved = localStorage.getItem('lang') || 'en';
-  setLang(saved);
-})();
-
 </script>
 </body>
 </html>

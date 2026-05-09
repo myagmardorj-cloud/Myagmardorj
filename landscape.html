@@ -138,8 +138,8 @@ footer{border-top:1px solid var(--border);padding:2rem;margin-top:3rem;display:f
 body.en [data-lang="en"]{display:block;}
 body.mn [data-lang="mn"]{display:block;}
 [data-li]{display:none;}
-}
-}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
 
 /* MODAL */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
@@ -164,22 +164,38 @@ body.mn [data-lang="mn"]{display:block;}
   .nav-links{display:none;}
 }
 
-/* ═══ UNIVERSAL LANG TOGGLE ═══ */
-[data-li="en"],[data-lang="en"],[data-en]{display:inline;}
-[data-li="mn"],[data-lang="mn"],[data-mn]{display:inline;}
-body.mn [data-li="en"],body.mn [data-lang="en"],body.mn [data-en]{display:none !important;}
-body.mn [data-li="mn"],body.mn [data-lang="mn"],body.mn [data-mn]{display:inline !important;}
-body.en [data-li="mn"],body.en [data-lang="mn"],body.en [data-mn]{display:none !important;}
-body.en [data-li="en"],body.en [data-lang="en"],body.en [data-en]{display:inline !important;}
-/* block-level elements */
-div[data-lang],p[data-lang],span[data-lang]{display:block;}
-span[data-lang]{display:inline;}
-body.mn div[data-lang="en"],body.mn p[data-lang="en"]{display:none !important;}
-body.mn div[data-lang="mn"],body.mn p[data-lang="mn"]{display:block !important;}
-body.en div[data-lang="mn"],body.en p[data-lang="mn"]{display:none !important;}
-body.en div[data-lang="en"],body.en p[data-lang="en"]{display:block !important;}
-
+/* LANG FIX */
+body.en [data-lang="mn"]{display:none!important;}
+body.en [data-li="mn"]{display:none!important;}
+body.mn [data-lang="en"]{display:none!important;}
+body.mn [data-li="en"]{display:none!important;}
+body.en div[data-lang="mn"],body.en p[data-lang="mn"],body.en span[data-lang="mn"]{display:none!important;}
+body.mn div[data-lang="en"],body.mn p[data-lang="en"],body.mn span[data-lang="en"]{display:none!important;}
 </style>
+
+<script id="unified-lang">
+(function(){
+  // Single setLang that handles all attribute variants
+  window.setLang = window.setVLang = function(lang){
+    // Set body class
+    document.body.className = document.body.className
+      .replace(/en|mn/g,'').trim() + ' ' + lang;
+    // Sync all lang buttons (any variant)
+    document.querySelectorAll(
+      '[onclick*="setLang"],[onclick*="setVLang"],[data-l],[class*="lang-btn"],[class*="lang-b"],[class*="lb-"],[class*="-lb"]'
+    ).forEach(function(b){
+      var txt = b.textContent.trim();
+      var dl = b.dataset && b.dataset.l;
+      var active = dl ? dl===lang : (lang==='en' ? txt==='ENG' : txt==='МОН');
+      b.classList.toggle('active', active);
+    });
+    localStorage.setItem('lang', lang);
+  };
+  var saved = localStorage.getItem('lang') || 'en';
+  document.addEventListener('DOMContentLoaded', function(){ window.setLang(saved); });
+})();
+</script>
+
 </head>
 <body class="mn">
 
@@ -514,24 +530,6 @@ function setLang(lang) {
 }
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved); else setLang('mn');
-</script>
-<script>
-
-function setLang(lang){
-  const body = document.body;
-  body.classList.remove('en','mn');
-  body.classList.add(lang);
-  document.querySelectorAll('.unav-lb,.lang-btn,.lb').forEach(b=>{
-    const bl = b.dataset.l || (b.id && b.id.includes('en') ? 'en' : b.id && b.id.includes('mn') ? 'mn' : null);
-    if(bl) b.classList.toggle('active', bl===lang);
-  });
-  localStorage.setItem('lang', lang);
-}
-(function(){
-  const saved = localStorage.getItem('lang') || 'en';
-  setLang(saved);
-})();
-
 </script>
 </body>
 </html>
