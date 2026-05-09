@@ -181,20 +181,7 @@ body.mn [data-li="mn"]{display:inline;}
   </div>
 </div>
 
-<nav>
-  <a class="nav-logo" href="https://research.nexcore.ltd">research.nexcore.ltd</a>
-  <div class="nav-links">
-    <a class="nav-link" href="https://research.nexcore.ltd">← <span data-li="en">Back</span><span data-li="mn">Буцах</span></a>
-    <a class="nav-link" href="https://research.nexcore.ltd/verify.html">⚗️ Verify</a>
-    <a class="nav-link" href="https://research.nexcore.ltd/intro.html">✨ Intro</a>
-  </div>
-  <div style="display:flex;gap:.8rem;align-items:center;">
-    <div class="lang-toggle">
-      <button class="lb" id="lb-en" onclick="setLang('en')">ENG</button>
-      <button class="lb active" id="lb-mn" onclick="setLang('mn')">МОН</button>
-    </div>
-  </div>
-</nav>
+
 
 <div class="wrap">
   <div class="page-header">
@@ -498,16 +485,6 @@ function setLang(lang) {
 }
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved); else setLang('mn');
-
-function setLang(lang){
-  document.body.className=lang;
-  document.querySelectorAll('.lang-btn,.lb').forEach(b=>b.classList.toggle('active',
-    (lang==='en'&&(b.textContent==='ENG'||b.id==='lb-en'))||
-    (lang==='mn'&&(b.textContent==='МОН'||b.id==='lb-mn'))
-  ));
-  localStorage.setItem('lang',lang);
-}
-const _ls=localStorage.getItem('lang');if(_ls)setLang(_ls);else setLang('en');
 </script>
 </body>
 </html>

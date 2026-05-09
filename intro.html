@@ -125,7 +125,6 @@ span[data-mn]{display:none;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .nav-dots{display:none;}
 }
-[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
 </style>
 </head>
 <body class="en">
@@ -135,8 +134,7 @@ span[data-mn]{display:none;}
 <div class="grid"></div>
 
 <!-- TOP NAV -->
-<div class="topnav">
-  <div class="logo">research.nexcore.ltd</div>
+
   <div style="display:flex;gap:.8rem;align-items:center;">
     <div style="display:flex;">
       <button onclick="setLang('en')" id="btn-en" style="font-family:'Space Grotesk',sans-serif;font-size:.68rem;padding:.3rem .65rem;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.3);color:var(--c);cursor:pointer;border-radius:4px 0 0 4px;">ENG</button>
@@ -413,20 +411,18 @@ setTimeout(() => {
 }, 200);
 
 // Language
-
+function setLang(lang) {
+  document.body.className = lang;
+  document.getElementById('btn-en').style.background = lang==='en' ? 'rgba(0,212,255,.15)' : 'none';
+  document.getElementById('btn-en').style.borderColor = lang==='en' ? 'rgba(0,212,255,.3)' : 'rgba(255,255,255,.1)';
+  document.getElementById('btn-en').style.color = lang==='en' ? 'var(--c)' : 'var(--m)';
+  document.getElementById('btn-mn').style.background = lang==='mn' ? 'rgba(0,212,255,.15)' : 'none';
+  document.getElementById('btn-mn').style.borderColor = lang==='mn' ? 'rgba(0,212,255,.3)' : 'rgba(255,255,255,.1)';
+  document.getElementById('btn-mn').style.color = lang==='mn' ? 'var(--c)' : 'var(--m)';
+  localStorage.setItem('lang', lang);
+}
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved);
-
-function setLang(lang){
-  document.body.className=lang;
-  document.querySelectorAll('[id="btn-en"],[id="btn-mn"]').forEach(b=>{
-    var active = (lang==='en'&&b.id==='btn-en')||(lang==='mn'&&b.id==='btn-mn');
-    b.style.background = active ? 'rgba(0,212,255,.25)' : 'none';
-    b.style.borderColor = active ? 'rgba(0,212,255,.4)' : 'rgba(255,255,255,.1)';
-  });
-  localStorage.setItem('lang',lang);
-}
-const _ils=localStorage.getItem('lang');if(_ils)setLang(_ils);else setLang('en');
 </script>
 </body>
 </html>
