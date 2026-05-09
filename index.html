@@ -255,13 +255,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <h2><span data-lang="en">BK-Type Prime Correction — Observed Statistical Signal</span><span data-lang="mn">BK-Төрлийн Прайм Засвар — Ажиглагдсан Статистик Дохио</span></h2>
     <div class="stat-grid">
       <div class="stat-card"><div class="ds">zeros2</div><span class="rv">0.9783</span><div class="pv">p = 3.82×10⁻¹⁸⁶</div><div class="badge">100K zeros</div></div>
-      <div class="stat-card"><div class="ds">zeros3 · ~10¹²</div><span class="rv">0.9992</span><div class="pv">p = 2.64×10⁻¹⁵</div><div class="badge">High-T block</div></div>
+      <div class="stat-card"><div class="ds">zeros3 · ~10¹²</div><span class="rv">r ≈ 0.9992</span><div class="pv" style="color:var(--muted);font-size:.65rem;">(naive estimate)</div><div class="pv">p = 2.64×10⁻¹⁵</div><div class="badge">High-T block</div></div>
       <div class="stat-card"><div class="ds">zeros4 · ~10¹³</div><span class="rv">0.9421</span><div class="pv">p = 5.0×10⁻⁶</div><div class="badge">High-T block</div></div>
     </div>
     <div class="formula-block"><div class="formula-label"><span data-li="en">BK-Type Prime Correction Framework</span><span data-li="mn">BK-Төрлийн Прайм Засварын Хүрээ</span></div>A(p)  ∼  C · (log p)² / p</div>
     <div class="findings">
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> A statistically significant excess aligned with the first 12 prime frequencies was detected across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>Прайм-индекстэй илүүдэл ажиглагдсан:</strong> Анхны 12 прайм давтамжтай нийцсэн статистикийн хувьд чухал илүүдэл гурван датасет дээр илэрсэн.</span></div></div>
-      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Strong numerical correlation after normalization:</strong> Pearson r ≥ 0.94 across all datasets. Ratio R(p) ≈ 16.5 approximately constant. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r ≥ 0.94. R(p) ≈ 16.5 ойролцоо тогтвортой. Fitting bias, нормализацийн мэдрэмж, bootstrap тестүүд шаардлагатай.</span></div></div>
+      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Observed correlation (naive estimate) after normalization:</strong> Pearson r ≥ 0.94 across all datasets. Ratio R(p) ≈ 16.5 approximately constant. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r ≥ 0.94. R(p) ≈ 16.5 ойролцоо тогтвортой. Fitting bias, нормализацийн мэдрэмж, bootstrap тестүүд шаардлагатай.</span></div></div>
       <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. Normalization artifacts, overfitting, window bias, and finite-size effects have not been fully ruled out. C ≈ 16.5 needs theoretical derivation.</span><span data-lang="mn"><strong>Батлагдсан теорем биш:</strong> Нормализацийн артефакт, overfitting, window bias болон finite-size нөлөөг үгүйсгэж чадаагүй. C ≈ 16.5-н онолын гарталт шаардлагатай.</span></div></div>
     </div>
   </div>
@@ -270,7 +270,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <div class="tl-item"><div class="tl-year">1859</div><div class="tl-content"><strong>Riemann</strong> — <span data-li="en">Hypothesis proposed</span><span data-li="mn">Таамаглал дэвшүүлсэн</span></div></div>
     <div class="tl-item"><div class="tl-year">1973</div><div class="tl-content"><strong>Montgomery</strong> — <span data-li="en">GUE pair correlation established</span><span data-li="mn">GUE pair correlation тогтоогдсон</span></div></div>
     <div class="tl-item"><div class="tl-year">1996</div><div class="tl-content"><strong>Bogomolny & Keating</strong> — <span data-li="en">Prime corrections predicted</span><span data-li="mn">Прайм засваруудыг таамагласан</span></div></div>
-    <div class="tl-item"><div class="tl-year">2026</div><div class="tl-content"><strong>Myagmardorj N.</strong> — <span data-li="en">Persistent prime-indexed excess observed, empirically consistent with BK-type scaling (r = 0.9992)</span><span data-li="mn">BK-төрлийн scaling-тай нийцсэн прайм-индекстэй илүүдэл ажиглагдсан (r = 0.9992)</span></div></div>
+    <div class="tl-item"><div class="tl-year">2026</div><div class="tl-content"><strong>Myagmardorj N.</strong> — <span data-li="en">Persistent prime-indexed excess observed, empirically consistent with BK-type scaling (see RESULTS.md)</span><span data-li="mn">BK-төрлийн scaling-тай нийцсэн прайм-индекстэй илүүдэл ажиглагдсан</span></div></div>
   </div>
   <div class="section">
     <div class="section-label"><span data-li="en">Resources</span><span data-li="mn">Холбоосууд</span></div>
@@ -672,7 +672,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <div class="oc-label"><span data-li="en">Where our research fits</span><span data-li="mn">Манай судалгаа хаана байна</span></div>
       <div class="our-row"><span class="or-key">Problem:</span><span class="or-val">Riemann Hypothesis (#01)</span></div>
       <div class="our-row"><span class="or-key">Connection:</span><span class="or-val"><span data-lang="en">Prime-correlated structure in zero statistics</span><span data-lang="mn">Прайм давтамжтай нийцсэн зайн статистикт илүүдэл</span></span></div>
-      <div class="our-row"><span class="or-key">Result:</span><span class="or-val good">r = 0.9992 · 12/12 primes · persistent excess observed</span></div>
+      <div class="our-row"><span class="or-key">Result:</span><span class="or-val good">r ≈ 0.9992 (naive) · prime-correlated excess observed · see RESULTS.md</span></div>
       <div class="our-row"><span class="or-key">Status:</span><span class="or-val warn">Exploratory experimental mathematics · not a confirmed result</span></div>
       <div class="our-row"><span class="or-key">Status:</span><span class="or-val"><span data-lang="en">Numerical evidence — not a proof</span><span data-lang="mn">Тоон нотолгоо — нотолгоо биш</span></span></div>
       <div class="our-row"><span class="or-key">Prize:</span><span class="or-val"><span data-lang="en">$1,000,000 (Clay Institute) — if proven</span><span data-lang="mn">1,000,000$ (Клейн хүрээлэн) — батлагдвал</span></span></div>
@@ -1181,7 +1181,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         </div>
         <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
           <span data-lang="en">Post: "Numerical observation: BK-type prime-lock scaling in high Riemann zero blocks (r=0.9992) — looking for literature references"</span>
-          <span data-lang="mn">Пост: "Тоон ажиглалт: өндөр Риман тэгийн блок дахь BK-төрлийн прайм-lock scaling (r=0.9992) — уран зохиолын лавлагаа хайж байна"</span>
+          <span data-lang="mn">Пост: "Тоон ажиглалт: өндөр Риман тэгийн блок дахь BK-төрлийн зайн статистикийн прайм-корреляцийн илүүдэл — уран зохиолын лавлагаа хайж байна"</span>
         </p>
         <a class="link-card" href="https://reddit.com/r/mathematics" target="_blank" style="display:inline-flex;border-radius:10px;">
           <span class="li">🔗</span><div><span class="lt">r/mathematics</span><span class="ld">reddit.com/r/mathematics</span></div>
