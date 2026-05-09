@@ -199,39 +199,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 .faq-a{display:none;padding:0 1.5rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
 .faq-a.open{display:block;}
 .faq-a strong{color:var(--text);}
-
-/* LANG FIX */
-body.en [data-lang="mn"]{display:none!important;}
-body.en [data-li="mn"]{display:none!important;}
-body.mn [data-lang="en"]{display:none!important;}
-body.mn [data-li="en"]{display:none!important;}
-body.en div[data-lang="mn"],body.en p[data-lang="mn"],body.en span[data-lang="mn"]{display:none!important;}
-body.mn div[data-lang="en"],body.mn p[data-lang="en"],body.mn span[data-lang="en"]{display:none!important;}
 </style>
-
-<script id="unified-lang">
-(function(){
-  // Single setLang that handles all attribute variants
-  window.setLang = window.setVLang = function(lang){
-    // Set body class
-    document.body.className = document.body.className
-      .replace(/en|mn/g,'').trim() + ' ' + lang;
-    // Sync all lang buttons (any variant)
-    document.querySelectorAll(
-      '[onclick*="setLang"],[onclick*="setVLang"],[data-l],[class*="lang-btn"],[class*="lang-b"],[class*="lb-"],[class*="-lb"]'
-    ).forEach(function(b){
-      var txt = b.textContent.trim();
-      var dl = b.dataset && b.dataset.l;
-      var active = dl ? dl===lang : (lang==='en' ? txt==='ENG' : txt==='МОН');
-      b.classList.toggle('active', active);
-    });
-    localStorage.setItem('lang', lang);
-  };
-  var saved = localStorage.getItem('lang') || 'en';
-  document.addEventListener('DOMContentLoaded', function(){ window.setLang(saved); });
-})();
-</script>
-
 </head>
 <body class="en">
 

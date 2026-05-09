@@ -5,17 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prime-Correlation Analysis Lab — research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js">
+function setLang(lang){
+  document.body.className=lang;
+  document.querySelectorAll('.lang-btn,.lb,.vl-btn').forEach(b=>b.classList.toggle('active',
+    (lang==='en'&&(b.textContent==='ENG'||b.id==='vl-en'))||
+    (lang==='mn'&&(b.textContent==='МОН'||b.id==='vl-mn'))
+  ));
+  localStorage.setItem('lang',lang);
+}
+var setVLang=setLang;
+const _vls=localStorage.getItem('lang');if(_vls)setLang(_vls);else setLang('en');
+</script>
 <script>
-function setVLang(lang) {
-  document.body.className = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    const isActive = (lang==='en' && b.id==='vl-en') || (lang==='mn' && b.id==='vl-mn');
-    b.classList.toggle('active', isActive);
-    b.style.background = isActive ? 'linear-gradient(135deg,#0055ff,var(--cyan))' : 'none';
-    b.style.color = isActive ? '#fff' : 'var(--muted)';
-    b.style.borderColor = isActive ? 'transparent' : 'rgba(255,255,255,.1)';
-  });
+);
   localStorage.setItem('vlang', lang);
 }
 const vsaved = localStorage.getItem('vlang');
@@ -140,39 +143,7 @@ body.mn [data-lang="mn"]{display:block;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
-
-/* LANG FIX */
-body.en [data-lang="mn"]{display:none!important;}
-body.en [data-li="mn"]{display:none!important;}
-body.mn [data-lang="en"]{display:none!important;}
-body.mn [data-li="en"]{display:none!important;}
-body.en div[data-lang="mn"],body.en p[data-lang="mn"],body.en span[data-lang="mn"]{display:none!important;}
-body.mn div[data-lang="en"],body.mn p[data-lang="en"],body.mn span[data-lang="en"]{display:none!important;}
 </style>
-
-<script id="unified-lang">
-(function(){
-  // Single setLang that handles all attribute variants
-  window.setLang = window.setVLang = function(lang){
-    // Set body class
-    document.body.className = document.body.className
-      .replace(/en|mn/g,'').trim() + ' ' + lang;
-    // Sync all lang buttons (any variant)
-    document.querySelectorAll(
-      '[onclick*="setLang"],[onclick*="setVLang"],[data-l],[class*="lang-btn"],[class*="lang-b"],[class*="lb-"],[class*="-lb"]'
-    ).forEach(function(b){
-      var txt = b.textContent.trim();
-      var dl = b.dataset && b.dataset.l;
-      var active = dl ? dl===lang : (lang==='en' ? txt==='ENG' : txt==='МОН');
-      b.classList.toggle('active', active);
-    });
-    localStorage.setItem('lang', lang);
-  };
-  var saved = localStorage.getItem('lang') || 'en';
-  document.addEventListener('DOMContentLoaded', function(){ window.setLang(saved); });
-})();
-</script>
-
 </head>
 <body>
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
@@ -182,8 +153,8 @@ body.mn div[data-lang="en"],body.mn p[data-lang="en"],body.mn span[data-lang="en
   <header>
     <a class="back-link" href="/">← research.nexcore.ltd</a>
     <div style="display:flex;gap:0;margin-bottom:1rem;">
-      <button onclick="setVLang('en')" id="vl-en" class="lang-btn active">ENG</button>
-      <button onclick="setVLang('mn')" id="vl-mn" class="lang-btn">МОН</button>
+      <button onclick="setLang('en')" id="vl-en" class="lang-btn active">ENG</button>
+      <button onclick="setLang('mn')" id="vl-mn" class="lang-btn">МОН</button>
     </div>
     <h1>Prime-Correlation <span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний Лаб</span></h1>
     <p class="tagline"><span data-li="en">Run the exact analysis in your browser. Upload any Odlyzko zero data and check whether the prime-indexed excess pattern replicates in your data — no server, no installation.</span><span data-li="mn">Браузерт яг шинжилгээ ажиллуул. Одлызкогийн тэгийн өгөгдөл upload хийж прайм-индекстэй илүүдлийн хэв маяг өөрийн өгөгдөлд давтагдах эсэхийг шалга — сервер, суулгалт шаардахгүй.</span></p>
@@ -513,15 +484,7 @@ function runAnalysis() {
   log('Analysis complete!', 'ok');
 }
 
-function setVLang(lang) {
-  document.body.className = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    const isActive = (lang==='en' && b.id==='vl-en') || (lang==='mn' && b.id==='vl-mn');
-    b.classList.toggle('active', isActive);
-    b.style.background = isActive ? 'linear-gradient(135deg,#0055ff,var(--cyan))' : 'none';
-    b.style.color = isActive ? '#fff' : 'var(--muted)';
-    b.style.borderColor = isActive ? 'transparent' : 'rgba(255,255,255,.1)';
-  });
+);
   localStorage.setItem('vlang', lang);
 }
 const vsaved = localStorage.getItem('vlang');
