@@ -110,11 +110,19 @@ h2 .hr{background:linear-gradient(90deg,var(--r),#ff9500);-webkit-background-cli
 
 /* LANG */
 [data-mn]{display:none;}
+body.en [data-en]{display:inline;}
+body.en span[data-en]{display:inline;}
+body.en [data-mn]{display:none !important;}
+body.en span[data-mn]{display:none !important;}
 body.mn [data-en]{display:none;}
 body.mn [data-mn]{display:block;}
 body.mn span[data-mn]{display:inline;}
 body.mn span[data-en]{display:none;}
 span[data-mn]{display:none;}
+body.en [data-en]{display:inline;}
+body.en span[data-en]{display:inline;}
+body.en [data-mn]{display:none !important;}
+body.en span[data-mn]{display:none !important;}
 
 /* ANIMATION */
 .slide-content{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
@@ -386,18 +394,7 @@ setTimeout(() => {
 }, 200);
 
 // Language
-function setLang(lang) {
-  document.body.className = lang;
-  document.getElementById('btn-en').style.background = lang==='en' ? 'rgba(0,212,255,.15)' : 'none';
-  document.getElementById('btn-en').style.borderColor = lang==='en' ? 'rgba(0,212,255,.3)' : 'rgba(255,255,255,.1)';
-  document.getElementById('btn-en').style.color = lang==='en' ? 'var(--c)' : 'var(--m)';
-  document.getElementById('btn-mn').style.background = lang==='mn' ? 'rgba(0,212,255,.15)' : 'none';
-  document.getElementById('btn-mn').style.borderColor = lang==='mn' ? 'rgba(0,212,255,.3)' : 'rgba(255,255,255,.1)';
-  document.getElementById('btn-mn').style.color = lang==='mn' ? 'var(--c)' : 'var(--m)';
-  localStorage.setItem('lang', lang);
-}
-const saved = localStorage.getItem('lang');
-if (saved) setLang(saved);
+// lang handled by master nav
 
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
 function MN_toggle(btn){
