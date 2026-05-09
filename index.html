@@ -206,9 +206,43 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 .faq-a{display:none;padding:0 1.5rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
 .faq-a.open{display:block;}
 .faq-a strong{color:var(--text);}
+
+/* MASTER NAV */
+.mnav{position:fixed;top:0;left:0;right:0;z-index:300;height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
+.mnav-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.mnav-links{display:flex;align-items:center;gap:0;}
+.mnav-links a,.mnav-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.35rem .65rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
+.mnav-links a:hover,.mnav-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.mnav-links a.cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
+.mnav-links a.vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
+.mnav-more{position:relative;}
+.mnav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.4rem;min-width:170px;z-index:400;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
+.mnav-dd.open{display:block;}
+.mnav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:#9999b8;text-decoration:none;padding:.38rem .85rem;border-radius:8px;transition:all .2s;cursor:pointer;}
+.mnav-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.mnav-lang{display:flex;flex-shrink:0;}
+.mnav-lb{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.28rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
+.mnav-lb:first-child{border-radius:4px 0 0 4px;}
+.mnav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.mnav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
+[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
+[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
+body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
+@media(max-width:640px){.mnav-links{display:none;}}
+
+body{padding-top:52px;}
 </style>
 </head>
 <body class="en">
+<nav class="mnav">
+<a href="index.html" class="mnav-logo">research.nexcore.ltd</a>
+<div class="mnav-links"><a href="index.html" class="cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="mnav-more"><button onclick="mnavToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="mnav-dd"><a onclick="showPage('charts');mnavClose()"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a onclick="showPage('calculator');mnavClose()"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a onclick="showPage('methods');mnavClose()"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a onclick="showPage('nulltests');mnavClose()"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a onclick="showPage('data');mnavClose()"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a onclick="showPage('papers');mnavClose()"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a onclick="showPage('faq');mnavClose()"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a onclick="showPage('discussion');mnavClose()"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a onclick="showPage('roadmap');mnavClose()"><span data-li="en">Roadmap</span><span data-li="mn">Roadmap</span></a><a onclick="showPage('about');mnavClose()"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны орчин</span></a></div></span></div>
+<div class="mnav-lang">
+  <button class="mnav-lb active" data-l="en" onclick="setLang('en')">ENG</button>
+  <button class="mnav-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</nav>
+
 
 <!-- MESH BACKGROUND -->
 <div class="mesh">
@@ -219,37 +253,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 <div class="grid-bg"></div>
 
 
-<nav>
-  <span class="nav-logo" onclick="showPage('home')">research.nexcore.ltd</span>
-  <ul class="nav-links">
-    <li><a href="intro.html" style="color:var(--gold);border-color:rgba(240,180,41,.2);background:rgba(240,180,41,.06);border-radius:8px;"><span data-li="en">✨ Intro</span><span data-li="mn">✨ Танилцуулга</span></a></li>
-    <li><a href="landscape.html" style="color:var(--purple,#a855f7);border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06);border-radius:8px;"><span data-li="en">🗺 Map</span><span data-li="mn">🗺 Газрын зураг</span></a></li>
-    <li><a onclick="showPage('home')" id="nav-home" class="active"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a></li>
-    <li><a onclick="showPage('methods')" id="nav-methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a></li>
-    <li><a onclick="showPage('nulltests')" id="nav-nulltests"><span data-li="en">Controls</span><span data-li="mn">Хяналт</span></a></li>
-    <li><a onclick="showPage('data')" id="nav-data"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a></li>
-    <li><a onclick="showPage('about')" id="nav-about"><span data-li="en">About</span><span data-li="mn">Тухай</span></a></li>
-    <li class="nav-more">
-      <button onclick="navToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
-      <div class="nav-dd">
-        <a onclick="showPage('charts');navClose()"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-        <a onclick="showPage('calculator');navClose()"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
-        <a onclick="showPage('papers');navClose()"><span data-li="en">References</span><span data-li="mn">Лавлагаа</span></a>
-        <a onclick="showPage('faq');navClose()"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
-        <a onclick="showPage('discussion');navClose()"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
-        <a onclick="showPage('roadmap');navClose()"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
-        <a onclick="showPage('updates');navClose()"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a>
-        <a onclick="showPage('livestats');navClose()"><span data-li="en">Stats</span><span data-li="mn">Статистик</span></a>
-        <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формализм</span></a>
-      </div>
-    </li>
-    <li><a href="verify.html" style="background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;color:var(--green) !important;"><span data-li="en">⚗️ Verify</span><span data-li="mn">⚗️ Баталгаажуулах</span></a></li>
-  </ul>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">ENG</button>
-    <button class="lang-btn" onclick="setLang('mn')">МОН</button>
-  </div>
-</nav>
+
 
 <!-- HOME -->
 <div class="page active" id="page-home">
@@ -1570,6 +1574,30 @@ function navClose(){
 document.addEventListener('click',function(e){
   if(!e.target.closest('.nav-more'))navClose();
 });
+function mnavClose(){document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});}
+
+function mnavToggle(btn){
+  var dd=btn.nextElementSibling;
+  var open=dd.classList.toggle('open');
+  btn.classList.toggle('active',open);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.mnav-more')){
+    document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});
+  }
+});
+function setLang(l){
+  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
+  document.querySelectorAll('.mnav-lb,.lang-btn,.lb').forEach(function(b){
+    b.classList.toggle('active',
+      (l==='en'&&(b.dataset.l==='en'||b.textContent==='ENG'||b.id==='lb-en'||b.id==='btn-en'))||
+      (l==='mn'&&(b.dataset.l==='mn'||b.textContent==='МОН'||b.id==='lb-mn'||b.id==='btn-mn'))
+    );
+  });
+  localStorage.setItem('lang',l);
+}
+(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
+
 </script>
 </body>
 </html>
