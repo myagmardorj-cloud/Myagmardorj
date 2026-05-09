@@ -5,11 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js">
-function navToggle(btn){const d=btn.nextElementSibling;d.classList.toggle('open');btn.classList.toggle('active',d.classList.contains('open'));}
-function navClose(){document.querySelectorAll('.nav-dd').forEach(d=>d.classList.remove('open'));}
-document.addEventListener('click',function(e){if(!e.target.closest('.nav-more'))navClose();});
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
 <style>
 :root{
   --bg:#070710;--surface:#0e0e1c;--surface2:#13131f;
@@ -244,6 +240,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
         <a onclick="showPage('roadmap');navClose()"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
         <a onclick="showPage('updates');navClose()"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a>
         <a onclick="showPage('livestats');navClose()"><span data-li="en">Stats</span><span data-li="mn">Статистик</span></a>
+        <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формализм</span></a>
       </div>
     </li>
     <li><a href="verify.html" style="background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;color:var(--green) !important;"><span data-li="en">⚗️ Verify</span><span data-li="mn">⚗️ Баталгаажуулах</span></a></li>
@@ -1561,6 +1558,18 @@ function subscribeNL() {
 
 const saved=localStorage.getItem('lang');
 if(saved)setLang(saved);
+
+function navToggle(btn){
+  const d=btn.nextElementSibling;
+  d.classList.toggle('open');
+  btn.classList.toggle('active',d.classList.contains('open'));
+}
+function navClose(){
+  document.querySelectorAll('.nav-dd').forEach(d=>d.classList.remove('open'));
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.nav-more'))navClose();
+});
 </script>
 </body>
 </html>
