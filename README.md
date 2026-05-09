@@ -72,9 +72,15 @@ Observed alignment with the first 12 expected prime-associated peaks under the c
 | zeros3 | ~10¹² | 0.9992 | 2.64×10⁻¹⁵ |
 | zeros4 | ~10¹³ | 0.9421 | 5.0×10⁻⁶ |
 
-Strong numerical correlation observed after normalization and residual extraction. The ratio R(p) = C(p)/B(p) ≈ 16.5 is approximately constant across primes (zeros3).
+Empirical agreement with BK-type amplitude scaling observed after normalization and residual extraction. The ratio R(p) = C(p)/B(p) ≈ 16.5 is approximately constant across primes (zeros3).
 
-**Potential connection to Bogomolny–Keating prime correction framework.**
+**Observed empirical agreement with BK-type amplitude scaling.**
+
+> **Note on p-values:** The reported p-values assume independence of spacing covariances
+> across prime lags. Autocorrelation in zero spacings, multiple testing (12 primes tested),
+> and fitted normalization parameters reduce the effective degrees of freedom.
+> Bootstrap confidence intervals and a formal null ensemble definition are needed
+> before these p-values can be interpreted rigorously.
 
 ---
 

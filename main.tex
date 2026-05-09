@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\title{Experimental Investigation of Prime-Related Structure\\
+in Zeta Zero Spacing Statistics}
+\author{Myagmardorj Namnansuren\\
+\small Nexcore LTD, Ulaanbaatar, Mongolia\\
+\small \texttt{myagmardorj@gmail.com}}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report an interesting experimental mathematics observation:
+a statistically significant excess aligned with the first 12
+prime frequencies in the spacing covariance statistics of high
+Riemann zero blocks. Strong numerical correlation was observed
+after normalization and residual extraction
+($r = 0.9992$ on a block near $T \sim 10^{12}$),
+with potential connection to the Bogomolny--Keating
+prime correction framework. These are computational observations
+only; several confounds (normalization artifacts, overfitting,
+window bias, hidden dependence, finite-size effects) have not
+been fully ruled out. This is not a confirmed theorem and
+not a proof of the Riemann Hypothesis.
+\end{abstract}
+
+\section{Motivation}
+
+The Riemann zeta function encodes deep information about
+prime distribution. Bogomolny and Keating \cite{bk1996}
+predicted that GUE statistics of zeta zeros should receive
+prime-dependent corrections. This work investigates whether
+such corrections are numerically detectable in spacing
+covariance statistics of high-height zero blocks.
+
+\section{Background}
+
+Montgomery \cite{montgomery1973} showed that pair correlations
+of Riemann zeros follow GUE statistics. Bogomolny--Keating
+\cite{bk1996} then predicted prime-indexed amplitude corrections:
+\[
+A(p) \sim C \frac{(\log p)^2}{p}.
+\]
+This work tests whether such corrections appear in the
+spacing covariance statistic defined below.
+
+\section{Mathematical Definitions}
+
+Let $\delta_n = \gamma_{n+1} - \gamma_n$ be consecutive
+zero spacings. We define the spacing covariance at lag $h$:
+\[
+C(h) = \frac{1}{N-h} \sum_{n=1}^{N-h}
+(\delta_n - \bar\delta)(\delta_{n+h} - \bar\delta).
+\]
+The BK predictor is $B(p) = (\log p)^2/p$.
+
+\subsection{Critical Normalization}
+The high-$T$ unfolded prime frequency is
+\[
+\tau_p = \frac{\log p}{\log(T/2\pi)}.
+\]
+Using $\log p / 2\pi$ (low-$T$ formula) yields no signal
+($r \approx 0.4$--$0.6$).
+
+\section{Data Source}
+
+Odlyzko zero tables \cite{odlyzko}:
+\begin{itemize}
+\item \textbf{zeros2}: 100,000 zeros near $T \approx 74{,}920$
+\item \textbf{zeros3}: block near $T \sim 10^{12}$
+\item \textbf{zeros4}: block near $T \sim 10^{13}$
+\end{itemize}
+
+\section{Numerical Method}
+
+\begin{enumerate}
+\item Load zero heights $\gamma_n$ from Odlyzko tables
+\item Compute spacings $\delta_n = \gamma_{n+1} - \gamma_n$
+\item For each prime $p$: compute $C(p) = \text{mean}(\delta_n \cdot \delta_{n+p})$
+\item Compute Pearson $r$ between $\{C(p)\}$ and $\{B(p)\}$
+  across primes $p = 2, 3, 5, \ldots, 37$
+\item Run null controls (shuffled zeros, non-prime lags)
+\end{enumerate}
+
+\section{Results}
+
+Observed alignment with the first 12 expected prime-associated
+peaks under the current normalization scheme:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Dataset & Height & $r$ & $p$-value \\
+\midrule
+zeros2 & $T \approx 74{,}920$ & 0.9783 & $3.82 \times 10^{-186}$ \\
+zeros3 & $T \sim 10^{12}$ & 0.9992 & $2.64 \times 10^{-15}$ \\
+zeros4 & $T \sim 10^{13}$ & 0.9421 & $5.0 \times 10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\caption{Pearson correlation between observed $C(p)$ and
+BK predictor $B(p)$ for primes $p = 2, 3, \ldots, 37$.}
+\end{table}
+
+Empirical agreement with BK-type amplitude scaling was observed after
+normalization and residual extraction. The ratio $R(p) = C(p)/B(p) \approx 16.5$
+is approximately constant across primes (zeros3 block).
+This is potentially connected to the Bogomolny--Keating
+prime correction framework.
+
+\section{Controls and Null Models}
+
+\begin{itemize}
+\item \textbf{Shuffled zeros:} $r \approx 0$ --- signal is in
+  the ordering of zeros, not their marginal distribution
+\item \textbf{Non-prime lags:} mean excess $\approx 0$ ---
+  effect is prime-specific
+\item \textbf{Cross-dataset:} $r \geq 0.94$ on all three
+  independent datasets --- not a height-specific artifact
+\end{itemize}
+
+\noindent Still needed: GUE surrogate test,
+bootstrap confidence intervals, fake prime spectrum
+(composite numbers only), scaling law with $N$.
+
+\section{Limitations}
+
+High correlation ($r = 0.9992$) alone is insufficient.
+The following confounds have not been fully ruled out:
+\begin{enumerate}
+\item Normalization artifact ($\tau_p$ choice may be tuned)
+\item Overfitting (only 12 data points)
+\item Window bias (finite zero block)
+\item Hidden dependence (consecutive spacings are not independent)
+\item Finite-size effects
+\end{enumerate}
+
+The constant $C \approx 16.5$ has no theoretical derivation.
+Independent peer replication has not been performed.
+
+\section{Future Work}
+
+\begin{enumerate}
+\item GUE surrogate and bootstrap significance tests (high priority)
+\item Scaling law: behavior of $r$ as $N \to \infty$ (high priority)
+\item Independent replication (high priority)
+\item Theoretical derivation of $C \approx 16.5$ from explicit formula
+\item Submission to \textit{Experimental Mathematics} journal
+\item Testing on zeros near $T \sim 10^{21}$
+\end{enumerate}
+
+\section{Conclusion}
+
+We report an interesting experimental mathematics observation:
+prime-indexed excess in high Riemann zero spacing statistics,
+empirically consistent with Bogomolny--Keating-type corrections.
+These are computational observations --- not a confirmed theorem,
+not a proof of the Riemann Hypothesis. Further controls and
+independent verification are required.
+
+All code: \url{https://github.com/myagmardorj-cloud/Myagmardorj}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+
+\bibitem{bk1996}
+E.~B. Bogomolny and J.~P. Keating,
+``Random matrix theory and the Riemann zeros I \& II,''
+\textit{Nonlinearity}, 1995--1996.
+
+\bibitem{montgomery1973}
+H.~L. Montgomery,
+``The pair correlation of zeros of the zeta function,''
+\textit{Proc. Sympos. Pure Math.}, 24, 1973.
+
+\bibitem{odlyzko}
+A.~M. Odlyzko,
+``The $10^{20}$-th zero of the Riemann zeta function,'' 1992.
+\url{http://www-users.cse.umn.edu/~odlyzko/zeta_tables/}
+
+\bibitem{hiary2012}
+G.~A. Hiary and A.~M. Odlyzko,
+``The zeta function on the critical line,''
+\textit{Math. Comp.}, 81, 2012. arXiv:1105.4312
+
+\end{thebibliography}
+
+\end{document}
