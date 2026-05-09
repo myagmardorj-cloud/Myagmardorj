@@ -243,7 +243,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 <div class="container">
   <div class="hero">
     <div class="eyebrow"><span data-li="en">Research Note · May 2026 · Mongolia</span><span data-li="mn">Судалгааны тэмдэглэл · 2026 · Монгол</span></div>
-    <h1><span data-lang="en">Prime-Correlated Structure<br>in <em>High Riemann Zero Blocks</em></span><span data-lang="mn">Өндөр Риман Тэгийн Блок дахь<br><em>Прайм-Корреляцийн Бүтэц</em></span></h1>
+    <h1><span data-lang="en">Numerical Observations on Prime-Correlated Structure<br>in <em>High Riemann Zero Blocks</em></span><span data-lang="mn">Өндөр Риман Тэгийн Блок дахь<br><em>Прайм-Корреляцийн Бүтэцийн Тоон Ажиглалт</em></span></h1>
     <div class="subtitle">Myagmardorj Namnansuren · Nexcore LTD · Ulaanbaatar</div>
   </div>
   <div class="abstract">
@@ -303,7 +303,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <h2><span data-lang="en">Visualizing the Results</span><span data-lang="mn">Үр дүнгийн дүрслэл</span></h2>
     <div class="chart-container"><div class="chart-title">BK Amplitude Law — A(p) vs B(p) = (log p)²/p</div><div id="chart-scatter" style="height:380px;"></div></div>
     <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — all 12 primes (zeros3)</span><span data-li="mn">12 прайм дээрх илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — selected small-prime subset (zeros3)</span><span data-li="mn">Сонгосон жижиг прайм дэд олонлог дахь илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
   </div>
   <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
@@ -501,16 +501,16 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div class="file-body-inner">
           <div class="note-block">
             <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
-            <span data-lang="en">Initial results showed r ≈ 0.4–0.6, suggesting BK law was not confirmed. The problem was the normalization: using τ_p = log(p)/2π (low-T formula) instead of the correct high-T unfolded frequency τ_p = log(p)/log(T/2π). Using the corrected normalization produced r ≈ 0.9992 in this dataset.</span>
+            <span data-lang="en">Initial results showed r ≈ 0.4–0.6, suggesting weak agreement with BK predictions. The normalization differed: using τ_p = log(p)/2π (low-T formula) instead of the high-T unfolded frequency τ_p = log(p)/log(T/2π). Switching to the high-T formula substantially increased the observed correlation in this dataset.</span>
             <span data-lang="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Зассаны дараа r = 0.9992 гарсан.</span>
           </div>
           <div class="code-block" style="background:#0a0a12;">
             <button class="code-copy" onclick="copyCode(this)">COPY</button>
             <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## ❌ WRONG normalization (low-T)</span>
 τ_p = log(p) / (2π)
-<span style="color:#585b70;"># → r ≈ 0.4–0.6, BK not confirmed</span>
+<span style="color:#585b70;"># → r ≈ 0.4–0.6, weak agreement observed</span>
 
-<span style="color:#4caf7d;">## ✅ CORRECT normalization (high-T unfolded)</span>
+<span style="color:#4caf7d;">## high-T unfolded normalization</span>
 τ_p = log(p) / log(T / 2π)
 <span style="color:#585b70;"># → r = 0.9992</span>
 
@@ -521,7 +521,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           </div>
           <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
             <div class="note-label" style="color:var(--green);">Lesson learned</div>
-            <span data-lang="en">Scientific failures are valuable. This failure led directly to the key insight that produced r = 0.9992.</span>
+            <span data-lang="en">Scientific failures are valuable. This normalization change substantially increased the observed correlation in this dataset.</span>
             <span data-lang="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл r = 0.9992 гаргасан гол ойлголтод шууд хүргэсэн.</span>
           </div>
         </div>
