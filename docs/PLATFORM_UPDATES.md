@@ -1,16 +1,12 @@
 # Platform Update Guide — v0.3
 
+Copy-paste ready text for each platform.
+
 ---
 
 ## 1. ZENODO — New version (v3)
 
-URL: https://zenodo.org/records/20077673 → Edit → New version
-
-### Title (unchanged)
-```
-Numerical Evidence for Prime-Correlated Structure
-in High Riemann Zero Blocks
-```
+`zenodo.org/records/20077673` → Edit → New version
 
 ### Description (replace entirely)
 ```
@@ -20,108 +16,119 @@ in Riemann zero spacing covariance statistics.
 Main observation: Pearson r ≥ 0.94 between empirical
 covariance A(p) and BK predictor B(p) = (log p)²/p
 across 12 primes on three independent Odlyzko datasets
-(T ~ 10¹², 10¹³).
-
-Null controls (shuffled zeros, GUE surrogates, composite
-lags) produce r ≈ 0.
+(T ~ 10¹², 10¹³). Null controls (shuffled zeros, GUE
+surrogates, composite lags) produce r ≈ 0.
 
 IMPORTANT CAVEATS:
 - These are computational observations only
-- Normalization was selected after observing weak low-T results
-  (selection bias — known confound)
+- The normalization τ_p = log(p)/log(T/2π) was selected
+  after observing weak low-T results — selection bias,
+  known confound
 - n = 12 data points; naive p-values assume independence
 - Not a confirmed theorem
 - Not a proof of the Riemann Hypothesis
 - Independent replication required
-
-Key normalization: τ_p = log(p) / log(T/2π)
 
 Repository: https://github.com/myagmardorj-cloud/Myagmardorj
 Website: https://research.nexcore.ltd
 Version: v0.3 (May 2026)
 ```
 
-### Upload new file
-→ Upload updated `paper/main.tex` from the clean zip
+Upload: `paper/main.tex` from clean zip → Publish
 
 ---
 
-## 2. GITHUB — Already updated via clean zip upload
+## 2. GITHUB README / Release note
 
-After uploading Myagmardorj-clean.zip:
-- README already has disclaimer at top
-- All wording updated
-- Structure reorganized
-
-No additional action needed if zip was uploaded correctly.
-
----
-
-## 3. MATH STACKEXCHANGE — Edit your post
-
-Find your post → Edit → Update the description paragraph:
-
-### Add/replace with:
 ```
-Update (v0.3, May 2026): The repository has been reorganized
-with explicit null controls (shuffled zeros, GUE surrogates,
-composite-lag indices), robustness tests, and a full limitations
-document. Key caveat: the high-T normalization was selected
-after observing weak results with low-T formula — this is a
-known selection bias. These remain computational observations
-only and are not a confirmed result.
+Repository updated with more conservative scientific framing.
 
-Repository: https://github.com/myagmardorj-cloud/Myagmardorj
-DOI: https://zenodo.org/records/20077673
+Main changes:
+- "verification" → "comparison"
+- "BK confirmed" → "BK-type agreement observed"
+- Explicit distinction between computational evidence and proof
+- Robustness / null-control structure expanded
+- Normalization-selection caveat documented
+
+Important limitation: The normalization procedure was selected
+after observing weak low-T results. This introduces potential
+selection bias and should be treated as a known confound
+requiring independent replication.
+
+This repository presents exploratory computational evidence only
+and does not constitute a proof of the Riemann Hypothesis.
 ```
 
 ---
 
-## 4. REDDIT — Edit your post or add comment
+## 3. MATH STACKEXCHANGE — Edit post, add at bottom
 
-### Comment to add under your post:
 ```
-Update (v0.3, May 2026):
+Update (v0.3 revision):
+I revised the project wording to avoid overstating the claims.
+Current framing is "BK-type agreement observed" rather than
+"verification" or "confirmation".
 
-Repository has been significantly improved:
-- 8 null/robustness/negative control tests added
-- Explicit null hypothesis stated
-- Normalization sensitivity documented (known confound)
-- Full limitations section
-- One-command reproduction: python scripts/run_all.py zeros3.txt
+Explicit caveat added:
+The normalization was selected after observing weak low-T
+behavior, which introduces possible selection bias.
 
-Key clarification: the high-T normalization τ_p = log(p)/log(T/2π)
-was selected after observing that low-T gave r ≈ 0.4 — this is
-a selection bias and the most important caveat.
+The repository now focuses on reproducibility, controls,
+robustness checks, and computational comparison only.
+No proof of RH is claimed.
 
-These are computational observations only — not a proof of RH.
-Independent replication welcome.
-
-GitHub: https://github.com/myagmardorj-cloud/Myagmardorj
 DOI: 10.5281/zenodo.20077673
 ```
 
 ---
 
-## 5. RESEARCH.NEXCORE.LTD — Already updated
+## 4. REDDIT — Add comment (not edit)
 
-The HTML files (index.html, verify.html, landscape.html, intro.html)
-are all updated in the clean zip with:
+```
+Project update (v0.3):
+
+Revised repository and manuscript to use more conservative
+wording with stronger caveats regarding normalization and
+possible selection bias.
+
+Current position:
+• Exploratory computational evidence
+• BK-type agreement observed in this dataset
+• Not a proof of RH
+• Independent replication needed
+
+Main improvements:
+• Robustness tests expanded (8 controls)
+• Controls organized into separate folder
+• Reproducibility workflow: python scripts/run_all.py zeros3.txt
+• Zenodo + GitHub versioning cleaned up
+• Normalization selection bias explicitly documented
+
+DOI: 10.5281/zenodo.20077673
+GitHub: github.com/myagmardorj-cloud/Myagmardorj
+```
+
+---
+
+## 5. RESEARCH.NEXCORE.LTD
+
+Deploy updated HTML files from clean zip.
+All pages already updated with:
 - "Computational observations" wording
 - "Not a proof of RH" disclaimers
-- Fixed script tags
-- Proper version footer
-
-Just deploy the updated HTML files to your hosting.
+- Version footer: v0.3 · May 2026
 
 ---
 
 ## Order of operations
 
 ```
-1. GitHub    → upload Myagmardorj-clean.zip contents
-2. Zenodo    → New version → update description + upload main.tex
-3. Website   → deploy updated HTML files
-4. StackExchange → edit post, add update note
-5. Reddit    → add comment with update
+1. GitHub    → upload clean zip contents         (5 min)
+2. Zenodo    → New version → paste description   (5 min)
+             → upload paper/main.tex → Publish
+3. Website   → deploy updated HTML files         (2 min)
+4. StackExch → edit post → paste update note     (2 min)
+5. Reddit    → new comment → paste update        (2 min)
 ```
+
+Total: ~15 minutes
