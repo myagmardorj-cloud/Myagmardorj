@@ -54,12 +54,14 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margi
 <body>
 <nav class="MN">
 <a href="index.html" class="MN-logo">research.nexcore.ltd</a>
-<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" ><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html" class="MN-cur"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
+<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
 <div class="MN-lang">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
+
+
 <div class="container">
   <div class="disclaimer">
     ⚠️ This page defines the mathematical objects used in this computational study.
@@ -116,22 +118,32 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margi
   </div>
 </div>
 
-<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
-<span>Exploratory computational research. No proof of RH claimed.</span>
-<div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a></div>
-<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
-</footer>
+
 
 <script>
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
 function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
 document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
+);
+  localStorage.setItem('lang',l);
+}
+
+
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more')){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}});
 function setLang(l){
   document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
   document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
+  var fl=document.getElementById('faq-list');if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
   localStorage.setItem('lang',l);
 }
 (function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
 </script>
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;box-sizing:border-box;">
+<span><span data-li="en">Exploratory computational research. No proof of RH claimed.</span><span data-li="mn">Тооцооллын судалгаа. RH-н нотолгоо нэхэмжлэхгүй.</span></span>
+<div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;font-family:'Plus Jakarta Sans',sans-serif;"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a></div>
+<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
+</footer>
 </body>
 </html>
