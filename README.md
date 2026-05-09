@@ -227,3 +227,6 @@ arXiv draft: [`docs/ARXIV_DRAFT.md`](docs/ARXIV_DRAFT.md)
 python scripts/analyze.py zeros_ht.txt  →  ~10 seconds
 python controls/run_all.py              →  ~3 minutes
 ```
+
+## Dataset Checksums
+zeros_ht.txt SHA256: E7B9FD20B4755234B017167696F18A9C319070453DC175BA58D0FA7345FE3D21
