@@ -82,7 +82,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .prob-desc{font-size:.72rem;color:var(--sub);line-height:1.5;flex:1;}
 .prob-tools{margin-top:.6rem;font-size:.65rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(255,255,255,.05);padding-top:.4rem;}
 .solved-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(0,229,160,.15);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.15rem .4rem;border-radius:4px;}
-.our-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(240,180,41,.2);color:var(--gold);border:1px solid rgba(240,180,41,.4);padding:.15rem .4rem;border-radius:4px;animation:pulse-badge 4s infinite;}
+.our-badge{display:block;margin-top:.5rem;font-family:'Space Grotesk',sans-serif;font-size:.55rem;background:rgba(240,180,41,.12);color:var(--gold);border:1px solid rgba(240,180,41,.3);padding:.12rem .4rem;border-radius:4px;width:fit-content;}
 @keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
 
 /* CONJECTURES GRID */
@@ -467,7 +467,7 @@ clayProbs.forEach(p => {
   div.onclick = () => openModal(p);
   div.innerHTML = `
     ${p.solved ? '<span class="solved-badge">SOLVED 2003</span>' : ''}
-    ${p.our ? '<span class="our-badge">← Computational Observation</span>' : ''}
+    ${p.our ? '<span class="our-badge">Computational obs.</span>' : ''}
     <span class="prob-tag ${p.tagClass}">${p.tag}</span>
     <div class="prob-name">
       <span data-lang="en">${p.name_en}</span>
