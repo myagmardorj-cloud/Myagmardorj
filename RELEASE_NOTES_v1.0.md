@@ -7,7 +7,37 @@
 
 ---
 
-## What this release is
+## Stable Citation
+
+Once the v1.0.0-experimental tag is created on GitHub:
+
+```bibtex
+@misc{namnansuren2026prime,
+  author    = {Namnansuren, Myagmardorj},
+  title     = {Prime-Indexed Excess in Riemann Zero Spacing Covariance},
+  year      = {2026},
+  version   = {1.0.0-experimental},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20077673},
+  url       = {https://zenodo.org/records/20077673},
+  note      = {Exploratory computational study.
+               Not a proof of the Riemann Hypothesis.}
+}
+```
+
+**Pin the exact commit hash** after tagging:
+```bash
+git tag v1.0.0-experimental
+git push origin v1.0.0-experimental
+# Then add to README:
+# Stable commit: github.com/myagmardorj-cloud/Myagmardorj/tree/v1.0.0-experimental
+```
+
+After this tag: **no result numbers change**. Future work → v1.1+.
+
+---
+
+
 
 A frozen archive of the computational study as of v1.0.
 Result numbers will not change after this tag.

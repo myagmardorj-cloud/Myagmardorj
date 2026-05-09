@@ -14,7 +14,30 @@
 
 ---
 
-## Repository Structure
+## Latest Update (v0.3 — May 2026)
+
+Repository updated with more conservative scientific framing.
+
+**Main changes:**
+- `"verification"` → `"comparison"`
+- `"BK confirmed"` → `"BK-type agreement observed"`
+- Explicit distinction between computational evidence and proof
+- Robustness and null-control structure expanded (8 tests)
+- Normalization-selection caveat documented explicitly
+
+**Important limitation:**
+> The normalization procedure (`τ_p = log(p)/log(T/2π)`) was selected
+> after observing weak low-T results. This introduces potential selection
+> bias and should be treated as a known confound requiring independent replication.
+
+**Reproduce:**
+```bash
+python scripts/run_all.py zeros3.txt
+```
+
+---
+
+
 
 ```
 /

@@ -7,6 +7,15 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ## [v0.3] — 2026-05-09
 
+### Scientific framing update
+- `"verification"` → `"comparison"` throughout
+- `"BK confirmed"` → `"BK-type agreement observed"`
+- Explicit distinction between computational evidence and mathematical proof
+- Normalization-selection caveat added explicitly to LIMITATIONS.md:
+  *"The normalization was selected after observing weak low-T behavior,
+  which introduces possible selection bias — a known confound."*
+- Null hypothesis (H₀) stated explicitly in LIMITATIONS.md and RELEASE_NOTES
+
 ### Added
 - `CITATION.cff` — GitHub automatic citation support
 - `requirements.txt` at repository root
