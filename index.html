@@ -199,6 +199,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 .faq-a{display:none;padding:0 1.5rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
 .faq-a.open{display:block;}
 .faq-a strong{color:var(--text);}
+
 /* MASTER NAV */
 
 /* MASTER NAV */
@@ -232,17 +233,14 @@ body.mn span[data-lang="mn"]{display:inline;}
 
 /* MASTER FOOTER */
 
-/* MASTER FOOTER */
-.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);}
 .MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
-.MF-center{display:flex;gap:0;align-items:center;}
+.MF-center{display:flex;align-items:center;}
 .MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
 .MF-center a:hover{color:#9999b8;}
 .MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
-.MF-right a{color:#5a5a7a;text-decoration:none;}
-.MF-right a:hover{color:#00d4ff;}
+.MF-right a{color:#5a5a7a;text-decoration:none;}.MF-right a:hover{color:#00d4ff;}
 body{padding-bottom:42px !important;}
-
 </style>
 </head>
 <body class="en">
@@ -1574,6 +1572,33 @@ function subscribeNL() {
 
 const saved=localStorage.getItem('lang');
 if(saved)setLang(saved);
+
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  var open=dd.classList.toggle('open');
+  btn.classList.toggle('MN-active',open);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')){
+    document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+    document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-active');});
+  }
+});
+function setLang(l){
+  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));
+  });
+  document.querySelectorAll('.lang-btn,.lb').forEach(function(b){
+    b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
+  });
+  var fl=document.getElementById('faq-list');
+  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
+  localStorage.setItem('lang',l);
+}
+(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
+
 </script>
 <footer class="MF">
 <span class="MF-left"><span data-li="en">Not a proof of RH</span><span data-li="mn">RH-н нотолгоо биш</span></span>
@@ -1584,7 +1609,7 @@ if(saved)setLang(saved);
   <a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
   <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
 </div>
-<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a></span>
+<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
 </footer>
 </body>
 </html>

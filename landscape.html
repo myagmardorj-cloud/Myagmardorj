@@ -82,7 +82,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .prob-desc{font-size:.72rem;color:var(--sub);line-height:1.5;flex:1;}
 .prob-tools{margin-top:.6rem;font-size:.65rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(255,255,255,.05);padding-top:.4rem;}
 .solved-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(0,229,160,.15);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.15rem .4rem;border-radius:4px;}
-.our-badge{display:block;margin-top:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(240,180,41,.2);color:var(--gold);border:1px solid rgba(240,180,41,.4);padding:.15rem .4rem;border-radius:4px;width:fit-content;}
+.our-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(240,180,41,.2);color:var(--gold);border:1px solid rgba(240,180,41,.4);padding:.15rem .4rem;border-radius:4px;animation:pulse-badge 4s infinite;}
 @keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
 
 /* CONJECTURES GRID */
@@ -163,6 +163,7 @@ body.mn [data-li="mn"]{display:inline;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .nav-links{display:none;}
 }
+
 /* MASTER NAV */
 
 /* MASTER NAV */
@@ -196,17 +197,14 @@ body.mn span[data-lang="mn"]{display:inline;}
 
 /* MASTER FOOTER */
 
-/* MASTER FOOTER */
-.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);}
 .MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
-.MF-center{display:flex;gap:0;align-items:center;}
+.MF-center{display:flex;align-items:center;}
 .MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
 .MF-center a:hover{color:#9999b8;}
 .MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
-.MF-right a{color:#5a5a7a;text-decoration:none;}
-.MF-right a:hover{color:#00d4ff;}
+.MF-right a{color:#5a5a7a;text-decoration:none;}.MF-right a:hover{color:#00d4ff;}
 body{padding-bottom:42px !important;}
-
 </style>
 </head>
 <body class="mn">
@@ -469,7 +467,7 @@ clayProbs.forEach(p => {
   div.onclick = () => openModal(p);
   div.innerHTML = `
     ${p.solved ? '<span class="solved-badge">SOLVED 2003</span>' : ''}
-    ${p.our ? '<span class="our-badge">Computational obs.</span>' : ''}
+    ${p.our ? '<span class="our-badge">← Computational Observation</span>' : ''}
     <span class="prob-tag ${p.tagClass}">${p.tag}</span>
     <div class="prob-name">
       <span data-lang="en">${p.name_en}</span>
@@ -534,6 +532,33 @@ function setLang(lang) {
 }
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved); else setLang('mn');
+
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  var open=dd.classList.toggle('open');
+  btn.classList.toggle('MN-active',open);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')){
+    document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+    document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-active');});
+  }
+});
+function setLang(l){
+  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));
+  });
+  document.querySelectorAll('.lang-btn,.lb').forEach(function(b){
+    b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
+  });
+  var fl=document.getElementById('faq-list');
+  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
+  localStorage.setItem('lang',l);
+}
+(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
+
 </script>
 <footer class="MF">
 <span class="MF-left"><span data-li="en">Not a proof of RH</span><span data-li="mn">RH-н нотолгоо биш</span></span>
@@ -544,7 +569,7 @@ if (saved) setLang(saved); else setLang('mn');
   <a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
   <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
 </div>
-<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a></span>
+<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
 </footer>
 </body>
 </html>

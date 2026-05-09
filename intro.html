@@ -125,6 +125,7 @@ span[data-mn]{display:none;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .nav-dots{display:none;}
 }
+
 /* MASTER NAV */
 
 /* MASTER NAV */
@@ -158,17 +159,14 @@ body.mn span[data-lang="mn"]{display:inline;}
 
 /* MASTER FOOTER */
 
-/* MASTER FOOTER */
-.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);}
 .MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
-.MF-center{display:flex;gap:0;align-items:center;}
+.MF-center{display:flex;align-items:center;}
 .MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
 .MF-center a:hover{color:#9999b8;}
 .MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
-.MF-right a{color:#5a5a7a;text-decoration:none;}
-.MF-right a:hover{color:#00d4ff;}
+.MF-right a{color:#5a5a7a;text-decoration:none;}.MF-right a:hover{color:#00d4ff;}
 body{padding-bottom:42px !important;}
-
 </style>
 </head>
 <body class="en">
@@ -187,96 +185,7 @@ body{padding-bottom:42px !important;}
 <div class="grid"></div>
 
 <!-- TOP NAV -->
-<div class="topnav">
-  <div class="logo">research.nexcore.ltd</div>
-  <div style="display:flex;gap:.8rem;align-items:center;">
-    <div style="display:flex;">
-      <button onclick="setLang('en')" id="btn-en" style="font-family:'Space Grotesk',sans-serif;font-size:.68rem;padding:.3rem .65rem;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.3);color:var(--c);cursor:pointer;border-radius:4px 0 0 4px;">ENG</button>
-      <button onclick="setLang('mn')" id="btn-mn" style="font-family:'Space Grotesk',sans-serif;font-size:.68rem;padding:.3rem .65rem;background:none;border:1px solid rgba(255,255,255,.1);color:var(--m);cursor:pointer;border-radius:0 4px 4px 0;border-left:none;">МОН</button>
-    </div>
-    <a class="visit-btn" href="https://research.nexcore.ltd">
-      <span data-en>Visit site →</span><span data-mn>Сайт руу →</span>
-    </a>
-  </div>
-</div>
-
-<!-- NAV DOTS -->
-<div class="nav-dots" id="nav-dots"></div>
-
-<!-- SLIDE COUNTER -->
-<div class="slide-counter"><span class="sc-cur" id="sc-cur">1</span> / <span id="sc-tot">7</span></div>
-
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- SLIDE 1: HERO -->
-<!-- ═══════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="0">
-<div class="inner">
-  <div class="slide-content">
-    <div class="label">
-      <span data-en>Myagmardorj Namnansuren · 2026 · Mongolia</span>
-      <span data-mn>Мягмардорж Намнансүрэн · 2026 · Монгол</span>
-    </div>
-    <h2>
-      <span data-en><span class="hl">Prime-Correlated</span><br>Structure in<br>Riemann Zeros</span>
-      <span data-mn>Риман Тэгийн<br><span class="hl">Прайм-Корреляцийн</span><br>Бүтэц</span>
-    </h2>
-    <p class="body-text">
-      <span data-en>An independent computational observation of persistent prime-indexed excess correlations in Riemann zero spacing statistics, empirically consistent with a BK-type scaling law. Tested across 3 datasets at heights up to T ~ 10¹³.</span>
-      <span data-mn>Риман тэгийн зайн статистик дахь прайм-индекстэй илүүдэл корреляцийн бие даасан тооцооллын ажиглалт. BK-төрлийн scaling-тай нийцэж байна. T ~ 10¹³ хүртэлх 3 датасет дээр тест хийгдсэн.</span>
-    </p>
-    <div class="cta-row">
-      <a class="btn-primary" href="https://research.nexcore.ltd">
-        <span data-en>Explore the site →</span><span data-mn>Сайтыг үзэх →</span>
-      </a>
-      <a class="btn-secondary" href="https://zenodo.org/records/20077673" target="_blank">
-        <span data-en>📄 Preprint</span><span data-mn>📄 Preprint</span>
-      </a>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- SLIDE 2: KEY RESULT -->
-<!-- ═══════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="1">
-<div class="inner">
-  <div class="slide-content">
-    <div class="label">
-      <span data-en>Key Result</span><span data-mn>Үндсэн үр дүн</span>
-    </div>
-    <div class="result-big">
-      <div class="r-val">0.9992</div>
-      <div class="r-label">
-        <span data-en>Pearson r — BK amplitude law on zeros3 block (~10¹²)</span>
-        <span data-mn>Pearson r — zeros3 блок (~10¹²) дээрх BK амплитудын хууль</span>
-      </div>
-    </div>
-    <div class="stats-row">
-      <div class="stat"><div class="stat-val" style="color:var(--g);">12/12</div><div class="stat-lbl"><span data-en>Primes positive</span><span data-mn>Эерэг прайм</span></div></div>
-      <div class="stat"><div class="stat-val" style="color:var(--c);">3</div><div class="stat-lbl"><span data-en>Datasets</span><span data-mn>Датасет</span></div></div>
-      <div class="stat"><div class="stat-val" style="color:var(--gold);">16.5</div><div class="stat-lbl">C constant</div></div>
-      <div class="stat"><div class="stat-val" style="color:var(--sub);">≥0.94</div><div class="stat-lbl"><span data-en>Min r</span><span data-mn>Хамгийн бага r</span></div></div>
-    </div>
-    <p style="font-size:.78rem;color:var(--m);margin-top:1rem;font-style:italic;background:rgba(255,77,109,.05);border-left:2px solid var(--r);padding:.6rem .8rem;border-radius:0 6px 6px 0;"><strong style="color:var(--r);font-style:normal;">Known Limitations:</strong> 
-      <span data-en>⚠️ Numerical observations only — not a confirmed theorem, not a proof of RH.</span>
-      <span data-mn>⚠️ Зөвхөн тоон ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
-    </p>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- SLIDE 3: PAGES -->
-<!-- ═══════════════════════════════════════════════════════ -->
-<section class="slide" data-slide="2">
-<div class="inner">
-  <div class="slide-content">
-    <div class="label">
-      <span data-en>Website structure</span><span data-mn>Вэбийн бүтэц</span>
-    </div>
-    <h2><span data-en><span class="hl">10</span> pages</span><span data-mn><span class="hl">10</span> хуудас</span></h2>
-    <div class="pages-list">
+<div class="pages-list">
       <div class="page-item"><div class="page-num">1</div><div><div class="page-name"><span data-en>Results</span><span data-mn>Үр дүн</span></div><div class="page-desc"><span data-en>Main findings, BK formula, timeline</span><span data-mn>Үндсэн олдвор, BK томьёо, он цаг</span></div></div></div>
       <div class="page-item"><div class="page-num">2</div><div><div class="page-name"><span data-en>Charts</span><span data-mn>Графикууд</span></div><div class="page-desc"><span data-en>Interactive Plotly charts — scatter, bar, prime excess</span><span data-mn>Интерактив Plotly графикууд</span></div></div></div>
       <div class="page-item"><div class="page-num">3</div><div><div class="page-name"><span data-en>Calculator</span><span data-mn>Тооцоолуур</span></div><div class="page-desc"><span data-en>Compute B(p) = (log p)²/p for any prime</span><span data-mn>Аливаа прайм дээр B(p) тооцоол</span></div></div></div>
@@ -477,6 +386,33 @@ function setLang(lang) {
 }
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved);
+
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  var open=dd.classList.toggle('open');
+  btn.classList.toggle('MN-active',open);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')){
+    document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+    document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-active');});
+  }
+});
+function setLang(l){
+  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));
+  });
+  document.querySelectorAll('.lang-btn,.lb').forEach(function(b){
+    b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
+  });
+  var fl=document.getElementById('faq-list');
+  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
+  localStorage.setItem('lang',l);
+}
+(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
+
 </script>
 <footer class="MF">
 <span class="MF-left"><span data-li="en">Not a proof of RH</span><span data-li="mn">RH-н нотолгоо биш</span></span>
@@ -487,7 +423,7 @@ if (saved) setLang(saved);
   <a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
   <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
 </div>
-<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a></span>
+<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
 </footer>
 </body>
 </html>
