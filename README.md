@@ -1,6 +1,6 @@
-# Prime-Indexed Excess in High Riemann Zero Spacing Statistics
+# Experimental Investigation of Prime-Related Structure in Zeta Zero Spacing Statistics
 
-**Status:** Interesting experimental mathematics observation  
+**Status:** Exploratory experimental mathematics — not a confirmed result  
 **DOI:** [10.5281/zenodo.20077673](https://zenodo.org/records/20077673)  
 **Website:** [research.nexcore.ltd](https://research.nexcore.ltd)
 
@@ -64,7 +64,7 @@ Download: http://www-users.cse.umn.edu/~odlyzko/zeta_tables/
 
 ## 6. Results
 
-A statistically significant excess aligned with the first 12 prime frequencies was observed:
+Observed alignment with the first 12 expected prime-associated peaks under the current normalization scheme:
 
 | Dataset | Height | Pearson r | p-value |
 |---------|--------|-----------|---------|
