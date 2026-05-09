@@ -1391,15 +1391,70 @@ function showPage(name){
   window.scrollTo(0,0);
 }
 
-var chartsInited=false;
+let chartsInited=false,calcInited=false;
+
 function initCharts(){
   if(chartsInited)return;chartsInited=true;
   Plotly.newPlot('chart-scatter',[
     {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros3',type:'scatter'},
     {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',line:{color:'#4a9eff',dash:'dash',width:1},name:'BK prediction',type:'scatter'}
   ],{...DL,xaxis:{...DL.xaxis,title:'B(p) = (log p)² / p'},yaxis:{...DL.yaxis,title:'A(p) observed'},legend:{bgcolor:'#111118',bordercolor:'#1e1e2e'}},PC);
-  Plotly.newPlot('chart-bar',[{x:['zeros2\n(100K)','zeros3\n(~10¹²)','zeros4\n(~10¹³)'],y:[0.9783,0.9992,0.9421],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r=0.9783','r=0.9992','r=0.9421'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
+  Plotly.newPlot('chart-bar',[{x:['zeros2
+(100K)','zeros3
+(~10¹²)','zeros4
+(~10¹³)'],y:[0.9783,0.9992,0.9421],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r=0.9783','r=0.9992','r=0.9421'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
   Plotly.newPlot('chart-prime',[{x:primes.map(p=>'p='+p),y:Ap_z3,type:'bar',marker:{color:primes.map(()=>'#4caf7d')},name:'A(p) zeros3'}],{...DL,xaxis:{...DL.xaxis,title:'Prime p'},yaxis:{...DL.yaxis,title:'A(p)'}},PC);
+}
+
+function initCalc(){
+  if(calcInited)return;calcInited=true;
+  const btns=document.getElementById('prime-buttons');
+  primes.forEach(p=>{
+    const b=document.createElement('button');
+    b.className='prime-btn';b.textContent='p = '+p;
+    b.onclick=()=>{document.querySelectorAll('.prime-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');};
+    btns.appendChild(b);
+  });
+  const tbody=document.getElementById('prime-table');
+  primes.forEach((p,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${p}</td><td>${Math.log(p).toFixed(4)}</td><td>${Bp[i].toFixed(6)}</td><td>${Ap_z3[i].toFixed(4)}</td><td>${Rp[i].toFixed(3)}</td>`;tbody.appendChild(tr);});
+  Plotly.newPlot('chart-calc',[{x:[],y:[],type:'bar',marker:{color:'#c9a84c'}}],{...DL},PC);
+}
+
+function calcBK(){
+  const sel=document.querySelector('.prime-btn.selected');
+  if(!sel){document.getElementById('calc-result').innerHTML='<div class="cr-label">Please select a prime first</div>';return;}
+  const p=parseInt(sel.textContent.replace('p = ',''));
+  const lp=Math.log(p),bp=lp*lp/p,ap=bp*C,idx=primes.indexOf(p);
+  document.getElementById('calc-result').innerHTML=`<div class="cr-label">p = ${p}</div><div class="cr-value">B(p) = ${bp.toFixed(6)}</div><div class="cr-interp">log(${p}) = ${lp.toFixed(4)}</div><div class="cr-interp" style="margin-top:.8rem;">Expected A(p) ≈ ${ap.toFixed(4)}  (C ≈ 16.5)</div><div class="cr-interp">Observed A(p) ≈ ${Ap_z3[idx].toFixed(4)} (zeros3)</div><div class="cr-interp">R(p) = ${Rp[idx].toFixed(3)}</div>`;
+  Plotly.react('chart-calc',[{x:['B(p)','A(p) expected','A(p) observed'],y:[bp,ap,Ap_z3[idx]],type:'bar',marker:{color:['#4a9eff','#8a6f32','#c9a84c']},text:[bp.toFixed(4),ap.toFixed(4),Ap_z3[idx].toFixed(4)],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,title:{text:'p = '+p,font:{color:'#c9a84c',size:13}}},PC);
+}
+
+function toggleFile(header){
+  const body=header.nextElementSibling;
+  const arrow=header.querySelector('.file-toggle');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+
+function setActiveNav(name){
+  document.querySelectorAll('.MN-links a').forEach(function(a){a.classList.remove('MN-cur');});
+  document.querySelectorAll('.MN-dd a').forEach(function(a){a.classList.remove('MN-dd-active');});
+  document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-has-active');});
+  var primary=['home','methods','nulltests','data','papers','about'];
+  if(primary.indexOf(name)>-1){
+    var el=document.getElementById('nav-'+name);if(el)el.classList.add('MN-cur');
+  } else {
+    var dd=document.querySelector('.MN-dd');
+    if(dd){
+      dd.querySelectorAll('a').forEach(function(a){
+        if(a.getAttribute('onclick')&&a.getAttribute('onclick').indexOf("'"+name+"'")>-1){
+          a.classList.add('MN-dd-active');
+          var btn=dd.previousElementSibling;if(btn)btn.classList.add('MN-has-active');
+        }
+      });
+    }
+  }
 }
 
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
