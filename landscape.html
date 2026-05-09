@@ -163,9 +163,26 @@ body.mn [data-li="mn"]{display:inline;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .nav-links{display:none;}
 }
+
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.2;}
+.o1{width:500px;height:500px;background:radial-gradient(circle,#0044ff,transparent);top:-150px;left:-100px;animation:oa 20s ease-in-out infinite alternate;}
+.o2{width:400px;height:400px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-80px;animation:ob 18s ease-in-out infinite alternate;}
+.o3{width:250px;height:250px;background:radial-gradient(circle,#7b00ff,transparent);top:40%;left:50%;animation:oc 15s ease-in-out infinite alternate;}
+@keyframes oa{to{transform:translate(80px,100px)}}
+@keyframes ob{to{transform:translate(-60px,-80px)}}
+@keyframes oc{to{transform:translate(-50px,60px)}}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;}
 </style>
 </head>
 <body class="mn">
+<div class="mesh">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+</div>
+<div class="grid-bg"></div>
+
 
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
