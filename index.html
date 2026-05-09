@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -29,7 +29,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .page{display:none;min-height:100vh;padding-top:56px;position:relative;z-index:2;}.page.active{display:block;}
 .container{max-width:900px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;}
 .hero{padding:5rem 0 3rem;border-bottom:1px solid var(--border);margin-bottom:4rem;}
-.eyebrow{font-family:'Space Grotesk',sans-serif;font-size:.72rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .6s ease forwards .1s;}.eyebrow::before{content:"·";width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 3s infinite;display:inline-block;margin-right:4px;}@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.eyebrow{font-family:'Space Grotesk',sans-serif;font-size:.72rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .6s ease forwards .1s;}.eyebrow::before{content:"Â·";width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 3s infinite;display:inline-block;margin-right:4px;}@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;font-family:'Space Grotesk',sans-serif;margin-bottom:1rem;opacity:0;animation:fadeUp .6s ease forwards .2s;}
 h1 em{font-style:italic;background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .subtitle{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);opacity:0;animation:fadeUp .6s ease forwards .3s;}
@@ -249,10 +249,10 @@ body{padding-bottom:42px !important;}
 <body class="en">
 <nav class="MN">
 <a href="index.html" class="MN-logo" onclick="showPage('home')">research.nexcore.ltd</a>
-<div class="MN-links"><a href="index.html" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a onclick="showPage('charts');MN_close()"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a onclick="showPage('methods');MN_close()"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a onclick="showPage('nulltests');MN_close()"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a onclick="showPage('data');MN_close()"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a onclick="showPage('papers');MN_close()"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a onclick="showPage('faq');MN_close()"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a onclick="showPage('discussion');MN_close()"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a onclick="showPage('roadmap');MN_close()"><span data-li="en">Roadmap</span><span data-li="mn">Roadmap</span></a><a onclick="showPage('calculator');MN_close()"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a onclick="showPage('about');MN_close()"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
+<div class="MN-links"><a href="index.html" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Ò®Ñ€ Ð´Ò¯Ð½</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Ð¥Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ð»Ñ‚</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Ð¢Ð°Ð½Ð¸Ð»Ñ†ÑƒÑƒÐ»Ð³Ð°</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Ð¤Ð¾Ñ€Ð¼Ð°Ð» Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð¾Ð»Ñ‚</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More â–¾</span><span data-li="mn">Ð”ÑÐ»Ð³ÑÑ€ÑÐ½Ð³Ò¯Ð¹ â–¾</span></button><div class="MN-dd"><a onclick="showPage('charts');MN_close()"><span data-li="en">Charts</span><span data-li="mn">Ð“Ñ€Ð°Ñ„Ð¸ÐºÑƒÑƒÐ´</span></a><a onclick="showPage('methods');MN_close()"><span data-li="en">Methods</span><span data-li="mn">ÐÑ€Ð³Ð°Ñ‡Ð»Ð°Ð»</span></a><a onclick="showPage('nulltests');MN_close()"><span data-li="en">Controls</span><span data-li="mn">Ð¥ÑÐ½Ð°Ð»Ñ‚Ñ‹Ð½ Ñ‚ÐµÑÑ‚</span></a><a onclick="showPage('data');MN_close()"><span data-li="en">Data</span><span data-li="mn">Ó¨Ð³Ó©Ð³Ð´Ó©Ð»</span></a><a onclick="showPage('papers');MN_close()"><span data-li="en">References</span><span data-li="mn">Ð­ÑˆÐ»ÑÐ»</span></a><a onclick="showPage('faq');MN_close()"><span data-li="en">FAQ</span><span data-li="mn">ÐÑÑƒÑƒÐ»Ñ‚</span></a><a onclick="showPage('discussion');MN_close()"><span data-li="en">Discussion</span><span data-li="mn">Ð¥ÑÐ»ÑÐ»Ñ†Ò¯Ò¯Ð»ÑÐ³</span></a><a onclick="showPage('roadmap');MN_close()"><span data-li="en">Roadmap</span><span data-li="mn">Roadmap</span></a><a onclick="showPage('calculator');MN_close()"><span data-li="en">Calculator</span><span data-li="mn">Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ð»</span></a><a onclick="showPage('about');MN_close()"><span data-li="en">About</span><span data-li="mn">Ð¢Ó©ÑÐ»Ð¸Ð¹Ð½ Ñ‚ÑƒÑ…Ð°Ð¹</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ñ…Ò¯Ñ€ÑÑ</span></a></div></span></div>
 <div class="MN-lang">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
-<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">ÐœÐžÐ</button>
 </div>
 </nav>
 
@@ -274,54 +274,54 @@ body{padding-bottom:42px !important;}
 <div class="page active" id="page-home">
 <div class="container">
   <div class="hero">
-    <div class="eyebrow"><span data-li="en">Research Note · May 2026 · Mongolia</span><span data-li="mn">Судалгааны тэмдэглэл · 2026 · Монгол</span></div>
-    <h1><span data-lang="en">Numerical Observations on Prime-Correlated Structure<br>in <em>High Riemann Zero Blocks</em></span><span data-lang="mn">Өндөр Риман Тэгийн Блок дахь<br><em>Прайм-Корреляцийн Бүтэцийн Тоон Ажиглалт</em></span></h1>
-    <div class="subtitle">Myagmardorj Namnansuren · Nexcore LTD · Ulaanbaatar</div>
+    <div class="eyebrow"><span data-li="en">Research Note Â· May 2026 Â· Mongolia</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ñ‚ÑÐ¼Ð´ÑÐ³Ð»ÑÐ» Â· 2026 Â· ÐœÐ¾Ð½Ð³Ð¾Ð»</span></div>
+    <h1><span data-lang="en">Numerical Observations on Prime-Correlated Structure<br>in <em>High Riemann Zero Blocks</em></span><span data-lang="mn">Ó¨Ð½Ð´Ó©Ñ€ Ð Ð¸Ð¼Ð°Ð½ Ð¢ÑÐ³Ð¸Ð¹Ð½ Ð‘Ð»Ð¾Ðº Ð´Ð°Ñ…ÑŒ<br><em>ÐŸÑ€Ð°Ð¹Ð¼-ÐšÐ¾Ñ€Ñ€ÐµÐ»ÑÑ†Ð¸Ð¹Ð½ Ð‘Ò¯Ñ‚ÑÑ†Ð¸Ð¹Ð½ Ð¢Ð¾Ð¾Ð½ ÐÐ¶Ð¸Ð³Ð»Ð°Ð»Ñ‚</em></span></h1>
+    <div class="subtitle">Myagmardorj Namnansuren Â· Nexcore LTD Â· Ulaanbaatar</div>
   </div>
   <div class="abstract">
-    <span data-lang="en">Computational observations consistent with the Bogomolny–Keating amplitude law A(p) ∼ C(log p)²/p in high Riemann zero blocks. Tested across three independent Odlyzko datasets at heights T ~ 10¹², 10¹³. Pearson r varies across datasets: 0.6847 (zeros1), 0.5113 (zeros_ht), 0.4509 (zeros6). These are computational observations empirically consistent with BK-type scaling — not a confirmed theorem, not a proof of RH. Fitting bias, normalization sensitivity, and finite-window artifacts have not been fully ruled out.</span>
-    <span data-lang="mn">Богомолны–Китингийн амплитудын хуулийн тооцооллын ажиглалт өндөр Риман тэгийн блок дээр. Гурван бие даасан датасет дээр тест хийгдсэн. Бүх тохиолдолд r = 0.45–0.68. Энэ нь BK-төрлийн scaling-тай нийцсэн тооцооллын ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
+    <span data-lang="en">Computational observations consistent with the Bogomolnyâ€“Keating amplitude law A(p) âˆ¼ C(log p)Â²/p in high Riemann zero blocks. Tested across three independent Odlyzko datasets at heights T ~ 10Â¹Â², 10Â¹Â³. Pearson r varies across datasets: 0.6847 (zeros1), 0.5113 (zeros_ht), 0.4509 (zeros6). These are computational observations empirically consistent with BK-type scaling â€” not a confirmed theorem, not a proof of RH. Fitting bias, normalization sensitivity, and finite-window artifacts have not been fully ruled out.</span>
+    <span data-lang="mn">Ð‘Ð¾Ð³Ð¾Ð¼Ð¾Ð»Ð½Ñ‹â€“ÐšÐ¸Ñ‚Ð¸Ð½Ð³Ð¸Ð¹Ð½ Ð°Ð¼Ð¿Ð»Ð¸Ñ‚ÑƒÐ´Ñ‹Ð½ Ñ…ÑƒÑƒÐ»Ð¸Ð¹Ð½ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚ Ó©Ð½Ð´Ó©Ñ€ Ð Ð¸Ð¼Ð°Ð½ Ñ‚ÑÐ³Ð¸Ð¹Ð½ Ð±Ð»Ð¾Ðº Ð´ÑÑÑ€. Ð“ÑƒÑ€Ð²Ð°Ð½ Ð±Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ð´ÑÑÑ€ Ñ‚ÐµÑÑ‚ Ñ…Ð¸Ð¹Ð³Ð´ÑÑÐ½. Ð‘Ò¯Ñ… Ñ‚Ð¾Ñ…Ð¸Ð¾Ð»Ð´Ð¾Ð»Ð´ r = 0.45â€“0.68. Ð­Ð½Ñ Ð½ÑŒ BK-Ñ‚Ó©Ñ€Ð»Ð¸Ð¹Ð½ scaling-Ñ‚Ð°Ð¹ Ð½Ð¸Ð¹Ñ†ÑÑÐ½ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚ â€” Ð±Ð°Ñ‚Ð»Ð°Ð³Ð´ÑÐ°Ð½ Ñ‚ÐµÐ¾Ñ€ÐµÐ¼ Ð±Ð¸Ñˆ, RH-Ð½ Ð½Ð¾Ñ‚Ð¾Ð»Ð³Ð¾Ð¾ Ð±Ð¸Ñˆ.</span>
   </div>
-  <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;margin-bottom:2rem;"><div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;">Known Limitations</div><p style="font-size:.84rem;color:var(--sub);margin:0;line-height:1.7;"><span data-lang="en">Numerical observations only. No theorem, proof, or asymptotic derivation is claimed. Observed correlations may be influenced by finite-range effects, normalization procedures, and statistical dependencies. Independent verification required.</span><span data-lang="mn">Зөвхөн тоон ажиглалт. Теорем, нотолгоо нэхэмжлэхгүй. Finite-range нөлөө, нормализаци, далд хамаарал нөлөөлж болно. Бие даасан давталтжуулалт шаардлагатай.</span></p></div><div class="section">
-    <div class="section-label"><span data-li="en">Main Results</span><span data-li="mn">Үндсэн үр дүн</span></div>
-    <h2><span data-lang="en">BK Amplitude Law — Computational Observation</span><span data-lang="mn">BK Амплитудын Хууль — Тооцооллын Ажиглалт</span></h2>
+  <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;margin-bottom:2rem;"><div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;">Known Limitations</div><p style="font-size:.84rem;color:var(--sub);margin:0;line-height:1.7;"><span data-lang="en">Numerical observations only. No theorem, proof, or asymptotic derivation is claimed. Observed correlations may be influenced by finite-range effects, normalization procedures, and statistical dependencies. Independent verification required.</span><span data-lang="mn">Ð—Ó©Ð²Ñ…Ó©Ð½ Ñ‚Ð¾Ð¾Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚. Ð¢ÐµÐ¾Ñ€ÐµÐ¼, Ð½Ð¾Ñ‚Ð¾Ð»Ð³Ð¾Ð¾ Ð½ÑÑ…ÑÐ¼Ð¶Ð»ÑÑ…Ð³Ò¯Ð¹. Finite-range Ð½Ó©Ð»Ó©Ó©, Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸, Ð´Ð°Ð»Ð´ Ñ…Ð°Ð¼Ð°Ð°Ñ€Ð°Ð» Ð½Ó©Ð»Ó©Ó©Ð»Ð¶ Ð±Ð¾Ð»Ð½Ð¾. Ð‘Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð´Ð°Ð²Ñ‚Ð°Ð»Ñ‚Ð¶ÑƒÑƒÐ»Ð°Ð»Ñ‚ ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹.</span></p></div><div class="section">
+    <div class="section-label"><span data-li="en">Main Results</span><span data-li="mn">Ò®Ð½Ð´ÑÑÐ½ Ò¯Ñ€ Ð´Ò¯Ð½</span></div>
+    <h2><span data-lang="en">BK Amplitude Law â€” Computational Observation</span><span data-lang="mn">BK ÐÐ¼Ð¿Ð»Ð¸Ñ‚ÑƒÐ´Ñ‹Ð½ Ð¥ÑƒÑƒÐ»ÑŒ â€” Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ ÐÐ¶Ð¸Ð³Ð»Ð°Ð»Ñ‚</span></h2>
     <div class="stat-grid">
-      <div class="stat-card"><div class="ds">zeros1 · 100K</div><span class="rv">0.6847</span><div class="pv">Bootstrap: 0.36±0.26</div><div class="badge">UNSTABLE</div></div>
-      <div class="stat-card"><div class="ds">zeros_ht · 10¹²</div><span class="rv">0.5113</span><div class="pv">Bootstrap: 0.09±0.30</div><div class="badge">UNSTABLE</div></div>
-      <div class="stat-card"><div class="ds">zeros6 · 2M</div><span class="rv">0.4509</span><div class="pv">Bootstrap: 0.68±0.09</div><div class="badge" style="background:rgba(0,229,160,.15);color:var(--green);">MODERATE</div></div>
+      <div class="stat-card"><div class="ds">zeros1 Â· 100K</div><span class="rv">0.6847</span><div class="pv">Bootstrap: 0.36Â±0.26</div><div class="badge">UNSTABLE</div></div>
+      <div class="stat-card"><div class="ds">zeros_ht Â· 10Â¹Â²</div><span class="rv">0.5113</span><div class="pv">Bootstrap: 0.09Â±0.30</div><div class="badge">UNSTABLE</div></div>
+      <div class="stat-card"><div class="ds">zeros6 Â· 2M</div><span class="rv">0.4509</span><div class="pv">Bootstrap: 0.68Â±0.09</div><div class="badge" style="background:rgba(0,229,160,.15);color:var(--green);">MODERATE</div></div>
     </div>
-    <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolny–Keating Amplitude Law</span><span data-li="mn">Богомолны–Китингийн Амплитудын Хууль</span></div>A(p)  ∼  C · (log p)² / p</div>
+    <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolnyâ€“Keating Amplitude Law</span><span data-li="mn">Ð‘Ð¾Ð³Ð¾Ð¼Ð¾Ð»Ð½Ñ‹â€“ÐšÐ¸Ñ‚Ð¸Ð½Ð³Ð¸Ð¹Ð½ ÐÐ¼Ð¿Ð»Ð¸Ñ‚ÑƒÐ´Ñ‹Ð½ Ð¥ÑƒÑƒÐ»ÑŒ</span></div>A(p)  âˆ¼  C Â· (log p)Â² / p</div>
     <div class="findings">
-      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> prime-indexed excess patterns across tested prime ranges show A(p) > 0 across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>Прайм-индекстэй илүүдэл ажиглагдсан:</strong> 12/12 прайм позиц гурван датасет дээр A(p) > 0. Finite-window болон олон тестийн нөлөөг нэмж шалгах шаардлагатай.</span></div></div>
-      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Empirically consistent with BK-type scaling:</strong> Pearson r = 0.45–0.68 across all datasets. Bootstrap MODERATE at N=2M; UNSTABLE at smaller N. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r = 0.45–0.68. Bootstrap N=2M дээр MODERATE; бага N дээр UNSTABLE. Нормализацийн мэдрэмж, fitting bias шаардлагатай.</span></div></div>
-      <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. Normalization artifacts, overfitting, window bias, and finite-size effects have not been fully ruled out. C ≈ 3 (zeros1/zeros6) needs theoretical derivation.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Нормализацийн артефакт, overfitting, window bias болон finite-size нөлөөг үгүйсгэж чадаагүй. C ≈ 3 (zeros1/zeros6)-н онолын гарталт шаардлагатай.</span></div></div>
+      <div class="finding pos"><span class="fi">âœ“</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> prime-indexed excess patterns across tested prime ranges show A(p) > 0 across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>ÐŸÑ€Ð°Ð¹Ð¼-Ð¸Ð½Ð´ÐµÐºÑÑ‚ÑÐ¹ Ð¸Ð»Ò¯Ò¯Ð´ÑÐ» Ð°Ð¶Ð¸Ð³Ð»Ð°Ð³Ð´ÑÐ°Ð½:</strong> 12/12 Ð¿Ñ€Ð°Ð¹Ð¼ Ð¿Ð¾Ð·Ð¸Ñ† Ð³ÑƒÑ€Ð²Ð°Ð½ Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ð´ÑÑÑ€ A(p) > 0. Finite-window Ð±Ð¾Ð»Ð¾Ð½ Ð¾Ð»Ð¾Ð½ Ñ‚ÐµÑÑ‚Ð¸Ð¹Ð½ Ð½Ó©Ð»Ó©Ó©Ð³ Ð½ÑÐ¼Ð¶ ÑˆÐ°Ð»Ð³Ð°Ñ… ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹.</span></div></div>
+      <div class="finding pos"><span class="fi">âœ“</span><div class="ft"><span data-lang="en"><strong>Empirically consistent with BK-type scaling:</strong> Pearson r = 0.45â€“0.68 across all datasets. Bootstrap MODERATE at N=2M; UNSTABLE at smaller N. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-Ñ‚Ó©Ñ€Ð»Ð¸Ð¹Ð½ scaling-Ñ‚Ð°Ð¹ Ð½Ð¸Ð¹Ñ†ÑÑÐ½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚:</strong> Ð‘Ò¯Ñ… Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ð´ÑÑÑ€ Pearson r = 0.45â€“0.68. Bootstrap N=2M Ð´ÑÑÑ€ MODERATE; Ð±Ð°Ð³Ð° N Ð´ÑÑÑ€ UNSTABLE. ÐÐ¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹Ð½ Ð¼ÑÐ´Ñ€ÑÐ¼Ð¶, fitting bias ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹.</span></div></div>
+      <div class="finding neg"><span class="fi">âœ—</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. Normalization artifacts, overfitting, window bias, and finite-size effects have not been fully ruled out. C â‰ˆ 3 (zeros1/zeros6) needs theoretical derivation.</span><span data-lang="mn"><strong>RH-Ð½ Ð½Ð¾Ñ‚Ð¾Ð»Ð³Ð¾Ð¾ Ð±Ð¸Ñˆ:</strong> ÐÐ¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹Ð½ Ð°Ñ€Ñ‚ÐµÑ„Ð°ÐºÑ‚, overfitting, window bias Ð±Ð¾Ð»Ð¾Ð½ finite-size Ð½Ó©Ð»Ó©Ó©Ð³ Ò¯Ð³Ò¯Ð¹ÑÐ³ÑÐ¶ Ñ‡Ð°Ð´Ð°Ð°Ð³Ò¯Ð¹. C â‰ˆ 3 (zeros1/zeros6)-Ð½ Ð¾Ð½Ð¾Ð»Ñ‹Ð½ Ð³Ð°Ñ€Ñ‚Ð°Ð»Ñ‚ ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹.</span></div></div>
     </div>
   </div>
   <div class="section">
-    <div class="section-label"><span data-li="en">Historical Context</span><span data-li="mn">Түүхэн хүрээ</span></div>
-    <div class="tl-item"><div class="tl-year">1859</div><div class="tl-content"><strong>Riemann</strong> — <span data-li="en">Hypothesis proposed</span><span data-li="mn">Таамаглал дэвшүүлсэн</span></div></div>
-    <div class="tl-item"><div class="tl-year">1973</div><div class="tl-content"><strong>Montgomery</strong> — <span data-li="en">GUE connection discovered</span><span data-li="mn">GUE холбоо нээсэн</span></div></div>
-    <div class="tl-item"><div class="tl-year">1996</div><div class="tl-content"><strong>Bogomolny & Keating</strong> — <span data-li="en">Prime corrections predicted</span><span data-li="mn">Прайм засваруудыг таамагласан</span></div></div>
+    <div class="section-label"><span data-li="en">Historical Context</span><span data-li="mn">Ð¢Ò¯Ò¯Ñ…ÑÐ½ Ñ…Ò¯Ñ€ÑÑ</span></div>
+    <div class="tl-item"><div class="tl-year">1859</div><div class="tl-content"><strong>Riemann</strong> â€” <span data-li="en">Hypothesis proposed</span><span data-li="mn">Ð¢Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð» Ð´ÑÐ²ÑˆÒ¯Ò¯Ð»ÑÑÐ½</span></div></div>
+    <div class="tl-item"><div class="tl-year">1973</div><div class="tl-content"><strong>Montgomery</strong> â€” <span data-li="en">GUE connection discovered</span><span data-li="mn">GUE Ñ…Ð¾Ð»Ð±Ð¾Ð¾ Ð½ÑÑÑÑÐ½</span></div></div>
+    <div class="tl-item"><div class="tl-year">1996</div><div class="tl-content"><strong>Bogomolny & Keating</strong> â€” <span data-li="en">Prime corrections predicted</span><span data-li="mn">ÐŸÑ€Ð°Ð¹Ð¼ Ð·Ð°ÑÐ²Ð°Ñ€ÑƒÑƒÐ´Ñ‹Ð³ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°ÑÐ°Ð½</span></div></div>
     <div class="tl-item" style="opacity:0.72;border-top:1px dashed var(--border);margin-top:.5rem;padding-top:1.2rem;">
       <div class="tl-year" style="color:var(--muted);font-size:.75rem;">2026</div>
       <div class="tl-content" style="font-size:.88rem;">
         <span style="color:var(--sub);font-style:italic;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;">Computational experiment archive</span><br>
         <span data-li="en">BK-type agreement observed in one analyzed dataset (exploratory, not a confirmed result)</span>
-        <span data-li="mn">Нэг шинжилсэн датасет дахь BK-төрлийн нийцэл ажиглагдсан (туршилтын, батлагдсан үр дүн биш)</span>
+        <span data-li="mn">ÐÑÐ³ ÑˆÐ¸Ð½Ð¶Ð¸Ð»ÑÑÐ½ Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ð´Ð°Ñ…ÑŒ BK-Ñ‚Ó©Ñ€Ð»Ð¸Ð¹Ð½ Ð½Ð¸Ð¹Ñ†ÑÐ» Ð°Ð¶Ð¸Ð³Ð»Ð°Ð³Ð´ÑÐ°Ð½ (Ñ‚ÑƒÑ€ÑˆÐ¸Ð»Ñ‚Ñ‹Ð½, Ð±Ð°Ñ‚Ð»Ð°Ð³Ð´ÑÐ°Ð½ Ò¯Ñ€ Ð´Ò¯Ð½ Ð±Ð¸Ñˆ)</span>
       </div>
     </div>
   </div>
   <div class="section">
-    <div class="section-label"><span data-li="en">Resources</span><span data-li="mn">Холбоосууд</span></div>
+    <div class="section-label"><span data-li="en">Resources</span><span data-li="mn">Ð¥Ð¾Ð»Ð±Ð¾Ð¾ÑÑƒÑƒÐ´</span></div>
     <div class="links-grid">
-      <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank"><span class="li">📄</span><div><span class="lt">Preprint</span><span class="ld">DOI: 10.5281/zenodo.20077673</span></div></a>
-      <a class="link-card" href="https://github.com/myagmardorj-cloud/Myagmardorj" target="_blank"><span class="li">⌨️</span><div><span class="lt">GitHub</span><span class="ld">Full code & data</span></div></a>
-      <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank"><span class="li">💬</span><div><span class="lt">Math StackExchange</span><span class="ld">Discussion</span></div></a>
-      <a class="link-card" href="mailto:myagmardorj@gmail.com"><span class="li">✉️</span><div><span class="lt">Contact</span><span class="ld">myagmardorj@gmail.com</span></div></a>
-      <a class="link-card" href="landscape.html" style="border-color:rgba(168,85,247,.25);background:rgba(168,85,247,.04);border-radius:12px;"><span class="li">🗺</span><div><span class="lt" style="color:#a855f7;"><span data-li="en">Problem Landscape</span><span data-li="mn">Бодлогын газрын зураг</span></span><span class="ld"><span data-li="en">Clay Prize · 7 problems · connections</span><span data-li="mn">Clay шагнал · 7 бодлого · холбоосууд</span></span></div></a>
-      <a class="link-card" href="verify.html" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);grid-column:span 2;"><span class="li">⚗️</span><div><span class="lt" style="color:var(--green);"><span data-li="en">Independent Analysis Lab</span><span data-li="mn">Бие даасан Шинжилгээний Лаб</span></span><span class="ld"><span data-li="en">Upload Odlyzko data → run in browser → compare results</span><span data-li="mn">Одлызко өгөгдөл upload → браузерт ажиллуул → үр дүн харьцуул</span></span></div></a>
+      <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank"><span class="li">ðŸ“„</span><div><span class="lt">Preprint</span><span class="ld">DOI: 10.5281/zenodo.20077673</span></div></a>
+      <a class="link-card" href="https://github.com/myagmardorj-cloud/Myagmardorj" target="_blank"><span class="li">âŒ¨ï¸</span><div><span class="lt">GitHub</span><span class="ld">Full code & data</span></div></a>
+      <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank"><span class="li">ðŸ’¬</span><div><span class="lt">Math StackExchange</span><span class="ld">Discussion</span></div></a>
+      <a class="link-card" href="mailto:myagmardorj@gmail.com"><span class="li">âœ‰ï¸</span><div><span class="lt">Contact</span><span class="ld">myagmardorj@gmail.com</span></div></a>
+      <a class="link-card" href="landscape.html" style="border-color:rgba(168,85,247,.25);background:rgba(168,85,247,.04);border-radius:12px;"><span class="li">ðŸ—º</span><div><span class="lt" style="color:#a855f7;"><span data-li="en">Problem Landscape</span><span data-li="mn">Ð‘Ð¾Ð´Ð»Ð¾Ð³Ñ‹Ð½ Ð³Ð°Ð·Ñ€Ñ‹Ð½ Ð·ÑƒÑ€Ð°Ð³</span></span><span class="ld"><span data-li="en">Clay Prize Â· 7 problems Â· connections</span><span data-li="mn">Clay ÑˆÐ°Ð³Ð½Ð°Ð» Â· 7 Ð±Ð¾Ð´Ð»Ð¾Ð³Ð¾ Â· Ñ…Ð¾Ð»Ð±Ð¾Ð¾ÑÑƒÑƒÐ´</span></span></div></a>
+      <a class="link-card" href="verify.html" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);grid-column:span 2;"><span class="li">âš—ï¸</span><div><span class="lt" style="color:var(--green);"><span data-li="en">Independent Analysis Lab</span><span data-li="mn">Ð‘Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð¨Ð¸Ð½Ð¶Ð¸Ð»Ð³ÑÑÐ½Ð¸Ð¹ Ð›Ð°Ð±</span></span><span class="ld"><span data-li="en">Upload Odlyzko data â†’ run in browser â†’ compare results</span><span data-li="mn">ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾ Ó©Ð³Ó©Ð³Ð´Ó©Ð» upload â†’ Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€Ñ‚ Ð°Ð¶Ð¸Ð»Ð»ÑƒÑƒÐ» â†’ Ò¯Ñ€ Ð´Ò¯Ð½ Ñ…Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»</span></span></div></a>
     </div>
-    <div class="disclaimer"><span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span><span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span></div>
+    <div class="disclaimer"><span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span><span data-lang="mn">Ð‘Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚. Peer review Ñ…Ð¸Ð¹Ð³Ð´ÑÑÐ³Ò¯Ð¹. Fitting bias, Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹Ð½ Ð¼ÑÐ´Ñ€ÑÐ¼Ð¶, Ð¾Ð»Ð¾Ð½ Ñ‚ÐµÑÑ‚Ð¸Ð¹Ð½ Ð½Ó©Ð»Ó©Ó©, finite-window Ð°Ñ€Ñ‚ÐµÑ„Ð°ÐºÑ‚ Ð½Ð°Ñ€Ð¸Ð¹Ð½ ÑˆÐ°Ð»Ð³Ð°Ð³Ð´Ð°Ð°Ð³Ò¯Ð¹. Ð‘Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð´Ð°Ð²Ñ‚Ð°Ð»Ñ‚Ð¶ÑƒÑƒÐ»Ð°Ð»Ñ‚, bootstrap Ñ…ÑÐ½Ð°Ð»Ñ‚, Ñ†Ð¾Ð½Ñ…Ð½Ñ‹ Ñ‚Ð¾Ð³Ñ‚Ð²Ð¾Ñ€Ñ‚Ð¾Ð¹ Ð±Ð°Ð¹Ð´Ð»Ñ‹Ð½ Ñ‚ÐµÑÑ‚ ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹.</span></div>
   </div>
   
 </div>
@@ -331,11 +331,11 @@ body{padding-bottom:42px !important;}
 <div class="page" id="page-charts">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Interactive Charts</span><span data-li="mn">Интерактив графикууд</span></div>
-    <h2><span data-lang="en">Visualizing the Results</span><span data-lang="mn">Үр дүнгийн дүрслэл</span></h2>
-    <div class="chart-container"><div class="chart-title">BK Amplitude Law — A(p) vs B(p) = (log p)²/p</div><div id="chart-scatter" style="height:380px;"></div></div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — selected small-prime subset (zeros3)</span><span data-li="mn">Сонгосон жижиг прайм дэд олонлог дахь илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
+    <div class="section-label"><span data-li="en">Interactive Charts</span><span data-li="mn">Ð˜Ð½Ñ‚ÐµÑ€Ð°ÐºÑ‚Ð¸Ð² Ð³Ñ€Ð°Ñ„Ð¸ÐºÑƒÑƒÐ´</span></div>
+    <h2><span data-lang="en">Visualizing the Results</span><span data-lang="mn">Ò®Ñ€ Ð´Ò¯Ð½Ð³Ð¸Ð¹Ð½ Ð´Ò¯Ñ€ÑÐ»ÑÐ»</span></h2>
+    <div class="chart-container"><div class="chart-title">BK Amplitude Law â€” A(p) vs B(p) = (log p)Â²/p</div><div id="chart-scatter" style="height:380px;"></div></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Ð”Ð°Ñ‚Ð°ÑÐµÑ‚ Ð´ÑÑÑ€Ñ… ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ†Ð¸</span></div><div id="chart-bar" style="height:300px;"></div></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) â€” selected small-prime subset (zeros3)</span><span data-li="mn">Ð¡Ð¾Ð½Ð³Ð¾ÑÐ¾Ð½ Ð¶Ð¸Ð¶Ð¸Ð³ Ð¿Ñ€Ð°Ð¹Ð¼ Ð´ÑÐ´ Ð¾Ð»Ð¾Ð½Ð»Ð¾Ð³ Ð´Ð°Ñ…ÑŒ Ð¸Ð»Ò¯Ò¯Ð´ÑÐ» A(p) â€” zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
   </div>
   
 </div>
@@ -345,16 +345,16 @@ body{padding-bottom:42px !important;}
 <div class="page" id="page-calculator">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Live Calculator</span><span data-li="mn">Шууд тооцоолол</span></div>
-    <h2><span data-lang="en">BK Predictor B(p)</span><span data-lang="mn">BK Таамаглагч B(p)</span></h2>
+    <div class="section-label"><span data-li="en">Live Calculator</span><span data-li="mn">Ð¨ÑƒÑƒÐ´ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ð»</span></div>
+    <h2><span data-lang="en">BK Predictor B(p)</span><span data-lang="mn">BK Ð¢Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð³Ñ‡ B(p)</span></h2>
     <div class="calc-box">
-      <div class="section-label" style="margin-bottom:1rem;"><span data-li="en">Select a prime</span><span data-li="mn">Прайм сонгох</span></div>
+      <div class="section-label" style="margin-bottom:1rem;"><span data-li="en">Select a prime</span><span data-li="mn">ÐŸÑ€Ð°Ð¹Ð¼ ÑÐ¾Ð½Ð³Ð¾Ñ…</span></div>
       <div class="calc-controls" id="prime-buttons"></div>
-      <button class="run-btn" onclick="calcBK()"><span data-li="en">▶ Calculate</span><span data-li="mn">▶ Тооцоолох</span></button>
-      <div class="calc-result" id="calc-result"><div class="cr-label"><span data-li="en">Select a prime above</span><span data-li="mn">Дээрээс прайм сонгоно уу</span></div></div>
+      <button class="run-btn" onclick="calcBK()"><span data-li="en">â–¶ Calculate</span><span data-li="mn">â–¶ Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ñ…</span></button>
+      <div class="calc-result" id="calc-result"><div class="cr-label"><span data-li="en">Select a prime above</span><span data-li="mn">Ð”ÑÑÑ€ÑÑÑ Ð¿Ñ€Ð°Ð¹Ð¼ ÑÐ¾Ð½Ð³Ð¾Ð½Ð¾ ÑƒÑƒ</span></div></div>
     </div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">B(p) for selected prime</span><span data-li="mn">Сонгосон прайм дээрх B(p)</span></div><div id="chart-calc" style="height:300px;"></div></div>
-    <div class="section-label" style="margin-top:2rem;"><span data-li="en">Full prime data table (zeros3)</span><span data-li="mn">Бүх прайм өгөгдлийн хүснэгт</span></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">B(p) for selected prime</span><span data-li="mn">Ð¡Ð¾Ð½Ð³Ð¾ÑÐ¾Ð½ Ð¿Ñ€Ð°Ð¹Ð¼ Ð´ÑÑÑ€Ñ… B(p)</span></div><div id="chart-calc" style="height:300px;"></div></div>
+    <div class="section-label" style="margin-top:2rem;"><span data-li="en">Full prime data table (zeros3)</span><span data-li="mn">Ð‘Ò¯Ñ… Ð¿Ñ€Ð°Ð¹Ð¼ Ó©Ð³Ó©Ð³Ð´Ð»Ð¸Ð¹Ð½ Ñ…Ò¯ÑÐ½ÑÐ³Ñ‚</span></div>
     <table class="data-table"><thead><tr><th>p</th><th>log p</th><th>B(p)</th><th>A(p) obs.</th><th>R(p)</th></tr></thead><tbody id="prime-table"></tbody></table>
   </div>
   
@@ -365,34 +365,34 @@ body{padding-bottom:42px !important;}
 <div class="page" id="page-papers">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Судалгааны баримтууд</span></div>
-    <h2><span data-lang="en">Code, Notes & Paper</span><span data-lang="mn">Код, Тэмдэглэл & Өгүүлэл</span></h2>
-    <p class="prose" style="margin-bottom:2rem;"><span data-lang="en">All source files from the GitHub repository, with explanations. Click any file to expand.</span><span data-lang="mn">GitHub репозиторийн бүх файл тайлбарын хамт. Файл дарж задлаарай.</span></p>
+    <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ð±Ð°Ñ€Ð¸Ð¼Ñ‚ÑƒÑƒÐ´</span></div>
+    <h2><span data-lang="en">Code, Notes & Paper</span><span data-lang="mn">ÐšÐ¾Ð´, Ð¢ÑÐ¼Ð´ÑÐ³Ð»ÑÐ» & Ó¨Ð³Ò¯Ò¯Ð»ÑÐ»</span></h2>
+    <p class="prose" style="margin-bottom:2rem;"><span data-lang="en">All source files from the GitHub repository, with explanations. Click any file to expand.</span><span data-lang="mn">GitHub Ñ€ÐµÐ¿Ð¾Ð·Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹Ð½ Ð±Ò¯Ñ… Ñ„Ð°Ð¹Ð» Ñ‚Ð°Ð¹Ð»Ð±Ð°Ñ€Ñ‹Ð½ Ñ…Ð°Ð¼Ñ‚. Ð¤Ð°Ð¹Ð» Ð´Ð°Ñ€Ð¶ Ð·Ð°Ð´Ð»Ð°Ð°Ñ€Ð°Ð¹.</span></p>
 
     <!-- FILE 1: analyze.py -->
     <div class="file-card">
       <div class="file-header" onclick="toggleFile(this)">
-        <span class="file-icon">🐍</span>
+        <span class="file-icon">ðŸ</span>
         <div class="file-meta">
           <span class="file-name">analyze.py</span>
-          <div class="file-desc"><span data-lang="en">Main analysis script — computes BK amplitude law correlation across zero datasets.</span><span data-lang="mn">Гол шинжилгээний скрипт — BK амплитудын хуулийн корреляцийг тооцоолно.</span></div>
+          <div class="file-desc"><span data-lang="en">Main analysis script â€” computes BK amplitude law correlation across zero datasets.</span><span data-lang="mn">Ð“Ð¾Ð» ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑÐ½Ð¸Ð¹ ÑÐºÑ€Ð¸Ð¿Ñ‚ â€” BK Ð°Ð¼Ð¿Ð»Ð¸Ñ‚ÑƒÐ´Ñ‹Ð½ Ñ…ÑƒÑƒÐ»Ð¸Ð¹Ð½ ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ†Ð¸Ð¹Ð³ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð½Ð¾.</span></div>
           <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">SciPy</span><span class="file-tag">Matplotlib</span></div>
         </div>
-        <span class="file-toggle">▼</span>
+        <span class="file-toggle">â–¼</span>
       </div>
       <div class="file-body">
         <div class="file-body-inner">
           <div class="note-block">
-            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
-            <span data-lang="en">Loads Odlyzko zero data, computes spacing covariances C(h) for prime lags h=p, then tests the BK prediction A(p) ~ (log p)²/p using Pearson correlation. Outputs r value, p-value, and scatter plot.</span>
-            <span data-lang="mn">Одлызкогийн тэгийн өгөгдлийг уншиж, прайм лаг h=p дээрх зайн ковариансыг C(h) тооцоолоод, Pearson корреляц ашиглан BK таамаглал A(p) ~ (log p)²/p-г шалгана. r утга, p-value, scatter plot гаргана.</span>
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Ð®Ñƒ Ñ…Ð¸Ð¹Ð´ÑÐ³ Ð²Ñ</span></div>
+            <span data-lang="en">Loads Odlyzko zero data, computes spacing covariances C(h) for prime lags h=p, then tests the BK prediction A(p) ~ (log p)Â²/p using Pearson correlation. Outputs r value, p-value, and scatter plot.</span>
+            <span data-lang="mn">ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾Ð³Ð¸Ð¹Ð½ Ñ‚ÑÐ³Ð¸Ð¹Ð½ Ó©Ð³Ó©Ð³Ð´Ð»Ð¸Ð¹Ð³ ÑƒÐ½ÑˆÐ¸Ð¶, Ð¿Ñ€Ð°Ð¹Ð¼ Ð»Ð°Ð³ h=p Ð´ÑÑÑ€Ñ… Ð·Ð°Ð¹Ð½ ÐºÐ¾Ð²Ð°Ñ€Ð¸Ð°Ð½ÑÑ‹Ð³ C(h) Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ð¾Ð´, Pearson ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ† Ð°ÑˆÐ¸Ð³Ð»Ð°Ð½ BK Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð» A(p) ~ (log p)Â²/p-Ð³ ÑˆÐ°Ð»Ð³Ð°Ð½Ð°. r ÑƒÑ‚Ð³Ð°, p-value, scatter plot Ð³Ð°Ñ€Ð³Ð°Ð½Ð°.</span>
           </div>
           <div class="steps">
-            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="en">Load zeros from <code>zeros4.txt</code> (Odlyzko high-T data)</span><span data-lang="mn"><code>zeros4.txt</code>-аас тэгүүдийг уншина (Одлызкогийн өндөр-T өгөгдөл)</span></div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="en">Compute spacings δₙ = γₙ₊₁ − γₙ and center them</span><span data-lang="mn">δₙ = γₙ₊₁ − γₙ зайнуудыг тооцоолж, төвлүүлнэ</span></div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="en">For each prime p: compute covariance C(p) = mean(δₙ · δₙ₊ₚ)</span><span data-lang="mn">Прайм p бүрт: ковариансыг C(p) = mean(δₙ · δₙ₊ₚ) тооцоолно</span></div></div>
-            <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="en">Compute Pearson r between C(p) and (log p)²/p</span><span data-lang="mn">C(p) болон (log p)²/p хооронд Pearson r тооцоолно</span></div></div>
-            <div class="step"><div class="step-num">5</div><div class="step-text"><span data-lang="en">Save scatter plot → <code>scatter.png</code></span><span data-lang="mn">Scatter plot хадгална → <code>scatter.png</code></span></div></div>
+            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="en">Load zeros from <code>zeros4.txt</code> (Odlyzko high-T data)</span><span data-lang="mn"><code>zeros4.txt</code>-Ð°Ð°Ñ Ñ‚ÑÐ³Ò¯Ò¯Ð´Ð¸Ð¹Ð³ ÑƒÐ½ÑˆÐ¸Ð½Ð° (ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾Ð³Ð¸Ð¹Ð½ Ó©Ð½Ð´Ó©Ñ€-T Ó©Ð³Ó©Ð³Ð´Ó©Ð»)</span></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="en">Compute spacings Î´â‚™ = Î³â‚™â‚Šâ‚ âˆ’ Î³â‚™ and center them</span><span data-lang="mn">Î´â‚™ = Î³â‚™â‚Šâ‚ âˆ’ Î³â‚™ Ð·Ð°Ð¹Ð½ÑƒÑƒÐ´Ñ‹Ð³ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¶, Ñ‚Ó©Ð²Ð»Ò¯Ò¯Ð»Ð½Ñ</span></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="en">For each prime p: compute covariance C(p) = mean(Î´â‚™ Â· Î´â‚™â‚Šâ‚š)</span><span data-lang="mn">ÐŸÑ€Ð°Ð¹Ð¼ p Ð±Ò¯Ñ€Ñ‚: ÐºÐ¾Ð²Ð°Ñ€Ð¸Ð°Ð½ÑÑ‹Ð³ C(p) = mean(Î´â‚™ Â· Î´â‚™â‚Šâ‚š) Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð½Ð¾</span></div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="en">Compute Pearson r between C(p) and (log p)Â²/p</span><span data-lang="mn">C(p) Ð±Ð¾Ð»Ð¾Ð½ (log p)Â²/p Ñ…Ð¾Ð¾Ñ€Ð¾Ð½Ð´ Pearson r Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð½Ð¾</span></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text"><span data-lang="en">Save scatter plot â†’ <code>scatter.png</code></span><span data-lang="mn">Scatter plot Ñ…Ð°Ð´Ð³Ð°Ð»Ð½Ð° â†’ <code>scatter.png</code></span></div></div>
           </div>
           <div class="code-block">
             <button class="code-copy" onclick="copyCode(this)">COPY</button>
@@ -439,34 +439,34 @@ plt.<span class="fn">savefig</span>(<span class="st">"scatter.png"</span>, dpi=<
     <!-- FILE 2: 01_power_spectrum.py -->
     <div class="file-card">
       <div class="file-header" onclick="toggleFile(this)">
-        <span class="file-icon">📊</span>
+        <span class="file-icon">ðŸ“Š</span>
         <div class="file-meta">
           <span class="file-name">code/01_power_spectrum.py</span>
-          <div class="file-desc"><span data-lang="en">Computes the power spectrum S(τ) of Riemann zeros and plots peaks at prime frequencies.</span><span data-lang="mn">Риман тэгүүдийн S(τ) power spectrum тооцоолж, прайм давтамж дээрх оргилуудыг зурна.</span></div>
+          <div class="file-desc"><span data-lang="en">Computes the power spectrum S(Ï„) of Riemann zeros and plots peaks at prime frequencies.</span><span data-lang="mn">Ð Ð¸Ð¼Ð°Ð½ Ñ‚ÑÐ³Ò¯Ò¯Ð´Ð¸Ð¹Ð½ S(Ï„) power spectrum Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¶, Ð¿Ñ€Ð°Ð¹Ð¼ Ð´Ð°Ð²Ñ‚Ð°Ð¼Ð¶ Ð´ÑÑÑ€Ñ… Ð¾Ñ€Ð³Ð¸Ð»ÑƒÑƒÐ´Ñ‹Ð³ Ð·ÑƒÑ€Ð½Ð°.</span></div>
           <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">Fourier</span></div>
         </div>
-        <span class="file-toggle">▼</span>
+        <span class="file-toggle">â–¼</span>
       </div>
       <div class="file-body">
         <div class="file-body-inner">
           <div class="note-block">
-            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
-            <span data-lang="en">Computes S(τ) = |Σ e^{iτγₙ}|²/N for a range of τ values, then marks the prime frequencies τ_p = log(p)/2π on the spectrum. This was the first analysis that showed excess signal at prime positions.</span>
-            <span data-lang="mn">τ утгуудын мужид S(τ) = |Σ e^{iτγₙ}|²/N тооцоолж, спектр дээр прайм давтамж τ_p = log(p)/2π-г тэмдэглэнэ. Энэ нь прайм позиц дээр илүүдэл дохио харуулсан анхны шинжилгээ байв.</span>
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Ð®Ñƒ Ñ…Ð¸Ð¹Ð´ÑÐ³ Ð²Ñ</span></div>
+            <span data-lang="en">Computes S(Ï„) = |Î£ e^{iÏ„Î³â‚™}|Â²/N for a range of Ï„ values, then marks the prime frequencies Ï„_p = log(p)/2Ï€ on the spectrum. This was the first analysis that showed excess signal at prime positions.</span>
+            <span data-lang="mn">Ï„ ÑƒÑ‚Ð³ÑƒÑƒÐ´Ñ‹Ð½ Ð¼ÑƒÐ¶Ð¸Ð´ S(Ï„) = |Î£ e^{iÏ„Î³â‚™}|Â²/N Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¶, ÑÐ¿ÐµÐºÑ‚Ñ€ Ð´ÑÑÑ€ Ð¿Ñ€Ð°Ð¹Ð¼ Ð´Ð°Ð²Ñ‚Ð°Ð¼Ð¶ Ï„_p = log(p)/2Ï€-Ð³ Ñ‚ÑÐ¼Ð´ÑÐ³Ð»ÑÐ½Ñ. Ð­Ð½Ñ Ð½ÑŒ Ð¿Ñ€Ð°Ð¹Ð¼ Ð¿Ð¾Ð·Ð¸Ñ† Ð´ÑÑÑ€ Ð¸Ð»Ò¯Ò¯Ð´ÑÐ» Ð´Ð¾Ñ…Ð¸Ð¾ Ñ…Ð°Ñ€ÑƒÑƒÐ»ÑÐ°Ð½ Ð°Ð½Ñ…Ð½Ñ‹ ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑ Ð±Ð°Ð¹Ð².</span>
           </div>
           <div class="code-block">
             <button class="code-copy" onclick="copyCode(this)">COPY</button>
-            <pre><span class="cm">"""Тэгүүдийн power spectrum S(tau) тооцоолох"""</span>
+            <pre><span class="cm">"""Ð¢ÑÐ³Ò¯Ò¯Ð´Ð¸Ð¹Ð½ power spectrum S(tau) Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ñ…"""</span>
 <span class="kw">import</span> numpy <span class="kw">as</span> np
 <span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
 
 <span class="kw">def</span> <span class="fn">power_spectrum</span>(tau, gamma):
-    <span class="st">"""S(tau) = |Σ e^{i τ γ_n}|² / N"""</span>
+    <span class="st">"""S(tau) = |Î£ e^{i Ï„ Î³_n}|Â² / N"""</span>
     N = <span class="fn">len</span>(gamma)
     Z = np.<span class="fn">sum</span>(np.<span class="fn">exp</span>(<span class="nm">1j</span> <span class="op">*</span> tau <span class="op">*</span> gamma))
     <span class="kw">return</span> np.<span class="fn">abs</span>(Z)<span class="op">**</span><span class="nm">2</span> <span class="op">/</span> N
 
-<span class="cm"># Prime frequencies τ_p = log(p) / 2π</span>
+<span class="cm"># Prime frequencies Ï„_p = log(p) / 2Ï€</span>
 primes = np.<span class="fn">array</span>([<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>])
 tau_p = np.<span class="fn">log</span>(primes) <span class="op">/</span> (<span class="nm">2</span><span class="op">*</span>np.pi)
 
@@ -482,37 +482,37 @@ S_obs = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>
     <!-- FILE 3: framework_summary.md -->
     <div class="file-card">
       <div class="file-header" onclick="toggleFile(this)">
-        <span class="file-icon">📐</span>
+        <span class="file-icon">ðŸ“</span>
         <div class="file-meta">
           <span class="file-name">notes/framework_summary.md</span>
-          <div class="file-desc"><span data-lang="en">Mellin operator framework — the mathematical foundation connecting prime operators to zeta zeros.</span><span data-lang="mn">Меллин операторын хүрээ — прайм операторуудыг зета тэгүүдтэй холбосон математик суурь.</span></div>
-          <div class="file-tags"><span class="file-tag">Mathematics</span><span class="file-tag">Operator Theory</span><span class="file-tag">L²</span></div>
+          <div class="file-desc"><span data-lang="en">Mellin operator framework â€” the mathematical foundation connecting prime operators to zeta zeros.</span><span data-lang="mn">ÐœÐµÐ»Ð»Ð¸Ð½ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ñ‹Ð½ Ñ…Ò¯Ñ€ÑÑ â€” Ð¿Ñ€Ð°Ð¹Ð¼ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ÑƒÑƒÐ´Ñ‹Ð³ Ð·ÐµÑ‚Ð° Ñ‚ÑÐ³Ò¯Ò¯Ð´Ñ‚ÑÐ¹ Ñ…Ð¾Ð»Ð±Ð¾ÑÐ¾Ð½ Ð¼Ð°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸Ðº ÑÑƒÑƒÑ€ÑŒ.</span></div>
+          <div class="file-tags"><span class="file-tag">Mathematics</span><span class="file-tag">Operator Theory</span><span class="file-tag">LÂ²</span></div>
         </div>
-        <span class="file-toggle">▼</span>
+        <span class="file-toggle">â–¼</span>
       </div>
       <div class="file-body">
         <div class="file-body-inner">
           <div class="note-block">
-            <div class="note-label"><span data-li="en">Mathematical framework</span><span data-li="mn">Математик хүрээ</span></div>
-            <span data-lang="en">The Mellin transform framework provides an operator-theoretic explanation for why prime frequencies appear in zeta zero statistics. The key result is that the prime convolution operator acts as a multiplier via −ζ'/ζ.</span>
-            <span data-lang="mn">Меллин хувиргалтын хүрээ нь прайм давтамжууд яагаад зета тэгийн статистикт гарч ирдгийг операторын онолоор тайлбарлана. Гол үр дүн нь прайм конволюцийн оператор −ζ'/ζ-ээр үржигч болж ажиллана.</span>
+            <div class="note-label"><span data-li="en">Mathematical framework</span><span data-li="mn">ÐœÐ°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸Ðº Ñ…Ò¯Ñ€ÑÑ</span></div>
+            <span data-lang="en">The Mellin transform framework provides an operator-theoretic explanation for why prime frequencies appear in zeta zero statistics. The key result is that the prime convolution operator acts as a multiplier via âˆ’Î¶'/Î¶.</span>
+            <span data-lang="mn">ÐœÐµÐ»Ð»Ð¸Ð½ Ñ…ÑƒÐ²Ð¸Ñ€Ð³Ð°Ð»Ñ‚Ñ‹Ð½ Ñ…Ò¯Ñ€ÑÑ Ð½ÑŒ Ð¿Ñ€Ð°Ð¹Ð¼ Ð´Ð°Ð²Ñ‚Ð°Ð¼Ð¶ÑƒÑƒÐ´ ÑÐ°Ð³Ð°Ð°Ð´ Ð·ÐµÑ‚Ð° Ñ‚ÑÐ³Ð¸Ð¹Ð½ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÑ‚ Ð³Ð°Ñ€Ñ‡ Ð¸Ñ€Ð´Ð³Ð¸Ð¹Ð³ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ñ‹Ð½ Ð¾Ð½Ð¾Ð»Ð¾Ð¾Ñ€ Ñ‚Ð°Ð¹Ð»Ð±Ð°Ñ€Ð»Ð°Ð½Ð°. Ð“Ð¾Ð» Ò¯Ñ€ Ð´Ò¯Ð½ Ð½ÑŒ Ð¿Ñ€Ð°Ð¹Ð¼ ÐºÐ¾Ð½Ð²Ð¾Ð»ÑŽÑ†Ð¸Ð¹Ð½ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ âˆ’Î¶'/Î¶-ÑÑÑ€ Ò¯Ñ€Ð¶Ð¸Ð³Ñ‡ Ð±Ð¾Ð»Ð¶ Ð°Ð¶Ð¸Ð»Ð»Ð°Ð½Ð°.</span>
           </div>
           <div class="code-block" style="background:#0a0a12;">
             <button class="code-copy" onclick="copyCode(this)">COPY</button>
             <pre style="color:#c8d3f5;"><span style="color:#c9a84c;">## Hilbert space</span>
-H = L²((0,∞), dx/x)
+H = LÂ²((0,âˆž), dx/x)
 
 <span style="color:#c9a84c;">## Mellin transform</span>
-(Mf)(τ) = (1/√(2π)) ∫₀^∞ f(x) x^{-iτ} dx/x
+(Mf)(Ï„) = (1/âˆš(2Ï€)) âˆ«â‚€^âˆž f(x) x^{-iÏ„} dx/x
 
 <span style="color:#c9a84c;">## Prime operator</span>
-(P_σ f)(x) = Σ_{n≥1} Λ(n)/n^σ · f(x/n)
+(P_Ïƒ f)(x) = Î£_{nâ‰¥1} Î›(n)/n^Ïƒ Â· f(x/n)
 
-<span style="color:#c9a84c;">## Multiplier theorem  ← KEY RESULT</span>
-M[P_σ f](τ) = -ζ'(σ+iτ)/ζ(σ+iτ) · Mf(τ)
+<span style="color:#c9a84c;">## Multiplier theorem  â† KEY RESULT</span>
+M[P_Ïƒ f](Ï„) = -Î¶'(Ïƒ+iÏ„)/Î¶(Ïƒ+iÏ„) Â· Mf(Ï„)
 
 <span style="color:#c9a84c;">## Energy identity</span>
-E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
+E(Ïƒ,Îµ,X) = âˆ«_R |Î¶'/Î¶(Ïƒ+iÏ„)|Â² |Ï†Ì‚(Ï„)|Â² dÏ„</pre>
           </div>
         </div>
       </div>
@@ -521,40 +521,40 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <!-- FILE 4: failure_analysis.md -->
     <div class="file-card">
       <div class="file-header" onclick="toggleFile(this)">
-        <span class="file-icon">🔍</span>
+        <span class="file-icon">ðŸ”</span>
         <div class="file-meta">
           <span class="file-name">notes/failure_analysis.md</span>
-          <div class="file-desc"><span data-lang="en">Why the initial BK amplitude test failed — and how the correct normalization was discovered.</span><span data-lang="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
+          <div class="file-desc"><span data-lang="en">Why the initial BK amplitude test failed â€” and how the correct normalization was discovered.</span><span data-lang="mn">Ð¯Ð°Ð³Ð°Ð°Ð´ Ð°Ð½Ñ…Ð½Ñ‹ BK Ð°Ð¼Ð¿Ð»Ð¸Ñ‚ÑƒÐ´Ñ‹Ð½ Ñ‚ÐµÑÑ‚ Ð°Ð¼Ð¶Ð¸Ð»Ñ‚Ð³Ò¯Ð¹ Ð±Ð¾Ð»ÑÐ¾Ð½ â€” Ð·Ó©Ð² Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸ Ñ…ÑÑ€Ñ…ÑÐ½ Ð¾Ð»Ð´ÑÐ¾Ð½.</span></div>
           <div class="file-tags"><span class="file-tag">Analysis</span><span class="file-tag">Normalization</span><span class="file-tag">Debugging</span></div>
         </div>
-        <span class="file-toggle">▼</span>
+        <span class="file-toggle">â–¼</span>
       </div>
       <div class="file-body">
         <div class="file-body-inner">
           <div class="note-block">
-            <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
-            <span data-lang="en">Initial results showed r ≈ 0.4–0.6, suggesting weak agreement with BK predictions. The normalization differed: using τ_p = log(p)/2π (low-T formula) instead of the high-T unfolded frequency τ_p = log(p)/log(T/2π). Switching to the high-T formula substantially increased the observed correlation in this dataset.</span>
-            <span data-lang="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарсан. Нормализаци зассаны дараа зарим датасет дээр r өсч байсан. Гэвч bootstrap шалгалтаар signal тогтворгүй байгаа нь илрэв.</span>
+            <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Ð“Ð¾Ð» Ð¾Ð¹Ð»Ð³Ð¾Ð»Ñ‚</span></div>
+            <span data-lang="en">Initial results showed r â‰ˆ 0.4â€“0.6, suggesting weak agreement with BK predictions. The normalization differed: using Ï„_p = log(p)/2Ï€ (low-T formula) instead of the high-T unfolded frequency Ï„_p = log(p)/log(T/2Ï€). Switching to the high-T formula substantially increased the observed correlation in this dataset.</span>
+            <span data-lang="mn">ÐÐ½Ñ…Ð½Ñ‹ Ò¯Ñ€ Ð´Ò¯Ð½Ð´ r â‰ˆ 0.4â€“0.6 Ð³Ð°Ñ€ÑÐ°Ð½. ÐÐ¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸ Ð·Ð°ÑÑÐ°Ð½Ñ‹ Ð´Ð°Ñ€Ð°Ð° Ð·Ð°Ñ€Ð¸Ð¼ Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ð´ÑÑÑ€ r Ó©ÑÑ‡ Ð±Ð°Ð¹ÑÐ°Ð½. Ð“ÑÐ²Ñ‡ bootstrap ÑˆÐ°Ð»Ð³Ð°Ð»Ñ‚Ð°Ð°Ñ€ signal Ñ‚Ð¾Ð³Ñ‚Ð²Ð¾Ñ€Ð³Ò¯Ð¹ Ð±Ð°Ð¹Ð³Ð°Ð° Ð½ÑŒ Ð¸Ð»Ñ€ÑÐ².</span>
           </div>
           <div class="code-block" style="background:#0a0a12;">
             <button class="code-copy" onclick="copyCode(this)">COPY</button>
-            <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## ❌ WRONG normalization (low-T)</span>
-τ_p = log(p) / (2π)
-<span style="color:#585b70;"># → r ≈ 0.4–0.6, weak agreement observed</span>
+            <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## âŒ WRONG normalization (low-T)</span>
+Ï„_p = log(p) / (2Ï€)
+<span style="color:#585b70;"># â†’ r â‰ˆ 0.4â€“0.6, weak agreement observed</span>
 
 <span style="color:#4caf7d;">## high-T unfolded normalization</span>
-τ_p = log(p) / log(T / 2π)
-<span style="color:#585b70;"># → r varies by dataset (0.45–0.68)</span>
+Ï„_p = log(p) / log(T / 2Ï€)
+<span style="color:#585b70;"># â†’ r varies by dataset (0.45â€“0.68)</span>
 
 <span style="color:#c9a84c;">## Why this matters</span>
-<span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
+<span style="color:#585b70;"># At height T, zeros have mean spacing ~2Ï€/log(T/2Ï€)
 # The "unfolded" coordinate accounts for this
 # Montgomery's pair correlation uses this normalization</span></pre>
           </div>
           <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
             <div class="note-label" style="color:var(--green);">Lesson learned</div>
             <span data-lang="en">Scientific failures are valuable. This normalization change substantially increased the observed correlation in this dataset.</span>
-            <span data-lang="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Нормализацийн сонголт үр дүнд ихээхэн нөлөөлдгийг харуулсан.</span>
+            <span data-lang="mn">Ð¨Ð¸Ð½Ð¶Ð»ÑÑ… ÑƒÑ…Ð°Ð°Ð½Ñ‹ Ð±Ò¯Ñ‚ÑÐ»Ð³Ò¯Ð¹Ð´ÑÐ» Ò¯Ð½ÑÑ‚ÑÐ¹. ÐÐ¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹Ð½ ÑÐ¾Ð½Ð³Ð¾Ð»Ñ‚ Ò¯Ñ€ Ð´Ò¯Ð½Ð´ Ð¸Ñ…ÑÑÑ…ÑÐ½ Ð½Ó©Ð»Ó©Ó©Ð»Ð´Ð³Ð¸Ð¹Ð³ Ñ…Ð°Ñ€ÑƒÑƒÐ»ÑÐ°Ð½.</span>
           </div>
         </div>
       </div>
@@ -563,24 +563,24 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <!-- FILE 5: main.tex -->
     <div class="file-card">
       <div class="file-header" onclick="toggleFile(this)">
-        <span class="file-icon">📝</span>
+        <span class="file-icon">ðŸ“</span>
         <div class="file-meta">
           <span class="file-name">paper/main.tex</span>
-          <div class="file-desc"><span data-lang="en">LaTeX source for the full research paper — the formal write-up of all results.</span><span data-lang="mn">Бүрэн судалгааны өгүүллийн LaTeX эх — бүх үр дүнгийн албан ёсны бичгийн хэлбэр.</span></div>
+          <div class="file-desc"><span data-lang="en">LaTeX source for the full research paper â€” the formal write-up of all results.</span><span data-lang="mn">Ð‘Ò¯Ñ€ÑÐ½ ÑÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ó©Ð³Ò¯Ò¯Ð»Ð»Ð¸Ð¹Ð½ LaTeX ÑÑ… â€” Ð±Ò¯Ñ… Ò¯Ñ€ Ð´Ò¯Ð½Ð³Ð¸Ð¹Ð½ Ð°Ð»Ð±Ð°Ð½ Ñ‘ÑÐ½Ñ‹ Ð±Ð¸Ñ‡Ð³Ð¸Ð¹Ð½ Ñ…ÑÐ»Ð±ÑÑ€.</span></div>
           <div class="file-tags"><span class="file-tag">LaTeX</span><span class="file-tag">PDF</span><span class="file-tag">Preprint</span></div>
         </div>
-        <span class="file-toggle">▼</span>
+        <span class="file-toggle">â–¼</span>
       </div>
       <div class="file-body">
         <div class="file-body-inner">
           <div class="note-block">
-            <div class="note-label"><span data-li="en">Paper structure</span><span data-li="mn">Өгүүллийн бүтэц</span></div>
+            <div class="note-label"><span data-li="en">Paper structure</span><span data-li="mn">Ó¨Ð³Ò¯Ò¯Ð»Ð»Ð¸Ð¹Ð½ Ð±Ò¯Ñ‚ÑÑ†</span></div>
             <span data-lang="en">The paper contains: Abstract, Introduction (BK background), Methods (spacing covariance, normalization), Results (table with r values for all 3 datasets), Discussion, Limitations, Conclusion.</span>
-            <span data-lang="mn">Өгүүлэл дараах хэсгүүдийг агуулна: Хураангуй, Танилцуулга (BK суурь), Арга (зайн ковариансыг, нормализаци), Үр дүн (3 датасетийн r утгын хүснэгт), Хэлэлцүүлэг, Хязгаарлалтууд, Дүгнэлт.</span>
+            <span data-lang="mn">Ó¨Ð³Ò¯Ò¯Ð»ÑÐ» Ð´Ð°Ñ€Ð°Ð°Ñ… Ñ…ÑÑÐ³Ò¯Ò¯Ð´Ð¸Ð¹Ð³ Ð°Ð³ÑƒÑƒÐ»Ð½Ð°: Ð¥ÑƒÑ€Ð°Ð°Ð½Ð³ÑƒÐ¹, Ð¢Ð°Ð½Ð¸Ð»Ñ†ÑƒÑƒÐ»Ð³Ð° (BK ÑÑƒÑƒÑ€ÑŒ), ÐÑ€Ð³Ð° (Ð·Ð°Ð¹Ð½ ÐºÐ¾Ð²Ð°Ñ€Ð¸Ð°Ð½ÑÑ‹Ð³, Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸), Ò®Ñ€ Ð´Ò¯Ð½ (3 Ð´Ð°Ñ‚Ð°ÑÐµÑ‚Ð¸Ð¹Ð½ r ÑƒÑ‚Ð³Ñ‹Ð½ Ñ…Ò¯ÑÐ½ÑÐ³Ñ‚), Ð¥ÑÐ»ÑÐ»Ñ†Ò¯Ò¯Ð»ÑÐ³, Ð¥ÑÐ·Ð³Ð°Ð°Ñ€Ð»Ð°Ð»Ñ‚ÑƒÑƒÐ´, Ð”Ò¯Ð³Ð½ÑÐ»Ñ‚.</span>
           </div>
           <div style="margin-top:1rem;">
             <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;">
-              <span class="li">📄</span><div><span class="lt"><span data-li="en">Download preprint</span><span data-li="mn">Preprint татах</span></span><span class="ld">zenodo.org/records/20077673</span></div>
+              <span class="li">ðŸ“„</span><div><span class="lt"><span data-li="en">Download preprint</span><span data-li="mn">Preprint Ñ‚Ð°Ñ‚Ð°Ñ…</span></span><span class="ld">zenodo.org/records/20077673</span></div>
             </a>
           </div>
         </div>
@@ -596,39 +596,39 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-methods">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Methods</span><span data-li="mn">Арга зүй</span></div>
-    <h2><span data-lang="en">How the Analysis Works</span><span data-lang="mn">Шинжилгээний арга</span></h2>
+    <div class="section-label"><span data-li="en">Methods</span><span data-li="mn">ÐÑ€Ð³Ð° Ð·Ò¯Ð¹</span></div>
+    <h2><span data-lang="en">How the Analysis Works</span><span data-lang="mn">Ð¨Ð¸Ð½Ð¶Ð¸Ð»Ð³ÑÑÐ½Ð¸Ð¹ Ð°Ñ€Ð³Ð°</span></h2>
     <div class="prose">
       <span data-lang="en">
         <h3>1. Data</h3>
-        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros2 (100K zeros, T≈74,920), zeros3 (~10K zeros near T~10¹²), zeros4 (~10K zeros near T~10¹³).</p>
+        <p>Odlyzko's zero tables: high-precision tabulations of Î³â‚™ (imaginary parts of non-trivial zeros of Î¶(s)). Three datasets tested: zeros2 (100K zeros, Tâ‰ˆ74,920), zeros3 (~10K zeros near T~10Â¹Â²), zeros4 (~10K zeros near T~10Â¹Â³).</p>
         <h3>2. Spacing Covariance</h3>
-        <p>Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</p>
+        <p>Let Î´â‚™ = Î³â‚™â‚Šâ‚ âˆ’ Î³â‚™ be consecutive zero spacings. Define shifted covariance at lag h:</p>
       </span>
       <span data-lang="mn">
-        <h3>1. Өгөгдөл</h3>
-        <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</p>
+        <h3>1. Ó¨Ð³Ó©Ð³Ð´Ó©Ð»</h3>
+        <p>ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾Ð³Ð¸Ð¹Ð½ Ñ‚ÑÐ³Ð¸Ð¹Ð½ Ñ…Ò¯ÑÐ½ÑÐ³Ñ‚: Î¶(s)-Ð¸Ð¹Ð½ Ñ‚Ñ€Ð¸Ð²Ð¸Ð°Ð»ÑŒ Ð±Ð¸Ñˆ Ñ‚ÑÐ³Ò¯Ò¯Ð´Ð¸Ð¹Ð½ Î³â‚™-Ð³ Ó©Ð½Ð´Ó©Ñ€ Ð½Ð°Ñ€Ð¸Ð¹Ð²Ñ‡Ð»Ð°Ð»Ñ‚Ð°Ð¹Ð³Ð°Ð°Ñ€ Ñ‚Ð¾Ð¾Ñ†ÑÐ¾Ð½. Ð“ÑƒÑ€Ð²Ð°Ð½ Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ñ‚ÐµÑÑ‚ Ñ…Ð¸Ð¹Ð³Ð´ÑÑÐ½.</p>
         <h3>2. Spacing Covariance</h3>
-        <p>δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</p>
+        <p>Î´â‚™ = Î³â‚™â‚Šâ‚ âˆ’ Î³â‚™ Ð³ÑÐ¶ Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð½Ð¾. h Ð»Ð°Ð³ Ð´ÑÑÑ€Ñ… ÑˆÐ¸Ð»Ð¶ÑÑÐ½ ÐºÐ¾Ð²Ð°Ñ€Ð¸Ð°Ð½ÑÑ‹Ð³:</p>
       </span>
     </div>
-    <div class="formula-block" style="margin:1.5rem 0;">C(h) = (1/N−h) Σ (δₙ − δ̄)(δₙ₊ₕ − δ̄)</div>
+    <div class="formula-block" style="margin:1.5rem 0;">C(h) = (1/Nâˆ’h) Î£ (Î´â‚™ âˆ’ Î´Ì„)(Î´â‚™â‚Šâ‚• âˆ’ Î´Ì„)</div>
     <div class="prose">
       <span data-lang="en">
         <h3>3. Key Normalization</h3>
-        <p>The correct prime frequency at height T is <code>τ_p = log(p) / log(T/2π)</code>. This unfolded normalization is essential — using <code>log(p)/2π</code> gives weak results (r≈0.4–0.6).</p>
+        <p>The correct prime frequency at height T is <code>Ï„_p = log(p) / log(T/2Ï€)</code>. This unfolded normalization is essential â€” using <code>log(p)/2Ï€</code> gives weak results (râ‰ˆ0.4â€“0.6).</p>
         <h3>4. BK Predictor</h3>
-        <p>Bogomolny–Keating (1996) predicted amplitude <code>A(p) ~ C·(log p)²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)²/p.</p>
+        <p>Bogomolnyâ€“Keating (1996) predicted amplitude <code>A(p) ~ CÂ·(log p)Â²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)Â²/p.</p>
         <h3>5. Statistical Significance</h3>
-        <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as 2.64×10⁻¹⁵ — but see bootstrap controls for corrected estimates.</p>
+        <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as 2.64Ã—10â»Â¹âµ â€” but see bootstrap controls for corrected estimates.</p>
       </span>
       <span data-lang="mn">
-        <h3>3. Гол нормализаци</h3>
-        <p>T өндөрт зөв прайм давтамж нь <code>τ_p = log(p) / log(T/2π)</code>. Энэ задгай нормализаци зайлшгүй — <code>log(p)/2π</code> ашиглавал сул үр дүн (r≈0.4–0.6) гардаг.</p>
-        <h3>4. BK Таамаглагч</h3>
-        <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) хооронд Pearson корреляц тооцооллодог.</p>
-        <h3>5. Статистик ач холбогдол</h3>
-        <p>Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистикийн тодорхой артефакт биш гэж үзэж болно. Наив p = 2.64×10⁻¹⁵ — bootstrap-ийн засварласан тооцооллыг харна уу.</p>
+        <h3>3. Ð“Ð¾Ð» Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸</h3>
+        <p>T Ó©Ð½Ð´Ó©Ñ€Ñ‚ Ð·Ó©Ð² Ð¿Ñ€Ð°Ð¹Ð¼ Ð´Ð°Ð²Ñ‚Ð°Ð¼Ð¶ Ð½ÑŒ <code>Ï„_p = log(p) / log(T/2Ï€)</code>. Ð­Ð½Ñ Ð·Ð°Ð´Ð³Ð°Ð¹ Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸ Ð·Ð°Ð¹Ð»ÑˆÐ³Ò¯Ð¹ â€” <code>log(p)/2Ï€</code> Ð°ÑˆÐ¸Ð³Ð»Ð°Ð²Ð°Ð» ÑÑƒÐ» Ò¯Ñ€ Ð´Ò¯Ð½ (râ‰ˆ0.4â€“0.6) Ð³Ð°Ñ€Ð´Ð°Ð³.</p>
+        <h3>4. BK Ð¢Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð³Ñ‡</h3>
+        <p>Ð‘Ð¾Ð³Ð¾Ð¼Ð¾Ð»Ð½Ñ‹â€“ÐšÐ¸Ñ‚Ð¸Ð½Ð³ (1996) <code>A(p) ~ CÂ·(log p)Â²/p</code> Ð³ÑÐ¶ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°ÑÐ°Ð½. ÐÐ¶Ð¸Ð³Ð»Ð°Ð³Ð´ÑÐ°Ð½ A(p) Ð±Ð¾Ð»Ð¾Ð½ B(p) Ñ…Ð¾Ð¾Ñ€Ð¾Ð½Ð´ Pearson ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ† Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ð¾Ð´Ð¾Ð³.</p>
+        <h3>5. Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸Ðº Ð°Ñ‡ Ñ…Ð¾Ð»Ð±Ð¾Ð³Ð´Ð¾Ð»</h3>
+        <p>Permutation Ñ‚ÐµÑÑ‚ (Ñ…Ð¾Ð»Ð¸Ð»Ð´ÑƒÑƒÐ»ÑÐ°Ð½ Ñ‚ÑÐ³Ò¯Ò¯Ð´) Ð¸Ð¶Ð¸Ð» Ñ…ÑÐ² Ð¼Ð°ÑÐ³Ð¸Ð¹Ð³ Ð´Ð°Ð²Ñ‚Ð°Ð°Ð³Ò¯Ð¹ â€” Ð´Ð¾Ñ…Ð¸Ð¾ Ð½ÑŒ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸Ð¹Ð½ Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹ Ð°Ñ€Ñ‚ÐµÑ„Ð°ÐºÑ‚ Ð±Ð¸Ñˆ Ð³ÑÐ¶ Ò¯Ð·ÑÐ¶ Ð±Ð¾Ð»Ð½Ð¾. ÐÐ°Ð¸Ð² p = 2.64Ã—10â»Â¹âµ â€” bootstrap-Ð¸Ð¹Ð½ Ð·Ð°ÑÐ²Ð°Ñ€Ð»Ð°ÑÐ°Ð½ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð³ Ñ…Ð°Ñ€Ð½Ð° ÑƒÑƒ.</p>
       </span>
     </div>
   </div>
@@ -642,89 +642,89 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-roadmap">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Research Судалгааны зам</span><span data-li="mn">Судалгааны зам</span></div>
-    <h2><span data-lang="en">The Path Forward</span><span data-lang="mn">Цаашдын зам</span></h2>
+    <div class="section-label"><span data-li="en">Research Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ð·Ð°Ð¼</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ð·Ð°Ð¼</span></div>
+    <h2><span data-lang="en">The Path Forward</span><span data-lang="mn">Ð¦Ð°Ð°ÑˆÐ´Ñ‹Ð½ Ð·Ð°Ð¼</span></h2>
     <p class="prose" style="margin-bottom:2.5rem;">
-      <span data-lang="en">From a computational idea to a published preprint — and the road ahead toward deeper understanding of the Riemann Hypothesis.</span>
-      <span data-lang="mn">Тооцоолооны санаанаас нийтлэгдсэн preprint хүртэл — мөн Риманы таамаглалын гүнзгий ойлголт руу цаашдын зам.</span>
+      <span data-lang="en">From a computational idea to a published preprint â€” and the road ahead toward deeper understanding of the Riemann Hypothesis.</span>
+      <span data-lang="mn">Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ð¾Ð½Ñ‹ ÑÐ°Ð½Ð°Ð°Ð½Ð°Ð°Ñ Ð½Ð¸Ð¹Ñ‚Ð»ÑÐ³Ð´ÑÑÐ½ preprint Ñ…Ò¯Ñ€Ñ‚ÑÐ» â€” Ð¼Ó©Ð½ Ð Ð¸Ð¼Ð°Ð½Ñ‹ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð»Ñ‹Ð½ Ð³Ò¯Ð½Ð·Ð³Ð¸Ð¹ Ð¾Ð¹Ð»Ð³Ð¾Ð»Ñ‚ Ñ€ÑƒÑƒ Ñ†Ð°Ð°ÑˆÐ´Ñ‹Ð½ Ð·Ð°Ð¼.</span>
     </p>
 
     
     <!-- CLAY PRIZE -->
-    <div class="section-label"><span data-li="en">Why This Matters</span><span data-li="mn">Яагаад чухал вэ</span></div>
+    <div class="section-label"><span data-li="en">Why This Matters</span><span data-li="mn">Ð¯Ð°Ð³Ð°Ð°Ð´ Ñ‡ÑƒÑ…Ð°Ð» Ð²Ñ</span></div>
 
     <div class="clay-banner">
-      <div class="clay-title">Clay Mathematics Institute · 2000</div>
-      <div class="clay-name"><span data-lang="en">🏆 Millennium Prize Problems</span><span data-lang="mn">🏆 Мянганы Шагналт Бодлогууд</span></div>
+      <div class="clay-title">Clay Mathematics Institute Â· 2000</div>
+      <div class="clay-name"><span data-lang="en">ðŸ† Millennium Prize Problems</span><span data-lang="mn">ðŸ† ÐœÑÐ½Ð³Ð°Ð½Ñ‹ Ð¨Ð°Ð³Ð½Ð°Ð»Ñ‚ Ð‘Ð¾Ð´Ð»Ð¾Ð³ÑƒÑƒÐ´</span></div>
       <div class="clay-desc">
-        <span data-lang="en">In 2000, the Clay Mathematics Institute announced 7 unsolved problems — each worth $1,000,000. Only one has been solved (Poincaré Conjecture, Perelman 2003). The Riemann Hypothesis is one of the remaining 6.</span>
-        <span data-lang="mn">2000 онд Клейгийн математикийн хүрээлэн 7 шийдэгдээгүй бодлогыг тус бүр 1 сая доллараар зарлав. Зөвхөн нэг нь шийдэгдсэн (Пуанкарегийн таамаглал, Перельман 2003). Риманы таамаглал үлдсэн 6-гийн нэг.</span>
+        <span data-lang="en">In 2000, the Clay Mathematics Institute announced 7 unsolved problems â€” each worth $1,000,000. Only one has been solved (PoincarÃ© Conjecture, Perelman 2003). The Riemann Hypothesis is one of the remaining 6.</span>
+        <span data-lang="mn">2000 Ð¾Ð½Ð´ ÐšÐ»ÐµÐ¹Ð³Ð¸Ð¹Ð½ Ð¼Ð°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸ÐºÐ¸Ð¹Ð½ Ñ…Ò¯Ñ€ÑÑÐ»ÑÐ½ 7 ÑˆÐ¸Ð¹Ð´ÑÐ³Ð´ÑÑÐ³Ò¯Ð¹ Ð±Ð¾Ð´Ð»Ð¾Ð³Ñ‹Ð³ Ñ‚ÑƒÑ Ð±Ò¯Ñ€ 1 ÑÐ°Ñ Ð´Ð¾Ð»Ð»Ð°Ñ€Ð°Ð°Ñ€ Ð·Ð°Ñ€Ð»Ð°Ð². Ð—Ó©Ð²Ñ…Ó©Ð½ Ð½ÑÐ³ Ð½ÑŒ ÑˆÐ¸Ð¹Ð´ÑÐ³Ð´ÑÑÐ½ (ÐŸÑƒÐ°Ð½ÐºÐ°Ñ€ÐµÐ³Ð¸Ð¹Ð½ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð», ÐŸÐµÑ€ÐµÐ»ÑŒÐ¼Ð°Ð½ 2003). Ð Ð¸Ð¼Ð°Ð½Ñ‹ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð» Ò¯Ð»Ð´ÑÑÐ½ 6-Ð³Ð¸Ð¹Ð½ Ð½ÑÐ³.</span>
       </div>
     </div>
 
     <div class="prob-grid">
       <div class="prob-card highlight">
-        <span class="prob-tag tag-ours">← Computational Observation</span>
-        <div class="prob-num">01 · RH</div>
+        <span class="prob-tag tag-ours">â† Computational Observation</span>
+        <div class="prob-num">01 Â· RH</div>
         <div class="prob-name">Riemann Hypothesis</div>
-        <div class="prob-desc"><span data-lang="en">All non-trivial zeros of ζ(s) lie on Re(s) = ½. Connected to prime number distribution.</span><span data-lang="mn">ζ(s)-ийн бүх тривиаль биш тэгүүд Re(s) = ½ дээр байна. Анхны тооны тархалттай холбоотой.</span></div>
+        <div class="prob-desc"><span data-lang="en">All non-trivial zeros of Î¶(s) lie on Re(s) = Â½. Connected to prime number distribution.</span><span data-lang="mn">Î¶(s)-Ð¸Ð¹Ð½ Ð±Ò¯Ñ… Ñ‚Ñ€Ð¸Ð²Ð¸Ð°Ð»ÑŒ Ð±Ð¸Ñˆ Ñ‚ÑÐ³Ò¯Ò¯Ð´ Re(s) = Â½ Ð´ÑÑÑ€ Ð±Ð°Ð¹Ð½Ð°. ÐÐ½Ñ…Ð½Ñ‹ Ñ‚Ð¾Ð¾Ð½Ñ‹ Ñ‚Ð°Ñ€Ñ…Ð°Ð»Ñ‚Ñ‚Ð°Ð¹ Ñ…Ð¾Ð»Ð±Ð¾Ð¾Ñ‚Ð¾Ð¹.</span></div>
       </div>
       <div class="prob-card">
         <span class="prob-tag tag-open">OPEN</span>
-        <div class="prob-num">02 · P vs NP</div>
-        <div class="prob-name">P ≠ NP Problem</div>
-        <div class="prob-desc"><span data-lang="en">Can every problem whose solution can be verified quickly also be solved quickly?</span><span data-lang="mn">Хариуг нь хурдан шалгаж болдог бодлого болгон хурдан бодогдох боломжтой юу?</span></div>
+        <div class="prob-num">02 Â· P vs NP</div>
+        <div class="prob-name">P â‰  NP Problem</div>
+        <div class="prob-desc"><span data-lang="en">Can every problem whose solution can be verified quickly also be solved quickly?</span><span data-lang="mn">Ð¥Ð°Ñ€Ð¸ÑƒÐ³ Ð½ÑŒ Ñ…ÑƒÑ€Ð´Ð°Ð½ ÑˆÐ°Ð»Ð³Ð°Ð¶ Ð±Ð¾Ð»Ð´Ð¾Ð³ Ð±Ð¾Ð´Ð»Ð¾Ð³Ð¾ Ð±Ð¾Ð»Ð³Ð¾Ð½ Ñ…ÑƒÑ€Ð´Ð°Ð½ Ð±Ð¾Ð´Ð¾Ð³Ð´Ð¾Ñ… Ð±Ð¾Ð»Ð¾Ð¼Ð¶Ñ‚Ð¾Ð¹ ÑŽÑƒ?</span></div>
       </div>
       <div class="prob-card">
         <span class="prob-tag tag-open">OPEN</span>
-        <div class="prob-num">03 · BSD</div>
+        <div class="prob-num">03 Â· BSD</div>
         <div class="prob-name">Birch & Swinnerton-Dyer</div>
-        <div class="prob-desc"><span data-lang="en">Rational points on elliptic curves. Connected to L-functions and zeta zeros.</span><span data-lang="mn">Эллиптик муруй дээрх рационал цэгүүд. L-функц болон зета тэгүүдтэй холбоотой.</span></div>
+        <div class="prob-desc"><span data-lang="en">Rational points on elliptic curves. Connected to L-functions and zeta zeros.</span><span data-lang="mn">Ð­Ð»Ð»Ð¸Ð¿Ñ‚Ð¸Ðº Ð¼ÑƒÑ€ÑƒÐ¹ Ð´ÑÑÑ€Ñ… Ñ€Ð°Ñ†Ð¸Ð¾Ð½Ð°Ð» Ñ†ÑÐ³Ò¯Ò¯Ð´. L-Ñ„ÑƒÐ½ÐºÑ† Ð±Ð¾Ð»Ð¾Ð½ Ð·ÐµÑ‚Ð° Ñ‚ÑÐ³Ò¯Ò¯Ð´Ñ‚ÑÐ¹ Ñ…Ð¾Ð»Ð±Ð¾Ð¾Ñ‚Ð¾Ð¹.</span></div>
       </div>
       <div class="prob-card">
         <span class="prob-tag tag-open">OPEN</span>
-        <div class="prob-num">04 · NS</div>
-        <div class="prob-name">Navier–Stokes</div>
-        <div class="prob-desc"><span data-lang="en">Do smooth solutions always exist for fluid dynamics equations in 3D?</span><span data-lang="mn">Шингэний хөдөлгөөний тэгшитгэл 3D-д үргэлж гөлгөр шийдтэй байж чадах уу?</span></div>
+        <div class="prob-num">04 Â· NS</div>
+        <div class="prob-name">Navierâ€“Stokes</div>
+        <div class="prob-desc"><span data-lang="en">Do smooth solutions always exist for fluid dynamics equations in 3D?</span><span data-lang="mn">Ð¨Ð¸Ð½Ð³ÑÐ½Ð¸Ð¹ Ñ…Ó©Ð´Ó©Ð»Ð³Ó©Ó©Ð½Ð¸Ð¹ Ñ‚ÑÐ³ÑˆÐ¸Ñ‚Ð³ÑÐ» 3D-Ð´ Ò¯Ñ€Ð³ÑÐ»Ð¶ Ð³Ó©Ð»Ð³Ó©Ñ€ ÑˆÐ¸Ð¹Ð´Ñ‚ÑÐ¹ Ð±Ð°Ð¹Ð¶ Ñ‡Ð°Ð´Ð°Ñ… ÑƒÑƒ?</span></div>
       </div>
       <div class="prob-card">
         <span class="prob-tag tag-open">OPEN</span>
-        <div class="prob-num">05 · YM</div>
-        <div class="prob-name">Yang–Mills Mass Gap</div>
-        <div class="prob-desc"><span data-lang="en">Prove that quantum Yang–Mills theory has a mass gap greater than zero.</span><span data-lang="mn">Квант Янг–Миллсийн онол тэгээс их масс завсартай гэдгийг батал.</span></div>
+        <div class="prob-num">05 Â· YM</div>
+        <div class="prob-name">Yangâ€“Mills Mass Gap</div>
+        <div class="prob-desc"><span data-lang="en">Prove that quantum Yangâ€“Mills theory has a mass gap greater than zero.</span><span data-lang="mn">ÐšÐ²Ð°Ð½Ñ‚ Ð¯Ð½Ð³â€“ÐœÐ¸Ð»Ð»ÑÐ¸Ð¹Ð½ Ð¾Ð½Ð¾Ð» Ñ‚ÑÐ³ÑÑÑ Ð¸Ñ… Ð¼Ð°ÑÑ Ð·Ð°Ð²ÑÐ°Ñ€Ñ‚Ð°Ð¹ Ð³ÑÐ´Ð³Ð¸Ð¹Ð³ Ð±Ð°Ñ‚Ð°Ð».</span></div>
       </div>
       <div class="prob-card">
         <span class="prob-tag tag-open">OPEN</span>
-        <div class="prob-num">06 · HC</div>
+        <div class="prob-num">06 Â· HC</div>
         <div class="prob-name">Hodge Conjecture</div>
-        <div class="prob-desc"><span data-lang="en">Algebraic geometry: certain cohomology classes are algebraic cycles.</span><span data-lang="mn">Алгебрийн геометр: тодорхой когомологийн классууд алгебрийн циклүүд мөн.</span></div>
+        <div class="prob-desc"><span data-lang="en">Algebraic geometry: certain cohomology classes are algebraic cycles.</span><span data-lang="mn">ÐÐ»Ð³ÐµÐ±Ñ€Ð¸Ð¹Ð½ Ð³ÐµÐ¾Ð¼ÐµÑ‚Ñ€: Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹ ÐºÐ¾Ð³Ð¾Ð¼Ð¾Ð»Ð¾Ð³Ð¸Ð¹Ð½ ÐºÐ»Ð°ÑÑÑƒÑƒÐ´ Ð°Ð»Ð³ÐµÐ±Ñ€Ð¸Ð¹Ð½ Ñ†Ð¸ÐºÐ»Ò¯Ò¯Ð´ Ð¼Ó©Ð½.</span></div>
       </div>
       <div class="prob-card solved" style="grid-column:span 2;">
         <span class="prob-tag tag-solved">SOLVED 2003</span>
-        <div class="prob-num">07 · PC</div>
-        <div class="prob-name">Poincaré Conjecture — Grigori Perelman</div>
-        <div class="prob-desc"><span data-lang="en">Every simply connected 3-manifold is homeomorphic to a 3-sphere. Solved by Perelman using Ricci flow. He declined the $1M prize.</span><span data-lang="mn">Энгийн холбоост гурван хэмжээст олон талт нь гурван хэмжээст бөмбөрцөгтэй гомеоморф. Перельман Риччи урсгалаар шийдсэн. 1 сая долларын шагналаас татгалзсан.</span></div>
+        <div class="prob-num">07 Â· PC</div>
+        <div class="prob-name">PoincarÃ© Conjecture â€” Grigori Perelman</div>
+        <div class="prob-desc"><span data-lang="en">Every simply connected 3-manifold is homeomorphic to a 3-sphere. Solved by Perelman using Ricci flow. He declined the $1M prize.</span><span data-lang="mn">Ð­Ð½Ð³Ð¸Ð¹Ð½ Ñ…Ð¾Ð»Ð±Ð¾Ð¾ÑÑ‚ Ð³ÑƒÑ€Ð²Ð°Ð½ Ñ…ÑÐ¼Ð¶ÑÑÑÑ‚ Ð¾Ð»Ð¾Ð½ Ñ‚Ð°Ð»Ñ‚ Ð½ÑŒ Ð³ÑƒÑ€Ð²Ð°Ð½ Ñ…ÑÐ¼Ð¶ÑÑÑÑ‚ Ð±Ó©Ð¼Ð±Ó©Ñ€Ñ†Ó©Ð³Ñ‚ÑÐ¹ Ð³Ð¾Ð¼ÐµÐ¾Ð¼Ð¾Ñ€Ñ„. ÐŸÐµÑ€ÐµÐ»ÑŒÐ¼Ð°Ð½ Ð Ð¸Ñ‡Ñ‡Ð¸ ÑƒÑ€ÑÐ³Ð°Ð»Ð°Ð°Ñ€ ÑˆÐ¸Ð¹Ð´ÑÑÐ½. 1 ÑÐ°Ñ Ð´Ð¾Ð»Ð»Ð°Ñ€Ñ‹Ð½ ÑˆÐ°Ð³Ð½Ð°Ð»Ð°Ð°Ñ Ñ‚Ð°Ñ‚Ð³Ð°Ð»Ð·ÑÐ°Ð½.</span></div>
       </div>
     </div>
 
     <div class="computational-observation">
-      <div class="oc-label" style="color:var(--cyan);letter-spacing:.1em;"><span data-li="en">Where our research fits</span><span data-li="mn">Манай судалгаа хаана байна</span></div>
+      <div class="oc-label" style="color:var(--cyan);letter-spacing:.1em;"><span data-li="en">Where our research fits</span><span data-li="mn">ÐœÐ°Ð½Ð°Ð¹ ÑÑƒÐ´Ð°Ð»Ð³Ð°Ð° Ñ…Ð°Ð°Ð½Ð° Ð±Ð°Ð¹Ð½Ð°</span></div>
       <div class="our-row"><span class="or-key">Problem:</span><span class="or-val">Riemann Hypothesis (#01)</span></div>
-      <div class="our-row"><span class="or-key">Connection:</span><span class="or-val"><span data-lang="en">Prime-correlated structure in zero statistics</span><span data-lang="mn">Тэгийн статистик дахь прайм-корреляцийн бүтэц</span></span></div>
-      <div class="our-row"><span class="or-key">Result:</span><span class="or-val">r = 0.45–0.68 across datasets · bootstrap MODERATE at N=2M</span></div>
-      <div class="our-row"><span class="or-key">Status:</span><span class="or-val warn">Interesting computational observation · potential BK-related phenomenon</span></div>
-      <div class="our-row"><span class="or-key">Status:</span><span class="or-val"><span data-lang="en">Computational observations — not a proof</span><span data-lang="mn">Тооцооллын ажиглалт — нотолгоо биш</span></span></div>
-      <div class="our-row"><span class="or-key">Prize:</span><span class="or-val"><span data-lang="en">$1,000,000 (Clay Institute) — if proven</span><span data-lang="mn">1,000,000$ (Клейн хүрээлэн) — батлагдвал</span></span></div>
+      <div class="our-row"><span class="or-key">Connection:</span><span class="or-val"><span data-lang="en">Prime-correlated structure in zero statistics</span><span data-lang="mn">Ð¢ÑÐ³Ð¸Ð¹Ð½ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸Ðº Ð´Ð°Ñ…ÑŒ Ð¿Ñ€Ð°Ð¹Ð¼-ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ†Ð¸Ð¹Ð½ Ð±Ò¯Ñ‚ÑÑ†</span></span></div>
+      <div class="our-row"><span class="or-key">Result:</span><span class="or-val">r = 0.45â€“0.68 across datasets Â· bootstrap MODERATE at N=2M</span></div>
+      <div class="our-row"><span class="or-key">Status:</span><span class="or-val warn">Interesting computational observation Â· potential BK-related phenomenon</span></div>
+      <div class="our-row"><span class="or-key">Status:</span><span class="or-val"><span data-lang="en">Computational observations â€” not a proof</span><span data-lang="mn">Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚ â€” Ð½Ð¾Ñ‚Ð¾Ð»Ð³Ð¾Ð¾ Ð±Ð¸Ñˆ</span></span></div>
+      <div class="our-row"><span class="or-key">Prize:</span><span class="or-val"><span data-lang="en">$1,000,000 (Clay Institute) â€” if proven</span><span data-lang="mn">1,000,000$ (ÐšÐ»ÐµÐ¹Ð½ Ñ…Ò¯Ñ€ÑÑÐ»ÑÐ½) â€” Ð±Ð°Ñ‚Ð»Ð°Ð³Ð´Ð²Ð°Ð»</span></span></div>
     </div>
-<div class="section-label"><span data-li="en">Current Progress</span><span data-li="mn">Одоогийн явц</span></div>
+<div class="section-label"><span data-li="en">Current Progress</span><span data-li="mn">ÐžÐ´Ð¾Ð¾Ð³Ð¸Ð¹Ð½ ÑÐ²Ñ†</span></div>
     <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
 
       <div class="rm-item done">
         <div class="rm-header">
-          <span class="rm-icon">✅</span>
+          <span class="rm-icon">âœ…</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">Computational observations collected — further validation needed</span><span data-li="mn">Тооцооллын ажиглалт цуглуулсан — нэмэлт харьцуулалт шаардлагатай</span></span>
-            <span class="rm-sub">zeros2, zeros3, zeros4 · r = 0.45–0.68 · prime-indexed excess patterns observed</span>
+            <span class="rm-title"><span data-li="en">Computational observations collected â€” further validation needed</span><span data-li="mn">Ð¢Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚ Ñ†ÑƒÐ³Ð»ÑƒÑƒÐ»ÑÐ°Ð½ â€” Ð½ÑÐ¼ÑÐ»Ñ‚ Ñ…Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ð»Ñ‚ ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹</span></span>
+            <span class="rm-sub">zeros2, zeros3, zeros4 Â· r = 0.45â€“0.68 Â· prime-indexed excess patterns observed</span>
           </div>
           <span class="rm-status done-tag">DONE</span>
         </div>
@@ -733,9 +733,9 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="rm-item done">
         <div class="rm-header">
-          <span class="rm-icon">✅</span>
+          <span class="rm-icon">âœ…</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">Preprint published on Zenodo</span><span data-li="mn">Zenodo дээр preprint нийтэлсэн</span></span>
+            <span class="rm-title"><span data-li="en">Preprint published on Zenodo</span><span data-li="mn">Zenodo Ð´ÑÑÑ€ preprint Ð½Ð¸Ð¹Ñ‚ÑÐ»ÑÑÐ½</span></span>
             <span class="rm-sub">DOI: 10.5281/zenodo.20077673</span>
           </div>
           <span class="rm-status done-tag">DONE</span>
@@ -745,10 +745,10 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="rm-item done">
         <div class="rm-header">
-          <span class="rm-icon">✅</span>
+          <span class="rm-icon">âœ…</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">Research website launched</span><span data-li="mn">Судалгааны вэб хуудас нийтлэгдсэн</span></span>
-            <span class="rm-sub">research.nexcore.ltd · ENG/МОН</span>
+            <span class="rm-title"><span data-li="en">Research website launched</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ð²ÑÐ± Ñ…ÑƒÑƒÐ´Ð°Ñ Ð½Ð¸Ð¹Ñ‚Ð»ÑÐ³Ð´ÑÑÐ½</span></span>
+            <span class="rm-sub">research.nexcore.ltd Â· ENG/ÐœÐžÐ</span>
           </div>
           <span class="rm-status done-tag">DONE</span>
         </div>
@@ -757,10 +757,10 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="rm-item done">
         <div class="rm-header">
-          <span class="rm-icon">✅</span>
+          <span class="rm-icon">âœ…</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">Math community engaged</span><span data-li="mn">Математикийн хамт олонтой харилцсан</span></span>
-            <span class="rm-sub">Math StackExchange · Reddit · Odlyzko · Keating</span>
+            <span class="rm-title"><span data-li="en">Math community engaged</span><span data-li="mn">ÐœÐ°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸ÐºÐ¸Ð¹Ð½ Ñ…Ð°Ð¼Ñ‚ Ð¾Ð»Ð¾Ð½Ñ‚Ð¾Ð¹ Ñ…Ð°Ñ€Ð¸Ð»Ñ†ÑÐ°Ð½</span></span>
+            <span class="rm-sub">Math StackExchange Â· Reddit Â· Odlyzko Â· Keating</span>
           </div>
           <span class="rm-status done-tag">DONE</span>
         </div>
@@ -769,10 +769,10 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="rm-item active">
         <div class="rm-header">
-          <span class="rm-icon">⏳</span>
+          <span class="rm-icon">â³</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">arXiv submission</span><span data-li="mn">arXiv нийтлэл</span></span>
-            <span class="rm-sub"><span data-li="en">Waiting for endorsement · Code: O86GNH</span><span data-li="mn">Endorsement хүлээж байна · Код: O86GNH</span></span>
+            <span class="rm-title"><span data-li="en">arXiv submission</span><span data-li="mn">arXiv Ð½Ð¸Ð¹Ñ‚Ð»ÑÐ»</span></span>
+            <span class="rm-sub"><span data-li="en">Waiting for endorsement Â· Code: O86GNH</span><span data-li="mn">Endorsement Ñ…Ò¯Ð»ÑÑÐ¶ Ð±Ð°Ð¹Ð½Ð° Â· ÐšÐ¾Ð´: O86GNH</span></span>
           </div>
           <span class="rm-status active-tag">IN PROGRESS</span>
         </div>
@@ -781,10 +781,10 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="rm-item todo">
         <div class="rm-header">
-          <span class="rm-icon">⬜</span>
+          <span class="rm-icon">â¬œ</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">Deepen theoretical understanding</span><span data-li="mn">Онолын мэдлэг гүнзгийрүүлэх</span></span>
-            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive C ≈ 3 (zeros1/zeros6)</span><span data-li="mn">Montgomery, BK 1996 уншиж, C ≈ 3 (zeros1/zeros6) гаргах</span></span>
+            <span class="rm-title"><span data-li="en">Deepen theoretical understanding</span><span data-li="mn">ÐžÐ½Ð¾Ð»Ñ‹Ð½ Ð¼ÑÐ´Ð»ÑÐ³ Ð³Ò¯Ð½Ð·Ð³Ð¸Ð¹Ñ€Ò¯Ò¯Ð»ÑÑ…</span></span>
+            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive C â‰ˆ 3 (zeros1/zeros6)</span><span data-li="mn">Montgomery, BK 1996 ÑƒÐ½ÑˆÐ¸Ð¶, C â‰ˆ 3 (zeros1/zeros6) Ð³Ð°Ñ€Ð³Ð°Ñ…</span></span>
           </div>
           <span class="rm-status todo-tag">NEXT</span>
         </div>
@@ -793,10 +793,10 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="rm-item todo">
         <div class="rm-header">
-          <span class="rm-icon">⬜</span>
+          <span class="rm-icon">â¬œ</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">Approach Riemann Hypothesis</span><span data-li="mn">Риманы таамаглал руу ойртох</span></span>
-            <span class="rm-sub"><span data-li="en">Long-term goal · Formal mathematical proof framework</span><span data-li="mn">Урт хугацааны зорилго · Албан ёсны математик нотолгооны хүрээ</span></span>
+            <span class="rm-title"><span data-li="en">Approach Riemann Hypothesis</span><span data-li="mn">Ð Ð¸Ð¼Ð°Ð½Ñ‹ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð» Ñ€ÑƒÑƒ Ð¾Ð¹Ñ€Ñ‚Ð¾Ñ…</span></span>
+            <span class="rm-sub"><span data-li="en">Long-term goal Â· Formal mathematical proof framework</span><span data-li="mn">Ð£Ñ€Ñ‚ Ñ…ÑƒÐ³Ð°Ñ†Ð°Ð°Ð½Ñ‹ Ð·Ð¾Ñ€Ð¸Ð»Ð³Ð¾ Â· ÐÐ»Ð±Ð°Ð½ Ñ‘ÑÐ½Ñ‹ Ð¼Ð°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸Ðº Ð½Ð¾Ñ‚Ð¾Ð»Ð³Ð¾Ð¾Ð½Ñ‹ Ñ…Ò¯Ñ€ÑÑ</span></span>
           </div>
           <span class="rm-status todo-tag">FUTURE</span>
         </div>
@@ -806,8 +806,8 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
 
     <!-- READING LIST -->
-    <div class="section-label"><span data-li="en">Reading List</span><span data-li="mn">Уншах жагсаалт</span></div>
-    <h3 style="margin-bottom:1.5rem;color:var(--text);font-size:1.3rem;"><span data-lang="en">Key Papers to Study Next</span><span data-lang="mn">Дараа уншах гол өгүүллүүд</span></h3>
+    <div class="section-label"><span data-li="en">Reading List</span><span data-li="mn">Ð£Ð½ÑˆÐ°Ñ… Ð¶Ð°Ð³ÑÐ°Ð°Ð»Ñ‚</span></div>
+    <h3 style="margin-bottom:1.5rem;color:var(--text);font-size:1.3rem;"><span data-lang="en">Key Papers to Study Next</span><span data-lang="mn">Ð”Ð°Ñ€Ð°Ð° ÑƒÐ½ÑˆÐ°Ñ… Ð³Ð¾Ð» Ó©Ð³Ò¯Ò¯Ð»Ð»Ò¯Ò¯Ð´</span></h3>
 
     <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
 
@@ -816,39 +816,39 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div class="read-content">
           <div class="read-title">Montgomery (1973)</div>
           <div class="read-ref">"The pair correlation of zeros of the zeta function"</div>
-          <div class="read-why"><span data-lang="en">Foundation of GUE connection. Essential for understanding why prime frequencies appear in zero statistics.</span><span data-lang="mn">GUE холбооны суурь. Прайм давтамжууд яагаад тэгийн статистикт гарч ирдгийг ойлгоход зайлшгүй.</span></div>
+          <div class="read-why"><span data-lang="en">Foundation of GUE connection. Essential for understanding why prime frequencies appear in zero statistics.</span><span data-lang="mn">GUE Ñ…Ð¾Ð»Ð±Ð¾Ð¾Ð½Ñ‹ ÑÑƒÑƒÑ€ÑŒ. ÐŸÑ€Ð°Ð¹Ð¼ Ð´Ð°Ð²Ñ‚Ð°Ð¼Ð¶ÑƒÑƒÐ´ ÑÐ°Ð³Ð°Ð°Ð´ Ñ‚ÑÐ³Ð¸Ð¹Ð½ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÑ‚ Ð³Ð°Ñ€Ñ‡ Ð¸Ñ€Ð´Ð³Ð¸Ð¹Ð³ Ð¾Ð¹Ð»Ð³Ð¾Ñ…Ð¾Ð´ Ð·Ð°Ð¹Ð»ÑˆÐ³Ò¯Ð¹.</span></div>
         </div>
-        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+        <div class="read-status">â¬œ <span data-li="en">Not read</span><span data-li="mn">Ð£Ð½ÑˆÐ°Ð°Ð³Ò¯Ð¹</span></div>
       </div>
 
       <div class="read-card">
         <div class="read-priority high">HIGH</div>
         <div class="read-content">
           <div class="read-title">Bogomolny & Keating (1996)</div>
-          <div class="read-ref">"Random matrix theory and the Riemann zeros I & II" — Nonlinearity</div>
-          <div class="read-why"><span data-lang="en">The original prediction of A(p) ~ C(log p)²/p. Understanding the derivation will explain C ≈ 3 (zeros1/zeros6).</span><span data-lang="mn">A(p) ~ C(log p)²/p-н анхны таамаглал. Гарталтыг ойлговол C ≈ 3 (zeros1/zeros6)-г тайлбарлах болно.</span></div>
+          <div class="read-ref">"Random matrix theory and the Riemann zeros I & II" â€” Nonlinearity</div>
+          <div class="read-why"><span data-lang="en">The original prediction of A(p) ~ C(log p)Â²/p. Understanding the derivation will explain C â‰ˆ 3 (zeros1/zeros6).</span><span data-lang="mn">A(p) ~ C(log p)Â²/p-Ð½ Ð°Ð½Ñ…Ð½Ñ‹ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð». Ð“Ð°Ñ€Ñ‚Ð°Ð»Ñ‚Ñ‹Ð³ Ð¾Ð¹Ð»Ð³Ð¾Ð²Ð¾Ð» C â‰ˆ 3 (zeros1/zeros6)-Ð³ Ñ‚Ð°Ð¹Ð»Ð±Ð°Ñ€Ð»Ð°Ñ… Ð±Ð¾Ð»Ð½Ð¾.</span></div>
         </div>
-        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+        <div class="read-status">â¬œ <span data-li="en">Not read</span><span data-li="mn">Ð£Ð½ÑˆÐ°Ð°Ð³Ò¯Ð¹</span></div>
       </div>
 
       <div class="read-card">
         <div class="read-priority mid">MED</div>
         <div class="read-content">
           <div class="read-title">Hiary & Odlyzko (2012)</div>
-          <div class="read-ref">arXiv:1105.4312 — "The zeta function on the critical line"</div>
-          <div class="read-why"><span data-lang="en">Odlyzko's own numerical work on high zeros. Most directly relevant to our high-T analysis.</span><span data-lang="mn">Одлызкогийн өндөр тэгүүдийн тоон ажил. Манай өндөр-T шинжилгээтэй хамгийн холбоотой.</span></div>
+          <div class="read-ref">arXiv:1105.4312 â€” "The zeta function on the critical line"</div>
+          <div class="read-why"><span data-lang="en">Odlyzko's own numerical work on high zeros. Most directly relevant to our high-T analysis.</span><span data-lang="mn">ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾Ð³Ð¸Ð¹Ð½ Ó©Ð½Ð´Ó©Ñ€ Ñ‚ÑÐ³Ò¯Ò¯Ð´Ð¸Ð¹Ð½ Ñ‚Ð¾Ð¾Ð½ Ð°Ð¶Ð¸Ð». ÐœÐ°Ð½Ð°Ð¹ Ó©Ð½Ð´Ó©Ñ€-T ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑÑ‚ÑÐ¹ Ñ…Ð°Ð¼Ð³Ð¸Ð¹Ð½ Ñ…Ð¾Ð»Ð±Ð¾Ð¾Ñ‚Ð¾Ð¹.</span></div>
         </div>
-        <div class="read-status">✅ <span data-li="en">Referenced</span><span data-li="mn">Ишлэсэн</span></div>
+        <div class="read-status">âœ… <span data-li="en">Referenced</span><span data-li="mn">Ð˜ÑˆÐ»ÑÑÑÐ½</span></div>
       </div>
 
       <div class="read-card">
         <div class="read-priority mid">MED</div>
         <div class="read-content">
           <div class="read-title">Keating & Snaith (2000)</div>
-          <div class="read-ref">"Random matrix theory and ζ(1/2+it)" — Commun. Math. Phys.</div>
-          <div class="read-why"><span data-lang="en">Extends BK theory. Key for understanding the constant C and its theoretical derivation from random matrix theory.</span><span data-lang="mn">BK онолыг өргөтгөнө. Санамсаргүй матрицын онолоос C константын онолын гарталтыг ойлгоход чухал.</span></div>
+          <div class="read-ref">"Random matrix theory and Î¶(1/2+it)" â€” Commun. Math. Phys.</div>
+          <div class="read-why"><span data-lang="en">Extends BK theory. Key for understanding the constant C and its theoretical derivation from random matrix theory.</span><span data-lang="mn">BK Ð¾Ð½Ð¾Ð»Ñ‹Ð³ Ó©Ñ€Ð³Ó©Ñ‚Ð³Ó©Ð½Ó©. Ð¡Ð°Ð½Ð°Ð¼ÑÐ°Ñ€Ð³Ò¯Ð¹ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñ‹Ð½ Ð¾Ð½Ð¾Ð»Ð¾Ð¾Ñ C ÐºÐ¾Ð½ÑÑ‚Ð°Ð½Ñ‚Ñ‹Ð½ Ð¾Ð½Ð¾Ð»Ñ‹Ð½ Ð³Ð°Ñ€Ñ‚Ð°Ð»Ñ‚Ñ‹Ð³ Ð¾Ð¹Ð»Ð³Ð¾Ñ…Ð¾Ð´ Ñ‡ÑƒÑ…Ð°Ð».</span></div>
         </div>
-        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+        <div class="read-status">â¬œ <span data-li="en">Not read</span><span data-li="mn">Ð£Ð½ÑˆÐ°Ð°Ð³Ò¯Ð¹</span></div>
       </div>
 
       <div class="read-card">
@@ -856,9 +856,9 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div class="read-content">
           <div class="read-title">Connes (1999)</div>
           <div class="read-ref">"Trace formula in noncommutative geometry and zeros of the Riemann zeta function"</div>
-          <div class="read-why"><span data-lang="en">Advanced operator-theoretic framework. Long-term reading toward deeper RH understanding.</span><span data-lang="mn">Дэвшилтэт операторын онолын хүрээ. RH-г гүнзгий ойлгох урт хугацааны уншлага.</span></div>
+          <div class="read-why"><span data-lang="en">Advanced operator-theoretic framework. Long-term reading toward deeper RH understanding.</span><span data-lang="mn">Ð”ÑÐ²ÑˆÐ¸Ð»Ñ‚ÑÑ‚ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ñ‹Ð½ Ð¾Ð½Ð¾Ð»Ñ‹Ð½ Ñ…Ò¯Ñ€ÑÑ. RH-Ð³ Ð³Ò¯Ð½Ð·Ð³Ð¸Ð¹ Ð¾Ð¹Ð»Ð³Ð¾Ñ… ÑƒÑ€Ñ‚ Ñ…ÑƒÐ³Ð°Ñ†Ð°Ð°Ð½Ñ‹ ÑƒÐ½ÑˆÐ»Ð°Ð³Ð°.</span></div>
         </div>
-        <div class="read-status">⬜ <span data-li="en">Future</span><span data-li="mn">Ирээдүй</span></div>
+        <div class="read-status">â¬œ <span data-li="en">Future</span><span data-li="mn">Ð˜Ñ€ÑÑÐ´Ò¯Ð¹</span></div>
       </div>
 
     </div>
@@ -866,86 +866,86 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <!-- NEXT STEPS -->
     
     <!-- SERIOUS RESEARCH CHECKLIST -->
-    <div class="section-label" style="margin-top:2rem;"><span data-li="en">From "interesting idea" → "actual experimental mathematics"</span><span data-li="mn">"Сонирхолтой санаа" → "жинхэнэ туршилтын математик"</span></div>
+    <div class="section-label" style="margin-top:2rem;"><span data-li="en">From "interesting idea" â†’ "actual experimental mathematics"</span><span data-li="mn">"Ð¡Ð¾Ð½Ð¸Ñ€Ñ…Ð¾Ð»Ñ‚Ð¾Ð¹ ÑÐ°Ð½Ð°Ð°" â†’ "Ð¶Ð¸Ð½Ñ…ÑÐ½Ñ Ñ‚ÑƒÑ€ÑˆÐ¸Ð»Ñ‚Ñ‹Ð½ Ð¼Ð°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸Ðº"</span></div>
     <div style="display:flex;flex-direction:column;gap:.7rem;margin-bottom:2.5rem;">
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">✅</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">âœ…</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">1. Exact definitions — spacing covariance C(h), BK predictor B(p)</span><span data-lang="mn">1. Яг тодорхойлолт — C(h), B(p)</span></div>
+          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">1. Exact definitions â€” spacing covariance C(h), BK predictor B(p)</span><span data-lang="mn">1. Ð¯Ð³ Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð¾Ð»Ñ‚ â€” C(h), B(p)</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Documented in paper/main.tex</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">✅</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">âœ…</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">2. Reproducible code — full Python pipeline on GitHub</span><span data-lang="mn">2. Давтагдах код — GitHub дээр бүрэн Python</span></div>
+          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">2. Reproducible code â€” full Python pipeline on GitHub</span><span data-lang="mn">2. Ð”Ð°Ð²Ñ‚Ð°Ð³Ð´Ð°Ñ… ÐºÐ¾Ð´ â€” GitHub Ð´ÑÑÑ€ Ð±Ò¯Ñ€ÑÐ½ Python</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">github.com/myagmardorj-cloud/Myagmardorj</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">â–¡</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">3. Synthetic controls — GUE surrogates, shuffled zeros, random phases</span><span data-lang="mn">3. Синтетик хяналт — GUE суррогат, shuffle, санамсаргүй фаз</span></div>
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">3. Synthetic controls â€” GUE surrogates, shuffled zeros, random phases</span><span data-lang="mn">3. Ð¡Ð¸Ð½Ñ‚ÐµÑ‚Ð¸Ðº Ñ…ÑÐ½Ð°Ð»Ñ‚ â€” GUE ÑÑƒÑ€Ñ€Ð¾Ð³Ð°Ñ‚, shuffle, ÑÐ°Ð½Ð°Ð¼ÑÐ°Ñ€Ð³Ò¯Ð¹ Ñ„Ð°Ð·</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: bootstrap p-values, permutation tests</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">â–¡</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">4. Statistical significance — corrected for multiple testing, window size</span><span data-lang="mn">4. Статистик ач холбогдол — олон тест, цонхны хэмжээгээр засварласан</span></div>
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">4. Statistical significance â€” corrected for multiple testing, window size</span><span data-lang="mn">4. Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸Ðº Ð°Ñ‡ Ñ…Ð¾Ð»Ð±Ð¾Ð³Ð´Ð¾Ð» â€” Ð¾Ð»Ð¾Ð½ Ñ‚ÐµÑÑ‚, Ñ†Ð¾Ð½Ñ…Ð½Ñ‹ Ñ…ÑÐ¼Ð¶ÑÑÐ³ÑÑÑ€ Ð·Ð°ÑÐ²Ð°Ñ€Ð»Ð°ÑÐ°Ð½</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: Bonferroni correction, sensitivity analysis</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">â–¡</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">5. Asymptotic prediction — what should r → as N → ∞?</span><span data-lang="mn">5. Асимптотик таамаглал — N → ∞ үед r → ?</span></div>
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">5. Asymptotic prediction â€” what should r â†’ as N â†’ âˆž?</span><span data-lang="mn">5. ÐÑÐ¸Ð¼Ð¿Ñ‚Ð¾Ñ‚Ð¸Ðº Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð» â€” N â†’ âˆž Ò¯ÐµÐ´ r â†’ ?</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: theoretical prediction from explicit formula</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">â–¡</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">6. Peer verification — independent replication by another researcher</span><span data-lang="mn">6. Peer шалгалтжуулалт — өөр судлаачийн бие даасан давталт</span></div>
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">6. Peer verification â€” independent replication by another researcher</span><span data-lang="mn">6. Peer ÑˆÐ°Ð»Ð³Ð°Ð»Ñ‚Ð¶ÑƒÑƒÐ»Ð°Ð»Ñ‚ â€” Ó©Ó©Ñ€ ÑÑƒÐ´Ð»Ð°Ð°Ñ‡Ð¸Ð¹Ð½ Ð±Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð´Ð°Ð²Ñ‚Ð°Ð»Ñ‚</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: arXiv submission + peer review</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">â–¡</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">7. Short paper — 4–8 pages, Experimental Mathematics journal</span><span data-lang="mn">7. Богино өгүүлэл — 4–8 хуудас, Experimental Mathematics сэтгүүл</span></div>
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">7. Short paper â€” 4â€“8 pages, Experimental Mathematics journal</span><span data-lang="mn">7. Ð‘Ð¾Ð³Ð¸Ð½Ð¾ Ó©Ð³Ò¯Ò¯Ð»ÑÐ» â€” 4â€“8 Ñ…ÑƒÑƒÐ´Ð°Ñ, Experimental Mathematics ÑÑÑ‚Ð³Ò¯Ò¯Ð»</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Target: Experimental Mathematics or similar</div>
         </div>
       </div>
     </div>
 
-<div class="section-label"><span data-li="en">Concrete Next Steps</span><span data-li="mn">Тодорхой дараагийн алхамууд</span></div>
+<div class="section-label"><span data-li="en">Concrete Next Steps</span><span data-li="mn">Ð¢Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹ Ð´Ð°Ñ€Ð°Ð°Ð³Ð¸Ð¹Ð½ Ð°Ð»Ñ…Ð°Ð¼ÑƒÑƒÐ´</span></div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;">
       <div class="next-card">
         <div class="next-num">01</div>
-        <div class="next-title"><span data-lang="en">Read Montgomery 1973</span><span data-lang="mn">Montgomery 1973 уншах</span></div>
-        <div class="next-desc"><span data-lang="en">Focus on pair correlation formula and GUE connection. Take notes on normalization conventions.</span><span data-lang="mn">Pair correlation томьёо болон GUE холбоод анхаарлаа хандуулах.</span></div>
+        <div class="next-title"><span data-lang="en">Read Montgomery 1973</span><span data-lang="mn">Montgomery 1973 ÑƒÐ½ÑˆÐ°Ñ…</span></div>
+        <div class="next-desc"><span data-lang="en">Focus on pair correlation formula and GUE connection. Take notes on normalization conventions.</span><span data-lang="mn">Pair correlation Ñ‚Ð¾Ð¼ÑŒÑ‘Ð¾ Ð±Ð¾Ð»Ð¾Ð½ GUE Ñ…Ð¾Ð»Ð±Ð¾Ð¾Ð´ Ð°Ð½Ñ…Ð°Ð°Ñ€Ð»Ð°Ð° Ñ…Ð°Ð½Ð´ÑƒÑƒÐ»Ð°Ñ….</span></div>
       </div>
       <div class="next-card">
         <div class="next-num">02</div>
-        <div class="next-title"><span data-lang="en">Read BK 1996 Part I</span><span data-lang="mn">BK 1996 I хэсэг уншах</span></div>
-        <div class="next-desc"><span data-lang="en">Find the exact formula for A(p). Identify where C comes from. Compare with our C ≈ 3 (zeros1/zeros6).</span><span data-lang="mn">A(p)-н яг томьёог олох. C хаанаас гарч байгааг тодорхойлох.</span></div>
+        <div class="next-title"><span data-lang="en">Read BK 1996 Part I</span><span data-lang="mn">BK 1996 I Ñ…ÑÑÑÐ³ ÑƒÐ½ÑˆÐ°Ñ…</span></div>
+        <div class="next-desc"><span data-lang="en">Find the exact formula for A(p). Identify where C comes from. Compare with our C â‰ˆ 3 (zeros1/zeros6).</span><span data-lang="mn">A(p)-Ð½ ÑÐ³ Ñ‚Ð¾Ð¼ÑŒÑ‘Ð¾Ð³ Ð¾Ð»Ð¾Ñ…. C Ñ…Ð°Ð°Ð½Ð°Ð°Ñ Ð³Ð°Ñ€Ñ‡ Ð±Ð°Ð¹Ð³Ð°Ð°Ð³ Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹Ð»Ð¾Ñ….</span></div>
       </div>
       <div class="next-card">
         <div class="next-num">03</div>
-        <div class="next-title"><span data-lang="en">Test on more datasets</span><span data-lang="mn">Илүү олон датасет дээр тест</span></div>
-        <div class="next-desc"><span data-lang="en">Try Odlyzko's highest zero data (~10²¹). Does C ≈ 3 (zeros1/zeros6) remain stable at extreme heights?</span><span data-lang="mn">~10²¹ өндөрт zeros туршиж үзэх. C ≈ 3 (zeros1/zeros6) тогтвортой хэвээр байна уу?</span></div>
+        <div class="next-title"><span data-lang="en">Test on more datasets</span><span data-lang="mn">Ð˜Ð»Ò¯Ò¯ Ð¾Ð»Ð¾Ð½ Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ð´ÑÑÑ€ Ñ‚ÐµÑÑ‚</span></div>
+        <div class="next-desc"><span data-lang="en">Try Odlyzko's highest zero data (~10Â²Â¹). Does C â‰ˆ 3 (zeros1/zeros6) remain stable at extreme heights?</span><span data-lang="mn">~10Â²Â¹ Ó©Ð½Ð´Ó©Ñ€Ñ‚ zeros Ñ‚ÑƒÑ€ÑˆÐ¸Ð¶ Ò¯Ð·ÑÑ…. C â‰ˆ 3 (zeros1/zeros6) Ñ‚Ð¾Ð³Ñ‚Ð²Ð¾Ñ€Ñ‚Ð¾Ð¹ Ñ…ÑÐ²ÑÑÑ€ Ð±Ð°Ð¹Ð½Ð° ÑƒÑƒ?</span></div>
       </div>
       <div class="next-card">
         <div class="next-num">04</div>
-        <div class="next-title"><span data-lang="en">Derive C theoretically</span><span data-lang="mn">C-г онолоор гаргах</span></div>
-        <div class="next-desc"><span data-lang="en">Explain why C ≈ 3 (zeros1/zeros6) from first principles using BK and random matrix theory.</span><span data-lang="mn">BK болон санамсаргүй матрицын онолоос C ≈ 3 (zeros1/zeros6)-г эхний зарчмаас тайлбарлах.</span></div>
+        <div class="next-title"><span data-lang="en">Derive C theoretically</span><span data-lang="mn">C-Ð³ Ð¾Ð½Ð¾Ð»Ð¾Ð¾Ñ€ Ð³Ð°Ñ€Ð³Ð°Ñ…</span></div>
+        <div class="next-desc"><span data-lang="en">Explain why C â‰ˆ 3 (zeros1/zeros6) from first principles using BK and random matrix theory.</span><span data-lang="mn">BK Ð±Ð¾Ð»Ð¾Ð½ ÑÐ°Ð½Ð°Ð¼ÑÐ°Ñ€Ð³Ò¯Ð¹ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñ‹Ð½ Ð¾Ð½Ð¾Ð»Ð¾Ð¾Ñ C â‰ˆ 3 (zeros1/zeros6)-Ð³ ÑÑ…Ð½Ð¸Ð¹ Ð·Ð°Ñ€Ñ‡Ð¼Ð°Ð°Ñ Ñ‚Ð°Ð¹Ð»Ð±Ð°Ñ€Ð»Ð°Ñ….</span></div>
       </div>
     </div>
 
     <div class="disclaimer">
-      <span data-lang="en">The Riemann Hypothesis has been open for 167 years. This roadmap represents a long journey — but every step matters.</span>
-      <span data-lang="mn">Риманы таамаглал 167 жил нээлттэй байна. Энэ зам урт аялалыг дүрслэнэ — гэхдээ алхам бүр чухал.</span>
+      <span data-lang="en">The Riemann Hypothesis has been open for 167 years. This roadmap represents a long journey â€” but every step matters.</span>
+      <span data-lang="mn">Ð Ð¸Ð¼Ð°Ð½Ñ‹ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð» 167 Ð¶Ð¸Ð» Ð½ÑÑÐ»Ñ‚Ñ‚ÑÐ¹ Ð±Ð°Ð¹Ð½Ð°. Ð­Ð½Ñ Ð·Ð°Ð¼ ÑƒÑ€Ñ‚ Ð°ÑÐ»Ð°Ð»Ñ‹Ð³ Ð´Ò¯Ñ€ÑÐ»ÑÐ½Ñ â€” Ð³ÑÑ…Ð´ÑÑ Ð°Ð»Ñ…Ð°Ð¼ Ð±Ò¯Ñ€ Ñ‡ÑƒÑ…Ð°Ð».</span>
     </div>
   </div>
   
@@ -956,34 +956,34 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-data">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Data Sources</span><span data-li="mn">Өгөгдлийн эх сурвалж</span></div>
-    <h2><span data-lang="en">Odlyzko Zero Tables</span><span data-lang="mn">Одлызкогийн Тэгийн Хүснэгтүүд</span></h2>
+    <div class="section-label"><span data-li="en">Data Sources</span><span data-li="mn">Ó¨Ð³Ó©Ð³Ð´Ð»Ð¸Ð¹Ð½ ÑÑ… ÑÑƒÑ€Ð²Ð°Ð»Ð¶</span></div>
+    <h2><span data-lang="en">Odlyzko Zero Tables</span><span data-lang="mn">ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾Ð³Ð¸Ð¹Ð½ Ð¢ÑÐ³Ð¸Ð¹Ð½ Ð¥Ò¯ÑÐ½ÑÐ³Ñ‚Ò¯Ò¯Ð´</span></h2>
     <p class="prose" style="margin-bottom:2rem;">
       <span data-lang="en">All analysis uses Andrew Odlyzko's high-precision tabulations of non-trivial Riemann zeros, freely available at the University of Minnesota.</span>
-      <span data-lang="mn">Бүх шинжилгээ Миннесотагийн их сургуулийн Эндрю Одлызкогийн өндөр нарийвчлалтай тривиаль биш Риман тэгийн хүснэгтийг ашигладаг.</span>
+      <span data-lang="mn">Ð‘Ò¯Ñ… ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑ ÐœÐ¸Ð½Ð½ÐµÑÐ¾Ñ‚Ð°Ð³Ð¸Ð¹Ð½ Ð¸Ñ… ÑÑƒÑ€Ð³ÑƒÑƒÐ»Ð¸Ð¹Ð½ Ð­Ð½Ð´Ñ€ÑŽ ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾Ð³Ð¸Ð¹Ð½ Ó©Ð½Ð´Ó©Ñ€ Ð½Ð°Ñ€Ð¸Ð¹Ð²Ñ‡Ð»Ð°Ð»Ñ‚Ð°Ð¹ Ñ‚Ñ€Ð¸Ð²Ð¸Ð°Ð»ÑŒ Ð±Ð¸Ñˆ Ð Ð¸Ð¼Ð°Ð½ Ñ‚ÑÐ³Ð¸Ð¹Ð½ Ñ…Ò¯ÑÐ½ÑÐ³Ñ‚Ð¸Ð¹Ð³ Ð°ÑˆÐ¸Ð³Ð»Ð°Ð´Ð°Ð³.</span>
     </p>
 
     <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
       <div class="file-card">
         <div class="file-header" onclick="toggleFile(this)">
-          <span class="file-icon">📋</span>
+          <span class="file-icon">ðŸ“‹</span>
           <div class="file-meta">
             <span class="file-name">zeros2</span>
-            <div class="file-desc"><span data-lang="en">First 100,000 non-trivial zeros near T ≈ 74,920</span><span data-lang="mn">T ≈ 74,920 орчим анхны 100,000 тривиаль биш тэг</span></div>
-            <div class="file-tags"><span class="file-tag">100,000 zeros</span><span class="file-tag">T ≈ 74,920</span><span class="file-tag">r = 0.6847 (zeros1)</span></div>
+            <div class="file-desc"><span data-lang="en">First 100,000 non-trivial zeros near T â‰ˆ 74,920</span><span data-lang="mn">T â‰ˆ 74,920 Ð¾Ñ€Ñ‡Ð¸Ð¼ Ð°Ð½Ñ…Ð½Ñ‹ 100,000 Ñ‚Ñ€Ð¸Ð²Ð¸Ð°Ð»ÑŒ Ð±Ð¸Ñˆ Ñ‚ÑÐ³</span></div>
+            <div class="file-tags"><span class="file-tag">100,000 zeros</span><span class="file-tag">T â‰ˆ 74,920</span><span class="file-tag">r = 0.6847 (zeros1)</span></div>
           </div>
-          <span class="file-toggle">▼</span>
+          <span class="file-toggle">â–¼</span>
         </div>
         <div class="file-body">
           <div class="file-body-inner">
             <div class="note-block">
               <div class="note-label">Format</div>
-              <span data-lang="en">Plain text, one imaginary part γₙ per line. Values are the imaginary parts of zeros ½ + iγₙ.</span>
-              <span data-lang="mn">Энгийн текст, мөр бүрт нэг γₙ. Утгууд нь ½ + iγₙ тэгийн γₙ хэсэг.</span>
+              <span data-lang="en">Plain text, one imaginary part Î³â‚™ per line. Values are the imaginary parts of zeros Â½ + iÎ³â‚™.</span>
+              <span data-lang="mn">Ð­Ð½Ð³Ð¸Ð¹Ð½ Ñ‚ÐµÐºÑÑ‚, Ð¼Ó©Ñ€ Ð±Ò¯Ñ€Ñ‚ Ð½ÑÐ³ Î³â‚™. Ð£Ñ‚Ð³ÑƒÑƒÐ´ Ð½ÑŒ Â½ + iÎ³â‚™ Ñ‚ÑÐ³Ð¸Ð¹Ð½ Î³â‚™ Ñ…ÑÑÑÐ³.</span>
             </div>
             <div style="margin-top:1rem;">
               <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros2" target="_blank" style="display:inline-flex;border-radius:10px;">
-                <span class="li">⬇️</span><div><span class="lt">Download zeros2</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros2</span></div>
+                <span class="li">â¬‡ï¸</span><div><span class="lt">Download zeros2</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros2</span></div>
               </a>
             </div>
           </div>
@@ -992,24 +992,24 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="file-card">
         <div class="file-header" onclick="toggleFile(this)">
-          <span class="file-icon">📋</span>
+          <span class="file-icon">ðŸ“‹</span>
           <div class="file-meta">
             <span class="file-name">zeros3</span>
-            <div class="file-desc"><span data-lang="en">~10,000 zeros near height T ~ 10¹². Used in main high-T analysis.</span><span data-lang="mn">T ~ 10¹² орчим ~10,000 тэг. Үндсэн өндөр-T шинжилгээнд ашиглагдсан.</span></div>
-            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹²</span><span class="file-tag">r = 0.5113 (zeros_ht)</span></div>
+            <div class="file-desc"><span data-lang="en">~10,000 zeros near height T ~ 10Â¹Â². Used in main high-T analysis.</span><span data-lang="mn">T ~ 10Â¹Â² Ð¾Ñ€Ñ‡Ð¸Ð¼ ~10,000 Ñ‚ÑÐ³. Ò®Ð½Ð´ÑÑÐ½ Ó©Ð½Ð´Ó©Ñ€-T ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑÐ½Ð´ Ð°ÑˆÐ¸Ð³Ð»Ð°Ð³Ð´ÑÐ°Ð½.</span></div>
+            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10Â¹Â²</span><span class="file-tag">r = 0.5113 (zeros_ht)</span></div>
           </div>
-          <span class="file-toggle">▼</span>
+          <span class="file-toggle">â–¼</span>
         </div>
         <div class="file-body">
           <div class="file-body-inner">
             <div class="note-block" style="border-left-color:var(--green);">
               <div class="note-label" style="color:var(--green);">Best result</div>
-              <span data-lang="en">High-T block. r = 0.5113 on this file; original r = 0.9992 claim not reproduced. High-T normalization τ_p = log(p)/log(T/2π) is essential.</span>
-              <span data-lang="mn">Өндөр-T блок. Энэ файл дээр r = 0.5113 гарсан; анхны r = 0.9992 нэхэмжлэл reproduce хийгдэхгүй байна.</span>
+              <span data-lang="en">High-T block. r = 0.5113 on this file; original r = 0.9992 claim not reproduced. High-T normalization Ï„_p = log(p)/log(T/2Ï€) is essential.</span>
+              <span data-lang="mn">Ó¨Ð½Ð´Ó©Ñ€-T Ð±Ð»Ð¾Ðº. Ð­Ð½Ñ Ñ„Ð°Ð¹Ð» Ð´ÑÑÑ€ r = 0.5113 Ð³Ð°Ñ€ÑÐ°Ð½; Ð°Ð½Ñ…Ð½Ñ‹ r = 0.9992 Ð½ÑÑ…ÑÐ¼Ð¶Ð»ÑÐ» reproduce Ñ…Ð¸Ð¹Ð³Ð´ÑÑ…Ð³Ò¯Ð¹ Ð±Ð°Ð¹Ð½Ð°.</span>
             </div>
             <div style="margin-top:1rem;">
               <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros3" target="_blank" style="display:inline-flex;border-radius:10px;">
-                <span class="li">⬇️</span><div><span class="lt">Download zeros3</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros3</span></div>
+                <span class="li">â¬‡ï¸</span><div><span class="lt">Download zeros3</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros3</span></div>
               </a>
             </div>
           </div>
@@ -1018,19 +1018,19 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 
       <div class="file-card">
         <div class="file-header" onclick="toggleFile(this)">
-          <span class="file-icon">📋</span>
+          <span class="file-icon">ðŸ“‹</span>
           <div class="file-meta">
             <span class="file-name">zeros4</span>
-            <div class="file-desc"><span data-lang="en">~10,000 zeros near height T ~ 10¹³.</span><span data-lang="mn">T ~ 10¹³ орчим ~10,000 тэг.</span></div>
-            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹³</span><span class="file-tag">r = nan (overflow)</span></div>
+            <div class="file-desc"><span data-lang="en">~10,000 zeros near height T ~ 10Â¹Â³.</span><span data-lang="mn">T ~ 10Â¹Â³ Ð¾Ñ€Ñ‡Ð¸Ð¼ ~10,000 Ñ‚ÑÐ³.</span></div>
+            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10Â¹Â³</span><span class="file-tag">r = nan (overflow)</span></div>
           </div>
-          <span class="file-toggle">▼</span>
+          <span class="file-toggle">â–¼</span>
         </div>
         <div class="file-body">
           <div class="file-body-inner">
             <div style="margin-top:1rem;">
               <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros4" target="_blank" style="display:inline-flex;border-radius:10px;">
-                <span class="li">⬇️</span><div><span class="lt">Download zeros4</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros4</span></div>
+                <span class="li">â¬‡ï¸</span><div><span class="lt">Download zeros4</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros4</span></div>
               </a>
             </div>
           </div>
@@ -1038,15 +1038,15 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </div>
     </div>
 
-    <div class="section-label"><span data-li="en">How to use</span><span data-li="mn">Хэрхэн ашиглах</span></div>
+    <div class="section-label"><span data-li="en">How to use</span><span data-li="mn">Ð¥ÑÑ€Ñ…ÑÐ½ Ð°ÑˆÐ¸Ð³Ð»Ð°Ñ…</span></div>
     <div class="steps" style="grid-template-columns:repeat(3,1fr);display:grid;gap:1rem;">
-      <div class="step-card"><div class="step-n">1</div><div class="step-text"><strong><span data-lang="en">Download</span><span data-lang="mn">Татах</span></strong><span data-lang="en">Download any zeros file from Odlyzko's site above.</span><span data-lang="mn">Дээрх Одлызкогийн сайтаас zeros файл татаж авна.</span></div></div>
-      <div class="step-card"><div class="step-n">2</div><div class="step-text"><strong><span data-lang="en">Verify</span><span data-lang="mn">Харьцуулалт</span></strong><span data-lang="en">Upload to our Analysis Lab and run the analysis.</span><span data-lang="mn">Шинжилгээний Лабрт upload хийж шинжилгээ ажиллуулна.</span></div></div>
-      <div class="step-card"><div class="step-n">3</div><div class="step-text"><strong><span data-lang="en">Compare</span><span data-lang="mn">Харьцуулах</span></strong><span data-lang="en">Compare your r value with our published results.</span><span data-lang="mn">Өөрийн r утгыг манай нийтэлсэн үр дүнтэй харьцуулна.</span></div></div>
+      <div class="step-card"><div class="step-n">1</div><div class="step-text"><strong><span data-lang="en">Download</span><span data-lang="mn">Ð¢Ð°Ñ‚Ð°Ñ…</span></strong><span data-lang="en">Download any zeros file from Odlyzko's site above.</span><span data-lang="mn">Ð”ÑÑÑ€Ñ… ÐžÐ´Ð»Ñ‹Ð·ÐºÐ¾Ð³Ð¸Ð¹Ð½ ÑÐ°Ð¹Ñ‚Ð°Ð°Ñ zeros Ñ„Ð°Ð¹Ð» Ñ‚Ð°Ñ‚Ð°Ð¶ Ð°Ð²Ð½Ð°.</span></div></div>
+      <div class="step-card"><div class="step-n">2</div><div class="step-text"><strong><span data-lang="en">Verify</span><span data-lang="mn">Ð¥Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ð»Ñ‚</span></strong><span data-lang="en">Upload to our Analysis Lab and run the analysis.</span><span data-lang="mn">Ð¨Ð¸Ð½Ð¶Ð¸Ð»Ð³ÑÑÐ½Ð¸Ð¹ Ð›Ð°Ð±Ñ€Ñ‚ upload Ñ…Ð¸Ð¹Ð¶ ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑ Ð°Ð¶Ð¸Ð»Ð»ÑƒÑƒÐ»Ð½Ð°.</span></div></div>
+      <div class="step-card"><div class="step-n">3</div><div class="step-text"><strong><span data-lang="en">Compare</span><span data-lang="mn">Ð¥Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ñ…</span></strong><span data-lang="en">Compare your r value with our published results.</span><span data-lang="mn">Ó¨Ó©Ñ€Ð¸Ð¹Ð½ r ÑƒÑ‚Ð³Ñ‹Ð³ Ð¼Ð°Ð½Ð°Ð¹ Ð½Ð¸Ð¹Ñ‚ÑÐ»ÑÑÐ½ Ò¯Ñ€ Ð´Ò¯Ð½Ñ‚ÑÐ¹ Ñ…Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð½Ð°.</span></div></div>
     </div>
     <div style="margin-top:1.5rem;">
       <a class="link-card" href="verify.html" style="display:inline-flex;border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);border-radius:12px;">
-        <span class="li">⚗️</span><div><span class="lt" style="color:var(--green);">Open Analysis Lab</span><span class="ld">Upload data and run analysis</span></div>
+        <span class="li">âš—ï¸</span><div><span class="lt" style="color:var(--green);">Open Analysis Lab</span><span class="ld">Upload data and run analysis</span></div>
       </a>
     </div>
   </div>
@@ -1058,32 +1058,32 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-updates">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Research Updates</span><span data-li="mn">Судалгааны шинэчлэлүүд</span></div>
-    <h2><span data-lang="en">Timeline of Discoveries</span><span data-lang="mn">Нээлтүүдийн он цаг</span></h2>
+    <div class="section-label"><span data-li="en">Research Updates</span><span data-li="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ ÑˆÐ¸Ð½ÑÑ‡Ð»ÑÐ»Ò¯Ò¯Ð´</span></div>
+    <h2><span data-lang="en">Timeline of Discoveries</span><span data-lang="mn">ÐÑÑÐ»Ñ‚Ò¯Ò¯Ð´Ð¸Ð¹Ð½ Ð¾Ð½ Ñ†Ð°Ð³</span></h2>
     <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem;">
 
       <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;">
-          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 · v2</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 Â· v2</span>
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">LATEST</span>
         </div>
-        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Language updated to "numerical evidence"</span><span data-lang="mn">Хэллэг "тоон ажиглалт" болгон шинэчлэгдсэн</span></h3>
-        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">All publications updated to use mathematically accurate language. "confirmed" replaced with "strong numerical evidence". Zenodo v2 published.</span><span data-lang="mn">Бүх нийтлэлийн хэллэг математикийн стандартад нийцүүлэн шинэчлэгдсэн. "батлагдсан" → "хүчтэй тоон ажиглалт". Zenodo v2 нийтлэгдсэн.</span></p>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Language updated to "numerical evidence"</span><span data-lang="mn">Ð¥ÑÐ»Ð»ÑÐ³ "Ñ‚Ð¾Ð¾Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚" Ð±Ð¾Ð»Ð³Ð¾Ð½ ÑˆÐ¸Ð½ÑÑ‡Ð»ÑÐ³Ð´ÑÑÐ½</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">All publications updated to use mathematically accurate language. "confirmed" replaced with "strong numerical evidence". Zenodo v2 published.</span><span data-lang="mn">Ð‘Ò¯Ñ… Ð½Ð¸Ð¹Ñ‚Ð»ÑÐ»Ð¸Ð¹Ð½ Ñ…ÑÐ»Ð»ÑÐ³ Ð¼Ð°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸ÐºÐ¸Ð¹Ð½ ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð°Ð´ Ð½Ð¸Ð¹Ñ†Ò¯Ò¯Ð»ÑÐ½ ÑˆÐ¸Ð½ÑÑ‡Ð»ÑÐ³Ð´ÑÑÐ½. "Ð±Ð°Ñ‚Ð»Ð°Ð³Ð´ÑÐ°Ð½" â†’ "Ñ…Ò¯Ñ‡Ñ‚ÑÐ¹ Ñ‚Ð¾Ð¾Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚". Zenodo v2 Ð½Ð¸Ð¹Ñ‚Ð»ÑÐ³Ð´ÑÑÐ½.</span></p>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="margin-bottom:.8rem;">
-          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 · v1</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 Â· v1</span>
         </div>
-        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">research.nexcore.ltd launched</span><span data-lang="mn">research.nexcore.ltd нээгдсэн</span></h3>
-        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Full research website with interactive charts, BK calculator, correlation analysis tool, roadmap, and Clay Prize context.</span><span data-lang="mn">Интерактив графиктай, BK тооцоолуур, корреляц шинжилгээний хэрэгсэл, roadmap, Clay шагналын мэдээлэлтэй бүрэн судалгааны вэб.</span></p>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">research.nexcore.ltd launched</span><span data-lang="mn">research.nexcore.ltd Ð½ÑÑÐ³Ð´ÑÑÐ½</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Full research website with interactive charts, BK calculator, correlation analysis tool, roadmap, and Clay Prize context.</span><span data-lang="mn">Ð˜Ð½Ñ‚ÐµÑ€Ð°ÐºÑ‚Ð¸Ð² Ð³Ñ€Ð°Ñ„Ð¸ÐºÑ‚Ð°Ð¹, BK Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»ÑƒÑƒÑ€, ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ† ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑÐ½Ð¸Ð¹ Ñ…ÑÑ€ÑÐ³ÑÑÐ», roadmap, Clay ÑˆÐ°Ð³Ð½Ð°Ð»Ñ‹Ð½ Ð¼ÑÐ´ÑÑÐ»ÑÐ»Ñ‚ÑÐ¹ Ð±Ò¯Ñ€ÑÐ½ ÑÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ Ð²ÑÐ±.</span></p>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="margin-bottom:.8rem;">
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
         </div>
-        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Zenodo preprint published · DOI obtained</span><span data-lang="mn">Zenodo preprint нийтлэгдсэн · DOI авсан</span></h3>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Zenodo preprint published Â· DOI obtained</span><span data-lang="mn">Zenodo preprint Ð½Ð¸Ð¹Ñ‚Ð»ÑÐ³Ð´ÑÑÐ½ Â· DOI Ð°Ð²ÑÐ°Ð½</span></h3>
         <p style="font-size:.88rem;color:var(--sub);">DOI: 10.5281/zenodo.20077673</p>
       </div>
 
@@ -1091,16 +1091,16 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div style="margin-bottom:.8rem;">
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
         </div>
-        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Key insight: high-T normalization</span><span data-lang="mn">Гол ойлголт: өндөр-T нормализаци</span></h3>
-        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Discovered that τ_p = log(p)/log(T/2π) (not log(p)/2π) affects results significantly. Signal is dataset-dependent.</span><span data-lang="mn">τ_p = log(p)/log(T/2π) (log(p)/2π биш) үр дүнд ихээхэн нөлөөлдгийг нээсэн. Signal датасетаас хамааралтай.</span></p>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Key insight: high-T normalization</span><span data-lang="mn">Ð“Ð¾Ð» Ð¾Ð¹Ð»Ð³Ð¾Ð»Ñ‚: Ó©Ð½Ð´Ó©Ñ€-T Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Discovered that Ï„_p = log(p)/log(T/2Ï€) (not log(p)/2Ï€) affects results significantly. Signal is dataset-dependent.</span><span data-lang="mn">Ï„_p = log(p)/log(T/2Ï€) (log(p)/2Ï€ Ð±Ð¸Ñˆ) Ò¯Ñ€ Ð´Ò¯Ð½Ð´ Ð¸Ñ…ÑÑÑ…ÑÐ½ Ð½Ó©Ð»Ó©Ó©Ð»Ð´Ð³Ð¸Ð¹Ð³ Ð½ÑÑÑÑÐ½. Signal Ð´Ð°Ñ‚Ð°ÑÐµÑ‚Ð°Ð°Ñ Ñ…Ð°Ð¼Ð°Ð°Ñ€Ð°Ð»Ñ‚Ð°Ð¹.</span></p>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="margin-bottom:.8rem;">
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-07</span>
         </div>
-        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Initial analysis on zeros1 · r = 0.6847</span><span data-lang="mn">zeros1 дээрх анхны шинжилгээ · r = 0.6847</span></h3>
-        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">First test on 100,000 zeros. prime-indexed excess patterns across tested prime ranges positive. BK-type scaling observed.</span><span data-lang="mn">100,000 тэг дээрх анхны тест. 12/12 прайм позиц эерэг. BK-төрлийн scaling ажиглагдсан.</span></p>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Initial analysis on zeros1 Â· r = 0.6847</span><span data-lang="mn">zeros1 Ð´ÑÑÑ€Ñ… Ð°Ð½Ñ…Ð½Ñ‹ ÑˆÐ¸Ð½Ð¶Ð¸Ð»Ð³ÑÑ Â· r = 0.6847</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">First test on 100,000 zeros. prime-indexed excess patterns across tested prime ranges positive. BK-type scaling observed.</span><span data-lang="mn">100,000 Ñ‚ÑÐ³ Ð´ÑÑÑ€Ñ… Ð°Ð½Ñ…Ð½Ñ‹ Ñ‚ÐµÑÑ‚. 12/12 Ð¿Ñ€Ð°Ð¹Ð¼ Ð¿Ð¾Ð·Ð¸Ñ† ÑÐµÑ€ÑÐ³. BK-Ñ‚Ó©Ñ€Ð»Ð¸Ð¹Ð½ scaling Ð°Ð¶Ð¸Ð³Ð»Ð°Ð³Ð´ÑÐ°Ð½.</span></p>
       </div>
     </div>
   </div>
@@ -1112,8 +1112,8 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-faq">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Frequently Asked Questions</span><span data-li="mn">Түгээмэл асуултууд</span></div>
-    <h2><span data-lang="en">Questions & Answers</span><span data-lang="mn">Асуулт & Хариулт</span></h2>
+    <div class="section-label"><span data-li="en">Frequently Asked Questions</span><span data-li="mn">Ð¢Ò¯Ð³ÑÑÐ¼ÑÐ» Ð°ÑÑƒÑƒÐ»Ñ‚ÑƒÑƒÐ´</span></div>
+    <h2><span data-lang="en">Questions & Answers</span><span data-lang="mn">ÐÑÑƒÑƒÐ»Ñ‚ & Ð¥Ð°Ñ€Ð¸ÑƒÐ»Ñ‚</span></h2>
     <div style="display:flex;flex-direction:column;gap:1rem;" id="faq-list"></div>
   </div>
   
@@ -1124,59 +1124,59 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-nulltests">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Null Tests</span><span data-li="mn">Null Тестүүд</span></div>
-    <h2><span data-lang="en">Control & Shuffled Zero Tests</span><span data-lang="mn">Хяналт & Холилдсон Тэгийн Тестүүд</span></h2>
+    <div class="section-label"><span data-li="en">Null Tests</span><span data-li="mn">Null Ð¢ÐµÑÑ‚Ò¯Ò¯Ð´</span></div>
+    <h2><span data-lang="en">Control & Shuffled Zero Tests</span><span data-lang="mn">Ð¥ÑÐ½Ð°Ð»Ñ‚ & Ð¥Ð¾Ð»Ð¸Ð»Ð´ÑÐ¾Ð½ Ð¢ÑÐ³Ð¸Ð¹Ð½ Ð¢ÐµÑÑ‚Ò¯Ò¯Ð´</span></h2>
     <p class="prose" style="margin-bottom:2rem;">
       <span data-lang="en">To assess whether the observed signal could be a statistical artifact, we ran control tests using shuffled zeros and random data.</span>
-      <span data-lang="mn">Дохио жинхэнэ бөгөөд статистикийн артефакт биш гэдгийг харьцуулахын тулд холилдсон тэгүүд болон санамсаргүй өгөгдөл дээр хяналтын тест хийсэн.</span>
+      <span data-lang="mn">Ð”Ð¾Ñ…Ð¸Ð¾ Ð¶Ð¸Ð½Ñ…ÑÐ½Ñ Ð±Ó©Ð³Ó©Ó©Ð´ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸Ð¹Ð½ Ð°Ñ€Ñ‚ÐµÑ„Ð°ÐºÑ‚ Ð±Ð¸Ñˆ Ð³ÑÐ´Ð³Ð¸Ð¹Ð³ Ñ…Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ñ…Ñ‹Ð½ Ñ‚ÑƒÐ»Ð´ Ñ…Ð¾Ð»Ð¸Ð»Ð´ÑÐ¾Ð½ Ñ‚ÑÐ³Ò¯Ò¯Ð´ Ð±Ð¾Ð»Ð¾Ð½ ÑÐ°Ð½Ð°Ð¼ÑÐ°Ñ€Ð³Ò¯Ð¹ Ó©Ð³Ó©Ð³Ð´Ó©Ð» Ð´ÑÑÑ€ Ñ…ÑÐ½Ð°Ð»Ñ‚Ñ‹Ð½ Ñ‚ÐµÑÑ‚ Ñ…Ð¸Ð¹ÑÑÐ½.</span>
     </p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
       <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">REAL ZEROS</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.45–0.68</div>
-        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r on zeros3 block</span><span data-lang="mn">zeros3 блок дээрх Pearson r</span></div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);margin-top:.6rem;">✅ prime-indexed excess patterns observed across tested ranges</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.45â€“0.68</div>
+        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r on zeros3 block</span><span data-lang="mn">zeros3 Ð±Ð»Ð¾Ðº Ð´ÑÑÑ€Ñ… Pearson r</span></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);margin-top:.6rem;">âœ… prime-indexed excess patterns observed across tested ranges</div>
       </div>
       <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-radius:14px;padding:1.5rem;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">SHUFFLED ZEROS</div>
         <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--sub);line-height:1;">~0.0</div>
-        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r on shuffled data (mean)</span><span data-lang="mn">Холилдсон өгөгдөл дээрх Pearson r (дундаж)</span></div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--red);margin-top:.6rem;">❌ No systematic signal</div>
+        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r on shuffled data (mean)</span><span data-lang="mn">Ð¥Ð¾Ð»Ð¸Ð»Ð´ÑÐ¾Ð½ Ó©Ð³Ó©Ð³Ð´Ó©Ð» Ð´ÑÑÑ€Ñ… Pearson r (Ð´ÑƒÐ½Ð´Ð°Ð¶)</span></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--red);margin-top:.6rem;">âŒ No systematic signal</div>
       </div>
     </div>
 
-    <div class="section-label"><span data-li="en">Test methodology</span><span data-li="mn">Тестийн арга зүй</span></div>
+    <div class="section-label"><span data-li="en">Test methodology</span><span data-li="mn">Ð¢ÐµÑÑ‚Ð¸Ð¹Ð½ Ð°Ñ€Ð³Ð° Ð·Ò¯Ð¹</span></div>
     <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">Shuffle test:</span><span data-lang="mn">Shuffle тест:</span></strong>
-          <span data-lang="en">Random permutations of γₙ values → compute A(p) → Pearson r ≈ 0 across all shuffles. Confirms signal is in the ordering of zeros, not their marginal distribution.</span>
-          <span data-lang="mn">γₙ утгуудын санамсаргүй зөвшилд A(p) тооцоолно → Pearson r ≈ 0. Дохио нь тэгүүдийн дараалалд байгааг, тэдгээрийн маргинал тархалтад биш гэдгийг харуулна.</span>
+      <div class="finding pos"><span class="fi">âœ“</span>
+        <div class="ft"><strong><span data-lang="en">Shuffle test:</span><span data-lang="mn">Shuffle Ñ‚ÐµÑÑ‚:</span></strong>
+          <span data-lang="en">Random permutations of Î³â‚™ values â†’ compute A(p) â†’ Pearson r â‰ˆ 0 across all shuffles. Confirms signal is in the ordering of zeros, not their marginal distribution.</span>
+          <span data-lang="mn">Î³â‚™ ÑƒÑ‚Ð³ÑƒÑƒÐ´Ñ‹Ð½ ÑÐ°Ð½Ð°Ð¼ÑÐ°Ñ€Ð³Ò¯Ð¹ Ð·Ó©Ð²ÑˆÐ¸Ð»Ð´ A(p) Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð½Ð¾ â†’ Pearson r â‰ˆ 0. Ð”Ð¾Ñ…Ð¸Ð¾ Ð½ÑŒ Ñ‚ÑÐ³Ò¯Ò¯Ð´Ð¸Ð¹Ð½ Ð´Ð°Ñ€Ð°Ð°Ð»Ð°Ð»Ð´ Ð±Ð°Ð¹Ð³Ð°Ð°Ð³, Ñ‚ÑÐ´Ð³ÑÑÑ€Ð¸Ð¹Ð½ Ð¼Ð°Ñ€Ð³Ð¸Ð½Ð°Ð» Ñ‚Ð°Ñ€Ñ…Ð°Ð»Ñ‚Ð°Ð´ Ð±Ð¸Ñˆ Ð³ÑÐ´Ð³Ð¸Ð¹Ð³ Ñ…Ð°Ñ€ÑƒÑƒÐ»Ð½Ð°.</span>
         </div>
       </div>
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">GUE surrogate test:</span><span data-lang="mn">GUE суррогат тест:</span></strong>
-          <span data-lang="en">Random GUE eigenvalue spacings → no BK-type prime excess detected. The effect is specific to actual Riemann zeros.</span>
-          <span data-lang="mn">Санамсаргүй GUE эгэн утгын зайнуудад BK-төрлийн прайм илүүдэл илрэхгүй. Эффект нь яг Риман тэгүүдэд хамаарна.</span>
+      <div class="finding pos"><span class="fi">âœ“</span>
+        <div class="ft"><strong><span data-lang="en">GUE surrogate test:</span><span data-lang="mn">GUE ÑÑƒÑ€Ñ€Ð¾Ð³Ð°Ñ‚ Ñ‚ÐµÑÑ‚:</span></strong>
+          <span data-lang="en">Random GUE eigenvalue spacings â†’ no BK-type prime excess detected. The effect is specific to actual Riemann zeros.</span>
+          <span data-lang="mn">Ð¡Ð°Ð½Ð°Ð¼ÑÐ°Ñ€Ð³Ò¯Ð¹ GUE ÑÐ³ÑÐ½ ÑƒÑ‚Ð³Ñ‹Ð½ Ð·Ð°Ð¹Ð½ÑƒÑƒÐ´Ð°Ð´ BK-Ñ‚Ó©Ñ€Ð»Ð¸Ð¹Ð½ Ð¿Ñ€Ð°Ð¹Ð¼ Ð¸Ð»Ò¯Ò¯Ð´ÑÐ» Ð¸Ð»Ñ€ÑÑ…Ð³Ò¯Ð¹. Ð­Ñ„Ñ„ÐµÐºÑ‚ Ð½ÑŒ ÑÐ³ Ð Ð¸Ð¼Ð°Ð½ Ñ‚ÑÐ³Ò¯Ò¯Ð´ÑÐ´ Ñ…Ð°Ð¼Ð°Ð°Ñ€Ð½Ð°.</span>
         </div>
       </div>
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">Non-prime lag control:</span><span data-lang="mn">Прайм биш лаг хяналт:</span></strong>
-          <span data-lang="en">Tested covariance at non-prime lags (composite numbers). Mean excess ≈ 0, confirming the signal is prime-specific.</span>
-          <span data-lang="mn">Прайм биш лаг (нийлмэл тоо) дээр ковариансыг тест хийсэн. Дундаж илүүдэл ≈ 0, дохио прайм-өвөрмөц гэдгийг баталж байна.</span>
+      <div class="finding pos"><span class="fi">âœ“</span>
+        <div class="ft"><strong><span data-lang="en">Non-prime lag control:</span><span data-lang="mn">ÐŸÑ€Ð°Ð¹Ð¼ Ð±Ð¸Ñˆ Ð»Ð°Ð³ Ñ…ÑÐ½Ð°Ð»Ñ‚:</span></strong>
+          <span data-lang="en">Tested covariance at non-prime lags (composite numbers). Mean excess â‰ˆ 0, confirming the signal is prime-specific.</span>
+          <span data-lang="mn">ÐŸÑ€Ð°Ð¹Ð¼ Ð±Ð¸Ñˆ Ð»Ð°Ð³ (Ð½Ð¸Ð¹Ð»Ð¼ÑÐ» Ñ‚Ð¾Ð¾) Ð´ÑÑÑ€ ÐºÐ¾Ð²Ð°Ñ€Ð¸Ð°Ð½ÑÑ‹Ð³ Ñ‚ÐµÑÑ‚ Ñ…Ð¸Ð¹ÑÑÐ½. Ð”ÑƒÐ½Ð´Ð°Ð¶ Ð¸Ð»Ò¯Ò¯Ð´ÑÐ» â‰ˆ 0, Ð´Ð¾Ñ…Ð¸Ð¾ Ð¿Ñ€Ð°Ð¹Ð¼-Ó©Ð²Ó©Ñ€Ð¼Ó©Ñ† Ð³ÑÐ´Ð³Ð¸Ð¹Ð³ Ð±Ð°Ñ‚Ð°Ð»Ð¶ Ð±Ð°Ð¹Ð½Ð°.</span>
         </div>
       </div>
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">Cross-dataset consistency:</span><span data-lang="mn">Датасетүүд хоорондын тогтвортой байдал:</span></strong>
-          <span data-lang="en">Effect appears across zeros2, zeros3, zeros4 at very different heights (T ≈ 74,920 to T ~ 10¹³). Rules out height-specific artifacts.</span>
-          <span data-lang="mn">Эффект нь zeros2, zeros3, zeros4 дээр маш өөр өндрүүдэд (T ≈ 74,920-аас T ~ 10¹³) гарч байна. Өндөр-өвөрмөц артефактыг үгүйсгэнэ.</span>
+      <div class="finding pos"><span class="fi">âœ“</span>
+        <div class="ft"><strong><span data-lang="en">Cross-dataset consistency:</span><span data-lang="mn">Ð”Ð°Ñ‚Ð°ÑÐµÑ‚Ò¯Ò¯Ð´ Ñ…Ð¾Ð¾Ñ€Ð¾Ð½Ð´Ñ‹Ð½ Ñ‚Ð¾Ð³Ñ‚Ð²Ð¾Ñ€Ñ‚Ð¾Ð¹ Ð±Ð°Ð¹Ð´Ð°Ð»:</span></strong>
+          <span data-lang="en">Effect appears across zeros2, zeros3, zeros4 at very different heights (T â‰ˆ 74,920 to T ~ 10Â¹Â³). Rules out height-specific artifacts.</span>
+          <span data-lang="mn">Ð­Ñ„Ñ„ÐµÐºÑ‚ Ð½ÑŒ zeros2, zeros3, zeros4 Ð´ÑÑÑ€ Ð¼Ð°Ñˆ Ó©Ó©Ñ€ Ó©Ð½Ð´Ñ€Ò¯Ò¯Ð´ÑÐ´ (T â‰ˆ 74,920-Ð°Ð°Ñ T ~ 10Â¹Â³) Ð³Ð°Ñ€Ñ‡ Ð±Ð°Ð¹Ð½Ð°. Ó¨Ð½Ð´Ó©Ñ€-Ó©Ð²Ó©Ñ€Ð¼Ó©Ñ† Ð°Ñ€Ñ‚ÐµÑ„Ð°ÐºÑ‚Ñ‹Ð³ Ò¯Ð³Ò¯Ð¹ÑÐ³ÑÐ½Ñ.</span>
         </div>
       </div>
     </div>
 
     <div class="disclaimer">
       <span data-lang="en">Null tests reduce the likelihood of false positives but do not prove the BK law. Independent independent replication is still needed.</span>
-      <span data-lang="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан давталтжуулалт хэвээр шаардлагатай.</span>
+      <span data-lang="mn">Null Ñ‚ÐµÑÑ‚Ò¯Ò¯Ð´ Ñ…ÑƒÐ´Ð°Ð» ÑÐµÑ€ÑÐ³ Ð³Ð°Ñ€Ð°Ñ… Ð¼Ð°Ð³Ð°Ð´Ð»Ð°Ð»Ñ‹Ð³ Ð±ÑƒÑƒÑ€ÑƒÑƒÐ»Ð´Ð°Ð³ Ð±Ð¾Ð»Ð¾Ð²Ñ‡ BK Ñ…ÑƒÑƒÐ»Ð¸Ð¹Ð³ Ð½Ð¾Ñ‚Ð¾Ð»Ð´Ð¾Ð³Ð³Ò¯Ð¹. Ð‘Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð´Ð°Ð²Ñ‚Ð°Ð»Ñ‚Ð¶ÑƒÑƒÐ»Ð°Ð»Ñ‚ Ñ…ÑÐ²ÑÑÑ€ ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹.</span>
     </div>
   </div>
   
@@ -1187,78 +1187,78 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-discussion">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Community Discussion</span><span data-li="mn">Нийгэмлэгийн хэлэлцүүлэг</span></div>
-    <h2><span data-lang="en">Where We've Shared This Work</span><span data-lang="mn">Ажлаа хаана хуваалцсан</span></h2>
+    <div class="section-label"><span data-li="en">Community Discussion</span><span data-li="mn">ÐÐ¸Ð¹Ð³ÑÐ¼Ð»ÑÐ³Ð¸Ð¹Ð½ Ñ…ÑÐ»ÑÐ»Ñ†Ò¯Ò¯Ð»ÑÐ³</span></div>
+    <h2><span data-lang="en">Where We've Shared This Work</span><span data-lang="mn">ÐÐ¶Ð»Ð°Ð° Ñ…Ð°Ð°Ð½Ð° Ñ…ÑƒÐ²Ð°Ð°Ð»Ñ†ÑÐ°Ð½</span></h2>
 
     <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem;">
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">📐</span>
+          <span style="font-size:1.5rem;">ðŸ“</span>
           <div>
             <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Math StackExchange</div>
             <div style="font-size:.78rem;color:var(--muted);">math.stackexchange.com</div>
           </div>
-          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">ACCEPTED ✓</span>
+          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">ACCEPTED âœ“</span>
         </div>
         <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
           <span data-lang="en">Question: "Numerical verification of Bogomolny-Keating prime peaks in Riemann zero power spectrum". Answered by Steven Clark (9,500+ rep) who suggested the explicit formula framework. Answer accepted.</span>
-          <span data-lang="mn">Асуулт: "Риман тэгийн power spectrum дэх Богомолны-Китингийн прайм оргилуудыг тоон харьцуулах". Steven Clark (9,500+ rep) тодорхой томьёоны хүрээг санал болгон хариулсан. Хариулт accepted хийгдсэн.</span>
+          <span data-lang="mn">ÐÑÑƒÑƒÐ»Ñ‚: "Ð Ð¸Ð¼Ð°Ð½ Ñ‚ÑÐ³Ð¸Ð¹Ð½ power spectrum Ð´ÑÑ… Ð‘Ð¾Ð³Ð¾Ð¼Ð¾Ð»Ð½Ñ‹-ÐšÐ¸Ñ‚Ð¸Ð½Ð³Ð¸Ð¹Ð½ Ð¿Ñ€Ð°Ð¹Ð¼ Ð¾Ñ€Ð³Ð¸Ð»ÑƒÑƒÐ´Ñ‹Ð³ Ñ‚Ð¾Ð¾Ð½ Ñ…Ð°Ñ€ÑŒÑ†ÑƒÑƒÐ»Ð°Ñ…". Steven Clark (9,500+ rep) Ñ‚Ð¾Ð´Ð¾Ñ€Ñ…Ð¾Ð¹ Ñ‚Ð¾Ð¼ÑŒÑ‘Ð¾Ð½Ñ‹ Ñ…Ò¯Ñ€ÑÑÐ³ ÑÐ°Ð½Ð°Ð» Ð±Ð¾Ð»Ð³Ð¾Ð½ Ñ…Ð°Ñ€Ð¸ÑƒÐ»ÑÐ°Ð½. Ð¥Ð°Ñ€Ð¸ÑƒÐ»Ñ‚ accepted Ñ…Ð¸Ð¹Ð³Ð´ÑÑÐ½.</span>
         </p>
         <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank" style="display:inline-flex;border-radius:10px;">
-          <span class="li">🔗</span><div><span class="lt">View question & answer</span><span class="ld">math.stackexchange.com/questions/5135941</span></div>
+          <span class="li">ðŸ”—</span><div><span class="lt">View question & answer</span><span class="ld">math.stackexchange.com/questions/5135941</span></div>
         </a>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">🟠</span>
+          <span style="font-size:1.5rem;">ðŸŸ </span>
           <div>
             <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Reddit r/mathematics</div>
             <div style="font-size:.78rem;color:var(--muted);">reddit.com/r/mathematics</div>
           </div>
         </div>
         <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
-          <span data-lang="en">Post: "Numerical observation: BK-type correlation in Riemann zero blocks — bootstrap unstable, seeking independent replication"</span>
-          <span data-lang="mn">Пост: "Тоон ажиглалт: Риман тэгийн блок дахь BK-төрлийн корреляц — bootstrap тогтворгүй, бие даасан давталт хайж байна"</span>
+          <span data-lang="en">Post: "Numerical observation: BK-type correlation in Riemann zero blocks â€” bootstrap unstable, seeking independent replication"</span>
+          <span data-lang="mn">ÐŸÐ¾ÑÑ‚: "Ð¢Ð¾Ð¾Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚: Ð Ð¸Ð¼Ð°Ð½ Ñ‚ÑÐ³Ð¸Ð¹Ð½ Ð±Ð»Ð¾Ðº Ð´Ð°Ñ…ÑŒ BK-Ñ‚Ó©Ñ€Ð»Ð¸Ð¹Ð½ ÐºÐ¾Ñ€Ñ€ÐµÐ»ÑÑ† â€” bootstrap Ñ‚Ð¾Ð³Ñ‚Ð²Ð¾Ñ€Ð³Ò¯Ð¹, Ð±Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð´Ð°Ð²Ñ‚Ð°Ð»Ñ‚ Ñ…Ð°Ð¹Ð¶ Ð±Ð°Ð¹Ð½Ð°"</span>
         </p>
         <a class="link-card" href="https://reddit.com/r/mathematics" target="_blank" style="display:inline-flex;border-radius:10px;">
-          <span class="li">🔗</span><div><span class="lt">r/mathematics</span><span class="ld">reddit.com/r/mathematics</span></div>
+          <span class="li">ðŸ”—</span><div><span class="lt">r/mathematics</span><span class="ld">reddit.com/r/mathematics</span></div>
         </a>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">✉️</span>
+          <span style="font-size:1.5rem;">âœ‰ï¸</span>
           <div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;"><span data-lang="en">Direct correspondence</span><span data-lang="mn">Шууд захидал харилцаа</span></div>
-            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Contacted leading researchers</span><span data-lang="mn">Тэргүүлэгч судлаачидтай холбогдсон</span></div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;"><span data-lang="en">Direct correspondence</span><span data-lang="mn">Ð¨ÑƒÑƒÐ´ Ð·Ð°Ñ…Ð¸Ð´Ð°Ð» Ñ…Ð°Ñ€Ð¸Ð»Ñ†Ð°Ð°</span></div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Contacted leading researchers</span><span data-lang="mn">Ð¢ÑÑ€Ð³Ò¯Ò¯Ð»ÑÐ³Ñ‡ ÑÑƒÐ´Ð»Ð°Ð°Ñ‡Ð¸Ð´Ñ‚Ð°Ð¹ Ñ…Ð¾Ð»Ð±Ð¾Ð³Ð´ÑÐ¾Ð½</span></div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
           <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
             <div style="font-size:.85rem;font-weight:600;">Andrew Odlyzko</div>
-            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Replied with form letter (high request volume)</span><span data-lang="mn">Маягт захидлаар хариулсан (хүсэлт их)</span></div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Replied with form letter (high request volume)</span><span data-lang="mn">ÐœÐ°ÑÐ³Ñ‚ Ð·Ð°Ñ…Ð¸Ð´Ð»Ð°Ð°Ñ€ Ñ…Ð°Ñ€Ð¸ÑƒÐ»ÑÐ°Ð½ (Ñ…Ò¯ÑÑÐ»Ñ‚ Ð¸Ñ…)</span></div>
           </div>
           <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
             <div style="font-size:.85rem;font-weight:600;">Jonathan Keating</div>
-            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Email sent, awaiting reply</span><span data-lang="mn">Майл явуулсан, хариу хүлээж байна</span></div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Email sent, awaiting reply</span><span data-lang="mn">ÐœÐ°Ð¹Ð» ÑÐ²ÑƒÑƒÐ»ÑÐ°Ð½, Ñ…Ð°Ñ€Ð¸Ñƒ Ñ…Ò¯Ð»ÑÑÐ¶ Ð±Ð°Ð¹Ð½Ð°</span></div>
           </div>
         </div>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
         <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">📄</span>
+          <span style="font-size:1.5rem;">ðŸ“„</span>
           <div>
             <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Zenodo Preprint</div>
             <div style="font-size:.78rem;color:var(--muted);">zenodo.org</div>
           </div>
           <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2);padding:.2rem .6rem;border-radius:4px;">v2 PUBLISHED</span>
         </div>
-        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">DOI: 10.5281/zenodo.20077673 · Indexed in OpenAIRE</p>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">DOI: 10.5281/zenodo.20077673 Â· Indexed in OpenAIRE</p>
         <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;border-radius:10px;">
-          <span class="li">🔗</span><div><span class="lt">View preprint</span><span class="ld">zenodo.org/records/20077673</span></div>
+          <span class="li">ðŸ”—</span><div><span class="lt">View preprint</span><span class="ld">zenodo.org/records/20077673</span></div>
         </a>
       </div>
     </div>
@@ -1271,19 +1271,19 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-livestats">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Live Stats</span><span data-li="mn">Шууд Статистик</span></div>
-    <h2><span data-lang="en">Research Impact</span><span data-lang="mn">Судалгааны Нөлөөлөл</span></h2>
+    <div class="section-label"><span data-li="en">Live Stats</span><span data-li="mn">Ð¨ÑƒÑƒÐ´ Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸Ðº</span></div>
+    <h2><span data-lang="en">Research Impact</span><span data-lang="mn">Ð¡ÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ñ‹ ÐÓ©Ð»Ó©Ó©Ð»Ó©Ð»</span></h2>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;">
       <div class="stat-card">
         <div class="ds">Zenodo Views</div>
-        <span class="rv" id="stat-views">—</span>
+        <span class="rv" id="stat-views">â€”</span>
         <div class="pv">zenodo.org</div>
         <div class="badge" id="stat-views-badge">Loading...</div>
       </div>
       <div class="stat-card">
         <div class="ds">Zenodo Downloads</div>
-        <span class="rv" id="stat-downloads">—</span>
+        <span class="rv" id="stat-downloads">â€”</span>
         <div class="pv">main.tex</div>
         <div class="badge" id="stat-dl-badge">Loading...</div>
       </div>
@@ -1298,32 +1298,32 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;">
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--green);">12/12</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Primes positive</span><span data-lang="mn">Эерэг прайм</span></div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Primes positive</span><span data-lang="mn">Ð­ÐµÑ€ÑÐ³ Ð¿Ñ€Ð°Ð¹Ð¼</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45–0.68</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Best r value</span><span data-lang="mn">Хамгийн сайн r</span></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45â€“0.68</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Best r value</span><span data-lang="mn">Ð¥Ð°Ð¼Ð³Ð¸Ð¹Ð½ ÑÐ°Ð¹Ð½ r</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">~3</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">C constant</span><span data-lang="mn">C константа</span></div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">C constant</span><span data-lang="mn">C ÐºÐ¾Ð½ÑÑ‚Ð°Ð½Ñ‚Ð°</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text);">167</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Years RH open</span><span data-lang="mn">RH нээлттэй жил</span></div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Years RH open</span><span data-lang="mn">RH Ð½ÑÑÐ»Ñ‚Ñ‚ÑÐ¹ Ð¶Ð¸Ð»</span></div>
       </div>
     </div>
 
-    <div class="section-label"><span data-li="en">Newsletter</span><span data-li="mn">Мэдэгдэл</span></div>
-    <h3 style="color:var(--text);font-size:1.2rem;margin-bottom:.8rem;"><span data-lang="en">Get notified of new results</span><span data-lang="mn">Шинэ үр дүний мэдэгдэл авах</span></h3>
+    <div class="section-label"><span data-li="en">Newsletter</span><span data-li="mn">ÐœÑÐ´ÑÐ³Ð´ÑÐ»</span></div>
+    <h3 style="color:var(--text);font-size:1.2rem;margin-bottom:.8rem;"><span data-lang="en">Get notified of new results</span><span data-lang="mn">Ð¨Ð¸Ð½Ñ Ò¯Ñ€ Ð´Ò¯Ð½Ð¸Ð¹ Ð¼ÑÐ´ÑÐ³Ð´ÑÐ» Ð°Ð²Ð°Ñ…</span></h3>
     <p style="font-size:.88rem;color:var(--sub);margin-bottom:1.5rem;">
       <span data-lang="en">When new zero datasets are tested or significant findings are published, we'll send a brief update.</span>
-      <span data-lang="mn">Шинэ тэгийн датасет тест хийгдэх эсвэл чухал олдвор нийтлэгдэх үед товч шинэчлэл илгээнэ.</span>
+      <span data-lang="mn">Ð¨Ð¸Ð½Ñ Ñ‚ÑÐ³Ð¸Ð¹Ð½ Ð´Ð°Ñ‚Ð°ÑÐµÑ‚ Ñ‚ÐµÑÑ‚ Ñ…Ð¸Ð¹Ð³Ð´ÑÑ… ÑÑÐ²ÑÐ» Ñ‡ÑƒÑ…Ð°Ð» Ð¾Ð»Ð´Ð²Ð¾Ñ€ Ð½Ð¸Ð¹Ñ‚Ð»ÑÐ³Ð´ÑÑ… Ò¯ÐµÐ´ Ñ‚Ð¾Ð²Ñ‡ ÑˆÐ¸Ð½ÑÑ‡Ð»ÑÐ» Ð¸Ð»Ð³ÑÑÐ½Ñ.</span>
     </p>
     <div style="display:flex;gap:.8rem;max-width:480px;">
       <input type="email" id="nl-email" placeholder="you@example.com" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;padding:.7rem 1rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(0,212,255,.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.06)'">
       <button onclick="subscribeNL()" style="background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;padding:.7rem 1.4rem;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-        <span data-lang="en">Subscribe</span><span data-lang="mn">Бүртгүүлэх</span>
+        <span data-lang="en">Subscribe</span><span data-lang="mn">Ð‘Ò¯Ñ€Ñ‚Ð³Ò¯Ò¯Ð»ÑÑ…</span>
       </button>
     </div>
     <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
@@ -1334,13 +1334,13 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-about">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">About</span><span data-li="mn">Тухай</span></div>
+    <div class="section-label"><span data-li="en">About</span><span data-li="mn">Ð¢ÑƒÑ…Ð°Ð¹</span></div>
     <h2>Myagmardorj Namnansuren</h2>
     <div class="prose" style="margin-bottom:2rem;">
-      <span data-lang="en"><p>Independent researcher based in Ulaanbaatar, Mongolia. Director at Nexcore LTD. Interested in numerical computation, number theory, and random matrix theory.</p><p>This research began as a computational exploration of the Bogomolny–Keating predictions for prime-correlated structure in Riemann zero statistics. Using Odlyzko's zero data, computational observations consistent with the BK amplitude law were found across multiple independent datasets.</p></span>
-      <span data-lang="mn"><p>Улаанбаатар, Монгол дахь бие даасан судлаач. Nexcore LTD-ийн захирал. Тоон тооцоолол, тооны онол, санамсаргүй матрицын онолыг судалдаг.</p><p>Богомолны–Китингийн таамаглалыг тоон аргаар шалгах оролдлогоос эхэлсэн судалгаанд BK амплитудын хуулийн хүчтэй нотолгоо олдсон.</p></span>
+      <span data-lang="en"><p>Independent researcher based in Ulaanbaatar, Mongolia. Director at Nexcore LTD. Interested in numerical computation, number theory, and random matrix theory.</p><p>This research began as a computational exploration of the Bogomolnyâ€“Keating predictions for prime-correlated structure in Riemann zero statistics. Using Odlyzko's zero data, computational observations consistent with the BK amplitude law were found across multiple independent datasets.</p></span>
+      <span data-lang="mn"><p>Ð£Ð»Ð°Ð°Ð½Ð±Ð°Ð°Ñ‚Ð°Ñ€, ÐœÐ¾Ð½Ð³Ð¾Ð» Ð´Ð°Ñ…ÑŒ Ð±Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ ÑÑƒÐ´Ð»Ð°Ð°Ñ‡. Nexcore LTD-Ð¸Ð¹Ð½ Ð·Ð°Ñ…Ð¸Ñ€Ð°Ð». Ð¢Ð¾Ð¾Ð½ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð¾Ð», Ñ‚Ð¾Ð¾Ð½Ñ‹ Ð¾Ð½Ð¾Ð», ÑÐ°Ð½Ð°Ð¼ÑÐ°Ñ€Ð³Ò¯Ð¹ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñ‹Ð½ Ð¾Ð½Ð¾Ð»Ñ‹Ð³ ÑÑƒÐ´Ð°Ð»Ð´Ð°Ð³.</p><p>Ð‘Ð¾Ð³Ð¾Ð¼Ð¾Ð»Ð½Ñ‹â€“ÐšÐ¸Ñ‚Ð¸Ð½Ð³Ð¸Ð¹Ð½ Ñ‚Ð°Ð°Ð¼Ð°Ð³Ð»Ð°Ð»Ñ‹Ð³ Ñ‚Ð¾Ð¾Ð½ Ð°Ñ€Ð³Ð°Ð°Ñ€ ÑˆÐ°Ð»Ð³Ð°Ñ… Ð¾Ñ€Ð¾Ð»Ð´Ð»Ð¾Ð³Ð¾Ð¾Ñ ÑÑ…ÑÐ»ÑÑÐ½ ÑÑƒÐ´Ð°Ð»Ð³Ð°Ð°Ð½Ð´ BK Ð°Ð¼Ð¿Ð»Ð¸Ñ‚ÑƒÐ´Ñ‹Ð½ Ñ…ÑƒÑƒÐ»Ð¸Ð¹Ð½ Ñ…Ò¯Ñ‡Ñ‚ÑÐ¹ Ð½Ð¾Ñ‚Ð¾Ð»Ð³Ð¾Ð¾ Ð¾Ð»Ð´ÑÐ¾Ð½.</p></span>
     </div>
-    <div class="section-label"><span data-li="en">Citation</span><span data-li="mn">Ишлэл</span></div>
+    <div class="section-label"><span data-li="en">Citation</span><span data-li="mn">Ð˜ÑˆÐ»ÑÐ»</span></div>
     <p style="margin-bottom:1rem;font-size:.9rem;color:var(--muted);">BibTeX</p>
     <div class="citation-box">
       <button class="copy-btn" onclick="copyText('bibtex-text',this)">COPY</button>
@@ -1364,7 +1364,7 @@ https://doi.org/10.5281/zenodo.20077673</pre>
     </div>
     <div class="disclaimer" style="margin-top:2rem;">
       <span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span>
-      <span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span>
+      <span data-lang="mn">Ð‘Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ñ‚Ð¾Ð¾Ñ†Ð¾Ð¾Ð»Ð»Ñ‹Ð½ Ð°Ð¶Ð¸Ð³Ð»Ð°Ð»Ñ‚. Peer review Ñ…Ð¸Ð¹Ð³Ð´ÑÑÐ³Ò¯Ð¹. Fitting bias, Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹Ð½ Ð¼ÑÐ´Ñ€ÑÐ¼Ð¶, Ð¾Ð»Ð¾Ð½ Ñ‚ÐµÑÑ‚Ð¸Ð¹Ð½ Ð½Ó©Ð»Ó©Ó©, finite-window Ð°Ñ€Ñ‚ÐµÑ„Ð°ÐºÑ‚ Ð½Ð°Ñ€Ð¸Ð¹Ð½ ÑˆÐ°Ð»Ð³Ð°Ð³Ð´Ð°Ð°Ð³Ò¯Ð¹. Ð‘Ð¸Ðµ Ð´Ð°Ð°ÑÐ°Ð½ Ð´Ð°Ð²Ñ‚Ð°Ð»Ñ‚Ð¶ÑƒÑƒÐ»Ð°Ð»Ñ‚, bootstrap Ñ…ÑÐ½Ð°Ð»Ñ‚, Ñ†Ð¾Ð½Ñ…Ð½Ñ‹ Ñ‚Ð¾Ð³Ñ‚Ð²Ð¾Ñ€Ñ‚Ð¾Ð¹ Ð±Ð°Ð¹Ð´Ð»Ñ‹Ð½ Ñ‚ÐµÑÑ‚ ÑˆÐ°Ð°Ñ€Ð´Ð»Ð°Ð³Ð°Ñ‚Ð°Ð¹.</span>
     </div>
   </div>
   
@@ -1375,9 +1375,9 @@ https://doi.org/10.5281/zenodo.20077673</pre>
 
 
 <footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
-<span>Computational observations only — not a theorem or proof of RH.</span>
+<span>Computational observations only â€” not a theorem or proof of RH.</span>
 <div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a></div>
-<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
+<span>v1.0.0 Â· <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
 </footer>
 <script>
 
@@ -1403,5 +1403,17 @@ function setLang(l){
 }
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
-</body>
+<script>
+function showPage(name){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var _p=document.getElementById('page-'+name);if(_p)_p.classList.add('active');
+  if(name==='charts')setTimeout(function(){if(typeof initCharts==='function')initCharts();},100);
+  if(name==='calculator')setTimeout(function(){if(typeof initCalc==='function')initCalc();},100);
+  if(name==='faq')setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},50);
+  window.scrollTo(0,0);
+}
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
+</script></body>
 </html>
