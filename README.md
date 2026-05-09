@@ -9,7 +9,9 @@
 
 ## Summary
 
-This work reports **persistent prime-indexed excess correlations** in high Riemann zero spacing statistics, empirically consistent with a BK-type scaling law.
+This work reports an **interesting computational observation**: persistent prime-indexed excess correlations in high Riemann zero spacing statistics, potentially related to BK-type corrections.
+
+> ⚠️ High correlation (r = 0.9992) alone does not constitute a mathematical result. Normalization artifacts, overfitting, window bias, hidden dependence, and finite-size effects have not been fully ruled out.
 
 > ⚠️ These are numerical observations only — not a confirmed theorem, not a proof of RH.  
 > Independent replication and peer review are needed.
@@ -78,7 +80,20 @@ zeta-zero-prime-frequency-analysis/
 
 ---
 
+## From "interesting idea" → "experimental mathematics"
+
+| # | Requirement | Status |
+|---|-------------|--------|
+| 1 | Exact definitions | ✅ Done |
+| 2 | Reproducible code | ✅ Done |
+| 3 | Synthetic controls (GUE surrogates, bootstrap) | ❌ Needed |
+| 4 | Statistical significance (multiple-testing corrected) | ❌ Needed |
+| 5 | Asymptotic prediction (what should r → as N→∞?) | ❌ Needed |
+| 6 | Independent peer replication | ❌ Needed |
+| 7 | Short paper (Experimental Mathematics journal) | ❌ Needed |
+
 ## References
+
 
 - Bogomolny & Keating (1996): *Random matrix theory and the Riemann zeros*
 - Montgomery (1973): *The pair correlation of zeros of the zeta function*
