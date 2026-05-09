@@ -163,9 +163,54 @@ body.mn [data-li="mn"]{display:inline;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .nav-links{display:none;}
 }
+
+.mnav{position:fixed;top:0;left:0;right:0;z-index:300;height:52px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
+.mnav-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.mnav-links{display:flex;align-items:center;gap:0;}
+.mnav-links a,.mnav-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.35rem .65rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
+.mnav-links a:hover,.mnav-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.mnav-links a.cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
+.mnav-links a.vfy{color:#00e5a0;background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.18);}
+.mnav-more{position:relative;}
+.mnav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.4rem;min-width:160px;z-index:400;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
+.mnav-dd.open{display:block;}
+.mnav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:#9999b8;text-decoration:none;padding:.38rem .85rem;border-radius:8px;transition:all .2s;}
+.mnav-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.mnav-lb{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.28rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
+.mnav-lb:first-child{border-radius:4px 0 0 4px;}.mnav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.mnav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
+[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
+[data-lang]{display:none;}body.en [data-lang="en"]{display:block;}body.mn [data-lang="mn"]{display:block;}
+body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{display:inline;}
+@media(max-width:640px){.mnav-links{display:none;}}
+body{padding-top:52px;}
 </style>
 </head>
 <body class="mn">
+<nav class="mnav">
+<a href="index.html" class="mnav-logo">research.nexcore.ltd</a>
+<div class="mnav-links">
+  <a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="verify.html" class="vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+  <a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+  <span class="mnav-more">
+    <button onclick="mnavToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+    <div class="mnav-dd">
+      <a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+      <a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+      <a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+      <a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
+      <a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a>
+    </div>
+  </span>
+</div>
+<div style="display:flex;">
+  <button class="mnav-lb active" data-l="en" onclick="setLang('en')">ENG</button>
+  <button class="mnav-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</nav>
+
 
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
@@ -181,20 +226,7 @@ body.mn [data-li="mn"]{display:inline;}
   </div>
 </div>
 
-<nav>
-  <a class="nav-logo" href="https://research.nexcore.ltd">research.nexcore.ltd</a>
-  <div class="nav-links">
-    <a class="nav-link" href="https://research.nexcore.ltd">← <span data-li="en">Back</span><span data-li="mn">Буцах</span></a>
-    <a class="nav-link" href="https://research.nexcore.ltd/verify.html">⚗️ Verify</a>
-    <a class="nav-link" href="https://research.nexcore.ltd/intro.html">✨ Intro</a>
-  </div>
-  <div style="display:flex;gap:.8rem;align-items:center;">
-    <div class="lang-toggle">
-      <button class="lb" id="lb-en" onclick="setLang('en')">ENG</button>
-      <button class="lb active" id="lb-mn" onclick="setLang('mn')">МОН</button>
-    </div>
-  </div>
-</nav>
+
 
 <div class="wrap">
   <div class="page-header">
@@ -498,6 +530,16 @@ function setLang(lang) {
 }
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved); else setLang('mn');
+</script>
+<script>
+function mnavToggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');btn.classList.toggle('active',dd.classList.contains('open'));}
+document.addEventListener('click',function(e){if(!e.target.closest('.mnav-more'))document.querySelectorAll('.mnav-dd').forEach(function(d){d.classList.remove('open');});});
+function setLang(l){
+  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
+  document.querySelectorAll('.mnav-lb,.lb,.lang-btn').forEach(function(b){b.classList.toggle('active',(l==='en'&&(b.dataset.l==='en'||b.textContent==='ENG'))||(l==='mn'&&(b.dataset.l==='mn'||b.textContent==='МОН')));});
+  localStorage.setItem('lang',l);
+}
+(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
 </script>
 </body>
 </html>
