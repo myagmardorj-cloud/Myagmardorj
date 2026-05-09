@@ -1,6 +1,8 @@
-# Experimental Investigation of Prime-Related Structure in Zeta Zero Spacing Statistics
+# Computational Investigation of Prime-Dependent Structures
+in Unfolded Zeta Zero Statistics
 
-**Status:** Exploratory experimental mathematics — not a confirmed result  
+**Status:** Exploratory experimental mathematics — not a confirmed result
+**DOI:** [10.5281/zenodo.20077673](https://zenodo.org/records/20077673)  
 **DOI:** [10.5281/zenodo.20077673](https://zenodo.org/records/20077673)  
 **Website:** [research.nexcore.ltd](https://research.nexcore.ltd)
 
@@ -64,7 +66,8 @@ Download: http://www-users.cse.umn.edu/~odlyzko/zeta_tables/
 
 ## 6. Results
 
-Observed alignment with the first 12 expected prime-associated peaks under the current normalization scheme:
+Observed alignment with the first 12 expected prime-associated peaks
+under the current normalization scheme (r values are naive estimates):
 
 | Dataset | Height | Pearson r | p-value |
 |---------|--------|-----------|---------|
@@ -102,7 +105,7 @@ Empirical agreement with BK-type amplitude scaling observed after normalization 
 
 ## 8. Limitations
 
-- High correlation (r = 0.9992) alone is insufficient — normalization artifacts, overfitting (12 data points), window bias, hidden dependence, and finite-size effects have not been fully ruled out
+- High correlation (r ≈ 0.9992 (naive estimate, see RESULTS.md)) alone is insufficient — normalization artifacts, overfitting (12 data points), window bias, hidden dependence, and finite-size effects have not been fully ruled out
 - C ≈ 16.5 has no theoretical derivation
 - Independent peer replication has not been done
 - This is **not** a confirmed theorem
