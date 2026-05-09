@@ -1,3 +1,19 @@
+## Quick Reproduction
+
+```bash
+git clone https://github.com/myagmardorj-cloud/Myagmardorj
+cd Myagmardorj
+pip install -r requirements.txt
+python scripts/analyze.py zeros_ht.txt
+```
+
+**Note:** zeros_ht.txt must be downloaded separately from:
+http://www-users.cse.umn.edu/~odlyzko/zeta_tables/
+(Zeros number 10^12+1 through 10^12+10^4)
+
+**Expected result:** r ≈ 0.51 (independent replication)
+Original claimed r = 0.9992 has not been reproduced.
+
 # Prime-Indexed Excess in Riemann Zero Spacing Covariance
 
 > **This repository presents exploratory computational experiments and does not claim a proof of the Riemann Hypothesis.**
