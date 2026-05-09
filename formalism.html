@@ -39,6 +39,14 @@ h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-
 .pipe-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--cyan);min-width:2rem;padding-top:.1rem;}
 .pipe-text{font-size:.88rem;color:var(--sub);}
 .pipe-text strong{color:var(--text);}
+
+.lang-toggle{display:flex;flex-shrink:0;}
+.lang-btn{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
+.lang-btn:first-child{border-radius:3px 0 0 3px;}.lang-btn:last-child{border-radius:0 3px 3px 0;border-left:none;}
+.lang-btn.active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
+body.mn [data-lang="en"]{display:none;}
+body.en [data-lang="mn"]{display:none;}
+[data-lang="en"],[data-lang="mn"]{display:inline;}
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.75rem;color:var(--muted);margin-top:4rem;}
 </style>
 </head>
@@ -46,6 +54,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 <nav>
   <span class="nav-logo">research.nexcore.ltd</span>
   <a href="index.html" class="nav-back">← Back to Results</a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">ENG</button>
+    <button class="lang-btn" onclick="setLang('mn')">МОН</button>
+  </div>
 </nav>
 
 <div class="container">
@@ -186,5 +198,16 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   Myagmardorj Namnansuren · Nexcore LTD · Mongolia · 2026 · 
   <a href="https://zenodo.org/records/20077673" style="color:var(--cyan);">DOI: 10.5281/zenodo.20077673</a>
 </footer>
+<script>
+function setLang(lang){
+  document.body.className = lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',(lang==='en'&&b.textContent==='ENG')||(lang==='mn'&&b.textContent==='МОН'));
+  });
+  localStorage.setItem('lang', lang);
+}
+const saved = localStorage.getItem('lang');
+if(saved) setLang(saved); else setLang('en');
+</script>
 </body>
 </html>
