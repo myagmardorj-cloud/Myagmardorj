@@ -1,10 +1,11 @@
 # Computational Investigation of Prime-Dependent Structures
 in Unfolded Zeta Zero Statistics
 
-**Status:** Exploratory experimental mathematics — not a confirmed result
-**DOI:** [10.5281/zenodo.20077673](https://zenodo.org/records/20077673)  
-**DOI:** [10.5281/zenodo.20077673](https://zenodo.org/records/20077673)  
-**Website:** [research.nexcore.ltd](https://research.nexcore.ltd)
+**Status:** Exploratory experimental mathematics — not a confirmed result  
+**DOI:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20077673.svg)](https://zenodo.org/records/20077673)  
+**Website:** [research.nexcore.ltd](https://research.nexcore.ltd)  
+**License:** MIT  
+**Version:** v0.3 · May 2026
 
 ---
 
@@ -138,13 +139,31 @@ Empirical agreement with BK-type amplitude scaling observed after normalization 
 ## Reproducibility
 
 ```bash
+# Clone the repository
 git clone https://github.com/myagmardorj-cloud/Myagmardorj
-cd Myagmardorj/prime-locked-zeros
-pip install -r requirements.txt
+cd Myagmardorj
+
+# Install dependencies
+pip install -r zeta-zero-prime-frequency-analysis/requirements.txt
+
+# Run main analysis
+cd prime-locked-zeros
 python analyze.py
+# Expected output: r value, p-value, scatter plot
+
+# Run null controls
+cd ../zeta-zero-prime-frequency-analysis/controls
+python run_all.py
+# Expected output: shuffled r ≈ 0, GUE baseline comparison
+
+# Run BK amplitude test
+cd ../code
+python 03_BK_amplitude_test.py
+# Expected output: CONSISTENT WITH BK-TYPE SCALING (if r ≥ 0.8)
 ```
 
-Expected output: r value, p-value, scatter plot matching published results.
+All results should be reproducible given the same Odlyzko zero files.  
+See `data/README.md` for data download instructions.
 
 ---
 
