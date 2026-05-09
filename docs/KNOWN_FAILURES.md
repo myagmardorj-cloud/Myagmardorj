@@ -6,105 +6,95 @@
 
 ---
 
-## Replication Status
+## Summary
 
-### Independent replication — Steven Clark (Mathematics Stack Exchange)
+| File | N | T | r | Bootstrap mean r | Verdict |
+|------|---|---|---|-----------------|---------|
+| zeros_ht.txt | 10,000 | ~10¹² | 0.5113 | 0.09 ± 0.30 | UNSTABLE |
+| zeros1.txt | 100,000 | ~40K | 0.6847 | 0.36 ± 0.26 | UNSTABLE |
+| zeros6.txt | 2,001,052 | ~600K | 0.4509 | 0.68 ± 0.09 | MODERATE |
 
-**Date:** May 2026  
-**Source:** https://math.stackexchange.com/questions/5135941/  
-**Result:** r = 0.9992 on high-T zeros ✅ **Consistent with original claim**
-
-> "My numerical results (r=0.9992 on high-T zeros) seem consistent with this formula."
-> — Steven Clark, recreational mathematician
-
-**Status:** ✅ Partially reproduced — qualitative agreement confirmed  
-**Dataset used:** High-T zeros (exact file unknown — awaiting clarification)  
-**Note:** Steven Clark ran the GitHub code independently and obtained r = 0.9992.
+**Key finding:** r is not universal. It varies by dataset, scale, and normalization.  
+**Original r = 0.9992 has not been reproduced on any tested file.**
 
 ---
 
-## Failed Replication Attempt — zeros_ht.txt
+## Canonical Wording
 
-**Date:** May 2026  
-**File:** Odlyzko "Zeros number 10¹²+1 through 10¹²+10⁴" [text]  
-**N:** 10,000 zeros | T ≈ 267,653,396,932  
-**SHA256:** E7B9FD20B4755234B017167696F18A9C319070453DC175BA58D0FA7345FE3D21
+Preliminary computational correlations were observed, but robustness across
+datasets and scales remains unresolved.
 
-**Result:**
-```
-Pearson r = 0.5113
-Naive p   = 8.93e-02
-```
-
-**Status:** ❌ r = 0.9992 not reproduced on this file  
-
-**Analysis:**  
-r = 0.51 on zeros_ht.txt. Steven Clark's independent replication produced 
-r = 0.9992 using the same GitHub code — suggesting the discrepancy is in 
-the dataset used, not the code. Exact dataset awaiting clarification.
+Монгол: Урьдчилсан тооцооллын корреляцийн хандлага ажиглагдсан боловч
+өгөгдлийн багц болон масштаб хоорондын тогтвортой байдал одоогоор
+тодорхойгүй байна.
 
 ---
 
-## Previously Documented Negative Results
+## 1. Replication Failure — zeros_ht.txt
 
-### Low-T normalization (τ_p = log p / 2π)
-- **Result:** r ≈ 0.4–0.6 — no visible prime-indexed pattern
+**File:** zeros_ht.txt (Odlyzko 10¹² block, N=10,000)  
+**Result:** r = 0.5113 (not r = 0.9992)  
+**Bootstrap:** Mean r = 0.09 ± 0.30, 95% CI [-0.49, 0.65] → UNSTABLE  
+**Status:** ❌ Original result not reproduced
 
-### Shuffled zero ordering
-- **Result:** r ≈ 0.0 ± 0.2 — signal collapses
+---
 
-### GUE surrogate spectra
-- **Result:** r ≈ 0.0 ± 0.2 — signal exceeds GUE baseline
+## 2. Bootstrap Results — All Files
 
-### Composite-lag indices (non-primes)
-- **Result:** r ≈ 0 — effect appears prime-specific
+### zeros_ht.txt (N=10,000)
+- Full r = 0.5113
+- Bootstrap: 0.09 ± 0.30 → **UNSTABLE**
+- r < 0: 39% of subsets
 
-### N < 500 zeros
-- **Result:** r fluctuates widely — minimum N ≈ 1000 for stability
+### zeros1.txt (N=100,000)
+- Full r = 0.6847
+- Bootstrap: 0.36 ± 0.26 → **UNSTABLE**
+- r < 0: 9.9% of subsets
+
+### zeros6.txt (N=2,001,052)
+- Full r = 0.4509
+- Bootstrap: 0.68 ± 0.09 → **MODERATE**
+- r < 0: 0% of subsets
+- r > 0.5: 97% of subsets
+
+**Interpretation:** Signal stability increases with N. At N=2M, signal
+is consistently positive but not strong (r~0.68, not r~0.9992).
+
+---
+
+## 3. C Constant — Scale Dependent
+
+| File | C (A/B mean ratio) |
+|------|-------------------|
+| zeros1.txt | 3.37 |
+| zeros6.txt | 3.11 |
+| zeros_ht.txt | -2.56 |
+
+C ≈ 3 is consistent across low-T datasets.  
+C = -2.56 on high-T block suggests sign instability.  
+**No universal constant can be claimed.**
+
+---
+
+## 4. Independent Replication
+
+- Andrew Odlyzko: Form letter decline (high volume of requests)
+- Steven Clark (MSE): r = 0.9992 confirmed on unknown dataset — awaiting dataset identification
+- Facebook requests: All AI-generated responses (r = sin(1) = 0.8414...)
+
+---
+
+## 5. Open Questions
+
+1. Which dataset produces r = 0.9992? (Steven Clark's file unknown)
+2. Why does r decrease as N increases?
+3. Is C ≈ 3 theoretically meaningful?
+4. What is the effect of normalization choice on r?
 
 ---
 
 ## Statement
 
-**This project makes no claim of proof of the Riemann Hypothesis.**  
-All results are exploratory computational observations.  
-Independent replication by Steven Clark (MSE, May 2026) is consistent  
-with the original r = 0.9992 claim using high-T zeros.
-
-
----
-
-## Bootstrap Robustness Test — zeros_ht.txt
-
-**Date:** May 2026  
-**Script:** scripts/bootstrap_analysis.py  
-**File:** zeros_ht.txt (Odlyzko 10¹² block, N=10,000)  
-**Iterations:** 1000 × random subset (N=5,000)
-
-**Results:**
-```
-Mean r  =  0.0899
-Std  r  =  0.2978
-95% CI  = [-0.4930,  0.6485]
-r > 0.8 =  4 / 1000  (0.4%)
-r > 0.5 = 92 / 1000  (9.2%)
-r < 0   = 390 / 1000 (39.0%)
-```
-
-**Verdict:** UNSTABLE — high variance across subsets
-
-**Interpretation:**  
-The full-dataset r = 0.5113 is not stable under subsampling.  
-39% of random subsets produce negative r.  
-This is consistent with the signal being a statistical artifact  
-rather than a genuine structural feature of the zero distribution.
-
-**Implication:**  
-Combined with the replication failure (r = 0.51, not r = 0.9992),  
-the bootstrap instability significantly weakens confidence in the  
-original result. The original r = 0.9992 may reflect:
-1. Use of a specific zero file that has not been identified
-2. Post-hoc normalization tuning (selection bias)
-3. A genuine signal in a specific high-T dataset not yet tested
-
-**Status:** Under investigation. Independent replication required.
+This project makes no claim of proof of the Riemann Hypothesis.
+All results are exploratory computational observations.
+Robustness across datasets and scales remains unresolved.
