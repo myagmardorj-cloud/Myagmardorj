@@ -204,6 +204,42 @@ body{padding-top:54px!important;padding-bottom:42px!important;}[data-li]{display
     <div class="step-card"><div class="step-n">3</div><div class="step-text"><strong>Run & compare</strong>Get r, p-value, scatter plot — compare with published results</div></div>
   </div>
 
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2rem;">
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:1rem;">Known bootstrap results</div>
+  <table style="width:100%;font-size:.82rem;border-collapse:collapse;">
+    <thead><tr style="color:var(--sub);font-size:.72rem;border-bottom:1px solid var(--border);">
+      <th style="text-align:left;padding:.4rem .5rem;font-weight:500;">Dataset</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">N</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">r</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">Bootstrap</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">Verdict</th>
+    </tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:.45rem .5rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.75rem;">zeros1</td>
+        <td style="text-align:center;padding:.45rem .5rem;color:var(--sub);">100K</td>
+        <td style="text-align:center;">0.6847</td>
+        <td style="text-align:center;color:var(--sub);">0.36 &#177; 0.26</td>
+        <td style="text-align:center;color:#ff4d6d;font-weight:600;">UNSTABLE</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:.45rem .5rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.75rem;">zeros_ht</td>
+        <td style="text-align:center;padding:.45rem .5rem;color:var(--sub);">10K</td>
+        <td style="text-align:center;">0.5113</td>
+        <td style="text-align:center;color:var(--sub);">0.09 &#177; 0.30</td>
+        <td style="text-align:center;color:#ff4d6d;font-weight:600;">UNSTABLE</td>
+      </tr>
+      <tr>
+        <td style="padding:.45rem .5rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.75rem;">zeros6</td>
+        <td style="text-align:center;padding:.45rem .5rem;color:var(--sub);">2M</td>
+        <td style="text-align:center;">0.4509</td>
+        <td style="text-align:center;color:var(--sub);">0.68 &#177; 0.09</td>
+        <td style="text-align:center;color:#00e5a0;font-weight:600;">MODERATE</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:.75rem;color:var(--sub);margin-top:.8rem;">Signal stability improves with N. Upload your file to compare.</p>
+</div>
   <div class="upload-zone" id="drop-zone">
     <input type="file" id="file-input" accept=".txt,.dat,.csv">
     <div class="upload-icon">📂</div>
