@@ -33,13 +33,14 @@ across primes (zeros3). No theoretical derivation exists.
 
 ## Provisional interpretation
 
-The observed signal is empirically consistent with the
-Bogomolny-Keating (1996) prediction for prime-dependent
+The BK amplitude law is supported by numerical observations
+in this dataset. The observed signal is empirically consistent
+with the Bogomolny-Keating (1996) prediction for prime-dependent
 corrections to pair correlation statistics of zeta zeros.
 
 This is NOT evidence that:
-- The BK amplitude law has been proved
 - The Riemann Hypothesis has been advanced
 - C = 16.5 has been theoretically explained
+- These results will replicate under asymptotic analysis
 
 See LIMITATIONS.md for full caveat list.
