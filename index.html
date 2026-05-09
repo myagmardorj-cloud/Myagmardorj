@@ -279,8 +279,8 @@ body{padding-bottom:42px !important;}
     <div class="subtitle">Myagmardorj Namnansuren · Nexcore LTD · Ulaanbaatar</div>
   </div>
   <div class="abstract">
-    <span data-lang="en">Computational observations consistent with the Bogomolny–Keating amplitude law A(p) ∼ C(log p)²/p in high Riemann zero blocks. Tested across three independent Odlyzko datasets at heights T ~ 10¹², 10¹³. Pearson r ≥ 0.94 across all tested datasets. These are computational observations empirically consistent with BK-type scaling — not a confirmed theorem, not a proof of RH. Fitting bias, normalization sensitivity, and finite-window artifacts have not been fully ruled out.</span>
-    <span data-lang="mn">Богомолны–Китингийн амплитудын хуулийн тооцооллын ажиглалт өндөр Риман тэгийн блок дээр. Гурван бие даасан датасет дээр тест хийгдсэн. Бүх тохиолдолд r ≥ 0.94. Энэ нь BK-төрлийн scaling-тай нийцсэн тооцооллын ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
+    <span data-lang="en">Computational observations consistent with the Bogomolny–Keating amplitude law A(p) ∼ C(log p)²/p in high Riemann zero blocks. Tested across three independent Odlyzko datasets at heights T ~ 10¹², 10¹³. Pearson r varies across datasets: 0.6847 (zeros1), 0.5113 (zeros_ht), 0.4509 (zeros6). These are computational observations empirically consistent with BK-type scaling — not a confirmed theorem, not a proof of RH. Fitting bias, normalization sensitivity, and finite-window artifacts have not been fully ruled out.</span>
+    <span data-lang="mn">Богомолны–Китингийн амплитудын хуулийн тооцооллын ажиглалт өндөр Риман тэгийн блок дээр. Гурван бие даасан датасет дээр тест хийгдсэн. Бүх тохиолдолд r = 0.45–0.68. Энэ нь BK-төрлийн scaling-тай нийцсэн тооцооллын ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
   </div>
   <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:1.2rem 1.5rem;margin-bottom:2rem;"><div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;">Known Limitations</div><p style="font-size:.84rem;color:var(--sub);margin:0;line-height:1.7;"><span data-lang="en">Numerical observations only. No theorem, proof, or asymptotic derivation is claimed. Observed correlations may be influenced by finite-range effects, normalization procedures, and statistical dependencies. Independent verification required.</span><span data-lang="mn">Зөвхөн тоон ажиглалт. Теорем, нотолгоо нэхэмжлэхгүй. Finite-range нөлөө, нормализаци, далд хамаарал нөлөөлж болно. Бие даасан давталтжуулалт шаардлагатай.</span></p></div><div class="section">
     <div class="section-label"><span data-li="en">Main Results</span><span data-li="mn">Үндсэн үр дүн</span></div>
@@ -293,8 +293,8 @@ body{padding-bottom:42px !important;}
     <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolny–Keating Amplitude Law</span><span data-li="mn">Богомолны–Китингийн Амплитудын Хууль</span></div>A(p)  ∼  C · (log p)² / p</div>
     <div class="findings">
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> prime-indexed excess patterns across tested prime ranges show A(p) > 0 across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>Прайм-индекстэй илүүдэл ажиглагдсан:</strong> 12/12 прайм позиц гурван датасет дээр A(p) > 0. Finite-window болон олон тестийн нөлөөг нэмж шалгах шаардлагатай.</span></div></div>
-      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Empirically consistent with BK-type scaling:</strong> Pearson r ≥ 0.94 across all datasets. Ratio R(p) ≈ 16.5 approximately constant. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r ≥ 0.94. R(p) ≈ 16.5 ойролцоо тогтвортой. Fitting bias, нормализацийн мэдрэмж, bootstrap тестүүд шаардлагатай.</span></div></div>
-      <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. Normalization artifacts, overfitting, window bias, and finite-size effects have not been fully ruled out. C ≈ 16.5 needs theoretical derivation.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Нормализацийн артефакт, overfitting, window bias болон finite-size нөлөөг үгүйсгэж чадаагүй. C ≈ 16.5-н онолын гарталт шаардлагатай.</span></div></div>
+      <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Empirically consistent with BK-type scaling:</strong> Pearson r = 0.45–0.68 across all datasets. Bootstrap MODERATE at N=2M; UNSTABLE at smaller N. Fitting bias, normalization sensitivity, bootstrap tests, and explicit-formula derivation are needed before stronger claims can be made.</span><span data-lang="mn"><strong>BK-төрлийн scaling-тай нийцсэн ажиглалт:</strong> Бүх датасет дээр Pearson r = 0.45–0.68. R(p) ≈ 16.5 ойролцоо тогтвортой. Fitting bias, нормализацийн мэдрэмж, bootstrap тестүүд шаардлагатай.</span></div></div>
+      <div class="finding neg"><span class="fi">✗</span><div class="ft"><span data-lang="en"><strong>Not a proof of RH:</strong> Numerical observation only. Normalization artifacts, overfitting, window bias, and finite-size effects have not been fully ruled out. C ≈ 3 (zeros1/zeros6) needs theoretical derivation.</span><span data-lang="mn"><strong>RH-н нотолгоо биш:</strong> Нормализацийн артефакт, overfitting, window bias болон finite-size нөлөөг үгүйсгэж чадаагүй. C ≈ 3 (zeros1/zeros6)-н онолын гарталт шаардлагатай.</span></div></div>
     </div>
   </div>
   <div class="section">
@@ -724,7 +724,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <span class="rm-icon">✅</span>
           <div class="rm-info">
             <span class="rm-title"><span data-li="en">Computational observations collected — further validation needed</span><span data-li="mn">Тооцооллын ажиглалт цуглуулсан — нэмэлт харьцуулалт шаардлагатай</span></span>
-            <span class="rm-sub">zeros2, zeros3, zeros4 · r ≥ 0.94 · prime-indexed excess patterns observed</span>
+            <span class="rm-sub">zeros2, zeros3, zeros4 · r = 0.45–0.68 · prime-indexed excess patterns observed</span>
           </div>
           <span class="rm-status done-tag">DONE</span>
         </div>
@@ -784,7 +784,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <span class="rm-icon">⬜</span>
           <div class="rm-info">
             <span class="rm-title"><span data-li="en">Deepen theoretical understanding</span><span data-li="mn">Онолын мэдлэг гүнзгийрүүлэх</span></span>
-            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive C ≈ 16.5</span><span data-li="mn">Montgomery, BK 1996 уншиж, C ≈ 16.5 гаргах</span></span>
+            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive C ≈ 3 (zeros1/zeros6)</span><span data-li="mn">Montgomery, BK 1996 уншиж, C ≈ 3 (zeros1/zeros6) гаргах</span></span>
           </div>
           <span class="rm-status todo-tag">NEXT</span>
         </div>
@@ -826,7 +826,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div class="read-content">
           <div class="read-title">Bogomolny & Keating (1996)</div>
           <div class="read-ref">"Random matrix theory and the Riemann zeros I & II" — Nonlinearity</div>
-          <div class="read-why"><span data-lang="en">The original prediction of A(p) ~ C(log p)²/p. Understanding the derivation will explain C ≈ 16.5.</span><span data-lang="mn">A(p) ~ C(log p)²/p-н анхны таамаглал. Гарталтыг ойлговол C ≈ 16.5-г тайлбарлах болно.</span></div>
+          <div class="read-why"><span data-lang="en">The original prediction of A(p) ~ C(log p)²/p. Understanding the derivation will explain C ≈ 3 (zeros1/zeros6).</span><span data-lang="mn">A(p) ~ C(log p)²/p-н анхны таамаглал. Гарталтыг ойлговол C ≈ 3 (zeros1/zeros6)-г тайлбарлах болно.</span></div>
         </div>
         <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
       </div>
@@ -929,17 +929,17 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <div class="next-card">
         <div class="next-num">02</div>
         <div class="next-title"><span data-lang="en">Read BK 1996 Part I</span><span data-lang="mn">BK 1996 I хэсэг уншах</span></div>
-        <div class="next-desc"><span data-lang="en">Find the exact formula for A(p). Identify where C comes from. Compare with our C ≈ 16.5.</span><span data-lang="mn">A(p)-н яг томьёог олох. C хаанаас гарч байгааг тодорхойлох.</span></div>
+        <div class="next-desc"><span data-lang="en">Find the exact formula for A(p). Identify where C comes from. Compare with our C ≈ 3 (zeros1/zeros6).</span><span data-lang="mn">A(p)-н яг томьёог олох. C хаанаас гарч байгааг тодорхойлох.</span></div>
       </div>
       <div class="next-card">
         <div class="next-num">03</div>
         <div class="next-title"><span data-lang="en">Test on more datasets</span><span data-lang="mn">Илүү олон датасет дээр тест</span></div>
-        <div class="next-desc"><span data-lang="en">Try Odlyzko's highest zero data (~10²¹). Does C ≈ 16.5 remain stable at extreme heights?</span><span data-lang="mn">~10²¹ өндөрт zeros туршиж үзэх. C ≈ 16.5 тогтвортой хэвээр байна уу?</span></div>
+        <div class="next-desc"><span data-lang="en">Try Odlyzko's highest zero data (~10²¹). Does C ≈ 3 (zeros1/zeros6) remain stable at extreme heights?</span><span data-lang="mn">~10²¹ өндөрт zeros туршиж үзэх. C ≈ 3 (zeros1/zeros6) тогтвортой хэвээр байна уу?</span></div>
       </div>
       <div class="next-card">
         <div class="next-num">04</div>
         <div class="next-title"><span data-lang="en">Derive C theoretically</span><span data-lang="mn">C-г онолоор гаргах</span></div>
-        <div class="next-desc"><span data-lang="en">Explain why C ≈ 16.5 from first principles using BK and random matrix theory.</span><span data-lang="mn">BK болон санамсаргүй матрицын онолоос C ≈ 16.5-г эхний зарчмаас тайлбарлах.</span></div>
+        <div class="next-desc"><span data-lang="en">Explain why C ≈ 3 (zeros1/zeros6) from first principles using BK and random matrix theory.</span><span data-lang="mn">BK болон санамсаргүй матрицын онолоос C ≈ 3 (zeros1/zeros6)-г эхний зарчмаас тайлбарлах.</span></div>
       </div>
     </div>
 
@@ -1004,7 +1004,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <div class="file-body-inner">
             <div class="note-block" style="border-left-color:var(--green);">
               <div class="note-label" style="color:var(--green);">Best result</div>
-              <span data-lang="en">This dataset produced r = 0.9992 — the strongest correlation. High-T normalization τ_p = log(p)/log(T/2π) is essential.</span>
+              <span data-lang="en">This dataset produced r = 0.9992 — original claim, not reproduced on tested files. High-T normalization τ_p = log(p)/log(T/2π) is essential.</span>
               <span data-lang="mn">Энэ датасет r = 0.9992 — хамгийн хүчтэй корреляцийг гаргасан. Өндөр-T нормализаци τ_p = log(p)/log(T/2π) зайлшгүй.</span>
             </div>
             <div style="margin-top:1rem;">
@@ -1134,7 +1134,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
       <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">REAL ZEROS</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.9992</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.45–0.68</div>
         <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r on zeros3 block</span><span data-lang="mn">zeros3 блок дээрх Pearson r</span></div>
         <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);margin-top:.6rem;">✅ prime-indexed excess patterns observed across tested ranges</div>
       </div>
@@ -1301,7 +1301,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Primes positive</span><span data-lang="mn">Эерэг прайм</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.9992</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45–0.68</div>
         <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Best r value</span><span data-lang="mn">Хамгийн сайн r</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">

@@ -24,7 +24,7 @@ Format: plain text, one gamma_n per line.
 ```bash
 cd prime-locked-zeros/
 python analyze.py zeros3.txt
-# Expected: r = 0.9992, p-value = 2.64e-15
+# Expected: r = 0.45–0.68 (dataset-dependent), p-value = 2.64e-15
 ```
 
 ### Full control suite

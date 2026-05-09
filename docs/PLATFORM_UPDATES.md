@@ -13,7 +13,7 @@ Copy-paste ready text for each platform.
 Exploratory computational study of prime-indexed structure
 in Riemann zero spacing covariance statistics.
 
-Main observation: Pearson r ≥ 0.94 between empirical
+Main observation: Pearson r = 0.45–0.68 between empirical
 covariance A(p) and BK predictor B(p) = (log p)²/p
 across 12 primes on three independent Odlyzko datasets
 (T ~ 10¹², 10¹³). Null controls (shuffled zeros, GUE

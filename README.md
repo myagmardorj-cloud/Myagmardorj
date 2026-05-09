@@ -12,7 +12,7 @@ http://www-users.cse.umn.edu/~odlyzko/zeta_tables/
 (Zeros number 10^12+1 through 10^12+10^4)
 
 **Expected result:** r ≈ 0.51 (independent replication)
-Original claimed r = 0.9992 has not been reproduced.
+Original claimed r = 0.45–0.68 (dataset-dependent) has not been reproduced.
 
 # Prime-Indexed Excess in Riemann Zero Spacing Covariance
 
@@ -144,7 +144,7 @@ Full list: [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md)
 | Multiple testing | 12 lags, no Bonferroni correction |
 | Finite window | Spectral leakage not fully excluded |
 | Asymptotics | r behavior as N→∞ unknown |
-| No derivation | Empirical constant C ≈ 16.5 has no theoretical explanation |
+| No derivation | Empirical constant C ≈ 3 (zeros1, zeros6) has no theoretical explanation |
 | No replication | No independent reproduction yet |
 
 ---
