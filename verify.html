@@ -138,72 +138,37 @@ select:focus,input[type=number]:focus{border-color:rgba(0,212,255,.4);}
 body.en [data-lang="en"]{display:block;}
 body.mn [data-lang="mn"]{display:block;}
 [data-li]{display:none;}
-body.en [data-li="en"]{display:inline;}
-body.mn [data-li="mn"]{display:inline;}
+}
+}
 
-/* ═══ UNIFIED NAV ═══ */
-.unav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;height:56px;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
-.unav-logo{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;cursor:pointer;}
-.unav-links{display:flex;gap:0;list-style:none;align-items:center;}
-.unav-links li a,.unav-links li button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.35rem .7rem;border-radius:8px;border:1px solid transparent;transition:all .2s;white-space:nowrap;cursor:pointer;background:none;}
-.unav-links li a:hover,.unav-links li button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.unav-links li a.unav-active{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2);}
-.unav-more{position:relative;}
-.unav-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(14,14,28,.97);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:.4rem;min-width:160px;z-index:400;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.unav-dd.open{display:block;}
-.unav-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:#9999b8;text-decoration:none;padding:.38rem .8rem;border-radius:8px;transition:all .2s;}
-.unav-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
-.unav-lang{display:flex;}
-.unav-lb{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.28rem .6rem;background:none;border:1px solid rgba(255,255,255,.1);color:#5a5a7a;cursor:pointer;transition:all .2s;}
-.unav-lb:first-child{border-radius:4px 0 0 4px;}
-.unav-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
-.unav-lb.active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
-[data-li="en"],[data-li="mn"]{display:inline;}
-body.mn [data-li="en"]{display:none;}
-body.en [data-li="mn"]{display:none;}
-@media(max-width:640px){.unav-links{display:none;}}
+/* ═══ UNIVERSAL LANG TOGGLE ═══ */
+[data-li="en"],[data-lang="en"],[data-en]{display:inline;}
+[data-li="mn"],[data-lang="mn"],[data-mn]{display:inline;}
+body.mn [data-li="en"],body.mn [data-lang="en"],body.mn [data-en]{display:none !important;}
+body.mn [data-li="mn"],body.mn [data-lang="mn"],body.mn [data-mn]{display:inline !important;}
+body.en [data-li="mn"],body.en [data-lang="mn"],body.en [data-mn]{display:none !important;}
+body.en [data-li="en"],body.en [data-lang="en"],body.en [data-en]{display:inline !important;}
+/* block-level elements */
+div[data-lang],p[data-lang],span[data-lang]{display:block;}
+span[data-lang]{display:inline;}
+body.mn div[data-lang="en"],body.mn p[data-lang="en"]{display:none !important;}
+body.mn div[data-lang="mn"],body.mn p[data-lang="mn"]{display:block !important;}
+body.en div[data-lang="mn"],body.en p[data-lang="mn"]{display:none !important;}
+body.en div[data-lang="en"],body.en p[data-lang="en"]{display:block !important;}
 
-body{padding-top:72px;}
 </style>
 </head>
 <body>
-<nav class="unav">
-  <a class="unav-logo" href="index.html">research.nexcore.ltd</a>
-  <ul class="unav-links">
-    <li><a href="index.html" class=""><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a></li>
-    <li><a href="verify.html" class="unav-active" style="rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;color:#00e5a0 !important;"><span data-li="en">⚗️ Verify</span><span data-li="mn">Баталгаажуулах</span></a></li>
-    <li><a href="intro.html" class="" style="color:#f0b429;border-color:rgba(240,180,41,.2);background:rgba(240,180,41,.06);border-radius:8px;"><span data-li="en">✨ Intro</span><span data-li="mn">Танилцуулга</span></a></li>
-    <li><a href="landscape.html" class="" style="color:#a855f7;border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06);border-radius:8px;"><span data-li="en">🗺 Map</span><span data-li="mn">Газрын зураг</span></a></li>
-    <li><a href="formalism.html" class=""><span data-li="en">Formalism</span><span data-li="mn">Формализм</span></a></li>
-    <li class="unav-more">
-      <button onclick="unavToggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
-      <div class="unav-dd">
-      <a href="index.html#charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-      <a href="index.html#calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
-      <a href="index.html#methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a>
-      <a href="index.html#nulltests"><span data-li="en">Controls</span><span data-li="mn">Хяналт</span></a>
-      <a href="index.html#data"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-      <a href="index.html#papers"><span data-li="en">References</span><span data-li="mn">Лавлагаа</span></a>
-      <a href="index.html#faq"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
-      <a href="index.html#discussion"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
-      <a href="index.html#roadmap"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
-      <a href="index.html#updates"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a>
-      <a href="index.html#about"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-      </div>
-    </li>
-  </ul>
-  <div class="unav-lang">
-    <button class="unav-lb active" data-l="en" onclick="setLang('en')">ENG</button>
-    <button class="unav-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
-  </div>
-</nav>
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
 
 <div class="wrap">
   <header>
     <a class="back-link" href="/">← research.nexcore.ltd</a>
-    
+    <div style="display:flex;gap:0;margin-bottom:1rem;">
+      <button onclick="setVLang('en')" id="vl-en" class="lang-btn active">ENG</button>
+      <button onclick="setVLang('mn')" id="vl-mn" class="lang-btn">МОН</button>
+    </div>
     <h1>Prime-Correlation <span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний Лаб</span></h1>
     <p class="tagline"><span data-li="en">Run the exact analysis in your browser. Upload any Odlyzko zero data and check whether the prime-indexed excess pattern replicates in your data — no server, no installation.</span><span data-li="mn">Браузерт яг шинжилгээ ажиллуул. Одлызкогийн тэгийн өгөгдөл upload хийж прайм-индекстэй илүүдлийн хэв маяг өөрийн өгөгдөлд давтагдах эсэхийг шалга — сервер, суулгалт шаардахгүй.</span></p>
   </header>
@@ -545,6 +510,24 @@ function setVLang(lang) {
 }
 const vsaved = localStorage.getItem('vlang');
 if (vsaved) setVLang(vsaved);
+</script>
+<script>
+
+function setLang(lang){
+  const body = document.body;
+  body.classList.remove('en','mn');
+  body.classList.add(lang);
+  document.querySelectorAll('.unav-lb,.lang-btn,.lb').forEach(b=>{
+    const bl = b.dataset.l || (b.id && b.id.includes('en') ? 'en' : b.id && b.id.includes('mn') ? 'mn' : null);
+    if(bl) b.classList.toggle('active', bl===lang);
+  });
+  localStorage.setItem('lang', lang);
+}
+(function(){
+  const saved = localStorage.getItem('lang') || 'en';
+  setLang(saved);
+})();
+
 </script>
 </body>
 </html>
