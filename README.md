@@ -136,7 +136,55 @@ Empirical agreement with BK-type amplitude scaling observed after normalization 
 
 ---
 
-## Reproducibility
+## Numerical Limitations Summary
+
+| Category | Limitation |
+|----------|-----------|
+| Sample size | Only 12 primes — Pearson r with n=12 is sensitive to outliers |
+| Normalization | High-T formula chosen after observing low-T gave weak results — selection bias possible |
+| Finite window | Spectral leakage from finite zero block not fully excluded |
+| Asymptotic | r behavior as N → ∞ is unknown; tested only up to N=10,000 |
+| Autocorrelation | Naive p-values assume independence — violated by spacing covariances |
+| Multiple testing | 12 primes with no Bonferroni correction — uncorrected p-values |
+| Coverage | Only 3 Odlyzko datasets; results at other heights unknown |
+
+See [`LIMITATIONS.md`](LIMITATIONS.md) for full caveat list.
+
+---
+
+## Independent Replication Checklist
+
+For anyone wishing to independently verify these results:
+
+```bash
+git clone https://github.com/myagmardorj-cloud/Myagmardorj
+cd Myagmardorj
+pip install -r requirements.txt
+
+# Download zeros3 from Odlyzko (T ~ 10^12)
+wget http://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros3
+
+# Run main analysis
+cd prime-locked-zeros && python analyze.py ../zeros3
+```
+
+**Expected outputs on zeros3:**
+
+| Check | Expected value | Status if different |
+|-------|---------------|---------------------|
+| Pearson r (real data) | ≈ 0.9992 | Check normalization formula |
+| Shuffled null mean r | ≈ 0.0 ± 0.2 | Check shuffle seed |
+| GUE surrogate mean r | ≈ 0.0 ± 0.2 | Check surrogate generation |
+| Prime-indexed excess visible | Yes (12/12 primes) | Check normalization |
+| Non-prime lag excess | Near zero | Expected |
+
+**Critical parameter:** normalization must be `τ_p = log(p) / log(T/2π)` — using `log(p)/2π` gives r ≈ 0.4–0.6.
+
+See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for detailed instructions and troubleshooting.
+
+---
+
+
 
 ```bash
 # Clone the repository
