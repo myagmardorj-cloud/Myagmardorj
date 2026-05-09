@@ -29,9 +29,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-more-btn.open{color:var(--cyan);background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2);}
 .nav-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:rgba(14,14,28,.97);border:1px solid var(--border);border-radius:12px;padding:.4rem;min-width:160px;z-index:400;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.4);}
 .nav-dropdown.open{display:block;}
-.nav-dropdown a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--sub);text-decoration:none;padding:.4rem .75rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap;}
+.nav-dropdown a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--sub);text-decoration:none;padding:.4rem .75rem;border-radius:8px;transition:all .2s;cursor:pointer;white-space:nowrap;}
 .nav-dropdown a:hover{color:var(--text);background:rgba(255,255,255,.05);}
-.nav-dropdown a.active{color:var(--cyan);background:rgba(0,212,255,.08);}
 .lang-btn{font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
 .lang-btn:first-child{border-radius:3px 0 0 3px;}.lang-btn:last-child{border-radius:0 3px 3px 0;border-left:none;}
 .lang-btn.active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
@@ -224,6 +223,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 <nav>
   <span class="nav-logo" onclick="showPage('home')">research.nexcore.ltd</span>
   <ul class="nav-links">
+    <li><a href="intro.html" style="color:var(--gold);border-color:rgba(240,180,41,.2);background:rgba(240,180,41,.06);border-radius:8px;"><span data-li="en">✨ Intro</span><span data-li="mn">✨ Танилцуулга</span></a></li>
+    <li><a href="landscape.html" style="color:var(--purple, #a855f7);border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06);border-radius:8px;"><span data-li="en">🗺 Landscape</span><span data-li="mn">🗺 Газрын зураг</span></a></li>
     <li><a onclick="showPage('home')" id="nav-home" class="active"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a></li>
     <li><a onclick="showPage('methods')" id="nav-methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a></li>
     <li><a onclick="showPage('nulltests')" id="nav-nulltests"><span data-li="en">Controls</span><span data-li="mn">Хяналт</span></a></li>
@@ -240,6 +241,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
         <a onclick="showPage('roadmap');closeMoreNav()"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
         <a onclick="showPage('updates');closeMoreNav()"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a>
         <a onclick="showPage('livestats');closeMoreNav()"><span data-li="en">Stats</span><span data-li="mn">Статистик</span></a>
+        <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формализм</span></a>
       </div>
     </li>
     <li><a href="verify.html" style="background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;color:var(--green) !important;"><span data-li="en">⚗️ Verify</span><span data-li="mn">⚗️ Баталгаажуулах</span></a></li>
@@ -249,6 +251,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
     <button class="lang-btn" onclick="setLang('mn')">МОН</button>
   </div>
 </nav>
+
+<div style="background:rgba(255,77,109,.07);border-bottom:1px solid rgba(255,77,109,.2);padding:.5rem 1.5rem;text-align:center;font-size:.78rem;color:#d4909a;font-family:'Plus Jakarta Sans',sans-serif;position:sticky;top:56px;z-index:200;">
+  <span data-lang="en">⚠️ This project presents computational observations only — <strong>not a proof of the Riemann Hypothesis</strong>. Independent replication required.</span>
+  <span data-lang="mn">⚠️ Энэ судалгаа зөвхөн тооцооллын ажиглалт — <strong>RH-н нотолгоо биш</strong>. Бие даасан баталгаажуулалт шаардлагатай.</span>
+</div>
 
 <!-- HOME -->
 <div class="page active" id="page-home">
@@ -270,8 +277,6 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
       <div class="stat-card"><div class="ds">zeros3 · ~10¹²</div><span class="rv" style="font-size:1.3rem;font-weight:600;color:var(--text);">max observed<br>r ≈ 0.9992</span><div class="pv">p = 2.64×10⁻¹⁵</div><div class="badge">High-T block</div></div>
       <div class="stat-card"><div class="ds">zeros4 · ~10¹³</div><span class="rv">0.9421</span><div class="pv">p = 5.0×10⁻⁶</div><div class="badge">High-T block</div></div>
     </div>
-
-    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.8rem 1.5rem;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);line-height:1.8;"><span style="color:var(--cyan);">version</span> v1.0.0-experimental &nbsp;·&nbsp; <span style="color:var(--cyan);">data</span> Odlyzko zeros2/3/4 &nbsp;·&nbsp; <span style="color:var(--cyan);">norm</span> high-T unfolded &nbsp;·&nbsp; <span style="color:var(--cyan);">primes</span> p=2..37 (n=12) &nbsp;·&nbsp; <span style="color:var(--cyan);">DOI</span> 10.5281/zenodo.20077673</div>
     <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolny–Keating Amplitude Law</span><span data-li="mn">Богомолны–Китингийн Амплитудын Хууль</span></div>A(p)  ∼  C · (log p)² / p</div>
     <div class="findings">
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> prime-indexed excess patterns across tested prime ranges show A(p) > 0 across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>Прайм-индекстэй илүүдэл ажиглагдсан:</strong> 12/12 прайм позиц гурван датасет дээр A(p) > 0. Finite-window болон олон тестийн нөлөөг нэмж шалгах шаардлагатай.</span></div></div>
@@ -349,33 +354,22 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
   <div class="section">
     <div class="section-label"><span data-li="en">Mathematical References</span><span data-li="mn">Математикийн лавлагаа</span></div>
     <h2><span data-lang="en">Key Literature</span><span data-lang="mn">Гол уран зохиол</span></h2>
-    <p class="prose" style="margin-bottom:2rem;color:var(--sub);font-size:.9rem;"><span data-lang="en">This work builds on established results in random matrix theory and analytic number theory.</span></p>
-    <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:3rem;">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[1] Montgomery 1973</div>
-        <div style="font-size:.9rem;color:var(--text);">H. L. Montgomery — <em>The pair correlation of zeros of the zeta function</em></div>
-        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Proc. Sympos. Pure Math. 24 — GUE connection established</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[2] Bogomolny & Keating 1996</div>
-        <div style="font-size:.9rem;color:var(--text);">E. B. Bogomolny & J. P. Keating — <em>Random matrix theory and the Riemann zeros I & II</em></div>
-        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Nonlinearity 8–9 — Prime-dependent corrections predicted</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[3] Odlyzko 1992</div>
-        <div style="font-size:.9rem;color:var(--text);">A. M. Odlyzko — <em>The 10²⁰-th zero of the Riemann zeta function</em></div>
-        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;"><a href="http://www-users.cse.umn.edu/~odlyzko/zeta_tables/" style="color:var(--cyan);">www-users.cse.umn.edu/~odlyzko/zeta_tables/</a> — Source of zero data used in this study</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[4] Rudnick & Sarnak 1996</div>
-        <div style="font-size:.9rem;color:var(--text);">Z. Rudnick & P. Sarnak — <em>Zeros of principal L-functions and random matrix theory</em></div>
-        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Duke Math. J. 81(2) — n-point correlations and GUE</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[5] Hiary & Odlyzko 2012</div>
-        <div style="font-size:.9rem;color:var(--text);">G. A. Hiary & A. M. Odlyzko — <em>The zeta function on the critical line</em></div>
-        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Math. Comp. 81 · arXiv:1105.4312 — High-T zero computations</div>
-      </div>
+
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:.62rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;">Classical / Pair Correlation</div>
+    <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem;">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:.8rem 1.2rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan);">[1]</span> <strong>H. L. Montgomery</strong> (1973) — <em>The pair correlation of zeros of the zeta function.</em> <span style="font-size:.82rem;color:var(--sub);">Proc. Sympos. Pure Math. 24. GUE connection established.</span></div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:.8rem 1.2rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan);">[2]</span> <strong>Z. Rudnick & P. Sarnak</strong> (1996) — <em>Zeros of principal L-functions and random matrix theory.</em> <span style="font-size:.82rem;color:var(--sub);">Duke Math. J. 81(2). n-point correlations.</span></div>
+    </div>
+
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:.62rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;">Prime Corrections / BK Prediction</div>
+    <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem;">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.8rem 1.2rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);">[3]</span> <strong>E. B. Bogomolny & J. P. Keating</strong> (1996) — <em>Random matrix theory and the Riemann zeros I & II.</em> <span style="font-size:.82rem;color:var(--sub);">Nonlinearity 8–9. Prime-dependent corrections predicted — this work tests those predictions numerically.</span></div>
+    </div>
+
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:.62rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:.6rem;">Computational Data</div>
+    <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem;">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:.8rem 1.2rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--green);">[4]</span> <strong>A. M. Odlyzko</strong> (1992) — <em>The 10²⁰-th zero of the Riemann zeta function.</em> <span style="font-size:.82rem;color:var(--sub);"><a href="http://www-users.cse.umn.edu/~odlyzko/zeta_tables/" style="color:var(--cyan);">odlyzko/zeta_tables/</a> — Zero files used in this study.</span></div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:.8rem 1.2rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--green);">[5]</span> <strong>G. A. Hiary & A. M. Odlyzko</strong> (2012) — <em>The zeta function on the critical line.</em> <span style="font-size:.82rem;color:var(--sub);">Math. Comp. 81 · arXiv:1105.4312. High-T zero computations.</span></div>
     </div>
   </div>
   <div class="section">
@@ -538,7 +532,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <span class="file-icon">🔍</span>
         <div class="file-meta">
           <span class="file-name">notes/failure_analysis.md</span>
-          <div class="file-desc"><span data-lang="en">Why the initial BK amplitude test showed weak results — and how switching to high-T unfolding changed the observed correlation.</span><span data-lang="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
+          <div class="file-desc"><span data-lang="en">Why the initial BK amplitude test failed — and how the correct normalization was discovered.</span><span data-lang="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
           <div class="file-tags"><span class="file-tag">Analysis</span><span class="file-tag">Normalization</span><span class="file-tag">Debugging</span></div>
         </div>
         <span class="file-toggle">▼</span>
@@ -1145,6 +1139,38 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <span data-lang="mn">Дохио жинхэнэ бөгөөд статистикийн артефакт биш гэдгийг баталгаажуулахын тулд холилдсон тэгүүд болон санамсаргүй өгөгдөл дээр хяналтын тест хийсэн.</span>
     </p>
 
+
+    <div style="margin-top:2.5rem;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;color:var(--red);text-transform:uppercase;margin-bottom:1rem;">Failed Attempts / Negative Results</div>
+      <p style="font-size:.88rem;color:var(--sub);margin-bottom:1.2rem;"><span data-lang="en">Cases where the expected signal did not appear. Documenting failures is scientifically important — it distinguishes genuine patterns from artifacts.</span><span data-lang="mn">Хүлээгдсэн дохио гарч ирээгүй тохиолдлууд. Бүтэлгүйдлийг баримтлах нь шинжлэх ухааны хувьд чухал.</span></p>
+      <div style="display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;">
+        <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.3rem;"><span data-lang="en">Low-T normalization (tau_p = log p / 2pi) — no signal</span><span data-lang="mn">Бага-T нормализаци — дохио алга</span></div>
+          <div style="font-size:.82rem;color:var(--sub);"><span data-lang="en">Produces r approx 0.4-0.6. No visible prime-indexed pattern. High-T formula is required.</span></div>
+        </div>
+        <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.3rem;"><span data-lang="en">Shuffled zero ordering — signal collapses</span><span data-lang="mn">Тэгийн дарааллыг холих — дохио устна</span></div>
+          <div style="font-size:.82rem;color:var(--sub);"><span data-lang="en">r approx 0.0 when zero ordering is randomised. Confirms signal depends on ordering, not marginal distribution.</span></div>
+        </div>
+        <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.3rem;"><span data-lang="en">GUE surrogate spectra — signal collapses</span><span data-lang="mn">GUE орлуулсан спектр — дохио устна</span></div>
+          <div style="font-size:.82rem;color:var(--sub);"><span data-lang="en">r approx 0.0 on synthetic GUE eigenvalues. Signal exceeds pure GUE baseline.</span></div>
+        </div>
+        <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.3rem;"><span data-lang="en">Composite-lag indices (non-primes) — no pattern</span><span data-lang="mn">Нийлмэл тоон lag — хэв маяг алга</span></div>
+          <div style="font-size:.82rem;color:var(--sub);"><span data-lang="en">Replacing primes with composites produces r approx 0. Effect appears prime-specific.</span></div>
+        </div>
+        <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;">
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.3rem;"><span data-lang="en">N less than 500 zeros — unstable</span><span data-lang="mn">500-аас цөөн тэг — тогтворгүй</span></div>
+          <div style="font-size:.82rem;color:var(--sub);"><span data-lang="en">With fewer than 500 zeros, r fluctuates widely. Minimum dataset size for stable results appears to be N approx 1000.</span></div>
+        </div>
+      </div>
+      <div style="background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);border-radius:10px;padding:1rem 1.5rem;font-size:.82rem;color:#d4909a;">
+        <span data-lang="en">These negative results do not prove the signal is genuine — they reduce some alternative explanations. Independent replication is still required.</span>
+        <span data-lang="mn">Эдгээр сөрөг үр дүн дохио жинхэнэ гэдгийг нотлохгүй — зөвхөн зарим тайлбарыг хязгаарлана. Бие даасан баталгаажуулалт шаардлагатай.</span>
+      </div>
+    </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
       <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">REAL ZEROS</div>
@@ -1348,6 +1374,16 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="page" id="page-about">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:2rem;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:.62rem;letter-spacing:.12em;color:var(--cyan);text-transform:uppercase;margin-bottom:.8rem;">Plain English</div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;margin-bottom:1rem;color:var(--text);">What is this project?</h3>
+      <div style="font-size:.92rem;color:var(--sub);line-height:1.8;display:flex;flex-direction:column;gap:.8rem;">
+        <p><span data-lang="en">The Riemann Hypothesis is one of the oldest unsolved problems in mathematics. It says something about where certain special numbers (called "zeros") are located. Nobody has proved it yet, even after 165 years.</span><span data-lang="mn">Риманы таамаглал нь математикийн хамгийн нэр хүндтэй шийдэгдээгүй бодлогуудын нэг. "Тэг" гэгддэг тодорхой тоонуудын байршлын тухай юм. 165 жил болсон ч хэн ч нотолж чадаагүй.</span></p>
+        <p><span data-lang="en">In 1996, two mathematicians (Bogomolny and Keating) predicted that prime numbers (2, 3, 5, 7, 11...) should leave a specific fingerprint in the statistics of those zeros. They wrote down a mathematical formula for what that fingerprint should look like.</span><span data-lang="mn">1996 онд хоёр математикч (Богомолни ба Китинг) анхны тоонууд (2, 3, 5, 7, 11...) тэдгээр тэгийн статистикт тодорхой ул мөр үлдээнэ гэж таамаглаж, түүний томьёог гаргасан.</span></p>
+        <p><span data-lang="en">This project tests their prediction numerically. We downloaded publicly available zero data, wrote code to measure that fingerprint, and checked if the numbers match their formula. They do — but that doesn't prove anything yet.</span><span data-lang="mn">Энэ судалгаа тэдний таамаглалыг тоон аргаар шалгана. Нийтэд нээлттэй тэгийн өгөгдлийг татаж аваад, тэр ул мөрийг хэмжих код бичиж, тоонуудыг томьёотой нь харьцуулсан. Тохирч байна — гэхдээ энэ нь ямар нэгэн зүйлийг нотолдоггүй.</span></p>
+        <p style="background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.15);border-radius:8px;padding:.8rem 1rem;color:#d4909a;font-size:.85rem;"><span data-lang="en"><strong>Important:</strong> A matching number is not the same as a mathematical proof. We are not claiming to have solved the Riemann Hypothesis.</span><span data-lang="mn"><strong>Чухал:</strong> Тоо таарах нь математикийн нотолгоо биш. Бид Риманы таамаглалыг шийдсэн гэж нэхэмжлэхгүй.</span></p>
+      </div>
+    </div>
     <div class="section-label"><span data-li="en">About</span><span data-li="mn">Тухай</span></div>
     <h2>Myagmardorj Namnansuren</h2>
     <div class="prose" style="margin-bottom:2rem;">
@@ -1439,10 +1475,8 @@ function toggleFile(header){
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-links a, .nav-dropdown a').forEach(a=>a.classList.remove('active'));
-  const page = document.getElementById('page-'+name);
-  if(page) page.classList.add('active');
-  const navEl = document.getElementById('nav-'+name);
-  if(navEl) navEl.classList.add('active');
+  const page=document.getElementById('page-'+name);if(page)page.classList.add('active');
+  const nav=document.getElementById('nav-'+name);if(nav)nav.classList.add('active');
   if(name==='charts')setTimeout(initCharts,100);
   if(name==='faq')setTimeout(initFAQ,50);
   if(name==='livestats')setTimeout(loadZenodoStats,100);
@@ -1594,19 +1628,19 @@ function subscribeNL() {
 const saved=localStorage.getItem('lang');
 if(saved)setLang(saved);
 
-function toggleMoreNav(btn) {
-  const dd = document.getElementById('nav-dropdown');
-  const isOpen = dd.classList.toggle('open');
-  btn.classList.toggle('open', isOpen);
+function toggleMoreNav(btn){
+  const dd=document.getElementById('nav-dropdown');
+  const open=dd.classList.toggle('open');
+  btn.classList.toggle('open',open);
 }
-function closeMoreNav() {
-  const dd = document.getElementById('nav-dropdown');
-  const btn = document.querySelector('.nav-more-btn');
-  if (dd) dd.classList.remove('open');
-  if (btn) btn.classList.remove('open');
+function closeMoreNav(){
+  const dd=document.getElementById('nav-dropdown');
+  const btn=document.querySelector('.nav-more-btn');
+  if(dd)dd.classList.remove('open');
+  if(btn)btn.classList.remove('open');
 }
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.nav-more')) closeMoreNav();
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.nav-more'))closeMoreNav();
 });
 </script>
 </body>
