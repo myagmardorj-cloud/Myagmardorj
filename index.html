@@ -230,6 +230,19 @@ body.en span[data-lang="en"]{display:inline;}
 body.mn span[data-lang="mn"]{display:inline;}
 @media(max-width:640px){.MN-links{display:none;}}
 
+/* MASTER FOOTER */
+
+/* MASTER FOOTER */
+.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
+.MF-center{display:flex;gap:0;align-items:center;}
+.MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
+.MF-center a:hover{color:#9999b8;}
+.MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
+.MF-right a{color:#5a5a7a;text-decoration:none;}
+.MF-right a:hover{color:#00d4ff;}
+body{padding-bottom:42px !important;}
+
 </style>
 </head>
 <body class="en">
@@ -307,7 +320,7 @@ body.mn span[data-lang="mn"]{display:inline;}
     </div>
     <div class="disclaimer"><span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span><span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан баталгаажуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -321,7 +334,7 @@ body.mn span[data-lang="mn"]{display:inline;}
     <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
     <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — selected small-prime subset (zeros3)</span><span data-li="mn">Сонгосон жижиг прайм дэд олонлог дахь илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -341,7 +354,7 @@ body.mn span[data-lang="mn"]{display:inline;}
     <div class="section-label" style="margin-top:2rem;"><span data-li="en">Full prime data table (zeros3)</span><span data-li="mn">Бүх прайм өгөгдлийн хүснэгт</span></div>
     <table class="data-table"><thead><tr><th>p</th><th>log p</th><th>B(p)</th><th>A(p) obs.</th><th>R(p)</th></tr></thead><tbody id="prime-table"></tbody></table>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -572,7 +585,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
 
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -616,7 +629,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -932,7 +945,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <span data-lang="mn">Риманы таамаглал 167 жил нээлттэй байна. Энэ зам урт аялалыг дүрслэнэ — гэхдээ алхам бүр чухал.</span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -1034,7 +1047,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </a>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -1088,7 +1101,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </div>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -1100,7 +1113,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <h2><span data-lang="en">Questions & Answers</span><span data-lang="mn">Асуулт & Хариулт</span></h2>
     <div style="display:flex;flex-direction:column;gap:1rem;" id="faq-list"></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -1163,7 +1176,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <span data-lang="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан баталгаажуулалт хэвээр шаардлагатай.</span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -1247,7 +1260,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       </div>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -1312,7 +1325,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
     <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 <div class="page" id="page-about">
@@ -1351,7 +1364,7 @@ https://doi.org/10.5281/zenodo.20077673</pre>
       <span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан баталгаажуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span>
     </div>
   </div>
-  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
+  
 </div>
 </div>
 
@@ -1562,5 +1575,16 @@ function subscribeNL() {
 const saved=localStorage.getItem('lang');
 if(saved)setLang(saved);
 </script>
+<footer class="MF">
+<span class="MF-left"><span data-li="en">Not a proof of RH</span><span data-li="mn">RH-н нотолгоо биш</span></span>
+<div class="MF-center">
+  <a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+  <a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
+  <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+</div>
+<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a></span>
+</footer>
 </body>
 </html>

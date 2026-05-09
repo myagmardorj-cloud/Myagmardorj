@@ -99,6 +99,19 @@ body.en span[data-lang="en"]{display:inline;}body.mn span[data-lang="mn"]{displa
 }
 
 body{padding-top:52px;}
+/* MASTER FOOTER */
+
+/* MASTER FOOTER */
+.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
+.MF-center{display:flex;gap:0;align-items:center;}
+.MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
+.MF-center a:hover{color:#9999b8;}
+.MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
+.MF-right a{color:#5a5a7a;text-decoration:none;}
+.MF-right a:hover{color:#00d4ff;}
+body{padding-bottom:42px !important;}
+
 </style>
 </head>
 <body>
@@ -250,11 +263,7 @@ body{padding-top:52px;}
 
 </div>
 
-<footer style="border-top:1px solid rgba(255,255,255,.06);padding:2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.75rem;color:#5a5a7a;font-family:'Plus Jakarta Sans',sans-serif;">
-<span>Myagmardorj Namnansuren · Mongolia</span>
-<span style="text-align:center;color:#444455;font-style:italic;">This project presents exploratory computational observations.<br>No proof of the Riemann Hypothesis is claimed.</span>
-<span>v1.0.0-experimental · May 2026 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI archived</a></span>
-</footer>
+
 <script>
 function setLang(lang){
   document.body.className = lang;
@@ -313,5 +322,16 @@ function setLang(l){
 (function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
 
 </script>
+<footer class="MF">
+<span class="MF-left"><span data-li="en">Not a proof of RH</span><span data-li="mn">RH-н нотолгоо биш</span></span>
+<div class="MF-center">
+  <a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+  <a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
+  <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+</div>
+<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a></span>
+</footer>
 </body>
 </html>

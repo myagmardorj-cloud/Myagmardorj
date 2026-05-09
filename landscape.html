@@ -194,6 +194,19 @@ body.en span[data-lang="en"]{display:inline;}
 body.mn span[data-lang="mn"]{display:inline;}
 @media(max-width:640px){.MN-links{display:none;}}
 
+/* MASTER FOOTER */
+
+/* MASTER FOOTER */
+.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
+.MF-center{display:flex;gap:0;align-items:center;}
+.MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
+.MF-center a:hover{color:#9999b8;}
+.MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
+.MF-right a{color:#5a5a7a;text-decoration:none;}
+.MF-right a:hover{color:#00d4ff;}
+body{padding-bottom:42px !important;}
+
 </style>
 </head>
 <body class="mn">
@@ -372,11 +385,7 @@ body.mn span[data-lang="mn"]{display:inline;}
     <div class="quote-src">clay.math.org · arxiv.org · wikipedia.org · 2026</div>
   </div>
 
-  <footer>
-    <span>Myagmardorj Namnansuren · Mongolia · 2026</span>
-    <span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span>
-    <span>DOI: 10.5281/zenodo.20077673</span>
-  </footer>
+  
 </div>
 
 <script>
@@ -526,5 +535,16 @@ function setLang(lang) {
 const saved = localStorage.getItem('lang');
 if (saved) setLang(saved); else setLang('mn');
 </script>
+<footer class="MF">
+<span class="MF-left"><span data-li="en">Not a proof of RH</span><span data-li="mn">RH-н нотолгоо биш</span></span>
+<div class="MF-center">
+  <a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+  <a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a>
+  <a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+</div>
+<span class="MF-right">v1.0.0 · <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a></span>
+</footer>
 </body>
 </html>
