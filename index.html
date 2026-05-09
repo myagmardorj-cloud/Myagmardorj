@@ -215,20 +215,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 <nav>
   <span class="nav-logo" onclick="showPage('home')">research.nexcore.ltd</span>
   <ul class="nav-links">
-    <li><a href="intro.html" style="color:var(--gold);border-color:rgba(240,180,41,.2);background:rgba(240,180,41,.06);border-radius:8px;"><span data-li="en">✨ Intro</span><span data-li="mn">✨ Танилцуулга</span></a></li>
-    <li><a href="landscape.html" style="color:var(--purple, #a855f7);border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06);border-radius:8px;"><span data-li="en">🗺 Landscape</span><span data-li="mn">🗺 Газрын зураг</span></a></li>
     <li><a onclick="showPage('home')" id="nav-home" class="active"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a></li>
-    <li><a onclick="showPage('charts')" id="nav-charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a></li>
-    <li><a onclick="showPage('calculator')" id="nav-calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a></li>
-    <li><a onclick="showPage('papers')" id="nav-papers"><span data-li="en">Papers</span><span data-li="mn">Баримтууд</span></a></li>
     <li><a onclick="showPage('methods')" id="nav-methods"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a></li>
-    <li><a onclick="showPage('roadmap')" id="nav-roadmap"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a></li>
+    <li><a onclick="showPage('nulltests')" id="nav-nulltests"><span data-li="en">Controls</span><span data-li="mn">Хяналт</span></a></li>
     <li><a onclick="showPage('data')" id="nav-data"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a></li>
-    <li><a onclick="showPage('updates')" id="nav-updates"><span data-li="en">Updates</span><span data-li="mn">Шинэчлэл</span></a></li>
-    <li><a onclick="showPage('faq')" id="nav-faq"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a></li>
-    <li><a onclick="showPage('nulltests')" id="nav-nulltests"><span data-li="en">Null Tests</span><span data-li="mn">Null Тест</span></a></li>
-    <li><a onclick="showPage('discussion')" id="nav-discussion"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a></li>
-    <li><a onclick="showPage('livestats')" id="nav-livestats"><span data-li="en">Stats</span><span data-li="mn">Статистик</span></a></li>
+    <li><a onclick="showPage('papers')" id="nav-papers"><span data-li="en">References</span><span data-li="mn">Лавлагаа</span></a></li>
     <li><a onclick="showPage('about')" id="nav-about"><span data-li="en">About</span><span data-li="mn">Тухай</span></a></li>
     <li><a href="verify.html" style="background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;color:var(--green) !important;"><span data-li="en">⚗️ Verify</span><span data-li="mn">⚗️ Баталгаажуулах</span></a></li>
   </ul>
@@ -258,6 +249,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
       <div class="stat-card"><div class="ds">zeros3 · ~10¹²</div><span class="rv" style="font-size:1.3rem;font-weight:600;color:var(--text);">max observed<br>r ≈ 0.9992</span><div class="pv">p = 2.64×10⁻¹⁵</div><div class="badge">High-T block</div></div>
       <div class="stat-card"><div class="ds">zeros4 · ~10¹³</div><span class="rv">0.9421</span><div class="pv">p = 5.0×10⁻⁶</div><div class="badge">High-T block</div></div>
     </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.8rem 1.5rem;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);line-height:1.8;"><span style="color:var(--cyan);">version</span> v1.0.0-experimental &nbsp;·&nbsp; <span style="color:var(--cyan);">data</span> Odlyzko zeros2/3/4 &nbsp;·&nbsp; <span style="color:var(--cyan);">norm</span> high-T unfolded &nbsp;·&nbsp; <span style="color:var(--cyan);">primes</span> p=2..37 (n=12) &nbsp;·&nbsp; <span style="color:var(--cyan);">DOI</span> 10.5281/zenodo.20077673</div>
     <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolny–Keating Amplitude Law</span><span data-li="mn">Богомолны–Китингийн Амплитудын Хууль</span></div>A(p)  ∼  C · (log p)² / p</div>
     <div class="findings">
       <div class="finding pos"><span class="fi">✓</span><div class="ft"><span data-lang="en"><strong>Prime-indexed excess observed:</strong> prime-indexed excess patterns across tested prime ranges show A(p) > 0 across all three datasets. Finite-window and multiple-testing effects need further investigation.</span><span data-lang="mn"><strong>Прайм-индекстэй илүүдэл ажиглагдсан:</strong> 12/12 прайм позиц гурван датасет дээр A(p) > 0. Finite-window болон олон тестийн нөлөөг нэмж шалгах шаардлагатай.</span></div></div>
@@ -332,6 +325,38 @@ footer{border-top:1px solid var(--border);padding:2.5rem 0;margin-top:5rem;displ
 <!-- PAPERS -->
 <div class="page" id="page-papers">
 <div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Mathematical References</span><span data-li="mn">Математикийн лавлагаа</span></div>
+    <h2><span data-lang="en">Key Literature</span><span data-lang="mn">Гол уран зохиол</span></h2>
+    <p class="prose" style="margin-bottom:2rem;color:var(--sub);font-size:.9rem;"><span data-lang="en">This work builds on established results in random matrix theory and analytic number theory.</span></p>
+    <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:3rem;">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[1] Montgomery 1973</div>
+        <div style="font-size:.9rem;color:var(--text);">H. L. Montgomery — <em>The pair correlation of zeros of the zeta function</em></div>
+        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Proc. Sympos. Pure Math. 24 — GUE connection established</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[2] Bogomolny & Keating 1996</div>
+        <div style="font-size:.9rem;color:var(--text);">E. B. Bogomolny & J. P. Keating — <em>Random matrix theory and the Riemann zeros I & II</em></div>
+        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Nonlinearity 8–9 — Prime-dependent corrections predicted</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[3] Odlyzko 1992</div>
+        <div style="font-size:.9rem;color:var(--text);">A. M. Odlyzko — <em>The 10²⁰-th zero of the Riemann zeta function</em></div>
+        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;"><a href="http://www-users.cse.umn.edu/~odlyzko/zeta_tables/" style="color:var(--cyan);">www-users.cse.umn.edu/~odlyzko/zeta_tables/</a> — Source of zero data used in this study</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[4] Rudnick & Sarnak 1996</div>
+        <div style="font-size:.9rem;color:var(--text);">Z. Rudnick & P. Sarnak — <em>Zeros of principal L-functions and random matrix theory</em></div>
+        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Duke Math. J. 81(2) — n-point correlations and GUE</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.5rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);margin-bottom:.3rem;">[5] Hiary & Odlyzko 2012</div>
+        <div style="font-size:.9rem;color:var(--text);">G. A. Hiary & A. M. Odlyzko — <em>The zeta function on the critical line</em></div>
+        <div style="font-size:.8rem;color:var(--sub);margin-top:.2rem;">Math. Comp. 81 · arXiv:1105.4312 — High-T zero computations</div>
+      </div>
+    </div>
+  </div>
   <div class="section">
     <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Судалгааны баримтууд</span></div>
     <h2><span data-lang="en">Code, Notes & Paper</span><span data-lang="mn">Код, Тэмдэглэл & Өгүүлэл</span></h2>
@@ -492,7 +517,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <span class="file-icon">🔍</span>
         <div class="file-meta">
           <span class="file-name">notes/failure_analysis.md</span>
-          <div class="file-desc"><span data-lang="en">Why the initial BK amplitude test failed — and how the correct normalization was discovered.</span><span data-lang="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
+          <div class="file-desc"><span data-lang="en">Why the initial BK amplitude test showed weak results — and how switching to high-T unfolding changed the observed correlation.</span><span data-lang="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
           <div class="file-tags"><span class="file-tag">Analysis</span><span class="file-tag">Normalization</span><span class="file-tag">Debugging</span></div>
         </div>
         <span class="file-toggle">▼</span>
