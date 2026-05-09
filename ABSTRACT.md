@@ -1,7 +1,6 @@
 # Abstract
 
-## Experimental Study of Prime-Correlated Residual Structure
-## in High Riemann Zero Statistics
+## Experimental Study of Prime-Correlated Residual Structure in High Riemann Zero Statistics
 
 **Author:** Myagmardorj Namnansuren, Nexcore LTD, Ulaanbaatar, Mongolia
 **Status:** Exploratory experimental mathematics — not a confirmed result
@@ -19,11 +18,10 @@ the Bogomolny-Keating (BK) predictor B(p) = (log p)^2 / p.
 Empirical agreement with BK-type amplitude scaling is observed
 after high-T normalization (tau_p = log(p)/log(T/2pi)).
 
-Pearson r reaches 0.9992 on the zeros3 block (p = 2.64e-15).
-Null controls (shuffled zeros, GUE surrogates) yield r ~ 0 under
-the same procedure.
+Pearson r reaches 0.9992 on the zeros3 block.
+Null controls (shuffled zeros, GUE surrogates) yield r ~ 0.
 
-**This is a computational observation, not a confirmed theorem.**
+This is a computational observation, not a confirmed theorem.
 Fitting bias, normalization sensitivity, autocorrelation, multiple
 testing, and finite-window effects have not been fully ruled out.
 Independent replication and peer review are required.
@@ -31,5 +29,4 @@ Independent replication and peer review are required.
 ---
 
 **Keywords:** Riemann zeros, prime number theory, spacing statistics,
-Bogomolny-Keating corrections, experimental mathematics,
-numerical investigation
+Bogomolny-Keating corrections, experimental mathematics
