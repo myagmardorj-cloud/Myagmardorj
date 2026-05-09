@@ -71,3 +71,40 @@ All results are exploratory computational observations.
 Independent replication by Steven Clark (MSE, May 2026) is consistent  
 with the original r = 0.9992 claim using high-T zeros.
 
+
+---
+
+## Bootstrap Robustness Test — zeros_ht.txt
+
+**Date:** May 2026  
+**Script:** scripts/bootstrap_analysis.py  
+**File:** zeros_ht.txt (Odlyzko 10¹² block, N=10,000)  
+**Iterations:** 1000 × random subset (N=5,000)
+
+**Results:**
+```
+Mean r  =  0.0899
+Std  r  =  0.2978
+95% CI  = [-0.4930,  0.6485]
+r > 0.8 =  4 / 1000  (0.4%)
+r > 0.5 = 92 / 1000  (9.2%)
+r < 0   = 390 / 1000 (39.0%)
+```
+
+**Verdict:** UNSTABLE — high variance across subsets
+
+**Interpretation:**  
+The full-dataset r = 0.5113 is not stable under subsampling.  
+39% of random subsets produce negative r.  
+This is consistent with the signal being a statistical artifact  
+rather than a genuine structural feature of the zero distribution.
+
+**Implication:**  
+Combined with the replication failure (r = 0.51, not r = 0.9992),  
+the bootstrap instability significantly weakens confidence in the  
+original result. The original r = 0.9992 may reflect:
+1. Use of a specific zero file that has not been identified
+2. Post-hoc normalization tuning (selection bias)
+3. A genuine signal in a specific high-T dataset not yet tested
+
+**Status:** Under investigation. Independent replication required.
