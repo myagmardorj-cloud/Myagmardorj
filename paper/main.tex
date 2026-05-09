@@ -72,6 +72,7 @@ Dataset & Height $T$ & $N$ zeros & Note \\
 \texttt{zeros2} & $\approx 74{,}920$ & 100,000 & Low height \\
 \texttt{zeros3} & $\sim 10^{12}$     &  10,000 & High-T block \\
 \texttt{zeros4} & $\sim 10^{13}$     &  10,000 & High-T block \\
+\texttt{zeros6} & $\approx 600{,}000$ & 2,001,052 & Large low-T block \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -107,9 +108,11 @@ across the first 12 primes ($p = 2,3,\ldots,37$).
 \toprule
 Dataset & Height & Pearson $r$ & Naive $p$-value$^\dagger$ \\
 \midrule
-\texttt{zeros2} & $\approx 74{,}920$ & 0.9783 & $3.82\times10^{-186}$ \\
-\texttt{zeros3} & $\sim 10^{12}$     & 0.9992 & $2.64\times10^{-15}$  \\
-\texttt{zeros4} & $\sim 10^{13}$     & 0.9421 & $5.0\times10^{-6}$    \\
+\texttt{zeros1} & $\approx 40{,}000$ & 0.6847 & $1.40\times10^{-2}$ \\
+\texttt{zeros3/ht} & $\sim 10^{12}$   & 0.5113 & $8.93\times10^{-2}$ \\
+\texttt{zeros6} & $\approx 600{,}000$ & 0.4509 & $1.41\times10^{-1}$ \\
+
+
 \bottomrule
 \end{tabular}
 
@@ -137,6 +140,31 @@ Window variation      & $r$ stable              & Not Fourier leakage \\
 \end{tabular}
 \end{center}
 
+
+\subsection{Bootstrap Robustness}
+
+We performed 1000-iteration bootstrap subsampling (subset size $= N/2$)
+on each dataset. Results are summarized below:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrrl}
+\toprule
+Dataset & $N$ & Mean $r$ & Std $r$ & 95\% CI & Verdict \\
+\midrule
+\texttt{zeros\_ht} & 10,000  & 0.09 & 0.30 & $[-0.49, 0.65]$ & UNSTABLE \\
+\texttt{zeros1}   & 100,000 & 0.36 & 0.26 & $[-0.27, 0.75]$ & UNSTABLE \\
+\texttt{zeros6}   & 2,001,052 & 0.68 & 0.09 & $[0.49, 0.84]$ & MODERATE \\
+\bottomrule
+\end{tabular}
+\caption{Bootstrap stability across datasets. Signal stabilizes with larger $N$.}
+\end{table}
+
+\textbf{Key finding:} Signal consistency increases with $N$.
+At $N = 2 \times 10^6$, $r > 0.5$ in 97\% of bootstrap subsets
+and $r < 0$ in 0\% of subsets (MODERATE stability).
+At $N = 10^4$, the signal is UNSTABLE.
+
 \section{Limitations}
 
 \begin{enumerate}[label=\arabic*.]
@@ -145,7 +173,7 @@ Window variation      & $r$ stable              & Not Fourier leakage \\
 \item \textbf{Autocorrelation.} Covariances $C(p), C(p')$ for nearby primes are not independent; effective DOF $<12$.
 \item \textbf{Multiple testing.} 12 lags, no Bonferroni/FDR correction.
 \item \textbf{Finite window.} Spectral leakage from the finite zero block not fully excluded.
-\item \textbf{Unknown asymptotics.} Behavior of $r$ as $N \to \infty$ unknown; tested only up to $N=10{,}000$.
+\item \textbf{Scale dependence.} $r$ varies across datasets: 0.68 ($N=100$K), 0.51 ($N=10$K), 0.45 ($N=2$M). No convergence to $r=0.9992$ observed. Bootstrap stability improves with $N$ but full-dataset $r$ does not.
 \item \textbf{No theoretical derivation.} $C \approx 16.5$ has no analytic explanation.
 \item \textbf{Independent replication failed.} An attempt to reproduce $r = 0.9992$ on the Odlyzko $10^{12}$ zero block (\texttt{zeros\_ht.txt}, $N=10{,}000$, $T \approx 2.68 \times 10^{11}$) yielded $r = 0.51$, not $r = 0.9992$. The exact dataset and normalization parameters that produced the original result have not been fully documented. This is a critical unresolved issue.
 \end{enumerate}
@@ -166,7 +194,7 @@ Window variation      & $r$ stable              & Not Fourier leakage \\
 
 We observe prime-indexed excess in Riemann zero spacing covariance,
 empirically consistent with the Bogomolny--Keating prediction.
-The signal passes several null controls across three independent datasets.
+Bootstrap analysis shows the signal is UNSTABLE at $N=10^4$ and MODERATE at $N=2\times10^6$.
 This is \textbf{not} a proof of the Riemann Hypothesis and
 \textbf{not} a confirmed theorem.
 It is a computational observation deserving further controlled investigation.
