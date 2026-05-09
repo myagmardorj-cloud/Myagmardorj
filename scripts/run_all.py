@@ -63,10 +63,10 @@ def main():
 
     results = {}
     controls_dir = os.path.join(
-        os.path.dirname(__file__) or ".",
-        "..", "zeta-zero-prime-frequency-analysis", "controls"
+        os.path.dirname(os.path.abspath(__file__)),
+        "..", "controls"
     )
-    scripts_dir = os.path.dirname(__file__) or "."
+    scripts_dir = os.path.dirname(os.path.abspath(__file__))
 
     # 1. Main analysis
     results["main"] = run(

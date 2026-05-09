@@ -9,6 +9,22 @@ the signal is in the ordering — not a marginal artifact.
 """
 
 import numpy as np
+
+def _safe_load(path):
+    """Load Odlyzko zero file, skipping non-numeric header lines."""
+    vals = []
+    with open(path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                vals.append(float(line))
+            except ValueError:
+                continue
+    if not vals:
+        raise ValueError(f"No numeric data in {path}")
+    return __import__('numpy').array(vals)
 from scipy.stats import pearsonr
 import matplotlib
 matplotlib.use('Agg')
@@ -21,7 +37,7 @@ PRIMES = [2,3,5,7,11,13,17,19,23,29,31,37]
 # ────────────────────────────────────────────────────
 
 def load_zeros(path):
-    return np.loadtxt(path)
+    return _safe_load(path)
 
 def spacing_covariance(gamma, prime_lags):
     """Compute C(p) for each prime lag p."""

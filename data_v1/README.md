@@ -87,26 +87,28 @@ Any extension (e.g., adding p=41,43,47) constitutes a v1.1+ analysis.
 
 ### zeros3 main result
 
-| p  | A(p) observed | B(p) predicted | R(p) = A/B |
-|----|--------------|---------------|-----------|
-|  2 | 0.4412       | 0.4805        | ~16.5      |
-|  3 | 0.4435       | 0.4028        | ~16.5      |
-|  5 | 0.3394       | 0.2048        | ~16.5      |
-|  7 | 0.3271       | 0.1412        | ~16.5      |
-| 11 | 0.3349       | 0.0857        | ~16.5      |
-| 13 | 0.3280       | 0.0737        | ~16.5      |
-| 17 | 0.3152       | 0.0571        | ~16.5      |
-| 19 | 0.3091       | 0.0516        | ~16.5      |
-| 23 | 0.3012       | 0.0430        | ~16.5      |
-| 29 | 0.2950       | 0.0345        | ~16.5      |
-| 31 | 0.2932       | 0.0326        | ~16.5      |
-| 37 | 0.2880       | 0.0277        | ~16.5      |
+| p  | B(p) = (log p)²/p | Note |
+|----|-------------------|------|
+|  2 | 0.2402             | run analyze.py for A(p) |
+|  3 | 0.4023             | run analyze.py for A(p) |
+|  5 | 0.5181             | run analyze.py for A(p) |
+|  7 | 0.5409             | run analyze.py for A(p) |
+| 11 | 0.5227             | run analyze.py for A(p) |
+| 13 | 0.5061             | run analyze.py for A(p) |
+| 17 | 0.4722             | run analyze.py for A(p) |
+| 19 | 0.4563             | run analyze.py for A(p) |
+| 23 | 0.4274             | run analyze.py for A(p) |
+| 29 | 0.3910             | run analyze.py for A(p) |
+| 31 | 0.3804             | run analyze.py for A(p) |
+| 37 | 0.3524             | run analyze.py for A(p) |
 
-**Pearson r = 0.9992** (zeros3, naive p = 2.64×10⁻¹⁵, uncorrected)
+**A(p) values depend on the dataset and must be obtained by running:**
+```bash
+python scripts/analyze.py zeros3.txt
+```
 
-> These values are from the v0.3 run. Replace with values from
-> your verified run of `analyze.py` before freezing v1.0.
-
+**R(p) = A(p)/B(p)** was approximately constant ≈ 16.5 on zeros3 in v1 runs.
+Exact value varies with dataset and normalization. No theoretical derivation exists.
 ---
 
 ## Freeze Policy

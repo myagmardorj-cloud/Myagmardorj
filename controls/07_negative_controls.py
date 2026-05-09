@@ -22,6 +22,22 @@ Independent replication required.
 """
 
 import numpy as np
+
+def _safe_load(path):
+    """Load Odlyzko zero file, skipping non-numeric header lines."""
+    vals = []
+    with open(path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                vals.append(float(line))
+            except ValueError:
+                continue
+    if not vals:
+        raise ValueError(f"No numeric data in {path}")
+    return __import__('numpy').array(vals)
 from scipy.stats import pearsonr
 import matplotlib
 matplotlib.use('Agg')
@@ -42,7 +58,7 @@ rng = np.random.default_rng(SEED)
 def load_zeros(path):
     for p in [path, "zeros3.txt", "zeros2.txt", "zeros4.txt"]:
         if p and os.path.exists(p):
-            g = np.loadtxt(p)
+            g = _safe_load(p)
             print(f"  Loaded {len(g):,} zeros from {p}")
             return g
     print("  [INFO] No zero file found — using synthetic GUE spacing.")
