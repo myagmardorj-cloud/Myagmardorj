@@ -443,6 +443,7 @@ clayProbs.forEach(p => {
       <span data-lang="mn">${p.desc_mn}</span>
     </div>
     <div class="prob-tools">${p.tools}</div>
+    ${p.our ? '<span class="our-badge">← Computational Observation</span>' : ''}
   `;
   clayGrid.appendChild(div);
 });
