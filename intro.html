@@ -158,6 +158,12 @@ body{padding-top:54px !important;}
 
 .MN-dd a.MN-dd-active{color:#00d4ff !important;background:rgba(0,212,255,.08);}
 .MN-more button.MN-has-active{color:#00d4ff;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.15);}
+
+nav.MN{position:fixed;top:0;left:0;right:0;z-index:100;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;}
+.MN-links{display:flex;align-items:center;gap:.3rem;flex-wrap:nowrap;white-space:nowrap;}
+.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:#9999b8;text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
 </style>
 </head>
 <body class="en">
@@ -470,11 +476,7 @@ document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))M
 </script>
 
 
-<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
-<span>Computational observations only — not a theorem or proof of RH.</span>
-<div style="display:flex;"><a href="/paper1/" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="/verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="/intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="/landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a><a href="/paper1/formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a></div>
-<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
-</footer>
+
 <script>
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
 function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
@@ -487,5 +489,15 @@ function setLang(l){
 }
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+<footer class="MN-foot">
+<span>Computational observations only — not a theorem or proof of RH.</span>
+<div>
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+<a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+<a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+</div>
+<span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
+</footer>
 </body>
 </html>
