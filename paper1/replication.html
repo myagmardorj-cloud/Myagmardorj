@@ -43,7 +43,14 @@ pre{background:var(--s2);border:1px solid var(--border);border-radius:8px;paddin
 .badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:4px;display:inline-block;margin-right:.4rem;}
 .badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.2);}
 .badge-gold{background:rgba(240,180,41,.1);color:var(--gold);border:1px solid rgba(240,180,41,.2);}
-.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;font-size:.88rem;color:var(--sub);}</style>
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;font-size:.88rem;color:var(--sub);}.MN-more{position:relative;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub,#9999b8);background:none;border:none;padding:.28rem .55rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.MN-more>button:hover{color:var(--text,#eeeef8);background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
+</style>
 </head>
 <body>
 <nav class="MN">
@@ -51,20 +58,18 @@ pre{background:var(--s2);border:1px solid var(--border);border-radius:8px;paddin
 <div class="MN-links">
 <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
-<div class="MN-more">
-<button type="button" onclick="this.nextElementSibling.classList.toggle('open')"><span data-li="en">More</span><span data-li="mn">Бусад</span> ▼</button>
+<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
 <div class="MN-dd">
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
-<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
 <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
 <a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
 <a href="/paper1/discussion.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
 <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-</div>
-</div>
+</div></span>
 <div style="display:flex;margin-left:.4rem;">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
-<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
 </div>
 </div>
 </nav>
@@ -147,7 +152,7 @@ zeros6    0.4509    MODERATE    preliminary</pre>
 <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
 <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
 </div>
-<span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
+<span><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
 </footer>
 <script>
 function setLang(l){
