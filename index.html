@@ -1380,8 +1380,9 @@ const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{family:'JetBrains
 const PC={responsive:true,displayModeBar:false};
 let chartsInited=false,calcInited=false;
 
+var chartsInited=window._chartsInited||false;
 function initCharts(){
-  if(chartsInited)return;chartsInited=true;
+  if(window._chartsInited)return;window._chartsInited=true;
   Plotly.newPlot('chart-scatter',[
     {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros3',type:'scatter'},
     {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',line:{color:'#4a9eff',dash:'dash',width:1},name:'BK prediction',type:'scatter'}
@@ -1391,7 +1392,7 @@ function initCharts(){
 }
 
 function initCalc(){
-  if(calcInited)return;calcInited=true;
+  if(window._calcInited)return;window._calcInited=true;
   const btns=document.getElementById('prime-buttons');
   primes.forEach(p=>{
     const b=document.createElement('button');
