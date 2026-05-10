@@ -3,50 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><span data-lang="en">Discussion</span><span data-lang="mn">Хэлэлцүүлэг</span> · research.nexcore.ltd</title>
+<title>Discussion · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/paper1/assets/main.css">
 <style>
-nav.MN{position:fixed;top:0;left:0;right:0;z-index:100;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
-.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;}
-.MN-links{display:flex;align-items:center;gap:.3rem;flex-wrap:nowrap;white-space:nowrap;}
-.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:#9999b8;text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
-.MN-links a:hover,.MN-links a.MN-cur{color:#eeeef8;background:rgba(255,255,255,.07);}
-.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;border:none;cursor:pointer;transition:all .2s;}
+:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
+nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.MN-links{display:flex;align-items:center;gap:.2rem;flex-shrink:0;}
+.MN-links>a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .6rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links>a:hover,.MN-links>a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-more{position:relative;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);background:none;border:none;padding:.28rem .6rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.MN-more>button:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:var(--sub);text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:var(--text);background:rgba(255,255,255,.06);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:var(--muted);cursor:pointer;transition:all .2s;}
 .MN-lb:first-child{border-radius:4px 0 0 4px;}
 .MN-lb:last-child{border-radius:0 4px 4px 0;}
-.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;}
-.MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:#5a5a7a;border:1px solid rgba(255,255,255,.12);}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
-footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:100;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
-.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;transition:color .2s;}
-.MN-foot a:hover{color:#00d4ff;}
-body{padding-bottom:48px;}
+footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);}
+.MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
+.MN-foot a:hover{color:var(--cyan);}
+.container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:-.02em;}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.8rem;overflow:hidden;}
+.faq-q{padding:1rem 1.2rem;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--s1);transition:background .2s;}
+.faq-q:hover{background:var(--s2);}
+.faq-arrow{color:var(--muted);font-size:.8rem;flex-shrink:0;transition:transform .2s;}
+.faq-a{display:none;padding:1rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
+.faq-a.open{display:block;}
 </style>
 </head>
 <body>
 <nav class="MN">
 <a href="/index.html" class="MN-logo">Nexcore Research</a>
 <div class="MN-links">
-<a href="/paper1/" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-<a href="/paper1/formalism.html"><span data-li="en">Formal</span><span data-li="mn">Формал</span></a>
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+<div class="MN-more">
+<button onclick="this.nextElementSibling.classList.toggle('open')"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+<div class="MN-dd">
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
-<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a>
-<a href="/paper1/references.html"><span data-li="en">Refs</span><span data-li="mn">Эшлэл</span></a>
-<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
-<a href="/paper1/discussion.html"><span data-li="en">Discuss</span><span data-li="mn">Хэлэлц</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+<a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a>
+<a href="/paper1/discussion.html" class="MN-cur"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
 <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-<div style="display:flex;margin-left:.3rem;">
+</div>
+</div>
+<div style="display:flex;margin-left:.4rem;">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </div>
 </nav>
-<div style="padding-top:54px;position:relative;z-index:2;">
 <div class="container">
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin:2rem 0 1.5rem;letter-spacing:-.02em;"><span data-lang="en">Community Discussion</span><span data-lang="mn">Хамт олны хэлэлцүүлэг</span></h2>
+<div class="section-label"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></div>
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">Community Discussion</span><span data-li="mn">Нийгэмлэгийн хэлэлцүүлэг</span></div>
@@ -128,84 +148,28 @@ body{padding-bottom:48px;}
   
 </div>
 </div>
-
-<!-- LIVE STATS + NEWSLETTER PAGE -->
-<div class="page" id="page-livestats">
-<div class="container" style="padding-top:3rem;">
-  <div class="section">
-    <div class="section-label"><span data-li="en">Live Stats</span><span data-li="mn">Шууд Статистик</span></div>
-    <h2><span data-lang="en">Research Impact</span><span data-lang="mn">Судалгааны Нөлөөлөл</span></h2>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;">
-      <div class="stat-card">
-        <div class="ds">Zenodo Views</div>
-        <span class="rv" id="stat-views">—</span>
-        <div class="pv">zenodo.org</div>
-        <div class="badge" id="stat-views-badge">Loading...</div>
-      </div>
-      <div class="stat-card">
-        <div class="ds">Zenodo Downloads</div>
-        <span class="rv" id="stat-downloads">—</span>
-        <div class="pv">main.tex</div>
-        <div class="badge" id="stat-dl-badge">Loading...</div>
-      </div>
-      <div class="stat-card">
-        <div class="ds">Datasets tested</div>
-        <span class="rv">3</span>
-        <div class="pv">zeros1, zeros_ht, zeros6</div>
-        <div class="badge">Verified</div>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--green);">12/12</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Primes positive</span><span data-lang="mn">Эерэг прайм</span></div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45–0.68</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Best r value</span><span data-lang="mn">Хамгийн сайн r</span></div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">~3</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">C constant</span><span data-lang="mn">C константа</span></div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text);">167</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Years RH open</span><span data-lang="mn">RH нээлттэй жил</span></div>
-      </div>
-    </div>
-
-    <div class="section-label"><span data-li="en">Newsletter</span><span data-li="mn">Мэдэгдэл</span></div>
-    <h3 style="color:var(--text);font-size:1.2rem;margin-bottom:.8rem;"><span data-lang="en">Get notified of new results</span><span data-lang="mn">Шинэ үр дүний мэдэгдэл авах</span></h3>
-    <p style="font-size:.88rem;color:var(--sub);margin-bottom:1.5rem;">
-      <span data-lang="en">When new zero datasets are tested or significant findings are published, we'll send a brief update.</span>
-      <span data-lang="mn">Шинэ тэгийн датасет тест хийгдэх эсвэл чухал олдвор нийтлэгдэх үед товч шинэчлэл илгээнэ.</span>
-    </p>
-    <div style="display:flex;gap:.8rem;max-width:480px;">
-      <input type="email" id="nl-email" placeholder="you@example.com" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;padding:.7rem 1rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(0,212,255,.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.06)'">
-      <button onclick="subscribeNL()" style="background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;padding:.7rem 1.4rem;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-        <span data-lang="en">Subscribe</span><span data-lang="mn">Бүртгүүлэх</span>
-      </button>
-    </div>
-    <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
-  </div>
-  
-</div></div>
-</div>
-
-<script src="/paper1/assets/lang.js"></script>
-<script src="/paper1/assets/nav.js"></script>
-<script src="/paper1/assets/shared.js"></script>
 <footer class="MN-foot">
-<span>Computational observations only — not a theorem or proof of RH.</span>
+<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
 <div>
 <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
-<a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
 <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
 </div>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
 </footer>
+<script>
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+});
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
 </body>
 </html>

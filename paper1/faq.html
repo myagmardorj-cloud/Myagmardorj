@@ -3,284 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><span data-lang="en">FAQ</span><span data-lang="mn">Асуулт & Хариулт</span> · research.nexcore.ltd</title>
+<title>FAQ · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/paper1/assets/main.css">
 <style>
-nav.MN{position:fixed;top:0;left:0;right:0;z-index:100;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
-.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;}
-.MN-links{display:flex;align-items:center;gap:.3rem;flex-wrap:nowrap;white-space:nowrap;}
-.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:#9999b8;text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
-.MN-links a:hover,.MN-links a.MN-cur{color:#eeeef8;background:rgba(255,255,255,.07);}
-.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;border:none;cursor:pointer;transition:all .2s;}
+:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
+nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.MN-links{display:flex;align-items:center;gap:.2rem;flex-shrink:0;}
+.MN-links>a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .6rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links>a:hover,.MN-links>a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-more{position:relative;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);background:none;border:none;padding:.28rem .6rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.MN-more>button:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:var(--sub);text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:var(--text);background:rgba(255,255,255,.06);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:var(--muted);cursor:pointer;transition:all .2s;}
 .MN-lb:first-child{border-radius:4px 0 0 4px;}
 .MN-lb:last-child{border-radius:0 4px 4px 0;}
-.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;}
-.MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:#5a5a7a;border:1px solid rgba(255,255,255,.12);}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
-footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:100;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
-.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;transition:color .2s;}
-.MN-foot a:hover{color:#00d4ff;}
-body{padding-bottom:48px;}
+footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);}
+.MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
+.MN-foot a:hover{color:var(--cyan);}
+.container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:-.02em;}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.8rem;overflow:hidden;}
+.faq-q{padding:1rem 1.2rem;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--s1);transition:background .2s;}
+.faq-q:hover{background:var(--s2);}
+.faq-arrow{color:var(--muted);font-size:.8rem;flex-shrink:0;transition:transform .2s;}
+.faq-a{display:none;padding:1rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
+.faq-a.open{display:block;}
 </style>
 </head>
 <body>
 <nav class="MN">
 <a href="/index.html" class="MN-logo">Nexcore Research</a>
 <div class="MN-links">
-<a href="/paper1/" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-<a href="/paper1/formalism.html"><span data-li="en">Formal</span><span data-li="mn">Формал</span></a>
-<a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
-<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a>
-<a href="/paper1/references.html"><span data-li="en">Refs</span><span data-li="mn">Эшлэл</span></a>
-<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
-<a href="/paper1/discussion.html"><span data-li="en">Discuss</span><span data-li="mn">Хэлэлц</span></a>
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+<div class="MN-more">
+<button onclick="this.nextElementSibling.classList.toggle('open')"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+<div class="MN-dd">
+<a href="/paper1/faq.html" class="MN-cur"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+<a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a>
+<a href="/paper1/discussion.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
 <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-<div style="display:flex;margin-left:.3rem;">
+</div>
+</div>
+<div style="display:flex;margin-left:.4rem;">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </div>
 </nav>
-<div style="padding-top:54px;position:relative;z-index:2;">
 <div class="container">
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin:2rem 0 1.5rem;letter-spacing:-.02em;"><span data-lang="en">Frequently Asked Questions</span><span data-lang="mn">Түгээмэл асуултууд</span></h2>
-<div class="container" style="padding-top:3rem;">
-  <div class="section">
-    <div class="section-label"><span data-li="en">Frequently Asked Questions</span><span data-li="mn">Түгээмэл асуултууд</span></div>
-    <h2><span data-lang="en">Questions & Answers</span><span data-lang="mn">Асуулт & Хариулт</span></h2>
-    <div style="display:flex;flex-direction:column;gap:1rem;" id="faq-list"></div>
+<div class="section-label"><span data-li="en">FAQ</span><span data-li="mn">Асуулт & Хариулт</span></div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">Why are the r values (0.45–0.68) considered preliminary?</span>
+    <span data-li="mn">r утгууд (0.45–0.68) яагаад урьдчилсан үр дүн гэж тооцогдох вэ?</span>
+    <span class="faq-arrow">▾</span>
   </div>
-  
-</div>
-</div>
-
-<!-- NULL TESTS PAGE -->
-<div class="page" id="page-nulltests">
-<div class="container" style="padding-top:3rem;">
-  <div class="section">
-    <div class="section-label"><span data-li="en">Null Tests</span><span data-li="mn">Null Тестүүд</span></div>
-    <h2><span data-lang="en">Control & Shuffled Zero Tests</span><span data-lang="mn">Хяналт & Холилдсон Тэгийн Тестүүд</span></h2>
-    <p class="prose" style="margin-bottom:2rem;">
-      <span data-lang="en">To assess whether the observed signal could be a statistical artifact, we ran control tests using shuffled zeros and random data.</span>
-      <span data-lang="mn">Дохио жинхэнэ бөгөөд статистикийн артефакт биш гэдгийг харьцуулахын тулд холилдсон тэгүүд болон санамсаргүй өгөгдөл дээр хяналтын тест хийсэн.</span>
-    </p>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
-      <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">REAL ZEROS</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.45–0.68</div>
-        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r range across datasets</span><span data-lang="mn">Датасет хоорондын Pearson r хүрээ</span></div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);margin-top:.6rem;">✅ prime-indexed excess patterns observed across tested ranges</div>
-      </div>
-      <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-radius:14px;padding:1.5rem;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">SHUFFLED ZEROS</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--sub);line-height:1;">~0.0</div>
-        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r on shuffled data (mean)</span><span data-lang="mn">Холилдсон өгөгдөл дээрх Pearson r (дундаж)</span></div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--red);margin-top:.6rem;">❌ No systematic signal</div>
-      </div>
-    </div>
-
-    <div class="section-label"><span data-li="en">Test methodology</span><span data-li="mn">Тестийн арга зүй</span></div>
-    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">Shuffle test:</span><span data-lang="mn">Shuffle тест:</span></strong>
-          <span data-lang="en">Random permutations of γₙ values → compute A(p) → Pearson r ≈ 0 across all shuffles. Confirms signal is in the ordering of zeros, not their marginal distribution.</span>
-          <span data-lang="mn">γₙ утгуудын санамсаргүй зөвшилд A(p) тооцоолно → Pearson r ≈ 0. Дохио нь тэгүүдийн дараалалд байгааг, тэдгээрийн маргинал тархалтад биш гэдгийг харуулна.</span>
-        </div>
-      </div>
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">GUE surrogate test:</span><span data-lang="mn">GUE суррогат тест:</span></strong>
-          <span data-lang="en">Random GUE eigenvalue spacings → no BK-type prime excess detected. The effect is specific to actual Riemann zeros.</span>
-          <span data-lang="mn">Санамсаргүй GUE эгэн утгын зайнуудад BK-төрлийн прайм илүүдэл илрэхгүй. Эффект нь яг Риман тэгүүдэд хамаарна.</span>
-        </div>
-      </div>
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">Non-prime lag control:</span><span data-lang="mn">Прайм биш лаг хяналт:</span></strong>
-          <span data-lang="en">Tested covariance at non-prime lags (composite numbers). Mean excess ≈ 0, confirming the signal is prime-specific.</span>
-          <span data-lang="mn">Прайм биш лаг (нийлмэл тоо) дээр ковариансыг тест хийсэн. Дундаж илүүдэл ≈ 0, дохио прайм-өвөрмөц гэдгийг баталж байна.</span>
-        </div>
-      </div>
-      <div class="finding pos"><span class="fi">✓</span>
-        <div class="ft"><strong><span data-lang="en">Cross-dataset consistency:</span><span data-lang="mn">Датасетүүд хоорондын тогтвортой байдал:</span></strong>
-          <span data-lang="en">Effect appears across zeros_ht, zeros1, zeros6 at very different heights. Bootstrap stability varies; zeros6 shows MODERATE stability only.</span>
-          <span data-lang="mn">Эффект нь zeros_ht, zeros1, zeros6 дээр өөр өндрүүдэд гарч байна. Bootstrap тогтвортой байдал хэлбэлздэг; zeros6 дунд зэргийн тогтвортой байдал харуулна.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="disclaimer">
-      <span data-lang="en">Null tests reduce the likelihood of false positives but do not prove the BK law. Independent replication is still needed.</span>
-      <span data-lang="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан давталтжуулалт хэвээр шаардлагатай.</span>
-    </div>
+  <div class="faq-a">
+    <span data-li="en"><strong>High correlation alone proves very little in mathematics.</strong> Many factors can artificially inflate correlation: (1) normalization artifact — the choice of τ_p = log(p)/log(T/2π) may be tuned, (2) overfitting — 12 data points is very few, (3) window bias — finite zero blocks introduce systematic errors, (4) hidden dependence — consecutive spacings are not independent, (5) finite-size effects — the signal may disappear with more data. A rigorous result requires exact definitions, synthetic controls, asymptotic predictions, and peer verification.</span>
+    <span data-li="mn"><strong>Өндөр корреляц математикт бараг юу ч батлахгүй.</strong> Олон зүйл корреляцийг хиймлээр өсгөдөг: (1) нормализацийн артефакт — τ_p сонголт тааруулагдсан байж болно, (2) overfitting — 12 өгөгдлийн цэг маш цөөн, (3) window bias — finite zero block системтэй алдаа оруулна, (4) далд хамаарал — дараалсан зайнууд бие даасан биш, (5) finite-size нөлөө — өгөгдөл нэмэгдэхэд дохио алга болж болно.</span>
   </div>
-  
 </div>
-</div>
-
-<!-- DISCUSSION PAGE -->
-<div class="page" id="page-discussion">
-<div class="container" style="padding-top:3rem;">
-  <div class="section">
-    <div class="section-label"><span data-li="en">Community Discussion</span><span data-li="mn">Нийгэмлэгийн хэлэлцүүлэг</span></div>
-    <h2><span data-lang="en">Where We've Shared This Work</span><span data-lang="mn">Ажлаа хаана хуваалцсан</span></h2>
-
-    <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem;">
-
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
-        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">📐</span>
-          <div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Math StackExchange</div>
-            <div style="font-size:.78rem;color:var(--muted);">math.stackexchange.com</div>
-          </div>
-          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">ACCEPTED ✓</span>
-        </div>
-        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
-          <span data-lang="en">Question: "Numerical verification of Bogomolny-Keating prime peaks in Riemann zero power spectrum". Answered by Steven Clark (9,500+ rep) who suggested the explicit formula framework. Answer accepted.</span>
-          <span data-lang="mn">Асуулт: "Риман тэгийн power spectrum дэх Богомолны-Китингийн прайм оргилуудыг тоон харьцуулах". Steven Clark (9,500+ rep) тодорхой томьёоны хүрээг санал болгон хариулсан. Хариулт accepted хийгдсэн.</span>
-        </p>
-        <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank" style="display:inline-flex;border-radius:10px;">
-          <span class="li">🔗</span><div><span class="lt">View question & answer</span><span class="ld">math.stackexchange.com/questions/5135941</span></div>
-        </a>
-      </div>
-
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
-        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">🟠</span>
-          <div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Reddit r/mathematics</div>
-            <div style="font-size:.78rem;color:var(--muted);">reddit.com/r/mathematics</div>
-          </div>
-        </div>
-        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
-          <span data-lang="en">Post: "Numerical observation: BK-type prime-lock scaling in high Riemann zero blocks (r=0.45–0.68, dataset-dependent) — looking for literature references"</span>
-          <span data-lang="mn">Пост: "Тоон ажиглалт: өндөр Риман тэгийн блок дахь BK-төрлийн прайм-lock scaling (r=0.45–0.68) — уран зохиолын лавлагаа хайж байна"</span>
-        </p>
-        <a class="link-card" href="https://reddit.com/r/mathematics" target="_blank" style="display:inline-flex;border-radius:10px;">
-          <span class="li">🔗</span><div><span class="lt">r/mathematics</span><span class="ld">reddit.com/r/mathematics</span></div>
-        </a>
-      </div>
-
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
-        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">✉️</span>
-          <div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;"><span data-lang="en">Direct correspondence</span><span data-lang="mn">Шууд захидал харилцаа</span></div>
-            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Contacted leading researchers</span><span data-lang="mn">Тэргүүлэгч судлаачидтай холбогдсон</span></div>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
-          <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
-            <div style="font-size:.85rem;font-weight:600;">Andrew Odlyzko</div>
-            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Replied with form letter (high request volume)</span><span data-lang="mn">Маягт захидлаар хариулсан (хүсэлт их)</span></div>
-          </div>
-          <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
-            <div style="font-size:.85rem;font-weight:600;">Jonathan Keating</div>
-            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Email sent, awaiting reply</span><span data-lang="mn">Майл явуулсан, хариу хүлээж байна</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
-        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
-          <span style="font-size:1.5rem;">📄</span>
-          <div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Zenodo Preprint</div>
-            <div style="font-size:.78rem;color:var(--muted);">zenodo.org</div>
-          </div>
-          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2);padding:.2rem .6rem;border-radius:4px;">v2 PUBLISHED</span>
-        </div>
-        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">DOI: 10.5281/zenodo.20077673 · Indexed in OpenAIRE</p>
-        <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;border-radius:10px;">
-          <span class="li">🔗</span><div><span class="lt">View preprint</span><span class="ld">zenodo.org/records/20077673</span></div>
-        </a>
-      </div>
-    </div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">Is this a proof of the Riemann Hypothesis?</span>
+    <span data-li="mn">Энэ Риманы таамаглалын нотолгоо мөн үү?</span>
+    <span class="faq-arrow">▾</span>
   </div>
-  
-</div>
-</div>
-
-<!-- LIVE STATS + NEWSLETTER PAGE -->
-<div class="page" id="page-livestats">
-<div class="container" style="padding-top:3rem;">
-  <div class="section">
-    <div class="section-label"><span data-li="en">Live Stats</span><span data-li="mn">Шууд Статистик</span></div>
-    <h2><span data-lang="en">Research Impact</span><span data-lang="mn">Судалгааны Нөлөөлөл</span></h2>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;">
-      <div class="stat-card">
-        <div class="ds">Zenodo Views</div>
-        <span class="rv" id="stat-views">—</span>
-        <div class="pv">zenodo.org</div>
-        <div class="badge" id="stat-views-badge">Loading...</div>
-      </div>
-      <div class="stat-card">
-        <div class="ds">Zenodo Downloads</div>
-        <span class="rv" id="stat-downloads">—</span>
-        <div class="pv">main.tex</div>
-        <div class="badge" id="stat-dl-badge">Loading...</div>
-      </div>
-      <div class="stat-card">
-        <div class="ds">Datasets tested</div>
-        <span class="rv">3</span>
-        <div class="pv">zeros1, zeros_ht, zeros6</div>
-        <div class="badge">Verified</div>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--green);">12/12</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Primes positive</span><span data-lang="mn">Эерэг прайм</span></div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45–0.68</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Best r value</span><span data-lang="mn">Хамгийн сайн r</span></div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">~3</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">C constant</span><span data-lang="mn">C константа</span></div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text);">167</div>
-        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Years RH open</span><span data-lang="mn">RH нээлттэй жил</span></div>
-      </div>
-    </div>
-
-    <div class="section-label"><span data-li="en">Newsletter</span><span data-li="mn">Мэдэгдэл</span></div>
-    <h3 style="color:var(--text);font-size:1.2rem;margin-bottom:.8rem;"><span data-lang="en">Get notified of new results</span><span data-lang="mn">Шинэ үр дүний мэдэгдэл авах</span></h3>
-    <p style="font-size:.88rem;color:var(--sub);margin-bottom:1.5rem;">
-      <span data-lang="en">When new zero datasets are tested or significant findings are published, we'll send a brief update.</span>
-      <span data-lang="mn">Шинэ тэгийн датасет тест хийгдэх эсвэл чухал олдвор нийтлэгдэх үед товч шинэчлэл илгээнэ.</span>
-    </p>
-    <div style="display:flex;gap:.8rem;max-width:480px;">
-      <input type="email" id="nl-email" placeholder="you@example.com" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;padding:.7rem 1rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(0,212,255,.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.06)'">
-      <button onclick="subscribeNL()" style="background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;padding:.7rem 1.4rem;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-        <span data-lang="en">Subscribe</span><span data-lang="mn">Бүртгүүлэх</span>
-      </button>
-    </div>
-    <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
+  <div class="faq-a">
+    <span data-li="en"><strong>No.</strong> These are computational observations only. A proof of RH requires a rigorous mathematical argument — not computational observations, however consistent they are. The Riemann Hypothesis remains one of the Clay Millennium Prize Problems ($1,000,000 prize).</span>
+    <span data-li="mn"><strong>Үгүй.</strong> Эдгээр зөвхөн тооцооллын ажиглалт. RH-н нотолгоо нь хичнээн хүчтэй байсан ч тоон ажиглалт биш, чанд математик аргумент шаарддаг. Риманы таамаглал Clay Millennium Prize-ийн нэг ($1,000,000 шагнал) хэвээр байна.</span>
   </div>
-  
-</div></div>
 </div>
-
-<script src="/paper1/assets/lang.js"></script>
-<script src="/paper1/assets/nav.js"></script>
-<script src="/paper1/assets/shared.js"></script>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">Is the BK amplitude law 'confirmed'?</span>
+    <span data-li="mn">BK амплитудын хууль 'батлагдсан' уу?</span>
+    <span class="faq-arrow">▾</span>
+  </div>
+  <div class="faq-a">
+    <span data-li="en"><strong>No — not in the mathematical sense.</strong> We have computational observations (r = 0.45–0.68) with limited bootstrap stability consistent with BK-type scaling. But 'confirmed' in mathematics means a rigorous theorem with proof. Our results need independent replication, peer review, and asymptotic analysis.</span>
+    <span data-li="mn"><strong>Үгүй — математикийн утгаараа биш.</strong> Бид BK таамаглалтай нийцсэн тооцооллын ажиглалттай (r = 0.45–0.68). Гэхдээ математикт 'батлагдсан' гэдэг нь нотолгоотой чанд теорем гэсэн утгатай. Манай үр дүн бие даасан харьцуулалт, peer review, асимптотик шинжилгээ шаарддаг.</span>
+  </div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">What do the r values mean?</span>
+    <span data-li="mn">r утгууд юу гэсэн үг вэ?</span>
+    <span class="faq-arrow">▾</span>
+  </div>
+  <div class="faq-a">
+    <span data-li="en">It is the Pearson correlation between observed amplitudes A(p) and the BK predictor B(p) = (log p)²/p across 12 primes. A value near 1 means the two quantities scale almost identically. The p-value 2.64×10⁻¹⁵ means this is highly unlikely to occur by chance.</span>
+    <span data-li="mn">12 прайм дээр ажиглагдсан амплитуд A(p) болон BK таамаглагч B(p) = (log p)²/p хоорондын Pearson корреляц. 1-д ойр утга хоёр хэмжигдэхүүн бараг адилхан масштабтайг илэрхийлнэ. p-value 2.64×10⁻¹⁵ нь санамсаргүй тохиолдох магадлал маш бага гэдгийг харуулна.</span>
+  </div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">Why does normalization matter so much?</span>
+    <span data-li="mn">Яагаад нормализаци ийм чухал вэ?</span>
+    <span class="faq-arrow">▾</span>
+  </div>
+  <div class="faq-a">
+    <span data-li="en">At height T, zeros have mean spacing ~2π/log(T/2π). The 'unfolded' frequency τ_p = log(p)/log(T/2π) accounts for this. Using the naive formula τ_p = log(p)/2π ignores the height-dependent spacing and gives r ≈ 0.4–0.6 — no meaningful signal.</span>
+    <span data-li="mn">T өндөрт тэгүүд дундажаар ~2π/log(T/2π) зайтай байдаг. 'Задгай' давтамж τ_p = log(p)/log(T/2π) үүнийг харгалзана. τ_p = log(p)/2π энгийн томьёо өндөрөөс хамааралтай зайг тооцдоггүй тул r ≈ 0.4–0.6 гарна — тодорхой дохио байхгүй.</span>
+  </div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">What is the BK amplitude constant C?</span>
+    <span data-li="mn">BK амплитудын C тогтмол гэж юу вэ?</span>
+    <span class="faq-arrow">▾</span>
+  </div>
+  <div class="faq-a">
+    <span data-li="en">It is the empirical proportionality constant in A(p) ≈ C·(log p)²/p, estimated from our data. The BK theory predicts such a constant exists but does not give its exact value from our approach. A theoretical derivation of C is a key open question.</span>
+    <span data-li="mn">Энэ бол манай өгөгдлөөс тооцоологдсон A(p) ≈ C·(log p)²/p-н эмпирик пропорциональ константа. BK онол ийм константа байдаг гэж таамагладаг боловч манай аргаас яг утгыг өгдөггүй. C-ийн онолын гарталт нь гол нээлттэй асуулт юм.</span>
+  </div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">Can I verify these results myself?</span>
+    <span data-li="mn">Би өөрөө эдгээр үр дүнг ажиглалтжуулж чадах уу?</span>
+    <span class="faq-arrow">▾</span>
+  </div>
+  <div class="faq-a">
+    <span data-li="en">Yes! Use our <a href='/verify.html' style='color:var(--cyan)'>Analysis Lab</a> — download any Odlyzko zero file, upload it, click Run, and compare your r value with ours. All code is also on GitHub.</span>
+    <span data-li="mn">Тийм! Манай <a href='/verify.html' style='color:var(--cyan)'>Шинжилгээний Лаб</a>-ыг ашиглаарай — Одлызкогийн zeros файл татаж, upload хийж, Run дараад өөрийн r утгыг манайхтай харьцуул. Бүх код мөн GitHub дээр байна.</span>
+  </div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span data-li="en">What is the Bogomolny–Keating prediction?</span>
+    <span data-li="mn">Богомолны–Китингийн таамаглал гэж юу вэ?</span>
+    <span class="faq-arrow">▾</span>
+  </div>
+  <div class="faq-a">
+    <span data-li="en">In 1996, Bogomolny and Keating predicted that the GUE statistics of Riemann zeros should receive prime-dependent corrections, with amplitude scaling A(p) ~ C(log p)²/p. This follows from the explicit formula connecting primes and zeros via the Riemann zeta function.</span>
+    <span data-li="mn">1996 онд Богомолны ба Китинг Риман тэгүүдийн GUE статистик нь амплитудын масштаб A(p) ~ C(log p)²/p бүхий прайм-хамааралтай засваруудыг авах ёстой гэж таамагласан. Энэ нь прайм ба тэгүүдийг Риманы зета функцээр холбосон тодорхой томьёоноос гаргаж авсан.</span>
+  </div>
+</div>
+</div>
 <footer class="MN-foot">
-<span>Computational observations only — not a theorem or proof of RH.</span>
+<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
 <div>
 <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
-<a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
 <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
 </div>
 <span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
 </footer>
+<script>
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+});
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
 </body>
 </html>
