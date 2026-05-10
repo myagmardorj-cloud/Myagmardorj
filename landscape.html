@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Математикийн Нээгдээгүй Бодлогууд — research.nexcore.ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070710;--s1:#0e0e1c;--s2:#13131f;--s3:#1a1a2e;
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);
+  --cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;--red:#ff4d6d;
+  --gold:#f0b429;--purple:#a855f7;--orange:#fb923c;
+  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+
+/* MESH */
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.1;}
+.o1{width:600px;height:600px;background:radial-gradient(circle,#0033ff,transparent);top:-150px;left:-150px;animation:oa 38s ease-in-out infinite alternate;}
+.o2{width:450px;height:450px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-80px;animation:ob 32s ease-in-out infinite alternate;}
+.o3{width:280px;height:280px;background:radial-gradient(circle,#7700ff,transparent);top:45%;left:55%;animation:oc 30s ease-in-out infinite alternate;}
+@keyframes oa{to{transform:translate(100px,130px)}}
+@keyframes ob{to{transform:translate(-80px,-100px)}}
+@keyframes oc{to{transform:translate(-60px,80px)}}
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);background-size:55px 55px;}
+
+/* LAYOUT */
+.wrap{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:2rem;}
+
+/* TOP NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.9rem 2rem;background:rgba(7,7,16,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);margin-bottom:3rem;}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+.nav-links{display:flex;gap:.5rem;}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--sub);text-decoration:none;padding:.35rem .75rem;border-radius:7px;transition:all .2s;}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,.05);}
+.lang-toggle{display:flex;}
+.lb{font-family:'Space Grotesk',sans-serif;font-size:.68rem;padding:.3rem .65rem;background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;}
+.lb:first-child{border-radius:4px 0 0 4px;}
+.lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.lb.active{background:linear-gradient(135deg,#0044ff,var(--cyan));color:#fff;border-color:transparent;}
+
+/* HEADER */
+.page-header{text-align:center;padding:1rem 0 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:1.2rem;}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 3s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.page-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;margin-bottom:.8rem;line-height:1.1;}
+.page-title .hl{background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page-sub{font-size:.92rem;color:var(--sub);max-width:580px;margin:0 auto;}
+
+/* SECTION */
+.section{margin-bottom:3rem;}
+.sec-label{font-family:'Space Grotesk',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,.3),transparent);}
+.sec-label .star{color:var(--gold);}
+
+/* CLAY GRID */
+.clay-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.6rem;margin-bottom:1rem;}
+.prob-card{border-radius:12px;padding:1rem .8rem;border:1px solid;position:relative;cursor:pointer;transition:all .25s;min-height:180px;display:flex;flex-direction:column;}
+.prob-card:hover{transform:translateY(-4px);filter:brightness(1.1);}
+.prob-card.rh{background:rgba(240,180,41,.06);border-color:rgba(240,180,41,.3);}
+.prob-card.pnp{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25);}
+.prob-card.bsd{background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.25);}
+.prob-card.ns{background:rgba(0,229,160,.06);border-color:rgba(0,229,160,.25);}
+.prob-card.ym{background:rgba(251,146,60,.06);border-color:rgba(251,146,60,.25);}
+.prob-card.hc{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.25);}
+.prob-card.pc{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.1);opacity:.6;}
+.prob-card.highlight{box-shadow:0 0 0 2px var(--gold),0 0 30px rgba(240,180,41,.2);opacity:1 !important;}
+.prob-tag{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.5rem;width:fit-content;}
+.tag-rh{background:rgba(240,180,41,.15);color:var(--gold);}
+.tag-pnp{background:rgba(168,85,247,.15);color:var(--purple);}
+.tag-bsd{background:rgba(0,212,255,.12);color:var(--cyan);}
+.tag-ns{background:rgba(0,229,160,.12);color:var(--green);}
+.tag-ym{background:rgba(251,146,60,.12);color:var(--orange);}
+.tag-hc{background:rgba(239,68,68,.12);color:var(--red);}
+.tag-solved{background:rgba(255,255,255,.08);color:var(--sub);}
+.prob-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:.4rem;line-height:1.2;}
+.prob-desc{font-size:.72rem;color:var(--sub);line-height:1.5;flex:1;}
+.prob-tools{margin-top:.6rem;font-size:.65rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(255,255,255,.05);padding-top:.4rem;}
+.solved-badge{position:absolute;top:.6rem;right:.6rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;background:rgba(0,229,160,.15);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.15rem .4rem;border-radius:4px;}
+.our-badge{display:block;margin-top:.5rem;font-family:'Space Grotesk',sans-serif;font-size:.55rem;background:rgba(240,180,41,.12);color:var(--gold);border:1px solid rgba(240,180,41,.3);padding:.12rem .4rem;border-radius:4px;width:fit-content;}
+@keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* CONJECTURES GRID */
+.conj-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.6rem;}
+.conj-card{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:.8rem;transition:all .2s;cursor:pointer;}
+.conj-card:hover{border-color:rgba(255,255,255,.15);transform:translateY(-2px);}
+.conj-year{font-family:'Space Grotesk',sans-serif;font-size:.6rem;color:var(--muted);margin-bottom:.3rem;}
+.conj-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.8rem;margin-bottom:.3rem;color:var(--sub);}
+.conj-desc{font-size:.7rem;color:var(--muted);line-height:1.4;}
+.conj-status{margin-top:.5rem;font-size:.62rem;color:var(--muted);font-style:italic;}
+
+/* CONNECTIONS */
+.connections-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.conn-card{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;}
+.conn-eq{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;color:var(--cyan);margin-bottom:.5rem;letter-spacing:.05em;}
+.conn-desc{font-size:.78rem;color:var(--sub);line-height:1.5;}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:3rem;}
+.stat-box{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;}
+.stat-val{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;line-height:1;margin-bottom:.3rem;}
+.stat-lbl{font-size:.72rem;color:var(--sub);}
+
+/* Computational Observation BOX */
+.our-box{background:linear-gradient(135deg,rgba(240,180,41,.06),rgba(0,212,255,.04));border:1px solid rgba(240,180,41,.25);border-radius:16px;padding:2rem;margin-bottom:3rem;}
+.our-box-title{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.our-table{width:100%;border-collapse:collapse;}
+.our-table th{font-family:'Space Grotesk',sans-serif;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);}
+.our-table td{padding:.6rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;color:var(--sub);}
+.our-table td.good{color:var(--green);font-weight:600;}
+.our-table td.warn{color:var(--gold);}
+.our-table td.bad{color:var(--red);}
+
+/* NEXT STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.step-box{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.3rem;}
+.step-n{font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;color:var(--cyan);letter-spacing:.12em;margin-bottom:.6rem;}
+.step-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.5rem;}
+.step-items{list-style:none;}
+.step-items li{font-size:.78rem;color:var(--sub);padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.step-items li::before{content:'→ ';color:var(--cyan);}
+
+/* QUOTE */
+.quote-box{text-align:center;padding:2rem;border-top:1px solid var(--border);margin-top:2rem;}
+.quote{font-style:italic;font-size:.95rem;color:var(--sub);max-width:700px;margin:0 auto .8rem;}
+.quote-src{font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--muted);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;margin-top:3rem;display:flex;justify-content:space-between;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--muted);}
+
+/* LANG */
+[data-lang]{display:none;}
+body.en [data-lang="en"]{display:block;}
+body.mn [data-lang="mn"]{display:block;}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.modal.open{display:flex;}
+.modal-box{background:var(--s1);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;max-width:500px;width:90%;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem;}
+.modal-close:hover{color:var(--text);}
+.modal-tag{font-family:'Space Grotesk',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;display:inline-block;padding:.25rem .6rem;border-radius:5px;}
+.modal-title{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.8rem;}
+.modal-body{font-size:.9rem;color:var(--sub);line-height:1.7;margin-bottom:1rem;}
+.modal-tools{font-size:.78rem;color:var(--muted);font-style:italic;border-top:1px solid var(--border);padding-top:.8rem;}
+
+@media(max-width:900px){
+  .clay-grid,.conj-grid{grid-template-columns:repeat(3,1fr);}
+  .connections-grid,.steps-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-row{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:600px){
+  .clay-grid,.conj-grid{grid-template-columns:repeat(2,1fr);}
+  .connections-grid,.steps-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .nav-links{display:none;}
+}
+
+/* MASTER NAV */
+
+/* MASTER NAV */
+.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;cursor:pointer;}
+.MN-links{display:flex;align-items:center;}
+.MN-links a,.MN-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;line-height:1;}
+.MN-links a:hover,.MN-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.MN-links a.MN-cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
+
+.MN-more{position:relative;}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.4rem;min-width:165px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
+.MN-lang{display:flex;flex-shrink:0;margin-left:.5rem;}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}
+.MN-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
+body{padding-top:54px !important;}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+[data-lang]{display:none;}
+body.en [data-lang="en"]{display:block;}
+body.mn [data-lang="mn"]{display:block;}
+body.en span[data-lang="en"]{display:inline;}
+body.mn span[data-lang="mn"]{display:inline;}
+@media(max-width:640px){.MN-links{display:none;}}
+
+/* MASTER FOOTER */
+
+.MF{position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);}
+.MF-left{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;}
+.MF-center{display:flex;align-items:center;}
+.MF-center a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;color:#5a5a7a;text-decoration:none;padding:.25rem .55rem;border-radius:6px;transition:color .2s;}
+.MF-center a:hover{color:#9999b8;}
+.MF-right{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;}
+.MF-right a{color:#5a5a7a;text-decoration:none;}.MF-right a:hover{color:#00d4ff;}
+body{padding-bottom:42px !important;}
+
+.MN-dd a.MN-dd-active{color:#00d4ff !important;background:rgba(0,212,255,.08);}
+.MN-more button.MN-has-active{color:#00d4ff;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.15);}
+</style>
+</head>
+<body class="mn">
+<nav class="MN">
+<a href="paper1.html" class="MN-logo">research.nexcore.ltd</a>
+<div class="MN-links"><a href="/paper1.html" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;margin-right:.25rem;" onmouseover="this.style.color='#eeeef8';this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.color='#9999b8';this.style.background='none'">⌂ Home</a><a href="paper1.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="paper1.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="paper1.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a href="paper1.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="paper1.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="paper1.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="paper1.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="paper1.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="paper1.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="paper1.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a><a href="paper1.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
+<div class="MN-lang">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</nav>
+
+
+
+
+<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<div class="grid-bg"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+    <div class="modal-tag" id="m-tag"></div>
+    <div class="modal-title" id="m-title"></div>
+    <div class="modal-body" id="m-body"></div>
+    <div class="modal-tools" id="m-tools"></div>
+  </div>
+</div>
+
+
+
+<div class="wrap">
+  <div class="page-header">
+    <div class="eyebrow">
+      <span data-li="en">Clay Mathematics Institute · 2026</span>
+      <span data-li="mn">Клейгийн математикийн хүрээлэн · 2026</span>
+    </div>
+    <div class="page-title">
+      <span data-lang="en">Mathematics <span class="hl">Unsolved Problems</span></span>
+      <span data-lang="mn">Математикийн <span class="hl">Нээгдээгүй Бодлогууд</span></span>
+    </div>
+    <p class="page-sub">
+      <span data-lang="en">Next steps · Verified information · clay.math.org · 2026</span>
+      <span data-lang="mn">Дараагийн алхам · Зөвхөн тооцооллын ажиглалт · болгоомжтой тайлбар · clay.math.org · 2026</span>
+    </p>
+  </div>
+
+  <!-- CLAY SECTION -->
+  <div class="section">
+    <div class="sec-label"><span class="star">★</span> <span data-li="en">CLAY MILLENNIUM PRIZE — 7 problems (1 solved)</span><span data-li="mn">CLAY MILLENNIUM PRIZE — 7 бодлого (1 шийдэгдсэн)</span></div>
+    <div class="clay-grid" id="clay-grid"></div>
+  </div>
+
+  <!-- CONJECTURES -->
+  <div class="section">
+    <div class="sec-label">◆ <span data-li="en">Famous open conjectures — 7 problems</span><span data-li="mn">Хамгийн чухал нээлттэй таамаглалууд — 7 бодлого</span></div>
+    <div class="conj-grid" id="conj-grid"></div>
+  </div>
+
+  <!-- CONNECTIONS -->
+  <div class="section">
+    <div class="sec-label"><span data-li="en">Why are problems connected?</span><span data-li="mn">Нийтлэг холбоос — Яагаад эдгээр бодлогууд хоорондоо уялдаатай вэ?</span></div>
+    <div class="connections-grid">
+      <div class="conn-card">
+        <div class="conn-eq">RH ↔ GC ↔ TPC ↔ LIC</div>
+        <div class="conn-desc">
+          <span data-lang="en">Prime number distribution · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
+          <span data-lang="mn">Прайм тооны тархалт · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
+        </div>
+      </div>
+      <div class="conn-card">
+        <div class="conn-eq">P≠NP ↔ BSD</div>
+        <div class="conn-desc">
+          <span data-lang="en">Elliptic curve rank counting · polynomial algorithm байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
+          <span data-lang="mn">Эллиптик муруйн rank тооцоолох · polynomial цагийн алгоритм байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
+        </div>
+      </div>
+      <div class="conn-card">
+        <div class="conn-eq">NS ↔ YM</div>
+        <div class="conn-desc">
+          <span data-lang="en">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
+          <span data-lang="mn">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
+        </div>
+      </div>
+      <div class="conn-card">
+        <div class="conn-eq">ABC ↔ BSD ↔ HC</div>
+        <div class="conn-desc">
+          <span data-lang="en">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
+          <span data-lang="mn">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-val" style="color:var(--red);">6</div><div class="stat-lbl"><span data-lang="en">Clay unsolved</span><span data-lang="mn">Clay нээлттэй бодлого</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--green);">1</div><div class="stat-lbl"><span data-lang="en">Clay solved (Perelman 2003)</span><span data-lang="mn">Clay шийдэгдсэн</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--sub);">7</div><div class="stat-lbl"><span data-lang="en">Famous conjectures</span><span data-lang="mn">Нэрт чухал таамаглал</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--gold);">$6M</div><div class="stat-lbl"><span data-lang="en">Clay total prize</span><span data-lang="mn">Clay нийт шагнал</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--orange);">270+</div><div class="stat-lbl"><span data-lang="en">Years oldest open</span><span data-lang="mn">Хамтын онцлойн тоо (жил)</span></div></div>
+  </div>
+
+  <!-- Computational Observation -->
+  <div class="our-box">
+    <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.12);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--sub);">⚠️ <strong style="color:var(--red);">Note:</strong> <span data-lang="en">Numerical observations only — not a theorem, not a proof of RH. Independent verification required.</span><span data-lang="mn">Зөвхөн тоон ажиглалт — теорем биш, RH-н нотолгоо биш.</span></div><div class="our-box-title"><span data-li="en">★ Our research position</span><span data-li="mn">★ Манай судалгааны байр суурь</span></div>
+    <table class="our-table">
+      <thead>
+        <tr>
+          <th><span data-li="en">Item</span><span data-li="mn">Зүйл</span></th>
+          <th><span data-li="en">Status</span><span data-li="mn">Статус</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Problem</td><td>Riemann Hypothesis (#01)</td></tr>
+        <tr><td>Connection</td><td><span data-lang="en">Prime-indexed excess in zero spacing statistics</span><span data-lang="mn">Тэгийн зайн статистик дахь прайм-индекстэй илүүдэл</span></td></tr>
+        <tr><td>Result</td><td class="good">r = 0.45–0.68 across datasets · bootstrap MODERATE at N=2M · independent replication ongoing</td></tr>
+        <tr><td><span data-lang="en">Positioning</span><span data-lang="mn">Байр суурь</span></td><td class="warn"><span data-lang="en">Computational observation — empirically consistent with BK-type scaling</span><span data-lang="mn">Тооцооллын ажиглалт — BK-төрлийн scaling-тай нийцсэн</span></td></tr>
+        <tr><td><span data-lang="en">What it is NOT</span><span data-lang="mn">Юу биш вэ</span></td><td class="bad"><span data-lang="en">Not a confirmed theorem · Not a proof of RH</span><span data-lang="mn">Батлагдсан теорем биш · RH-н нотолгоо биш</span></td></tr>
+        <tr><td>Prize</td><td><span data-lang="en">$1,000,000 (Clay Institute) — if RH proven</span><span data-lang="mn">$1,000,000 (Клейн хүрээлэн) — RH батлагдвал</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="section">
+    <div class="sec-label"><span data-li="en">Next steps for our research</span><span data-li="mn">Хүнтөрлөхтийн дараагийн алхам</span></div>
+    <div class="steps-grid">
+      <div class="step-box">
+        <div class="step-n">1. <span data-li="en">COMPUTATION</span><span data-li="mn">ТООЦООЛОЛ</span></div>
+        <div class="step-title"><span data-lang="en">More data</span><span data-lang="mn">Илүү өгөгдөл</span></div>
+        <ul class="step-items">
+          <li>X=10⁷, N=1000 <span data-lang="en">zeros</span><span data-lang="mn">тэгүүд</span></li>
+          <li>prime residual spectrum</li>
+          <li><span data-lang="en">Repeat test</span><span data-lang="mn">Давтан нотлох</span></li>
+          <li>Bootstrap controls</li>
+          <li>Window-stability tests</li>
+        </ul>
+      </div>
+      <div class="step-box">
+        <div class="step-n">2. <span data-li="en">REPLICATION</span><span data-li="mn">ДАВТАЛТ ШАЛГАЛТ</span></div>
+        <div class="step-title"><span data-lang="en">Independent independent replication</span><span data-lang="mn">Бие даасан давталт</span></div>
+        <ul class="step-items">
+          <li>E_zero ≈ F[E_prime]</li>
+          <li>p-value &lt; 0.01 <span data-lang="en">target</span><span data-lang="mn">зорилт</span></li>
+          <li>arXiv paper <span data-lang="en">submit</span><span data-lang="mn">илгээх</span></li>
+          <li>Peer review</li>
+        </ul>
+      </div>
+      <div class="step-box">
+        <div class="step-n">3. <span data-li="en">THEORY</span><span data-li="mn">ОНОЛ</span></div>
+        <div class="step-title"><span data-lang="en">Derive C ≈ 3 (zeros1/zeros6)</span><span data-lang="mn">C ≈ 3 (zeros1/zeros6) онолоор гаргах</span></div>
+        <ul class="step-items">
+          <li>Goldston-Suriajaya</li>
+          <li>2020-<span data-lang="en">r framework</span><span data-lang="mn">р хүрээ</span></li>
+          <li><span data-lang="en">Formal derivation</span><span data-lang="mn">Формал гаргалгаа</span></li>
+          <li>Explicit formula</li>
+        </ul>
+      </div>
+      <div class="step-box">
+        <div class="step-n">4. <span data-li="en">GOAL</span><span data-li="mn">ЗОРИЛТ</span></div>
+        <div class="step-title"><span data-lang="en">Toward RH</span><span data-lang="mn">RH руу</span></div>
+        <ul class="step-items">
+          <li>Montgomery ↔ H-L</li>
+          <li><span data-lang="en">New formula</span><span data-lang="mn">Нэгдсэн томьёо</span></li>
+          <li>RH <span data-lang="en">equivalent</span><span data-lang="mn">эквивалент</span></li>
+          <li>Clay Millennium Prize ($1,000,000)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <div class="quote">
+      <span data-lang="en">"Solving one problem is not the sum of solving a thousand problems. Numbers, space, structure, and information — all speak the same language."</span>
+      <span data-lang="mn">"Математикийн нэг бодлогыг шийдэх нь зуун бодлогын хааглыг нэгэн зэрэг онгойлгодог. Тоо, орон зай, хэлбэр, мэдээлэл — бүгд нэг хэлээр ярьдаг."</span>
+    </div>
+    <div class="quote-src">clay.math.org · arxiv.org · wikipedia.org · 2026</div>
+  </div>
+
+  
+</div>
+
+
+
+
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
+<span>Computational observations only — not a theorem or proof of RH.</span>
+<div style="display:flex;"><a href="paper1.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a></div>
+<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
+</footer>
+<script>
+function closeModal(e){
+  if(e.target===e.currentTarget){
+    e.currentTarget.classList.remove('open');
+  }
+}
+function mnavToggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');}
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more')&&!e.target.closest('.mnav-more'))MN_close();});
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb,.mnav-lb,.lb,.lang-btn').forEach(function(b){
+    b.classList.toggle('MN-active',(l==='en'&&(b.dataset.l==='en'||b.textContent==='ENG'))||(l==='mn'&&(b.dataset.l==='mn'||b.textContent==='МОН')));
+    b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
+  });
+  localStorage.setItem('lang',l);
+}
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
+</body>
+</html>
