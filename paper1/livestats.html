@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methods · research.nexcore.ltd</title>
+<title>Live Stats · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
@@ -62,7 +62,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
-<a href="/paper1/methods.html" class="MN-cur"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
 <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
 <a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тест</span></a>
 <a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
@@ -74,45 +74,65 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div class="container">
-<div class="section-label"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></div>
+<div style="padding-top:56px;padding-bottom:52px;max-width:900px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Methods</span><span data-li="mn">Арга зүй</span></div>
-    <h2><span data-lang="en">How the Analysis Works</span><span data-lang="mn">Шинжилгээний арга</span></h2>
-    <div class="prose">
-      <span data-lang="en">
-        <h3>1. Data</h3>
-        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros_ht (100K zeros, T≈74,920), zeros1 (~2M zeros near T~10¹²), zeros6 (~10K zeros near T~10¹³).</p>
-        <h3>2. Spacing Covariance</h3>
-        <p>Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</p>
-      </span>
-      <span data-lang="mn">
-        <h3>1. Өгөгдөл</h3>
-        <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</p>
-        <h3>2. Spacing Covariance</h3>
-        <p>δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</p>
-      </span>
+    <div class="section-label"><span data-li="en">Live Stats</span><span data-li="mn">Шууд Статистик</span></div>
+    <h2><span data-li="en">Research Impact</span><span data-li="mn">Судалгааны Нөлөөлөл</span></h2>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;">
+      <div class="stat-card">
+        <div class="ds">Zenodo Views</div>
+        <span class="rv" id="stat-views">—</span>
+        <div class="pv">zenodo.org</div>
+        <div class="badge" id="stat-views-badge">Loading...</div>
+      </div>
+      <div class="stat-card">
+        <div class="ds">Zenodo Downloads</div>
+        <span class="rv" id="stat-downloads">—</span>
+        <div class="pv">main.tex</div>
+        <div class="badge" id="stat-dl-badge">Loading...</div>
+      </div>
+      <div class="stat-card">
+        <div class="ds">Datasets tested</div>
+        <span class="rv">3</span>
+        <div class="pv">zeros1, zeros_ht, zeros6</div>
+        <div class="badge">Verified</div>
+      </div>
     </div>
-    <div class="formula-block" style="margin:1.5rem 0;">C(h) = (1/N−h) Σ (δₙ − δ̄)(δₙ₊ₕ − δ̄)</div>
-    <div class="prose">
-      <span data-lang="en">
-        <h3>3. Key Normalization</h3>
-        <p>The correct prime frequency at height T is <code>τ_p = log(p) / log(T/2π)</code>. This unfolded normalization is essential — using <code>log(p)/2π</code> gives weak results (r≈0.4–0.6).</p>
-        <h3>4. BK Predictor</h3>
-        <p>Bogomolny–Keating (1996) predicted amplitude <code>A(p) ~ C·(log p)²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)²/p.</p>
-        <h3>5. Statistical Significance</h3>
-        <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as 2.64×10⁻¹⁵ — but see bootstrap controls for corrected estimates.</p>
-      </span>
-      <span data-lang="mn">
-        <h3>3. Гол нормализаци</h3>
-        <p>T өндөрт зөв прайм давтамж нь <code>τ_p = log(p) / log(T/2π)</code>. Энэ задгай нормализаци зайлшгүй — <code>log(p)/2π</code> ашиглавал сул үр дүн (r≈0.4–0.6) гардаг.</p>
-        <h3>4. BK Таамаглагч</h3>
-        <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) хооронд Pearson корреляц тооцооллодог.</p>
-        <h3>5. Статистик ач холбогдол</h3>
-        <p>Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистикийн тодорхой артефакт биш гэж үзэж болно. Наив p = 2.64×10⁻¹⁵ — bootstrap-ийн засварласан тооцооллыг харна уу.</p>
-      </span>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--green);">12/12</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-li="en">Primes positive</span><span data-li="mn">Эерэг прайм</span></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45–0.68</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-li="en">Best r value</span><span data-li="mn">Хамгийн сайн r</span></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">~3</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-li="en">C constant</span><span data-li="mn">C константа</span></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text);">167</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-li="en">Years RH open</span><span data-li="mn">RH нээлттэй жил</span></div>
+      </div>
     </div>
+
+    <div class="section-label"><span data-li="en">Newsletter</span><span data-li="mn">Мэдэгдэл</span></div>
+    <h3 style="color:var(--text);font-size:1.2rem;margin-bottom:.8rem;"><span data-li="en">Get notified of new results</span><span data-li="mn">Шинэ үр дүний мэдэгдэл авах</span></h3>
+    <p style="font-size:.88rem;color:var(--sub);margin-bottom:1.5rem;">
+      <span data-li="en">When new zero datasets are tested or significant findings are published, we'll send a brief update.</span>
+      <span data-li="mn">Шинэ тэгийн датасет тест хийгдэх эсвэл чухал олдвор нийтлэгдэх үед товч шинэчлэл илгээнэ.</span>
+    </p>
+    <div style="display:flex;gap:.8rem;max-width:480px;">
+      <input type="email" id="nl-email" placeholder="you@example.com" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;padding:.7rem 1rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(0,212,255,.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <button onclick="subscribeNL()" style="background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;padding:.7rem 1.4rem;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <span data-li="en">Subscribe</span><span data-li="mn">Бүртгүүлэх</span>
+      </button>
+    </div>
+    <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
   </div>
   
 </div>
