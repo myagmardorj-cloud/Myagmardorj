@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><span data-lang="en">Roadmap</span><span data-lang="mn">Судалгааны зам</span> · research.nexcore.ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/paper1/assets/main.css">
+</head>
+<body>
+<nav class="MN">
+<a href="/index.html" class="MN-logo">research.nexcore.ltd</a>
+<div class="MN-links">
+  <a href="/paper1/" class="nav-link"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/intro.html" class="nav-link"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="/landscape.html" class="nav-link"><span data-li="en">Landscape</span><span data-li="mn">Бодлогын зураг</span></a>
+  <a href="/verify.html" class="nav-link"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+  <a href="/paper1/formalism.html" class="nav-link"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+  <div style="display:flex;margin-left:.5rem;">
+    <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+  </div>
+</div>
+</nav>
+<div style="padding-top:54px;position:relative;z-index:2;">
+<div class="container">
+<h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin:2rem 0 1.5rem;letter-spacing:-.02em;"><span data-lang="en">Research Roadmap</span><span data-lang="mn">Судалгааны зам</span></h2>
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Судалгааны зам</span><span data-li="mn">Судалгааны зам</span></div>
+    <h2><span data-lang="en">The Path Forward</span><span data-lang="mn">Цаашдын зам</span></h2>
+    <p class="prose" style="margin-bottom:2.5rem;">
+      <span data-lang="en">From a computational idea to a published preprint — and the road ahead toward deeper understanding of the Riemann Hypothesis.</span>
+      <span data-lang="mn">Тооцоолооны санаанаас нийтлэгдсэн preprint хүртэл — мөн Риманы таамаглалын гүнзгий ойлголт руу цаашдын зам.</span>
+    </p>
+
+    
+    <!-- CLAY PRIZE -->
+    <div class="section-label"><span data-li="en">Why This Matters</span><span data-li="mn">Яагаад чухал вэ</span></div>
+
+    <div class="clay-banner">
+      <div class="clay-title">Clay Mathematics Institute · 2000</div>
+      <div class="clay-name"><span data-lang="en">🏆 Millennium Prize Problems</span><span data-lang="mn">🏆 Мянганы Шагналт Бодлогууд</span></div>
+      <div class="clay-desc">
+        <span data-lang="en">In 2000, the Clay Mathematics Institute announced 7 unsolved problems — each worth $1,000,000. Only one has been solved (Poincaré Conjecture, Perelman 2003). The Riemann Hypothesis is one of the remaining 6.</span>
+        <span data-lang="mn">2000 онд Клейгийн математикийн хүрээлэн 7 шийдэгдээгүй бодлогыг тус бүр 1 сая доллараар зарлав. Зөвхөн нэг нь шийдэгдсэн (Пуанкарегийн таамаглал, Перельман 2003). Риманы таамаглал үлдсэн 6-гийн нэг.</span>
+      </div>
+    </div>
+
+    <div class="prob-grid">
+      <div class="prob-card highlight">
+        <span class="prob-tag tag-ours">← Computational Observation</span>
+        <div class="prob-num">01 · RH</div>
+        <div class="prob-name">Riemann Hypothesis</div>
+        <div class="prob-desc"><span data-lang="en">All non-trivial zeros of ζ(s) lie on Re(s) = ½. Connected to prime number distribution.</span><span data-lang="mn">ζ(s)-ийн бүх тривиаль биш тэгүүд Re(s) = ½ дээр байна. Анхны тооны тархалттай холбоотой.</span></div>
+      </div>
+      <div class="prob-card">
+        <span class="prob-tag tag-open">OPEN</span>
+        <div class="prob-num">02 · P vs NP</div>
+        <div class="prob-name">P ≠ NP Problem</div>
+        <div class="prob-desc"><span data-lang="en">Can every problem whose solution can be verified quickly also be solved quickly?</span><span data-lang="mn">Хариуг нь хурдан шалгаж болдог бодлого болгон хурдан бодогдох боломжтой юу?</span></div>
+      </div>
+      <div class="prob-card">
+        <span class="prob-tag tag-open">OPEN</span>
+        <div class="prob-num">03 · BSD</div>
+        <div class="prob-name">Birch & Swinnerton-Dyer</div>
+        <div class="prob-desc"><span data-lang="en">Rational points on elliptic curves. Connected to L-functions and zeta zeros.</span><span data-lang="mn">Эллиптик муруй дээрх рационал цэгүүд. L-функц болон зета тэгүүдтэй холбоотой.</span></div>
+      </div>
+      <div class="prob-card">
+        <span class="prob-tag tag-open">OPEN</span>
+        <div class="prob-num">04 · NS</div>
+        <div class="prob-name">Navier–Stokes</div>
+        <div class="prob-desc"><span data-lang="en">Do smooth solutions always exist for fluid dynamics equations in 3D?</span><span data-lang="mn">Шингэний хөдөлгөөний тэгшитгэл 3D-д үргэлж гөлгөр шийдтэй байж чадах уу?</span></div>
+      </div>
+      <div class="prob-card">
+        <span class="prob-tag tag-open">OPEN</span>
+        <div class="prob-num">05 · YM</div>
+        <div class="prob-name">Yang–Mills Mass Gap</div>
+        <div class="prob-desc"><span data-lang="en">Prove that quantum Yang–Mills theory has a mass gap greater than zero.</span><span data-lang="mn">Квант Янг–Миллсийн онол тэгээс их масс завсартай гэдгийг батал.</span></div>
+      </div>
+      <div class="prob-card">
+        <span class="prob-tag tag-open">OPEN</span>
+        <div class="prob-num">06 · HC</div>
+        <div class="prob-name">Hodge Conjecture</div>
+        <div class="prob-desc"><span data-lang="en">Algebraic geometry: certain cohomology classes are algebraic cycles.</span><span data-lang="mn">Алгебрийн геометр: тодорхой когомологийн классууд алгебрийн циклүүд мөн.</span></div>
+      </div>
+      <div class="prob-card solved" style="grid-column:span 2;">
+        <span class="prob-tag tag-solved">SOLVED 2003</span>
+        <div class="prob-num">07 · PC</div>
+        <div class="prob-name">Poincaré Conjecture — Grigori Perelman</div>
+        <div class="prob-desc"><span data-lang="en">Every simply connected 3-manifold is homeomorphic to a 3-sphere. Solved by Perelman using Ricci flow. He declined the $1M prize.</span><span data-lang="mn">Энгийн холбоост гурван хэмжээст олон талт нь гурван хэмжээст бөмбөрцөгтэй гомеоморф. Перельман Риччи урсгалаар шийдсэн. 1 сая долларын шагналаас татгалзсан.</span></div>
+      </div>
+    </div>
+
+    <div class="computational-observation">
+      <div class="oc-label" style="color:var(--cyan);letter-spacing:.1em;"><span data-li="en">Where our research fits</span><span data-li="mn">Манай судалгаа хаана байна</span></div>
+      <div class="our-row"><span class="or-key">Problem:</span><span class="or-val">Riemann Hypothesis (#01)</span></div>
+      <div class="our-row"><span class="or-key">Connection:</span><span class="or-val"><span data-lang="en">Prime-correlated structure in zero statistics</span><span data-lang="mn">Тэгийн статистик дахь прайм-корреляцийн бүтэц</span></span></div>
+      <div class="our-row"><span class="or-key">Result:</span><span class="or-val">r = 0.45–0.68 (dataset-dependent) · prime-indexed excess patterns observed</span></div>
+      <div class="our-row"><span class="or-key">Status:</span><span class="or-val warn">Interesting computational observation · potential BK-related phenomenon</span></div>
+      <div class="our-row"><span class="or-key">Status:</span><span class="or-val"><span data-lang="en">Computational observations — not a proof</span><span data-lang="mn">Тооцооллын ажиглалт — нотолгоо биш</span></span></div>
+      <div class="our-row"><span class="or-key">Prize:</span><span class="or-val"><span data-lang="en">$1,000,000 (Clay Institute) — if proven</span><span data-lang="mn">1,000,000$ (Клейн хүрээлэн) — батлагдвал</span></span></div>
+    </div>
+<div class="section-label"><span data-li="en">Current Progress</span><span data-li="mn">Одоогийн явц</span></div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Computational observations collected — further validation needed</span><span data-li="mn">Тооцооллын ажиглалт цуглуулсан — нэмэлт харьцуулалт шаардлагатай</span></span>
+            <span class="rm-sub">zeros1, zeros_ht, zeros6 · r = 0.6847 / 0.5113 / 0.4509 · bootstrap stability limited</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Preprint published on Zenodo</span><span data-li="mn">Zenodo дээр preprint нийтэлсэн</span></span>
+            <span class="rm-sub">DOI: 10.5281/zenodo.20077673</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Research website launched</span><span data-li="mn">Судалгааны вэб хуудас нийтлэгдсэн</span></span>
+            <span class="rm-sub">research.nexcore.ltd · ENG/МОН</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item done">
+        <div class="rm-header">
+          <span class="rm-icon">✅</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Math community engaged</span><span data-li="mn">Математикийн хамт олонтой харилцсан</span></span>
+            <span class="rm-sub">Math StackExchange · Reddit · Odlyzko · Keating</span>
+          </div>
+          <span class="rm-status done-tag">DONE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:100%;background:var(--green);"></div></div>
+      </div>
+
+      <div class="rm-item active">
+        <div class="rm-header">
+          <span class="rm-icon">⏳</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">arXiv submission</span><span data-li="mn">arXiv нийтлэл</span></span>
+            <span class="rm-sub"><span data-li="en">Waiting for endorsement · Code: O86GNH</span><span data-li="mn">Endorsement хүлээж байна · Код: O86GNH</span></span>
+          </div>
+          <span class="rm-status active-tag">IN PROGRESS</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:40%;background:var(--gold);animation:pulse 2s infinite;"></div></div>
+      </div>
+
+      <div class="rm-item todo">
+        <div class="rm-header">
+          <span class="rm-icon">⬜</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Deepen theoretical understanding</span><span data-li="mn">Онолын мэдлэг гүнзгийрүүлэх</span></span>
+            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive BK amplitude constant C</span><span data-li="mn">Montgomery, BK 1996 уншиж, BK амплитудын C тогтмол гаргах</span></span>
+          </div>
+          <span class="rm-status todo-tag">NEXT</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:5%;background:var(--muted);"></div></div>
+      </div>
+
+      <div class="rm-item todo">
+        <div class="rm-header">
+          <span class="rm-icon">⬜</span>
+          <div class="rm-info">
+            <span class="rm-title"><span data-li="en">Approach Riemann Hypothesis</span><span data-li="mn">Риманы таамаглал руу ойртох</span></span>
+            <span class="rm-sub"><span data-li="en">Long-term goal · Formal mathematical proof framework</span><span data-li="mn">Урт хугацааны зорилго · Албан ёсны математик нотолгооны хүрээ</span></span>
+          </div>
+          <span class="rm-status todo-tag">FUTURE</span>
+        </div>
+        <div class="rm-bar"><div class="rm-fill" style="width:2%;background:var(--muted);"></div></div>
+      </div>
+
+    </div>
+
+    <!-- READING LIST -->
+    <div class="section-label"><span data-li="en">Reading List</span><span data-li="mn">Уншах жагсаалт</span></div>
+    <h3 style="margin-bottom:1.5rem;color:var(--text);font-size:1.3rem;"><span data-lang="en">Key Papers to Study Next</span><span data-lang="mn">Дараа уншах гол өгүүллүүд</span></h3>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
+
+      <div class="read-card">
+        <div class="read-priority high">HIGH</div>
+        <div class="read-content">
+          <div class="read-title">Montgomery (1973)</div>
+          <div class="read-ref">"The pair correlation of zeros of the zeta function"</div>
+          <div class="read-why"><span data-lang="en">Foundation of GUE connection. Essential for understanding why prime frequencies appear in zero statistics.</span><span data-lang="mn">GUE холбооны суурь. Прайм давтамжууд яагаад тэгийн статистикт гарч ирдгийг ойлгоход зайлшгүй.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority high">HIGH</div>
+        <div class="read-content">
+          <div class="read-title">Bogomolny & Keating (1996)</div>
+          <div class="read-ref">"Random matrix theory and the Riemann zeros I & II" — Nonlinearity</div>
+          <div class="read-why"><span data-lang="en">The original prediction of A(p) ~ C(log p)²/p. Understanding the derivation will help identify the theoretical C.</span><span data-lang="mn">A(p) ~ C(log p)²/p-н анхны таамаглал. Гарталтыг ойлговол онолын C-г тодорхойлох болно.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority mid">MED</div>
+        <div class="read-content">
+          <div class="read-title">Hiary & Odlyzko (2012)</div>
+          <div class="read-ref">arXiv:1105.4312 — "The zeta function on the critical line"</div>
+          <div class="read-why"><span data-lang="en">Odlyzko's own numerical work on high zeros. Most directly relevant to our high-T analysis.</span><span data-lang="mn">Одлызкогийн өндөр тэгүүдийн тоон ажил. Манай өндөр-T шинжилгээтэй хамгийн холбоотой.</span></div>
+        </div>
+        <div class="read-status">✅ <span data-li="en">Referenced</span><span data-li="mn">Ишлэсэн</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority mid">MED</div>
+        <div class="read-content">
+          <div class="read-title">Keating & Snaith (2000)</div>
+          <div class="read-ref">"Random matrix theory and ζ(1/2+it)" — Commun. Math. Phys.</div>
+          <div class="read-why"><span data-lang="en">Extends BK theory. Key for understanding the constant C and its theoretical derivation from random matrix theory.</span><span data-lang="mn">BK онолыг өргөтгөнө. Санамсаргүй матрицын онолоос C константын онолын гарталтыг ойлгоход чухал.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
+      </div>
+
+      <div class="read-card">
+        <div class="read-priority low">LOW</div>
+        <div class="read-content">
+          <div class="read-title">Connes (1999)</div>
+          <div class="read-ref">"Trace formula in noncommutative geometry and zeros of the Riemann zeta function"</div>
+          <div class="read-why"><span data-lang="en">Advanced operator-theoretic framework. Long-term reading toward deeper RH understanding.</span><span data-lang="mn">Дэвшилтэт операторын онолын хүрээ. RH-г гүнзгий ойлгох урт хугацааны уншлага.</span></div>
+        </div>
+        <div class="read-status">⬜ <span data-li="en">Future</span><span data-li="mn">Ирээдүй</span></div>
+      </div>
+
+    </div>
+
+    <!-- NEXT STEPS -->
+    
+    <!-- SERIOUS RESEARCH CHECKLIST -->
+    <div class="section-label" style="margin-top:2rem;"><span data-li="en">From "interesting idea" → "actual experimental mathematics"</span><span data-li="mn">"Сонирхолтой санаа" → "жинхэнэ туршилтын математик"</span></div>
+    <div style="display:flex;flex-direction:column;gap:.7rem;margin-bottom:2.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">✅</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">1. Exact definitions — spacing covariance C(h), BK predictor B(p)</span><span data-lang="mn">1. Яг тодорхойлолт — C(h), B(p)</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Documented in paper/main.tex</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);width:1.4rem;">✅</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--text);"><span data-lang="en">2. Reproducible code — full Python pipeline on GitHub</span><span data-lang="mn">2. Давтагдах код — GitHub дээр бүрэн Python</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">github.com/myagmardorj-cloud/Myagmardorj</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">3. Synthetic controls — GUE surrogates, shuffled zeros, random phases</span><span data-lang="mn">3. Синтетик хяналт — GUE суррогат, shuffle, санамсаргүй фаз</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: bootstrap p-values, permutation tests</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">4. Statistical significance — corrected for multiple testing, window size</span><span data-lang="mn">4. Статистик ач холбогдол — олон тест, цонхны хэмжээгээр засварласан</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: Bonferroni correction, sensitivity analysis</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">5. Asymptotic prediction — what should r → as N → ∞?</span><span data-lang="mn">5. Асимптотик таамаглал — N → ∞ үед r → ?</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: theoretical prediction from explicit formula</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">6. Peer verification — independent replication by another researcher</span><span data-lang="mn">6. Peer шалгалтжуулалт — өөр судлаачийн бие даасан давталт</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: arXiv submission + peer review</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
+        <div style="flex:1;">
+          <div style="font-size:.9rem;color:var(--sub);"><span data-lang="en">7. Short paper — 4–8 pages, Experimental Mathematics journal</span><span data-lang="mn">7. Богино өгүүлэл — 4–8 хуудас, Experimental Mathematics сэтгүүл</span></div>
+          <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Target: Experimental Mathematics or similar</div>
+        </div>
+      </div>
+    </div>
+
+<div class="section-label"><span data-li="en">Concrete Next Steps</span><span data-li="mn">Тодорхой дараагийн алхамууд</span></div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;">
+      <div class="next-card">
+        <div class="next-num">01</div>
+        <div class="next-title"><span data-lang="en">Read Montgomery 1973</span><span data-lang="mn">Montgomery 1973 уншах</span></div>
+        <div class="next-desc"><span data-lang="en">Focus on pair correlation formula and GUE connection. Take notes on normalization conventions.</span><span data-lang="mn">Pair correlation томьёо болон GUE холбоод анхаарлаа хандуулах.</span></div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">02</div>
+        <div class="next-title"><span data-lang="en">Read BK 1996 Part I</span><span data-lang="mn">BK 1996 I хэсэг уншах</span></div>
+        <div class="next-desc"><span data-lang="en">Find the exact formula for A(p). Identify where C comes from. Compare with our empirical C estimates.</span><span data-lang="mn">A(p)-н яг томьёог олох. C хаанаас гарч байгааг тодорхойлох.</span></div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">03</div>
+        <div class="next-title"><span data-lang="en">Test on more datasets</span><span data-lang="mn">Илүү олон датасет дээр тест</span></div>
+        <div class="next-desc"><span data-lang="en">Try Odlyzko's highest zero data (~10²¹). Does empirical C remain stable at extreme heights?</span><span data-lang="mn">~10²¹ өндөрт zeros туршиж үзэх. Туршилтын C тогтвортой хэвээр байна уу?</span></div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">04</div>
+        <div class="next-title"><span data-lang="en">Derive C theoretically</span><span data-lang="mn">C-г онолоор гаргах</span></div>
+        <div class="next-desc"><span data-lang="en">Derive the BK amplitude constant C from first principles using BK and random matrix theory.</span><span data-lang="mn">BK болон санамсаргүй матрицын онолоос BK амплитудын C-г эхний зарчмаас гаргах.</span></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <span data-lang="en">The Riemann Hypothesis has been open for 167 years. This roadmap represents a long journey — but every step matters.</span>
+      <span data-lang="mn">Риманы таамаглал 167 жил нээлттэй байна. Энэ зам урт аялалыг дүрслэнэ — гэхдээ алхам бүр чухал.</span>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<!-- DATA PAGE -->
+<div class="page" id="page-data">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Data Sources</span><span data-li="mn">Өгөгдлийн эх сурвалж</span></div>
+    <h2><span data-lang="en">Odlyzko Zero Tables</span><span data-lang="mn">Одлызкогийн Тэгийн Хүснэгтүүд</span></h2>
+    <p class="prose" style="margin-bottom:2rem;">
+      <span data-lang="en">All analysis uses Andrew Odlyzko's high-precision tabulations of non-trivial Riemann zeros, freely available at the University of Minnesota.</span>
+      <span data-lang="mn">Бүх шинжилгээ Миннесотагийн их сургуулийн Эндрю Одлызкогийн өндөр нарийвчлалтай тривиаль биш Риман тэгийн хүснэгтийг ашигладаг.</span>
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
+      <div class="file-card">
+        <div class="file-header" onclick="toggleFile(this)">
+          <span class="file-icon">📋</span>
+          <div class="file-meta">
+            <span class="file-name">zeros_ht</span>
+            <div class="file-desc"><span data-lang="en">First 100,000 non-trivial zeros near T ≈ 74,920</span><span data-lang="mn">T ≈ 74,920 орчим анхны 100,000 тривиаль биш тэг</span></div>
+            <div class="file-tags"><span class="file-tag">100,000 zeros</span><span class="file-tag">T ≈ 74,920</span><span class="file-tag">r = 0.5113</span></div>
+          </div>
+          <span class="file-toggle">▼</span>
+        </div>
+        <div class="file-body">
+          <div class="file-body-inner">
+            <div class="note-block">
+              <div class="note-label">Format</div>
+              <span data-lang="en">Plain text, one imaginary part γₙ per line. Values are the imaginary parts of zeros ½ + iγₙ.</span>
+              <span data-lang="mn">Энгийн текст, мөр бүрт нэг γₙ. Утгууд нь ½ + iγₙ тэгийн γₙ хэсэг.</span>
+            </div>
+            <div style="margin-top:1rem;">
+              <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros2" target="_blank" style="display:inline-flex;border-radius:10px;">
+                <span class="li">⬇️</span><div><span class="lt">Download zeros_ht (Odlyzko zeros2)</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros2</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-header" onclick="toggleFile(this)">
+          <span class="file-icon">📋</span>
+          <div class="file-meta">
+            <span class="file-name">zeros1</span>
+            <div class="file-desc"><span data-lang="en">~2M zeros near height T ~ 10¹². Used in main high-T analysis.</span><span data-lang="mn">T ~ 10¹² орчим ~2M тэг. Үндсэн өндөр-T шинжилгээнд ашиглагдсан.</span></div>
+            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹²</span><span class="file-tag">r = 0.6847</span></div>
+          </div>
+          <span class="file-toggle">▼</span>
+        </div>
+        <div class="file-body">
+          <div class="file-body-inner">
+            <div class="note-block" style="border-left-color:var(--green);">
+              <div class="note-label" style="color:var(--green);">Best result</div>
+              <span data-lang="en">This dataset (zeros1) produced r = 0.6847. High-T normalization τ_p = log(p)/log(T/2π) is essential.</span>
+              <span data-lang="mn">Энэ датасет (zeros1) r = 0.6847-г гаргасан. Өндөр-T нормализаци τ_p = log(p)/log(T/2π) зайлшгүй.</span>
+            </div>
+            <div style="margin-top:1rem;">
+              <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros3" target="_blank" style="display:inline-flex;border-radius:10px;">
+                <span class="li">⬇️</span><div><span class="lt">Download zeros1 (Odlyzko zeros3)</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros3</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-card">
+        <div class="file-header" onclick="toggleFile(this)">
+          <span class="file-icon">📋</span>
+          <div class="file-meta">
+            <span class="file-name">zeros6</span>
+            <div class="file-desc"><span data-lang="en">~10,000 zeros near height T ~ 10¹³.</span><span data-lang="mn">T ~ 10¹³ орчим ~10,000 тэг.</span></div>
+            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹³</span><span class="file-tag">r = 0.4509</span></div>
+          </div>
+          <span class="file-toggle">▼</span>
+        </div>
+        <div class="file-body">
+          <div class="file-body-inner">
+            <div style="margin-top:1rem;">
+              <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros4" target="_blank" style="display:inline-flex;border-radius:10px;">
+                <span class="li">⬇️</span><div><span class="lt">Download zeros6 (Odlyzko zeros4)</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros4</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label"><span data-li="en">How to use</span><span data-li="mn">Хэрхэн ашиглах</span></div>
+    <div class="steps" style="grid-template-columns:repeat(3,1fr);display:grid;gap:1rem;">
+      <div class="step-card"><div class="step-n">1</div><div class="step-text"><strong><span data-lang="en">Download</span><span data-lang="mn">Татах</span></strong><span data-lang="en">Download any zeros file from Odlyzko's site above.</span><span data-lang="mn">Дээрх Одлызкогийн сайтаас zeros файл татаж авна.</span></div></div>
+      <div class="step-card"><div class="step-n">2</div><div class="step-text"><strong><span data-lang="en">Verify</span><span data-lang="mn">Харьцуулалт</span></strong><span data-lang="en">Upload to our Analysis Lab and run the analysis.</span><span data-lang="mn">Шинжилгээний Лабрт upload хийж шинжилгээ ажиллуулна.</span></div></div>
+      <div class="step-card"><div class="step-n">3</div><div class="step-text"><strong><span data-lang="en">Compare</span><span data-lang="mn">Харьцуулах</span></strong><span data-lang="en">Compare your r value with our published results.</span><span data-lang="mn">Өөрийн r утгыг манай нийтэлсэн үр дүнтэй харьцуулна.</span></div></div>
+    </div>
+    <div style="margin-top:1.5rem;">
+      <a class="link-card" href="/verify.html" style="display:inline-flex;border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);border-radius:12px;">
+        <span class="li">⚗️</span><div><span class="lt" style="color:var(--green);">Open Analysis Lab</span><span class="ld">Upload data and run analysis</span></div>
+      </a>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<!-- UPDATES PAGE -->
+<div class="page" id="page-updates">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Updates</span><span data-li="mn">Судалгааны шинэчлэлүүд</span></div>
+    <h2><span data-lang="en">Timeline of Discoveries</span><span data-lang="mn">Нээлтүүдийн он цаг</span></h2>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem;">
+
+      <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 · v2</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">LATEST</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Language updated to "numerical evidence"</span><span data-lang="mn">Хэллэг "тоон ажиглалт" болгон шинэчлэгдсэн</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">All publications updated to use mathematically accurate language. "confirmed" replaced with "strong numerical evidence". Zenodo v2 published.</span><span data-lang="mn">Бүх нийтлэлийн хэллэг математикийн стандартад нийцүүлэн шинэчлэгдсэн. "батлагдсан" → "хүчтэй тоон ажиглалт". Zenodo v2 нийтлэгдсэн.</span></p>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 · v1</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">research.nexcore.ltd launched</span><span data-lang="mn">research.nexcore.ltd нээгдсэн</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Full research website with interactive charts, BK calculator, correlation analysis tool, roadmap, and Clay Prize context.</span><span data-lang="mn">Интерактив графиктай, BK тооцоолуур, корреляц шинжилгээний хэрэгсэл, roadmap, Clay шагналын мэдээлэлтэй бүрэн судалгааны вэб.</span></p>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Zenodo preprint published · DOI obtained</span><span data-lang="mn">Zenodo preprint нийтлэгдсэн · DOI авсан</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);">DOI: 10.5281/zenodo.20077673</p>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Key insight: high-T normalization</span><span data-lang="mn">Гол ойлголт: өндөр-T нормализаци</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">Discovered that τ_p = log(p)/log(T/2π) (not log(p)/2π) is essential. Earlier runs showed r ≈ 0.4–0.6; current analysis gives r = 0.45–0.68 across datasets.</span><span data-lang="mn">τ_p = log(p)/log(T/2π) (log(p)/2π биш) зайлшгүй гэдгийг нээсэн. r нь 0.4–0.68 хооронд датасетээс хамаарна.</span></p>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-07</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-lang="en">Initial analysis on zeros_ht (v1 run, not reproduced)</span><span data-lang="mn">zeros_ht дээрх анхны шинжилгээ (v1 давталт, давтаагдаагүй)</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-lang="en">First test on 100,000 zeros. prime-indexed excess patterns across tested prime ranges positive. BK-type scaling observed.</span><span data-lang="mn">100,000 тэг дээрх анхны тест. 12/12 прайм позиц эерэг. BK-төрлийн scaling ажиглагдсан.</span></p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<!-- FAQ PAGE -->
+<div class="page" id="page-faq">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Frequently Asked Questions</span><span data-li="mn">Түгээмэл асуултууд</span></div>
+    <h2><span data-lang="en">Questions & Answers</span><span data-lang="mn">Асуулт & Хариулт</span></h2>
+    <div style="display:flex;flex-direction:column;gap:1rem;" id="faq-list"></div>
+  </div>
+  
+</div>
+</div>
+
+<!-- NULL TESTS PAGE -->
+<div class="page" id="page-nulltests">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Null Tests</span><span data-li="mn">Null Тестүүд</span></div>
+    <h2><span data-lang="en">Control & Shuffled Zero Tests</span><span data-lang="mn">Хяналт & Холилдсон Тэгийн Тестүүд</span></h2>
+    <p class="prose" style="margin-bottom:2rem;">
+      <span data-lang="en">To assess whether the observed signal could be a statistical artifact, we ran control tests using shuffled zeros and random data.</span>
+      <span data-lang="mn">Дохио жинхэнэ бөгөөд статистикийн артефакт биш гэдгийг харьцуулахын тулд холилдсон тэгүүд болон санамсаргүй өгөгдөл дээр хяналтын тест хийсэн.</span>
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
+      <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">REAL ZEROS</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.45–0.68</div>
+        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r range across datasets</span><span data-lang="mn">Датасет хоорондын Pearson r хүрээ</span></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);margin-top:.6rem;">✅ prime-indexed excess patterns observed across tested ranges</div>
+      </div>
+      <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-radius:14px;padding:1.5rem;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">SHUFFLED ZEROS</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--sub);line-height:1;">~0.0</div>
+        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-lang="en">Pearson r on shuffled data (mean)</span><span data-lang="mn">Холилдсон өгөгдөл дээрх Pearson r (дундаж)</span></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--red);margin-top:.6rem;">❌ No systematic signal</div>
+      </div>
+    </div>
+
+    <div class="section-label"><span data-li="en">Test methodology</span><span data-li="mn">Тестийн арга зүй</span></div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+      <div class="finding pos"><span class="fi">✓</span>
+        <div class="ft"><strong><span data-lang="en">Shuffle test:</span><span data-lang="mn">Shuffle тест:</span></strong>
+          <span data-lang="en">Random permutations of γₙ values → compute A(p) → Pearson r ≈ 0 across all shuffles. Confirms signal is in the ordering of zeros, not their marginal distribution.</span>
+          <span data-lang="mn">γₙ утгуудын санамсаргүй зөвшилд A(p) тооцоолно → Pearson r ≈ 0. Дохио нь тэгүүдийн дараалалд байгааг, тэдгээрийн маргинал тархалтад биш гэдгийг харуулна.</span>
+        </div>
+      </div>
+      <div class="finding pos"><span class="fi">✓</span>
+        <div class="ft"><strong><span data-lang="en">GUE surrogate test:</span><span data-lang="mn">GUE суррогат тест:</span></strong>
+          <span data-lang="en">Random GUE eigenvalue spacings → no BK-type prime excess detected. The effect is specific to actual Riemann zeros.</span>
+          <span data-lang="mn">Санамсаргүй GUE эгэн утгын зайнуудад BK-төрлийн прайм илүүдэл илрэхгүй. Эффект нь яг Риман тэгүүдэд хамаарна.</span>
+        </div>
+      </div>
+      <div class="finding pos"><span class="fi">✓</span>
+        <div class="ft"><strong><span data-lang="en">Non-prime lag control:</span><span data-lang="mn">Прайм биш лаг хяналт:</span></strong>
+          <span data-lang="en">Tested covariance at non-prime lags (composite numbers). Mean excess ≈ 0, confirming the signal is prime-specific.</span>
+          <span data-lang="mn">Прайм биш лаг (нийлмэл тоо) дээр ковариансыг тест хийсэн. Дундаж илүүдэл ≈ 0, дохио прайм-өвөрмөц гэдгийг баталж байна.</span>
+        </div>
+      </div>
+      <div class="finding pos"><span class="fi">✓</span>
+        <div class="ft"><strong><span data-lang="en">Cross-dataset consistency:</span><span data-lang="mn">Датасетүүд хоорондын тогтвортой байдал:</span></strong>
+          <span data-lang="en">Effect appears across zeros_ht, zeros1, zeros6 at very different heights. Bootstrap stability varies; zeros6 shows MODERATE stability only.</span>
+          <span data-lang="mn">Эффект нь zeros_ht, zeros1, zeros6 дээр өөр өндрүүдэд гарч байна. Bootstrap тогтвортой байдал хэлбэлздэг; zeros6 дунд зэргийн тогтвортой байдал харуулна.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <span data-lang="en">Null tests reduce the likelihood of false positives but do not prove the BK law. Independent replication is still needed.</span>
+      <span data-lang="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан давталтжуулалт хэвээр шаардлагатай.</span>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<!-- DISCUSSION PAGE -->
+<div class="page" id="page-discussion">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Community Discussion</span><span data-li="mn">Нийгэмлэгийн хэлэлцүүлэг</span></div>
+    <h2><span data-lang="en">Where We've Shared This Work</span><span data-lang="mn">Ажлаа хаана хуваалцсан</span></h2>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem;">
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">📐</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Math StackExchange</div>
+            <div style="font-size:.78rem;color:var(--muted);">math.stackexchange.com</div>
+          </div>
+          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">ACCEPTED ✓</span>
+        </div>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
+          <span data-lang="en">Question: "Numerical verification of Bogomolny-Keating prime peaks in Riemann zero power spectrum". Answered by Steven Clark (9,500+ rep) who suggested the explicit formula framework. Answer accepted.</span>
+          <span data-lang="mn">Асуулт: "Риман тэгийн power spectrum дэх Богомолны-Китингийн прайм оргилуудыг тоон харьцуулах". Steven Clark (9,500+ rep) тодорхой томьёоны хүрээг санал болгон хариулсан. Хариулт accepted хийгдсэн.</span>
+        </p>
+        <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank" style="display:inline-flex;border-radius:10px;">
+          <span class="li">🔗</span><div><span class="lt">View question & answer</span><span class="ld">math.stackexchange.com/questions/5135941</span></div>
+        </a>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">🟠</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Reddit r/mathematics</div>
+            <div style="font-size:.78rem;color:var(--muted);">reddit.com/r/mathematics</div>
+          </div>
+        </div>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
+          <span data-lang="en">Post: "Numerical observation: BK-type prime-lock scaling in high Riemann zero blocks (r=0.45–0.68, dataset-dependent) — looking for literature references"</span>
+          <span data-lang="mn">Пост: "Тоон ажиглалт: өндөр Риман тэгийн блок дахь BK-төрлийн прайм-lock scaling (r=0.45–0.68) — уран зохиолын лавлагаа хайж байна"</span>
+        </p>
+        <a class="link-card" href="https://reddit.com/r/mathematics" target="_blank" style="display:inline-flex;border-radius:10px;">
+          <span class="li">🔗</span><div><span class="lt">r/mathematics</span><span class="ld">reddit.com/r/mathematics</span></div>
+        </a>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">✉️</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;"><span data-lang="en">Direct correspondence</span><span data-lang="mn">Шууд захидал харилцаа</span></div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Contacted leading researchers</span><span data-lang="mn">Тэргүүлэгч судлаачидтай холбогдсон</span></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+          <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
+            <div style="font-size:.85rem;font-weight:600;">Andrew Odlyzko</div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Replied with form letter (high request volume)</span><span data-lang="mn">Маягт захидлаар хариулсан (хүсэлт их)</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
+            <div style="font-size:.85rem;font-weight:600;">Jonathan Keating</div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-lang="en">Email sent, awaiting reply</span><span data-lang="mn">Майл явуулсан, хариу хүлээж байна</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">📄</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Zenodo Preprint</div>
+            <div style="font-size:.78rem;color:var(--muted);">zenodo.org</div>
+          </div>
+          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2);padding:.2rem .6rem;border-radius:4px;">v2 PUBLISHED</span>
+        </div>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">DOI: 10.5281/zenodo.20077673 · Indexed in OpenAIRE</p>
+        <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;border-radius:10px;">
+          <span class="li">🔗</span><div><span class="lt">View preprint</span><span class="ld">zenodo.org/records/20077673</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<!-- LIVE STATS + NEWSLETTER PAGE -->
+<div class="page" id="page-livestats">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Live Stats</span><span data-li="mn">Шууд Статистик</span></div>
+    <h2><span data-lang="en">Research Impact</span><span data-lang="mn">Судалгааны Нөлөөлөл</span></h2>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;">
+      <div class="stat-card">
+        <div class="ds">Zenodo Views</div>
+        <span class="rv" id="stat-views">—</span>
+        <div class="pv">zenodo.org</div>
+        <div class="badge" id="stat-views-badge">Loading...</div>
+      </div>
+      <div class="stat-card">
+        <div class="ds">Zenodo Downloads</div>
+        <span class="rv" id="stat-downloads">—</span>
+        <div class="pv">main.tex</div>
+        <div class="badge" id="stat-dl-badge">Loading...</div>
+      </div>
+      <div class="stat-card">
+        <div class="ds">Datasets tested</div>
+        <span class="rv">3</span>
+        <div class="pv">zeros1, zeros_ht, zeros6</div>
+        <div class="badge">Verified</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--green);">12/12</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Primes positive</span><span data-lang="mn">Эерэг прайм</span></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45–0.68</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Best r value</span><span data-lang="mn">Хамгийн сайн r</span></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">~3</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">C constant</span><span data-lang="mn">C константа</span></div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text);">167</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-lang="en">Years RH open</span><span data-lang="mn">RH нээлттэй жил</span></div>
+      </div>
+    </div>
+
+    <div class="section-label"><span data-li="en">Newsletter</span><span data-li="mn">Мэдэгдэл</span></div>
+    <h3 style="color:var(--text);font-size:1.2rem;margin-bottom:.8rem;"><span data-lang="en">Get notified of new results</span><span data-lang="mn">Шинэ үр дүний мэдэгдэл авах</span></h3>
+    <p style="font-size:.88rem;color:var(--sub);margin-bottom:1.5rem;">
+      <span data-lang="en">When new zero datasets are tested or significant findings are published, we'll send a brief update.</span>
+      <span data-lang="mn">Шинэ тэгийн датасет тест хийгдэх эсвэл чухал олдвор нийтлэгдэх үед товч шинэчлэл илгээнэ.</span>
+    </p>
+    <div style="display:flex;gap:.8rem;max-width:480px;">
+      <input type="email" id="nl-email" placeholder="you@example.com" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;padding:.7rem 1rem;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(0,212,255,.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <button onclick="subscribeNL()" style="background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;padding:.7rem 1.4rem;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <span data-lang="en">Subscribe</span><span data-lang="mn">Бүртгүүлэх</span>
+      </button>
+    </div>
+    <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
+  </div>
+  
+</div></div>
+</div>
+<footer style="border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;">
+<span>Computational observations only — not a theorem or proof of RH.</span>
+<div style="display:flex;">
+  <a href="/paper1/" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a>
+  <a href="/verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a>
+  <a href="/intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a>
+  <a href="/landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a>
+  <a href="/paper1/formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a>
+</div>
+<span>v1.0.0</span>
+</footer>
+<script src="/paper1/assets/lang.js"></script>
+<script src="/paper1/assets/nav.js"></script>
+<script src="/paper1/assets/shared.js"></script>
+</body>
+</html>

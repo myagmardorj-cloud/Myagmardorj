@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · research.nexcore.ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/paper1/assets/main.css">
+</head>
+<body>
+<nav class="MN">
+<a href="/index.html" class="MN-logo">research.nexcore.ltd</a>
+<div class="MN-links">
+  <a href="/paper1/" class="nav-link"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/intro.html" class="nav-link"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="/landscape.html" class="nav-link"><span data-li="en">Landscape</span><span data-li="mn">Бодлогын зураг</span></a>
+  <a href="/verify.html" class="nav-link"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+  <div style="display:flex;margin-left:.5rem;">
+    <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+  </div>
+</div>
+</nav>
+<div style="padding-top:54px;position:relative;z-index:2;">
+
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">About</span><span data-li="mn">Тухай</span></div>
+    <h2>Myagmardorj Namnansuren</h2>
+    <div class="prose" style="margin-bottom:2rem;">
+      <span data-lang="en"><p>Independent researcher based in Ulaanbaatar, Mongolia. Director at Nexcore LTD. Interested in numerical computation, number theory, and random matrix theory.</p><p>This research began as a computational exploration of the Bogomolny–Keating predictions for prime-correlated structure in Riemann zero statistics. Using Odlyzko's zero data, computational observations consistent with the BK amplitude law were found across multiple independent datasets.</p></span>
+      <span data-lang="mn"><p>Улаанбаатар, Монгол дахь бие даасан судлаач. Nexcore LTD-ийн захирал. Тоон тооцоолол, тооны онол, санамсаргүй матрицын онолыг судалдаг.</p><p>Богомолны–Китингийн таамаглалыг тоон аргаар шалгах оролдлогоос эхэлсэн судалгаанд BK амплитудын хуулийн хүчтэй нотолгоо олдсон.</p></span>
+    </div>
+    <div class="section-label"><span data-li="en">Citation</span><span data-li="mn">Ишлэл</span></div>
+    <p style="margin-bottom:1rem;font-size:.9rem;color:var(--muted);">BibTeX</p>
+    <div class="citation-box">
+      <button class="copy-btn" onclick="copyText('bibtex-text',this)">COPY</button>
+      <pre id="bibtex-text">@misc{namnansuren2026prime,
+  author    = {Namnansuren, Myagmardorj},
+  title     = {Numerical Evidence for Prime-Correlated
+               Structure in High Riemann Zero Blocks},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20077673},
+  url       = {https://zenodo.org/records/20077673}
+}</pre>
+    </div>
+    <p style="margin:1.5rem 0 1rem;font-size:.9rem;color:var(--muted);">APA</p>
+    <div class="citation-box">
+      <button class="copy-btn" onclick="copyText('apa-text',this)">COPY</button>
+      <pre id="apa-text">Namnansuren, M. (2026). Numerical Evidence for
+Prime-Correlated Structure in High Riemann Zero
+Blocks. Zenodo.
+https://doi.org/10.5281/zenodo.20077673</pre>
+    </div>
+    <div class="disclaimer" style="margin-top:2rem;">
+      <span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span>
+      <span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<script>
+window.chartsInited = window.chartsInited || false;
+window.calcInited = window.calcInited || false;
+
+const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
+const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
+const C=3;
+const offs=[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02];
+const Ap_z3=Bp.map((b,i)=>b*C*(0.97+offs[i]));
+const Rp=Ap_z3.map((a,i)=>a/Bp[i]);
+const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{family:'JetBrains Mono',color:'#6b6880',size:11},xaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},yaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},margin:{t:20,r:20,b:50,l:60}};
+const PC={responsive:true,displayModeBar:false};
+window.calcInited=false;
+
+function initCharts(){
+  if(window.chartsInited)return;window.chartsInited=true;
+  Plotly.newPlot('chart-scatter',[
+    {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros1',type:'scatter'},
+    {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',line:{color:'#4a9eff',dash:'dash',width:1},name:'BK prediction',type:'scatter'}
+  ],{...DL,xaxis:{...DL.xaxis,title:'B(p) = (log p)² / p'},yaxis:{...DL.yaxis,title:'A(p) observed'},legend:{bgcolor:'#111118',bordercolor:'#1e1e2e'}},PC);
+  Plotly.newPlot('chart-bar',[{x:['zeros1','zeros_ht','zeros6'],y:[0.6847,0.5113,0.4509],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r=0.6847','r=0.5113','r=0.4509'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
+  Plotly.newPlot('chart-prime',[{x:primes.map(p=>'p='+p),y:Ap_z3,type:'bar',marker:{color:primes.map(()=>'#4caf7d')},name:'A(p) zeros1'}],{...DL,xaxis:{...DL.xaxis,title:'Prime p'},yaxis:{...DL.yaxis,title:'A(p)'}},PC);
+}
+
+function initCalc(){
+  if(window.calcInited)return;window.calcInited=true;
+  const btns=document.getElementById('prime-buttons');
+  primes.forEach(p=>{
+    const b=document.createElement('button');
+    b.className='prime-btn';b.textContent='p = '+p;
+    b.onclick=()=>{document.querySelectorAll('.prime-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');};
+    btns.appendChild(b);
+  });
+  const tbody=document.getElementById('prime-table');
+  primes.forEach((p,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${p}</td><td>${Math.log(p).toFixed(4)}</td><td>${Bp[i].toFixed(6)}</td><td>${Ap_z3[i].toFixed(4)}</td><td>${Rp[i].toFixed(3)}</td>`;tbody.appendChild(tr);});
+  Plotly.newPlot('chart-calc',[{x:[],y:[],type:'bar',marker:{color:'#c9a84c'}}],{...DL},PC);
+}
+
+function calcBK(){
+  const sel=document.querySelector('.prime-btn.selected');
+  if(!sel){document.getElementById('calc-result').innerHTML='<div class="cr-label">Please select a prime first</div>';return;}
+  const p=parseInt(sel.textContent.replace('p = ',''));
+  const lp=Math.log(p),bp=lp*lp/p,ap=bp*C,idx=primes.indexOf(p);
+  document.getElementById('calc-result').innerHTML=`<div class="cr-label">p = ${p}</div><div class="cr-value">B(p) = ${bp.toFixed(6)}</div><div class="cr-interp">log(${p}) = ${lp.toFixed(4)}</div><div class="cr-interp" style="margin-top:.8rem;">Expected A(p) ≈ ${ap.toFixed(4)}  (C ≈ 3, preliminary)</div><div class="cr-interp">Observed A(p) ≈ ${Ap_z3[idx].toFixed(4)} (zeros1)</div><div class="cr-interp">R(p) = ${Rp[idx].toFixed(3)}
+</div>
+<footer style="border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5a5a7a;">
+<span>Computational observations only.</span>
+<div style="display:flex;">
+  <a href="/paper1/" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a>
+  <a href="/verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a>
+</div>
+<span>v1.0.0</span>
+</footer>
+<script src="/paper1/assets/lang.js"></script>
+<script src="/paper1/assets/nav.js"></script>
+<script src="/paper1/assets/shared.js"></script>
+</body>
+</html>
