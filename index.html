@@ -1527,7 +1527,7 @@ const faqs = [
 function initFAQ() {
   const list = document.getElementById('faq-list');
   if (!list || list.children.length > 0) return;
-  const lang = document.body.className || 'en';
+  const lang = document.body.classList.contains('mn') ? 'mn' : 'en';
   faqs.forEach((faq, i) => {
     const div = document.createElement('div');
     div.className = 'faq-item';
@@ -1584,7 +1584,7 @@ function subscribeNL() {
   }
   msg.style.display='block';
   msg.style.color='var(--green)';
-  const lang = document.body.className;
+  const lang = document.body.classList.contains('mn') ? 'mn' : 'en';
   msg.textContent = lang==='mn'
     ? '✅ Бүртгэгдлээ! Шинэ үр дүн гарахад мэдэгдэл авна.'
     : '✅ Subscribed! You will be notified when new results are published.';
