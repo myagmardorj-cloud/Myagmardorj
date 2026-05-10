@@ -432,7 +432,7 @@ clayProbs.forEach(p => {
   div.onclick = () => openModal(p);
   div.innerHTML = `
     ${p.solved ? '<span class="solved-badge">SOLVED 2003</span>' : ''}
-    ${p.our ? '<span class="our-badge">← Computational Observation</span>' : ''}
+    
     <span class="prob-tag ${p.tagClass}">${p.tag}</span>
     <div class="prob-name">
       <span data-lang="en">${p.name_en}</span>
