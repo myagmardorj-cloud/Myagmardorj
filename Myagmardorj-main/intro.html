@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>research.nexcore.ltd — Танилцуулга</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070710;--s1:#0e0e1c;--s2:#13131f;
+  --c:#00d4ff;--b:#4d9fff;--g:#00e5a0;--r:#ff4d6d;--gold:#f0b429;
+  --t:#eeeef8;--sub:#9999b8;--m:#5a5a7a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory;}
+body{background:var(--bg);color:var(--t);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
+
+/* MESH */
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.12;}
+.o1{width:700px;height:700px;background:radial-gradient(circle,#0033ff,transparent);top:-200px;left:-200px;animation:oa 40s ease-in-out infinite alternate;}
+.o2{width:500px;height:500px;background:radial-gradient(circle,#00d4ff,transparent);bottom:-100px;right:-100px;animation:ob 35s ease-in-out infinite alternate;}
+.o3{width:300px;height:300px;background:radial-gradient(circle,#6600ff,transparent);top:40%;left:60%;animation:oc 18s ease-in-out infinite alternate;}
+@keyframes oa{to{transform:translate(120px,150px)}}
+@keyframes ob{to{transform:translate(-100px,-120px)}}
+@keyframes oc{to{transform:translate(-80px,100px)}}
+.grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;}
+
+/* SLIDE */
+.slide{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:4rem 2rem;scroll-snap-align:start;border-bottom:1px solid rgba(255,255,255,.04);}
+.inner{max-width:900px;width:100%;margin:0 auto;}
+
+/* NAV DOTS */
+.nav-dots{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:.7rem;}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--m);cursor:pointer;transition:all .3s;border:none;padding:0;}
+.dot.active{background:var(--c);transform:scale(1.4);box-shadow:0 0 8px rgba(0,212,255,.6);}
+.dot:hover{background:var(--sub);}
+
+/* TOP NAV */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(7,7,16,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04);}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:.9rem;background:linear-gradient(135deg,var(--c),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.visit-btn{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:600;padding:.45rem 1.2rem;background:linear-gradient(135deg,#0044ff,var(--c));color:#fff;border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:opacity .2s;}
+.visit-btn:hover{opacity:.85;}
+
+/* TYPOGRAPHY */
+.label{font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c);display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:5px 14px;border-radius:100px;margin-bottom:1.5rem;}
+.label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c);animation:blink 3s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.04em;margin-bottom:1.2rem;}
+h2 .hl{background:linear-gradient(90deg,var(--c),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+h2 .hg{background:linear-gradient(90deg,var(--g),#00a874);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+h2 .hr{background:linear-gradient(90deg,var(--r),#ff9500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.body-text{font-size:1.05rem;color:var(--sub);line-height:1.75;max-width:600px;margin-bottom:2rem;}
+
+/* HERO SLIDE */
+.hero-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(5rem,15vw,12rem);font-weight:800;line-height:.9;background:linear-gradient(135deg,var(--c),var(--b),rgba(77,159,255,.3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;display:block;}
+.hero-r{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;color:var(--sub);letter-spacing:.05em;}
+
+/* FEATURES GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem;}
+.feat{background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.3rem 1.5rem;transition:all .3s;cursor:default;}
+.feat:hover{border-color:rgba(0,212,255,.25);transform:translateY(-3px);background:rgba(0,212,255,.04);}
+.feat-icon{font-size:1.5rem;margin-bottom:.6rem;}
+.feat-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:.3rem;}
+.feat-desc{font-size:.82rem;color:var(--sub);}
+
+/* PAGES SHOWCASE */
+.pages-list{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem;}
+.page-item{display:flex;align-items:center;gap:1.2rem;background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1rem 1.4rem;transition:all .25s;}
+.page-item:hover{border-color:rgba(0,212,255,.2);background:rgba(0,212,255,.04);transform:translateX(6px);}
+.page-num{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;color:var(--c);background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.page-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:.2rem;}
+.page-desc{font-size:.8rem;color:var(--sub);}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+.stat{background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.2rem;text-align:center;}
+.stat-val{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:800;line-height:1;margin-bottom:.3rem;}
+.stat-lbl{font-size:.72rem;color:var(--sub);}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;gap:0;margin-top:1.5rem;position:relative;}
+.tl::before{content:'';position:absolute;left:1.2rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--c),transparent);}
+.tl-item{display:flex;gap:1.5rem;padding:1rem 0;padding-left:.5rem;}
+.tl-dot{width:1.5rem;height:1.5rem;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;z-index:1;}
+.tl-dot.done{background:rgba(0,229,160,.15);border:1px solid rgba(0,229,160,.4);color:var(--g);}
+.tl-dot.now{background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.4);color:var(--c);box-shadow:0 0 12px rgba(0,212,255,.3);animation:glow 2s infinite alternate;}
+.tl-dot.next{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--m);}
+@keyframes glow{to{box-shadow:0 0 20px rgba(0,212,255,.5);}}
+.tl-content{flex:1;}
+.tl-year{font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--c);margin-bottom:.2rem;}
+.tl-title{font-size:.9rem;font-weight:500;margin-bottom:.2rem;}
+.tl-sub{font-size:.78rem;color:var(--sub);}
+
+/* RESULT CARD */
+.result-big{background:linear-gradient(135deg,rgba(0,229,160,.06),rgba(0,212,255,.04));border:1px solid rgba(0,229,160,.2);border-radius:20px;padding:2.5rem;text-align:center;margin-bottom:1.5rem;}
+.r-val{font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,10vw,7rem);font-weight:800;background:linear-gradient(135deg,var(--g),var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.r-label{font-size:.9rem;color:var(--sub);margin-top:.5rem;}
+
+/* CTA */
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem;padding:.8rem 2rem;background:linear-gradient(135deg,#0044ff,var(--c));color:#fff;border:none;border-radius:10px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;box-shadow:0 0 24px rgba(0,212,255,.2);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,212,255,.35);}
+.btn-secondary{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.9rem;padding:.8rem 2rem;background:rgba(255,255,255,.05);color:var(--t);border:1px solid rgba(255,255,255,.12);border-radius:10px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;}
+.btn-secondary:hover{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.06);}
+
+/* SLIDE COUNTER */
+.slide-counter{position:fixed;bottom:2rem;right:2rem;font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--m);z-index:100;}
+.sc-cur{color:var(--c);}
+
+/* LANG */
+[data-mn]{display:none;}
+body.mn [data-en]{display:none;}
+body.mn [data-mn]{display:block;}
+body.mn span[data-mn]{display:inline;}
+body.mn span[data-en]{display:none;}
+span[data-mn]{display:none;}
+
+/* ANIMATION */
+.slide-content{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.slide-content.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:640px){
+  .feat-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .nav-dots{display:none;}
+}
+
+body.en [data-en]{display:inline !important;}
+body.en span[data-en]{display:inline !important;}
+body.en [data-mn]{display:none !important;}
+body.en span[data-mn]{display:none !important;}
+body.mn [data-en]{display:none !important;}
+body.mn span[data-en]{display:none !important;}
+body.mn [data-mn]{display:inline !important;}
+body.mn span[data-mn]{display:inline !important;}
+body.mn div[data-mn]{display:block !important;}
+body.mn div[data-en]{display:none !important;}
+/* MASTER NAV */
+.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);box-sizing:border-box;}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.MN-links{display:flex;align-items:center;}
+.MN-links a,.MN-links button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .6rem;border-radius:8px;border:1px solid transparent;transition:all .2s;cursor:pointer;background:none;white-space:nowrap;}
+.MN-links a:hover,.MN-links button:hover{color:#eeeef8;background:rgba(255,255,255,.05);}
+.MN-links a.MN-cur{color:#00d4ff;background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);}
+
+.MN-more{position:relative;}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.4rem;min-width:165px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;}
+.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:#5a5a7a;cursor:pointer;transition:all .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}.MN-lb:last-child{border-radius:0 4px 4px 0;border-left:none;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent;}
+[data-li]{display:none;}body.en [data-li="en"]{display:inline;}body.mn [data-li="mn"]{display:inline;}
+body{padding-top:54px !important;}
+@media(max-width:640px){.MN-links{display:none;}}
+
+.MN-dd a.MN-dd-active{color:#00d4ff !important;background:rgba(0,212,255,.08);}
+.MN-more button.MN-has-active{color:#00d4ff;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.15);}
+</style>
+</head>
+<body class="en">
+<nav class="MN">
+<a href="index.html" class="MN-logo">research.nexcore.ltd</a>
+<div class="MN-links"><a href="index.html"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a><a href="verify.html" class="MN-vfy"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a><a href="intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><a href="formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a><span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button><div class="MN-dd"><a href="index.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a><a href="index.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a><a href="index.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a><a href="index.html"><span data-li="en">Controls</span><span data-li="mn">Хяналтын тест</span></a><a href="index.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a><a href="index.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a><a href="index.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a><a href="index.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a><a href="index.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a><a href="index.html"><span data-li="en">About</span><span data-li="mn">Төслийн тухай</span></a><a href="landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Судалгааны хүрээ</span></a></div></span></div>
+<div class="MN-lang">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</nav>
+
+
+
+
+<!-- MESH -->
+<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<div class="grid"></div>
+
+<!-- TOP NAV -->
+
+  <div style="display:flex;gap:.8rem;align-items:center;">
+    <div style="display:flex;">
+      <button onclick="setLang('en')" id="btn-en" style="font-family:'Space Grotesk',sans-serif;font-size:.68rem;padding:.3rem .65rem;background:rgba(0,212,255,.15);border:1px solid rgba(0,212,255,.3);color:var(--c);cursor:pointer;border-radius:4px 0 0 4px;">ENG</button>
+      <button onclick="setLang('mn')" id="btn-mn" style="font-family:'Space Grotesk',sans-serif;font-size:.68rem;padding:.3rem .65rem;background:none;border:1px solid rgba(255,255,255,.1);color:var(--m);cursor:pointer;border-radius:0 4px 4px 0;border-left:none;">МОН</button>
+    </div>
+    <a class="visit-btn" href="https://research.nexcore.ltd">
+      <span data-en>Visit site →</span><span data-mn>Сайт руу →</span>
+    </a>
+  </div>
+</div>
+
+<!-- NAV DOTS -->
+<div class="nav-dots" id="nav-dots"></div>
+
+<!-- SLIDE COUNTER -->
+<div class="slide-counter"><span class="sc-cur" id="sc-cur">1</span> / <span id="sc-tot">7</span></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SLIDE 1: HERO -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="0">
+<div class="inner">
+  <div class="slide-content">
+    <div class="label">
+      <span data-en>Myagmardorj Namnansuren · 2026 · Mongolia</span>
+      <span data-mn>Мягмардорж Намнансүрэн · 2026 · Монгол</span>
+    </div>
+    <h2>
+      <span data-en><span class="hl">Prime-Correlated</span><br>Structure in<br>Riemann Zeros</span>
+      <span data-mn>Риман Тэгийн<br><span class="hl">Прайм-Корреляцийн</span><br>Бүтэц</span>
+    </h2>
+    <p class="body-text">
+      <span data-en>An independent computational observation of persistent prime-indexed excess correlations in Riemann zero spacing statistics, empirically consistent with a BK-type scaling law. Tested across 3 datasets at heights up to T ~ 10¹³.</span>
+      <span data-mn>Риман тэгийн зайн статистик дахь прайм-индекстэй илүүдэл корреляцийн бие даасан тооцооллын ажиглалт. BK-төрлийн scaling-тай нийцэж байна. T ~ 10¹³ хүртэлх 3 датасет дээр тест хийгдсэн.</span>
+    </p>
+    <div class="cta-row">
+      <a class="btn-primary" href="https://research.nexcore.ltd">
+        <span data-en>Explore the site →</span><span data-mn>Сайтыг үзэх →</span>
+      </a>
+      <a class="btn-secondary" href="https://zenodo.org/records/20077673" target="_blank">
+        <span data-en>📄 Preprint</span><span data-mn>📄 Preprint</span>
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SLIDE 2: KEY RESULT -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="1">
+<div class="inner">
+  <div class="slide-content">
+    <div class="label">
+      <span data-en>Key Result</span><span data-mn>Үндсэн үр дүн</span>
+    </div>
+    <div class="result-big">
+      <div class="r-val" style="font-size:1.6rem;">0.45–0.68</div>
+      <div class="r-label">
+        <span data-en>Pearson r range — across Odlyzko datasets (bootstrap MODERATE at N=2M)</span>
+        <span data-mn>Pearson r хүрээ — Одлызко датасетуудад (N=2M дээр bootstrap MODERATE)</span>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val" style="color:var(--g);">12/12</div><div class="stat-lbl"><span data-en>Primes positive</span><span data-mn>Эерэг прайм</span></div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--c);">3</div><div class="stat-lbl"><span data-en>Datasets</span><span data-mn>Датасет</span></div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--gold);">~3 (unstable)</div><div class="stat-lbl">C estimate (unstable)</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--sub);">≥0.94</div><div class="stat-lbl"><span data-en>Min r</span><span data-mn>Хамгийн бага r</span></div></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--m);margin-top:1rem;font-style:italic;background:rgba(255,77,109,.05);border-left:2px solid var(--r);padding:.6rem .8rem;border-radius:0 6px 6px 0;"><strong style="color:var(--r);font-style:normal;">Known Limitations:</strong> 
+      <span data-en>⚠️ Numerical observations only — not a confirmed theorem, not a proof of RH.</span>
+      <span data-mn>⚠️ Зөвхөн тоон ажиглалт — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SLIDE 3: PAGES -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="2">
+<div class="inner">
+  <div class="slide-content">
+    <div class="label">
+      <span data-en>Website structure</span><span data-mn>Вэбийн бүтэц</span>
+    </div>
+    <h2><span data-en><span class="hl">10</span> pages</span><span data-mn><span class="hl">10</span> хуудас</span></h2>
+    <div class="pages-list">
+      <div class="page-item"><div class="page-num">1</div><div><div class="page-name"><span data-en>Results</span><span data-mn>Үр дүн</span></div><div class="page-desc"><span data-en>Main findings, BK formula, timeline</span><span data-mn>Үндсэн олдвор, BK томьёо, он цаг</span></div></div></div>
+      <div class="page-item"><div class="page-num">2</div><div><div class="page-name"><span data-en>Charts</span><span data-mn>Графикууд</span></div><div class="page-desc"><span data-en>Interactive Plotly charts — scatter, bar, prime excess</span><span data-mn>Интерактив Plotly графикууд</span></div></div></div>
+      <div class="page-item"><div class="page-num">3</div><div><div class="page-name"><span data-en>Calculator</span><span data-mn>Тооцоолуур</span></div><div class="page-desc"><span data-en>Compute B(p) = (log p)²/p for any prime</span><span data-mn>Аливаа прайм дээр B(p) тооцоол</span></div></div></div>
+      <div class="page-item" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);"><div class="page-num" style="color:var(--g);border-color:rgba(0,229,160,.3);background:rgba(0,229,160,.1);">⚗️</div><div><div class="page-name" style="color:var(--g);">Analysis Lab</div><div class="page-desc"><span data-en>Upload Odlyzko data → run analysis in browser</span><span data-mn>Одлызко өгөгдөл upload → браузерт ажиллуул</span></div></div></div>
+      <div class="page-item"><div class="page-num">4</div><div><div class="page-name">Papers</div><div class="page-desc"><span data-en>Code files with syntax highlighting & explanations</span><span data-mn>Кодын файлууд тайлбарын хамт</span></div></div></div>
+      <div class="page-item"><div class="page-num">5</div><div><div class="page-name">Судалгааны зам</div><div class="page-desc"><span data-en>Progress bars, reading list, Clay Prize context</span><span data-mn>Явцын мөр, уншлагын жагсаалт, Clay шагнал</span></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SLIDE 4: FEATURES -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="3">
+<div class="inner">
+  <div class="slide-content">
+    <div class="label">
+      <span data-en>Features</span><span data-mn>Онцлогууд</span>
+    </div>
+    <h2><span data-en>Built for <span class="hl">transparency</span></span><span data-mn><span class="hl">Ил тод байдал</span>-д зориулсан</span></h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">🌐</div>
+        <div class="feat-title"><span data-en>ENG / МОН bilingual</span><span data-mn>ENG / МОН хоёр хэлтэй</span></div>
+        <div class="feat-desc"><span data-en>Full translation — switch language instantly</span><span data-mn>Бүрэн орчуулга — хэлийг шууд солих</span></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚗️</div>
+        <div class="feat-title"><span data-en>Live verification</span><span data-mn>Шууд харьцуулалт</span></div>
+        <div class="feat-desc"><span data-en>Anyone can verify results in browser — no install</span><span data-mn>Хэн ч браузерт үр дүнг харьцуулах боломжтой</span></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title"><span data-en>Interactive charts</span><span data-mn>Интерактив графикууд</span></div>
+        <div class="feat-desc"><span data-en>Plotly.js — zoom, hover, explore</span><span data-mn>Plotly.js — zoom, hover, судлах</span></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🌐</div>
+        <div class="feat-title"><span data-en>Live Zenodo stats</span><span data-mn>Шууд Zenodo статистик</span></div>
+        <div class="feat-desc"><span data-en>Views & downloads fetched from API in real time</span><span data-mn>Views & downloads API-аас шууд татагдана</span></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📋</div>
+        <div class="feat-title"><span data-en>All code explained</span><span data-mn>Бүх код тайлбарласан</span></div>
+        <div class="feat-desc"><span data-en>Every file with syntax highlighting & step-by-step notes</span><span data-mn>Синтакс тодруулга & алхам алхмаар тэмдэглэл</span></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💡</div>
+        <div class="feat-title">FAQ</div>
+        <div class="feat-desc"><span data-en>"Is this a proof of RH?" and 6 more key questions answered</span><span data-mn>"Энэ RH-н нотолгоо мөн үү?" болон 6 чухал асуулт</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SLIDE 5: TIMELINE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="4">
+<div class="inner">
+  <div class="slide-content">
+    <div class="label">
+      <span data-en>Historical context</span><span data-mn>Түүхэн хүрээ</span>
+    </div>
+    <h2><span data-en>167 years of <span class="hr">RH</span></span><span data-mn>RH-ийн <span class="hr">167 жил</span></span></h2>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-dot done">✓</div><div class="tl-content"><div class="tl-year">1859</div><div class="tl-title">Riemann</div><div class="tl-sub"><span data-en>Hypothesis proposed</span><span data-mn>Таамаглал дэвшүүлсэн</span></div></div></div>
+      <div class="tl-item"><div class="tl-dot done">✓</div><div class="tl-content"><div class="tl-year">1973</div><div class="tl-title">Montgomery</div><div class="tl-sub"><span data-en>GUE pair correlation discovered</span><span data-mn>GUE pair correlation нээгдсэн</span></div></div></div>
+      <div class="tl-item"><div class="tl-dot done">✓</div><div class="tl-content"><div class="tl-year">1996</div><div class="tl-title">Bogomolny & Keating</div><div class="tl-sub"><span data-en>Prime corrections predicted: A(p) ~ C(log p)²/p</span><span data-mn>Прайм засваруудыг таамагласан</span></div></div></div>
+      <div class="tl-item"><div class="tl-dot done">✓</div><div class="tl-content"><div class="tl-year">2000</div><div class="tl-title">Clay Institute</div><div class="tl-sub"><span data-en>$1,000,000 prize announced for RH proof</span><span data-mn>RH нотолгоонд $1,000,000 шагнал зарлагдсан</span></div></div></div>
+      <div class="tl-item"><div class="tl-dot now">●</div><div class="tl-content"><div class="tl-year">2026</div><div class="tl-title" style="color:var(--c);">Myagmardorj N. — Mongolia</div><div class="tl-sub"><span data-en>Numerical trend consistent with BK-type scaling observed — bootstrap MODERATE at N=2M (not a formal proof)</span><span data-mn>Туршилтын өгөгдлийн багцад BK-төрлийн scaling-тай нийцэх тоон хандлага ажиглагдсан — N=2M дээр bootstrap MODERATE (формал нотолгоо биш)</span></div></div></div>
+      <div class="tl-item"><div class="tl-dot next">○</div><div class="tl-content"><div class="tl-year"><span data-en>Next</span><span data-mn>Дараа</span></div><div class="tl-title" style="color:var(--m);"><span data-en>Theoretical derivation of C ≈ 3 (zeros1/zeros6)</span><span data-mn>C ≈ 3 (zeros1/zeros6)-н онолын гарталт</span></div><div class="tl-sub"><span data-en>Independent independent replication · Peer review · arXiv</span><span data-mn>Бие даасан давталтжуулалт · Peer review · arXiv</span></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SLIDE 6: CLAY PRIZE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="5">
+<div class="inner">
+  <div class="slide-content">
+    <div class="label">
+      <span data-en>Why this matters</span><span data-mn>Яагаад чухал вэ</span>
+    </div>
+    <h2><span data-en>Clay Millennium<br><span class="hg">$1,000,000</span></span><span data-mn>Clay Мянганы<br><span class="hg">$1,000,000</span></span></h2>
+    <p class="body-text">
+      <span data-en>The Riemann Hypothesis is one of 7 unsolved Millennium Prize Problems. Only 1 has been solved (Poincaré, 2003). Our work reports a numerical pattern consistent with BK-type predictions — not a confirmed theorem, not a proof of RH, and not yet a recognized research contribution.</span>
+      <span data-mn>Риманы таамаглал нь 7 шийдэгдээгүй Мянганы шагналт бодлогын нэг. Зөвхөн 1 нь шийдэгдсэн (Пуанкаре, 2003). Манай ажил BK-төрлийн таамаглалтай нийцсэн тооцооллын хэв маягийг тайлагнаж байна — батлагдсан теорем биш, RH-н нотолгоо биш.</span>
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;">
+      <div style="background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.2);border-radius:14px;padding:1.5rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:800;color:var(--c);">7</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-en>Prize problems</span><span data-mn>Шагналт бодлого</span></div>
+      </div>
+      <div style="background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);border-radius:14px;padding:1.5rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:800;color:var(--r);">6</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-en>Still unsolved</span><span data-mn>Хэвээр нээлттэй</span></div>
+      </div>
+      <div style="background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:800;color:var(--g);">#1</div>
+        <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-en>Our focus: RH</span><span data-mn>Манай анхаарал: RH</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SLIDE 7: CTA -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="6">
+<div class="inner" style="text-align:center;">
+  <div class="slide-content">
+    <div class="label" style="margin:0 auto 1.5rem;">
+      <span data-en>Open research · Mongolia · 2026</span>
+      <span data-mn>Нээлттэй судалгаа · Монгол · 2026</span>
+    </div>
+    <h2 style="margin:0 auto 1.2rem;">
+      <span data-en>Explore the<br><span class="hl">full website</span></span>
+      <span data-mn><span class="hl">Бүтэн вэбийг</span><br>үзэх</span>
+    </h2>
+    <p class="body-text" style="margin:0 auto 2rem;">
+      <span data-en>All code is open source. Results are reproducible. Anyone can verify.</span>
+      <span data-mn>Бүх код нээлттэй эх сурвалжтай. Үр дүнг давтаж болно. Хэн ч ажиглалтжуулж чадна.</span>
+    </p>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn-primary" href="https://research.nexcore.ltd">
+        <span data-en>research.nexcore.ltd →</span>
+        <span data-mn>research.nexcore.ltd →</span>
+      </a>
+      <a class="btn-secondary" href="https://research.nexcore.ltd/verify.html">
+        <span data-en>⚗️ Verify results</span>
+        <span data-mn>⚗️ Үр дүн харьцуулах</span>
+      </a>
+    </div>
+    <div style="margin-top:3rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;">
+      <a href="https://zenodo.org/records/20077673" target="_blank" style="font-size:.8rem;color:var(--sub);text-decoration:none;">📄 DOI: 10.5281/zenodo.20077673</a>
+      <a href="https://github.com/myagmardorj-cloud/Myagmardorj" target="_blank" style="font-size:.8rem;color:var(--sub);text-decoration:none;">⌨️ GitHub</a>
+      <a href="https://math.stackexchange.com/questions/5135941" target="_blank" style="font-size:.8rem;color:var(--sub);text-decoration:none;">💬 Math StackExchange</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsEl = document.getElementById('nav-dots');
+const scCur = document.getElementById('sc-cur');
+const scTot = document.getElementById('sc-tot');
+scTot.textContent = slides.length;
+
+// Create dots
+slides.forEach((s,i) => {
+  const d = document.createElement('button');
+  d.className = 'dot' + (i===0?' active':'');
+  d.onclick = () => s.scrollIntoView({behavior:'smooth'});
+  dotsEl.appendChild(d);
+});
+
+// Intersection observer for slides
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = [...slides].indexOf(entry.target);
+      document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+      scCur.textContent = idx + 1;
+      // Animate content
+      const content = entry.target.querySelector('.slide-content');
+      if (content) {
+        setTimeout(() => content.classList.add('visible'), 100);
+      }
+    }
+  });
+}, {threshold: 0.5});
+
+slides.forEach(s => observer.observe(s));
+
+// Trigger first slide immediately
+setTimeout(() => {
+  const first = slides[0]?.querySelector('.slide-content');
+  if (first) first.classList.add('visible');
+}, 200);
+
+// Language
+
+
+</script>
+<script>
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
+</script>
+
+
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
+<span>Computational observations only — not a theorem or proof of RH.</span>
+<div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a></div>
+<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
+</footer>
+<script>
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
+  localStorage.setItem('lang',l);
+}
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
+</body>
+</html>
