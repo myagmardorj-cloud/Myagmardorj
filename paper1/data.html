@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datasets · research.nexcore.ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;--gold:#f0b429;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
+nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.MN-links{display:flex;align-items:center;gap:.2rem;flex-shrink:0;}
+.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links a:hover,.MN-links a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;border:none;cursor:pointer;transition:all .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}
+.MN-lb:last-child{border-radius:0 4px 4px 0;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;}
+.MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:var(--muted);border:1px solid rgba(255,255,255,.12);}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);}
+.MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
+.MN-foot a:hover{color:var(--cyan);}
+.container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,.3),transparent);}
+h1{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.03em;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;margin:2rem 0 .8rem;letter-spacing:-.02em;}
+h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--cyan);}
+p{color:var(--sub);margin-bottom:1rem;}
+.step{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;position:relative;}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--cyan);background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.6rem;}
+.step h3{margin-top:0;color:var(--text);}
+pre{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a8d8a0;overflow-x:auto;margin:.8rem 0;}
+.dl-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:.8rem;display:flex;justify-content:space-between;align-items:center;}
+.dl-info{flex:1;}
+.dl-name{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--cyan);margin-bottom:.2rem;}
+.dl-desc{font-size:.85rem;color:var(--sub);}
+.dl-size{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-left:1rem;}
+.badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:4px;display:inline-block;margin-right:.4rem;}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.2);}
+.badge-gold{background:rgba(240,180,41,.1);color:var(--gold);border:1px solid rgba(240,180,41,.2);}
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;font-size:.88rem;color:var(--sub);}</style>
+</head>
+<body>
+<nav class="MN">
+<a href="/index.html" class="MN-logo">Nexcore Research</a>
+<div class="MN-links">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a>
+<a href="/paper1/references.html"><span data-li="en">Refs</span><span data-li="mn">Эшлэл</span></a>
+<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+<a href="/paper1/discussion.html"><span data-li="en">Discuss</span><span data-li="mn">Хэлэлц</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+<div style="display:flex;margin-left:.4rem;">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</div>
+</nav>
+<div class="container">
+
+<div class="sec-label"><span data-li="en">Research Data</span><span data-li="mn">Судалгааны өгөгдөл</span></div>
+<h1><span data-li="en">Datasets</span><span data-li="mn">Датасетууд</span></h1>
+<p><span data-li="en">All datasets used in this study are publicly available. Original zero files sourced from Andrew Odlyzko's archive.</span><span data-li="mn">Энэ судалгаанд ашигласан бүх датасет нийтэд нээлттэй. Анхны zeros файлуудыг Эндрю Одлызкогийн архиваас авсан.</span></p>
+
+<h2><span data-li="en">Riemann zero files</span><span data-li="mn">Риман zeros файлууд</span></h2>
+
+<div class="dl-card">
+  <div class="dl-info">
+    <div class="dl-name">zeros1.txt</div>
+    <div class="dl-desc"><span data-li="en">100,000 zeros · height T ≈ 10¹² · Odlyzko dataset 1</span><span data-li="mn">100,000 zeros · T ≈ 10¹² өндөр · Одлызко датасет 1</span></div>
+    <div style="margin-top:.4rem;"><span class="badge badge-green">r = 0.6847</span><span class="badge badge-gold">bootstrap: UNSTABLE</span></div>
+  </div>
+  <div class="dl-size"><a href="/paper1/zeros1.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ 1.8MB</a></div>
+</div>
+
+<div class="dl-card">
+  <div class="dl-info">
+    <div class="dl-name">zeros_ht.txt</div>
+    <div class="dl-desc"><span data-li="en">10,000 zeros · height T ≈ 10¹³ · Odlyzko high dataset</span><span data-li="mn">10,000 zeros · T ≈ 10¹³ өндөр · Одлызко өндөр датасет</span></div>
+    <div style="margin-top:.4rem;"><span class="badge badge-green">r = 0.5113</span><span class="badge badge-gold">bootstrap: UNSTABLE</span></div>
+  </div>
+  <div class="dl-size"><a href="/paper1/zeros_ht.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ 180KB</a></div>
+</div>
+
+<div class="dl-card">
+  <div class="dl-info">
+    <div class="dl-name">zeros6.txt</div>
+    <div class="dl-desc"><span data-li="en">1,000,000 zeros · height T ≈ 10¹² · Odlyzko large dataset</span><span data-li="mn">1,000,000 zeros · T ≈ 10¹² өндөр · Одлызко том датасет</span></div>
+    <div style="margin-top:.4rem;"><span class="badge badge-green">r = 0.4509</span><span class="badge badge-gold">bootstrap: MODERATE</span></div>
+  </div>
+  <div class="dl-size"><a href="/paper1/zeros6.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ 36MB</a></div>
+</div>
+
+<h2><span data-li="en">Bootstrap summary files</span><span data-li="mn">Bootstrap дүгнэлтийн файлууд</span></h2>
+
+<div class="dl-card">
+  <div class="dl-info">
+    <div class="dl-name">bootstrap_zeros1.txt</div>
+    <div class="dl-desc"><span data-li="en">Bootstrap stability results for zeros1 dataset</span><span data-li="mn">zeros1 датасетийн bootstrap тогтворжилтын үр дүн</span></div>
+  </div>
+  <div class="dl-size"><a href="/paper1/bootstrap_zeros1.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ TXT</a></div>
+</div>
+
+<div class="dl-card">
+  <div class="dl-info">
+    <div class="dl-name">bootstrap_zeros_ht.txt</div>
+    <div class="dl-desc"><span data-li="en">Bootstrap stability results for zeros_ht dataset</span><span data-li="mn">zeros_ht датасетийн bootstrap тогтворжилтын үр дүн</span></div>
+  </div>
+  <div class="dl-size"><a href="/paper1/bootstrap_zeros_ht.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ TXT</a></div>
+</div>
+
+<div class="dl-card">
+  <div class="dl-info">
+    <div class="dl-name">bootstrap_zeros6.txt</div>
+    <div class="dl-desc"><span data-li="en">Bootstrap stability results for zeros6 dataset</span><span data-li="mn">zeros6 датасетийн bootstrap тогтворжилтын үр дүн</span></div>
+  </div>
+  <div class="dl-size"><a href="/paper1/bootstrap_zeros6.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ TXT</a></div>
+</div>
+
+<h2><span data-li="en">Source & License</span><span data-li="mn">Эх сурвалж & Лиценз</span></h2>
+<div class="note">
+<span data-li="en">Original zero files: <a href="https://odlyzko.com/zeta_tables/" style="color:var(--cyan);">Andrew Odlyzko — zeta_tables</a><br>
+Analysis code: <a href="https://github.com/myagmardorj-cloud/Myagmardorj" style="color:var(--cyan);">GitHub repository</a> · CC BY-NC 4.0<br>
+Preprint: <a href="https://zenodo.org/records/20077673" style="color:var(--cyan);">Zenodo DOI: 10.5281/zenodo.20077673</a></span>
+<span data-li="mn">Анхны zeros файлууд: <a href="https://odlyzko.com/zeta_tables/" style="color:var(--cyan);">Эндрю Одлызко — zeta_tables</a><br>
+Шинжилгээний код: <a href="https://github.com/myagmardorj-cloud/Myagmardorj" style="color:var(--cyan);">GitHub репозитор</a> · CC BY-NC 4.0<br>
+Preprint: <a href="https://zenodo.org/records/20077673" style="color:var(--cyan);">Zenodo DOI: 10.5281/zenodo.20077673</a></span>
+</div>
+</div>
+<footer class="MN-foot">
+<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div>
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+<a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+</div>
+<span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
+</footer>
+<script>
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
+</body>
+</html>

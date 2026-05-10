@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Replication Guide · research.nexcore.ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;--gold:#f0b429;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
+nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.MN-links{display:flex;align-items:center;gap:.2rem;flex-shrink:0;}
+.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links a:hover,.MN-links a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;border:none;cursor:pointer;transition:all .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}
+.MN-lb:last-child{border-radius:0 4px 4px 0;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;}
+.MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:var(--muted);border:1px solid rgba(255,255,255,.12);}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);}
+.MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
+.MN-foot a:hover{color:var(--cyan);}
+.container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,.3),transparent);}
+h1{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.03em;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;margin:2rem 0 .8rem;letter-spacing:-.02em;}
+h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--cyan);}
+p{color:var(--sub);margin-bottom:1rem;}
+.step{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;position:relative;}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--cyan);background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.6rem;}
+.step h3{margin-top:0;color:var(--text);}
+pre{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a8d8a0;overflow-x:auto;margin:.8rem 0;}
+.dl-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:.8rem;display:flex;justify-content:space-between;align-items:center;}
+.dl-info{flex:1;}
+.dl-name{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--cyan);margin-bottom:.2rem;}
+.dl-desc{font-size:.85rem;color:var(--sub);}
+.dl-size{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-left:1rem;}
+.badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:4px;display:inline-block;margin-right:.4rem;}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.2);}
+.badge-gold{background:rgba(240,180,41,.1);color:var(--gold);border:1px solid rgba(240,180,41,.2);}
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;font-size:.88rem;color:var(--sub);}</style>
+</head>
+<body>
+<nav class="MN">
+<a href="/index.html" class="MN-logo">Nexcore Research</a>
+<div class="MN-links">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Арга</span></a>
+<a href="/paper1/references.html"><span data-li="en">Refs</span><span data-li="mn">Эшлэл</span></a>
+<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+<a href="/paper1/discussion.html"><span data-li="en">Discuss</span><span data-li="mn">Хэлэлц</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+<div style="display:flex;margin-left:.4rem;">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</div>
+</nav>
+<div class="container">
+
+<div class="sec-label"><span data-li="en">Replication Guide</span><span data-li="mn">Хуулбарлах заавар</span></div>
+<h1><span data-li="en">Independent Replication</span><span data-li="mn">Бие даасан хуулбарлалт</span></h1>
+<p><span data-li="en">This page provides step-by-step instructions to independently replicate our computational results using the Odlyzko zero datasets.</span><span data-li="mn">Энэ хуудас Одлызкогийн zeros датасет ашиглан тооцооллын үр дүнг бие даан хуулбарлах алхам алхмаар зааварчилгаа өгнө.</span></p>
+
+<div class="note"><span data-li="en">⏱ Estimated time: 10–30 minutes · Requirements: Python 3.8+, scipy, numpy</span><span data-li="mn">⏱ Зарцуулах хугацаа: 10–30 минут · Шаардлага: Python 3.8+, scipy, numpy</span></div>
+
+<h2><span data-li="en">Step 1 — Download the data</span><span data-li="mn">Алхам 1 — Өгөгдөл татах</span></h2>
+<div class="step">
+<div class="step-num">STEP 1</div>
+<h3><span data-li="en">Download Odlyzko zero files</span><span data-li="mn">Одлызкогийн zeros файл татах</span></h3>
+<p><span data-li="en">Download from our repository or directly from Odlyzko's site:</span><span data-li="mn">Манай репозитороос эсвэл Одлызкогийн сайтаас шууд татна:</span></p>
+<pre>zeros1.txt   — 100,000 zeros, T ≈ 10¹²
+zeros_ht.txt — 10,000 zeros, T ≈ 10¹³
+zeros6.txt   — 1,000,000 zeros, T ≈ 10¹²</pre>
+<p><a href="https://github.com/myagmardorj-cloud/Myagmardorj/tree/main/paper1" style="color:var(--cyan);">→ GitHub: paper1/ directory</a></p>
+</div>
+
+<h2><span data-li="en">Step 2 — Install requirements</span><span data-li="mn">Алхам 2 — Шаардлагатай сангуудыг суулгах</span></h2>
+<div class="step">
+<div class="step-num">STEP 2</div>
+<pre>pip install numpy scipy matplotlib pandas</pre>
+</div>
+
+<h2><span data-li="en">Step 3 — Run the analysis</span><span data-li="mn">Алхам 3 — Шинжилгээ ажиллуулах</span></h2>
+<div class="step">
+<div class="step-num">STEP 3</div>
+<h3><span data-li="en">Core computation</span><span data-li="mn">Үндсэн тооцоолол</span></h3>
+<pre>import numpy as np
+from scipy import stats
+
+# Load zeros
+zeros = np.loadtxt('zeros1.txt')
+T = zeros.mean()
+
+# Compute normalized spacing
+tau = np.log(T / (2 * np.pi))
+spacings = np.diff(zeros) * tau / (2 * np.pi)
+
+# Primes to test
+primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+
+# Compute A(p) — covariance amplitude
+results = []
+for p in primes:
+    phase = np.cos(2 * np.pi * np.log(p) * zeros[:-1] / tau)
+    r, pval = stats.pearsonr(spacings, phase)
+    results.append((p, r))
+    print(f"p={p:3d}  r={r:.4f}")
+</pre>
+</div>
+
+<h2><span data-li="en">Step 4 — Expected results</span><span data-li="mn">Алхам 4 — Хүлээгдэх үр дүн</span></h2>
+<div class="step">
+<div class="step-num">STEP 4</div>
+<h3><span data-li="en">Our results (zeros1)</span><span data-li="mn">Манай үр дүн (zeros1)</span></h3>
+<pre>Dataset   r value   Bootstrap   Status
+zeros1    0.6847    UNSTABLE    preliminary
+zeros_ht  0.5113    UNSTABLE    preliminary
+zeros6    0.4509    MODERATE    preliminary</pre>
+<div class="note"><span data-li="en">⚠️ These are preliminary observations. r values depend on normalization choice, window size, and prime selection.</span><span data-li="mn">⚠️ Эдгээр нь урьдчилсан ажиглалт. r утга нь нормчлолын сонголт, цонхны хэмжээ, анхны тооны сонголтоос хамаарна.</span></div>
+</div>
+
+<h2><span data-li="en">Step 5 — Compare & report</span><span data-li="mn">Алхам 5 — Харьцуулах & мэдээлэх</span></h2>
+<div class="step">
+<div class="step-num">STEP 5</div>
+<p><span data-li="en">Use our browser-based verification tool to compare your results directly:</span><span data-li="mn">Браузерт суурилсан баталгаажуулах хэрэгслийг ашиглан үр дүнгээ шууд харьцуул:</span></p>
+<p><a href="/verify.html" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">→ Open Verification Lab</a></p>
+</div>
+</div>
+<footer class="MN-foot">
+<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div>
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+<a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+</div>
+<span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
+</footer>
+<script>
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
+</body>
+</html>
