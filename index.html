@@ -1369,7 +1369,8 @@ https://doi.org/10.5281/zenodo.20077673</pre>
 </div>
 </div>
 
-<script>
+<script>window.chartsInited=window.chartsInited||false;window.calcInited=window.calcInited||false;
+
 const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
 const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
 const C=16.5;
@@ -1378,11 +1379,10 @@ const Ap_z3=Bp.map((b,i)=>b*C*(0.97+offs[i]));
 const Rp=Ap_z3.map((a,i)=>a/Bp[i]);
 const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{family:'JetBrains Mono',color:'#6b6880',size:11},xaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},yaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},margin:{t:20,r:20,b:50,l:60}};
 const PC={responsive:true,displayModeBar:false};
-let chartsInited=false,calcInited=false;
+calcInited=false;
 
-var chartsInited=window._chartsInited||false;
 function initCharts(){
-  if(window._chartsInited)return;window._chartsInited=true;
+  if(window.chartsInited)return;window.chartsInited=true;
   Plotly.newPlot('chart-scatter',[
     {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros3',type:'scatter'},
     {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',line:{color:'#4a9eff',dash:'dash',width:1},name:'BK prediction',type:'scatter'}
@@ -1392,7 +1392,7 @@ function initCharts(){
 }
 
 function initCalc(){
-  if(window._calcInited)return;window._calcInited=true;
+  if(window.calcInited)return;window.calcInited=true;
   const btns=document.getElementById('prime-buttons');
   primes.forEach(p=>{
     const b=document.createElement('button');
