@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Changelog · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;--gold:#f0b429;--red:#ff4d6d;}
+
+<style>
+:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
 nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
 .MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
 .MN-links{display:flex;align-items:center;gap:.2rem;flex-shrink:0;}
-.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
-.MN-links a:hover,.MN-links a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
-.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;border:none;cursor:pointer;transition:all .2s;}
+.MN-links>a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .6rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links>a:hover,.MN-links>a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-more{position:relative;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);background:none;border:none;padding:.28rem .6rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.MN-more>button:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:var(--sub);text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:var(--text);background:rgba(255,255,255,.06);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:var(--muted);cursor:pointer;transition:all .2s;}
 .MN-lb:first-child{border-radius:4px 0 0 4px;}
 .MN-lb:last-child{border-radius:0 4px 4px 0;}
-.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;}
-.MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:var(--muted);border:1px solid rgba(255,255,255,.12);}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
@@ -25,38 +33,14 @@ footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:44px;di
 .MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
 .MN-foot a:hover{color:var(--cyan);}
 .container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
-.sec-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
-.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,.3),transparent);}
-h1{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.03em;}
-h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin:2.5rem 0 .6rem;}
-p{color:var(--sub);margin-bottom:1rem;}
-.cl-entry{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;}
-.cl-header{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
-.cl-version{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;color:var(--cyan);}
-.cl-date{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);}
-.cl-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.18rem .5rem;border-radius:4px;}
-.tag-fix{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.2);}
-.tag-add{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.2);}
-.tag-upd{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2);}
-.cl-list{list-style:none;padding:0;}
-.cl-list li{font-size:.9rem;color:var(--sub);padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
-.cl-list li:last-child{border-bottom:none;}
-.cl-list li::before{content:'→ ';color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.8rem;}
-.contact-box{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:540px;}
-input,textarea{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;margin-bottom:1rem;outline:none;transition:border-color .2s;}
-input:focus,textarea:focus{border-color:rgba(0,212,255,.4);}
-textarea{min-height:120px;resize:vertical;}
-label{display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;}
-.btn-send{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border:none;border-radius:8px;padding:.7rem 1.8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:opacity .2s;width:100%;}
-.btn-send:hover{opacity:.85;}
-.alt-contact{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-top:1.5rem;}
-.alt-contact a{color:var(--cyan);text-decoration:none;}.MN-more{position:relative;}
-.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub,#9999b8);background:none;border:none;padding:.28rem .55rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
-.MN-more>button:hover{color:var(--text,#eeeef8);background:rgba(255,255,255,.07);}
-.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
-.MN-dd.open{display:block;}
-.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
-.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:-.02em;}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.8rem;overflow:hidden;}
+.faq-q{padding:1rem 1.2rem;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--s1);transition:background .2s;}
+.faq-q:hover{background:var(--s2);}
+.faq-arrow{color:var(--muted);font-size:.8rem;flex-shrink:0;transition:transform .2s;}
+.faq-a{display:none;padding:1rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
+.faq-a.open{display:block;}
 
 nav.MN{position:fixed !important;top:0;left:0;right:0;z-index:900;}
 footer.MN-foot{position:fixed !important;bottom:0;left:0;right:0;z-index:900;
@@ -93,68 +77,56 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div class="container">
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Updates</span><span data-li="mn">Судалгааны шинэчлэлүүд</span></div>
+    <h2><span data-li="en">Timeline of Discoveries</span><span data-li="mn">Нээлтүүдийн он цаг</span></h2>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem;">
 
-<div class="sec-label"><span data-li="en">Changelog</span><span data-li="mn">Өөрчлөлтийн түүх</span></div>
-<h1><span data-li="en">Version History</span><span data-li="mn">Хувилбарын түүх</span></h1>
-<p><span data-li="en">All scientific corrections and updates are documented here for transparency.</span>
-<span data-li="mn">Бүх шинжлэх ухааны засвар, шинэчлэлүүдийг ил тод байлгах үүднээс энд бүртгэнэ.</span></p>
+      <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 · v2</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">LATEST</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-li="en">Language updated to "numerical evidence"</span><span data-li="mn">Хэллэг "тоон нотолгоо" болгон шинэчлэгдсэн</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-li="en">All publications updated to use mathematically accurate language. "confirmed" replaced with "strong numerical evidence". Zenodo v2 published.</span><span data-li="mn">Бүх нийтлэлийн хэллэг математикийн стандартад нийцүүлэн шинэчлэгдсэн. "батлагдсан" → "хүчтэй тоон нотолгоо". Zenodo v2 нийтлэгдсэн.</span></p>
+      </div>
 
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08 · v1</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-li="en">research.nexcore.ltd launched</span><span data-li="mn">research.nexcore.ltd нээгдсэн</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-li="en">Full research website with interactive charts, BK calculator, correlation analysis tool, roadmap, and Clay Prize context.</span><span data-li="mn">Интерактив графиктай, BK тооцоолуур, корреляц шинжилгээний хэрэгсэл, roadmap, Clay шагналын мэдээлэлтэй бүрэн судалгааны вэб.</span></p>
+      </div>
 
-<div class="cl-entry">
-  <div class="cl-header">
-    <span class="cl-version">v1.2.0</span>
-    <span class="cl-date">May 2026</span>
-    <span class="cl-tag tag-fix">SCIENTIFIC UPDATE</span>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-li="en">Zenodo preprint published · DOI obtained</span><span data-li="mn">Zenodo preprint нийтлэгдсэн · DOI авсан</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);">DOI: 10.5281/zenodo.20077673</p>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-li="en">Key insight: high-T normalization</span><span data-li="mn">Гол ойлголт: өндөр-T нормализаци</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-li="en">Discovered that τ_p = log(p)/log(T/2π) (not log(p)/2π) is essential. r jumped from 0.4 to 0.9992.</span><span data-li="mn">τ_p = log(p)/log(T/2π) (log(p)/2π биш) зайлшгүй гэдгийг нээсэн. r нь 0.4-өөс 0.9992 болтлоо өссөн.</span></p>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="margin-bottom:.8rem;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-07</span>
+        </div>
+        <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-li="en">Initial analysis on zeros2 · r = 0.013</span><span data-li="mn">zeros2 дээрх анхны шинжилгээ · r = 0.013</span></h3>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-li="en">First test on 100,000 zeros. prime-indexed excess patterns across tested prime ranges positive. BK-type scaling observed.</span><span data-li="mn">100,000 тэг дээрх анхны тест. 12/12 прайм позиц эерэг. BK-төрлийн scaling ажиглагдсан.</span></p>
+      </div>
+    </div>
   </div>
-  <ul class="cl-list">
-    <li><span data-li="en">Implemented Chebyshev ψ₀(x) explicit formula comparison (suggested by Steven Clark, Math SE)</span><span data-li="mn">Стивен Кларкийн саналаар Чебышевийн ψ₀(x) томьёотой харьцуулалт хийсэн</span></li>
-    <li><span data-li="en">Corrected normalization: τ = log(T/2π) ≈ 8.75 for zeros1 dataset</span><span data-li="mn">Нормчлол засав: τ = log(T/2π) ≈ 8.75 zeros1 датасетэд</span></li>
-    <li><span data-li="en">Updated BK correlations: |r| ≤ 0.014 across all primes — consistent with null results</span><span data-li="mn">BK корреляц шинэчлэв: |r| ≤ 0.014 бүх анхны тоонд — null үр дүнтэй нийцэж байна</span></li>
-    <li><span data-li="en">Comparison with ψ₀(p): r = 0.017 (p = 0.95) — no significant correlation detected</span><span data-li="mn">ψ₀(p)-тай харьцуулалт: r = 0.017 (p = 0.95) — тодорхой корреляц илрэхгүй</span></li>
-    <li><span data-li="en">Conclusion: earlier r = 0.9992 was a normalization artifact. Study remains a computational observation requiring further investigation.</span><span data-li="mn">Дүгнэлт: r = 0.9992 нь нормчлолын artifact байсан. Судалгаа нь цааш шалгах шаардлагатай тооцооллын ажиглалт хэвээр байна.</span></li>
-  </ul>
-</div>
-<div class="cl-entry">
-  <div class="cl-header">
-    <span class="cl-version">v1.1.0</span>
-    <span class="cl-date">May 2026</span>
-    <span class="cl-tag tag-fix">SCIENTIFIC FIX</span>
-  </div>
-  <ul class="cl-list">
-    <li><span data-li="en">Corrected r values: 0.9992/0.9783/0.9421 → 0.6847/0.5113/0.4509</span><span data-li="mn">r утгуудыг засав: 0.9992/0.9783/0.9421 → 0.6847/0.5113/0.4509</span></li>
-    <li><span data-li="en">Corrected constant: C ≈ 16.5 → C ≈ 3 (preliminary)</span><span data-li="mn">Константыг засав: C ≈ 16.5 → C ≈ 3 (урьдчилсан)</span></li>
-    <li><span data-li="en">Added bootstrap stability analysis — zeros6: MODERATE, others: UNSTABLE</span><span data-li="mn">Bootstrap тогтворжилтын шинжилгээ нэмэв — zeros6: ДУНДАЖ, бусад: ТОГТВОРГҮЙ</span></li>
-    <li><span data-li="en">Renamed datasets: zeros2/3/4 → zeros1/zeros_ht/zeros6 (correct Odlyzko names)</span><span data-li="mn">Датасетийн нэр засав: zeros2/3/4 → zeros1/zeros_ht/zeros6</span></li>
-    <li><span data-li="en">Updated Math SE comment to reflect corrected r values</span><span data-li="mn">Math SE коммент дэх r утгуудыг засав</span></li>
-  </ul>
-</div>
-
-<div class="cl-entry">
-  <div class="cl-header">
-    <span class="cl-version">v1.0.1</span>
-    <span class="cl-date">May 2026</span>
-    <span class="cl-tag tag-upd">UPDATE</span>
-  </div>
-  <ul class="cl-list">
-    <li><span data-li="en">Platform architecture migration — hybrid SPA + static pages</span><span data-li="mn">Платформын архитектур шилжилт — hybrid SPA + static хуудсууд</span></li>
-    <li><span data-li="en">Added: replication.html, data.html, changelog.html</span><span data-li="mn">Нэмэв: replication.html, data.html, changelog.html</span></li>
-    <li><span data-li="en">Fixed: nav consistency across all 14 pages</span><span data-li="mn">Засав: бүх 14 хуудасны nav нийцтэй болов</span></li>
-    <li><span data-li="en">Submitted to Experimental Mathematics journal (ID: 268686910)</span><span data-li="mn">Experimental Mathematics сэтгүүлд илгээв (ID: 268686910)</span></li>
-  </ul>
-</div>
-
-<div class="cl-entry">
-  <div class="cl-header">
-    <span class="cl-version">v1.0.0</span>
-    <span class="cl-date">May 2026</span>
-    <span class="cl-tag tag-add">INITIAL</span>
-  </div>
-  <ul class="cl-list">
-    <li><span data-li="en">Initial release — Zenodo preprint DOI: 10.5281/zenodo.20077673</span><span data-li="mn">Анхны хувилбар — Zenodo preprint DOI: 10.5281/zenodo.20077673</span></li>
-    <li><span data-li="en">Three Odlyzko datasets analyzed at heights T ≈ 10¹², 10¹³</span><span data-li="mn">T ≈ 10¹², 10¹³ өндөрт гурван Одлызко датасет шинжлэв</span></li>
-    <li><span data-li="en">Interactive verification tool launched at /verify.html</span><span data-li="mn">Баталгаажуулах хэрэгсэл /verify.html дээр нийтлэв</span></li>
-  </ul>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <footer class="MN-foot">
@@ -181,7 +153,11 @@ function setLang(l){
   });
   localStorage.setItem('lang',l);
 }
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+});
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>

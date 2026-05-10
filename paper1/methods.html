@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Methods · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -76,20 +77,19 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div class="container">
-<div class="section-label"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></div>
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">Methods</span><span data-li="mn">Арга зүй</span></div>
-    <h2><span data-lang="en">How the Analysis Works</span><span data-lang="mn">Шинжилгээний арга</span></h2>
+    <h2><span data-li="en">How the Analysis Works</span><span data-li="mn">Шинжилгээний арга</span></h2>
     <div class="prose">
-      <span data-lang="en">
+      <span data-li="en">
         <h3>1. Data</h3>
-        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros_ht (100K zeros, T≈74,920), zeros1 (~2M zeros near T~10¹²), zeros6 (~10K zeros near T~10¹³).</p>
+        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros2 (100K zeros, T≈74,920), zeros3 (~10K zeros near T~10¹²), zeros4 (~10K zeros near T~10¹³).</p>
         <h3>2. Spacing Covariance</h3>
         <p>Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</p>
       </span>
-      <span data-lang="mn">
+      <span data-li="mn">
         <h3>1. Өгөгдөл</h3>
         <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</p>
         <h3>2. Spacing Covariance</h3>
@@ -98,7 +98,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
     </div>
     <div class="formula-block" style="margin:1.5rem 0;">C(h) = (1/N−h) Σ (δₙ − δ̄)(δₙ₊ₕ − δ̄)</div>
     <div class="prose">
-      <span data-lang="en">
+      <span data-li="en">
         <h3>3. Key Normalization</h3>
         <p>The correct prime frequency at height T is <code>τ_p = log(p) / log(T/2π)</code>. This unfolded normalization is essential — using <code>log(p)/2π</code> gives weak results (r≈0.4–0.6).</p>
         <h3>4. BK Predictor</h3>
@@ -106,7 +106,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
         <h3>5. Statistical Significance</h3>
         <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as 2.64×10⁻¹⁵ — but see bootstrap controls for corrected estimates.</p>
       </span>
-      <span data-lang="mn">
+      <span data-li="mn">
         <h3>3. Гол нормализаци</h3>
         <p>T өндөрт зөв прайм давтамж нь <code>τ_p = log(p) / log(T/2π)</code>. Энэ задгай нормализаци зайлшгүй — <code>log(p)/2π</code> ашиглавал сул үр дүн (r≈0.4–0.6) гардаг.</p>
         <h3>4. BK Таамаглагч</h3>
@@ -116,7 +116,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       </span>
     </div>
   </div>
-  
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <footer class="MN-foot">
@@ -148,5 +148,6 @@ document.addEventListener('click',function(e){
 });
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>

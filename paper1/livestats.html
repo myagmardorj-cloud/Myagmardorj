@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Live Stats · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -76,7 +77,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div style="padding-top:56px;padding-bottom:52px;max-width:900px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">Live Stats</span><span data-li="mn">Шууд Статистик</span></div>
@@ -98,7 +99,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <div class="stat-card">
         <div class="ds">Datasets tested</div>
         <span class="rv">3</span>
-        <div class="pv">zeros1, zeros_ht, zeros6</div>
+        <div class="pv">zeros2, zeros3, zeros4</div>
         <div class="badge">Verified</div>
       </div>
     </div>
@@ -109,11 +110,11 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
         <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-li="en">Primes positive</span><span data-li="mn">Эерэг прайм</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.45–0.68</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--cyan);">0.9992</div>
         <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-li="en">Best r value</span><span data-li="mn">Хамгийн сайн r</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">~3</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);">16.5</div>
         <div style="font-size:.78rem;color:var(--sub);margin-top:.3rem;"><span data-li="en">C constant</span><span data-li="mn">C константа</span></div>
       </div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;">
@@ -136,7 +137,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
     </div>
     <div id="nl-msg" style="margin-top:.8rem;font-size:.82rem;display:none;"></div>
   </div>
-  
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <footer class="MN-foot">
@@ -168,5 +169,6 @@ document.addEventListener('click',function(e){
 });
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>

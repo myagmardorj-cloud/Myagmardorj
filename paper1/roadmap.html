@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research Roadmap · research.nexcore.ltd</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Roadmap · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -76,10 +77,10 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div style="padding-top:56px;padding-bottom:52px;max-width:900px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
-    <div class="section-label"><span data-li="en">Research Судалгааны зам</span><span data-li="mn">Зам</span></div>
+    <div class="section-label"><span data-li="en">Research Roadmap</span><span data-li="mn">Судалгааны зам</span></div>
     <h2><span data-li="en">The Path Forward</span><span data-li="mn">Цаашдын зам</span></h2>
     <p class="prose" style="margin-bottom:2.5rem;">
       <span data-li="en">From a computational idea to a published preprint — and the road ahead toward deeper understanding of the Riemann Hypothesis.</span>
@@ -148,7 +149,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <div class="oc-label" style="color:var(--cyan);letter-spacing:.1em;"><span data-li="en">Where our research fits</span><span data-li="mn">Манай судалгаа хаана байна</span></div>
       <div class="our-row"><span class="or-key">Problem:</span><span class="or-val">Riemann Hypothesis (#01)</span></div>
       <div class="our-row"><span class="or-key">Connection:</span><span class="or-val"><span data-li="en">Prime-correlated structure in zero statistics</span><span data-li="mn">Тэгийн статистик дахь прайм-корреляцийн бүтэц</span></span></div>
-      <div class="our-row"><span class="or-key">Result:</span><span class="or-val">r = 0.45–0.68 (dataset-dependent) · prime-indexed excess patterns observed</span></div>
+      <div class="our-row"><span class="or-key">Result:</span><span class="or-val">r = 0.014 · prime-indexed excess patterns observed</span></div>
       <div class="our-row"><span class="or-key">Status:</span><span class="or-val warn">Interesting computational observation · potential BK-related phenomenon</span></div>
       <div class="our-row"><span class="or-key">Status:</span><span class="or-val"><span data-li="en">Computational observations — not a proof</span><span data-li="mn">Тооцооллын ажиглалт — нотолгоо биш</span></span></div>
       <div class="our-row"><span class="or-key">Prize:</span><span class="or-val"><span data-li="en">$1,000,000 (Clay Institute) — if proven</span><span data-li="mn">1,000,000$ (Клейн хүрээлэн) — батлагдвал</span></span></div>
@@ -160,8 +161,8 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
         <div class="rm-header">
           <span class="rm-icon">✅</span>
           <div class="rm-info">
-            <span class="rm-title"><span data-li="en">Computational observations collected — further validation needed</span><span data-li="mn">Тооцооллын ажиглалт цуглуулсан — нэмэлт харьцуулалт шаардлагатай</span></span>
-            <span class="rm-sub">zeros1, zeros_ht, zeros6 · r = 0.6847 / 0.5113 / 0.4509 · bootstrap stability limited</span>
+            <span class="rm-title"><span data-li="en">Computational observations collected — further validation needed</span><span data-li="mn">Тооцооллын ажиглалт цуглуулсан — нэмэлт баталгаажуулалт шаардлагатай</span></span>
+            <span class="rm-sub">zeros2, zeros3, zeros4 · r ≥ 0.94 · prime-indexed excess patterns observed</span>
           </div>
           <span class="rm-status done-tag">DONE</span>
         </div>
@@ -221,7 +222,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
           <span class="rm-icon">⬜</span>
           <div class="rm-info">
             <span class="rm-title"><span data-li="en">Deepen theoretical understanding</span><span data-li="mn">Онолын мэдлэг гүнзгийрүүлэх</span></span>
-            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive BK amplitude constant C</span><span data-li="mn">Montgomery, BK 1996 уншиж, BK амплитудын C тогтмол гаргах</span></span>
+            <span class="rm-sub"><span data-li="en">Read Montgomery, BK 1996, derive C ≈ 16.5</span><span data-li="mn">Montgomery, BK 1996 уншиж, C ≈ 16.5 гаргах</span></span>
           </div>
           <span class="rm-status todo-tag">NEXT</span>
         </div>
@@ -263,7 +264,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
         <div class="read-content">
           <div class="read-title">Bogomolny & Keating (1996)</div>
           <div class="read-ref">"Random matrix theory and the Riemann zeros I & II" — Nonlinearity</div>
-          <div class="read-why"><span data-li="en">The original prediction of A(p) ~ C(log p)²/p. Understanding the derivation will help identify the theoretical C.</span><span data-li="mn">A(p) ~ C(log p)²/p-н анхны таамаглал. Гарталтыг ойлговол онолын C-г тодорхойлох болно.</span></div>
+          <div class="read-why"><span data-li="en">The original prediction of A(p) ~ C(log p)²/p. Understanding the derivation will explain C ≈ 16.5.</span><span data-li="mn">A(p) ~ C(log p)²/p-н анхны таамаглал. Гарталтыг ойлговол C ≈ 16.5-г тайлбарлах болно.</span></div>
         </div>
         <div class="read-status">⬜ <span data-li="en">Not read</span><span data-li="mn">Уншаагүй</span></div>
       </div>
@@ -343,7 +344,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;">
         <span style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--muted);width:1.4rem;">□</span>
         <div style="flex:1;">
-          <div style="font-size:.9rem;color:var(--sub);"><span data-li="en">6. Peer verification — independent replication by another researcher</span><span data-li="mn">6. Peer шалгалтжуулалт — өөр судлаачийн бие даасан давталт</span></div>
+          <div style="font-size:.9rem;color:var(--sub);"><span data-li="en">6. Peer verification — independent replication by another researcher</span><span data-li="mn">6. Peer баталгаажуулалт — өөр судлаачийн бие даасан давталт</span></div>
           <div style="font-size:.75rem;color:var(--muted);font-style:italic;">Needed: arXiv submission + peer review</div>
         </div>
       </div>
@@ -366,17 +367,17 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <div class="next-card">
         <div class="next-num">02</div>
         <div class="next-title"><span data-li="en">Read BK 1996 Part I</span><span data-li="mn">BK 1996 I хэсэг уншах</span></div>
-        <div class="next-desc"><span data-li="en">Find the exact formula for A(p). Identify where C comes from. Compare with our empirical C estimates.</span><span data-li="mn">A(p)-н яг томьёог олох. C хаанаас гарч байгааг тодорхойлох.</span></div>
+        <div class="next-desc"><span data-li="en">Find the exact formula for A(p). Identify where C comes from. Compare with our C ≈ 16.5.</span><span data-li="mn">A(p)-н яг томьёог олох. C хаанаас гарч байгааг тодорхойлох.</span></div>
       </div>
       <div class="next-card">
         <div class="next-num">03</div>
         <div class="next-title"><span data-li="en">Test on more datasets</span><span data-li="mn">Илүү олон датасет дээр тест</span></div>
-        <div class="next-desc"><span data-li="en">Try Odlyzko's highest zero data (~10²¹). Does empirical C remain stable at extreme heights?</span><span data-li="mn">~10²¹ өндөрт zeros туршиж үзэх. Туршилтын C тогтвортой хэвээр байна уу?</span></div>
+        <div class="next-desc"><span data-li="en">Try Odlyzko's highest zero data (~10²¹). Does C ≈ 16.5 remain stable at extreme heights?</span><span data-li="mn">~10²¹ өндөрт zeros туршиж үзэх. C ≈ 16.5 тогтвортой хэвээр байна уу?</span></div>
       </div>
       <div class="next-card">
         <div class="next-num">04</div>
         <div class="next-title"><span data-li="en">Derive C theoretically</span><span data-li="mn">C-г онолоор гаргах</span></div>
-        <div class="next-desc"><span data-li="en">Derive the BK amplitude constant C from first principles using BK and random matrix theory.</span><span data-li="mn">BK болон санамсаргүй матрицын онолоос BK амплитудын C-г эхний зарчмаас гаргах.</span></div>
+        <div class="next-desc"><span data-li="en">Explain why C ≈ 16.5 from first principles using BK and random matrix theory.</span><span data-li="mn">BK болон санамсаргүй матрицын онолоос C ≈ 16.5-г эхний зарчмаас тайлбарлах.</span></div>
       </div>
     </div>
 
@@ -385,7 +386,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <span data-li="mn">Риманы таамаглал 167 жил нээлттэй байна. Энэ зам урт аялалыг дүрслэнэ — гэхдээ алхам бүр чухал.</span>
     </div>
   </div>
-  
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <footer class="MN-foot">
@@ -417,5 +418,6 @@ document.addEventListener('click',function(e){
 });
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Research Files · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -76,7 +77,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div style="padding-top:56px;padding-bottom:52px;max-width:900px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Судалгааны баримтууд</span></div>
@@ -102,7 +103,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
             <span data-li="mn">Одлызкогийн тэгийн өгөгдлийг уншиж, прайм лаг h=p дээрх зайн ковариансыг C(h) тооцоолоод, Pearson корреляц ашиглан BK таамаглал A(p) ~ (log p)²/p-г шалгана. r утга, p-value, scatter plot гаргана.</span>
           </div>
           <div class="steps">
-            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-li="en">Load zeros from <code>zeros1.txt</code> (Odlyzko high-T data)</span><span data-li="mn"><code>zeros1.txt</code>-аас тэгүүдийг уншина (Одлызкогийн өндөр-T өгөгдөл)</span></div></div>
+            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-li="en">Load zeros from <code>zeros4.txt</code> (Odlyzko high-T data)</span><span data-li="mn"><code>zeros4.txt</code>-аас тэгүүдийг уншина (Одлызкогийн өндөр-T өгөгдөл)</span></div></div>
             <div class="step"><div class="step-num">2</div><div class="step-text"><span data-li="en">Compute spacings δₙ = γₙ₊₁ − γₙ and center them</span><span data-li="mn">δₙ = γₙ₊₁ − γₙ зайнуудыг тооцоолж, төвлүүлнэ</span></div></div>
             <div class="step"><div class="step-num">3</div><div class="step-text"><span data-li="en">For each prime p: compute covariance C(p) = mean(δₙ · δₙ₊ₚ)</span><span data-li="mn">Прайм p бүрт: ковариансыг C(p) = mean(δₙ · δₙ₊ₚ) тооцоолно</span></div></div>
             <div class="step"><div class="step-num">4</div><div class="step-text"><span data-li="en">Compute Pearson r between C(p) and (log p)²/p</span><span data-li="mn">C(p) болон (log p)²/p хооронд Pearson r тооцоолно</span></div></div>
@@ -116,7 +117,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <span class="kw">from</span> scipy.stats <span class="kw">import</span> pearsonr
 
 <span class="cm"># Load zero heights</span>
-x = np.<span class="fn">loadtxt</span>(<span class="st">"zeros1.txt"</span>)
+x = np.<span class="fn">loadtxt</span>(<span class="st">"zeros4.txt"</span>)
 
 <span class="cm"># Spacings</span>
 d = np.<span class="fn">diff</span>(x)
@@ -247,18 +248,18 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
         <div class="file-body-inner">
           <div class="note-block">
             <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
-            <span data-li="en">Initial results showed r ≈ 0.4–0.6, suggesting weak agreement with BK predictions. The normalization differed: using τ_p = log(p)/2π (low-T formula) instead of the high-T unfolded frequency τ_p = log(p)/log(T/2π). Switching to the high-T formula substantially increased the observed correlation in this dataset.</span>
-            <span data-li="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Өмнөх нормализаци өндөр корреляци өгсөн боловч дараагийн дахин шинжилгээгээр тогтвортой биш болох нь харагдсан.</span>
+            <span data-li="en">Initial results showed r ≈ 0.4–0.6, suggesting BK law was not confirmed. The problem was the normalization: using τ_p = log(p)/2π (low-T formula) instead of the correct high-T unfolded frequency τ_p = log(p)/log(T/2π). Using the corrected normalization produced r ≈ 0.014 in this dataset.</span>
+            <span data-li="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Зассаны дараа r = 0.014 гарсан.</span>
           </div>
           <div class="code-block" style="background:#0a0a12;">
             <button class="code-copy" onclick="copyCode(this)">COPY</button>
             <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## ❌ WRONG normalization (low-T)</span>
 τ_p = log(p) / (2π)
-<span style="color:#585b70;"># → r ≈ 0.4–0.6, weak agreement observed</span>
+<span style="color:#585b70;"># → r ≈ 0.4–0.6, BK not confirmed</span>
 
-<span style="color:#4caf7d;">## high-T unfolded normalization</span>
+<span style="color:#4caf7d;">## ✅ CORRECT normalization (high-T unfolded)</span>
 τ_p = log(p) / log(T / 2π)
-<span style="color:#585b70;"># → earlier normalization produced higher r; later reanalysis shows result not robust</span>
+<span style="color:#585b70;"># → r = 0.014</span>
 
 <span style="color:#c9a84c;">## Why this matters</span>
 <span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
@@ -267,8 +268,8 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           </div>
           <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
             <div class="note-label" style="color:var(--green);">Lesson learned</div>
-            <span data-li="en">Scientific failures are valuable. This normalization change substantially increased the observed correlation in this dataset.</span>
-            <span data-li="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл нормализацийн зөв хэлбэрийг олоход шууд хүргэсэн; үр дүн нь тогтвортой биш болох нь хожим харагдсан.</span>
+            <span data-li="en">Scientific failures are valuable. This failure led directly to the key insight that produced r = 0.014.</span>
+            <span data-li="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл r = 0.014 гаргасан гол ойлголтод шууд хүргэсэн.</span>
           </div>
         </div>
       </div>
@@ -302,7 +303,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     </div>
 
   </div>
-  
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <footer class="MN-foot">
@@ -334,5 +335,6 @@ document.addEventListener('click',function(e){
 });
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>

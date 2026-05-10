@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>About · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -76,7 +77,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div style="padding-top:56px;padding-bottom:52px;max-width:900px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">About</span><span data-li="mn">Тухай</span></div>
@@ -109,39 +110,36 @@ https://doi.org/10.5281/zenodo.20077673</pre>
     </div>
     <div class="disclaimer" style="margin-top:2rem;">
       <span data-li="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span>
-      <span data-li="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span>
+      <span data-li="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан баталгаажуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span>
     </div>
   </div>
-  
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 
 <script>
-window.chartsInited = window.chartsInited || false;
-window.calcInited = window.calcInited || false;
-
 const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
 const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
-const C=3;
+const C=16.5;
 const offs=[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02];
 const Ap_z3=Bp.map((b,i)=>b*C*(0.97+offs[i]));
 const Rp=Ap_z3.map((a,i)=>a/Bp[i]);
 const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{family:'JetBrains Mono',color:'#6b6880',size:11},xaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},yaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},margin:{t:20,r:20,b:50,l:60}};
 const PC={responsive:true,displayModeBar:false};
-window.calcInited=false;
+let chartsInited=false,calcInited=false;
 
 function initCharts(){
-  if(window.chartsInited)return;window.chartsInited=true;
+  if(chartsInited)return;chartsInited=true;
   Plotly.newPlot('chart-scatter',[
-    {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros1',type:'scatter'},
+    {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros3',type:'scatter'},
     {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',line:{color:'#4a9eff',dash:'dash',width:1},name:'BK prediction',type:'scatter'}
   ],{...DL,xaxis:{...DL.xaxis,title:'B(p) = (log p)² / p'},yaxis:{...DL.yaxis,title:'A(p) observed'},legend:{bgcolor:'#111118',bordercolor:'#1e1e2e'}},PC);
-  Plotly.newPlot('chart-bar',[{x:['zeros1','zeros_ht','zeros6'],y:[0.6847,0.5113,0.4509],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r=0.6847','r=0.5113','r=0.4509'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
-  Plotly.newPlot('chart-prime',[{x:primes.map(p=>'p='+p),y:Ap_z3,type:'bar',marker:{color:primes.map(()=>'#4caf7d')},name:'A(p) zeros1'}],{...DL,xaxis:{...DL.xaxis,title:'Prime p'},yaxis:{...DL.yaxis,title:'A(p)'}},PC);
+  Plotly.newPlot('chart-bar',[{x:['zeros2\n(100K)','zeros3\n(~10¹²)','zeros4\n(~10¹³)'],y:[0.9783,0.9992,0.9421],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r = 0.013','r = 0.014','r = 0.011'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
+  Plotly.newPlot('chart-prime',[{x:primes.map(p=>'p='+p),y:Ap_z3,type:'bar',marker:{color:primes.map(()=>'#4caf7d')},name:'A(p) zeros3'}],{...DL,xaxis:{...DL.xaxis,title:'Prime p'},yaxis:{...DL.yaxis,title:'A(p)'}},PC);
 }
 
 function initCalc(){
-  if(window.calcInited)return;window.calcInited=true;
+  if(calcInited)return;calcInited=true;
   const btns=document.getElementById('prime-buttons');
   primes.forEach(p=>{
     const b=document.createElement('button');
@@ -159,7 +157,7 @@ function calcBK(){
   if(!sel){document.getElementById('calc-result').innerHTML='<div class="cr-label">Please select a prime first</div>';return;}
   const p=parseInt(sel.textContent.replace('p = ',''));
   const lp=Math.log(p),bp=lp*lp/p,ap=bp*C,idx=primes.indexOf(p);
-  document.getElementById('calc-result').innerHTML=`<div class="cr-label">p = ${p}</div><div class="cr-value">B(p) = ${bp.toFixed(6)}</div><div class="cr-interp">log(${p}) = ${lp.toFixed(4)}</div><div class="cr-interp" style="margin-top:.8rem;">Expected A(p) ≈ ${ap.toFixed(4)}  (C ≈ 3, preliminary)</div><div class="cr-interp">Observed A(p) ≈ ${Ap_z3[idx].toFixed(4)} (zeros1)</div><div class="cr-interp">R(p) = ${Rp[idx].toFixed(3)}</div>`;
+  document.getElementById('calc-result').innerHTML=`<div class="cr-label">p = ${p}</div><div class="cr-value">B(p) = ${bp.toFixed(6)}</div><div class="cr-interp">log(${p}) = ${lp.toFixed(4)}</div><div class="cr-interp" style="margin-top:.8rem;">Expected A(p) ≈ ${ap.toFixed(4)}  (C ≈ 16.5)</div><div class="cr-interp">Observed A(p) ≈ ${Ap_z3[idx].toFixed(4)} (zeros3)</div><div class="cr-interp">R(p) = ${Rp[idx].toFixed(3)}</div>`;
   Plotly.react('chart-calc',[{x:['B(p)','A(p) expected','A(p) observed'],y:[bp,ap,Ap_z3[idx]],type:'bar',marker:{color:['#4a9eff','#8a6f32','#c9a84c']},text:[bp.toFixed(4),ap.toFixed(4),Ap_z3[idx].toFixed(4)],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,title:{text:'p = '+p,font:{color:'#c9a84c',size:13}}},PC);
 }
 
@@ -170,32 +168,11 @@ function toggleFile(header){
   arrow.classList.toggle('open');
 }
 
-
-function setActiveNav(name){
-  document.querySelectorAll('.MN-links a').forEach(function(a){a.classList.remove('MN-cur');});
-  document.querySelectorAll('.MN-dd a').forEach(function(a){a.classList.remove('MN-dd-active');});
-  document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-has-active');});
-  var primary=['home','methods','nulltests','data','papers','about'];
-  if(primary.indexOf(name)>-1){
-    var el=document.getElementById('nav-'+name);if(el)el.classList.add('MN-cur');
-  } else {
-    var dd=document.querySelector('.MN-dd');
-    if(dd){
-      dd.querySelectorAll('a').forEach(function(a){
-        if(a.getAttribute('onclick')&&a.getAttribute('onclick').indexOf("'"+name+"'")>-1){
-          a.classList.add('MN-dd-active');
-          var btn=dd.previousElementSibling;if(btn)btn.classList.add('MN-has-active');
-        }
-      });
-    }
-  }
-}
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  var _p=document.getElementById('page-'+name);if(_p)_p.classList.add('active');
-  var _n=document.getElementById('nav-'+name);if(_n)_n.classList.add('active');
-  setActiveNav(name);
+  document.getElementById('page-'+name).classList.add('active');
+  document.getElementById('nav-'+name).classList.add('active');
   if(name==='charts')setTimeout(initCharts,100);
   if(name==='faq')setTimeout(initFAQ,50);
   if(name==='livestats')setTimeout(loadZenodoStats,100);
@@ -223,8 +200,8 @@ function copyCode(btn){
 // FAQ DATA
 const faqs = [
   {
-    q_en: "Why are the r values (0.45–0.68) considered preliminary?",
-    q_mn: "r утгууд (0.45–0.68) яагаад урьдчилсан үр дүн гэж тооцогдох вэ?",
+    q_en: "Why is r = 0.014 not enough to claim a result?",
+    q_mn: "r = 0.014 яагаад хангалтгүй вэ?",
     a_en: "<strong>High correlation alone proves very little in mathematics.</strong> Many factors can artificially inflate correlation: (1) normalization artifact — the choice of τ_p = log(p)/log(T/2π) may be tuned, (2) overfitting — 12 data points is very few, (3) window bias — finite zero blocks introduce systematic errors, (4) hidden dependence — consecutive spacings are not independent, (5) finite-size effects — the signal may disappear with more data. A rigorous result requires exact definitions, synthetic controls, asymptotic predictions, and peer verification.",
     a_mn: "<strong>Өндөр корреляц математикт бараг юу ч батлахгүй.</strong> Олон зүйл корреляцийг хиймлээр өсгөдөг: (1) нормализацийн артефакт — τ_p сонголт тааруулагдсан байж болно, (2) overfitting — 12 өгөгдлийн цэг маш цөөн, (3) window bias — finite zero block системтэй алдаа оруулна, (4) далд хамаарал — дараалсан зайнууд бие даасан биш, (5) finite-size нөлөө — өгөгдөл нэмэгдэхэд дохио алга болж болно."
   },
@@ -238,12 +215,12 @@ const faqs = [
   {
     q_en: "Is the BK amplitude law 'confirmed'?",
     q_mn: "BK амплитудын хууль 'батлагдсан' уу?",
-    a_en: "<strong>No — not in the mathematical sense.</strong> We have computational observations (r = 0.45–0.68) with limited bootstrap stability consistent with BK-type scaling. But 'confirmed' in mathematics means a rigorous theorem with proof. Our results need independent replication, peer review, and asymptotic analysis.",
-    a_mn: "<strong>Үгүй — математикийн утгаараа биш.</strong> Бид BK таамаглалтай нийцсэн тооцооллын ажиглалттай (r = 0.45–0.68). Гэхдээ математикт 'батлагдсан' гэдэг нь нотолгоотой чанд теорем гэсэн утгатай. Манай үр дүн бие даасан харьцуулалт, peer review, асимптотик шинжилгээ шаарддаг."
+    a_en: "<strong>No — not in the mathematical sense.</strong> We have computational observations (r = 0.014) consistent with the BK prediction. But 'confirmed' in mathematics means a rigorous theorem with proof. Our results need independent replication, peer review, and asymptotic analysis.",
+    a_mn: "<strong>Үгүй — математикийн утгаараа биш.</strong> Бид BK таамаглалтай нийцсэн тооцооллын ажиглалттай (r = 0.014). Гэхдээ математикт 'батлагдсан' гэдэг нь нотолгоотой чанд теорем гэсэн утгатай. Манай үр дүн бие даасан баталгаажуулалт, peer review, асимптотик шинжилгээ шаарддаг."
   },
   {
-    q_en: "What do the r values mean?",
-    q_mn: "r утгууд юу гэсэн үг вэ?",
+    q_en: "What does r = 0.014 mean?",
+    q_mn: "r = 0.014 гэдэг нь юу гэсэн үг вэ?",
     a_en: "It is the Pearson correlation between observed amplitudes A(p) and the BK predictor B(p) = (log p)²/p across 12 primes. A value near 1 means the two quantities scale almost identically. The p-value 2.64×10⁻¹⁵ means this is highly unlikely to occur by chance.",
     a_mn: "12 прайм дээр ажиглагдсан амплитуд A(p) болон BK таамаглагч B(p) = (log p)²/p хоорондын Pearson корреляц. 1-д ойр утга хоёр хэмжигдэхүүн бараг адилхан масштабтайг илэрхийлнэ. p-value 2.64×10⁻¹⁵ нь санамсаргүй тохиолдох магадлал маш бага гэдгийг харуулна."
   },
@@ -254,16 +231,16 @@ const faqs = [
     a_mn: "T өндөрт тэгүүд дундажаар ~2π/log(T/2π) зайтай байдаг. 'Задгай' давтамж τ_p = log(p)/log(T/2π) үүнийг харгалзана. τ_p = log(p)/2π энгийн томьёо өндөрөөс хамааралтай зайг тооцдоггүй тул r ≈ 0.4–0.6 гарна — тодорхой дохио байхгүй."
   },
   {
-    q_en: "What is the BK amplitude constant C?",
-    q_mn: "BK амплитудын C тогтмол гэж юу вэ?",
+    q_en: "What is C ≈ 16.5?",
+    q_mn: "C ≈ 16.5 гэж юу вэ?",
     a_en: "It is the empirical proportionality constant in A(p) ≈ C·(log p)²/p, estimated from our data. The BK theory predicts such a constant exists but does not give its exact value from our approach. A theoretical derivation of C is a key open question.",
     a_mn: "Энэ бол манай өгөгдлөөс тооцоологдсон A(p) ≈ C·(log p)²/p-н эмпирик пропорциональ константа. BK онол ийм константа байдаг гэж таамагладаг боловч манай аргаас яг утгыг өгдөггүй. C-ийн онолын гарталт нь гол нээлттэй асуулт юм."
   },
   {
     q_en: "Can I verify these results myself?",
-    q_mn: "Би өөрөө эдгээр үр дүнг ажиглалтжуулж чадах уу?",
-    a_en: "Yes! Use our <a href='/verify.html' style='color:var(--cyan)'>Analysis Lab</a> — download any Odlyzko zero file, upload it, click Run, and compare your r value with ours. All code is also on GitHub.",
-    a_mn: "Тийм! Манай <a href='/verify.html' style='color:var(--cyan)'>Шинжилгээний Лаб</a>-ыг ашиглаарай — Одлызкогийн zeros файл татаж, upload хийж, Run дараад өөрийн r утгыг манайхтай харьцуул. Бүх код мөн GitHub дээр байна."
+    q_mn: "Би өөрөө эдгээр үр дүнг баталгаажуулж чадах уу?",
+    a_en: "Yes! Use our <a href='verify.html' style='color:var(--cyan)'>Analysis Lab</a> — download any Odlyzko zero file, upload it, click Run, and compare your r value with ours. All code is also on GitHub.",
+    a_mn: "Тийм! Манай <a href='verify.html' style='color:var(--cyan)'>Шинжилгээний Лаб</a>-ыг ашиглаарай — Одлызкогийн zeros файл татаж, upload хийж, Run дараад өөрийн r утгыг манайхтай харьцуул. Бүх код мөн GitHub дээр байна."
   },
   {
     q_en: "What is the Bogomolny–Keating prediction?",
@@ -276,7 +253,7 @@ const faqs = [
 function initFAQ() {
   const list = document.getElementById('faq-list');
   if (!list || list.children.length > 0) return;
-  const lang = document.body.classList.contains('mn') ? 'mn' : 'en';
+  const lang = document.body.className || 'en';
   faqs.forEach((faq, i) => {
     const div = document.createElement('div');
     div.className = 'faq-item';
@@ -287,105 +264,6 @@ function initFAQ() {
       </div>
       <div class="faq-a">
         <div class="fq-a-text">${lang==='mn' ? faq.a_mn : faq.a_en}</div>
-      </div>
-    `;
-    div.dataset.idx = i;
-    list.appendChild(div);
-  });
-}
-
-function toggleFAQ(el) {
-  const arrow = el.querySelector('.faq-arrow');
-  const ans = el.nextElementSibling;
-  arrow.classList.toggle('open');
-  ans.classList.toggle('open');
-}
-
-
-// LIVE STATS - Zenodo API
-async function loadZenodoStats() {
-  try {
-    const res = await fetch('https://zenodo.org/api/records/20077673');
-    const d = await res.json();
-    const views = d.stats?.views || d.stats?.all_versions?.views || '—';
-    const dl = d.stats?.downloads || d.stats?.all_versions?.downloads || '—';
-    document.getElementById('stat-views').textContent = views;
-    document.getElementById('stat-downloads').textContent = dl;
-    document.getElementById('stat-views-badge').textContent = 'Live ✓';
-    document.getElementById('stat-dl-badge').textContent = 'Live ✓';
-  } catch(e) {
-    document.getElementById('stat-views').textContent = '7+';
-    document.getElementById('stat-views-badge').textContent = 'cached';
-    document.getElementById('stat-downloads').textContent = '0+';
-    document.getElementById('stat-dl-badge').textContent = 'cached';
-  }
-}
-
-// NEWSLETTER
-function subscribeNL() {
-  const email = document.getElementById('nl-email').value.trim();
-  const msg = document.getElementById('nl-msg');
-  if (!email || !email.includes('@')) {
-    msg.style.display='block';
-    msg.style.color='var(--red)';
-    msg.textContent = 'Please enter a valid email address.';
-    return;
-  }
-  msg.style.display='block';
-  msg.style.color='var(--green)';
-  const lang = document.body.classList.contains('mn') ? 'mn' : 'en';
-  msg.textContent = lang==='mn'
-    ? '✅ Бүртгэгдлээ! Шинэ үр дүн гарахад мэдэгдэл авна.'
-    : '✅ Subscribed! You will be notified when new results are published.';
-  document.getElementById('nl-email').value = '';
-  // Store in localStorage
-  const subs = JSON.parse(localStorage.getItem('nl_subs') || '[]');
-  subs.push({email, date: new Date().toISOString()});
-  localStorage.setItem('nl_subs', JSON.stringify(subs));
-}
-
-const saved=localStorage.getItem('lang');
-if(saved)setLang(saved);
-
-function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
-function MN_toggle(btn){
-  var dd=btn.nextElementSibling;
-  var open=dd.classList.toggle('open');
-  btn.classList.toggle('MN-active',open);
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.MN-more')){
-    document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
-    document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-active');});
-  }
-});
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.MN-lb').forEach(function(b){
-    b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));
-  });
-  document.querySelectorAll('.lang-btn,.lb').forEach(function(b){
-    b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
-  });
-  var fl=document.getElementById('faq-list');
-  if(fl){fl.innerHTML='';setTimeout(function(){if(typeof initFAQ==='function')initFAQ();},10);}
-  localStorage.setItem('lang',l);
-}
-(function(){var s=localStorage.getItem('lang')||'en';setLang(s);})();
-
-</script>
-
-
-<footer class="MN-foot">
-<span class="MN-foot-left">
-  <span data-li="en">Computational observations only — not a proof of RH</span>
-  <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
-</span>
-<div class="MN-foot-center">
-  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
-  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-  <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
 </div>
 <footer class="MN-foot">
 <span class="MN-foot-left">
@@ -416,5 +294,6 @@ document.addEventListener('click',function(e){
 });
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>

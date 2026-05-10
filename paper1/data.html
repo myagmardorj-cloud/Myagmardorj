@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Datasets · research.nexcore.ltd</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Data · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;--gold:#f0b429;}
+
+<style>
+:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
 nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
 .MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
 .MN-links{display:flex;align-items:center;gap:.2rem;flex-shrink:0;}
-.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
-.MN-links a:hover,.MN-links a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
-.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;border:none;cursor:pointer;transition:all .2s;}
+.MN-links>a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .6rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links>a:hover,.MN-links>a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-more{position:relative;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);background:none;border:none;padding:.28rem .6rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.MN-more>button:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:var(--sub);text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:var(--text);background:rgba(255,255,255,.06);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:var(--muted);cursor:pointer;transition:all .2s;}
 .MN-lb:first-child{border-radius:4px 0 0 4px;}
 .MN-lb:last-child{border-radius:0 4px 4px 0;}
-.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;}
-.MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:var(--muted);border:1px solid rgba(255,255,255,.12);}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
@@ -25,31 +33,14 @@ footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:44px;di
 .MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
 .MN-foot a:hover{color:var(--cyan);}
 .container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
-.sec-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
-.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,.3),transparent);}
-h1{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.03em;}
-h2{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;margin:2rem 0 .8rem;letter-spacing:-.02em;}
-h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--cyan);}
-p{color:var(--sub);margin-bottom:1rem;}
-.step{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;position:relative;}
-.step-num{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--cyan);background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);padding:.2rem .5rem;border-radius:4px;display:inline-block;margin-bottom:.6rem;}
-.step h3{margin-top:0;color:var(--text);}
-pre{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a8d8a0;overflow-x:auto;margin:.8rem 0;}
-.dl-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:.8rem;display:flex;justify-content:space-between;align-items:center;}
-.dl-info{flex:1;}
-.dl-name{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--cyan);margin-bottom:.2rem;}
-.dl-desc{font-size:.85rem;color:var(--sub);}
-.dl-size{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-left:1rem;}
-.badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:4px;display:inline-block;margin-right:.4rem;}
-.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.2);}
-.badge-gold{background:rgba(240,180,41,.1);color:var(--gold);border:1px solid rgba(240,180,41,.2);}
-.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;font-size:.88rem;color:var(--sub);}.MN-more{position:relative;}
-.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub,#9999b8);background:none;border:none;padding:.28rem .55rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
-.MN-more>button:hover{color:var(--text,#eeeef8);background:rgba(255,255,255,.07);}
-.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
-.MN-dd.open{display:block;}
-.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
-.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.06);}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:-.02em;}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.8rem;overflow:hidden;}
+.faq-q{padding:1rem 1.2rem;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--s1);transition:background .2s;}
+.faq-q:hover{background:var(--s2);}
+.faq-arrow{color:var(--muted);font-size:.8rem;flex-shrink:0;transition:transform .2s;}
+.faq-a{display:none;padding:1rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
+.faq-a.open{display:block;}
 
 nav.MN{position:fixed !important;top:0;left:0;right:0;z-index:900;}
 footer.MN-foot{position:fixed !important;bottom:0;left:0;right:0;z-index:900;
@@ -86,75 +77,104 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div class="container">
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Data Sources</span><span data-li="mn">Өгөгдлийн эх сурвалж</span></div>
+    <h2><span data-li="en">Odlyzko Zero Tables</span><span data-li="mn">Одлызкогийн Тэгийн Хүснэгтүүд</span></h2>
+    <p class="prose" style="margin-bottom:2rem;">
+      <span data-li="en">All analysis uses Andrew Odlyzko's high-precision tabulations of non-trivial Riemann zeros, freely available at the University of Minnesota.</span>
+      <span data-li="mn">Бүх шинжилгээ Миннесотагийн их сургуулийн Эндрю Одлызкогийн өндөр нарийвчлалтай тривиаль биш Риман тэгийн хүснэгтийг ашигладаг.</span>
+    </p>
 
-<div class="sec-label"><span data-li="en">Research Data</span><span data-li="mn">Судалгааны өгөгдөл</span></div>
-<h1><span data-li="en">Datasets</span><span data-li="mn">Датасетууд</span></h1>
-<p><span data-li="en">All datasets used in this study are publicly available. Original zero files sourced from Andrew Odlyzko's archive.</span><span data-li="mn">Энэ судалгаанд ашигласан бүх датасет нийтэд нээлттэй. Анхны zeros файлуудыг Эндрю Одлызкогийн архиваас авсан.</span></p>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
+      <div class="file-card">
+        <div class="file-header" onclick="toggleFile(this)">
+          <span class="file-icon">📋</span>
+          <div class="file-meta">
+            <span class="file-name">zeros2</span>
+            <div class="file-desc"><span data-li="en">First 100,000 non-trivial zeros near T ≈ 74,920</span><span data-li="mn">T ≈ 74,920 орчим анхны 100,000 тривиаль биш тэг</span></div>
+            <div class="file-tags"><span class="file-tag">100,000 zeros</span><span class="file-tag">T ≈ 74,920</span><span class="file-tag">r = 0.013</span></div>
+          </div>
+          <span class="file-toggle">▼</span>
+        </div>
+        <div class="file-body">
+          <div class="file-body-inner">
+            <div class="note-block">
+              <div class="note-label">Format</div>
+              <span data-li="en">Plain text, one imaginary part γₙ per line. Values are the imaginary parts of zeros ½ + iγₙ.</span>
+              <span data-li="mn">Энгийн текст, мөр бүрт нэг γₙ. Утгууд нь ½ + iγₙ тэгийн γₙ хэсэг.</span>
+            </div>
+            <div style="margin-top:1rem;">
+              <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros2" target="_blank" style="display:inline-flex;border-radius:10px;">
+                <span class="li">⬇️</span><div><span class="lt">Download zeros2</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros2</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<h2><span data-li="en">Riemann zero files</span><span data-li="mn">Риман zeros файлууд</span></h2>
+      <div class="file-card">
+        <div class="file-header" onclick="toggleFile(this)">
+          <span class="file-icon">📋</span>
+          <div class="file-meta">
+            <span class="file-name">zeros3</span>
+            <div class="file-desc"><span data-li="en">~10,000 zeros near height T ~ 10¹². Used in main high-T analysis.</span><span data-li="mn">T ~ 10¹² орчим ~10,000 тэг. Үндсэн өндөр-T шинжилгээнд ашиглагдсан.</span></div>
+            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹²</span><span class="file-tag">r = 0.014 ⭐</span></div>
+          </div>
+          <span class="file-toggle">▼</span>
+        </div>
+        <div class="file-body">
+          <div class="file-body-inner">
+            <div class="note-block" style="border-left-color:var(--green);">
+              <div class="note-label" style="color:var(--green);">Best result</div>
+              <span data-li="en">This dataset produced r = 0.014 — the strongest correlation. High-T normalization τ_p = log(p)/log(T/2π) is essential.</span>
+              <span data-li="mn">Энэ датасет r = 0.014 — хамгийн хүчтэй корреляцийг гаргасан. Өндөр-T нормализаци τ_p = log(p)/log(T/2π) зайлшгүй.</span>
+            </div>
+            <div style="margin-top:1rem;">
+              <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros3" target="_blank" style="display:inline-flex;border-radius:10px;">
+                <span class="li">⬇️</span><div><span class="lt">Download zeros3</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros3</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<div class="dl-card">
-  <div class="dl-info">
-    <div class="dl-name">zeros1.txt</div>
-    <div class="dl-desc"><span data-li="en">100,000 zeros · height T ≈ 10¹² · Odlyzko dataset 1</span><span data-li="mn">100,000 zeros · T ≈ 10¹² өндөр · Одлызко датасет 1</span></div>
-    <div style="margin-top:.4rem;"><span class="badge badge-green">r = 0.6847</span><span class="badge badge-gold">bootstrap: UNSTABLE</span></div>
+      <div class="file-card">
+        <div class="file-header" onclick="toggleFile(this)">
+          <span class="file-icon">📋</span>
+          <div class="file-meta">
+            <span class="file-name">zeros4</span>
+            <div class="file-desc"><span data-li="en">~10,000 zeros near height T ~ 10¹³.</span><span data-li="mn">T ~ 10¹³ орчим ~10,000 тэг.</span></div>
+            <div class="file-tags"><span class="file-tag">~10K zeros</span><span class="file-tag">T ~ 10¹³</span><span class="file-tag">r = 0.011</span></div>
+          </div>
+          <span class="file-toggle">▼</span>
+        </div>
+        <div class="file-body">
+          <div class="file-body-inner">
+            <div style="margin-top:1rem;">
+              <a class="link-card" href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/zeros4" target="_blank" style="display:inline-flex;border-radius:10px;">
+                <span class="li">⬇️</span><div><span class="lt">Download zeros4</span><span class="ld">umn.edu/~odlyzko/zeta_tables/zeros4</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label"><span data-li="en">How to use</span><span data-li="mn">Хэрхэн ашиглах</span></div>
+    <div class="steps" style="grid-template-columns:repeat(3,1fr);display:grid;gap:1rem;">
+      <div class="step-card"><div class="step-n">1</div><div class="step-text"><strong><span data-li="en">Download</span><span data-li="mn">Татах</span></strong><span data-li="en">Download any zeros file from Odlyzko's site above.</span><span data-li="mn">Дээрх Одлызкогийн сайтаас zeros файл татаж авна.</span></div></div>
+      <div class="step-card"><div class="step-n">2</div><div class="step-text"><strong><span data-li="en">Verify</span><span data-li="mn">Баталгаажуулах</span></strong><span data-li="en">Upload to our Analysis Lab and run the analysis.</span><span data-li="mn">Шинжилгээний Лабрт upload хийж шинжилгээ ажиллуулна.</span></div></div>
+      <div class="step-card"><div class="step-n">3</div><div class="step-text"><strong><span data-li="en">Compare</span><span data-li="mn">Харьцуулах</span></strong><span data-li="en">Compare your r value with our published results.</span><span data-li="mn">Өөрийн r утгыг манай нийтэлсэн үр дүнтэй харьцуулна.</span></div></div>
+    </div>
+    <div style="margin-top:1.5rem;">
+      <a class="link-card" href="verify.html" style="display:inline-flex;border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);border-radius:12px;">
+        <span class="li">⚗️</span><div><span class="lt" style="color:var(--green);">Open Analysis Lab</span><span class="ld">Upload data and run analysis</span></div>
+      </a>
+    </div>
   </div>
-  <div class="dl-size"><a href="/paper1/zeros1.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ 1.8MB</a></div>
-</div>
-
-<div class="dl-card">
-  <div class="dl-info">
-    <div class="dl-name">zeros_ht.txt</div>
-    <div class="dl-desc"><span data-li="en">10,000 zeros · height T ≈ 10¹³ · Odlyzko high dataset</span><span data-li="mn">10,000 zeros · T ≈ 10¹³ өндөр · Одлызко өндөр датасет</span></div>
-    <div style="margin-top:.4rem;"><span class="badge badge-green">r = 0.5113</span><span class="badge badge-gold">bootstrap: UNSTABLE</span></div>
-  </div>
-  <div class="dl-size"><a href="/paper1/zeros_ht.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ 180KB</a></div>
-</div>
-
-<div class="dl-card">
-  <div class="dl-info">
-    <div class="dl-name">zeros6.txt</div>
-    <div class="dl-desc"><span data-li="en">1,000,000 zeros · height T ≈ 10¹² · Odlyzko large dataset</span><span data-li="mn">1,000,000 zeros · T ≈ 10¹² өндөр · Одлызко том датасет</span></div>
-    <div style="margin-top:.4rem;"><span class="badge badge-green">r = 0.4509</span><span class="badge badge-gold">bootstrap: MODERATE</span></div>
-  </div>
-  <div class="dl-size"><a href="/paper1/zeros6.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ 36MB</a></div>
-</div>
-
-<h2><span data-li="en">Bootstrap summary files</span><span data-li="mn">Bootstrap дүгнэлтийн файлууд</span></h2>
-
-<div class="dl-card">
-  <div class="dl-info">
-    <div class="dl-name">bootstrap_zeros1.txt</div>
-    <div class="dl-desc"><span data-li="en">Bootstrap stability results for zeros1 dataset</span><span data-li="mn">zeros1 датасетийн bootstrap тогтворжилтын үр дүн</span></div>
-  </div>
-  <div class="dl-size"><a href="/paper1/bootstrap_zeros1.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ TXT</a></div>
-</div>
-
-<div class="dl-card">
-  <div class="dl-info">
-    <div class="dl-name">bootstrap_zeros_ht.txt</div>
-    <div class="dl-desc"><span data-li="en">Bootstrap stability results for zeros_ht dataset</span><span data-li="mn">zeros_ht датасетийн bootstrap тогтворжилтын үр дүн</span></div>
-  </div>
-  <div class="dl-size"><a href="/paper1/bootstrap_zeros_ht.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ TXT</a></div>
-</div>
-
-<div class="dl-card">
-  <div class="dl-info">
-    <div class="dl-name">bootstrap_zeros6.txt</div>
-    <div class="dl-desc"><span data-li="en">Bootstrap stability results for zeros6 dataset</span><span data-li="mn">zeros6 датасетийн bootstrap тогтворжилтын үр дүн</span></div>
-  </div>
-  <div class="dl-size"><a href="/paper1/bootstrap_zeros6.txt" style="color:var(--cyan);font-family:'JetBrains Mono',monospace;">↓ TXT</a></div>
-</div>
-
-<h2><span data-li="en">Source & License</span><span data-li="mn">Эх сурвалж & Лиценз</span></h2>
-<div class="note">
-<span data-li="en">Original zero files: <a href="https://odlyzko.com/zeta_tables/" style="color:var(--cyan);">Andrew Odlyzko — zeta_tables</a><br>
-Analysis code: <a href="https://github.com/myagmardorj-cloud/Myagmardorj" style="color:var(--cyan);">GitHub repository</a> · CC BY-NC 4.0<br>
-Preprint: <a href="https://zenodo.org/records/20077673" style="color:var(--cyan);">Zenodo DOI: 10.5281/zenodo.20077673</a></span>
-<span data-li="mn">Анхны zeros файлууд: <a href="https://odlyzko.com/zeta_tables/" style="color:var(--cyan);">Эндрю Одлызко — zeta_tables</a><br>
-Шинжилгээний код: <a href="https://github.com/myagmardorj-cloud/Myagmardorj" style="color:var(--cyan);">GitHub репозитор</a> · CC BY-NC 4.0<br>
-Preprint: <a href="https://zenodo.org/records/20077673" style="color:var(--cyan);">Zenodo DOI: 10.5281/zenodo.20077673</a></span>
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <footer class="MN-foot">
@@ -181,7 +201,11 @@ function setLang(l){
   });
   localStorage.setItem('lang',l);
 }
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+});
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>

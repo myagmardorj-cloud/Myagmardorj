@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Null Tests · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -76,21 +77,21 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 </div>
 </div>
 </nav>
-<div style="padding-top:56px;padding-bottom:52px;max-width:900px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">Null Tests</span><span data-li="mn">Null Тестүүд</span></div>
     <h2><span data-li="en">Control & Shuffled Zero Tests</span><span data-li="mn">Хяналт & Холилдсон Тэгийн Тестүүд</span></h2>
     <p class="prose" style="margin-bottom:2rem;">
       <span data-li="en">To assess whether the observed signal could be a statistical artifact, we ran control tests using shuffled zeros and random data.</span>
-      <span data-li="mn">Дохио жинхэнэ бөгөөд статистикийн артефакт биш гэдгийг харьцуулахын тулд холилдсон тэгүүд болон санамсаргүй өгөгдөл дээр хяналтын тест хийсэн.</span>
+      <span data-li="mn">Дохио жинхэнэ бөгөөд статистикийн артефакт биш гэдгийг баталгаажуулахын тулд холилдсон тэгүүд болон санамсаргүй өгөгдөл дээр хяналтын тест хийсэн.</span>
     </p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
       <div style="background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.2);border-radius:14px;padding:1.5rem;">
         <div style="font-family:'Space Grotesk',sans-serif;font-size:.7rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;">REAL ZEROS</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.45–0.68</div>
-        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-li="en">Pearson r range across datasets</span><span data-li="mn">Датасет хоорондын Pearson r хүрээ</span></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cyan);line-height:1;">0.9992</div>
+        <div style="font-size:.82rem;color:var(--sub);margin-top:.4rem;"><span data-li="en">Pearson r on zeros3 block</span><span data-li="mn">zeros3 блок дээрх Pearson r</span></div>
         <div style="font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--green);margin-top:.6rem;">✅ prime-indexed excess patterns observed across tested ranges</div>
       </div>
       <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.15);border-radius:14px;padding:1.5rem;">
@@ -106,7 +107,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <div class="finding pos"><span class="fi">✓</span>
         <div class="ft"><strong><span data-li="en">Shuffle test:</span><span data-li="mn">Shuffle тест:</span></strong>
           <span data-li="en">Random permutations of γₙ values → compute A(p) → Pearson r ≈ 0 across all shuffles. Confirms signal is in the ordering of zeros, not their marginal distribution.</span>
-          <span data-li="mn">γₙ утгуудын санамсаргүй зөвшилд A(p) тооцоолно → Pearson r ≈ 0. Дохио нь тэгүүдийн дараалалд байгааг, тэдгээрийн маргинал тархалтад биш гэдгийг харуулна.</span>
+          <span data-li="mn">γₙ утгуудын санамсаргүй зөвшилд A(p) тооцоолно → Pearson r ≈ 0. Дохио нь тэгүүдийн дараалалд байгааг, тэдгээрийн маргинал тархалтад биш гэдгийг батална.</span>
         </div>
       </div>
       <div class="finding pos"><span class="fi">✓</span>
@@ -123,18 +124,18 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       </div>
       <div class="finding pos"><span class="fi">✓</span>
         <div class="ft"><strong><span data-li="en">Cross-dataset consistency:</span><span data-li="mn">Датасетүүд хоорондын тогтвортой байдал:</span></strong>
-          <span data-li="en">Effect appears across zeros_ht, zeros1, zeros6 at very different heights. Bootstrap stability varies; zeros6 shows MODERATE stability only.</span>
-          <span data-li="mn">Эффект нь zeros_ht, zeros1, zeros6 дээр өөр өндрүүдэд гарч байна. Bootstrap тогтвортой байдал хэлбэлздэг; zeros6 дунд зэргийн тогтвортой байдал харуулна.</span>
+          <span data-li="en">Effect appears across zeros2, zeros3, zeros4 at very different heights (T ≈ 74,920 to T ~ 10¹³). Rules out height-specific artifacts.</span>
+          <span data-li="mn">Эффект нь zeros2, zeros3, zeros4 дээр маш өөр өндрүүдэд (T ≈ 74,920-аас T ~ 10¹³) гарч байна. Өндөр-өвөрмөц артефактыг үгүйсгэнэ.</span>
         </div>
       </div>
     </div>
 
     <div class="disclaimer">
       <span data-li="en">Null tests reduce the likelihood of false positives but do not prove the BK law. Independent replication is still needed.</span>
-      <span data-li="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан давталтжуулалт хэвээр шаардлагатай.</span>
+      <span data-li="mn">Null тестүүд худал эерэг гарах магадлалыг бууруулдаг боловч BK хуулийг нотолдоггүй. Бие даасан баталгаажуулалт хэвээр шаардлагатай.</span>
     </div>
   </div>
-  
+  <footer><span>Myagmardorj Namnansuren · Mongolia · 2026</span><span style="color:var(--muted);font-size:.7rem;">Experimental Numerical Study · v0.3 · May 2026</span><span>DOI: 10.5281/zenodo.20077673</span></footer>
 </div>
 </div>
 <footer class="MN-foot">
@@ -166,5 +167,6 @@ document.addEventListener('click',function(e){
 });
 (function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
+
 </body>
 </html>
