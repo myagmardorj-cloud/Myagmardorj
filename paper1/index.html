@@ -60,8 +60,10 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <nav class="MN">
 <a href="/index.html" class="MN-logo">Nexcore Research</a>
 <div class="MN-links">
-<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+<a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+<a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
 <a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт</span></a>
 <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
@@ -92,9 +94,9 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
     <div class="section-label"><span data-li="en">Main Results</span><span data-li="mn">Үндсэн үр дүн</span></div>
     <h2><span data-li="en">BK Amplitude Law — Computational Observation</span><span data-li="mn">BK Амплитудын Хууль — Тооцооллын Ажиглалт</span></h2>
     <div class="stat-grid">
-      <div class="stat-card"><div class="ds">zeros2</div><span class="rv">0.9783</span><div class="pv">p = 3.82×10⁻¹⁸⁶</div><div class="badge">100K zeros</div></div>
+      <div class="stat-card"><div class="ds">zeros2</div><span class="rv">0.013</span><div class="pv">p = 3.82×10⁻¹⁸⁶</div><div class="badge">100K zeros</div></div>
       <div class="stat-card"><div class="ds">zeros3 · ~10¹²</div><span class="rv" style="font-size:1.5rem;font-weight:600;color:var(--text);">r ≈ 0.014</span><div class="pv">p = 2.64×10⁻¹⁵</div><div class="badge">High-T block</div></div>
-      <div class="stat-card"><div class="ds">zeros4 · ~10¹³</div><span class="rv">0.9421</span><div class="pv">p = 5.0×10⁻⁶</div><div class="badge">High-T block</div></div>
+      <div class="stat-card"><div class="ds">zeros4 · ~10¹³</div><span class="rv">0.011</span><div class="pv">p = 5.0×10⁻⁶</div><div class="badge">High-T block</div></div>
     </div>
     <div class="formula-block"><div class="formula-label"><span data-li="en">Bogomolny–Keating Amplitude Law</span><span data-li="mn">Богомолны–Китингийн Амплитудын Хууль</span></div>A(p)  ∼  C · (log p)² / p</div>
     <div class="findings">
@@ -131,7 +133,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
   <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
 </span>
 <div class="MN-foot-center">
-  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/paper1/" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
   <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
   <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
   <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
@@ -171,7 +173,7 @@ function initCharts(){
     {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros3',type:'scatter'},
     {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',line:{color:'#4a9eff',dash:'dash',width:1},name:'BK prediction',type:'scatter'}
   ],{...DL,xaxis:{...DL.xaxis,title:'B(p) = (log p)² / p'},yaxis:{...DL.yaxis,title:'A(p) observed'},legend:{bgcolor:'#111118',bordercolor:'#1e1e2e'}},PC);
-  Plotly.newPlot('chart-bar',[{x:['zeros2\n(100K)','zeros3\n(~10¹²)','zeros4\n(~10¹³)'],y:[0.9783,0.9992,0.9421],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r = 0.013','r = 0.014','r = 0.011'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
+  Plotly.newPlot('chart-bar',[{x:['zeros2\n(100K)','zeros3\n(~10¹²)','zeros4\n(~10¹³)'],y:[0.013,0.014,0.011],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r = 0.013','r = 0.014','r = 0.011'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
   Plotly.newPlot('chart-prime',[{x:primes.map(p=>'p='+p),y:Ap_z3,type:'bar',marker:{color:primes.map(()=>'#4caf7d')},name:'A(p) zeros3'}],{...DL,xaxis:{...DL.xaxis,title:'Prime p'},yaxis:{...DL.yaxis,title:'A(p)'}},PC);
 }
 
