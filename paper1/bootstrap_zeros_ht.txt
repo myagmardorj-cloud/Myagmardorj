@@ -1,0 +1,7 @@
+Bootstrap analysis — zeros_ht.txt
+N=10000, subset_size=5000, iterations=1000
+mean_r=0.0899
+std_r=0.2978
+ci_low=-0.4930
+ci_high=0.6480
+verdict=UNSTABLE — high variance, possible overfitting
