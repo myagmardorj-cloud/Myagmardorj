@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact · research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;--gold:#f0b429;--red:#ff4d6d;}
+<style>
+:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
 nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
@@ -24,35 +25,33 @@ body.mn [data-li="mn"]{display:inline;}
 footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);}
 .MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
 .MN-foot a:hover{color:var(--cyan);}
-.container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
+.container{max-width:620px;margin:0 auto;padding:2.5rem 2rem 3rem;}
 .sec-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
 .sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,.3),transparent);}
-h1{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.03em;}
-h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin:2.5rem 0 .6rem;}
-p{color:var(--sub);margin-bottom:1rem;}
-.cl-entry{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem;}
-.cl-header{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
-.cl-version{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;color:var(--cyan);}
-.cl-date{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);}
-.cl-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.18rem .5rem;border-radius:4px;}
-.tag-fix{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.2);}
-.tag-add{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.2);}
-.tag-upd{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2);}
-.cl-list{list-style:none;padding:0;}
-.cl-list li{font-size:.9rem;color:var(--sub);padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
-.cl-list li:last-child{border-bottom:none;}
-.cl-list li::before{content:'→ ';color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.8rem;}
-.contact-box{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:540px;}
-input,textarea{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;margin-bottom:1rem;outline:none;transition:border-color .2s;}
-input:focus,textarea:focus{border-color:rgba(0,212,255,.4);}
-textarea{min-height:120px;resize:vertical;}
-label{display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;}
-.btn-send{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border:none;border-radius:8px;padding:.7rem 1.8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:opacity .2s;width:100%;}
-.btn-send:hover{opacity:.85;}
-.alt-contact{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-top:1.5rem;}
-.alt-contact a{color:var(--cyan);text-decoration:none;}</style>
+h1{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.03em;}
+.sub{color:var(--sub);margin-bottom:2rem;font-size:.95rem;}
+.form-box{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.field{margin-bottom:1.2rem;}
+label{display:block;font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem;}
+input,textarea,select{width:100%;background:var(--s2);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;appearance:none;}
+input:focus,textarea:focus,select:focus{border-color:rgba(0,212,255,.4);background:rgba(255,255,255,.03);}
+select option{background:#0e0e1c;color:var(--text);}
+textarea{min-height:130px;resize:vertical;line-height:1.6;}
+.btn{width:100%;background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border:none;border-radius:8px;padding:.8rem 1.8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:opacity .2s;margin-top:.4rem;}
+.btn:hover{opacity:.85;}
+.btn:disabled{opacity:.4;cursor:not-allowed;}
+.success{display:none;text-align:center;padding:2.5rem 1rem;}
+.success-icon{font-size:2.5rem;margin-bottom:1rem;}
+.success h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:.5rem;}
+.success p{color:var(--sub);font-size:.9rem;}
+.alt-links{margin-top:1.5rem;padding:1.2rem;background:var(--s2);border-radius:10px;border:1px solid var(--border);}
+.alt-links p{color:var(--sub);font-size:.85rem;margin:0;}
+.alt-links a{color:var(--cyan);text-decoration:none;}
+.error-msg{color:#ff4d6d;font-size:.8rem;margin-top:.3rem;display:none;font-family:'JetBrains Mono',monospace;}
+</style>
 </head>
 <body>
+
 <nav class="MN">
 <a href="/index.html" class="MN-logo">research.nexcore.ltd</a>
 <div class="MN-links">
@@ -67,72 +66,98 @@ label{display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;colo
 </div>
 </div>
 </nav>
+
 <div class="container">
-
-<div class="sec-label"><span data-li="en">Contact</span><span data-li="mn">Холбоо барих</span></div>
-<h1><span data-li="en">Get in touch</span><span data-li="mn">Холбоо барих</span></h1>
-<p><span data-li="en">Questions about the research, replication, or collaboration? Use the form below.</span>
-<span data-li="mn">Судалгаа, хуулбарлалт, хамтын ажиллагааны талаар асуулт байна уу? Доорх маягтыг ашиглана уу.</span></p>
-
-<div class="contact-box">
-  <div>
-    <label><span data-li="en">Name</span><span data-li="mn">Нэр</span></label>
-    <input type="text" id="c-name" placeholder="Your name">
+  <div class="sec-label">
+    <span data-li="en">Contact</span>
+    <span data-li="mn">Холбоо барих</span>
   </div>
-  <div>
-    <label><span data-li="en">Email</span><span data-li="mn">Имэйл</span></label>
-    <input type="email" id="c-email" placeholder="your@email.com">
-  </div>
-  <div>
-    <label><span data-li="en">Subject</span><span data-li="mn">Сэдэв</span></label>
-    <input type="text" id="c-subject" placeholder="Replication / Question / Collaboration">
-  </div>
-  <div>
-    <label><span data-li="en">Message</span><span data-li="mn">Мэссэж</span></label>
-    <textarea id="c-msg" placeholder="Your message..."></textarea>
-  </div>
-  <button class="btn-send" onclick="sendMsg()">
-    <span data-li="en">Send Message →</span>
-    <span data-li="mn">Илгээх →</span>
-  </button>
-  <div id="c-status" style="margin-top:.8rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;text-align:center;"></div>
-</div>
-
-<div class="alt-contact">
-  <p style="margin:0;font-size:.88rem;">
-    <span data-li="en">Direct email: <a href="https://mail.google.com/mail/?view=cm&to=myagmardorj@gmail.com" target="_blank">myagmardorj@gmail.com</a><br>
-    GitHub: <a href="https://github.com/myagmardorj-cloud/Myagmardorj" target="_blank">myagmardorj-cloud/Myagmardorj</a><br>
-    Zenodo: <a href="https://zenodo.org/records/20077673" target="_blank">DOI: 10.5281/zenodo.20077673</a></span>
-    <span data-li="mn">Шууд имэйл: <a href="https://mail.google.com/mail/?view=cm&to=myagmardorj@gmail.com" target="_blank">myagmardorj@gmail.com</a><br>
-    GitHub: <a href="https://github.com/myagmardorj-cloud/Myagmardorj" target="_blank">myagmardorj-cloud/Myagmardorj</a><br>
-    Zenodo: <a href="https://zenodo.org/records/20077673" target="_blank">DOI: 10.5281/zenodo.20077673</a></span>
+  <h1>
+    <span data-li="en">Get in touch</span>
+    <span data-li="mn">Холбоо барих</span>
+  </h1>
+  <p class="sub">
+    <span data-li="en">Questions about the research, replication, or collaboration welcome.</span>
+    <span data-li="mn">Судалгаа, хуулбарлалт, хамтын ажиллагааны талаар асуулт, санал хүлээн авна.</span>
   </p>
-</div>
-<script>
-function sendMsg(){
-  var n=document.getElementById('c-name').value;
-  var e=document.getElementById('c-email').value;
-  var s=document.getElementById('c-subject').value;
-  var m=document.getElementById('c-msg').value;
-  if(!n||!e||!m){document.getElementById('c-status').style.color='#ff4d6d';document.getElementById('c-status').textContent='Please fill in all fields.';return;}
-  var url='https://mail.google.com/mail/?view=cm&to=myagmardorj@gmail.com&su='+encodeURIComponent(s)+'&body='+encodeURIComponent('From: '+n+' ('+e+')
 
-'+m);
-  window.open(url,'_blank');
-  document.getElementById('c-status').style.color='#00e5a0';
-  document.getElementById('c-status').textContent='Opening Gmail...';
-}
-</script>
+  <div class="form-box">
+    <!-- Success state -->
+    <div class="success" id="success">
+      <div class="success-icon">✓</div>
+      <h2><span data-li="en">Message sent!</span><span data-li="mn">Илгэгдлээ!</span></h2>
+      <p><span data-li="en">Thank you. I'll respond within a few days.</span><span data-li="mn">Баярлалаа. Хэдэн хоногийн дотор хариулна.</span></p>
+    </div>
+
+    <!-- Form -->
+    <form id="contact-form" action="https://formspree.io/f/myagmardorj" method="POST" novalidate>
+
+      <div class="field">
+        <label for="name"><span data-li="en">Name</span><span data-li="mn">Нэр</span></label>
+        <input type="text" id="name" name="name" required
+          placeholder="Myagmardorj N.">
+        <div class="error-msg" id="err-name">
+          <span data-li="en">Please enter your name</span>
+          <span data-li="mn">Нэрээ оруулна уу</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email"><span data-li="en">Email</span><span data-li="mn">Имэйл</span></label>
+        <input type="email" id="email" name="email" required
+          placeholder="your@email.com">
+        <div class="error-msg" id="err-email">
+          <span data-li="en">Please enter a valid email</span>
+          <span data-li="mn">Имэйл хаягаа зөв оруулна уу</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="topic"><span data-li="en">Topic</span><span data-li="mn">Сэдэв</span></label>
+        <select id="topic" name="topic">
+          <option value="replication"><span data-li="en">Replication / Verification</span></option>
+          <option value="question"><span data-li="en">Research Question</span></option>
+          <option value="collaboration"><span data-li="en">Collaboration</span></option>
+          <option value="press"><span data-li="en">Press / Media</span></option>
+          <option value="other"><span data-li="en">Other</span></option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message"><span data-li="en">Message</span><span data-li="mn">Мэссэж</span></label>
+        <textarea id="message" name="message" required
+          placeholder="Your message..."></textarea>
+        <div class="error-msg" id="err-msg">
+          <span data-li="en">Please enter a message</span>
+          <span data-li="mn">Мэссэж оруулна уу</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn" id="submit-btn">
+        <span data-li="en">Send message →</span>
+        <span data-li="mn">Илгээх →</span>
+      </button>
+
+    </form>
+
+    <div class="alt-links">
+      <p>
+        <span data-li="en">Also reachable via <a href="https://github.com/myagmardorj-cloud/Myagmardorj/issues" target="_blank">GitHub Issues</a> or <a href="https://zenodo.org/records/20077673" target="_blank">Zenodo</a>.</span>
+        <span data-li="mn">Мөн <a href="https://github.com/myagmardorj-cloud/Myagmardorj/issues" target="_blank">GitHub Issues</a> эсвэл <a href="https://zenodo.org/records/20077673" target="_blank">Zenodo</a>-гоор холбоо барьж болно.</span>
+      </p>
+    </div>
+  </div>
 </div>
+
 <footer class="MN-foot">
-<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<span><span data-li="en">Computational observations only</span><span data-li="mn">Тооцооллын ажиглалт</span></span>
 <div>
 <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
-<a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
 </div>
-<span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
+<span>v1.0.0</span>
 </footer>
+
 <script>
 function setLang(l){
   document.body.classList.remove('en','mn');
@@ -143,6 +168,39 @@ function setLang(l){
   localStorage.setItem('lang',l);
 }
 (function(){setLang(localStorage.getItem('lang')||'en');})();
+
+document.getElementById('contact-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var msg = document.getElementById('message').value.trim();
+  var valid = true;
+  document.getElementById('err-name').style.display = name ? 'none' : 'block'; if(!name) valid=false;
+  document.getElementById('err-email').style.display = (email && email.includes('@')) ? 'none' : 'block'; if(!email || !email.includes('@')) valid=false;
+  document.getElementById('err-msg').style.display = msg ? 'none' : 'block'; if(!msg) valid=false;
+  if(!valid) return;
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span data-li="en">Sending...</span><span data-li="mn">Илгээж байна...</span>';
+  setLang(localStorage.getItem('lang')||'en');
+  try {
+    var res = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: {Accept: 'application/json'}
+    });
+    if(res.ok){
+      this.style.display = 'none';
+      document.getElementById('success').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Error — try again';
+    }
+  } catch(err){
+    btn.disabled = false;
+    btn.textContent = 'Network error — try again';
+  }
+});
 </script>
 </body>
 </html>
