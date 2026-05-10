@@ -244,6 +244,12 @@ body{padding-bottom:42px !important;}
 
 .MN-dd a.MN-dd-active{color:#00d4ff !important;background:rgba(0,212,255,.08);}
 .MN-more button.MN-has-active{color:#00d4ff;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.15);}
+
+.MN-foot-left{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.MN-foot-center{display:flex;gap:.2rem;align-items:center;flex-shrink:0;}
+.MN-foot-right{flex:1;text-align:right;flex-shrink:0;}
+footer.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.22rem .5rem;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap;}
+footer.MN-foot a:hover{color:#00d4ff;background:rgba(0,212,255,.07);}
 </style>
 </head>
 <body class="en">
@@ -1639,14 +1645,19 @@ function setLang(l){
 
 
 <footer class="MN-foot">
-<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
-<div>
-<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
-<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+<span class="MN-foot-left">
+  <span data-li="en">Computational observations only — not a proof of RH</span>
+  <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+</span>
+<div class="MN-foot-center">
+  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+  <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
 </div>
-<span><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
+<span class="MN-foot-right">
+  <a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a>
+</span>
 </footer>
 <script>
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}

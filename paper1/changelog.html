@@ -21,7 +21,7 @@ nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
-footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);}
+footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;background:rgba(7,7,16,.98);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;letter-spacing:.02em;}footer.MN-foot .MN-foot-left{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}footer.MN-foot .MN-foot-center{display:flex;gap:.2rem;align-items:center;flex-shrink:0;}footer.MN-foot .MN-foot-right{flex:1;text-align:right;flex-shrink:0;}footer.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.22rem .5rem;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap;}footer.MN-foot a:hover{color:#00d4ff;background:rgba(0,212,255,.07);}footer.MN-foot .foot-sep{width:1px;height:12px;background:rgba(255,255,255,.1);margin:0 .3rem;}
 .MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
 .MN-foot a:hover{color:var(--cyan);}
 .container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
@@ -127,14 +127,19 @@ label{display:block;font-family:'JetBrains Mono',monospace;font-size:.66rem;colo
 </div>
 </div>
 <footer class="MN-foot">
-<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
-<div>
-<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
-<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+<span class="MN-foot-left">
+  <span data-li="en">Computational observations only — not a proof of RH</span>
+  <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+</span>
+<div class="MN-foot-center">
+  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+  <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
 </div>
-<span><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
+<span class="MN-foot-right">
+  <a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a>
+</span>
 </footer>
 <script>
 function setLang(l){
