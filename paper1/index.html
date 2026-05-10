@@ -263,7 +263,7 @@ body{padding-bottom:42px !important;}
 <a href="/paper1/changelog.html"><span data-li="en">Changelog</span><span data-li="mn">Өөрчлөлт</span></a>
 <div style="display:flex;margin-left:.4rem;">
 <button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
-<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
 </div>
 </div>
 </nav>
@@ -1641,10 +1641,15 @@ function setLang(l){
 </script>
 
 
-<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
-<span>Computational observations only — not a theorem or proof of RH.</span>
-<div style="display:flex;"><a href="/paper1/" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="/verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="/intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="/landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a><a href="/paper1/formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a></div>
-<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
+<footer class="MN-foot">
+<span><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div>
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+</div>
+<span>v1.0.0 · <a href="https://zenodo.org/records/20077673">DOI</a></span>
 </footer>
 <script>
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
