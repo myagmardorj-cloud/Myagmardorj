@@ -369,5 +369,126 @@ document.addEventListener('DOMContentLoaded',function(){
   setLang(s);
 });
 </script>
+<script>
+const LAB_PRIMES=[2,3,5,7,11,13,17,19,23,29,31,37];
+const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{color:'#aaa'},margin:{t:25,r:20,b:45,l:55}};
+const PC={responsive:true,displayModeBar:false};
+
+// ── Drag & drop ──
+const dz=document.getElementById('drop-zone');
+const fi=document.getElementById('file-input');
+if(dz){
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over');});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');handleFile(e.dataTransfer.files[0]);});
+  dz.addEventListener('click',()=>fi.click());
+}
+if(fi) fi.addEventListener('change',e=>handleFile(e.target.files[0]));
+
+function handleFile(file){
+  if(!file) return;
+  document.getElementById('upload-title').textContent=file.name;
+  log('File loaded: '+file.name+' ('+Math.round(file.size/1024)+' KB)');
+  const reader=new FileReader();
+  reader.onload=e=>{ window._zerosData=parseZeros(e.target.result); log('Parsed '+window._zerosData.length+' zeros.'); };
+  reader.readAsText(file);
+}
+
+function parseZeros(text){
+  const lines=text.split('\n');
+  const nums=[];
+  for(const l of lines){
+    const v=parseFloat(l.trim());
+    if(!isNaN(v) && v>0) nums.push(v);
+  }
+  return nums;
+}
+
+function log(msg){
+  const box=document.getElementById('log-box');
+  if(box){ box.style.display='block'; box.textContent+=msg+'\n'; box.scrollTop=box.scrollHeight; }
+}
+
+// ── Pearson r ──
+function pearsonR(xs,ys){
+  const n=xs.length;
+  const mx=xs.reduce((a,b)=>a+b)/n, my=ys.reduce((a,b)=>a+b)/n;
+  let num=0,dx2=0,dy2=0;
+  for(let i=0;i<n;i++){const dx=xs[i]-mx,dy=ys[i]-my;num+=dx*dy;dx2+=dx*dx;dy2+=dy*dy;}
+  return num/Math.sqrt(dx2*dy2);
+}
+
+// ── Run analysis ──
+document.getElementById('run-btn').addEventListener('click',function(){
+  const zeros=window._zerosData;
+  if(!zeros||zeros.length<100){ log('ERROR: load a zeros file first (min 100 zeros)'); return; }
+
+  const maxZ=parseInt(document.getElementById('max-zeros').value)||10000;
+  const z=zeros.slice(0,Math.min(maxZ,zeros.length));
+  const T=parseFloat(document.getElementById('height-T').value)||z[Math.floor(z.length/2)];
+  const tau=Math.log(T/(2*Math.PI));
+
+  log('Running with '+z.length+' zeros, T='+T.toFixed(0)+', tau='+tau.toFixed(4));
+
+  // Compute spacings
+  const sp=[];
+  for(let i=0;i<z.length-1;i++) sp.push((z[i+1]-z[i])*tau/(2*Math.PI));
+
+  // BK correlation A(p)
+  const Ap=[],Bp=[];
+  const primeSet=document.getElementById('prime-set').value==='all'?
+    [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]:LAB_PRIMES;
+
+  for(const p of primeSet){
+    const phase=z.slice(0,z.length-1).map(g=>Math.cos(2*Math.PI*Math.log(p)*g/tau));
+    const r=pearsonR(sp,phase);
+    Ap.push(r);
+    Bp.push(Math.pow(Math.log(p),2)/p);
+  }
+
+  const r_val=pearsonR(Bp,Ap);
+  const pos=Ap.filter(a=>a>0).length;
+
+  // Display results
+  document.getElementById('results').style.display='block';
+  document.getElementById('res-r').textContent=r_val.toFixed(4);
+  document.getElementById('res-pos').textContent=pos+'/'+primeSet.length;
+  document.getElementById('res-n').textContent=z.length;
+  document.getElementById('res-c').textContent=(r_val/Math.max(...Bp)).toFixed(2);
+
+  // Compare
+  const ref={r:0.017,pos:'12/12',dataset:'zeros1'};
+  document.getElementById('cmp-yours').textContent='r='+r_val.toFixed(4)+' (ref: 0.017)';
+
+  // Table
+  const tbody=document.getElementById('prime-tbody');
+  if(tbody){
+    tbody.innerHTML='';
+    primeSet.forEach((p,i)=>{
+      const tr=document.createElement('tr');
+      const pos_icon=Ap[i]>0?'✓':'✗';
+      tr.innerHTML='<td>'+p+'</td><td>'+Bp[i].toFixed(6)+'</td><td>'+Ap[i].toFixed(4)+'</td><td>'+pos_icon+'</td>';
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Charts
+  if(typeof Plotly!=='undefined'){
+    Plotly.newPlot('scatter-chart',[
+      {x:Bp,y:Ap,mode:'markers+text',text:primeSet.map(p=>'p='+p),
+       textposition:'top center',type:'scatter',name:'A(p) observed'},
+      {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*r_val/Math.max(...Bp)],
+       mode:'lines',type:'scatter',name:'fit'}
+    ],{...DL,title:'A(p) vs B(p)'},PC);
+
+    Plotly.newPlot('bar-chart',[{
+      x:primeSet.map(p=>'p='+p),y:Ap,type:'bar',
+      marker:{color:Ap.map(a=>a>0?'#00d4ff':'#ff4d6d')}
+    }],{...DL,title:'A(p) by prime'},PC);
+  }
+
+  log('Done. r='+r_val.toFixed(4)+', positive: '+pos+'/'+primeSet.length);
+});
+</script>
 </body>
 </html>

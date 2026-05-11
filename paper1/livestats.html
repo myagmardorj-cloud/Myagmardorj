@@ -192,5 +192,48 @@ document.addEventListener('DOMContentLoaded',function(){
   setLang(s);
 });
 </script>
+<script>
+function setStatVal(id, val, badge_id, badge_text){
+  var el=document.getElementById(id);
+  var bd=document.getElementById(badge_id);
+  if(el) el.textContent=val;
+  if(bd){ bd.textContent=badge_text; bd.style.display='inline-block'; }
+}
+
+function loadZenodoStats(){
+  fetch('https://zenodo.org/api/records/20077673')
+    .then(r=>r.json())
+    .then(d=>{
+      var stats=d.stats||{};
+      var views=(stats.all_versions_unique_views||stats.unique_views||d.stats&&d.stats.views||'—');
+      var dls=(stats.all_versions_unique_downloads||stats.unique_downloads||'—');
+      setStatVal('stat-views', views, 'stat-views-badge', 'live');
+      setStatVal('stat-downloads', dls, 'stat-dl-badge', 'live');
+    })
+    .catch(()=>{
+      setStatVal('stat-views', '27+', 'stat-views-badge', 'cached');
+      setStatVal('stat-downloads', '—', 'stat-dl-badge', 'offline');
+    });
+}
+
+function loadGitHubStats(){
+  fetch('https://api.github.com/repos/myagmardorj-cloud/Myagmardorj')
+    .then(r=>r.json())
+    .then(d=>{
+      var stars=d.stargazers_count||0;
+      var forks=d.forks_count||0;
+      var star_el=document.getElementById('stat-stars');
+      var fork_el=document.getElementById('stat-forks');
+      if(star_el) star_el.textContent=stars;
+      if(fork_el) fork_el.textContent=forks;
+    })
+    .catch(()=>{});
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  loadZenodoStats();
+  loadGitHubStats();
+});
+</script>
 </body>
 </html>
