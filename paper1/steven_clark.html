@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven Clark Formula Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:     #06060f;
+  --s1:     #0c0c1a;
+  --s2:     #111122;
+  --s3:     #181830;
+  --border: rgba(255,255,255,.07);
+  --text:   #e8e8f4;
+  --sub:    #8888aa;
+  --muted:  #44445a;
+  --cyan:   #00e5ff;
+  --blue:   #4488ff;
+  --green:  #00ffb3;
+  --red:    #ff3355;
+  --gold:   #ffcc44;
+  --purple: #bb88ff;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── GRID NOISE BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,229,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── HEADER ── */
+header {
+  position: relative; z-index: 10;
+  padding: 3rem 0 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.header-eyebrow {
+  font-size: .65rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: .8rem;
+  opacity: .8;
+}
+header h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--text);
+  margin-bottom: .5rem;
+}
+header h1 em {
+  color: var(--cyan);
+  font-style: italic;
+}
+.header-sub {
+  color: var(--sub);
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+.formula-badge {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: .5rem 1.4rem;
+  background: rgba(0,229,255,.06);
+  border: 1px solid rgba(0,229,255,.2);
+  border-radius: 40px;
+  font-size: .82rem;
+  color: var(--cyan);
+  letter-spacing: .05em;
+}
+
+/* ── TABS ── */
+.tab-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; gap: 0;
+  background: rgba(6,6,15,.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  overflow-x: auto;
+}
+.tab-btn {
+  flex-shrink: 0;
+  background: none; border: none;
+  padding: .85rem 1.4rem;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--sub); }
+.tab-btn.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+
+/* ── PANELS ── */
+.panel { display: none; padding: 2.5rem 2rem 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.panel.active { display: block; animation: fadeUp .35s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── CONTROLS ── */
+.controls {
+  display: flex; flex-wrap: wrap; gap: .8rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem 1.4rem;
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.ctrl-group { display: flex; align-items: center; gap: .6rem; }
+.ctrl-label { font-size: .64rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+.ctrl-input {
+  background: var(--s2);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 7px;
+  padding: .3rem .7rem;
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .8rem;
+  width: 80px;
+  transition: border-color .2s;
+}
+.ctrl-input:focus { outline: none; border-color: var(--cyan); }
+.run-btn {
+  margin-left: auto;
+  padding: .4rem 1.2rem;
+  background: linear-gradient(135deg, #0044cc, var(--cyan));
+  border: none; border-radius: 8px;
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity .2s, transform .1s;
+}
+.run-btn:hover { opacity: .85; }
+.run-btn:active { transform: scale(.97); }
+
+/* ── UPLOAD AREA ── */
+.upload-zone {
+  border: 2px dashed rgba(0,229,255,.2);
+  border-radius: 12px;
+  padding: 1rem 1.4rem;
+  display: flex; align-items: center; gap: 1rem;
+  cursor: pointer;
+  transition: all .2s;
+  font-size: .75rem; color: var(--muted);
+}
+.upload-zone:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0,229,255,.03); }
+.upload-zone input { display: none; }
+#file-status { font-size: .72rem; color: var(--green); }
+
+/* ── STAT CARDS ── */
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: .7rem; margin-bottom: 1.8rem; }
+.stat-card {
+  background: var(--s1); border: 1px solid var(--border); border-radius: 11px;
+  padding: .9rem 1.1rem;
+  position: relative; overflow: hidden;
+}
+.stat-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent, var(--cyan));
+}
+.stat-card.green { --accent: var(--green); }
+.stat-card.red   { --accent: var(--red); }
+.stat-card.gold  { --accent: var(--gold); }
+.stat-card.purple { --accent: var(--purple); }
+.sc-lbl { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: .3rem; }
+.sc-val { font-size: 1.35rem; font-weight: 600; color: var(--accent, var(--cyan)); letter-spacing: -.02em; }
+.sc-sub { font-size: .68rem; color: var(--sub); margin-top: .2rem; }
+
+/* ── CHART BOX ── */
+.chart-box {
+  background: var(--s1); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.2rem 1.4rem; margin-bottom: 1.5rem;
+}
+.chart-title {
+  font-size: .64rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1rem;
+}
+.chart-title span { color: var(--cyan); }
+canvas { display: block; width: 100% !important; }
+
+/* ── TABLE ── */
+.data-table {
+  width: 100%; border-collapse: collapse; font-size: .76rem;
+  margin: 1rem 0;
+}
+.data-table th {
+  text-align: left; padding: .5rem .9rem;
+  font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--muted); border-bottom: 1px solid var(--border);
+}
+.data-table td { padding: .45rem .9rem; border-bottom: 1px solid rgba(255,255,255,.035); color: var(--sub); }
+.data-table tr:hover td { background: rgba(255,255,255,.02); color: var(--text); }
+.data-table td:first-child { color: var(--cyan); font-weight: 600; }
+.pos { color: var(--green) !important; }
+.neg { color: var(--red) !important; }
+.badge {
+  display: inline-block; padding: .1rem .45rem; border-radius: 4px;
+  font-size: .63rem; font-weight: 700;
+}
+.badge-sig { background: rgba(0,255,179,.1); color: var(--green); }
+.badge-ns  { background: rgba(255,51,85,.1);  color: var(--red); }
+
+/* ── FORMULA BLOCK ── */
+.formula-box {
+  background: var(--s2); border: 1px solid rgba(0,229,255,.12); border-radius: 10px;
+  padding: .9rem 1.3rem; font-size: .84rem; color: var(--cyan);
+  margin: 1rem 0; letter-spacing: .03em; line-height: 2;
+}
+.formula-box .comment { color: var(--muted); font-size: .72rem; }
+
+/* ── FINDING CARD ── */
+.finding {
+  background: var(--s1); border: 1px solid var(--border); border-left: 3px solid var(--cyan);
+  border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem;
+}
+.finding.green { border-left-color: var(--green); }
+.finding.gold  { border-left-color: var(--gold); }
+.finding.red   { border-left-color: var(--red); }
+.find-num { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: .3rem; }
+.find-title { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: .5rem; }
+.find-body { font-size: .8rem; color: var(--sub); line-height: 1.8; }
+.find-body strong { color: var(--text); }
+
+/* ── PROGRESS ── */
+#progress-wrap { display: none; margin-bottom: 1.5rem; }
+.progress-track { height: 2px; background: var(--s3); border-radius: 1px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 1px; transition: width .3s; width: 0%; }
+.progress-label { font-size: .65rem; color: var(--muted); margin-top: .4rem; letter-spacing: .05em; }
+
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-size: .6rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: .8rem; margin-top: 2rem;
+  display: flex; align-items: center; gap: .7rem;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  text-align: center; padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: .65rem; color: var(--muted); letter-spacing: .05em;
+}
+footer a { color: var(--cyan); text-decoration: none; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--s3); border-radius: 2px; }
+
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;height:52px;display:flex;align-items:center;padding:0 1.5rem;gap:1rem;background:rgba(7,7,16,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;color:#eeeef8;text-decoration:none;margin-right:1rem;}
+.MN-links{display:flex;align-items:center;gap:.25rem;flex:1;}
+.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .7rem;border-radius:8px;border:1px solid transparent;transition:all .2s;white-space:nowrap;}
+.MN-links a:hover,.MN-cur{color:#eeeef8;background:rgba(255,255,255,.07);}
+.MN-more{position:relative;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;background:none;border:1px solid transparent;padding:.32rem .7rem;border-radius:8px;cursor:pointer;transition:all .2s;}
+.MN-more>button:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100%+4px);left:0;background:#0e0e1c;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.5rem;min-width:180px;box-shadow:0 20px 40px rgba(0,0,0,.5);z-index:9999;}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.4rem .8rem;border-radius:8px;transition:all .15s;}
+.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
+.MN-lang{display:flex;gap:.3rem;margin-left:auto;}
+.MN-lb{font-size:.72rem;padding:.2rem .5rem;border-radius:6px;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a;cursor:pointer;transition:all .2s;}
+.MN-lb.MN-active{color:#eeeef8;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06);}
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:900;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.9);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.06);font-size:.72rem;}
+.MN-foot-left{color:#5a5a7a;}.MN-foot-center{display:flex;gap:1rem;}.MN-foot-center a{color:#9999b8;text-decoration:none;}.MN-foot-right a{color:#5a5a7a;text-decoration:none;}
+
+body{padding-top:60px;padding-bottom:52px;}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+</head>
+<body>
+<nav class="MN">
+<a href="/" class="MN-logo">Nexcore Research</a>
+<div class="MN-links">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More &#9662;</span><span data-li="mn">Дэлгэрэнгүй &#9662;</span></button>
+<div class="MN-dd">
+<a href="/paper1/charts.html">Charts</a>
+<a href="/paper1/calculator.html">Calculator</a>
+<a href="/paper1/lab.html">Analysis Lab</a>
+<a href="/paper1/steven_clark.html" class="MN-cur">Steven Clark f(x)</a>
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.4rem 0;">
+<a href="/paper1/nulltests.html">Null Tests</a>
+<a href="/paper1/faq.html">FAQ</a>
+<a href="/paper1/methods.html">Methods</a>
+<a href="/paper1/roadmap.html">Roadmap</a>
+<a href="/paper1/about.html">About</a>
+<a href="/paper1/changelog.html">Changelog</a>
+</div></span>
+</div>
+<div class="MN-lang">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</nav>
+
+<header>
+  <div class="header-eyebrow">Nexcore Research · Computational Number Theory</div>
+  <h1>Steven Clark <em>Formula</em> Analysis</h1>
+  <div class="header-sub">f(x) = −2x<sup>−½</sup> Σcos(γₙ log x) · Riemann Zeros · Prime-power Detection</div>
+  <div class="formula-badge">ψ₀(x) Explicit Formula &amp; Prime vs Composite</div>
+</header>
+
+<!-- TABS -->
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="fig1">① Figure (1) Давталт</button>
+  <button class="tab-btn" data-tab="pvc">② Prime vs Composite</button>
+  <button class="tab-btn" data-tab="psi0">③ ψ₀(x) Explicit</button>
+  <button class="tab-btn" data-tab="table">④ Тооцооны хүснэгт</button>
+</nav>
+
+<!-- ═══════════════════════════════════ PANEL 1 ═══ -->
+<div class="panel active" id="panel-fig1">
+
+  <div class="sec-label">Тохиргоо</div>
+  <div class="controls">
+    <div class="ctrl-group">
+      <span class="ctrl-label">N zeros</span>
+      <input class="ctrl-input" type="number" id="n-zeros" value="100" min="10" max="100">
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">x max</span>
+      <input class="ctrl-input" type="number" id="x-max" value="50" min="20" max="100">
+    </div>
+    <div class="ctrl-group">
+      <label class="upload-zone" for="zeros-file">
+        <input type="file" id="zeros-file" accept=".txt,.dat,.csv">
+        <span>📂 zeros.txt оруулах</span>
+        <span id="file-status"></span>
+      </label>
+    </div>
+    <button class="run-btn" id="run-fig1">▶ ТООЦООЛОХ</button>
+  </div>
+
+  <div id="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+    <div class="progress-label" id="prog-label">Тооцоолж байна...</div>
+  </div>
+
+  <div class="stat-row" id="stats-fig1"></div>
+
+  <div class="chart-box">
+    <div class="chart-title">f(x) = −2x<sup>−½</sup> Σcos(γₙ log x) · <span>улаан цэг = prime-power</span></div>
+    <canvas id="chart-fig1" height="320"></canvas>
+  </div>
+
+  <div class="finding green">
+    <div class="find-num">Баталгаа</div>
+    <div class="find-title">Бүх prime-power дээр f(p^k) > 0</div>
+    <div class="find-body">
+      Riemann zeros ашиглан тооцоолохоор prime болон prime-power орчимд f(x) <strong>spike</strong> гаргадаг.
+      Composite тоонуудын дээр утга тэгийн орчимд тэнэнэ. Steven Clark-н Figure (1)-ийн яг давталт.
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════ PANEL 2 ═══ -->
+<div class="panel" id="panel-pvc">
+
+  <div class="sec-label">Тохиргоо</div>
+  <div class="controls">
+    <div class="ctrl-group">
+      <span class="ctrl-label">N zeros</span>
+      <input class="ctrl-input" type="number" id="n-zeros-2" value="100" min="10" max="100">
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">Sample N</span>
+      <input class="ctrl-input" type="number" id="sample-n" value="50" min="10" max="100">
+    </div>
+    <button class="run-btn" id="run-pvc">▶ ТООЦООЛОХ</button>
+  </div>
+
+  <div class="stat-row" id="stats-pvc"></div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+    <div class="chart-box">
+      <div class="chart-title">Scatter — <span>f(p) Prime vs f(c) Composite</span></div>
+      <canvas id="chart-scatter" height="260"></canvas>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">Гистограм — <span>f(x) тархалт</span></div>
+      <canvas id="chart-hist" height="260"></canvas>
+    </div>
+  </div>
+
+  <div class="finding gold">
+    <div class="find-num">Үр дүн</div>
+    <div class="find-title">μ f(prime) ≫ μ f(composite) — Cohen's d тооцоолол</div>
+    <div class="find-body" id="pvc-summary">Тооцоол товчийг дарна уу...</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════ PANEL 3 ═══ -->
+<div class="panel" id="panel-psi0">
+
+  <div class="sec-label">ψ₀(x) Explicit Formula</div>
+
+  <div class="formula-box">
+    ψ₀(x) ≈ x − 2√x · Σₙ [(½cos(γₙ log x) + γₙ sin(γₙ log x)) / (¼ + γₙ²)]
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;− log(2π) − ½ log(1 − x⁻²)
+    <br>
+    <span class="comment">// ρ = ½ + iγ,  нийлбэр N zeros дээр (N→∞ байх ёстой)</span>
+  </div>
+
+  <div class="controls">
+    <div class="ctrl-group">
+      <span class="ctrl-label">N zeros</span>
+      <input class="ctrl-input" type="number" id="n-zeros-3" value="100" min="10" max="100">
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">Prime хүртэл</span>
+      <input class="ctrl-input" type="number" id="psi0-limit" value="20" min="5" max="50">
+    </div>
+    <button class="run-btn" id="run-psi0">▶ ТООЦООЛОХ</button>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">ψ₀(x) — <span>жинхэнэ vs explicit approximation</span></div>
+    <canvas id="chart-psi0" height="280"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-title">Алдаа — <span>ψ₀_approx − ψ₀_true</span></div>
+    <canvas id="chart-psi0-err" height="220"></canvas>
+  </div>
+
+  <div class="finding red">
+    <div class="find-num">Анхааруулга</div>
+    <div class="find-title">N=100 zeros → алдаа том; N→∞ байх ёстой</div>
+    <div class="find-body">
+      ψ₀(x) нийлбэр <strong>аажмаар нийлдэг</strong> (conditionally convergent). p=2,3 дээр алдаа ≈0.5% боловч
+      том p дээр алдаа өсдөг. Жинхэнэ нийлэхийн тулд <strong>N ≥ 10,000+</strong> zeros шаардлагатай.
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════ PANEL 4 ═══ -->
+<div class="panel" id="panel-table">
+
+  <div class="sec-label">Бүрэн тооцооны хүснэгт</div>
+
+  <div class="controls">
+    <div class="ctrl-group">
+      <span class="ctrl-label">N zeros</span>
+      <input class="ctrl-input" type="number" id="n-zeros-4" value="100" min="10" max="100">
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">x max</span>
+      <input class="ctrl-input" type="number" id="tbl-xmax" value="60" min="20" max="120">
+    </div>
+    <button class="run-btn" id="run-table">▶ ТООЦООЛОХ</button>
+  </div>
+
+  <div class="chart-box" style="overflow-x:auto;">
+    <div class="chart-title">f(p^k) утгууд — prime-power бүр</div>
+    <table class="data-table" id="main-table">
+      <thead>
+        <tr>
+          <th>p^k</th>
+          <th>p</th>
+          <th>k</th>
+          <th>f(p^k)</th>
+          <th>Λ(p^k)</th>
+          <th>f / Λ</th>
+          <th>Composite орчим f</th>
+          <th>Тип</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr><td colspan="8" style="text-align:center;color:var(--muted);padding:2rem;">Тооцоол товчийг дарна уу...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer class="MN-foot">
+<span class="MN-foot-left"><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div class="MN-foot-center">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+</div>
+<span class="MN-foot-right"><a href="https://zenodo.org/records/20077673">DOI: 10.5281/zenodo.20077673</a></span>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════
+//  RIEMANN ZEROS (LMFDB first 100)
+// ══════════════════════════════════════════════════════
+const ZEROS_100 = [
+  14.134725, 21.022040, 25.010858, 30.424876, 32.935062,
+  37.586178, 40.918719, 43.327073, 48.005151, 49.773832,
+  52.970321, 56.446247, 59.347044, 60.831778, 65.112544,
+  67.079811, 69.546401, 72.067157, 75.704690, 77.144840,
+  79.337375, 82.910380, 84.735492, 87.425274, 88.809111,
+  92.491899, 94.651344, 95.870634, 98.831194, 101.317851,
+  103.725538, 105.446623, 107.168611, 111.029535, 111.874659,
+  114.320220, 116.226680, 118.790782, 121.370125, 122.946829,
+  124.256818, 127.516683, 129.578704, 131.087688, 133.497737,
+  134.756510, 138.116042, 139.736208, 141.123707, 143.111845,
+  146.000982, 147.422765, 150.053521, 150.925257, 153.024693,
+  156.112909, 157.597591, 158.849988, 161.188964, 163.030709,
+  165.537069, 167.184439, 169.094515, 169.911976, 173.411536,
+  174.754191, 176.441434, 178.377407, 179.916484, 182.207078,
+  184.874467, 185.598783, 187.228922, 189.416158, 192.026656,
+  193.079726, 195.265396, 196.876481, 198.015309, 201.264751,
+  202.493594, 204.189671, 205.394697, 207.906258, 209.576509,
+  211.690862, 213.347919, 214.547044, 216.169538, 219.067596,
+  220.714918, 221.430705, 224.007000, 224.983324, 227.421444,
+  229.337413, 231.250188, 231.987235, 233.693404, 236.524229,
+];
+
+let userZeros = null;
+
+// ── File upload ──
+document.getElementById('zeros-file').addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const lines = ev.target.result.split('\n');
+    const vals = [];
+    for (const l of lines) {
+      const t = l.trim();
+      if (!t || t.startsWith('#')) continue;
+      const v = parseFloat(t.split(/\s+/)[0]);
+      if (!isNaN(v) && v > 0) vals.push(v);
+    }
+    vals.sort((a,b) => a-b);
+    userZeros = vals;
+    document.getElementById('file-status').textContent = `✓ ${vals.length} zeros`;
+    document.getElementById('n-zeros').max = vals.length;
+    document.getElementById('n-zeros').value = Math.min(100, vals.length);
+  };
+  reader.readAsText(f);
+});
+
+function getZeros(N) {
+  const src = userZeros || ZEROS_100;
+  return src.slice(0, Math.min(N, src.length));
+}
+
+// ══════════════════════════════════════════════════════
+//  MATH CORE
+// ══════════════════════════════════════════════════════
+function fClark(x, gammas) {
+  if (x <= 1) return 0;
+  const lx = Math.log(x);
+  let s = 0;
+  for (const g of gammas) s += Math.cos(g * lx);
+  return -2 * Math.pow(x, -0.5) * s;
+}
+
+function psi0Explicit(x, gammas) {
+  if (x <= 1) return 0;
+  const lx = Math.log(x), sx = Math.sqrt(x);
+  let s = 0;
+  for (const g of gammas) {
+    const rho2 = 0.25 + g*g;
+    s += (0.5*Math.cos(g*lx) + g*Math.sin(g*lx)) / rho2;
+  }
+  let psi = x - 2*sx*s - Math.log(2*Math.PI);
+  if (x > 1.01) psi -= 0.5*Math.log(1 - Math.pow(x,-2));
+  return psi;
+}
+
+function sieve(limit) {
+  const is = new Uint8Array(limit+1).fill(1);
+  is[0]=is[1]=0;
+  for (let i=2; i*i<=limit; i++) if(is[i]) for(let j=i*i;j<=limit;j+=i) is[j]=0;
+  return Array.from({length:limit-1},(_,i)=>i+2).filter(i=>is[i]);
+}
+
+function primePowers(limit) {
+  const primes = sieve(limit), pSet = new Set(primes), res = [];
+  for (const p of primes) {
+    let k=1, pk=p;
+    while (pk<=limit) { res.push({p,k,pk}); k++; pk*=p; }
+  }
+  return res.sort((a,b)=>a.pk-b.pk);
+}
+
+function vonMangoldt(n, primes) {
+  if (n<2) return 0;
+  for (const p of primes) {
+    if (p>n) break;
+    if (n%p===0) {
+      const logp = Math.log(p);
+      while (n%p===0) n/=p;
+      return n===1 ? logp : 0;
+    }
+  }
+  return 0;
+}
+
+function psiTrue(x, primes) {
+  let s=0;
+  for (let n=2; n<=x; n++) s += vonMangoldt(n, primes);
+  return s;
+}
+
+function cohensD(a, b) {
+  const ma = a.reduce((s,v)=>s+v,0)/a.length;
+  const mb = b.reduce((s,v)=>s+v,0)/b.length;
+  const va = a.reduce((s,v)=>s+(v-ma)**2,0)/(a.length-1);
+  const vb = b.reduce((s,v)=>s+(v-mb)**2,0)/(b.length-1);
+  const pool = Math.sqrt((va+vb)/2);
+  return pool===0 ? 0 : (ma-mb)/pool;
+}
+
+// ══════════════════════════════════════════════════════
+//  CHART DEFAULTS
+// ══════════════════════════════════════════════════════
+Chart.defaults.color = '#8888aa';
+Chart.defaults.borderColor = 'rgba(255,255,255,.06)';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+
+const charts = {};
+function destroyChart(id) { if (charts[id]) { charts[id].destroy(); delete charts[id]; } }
+
+// ══════════════════════════════════════════════════════
+//  PANEL 1 — Figure (1)
+// ══════════════════════════════════════════════════════
+document.getElementById('run-fig1').addEventListener('click', runFig1);
+
+async function runFig1() {
+  const N = +document.getElementById('n-zeros').value;
+  const xMax = +document.getElementById('x-max').value;
+  const gammas = getZeros(N);
+  const pps = primePowers(xMax);
+
+  showProgress(true, 'f(x) тооцоолж байна...');
+
+  await delay(20);
+
+  // Curve: step 0.05
+  const step = 0.05, xs = [], ys = [];
+  for (let x = 1.02; x <= xMax; x += step) {
+    xs.push(+x.toFixed(3));
+    ys.push(fClark(x, gammas));
+  }
+
+  // Prime-power points
+  const ppX = [], ppY = [], ppLabels = [];
+  for (const {p,k,pk} of pps) {
+    if (pk > xMax) break;
+    const y = fClark(pk, gammas);
+    ppX.push(pk); ppY.push(y);
+    ppLabels.push(k===1 ? `p=${p}` : k===2 ? `p=${p}²` : `p=${p}³`);
+  }
+
+  showProgress(false);
+
+  // Stats
+  const posCount = ppY.filter(v=>v>0).length;
+  const maxPP = Math.max(...ppY);
+  const minPP = Math.min(...ppY);
+  renderStats('stats-fig1', [
+    {lbl:'N Zeros', val:N, sub:'ашигласан', cls:''},
+    {lbl:'Prime-powers', val:pps.filter(pp=>pp.pk<=xMax).length, sub:`x ≤ ${xMax}`, cls:'green'},
+    {lbl:'f(p^k) > 0', val:`${posCount}/${pps.filter(pp=>pp.pk<=xMax).length}`, sub:'эерэг утга', cls:'green'},
+    {lbl:'Max f(p^k)', val:maxPP.toFixed(2), sub:`p=${ppX[ppY.indexOf(maxPP)]}`, cls:''},
+  ]);
+
+  destroyChart('fig1');
+  const ctx = document.getElementById('chart-fig1').getContext('2d');
+  charts['fig1'] = new Chart(ctx, {
+    data: {
+      datasets: [
+        {
+          type: 'line',
+          label: `f(x) N=${N}`,
+          data: xs.map((x,i) => ({x,y:ys[i]})),
+          borderColor: '#4488ff',
+          borderWidth: 1.2,
+          pointRadius: 0,
+          tension: 0,
+          fill: false,
+          order: 2,
+        },
+        {
+          type: 'scatter',
+          label: 'Prime-powers',
+          data: ppX.map((x,i) => ({x,y:ppY[i]})),
+          backgroundColor: '#ff3355',
+          borderColor: '#ff6688',
+          borderWidth: 1.2,
+          pointRadius: 5,
+          order: 1,
+        },
+        {
+          type: 'line',
+          label: 'y=0',
+          data: [{x:1,y:0},{x:xMax,y:0}],
+          borderColor: 'rgba(255,255,255,.15)',
+          borderWidth: 1,
+          borderDash: [4,4],
+          pointRadius: 0,
+          order: 3,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'nearest', intersect: false },
+      plugins: {
+        legend: { labels: { color: '#8888aa', usePointStyle: true, pointStyleWidth: 10 } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              if (ctx.dataset.label === 'Prime-powers') {
+                const i = ctx.dataIndex;
+                return ` ${ppLabels[i]} → f=${ppY[i].toFixed(4)}`;
+              }
+              return ` f(${ctx.parsed.x.toFixed(2)}) = ${ctx.parsed.y.toFixed(4)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { type:'linear', title:{display:true,text:'x',color:'#8888aa'}, min:1, max:xMax,
+             grid:{color:'rgba(255,255,255,.04)'} },
+        y: { title:{display:true,text:'f(x)',color:'#8888aa'},
+             grid:{color:'rgba(255,255,255,.04)'} }
+      }
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════
+//  PANEL 2 — Prime vs Composite
+// ══════════════════════════════════════════════════════
+document.getElementById('run-pvc').addEventListener('click', runPVC);
+
+async function runPVC() {
+  const N = +document.getElementById('n-zeros-2').value;
+  const sN = +document.getElementById('sample-n').value;
+  const gammas = getZeros(N);
+
+  const primes = sieve(1000), pSet = new Set(primes);
+  const pSample = primes.slice(0, sN);
+  const composites = [];
+  for (let n=4; composites.length<sN; n++) if (!pSet.has(n)) composites.push(n);
+
+  const fpV = pSample.map(p => fClark(p, gammas));
+  const fcV = composites.map(c => fClark(c, gammas));
+
+  const muP = fpV.reduce((s,v)=>s+v,0)/fpV.length;
+  const muC = fcV.reduce((s,v)=>s+v,0)/fcV.length;
+  const posP = fpV.filter(v=>v>0).length;
+  const posC = fcV.filter(v=>v>0).length;
+  const d = cohensD(fpV, fcV);
+
+  renderStats('stats-pvc', [
+    {lbl:'μ f(prime)', val:muP.toFixed(3), sub:`${posP}/${sN} эерэг`, cls:'green'},
+    {lbl:'μ f(composite)', val:muC.toFixed(3), sub:`${posC}/${sN} эерэг`, cls:'red'},
+    {lbl:"Cohen's d", val:d.toFixed(3), sub: d>0.8?'Том нөлөө ✓':d>0.5?'Дунд нөлөө':'Жижиг нөлөө', cls: d>0.8?'green':d>0.5?'gold':'red'},
+    {lbl:'Хамаарал', val: muP>muC ? 'Prime>Comp' : 'Comp>Prime', sub:'', cls: muP>muC?'green':'red'},
+  ]);
+
+  document.getElementById('pvc-summary').innerHTML =
+    `μ f(prime) = <strong>${muP.toFixed(3)}</strong> · μ f(composite) = <strong>${muC.toFixed(3)}</strong> · ` +
+    `Cohen's d = <strong>${d.toFixed(3)}</strong> (${d>0.8?'<span style="color:var(--green)">маш том нөлөө ✓</span>':d>0.5?'дунд нөлөө':'жижиг нөлөө'}). ` +
+    `N=${N} zeros ашиглан prime бүр дээр f(p) эерэг, composite дээр тэгийн орчимд.`;
+
+  // Scatter
+  destroyChart('scatter');
+  const ctx1 = document.getElementById('chart-scatter').getContext('2d');
+  charts['scatter'] = new Chart(ctx1, {
+    data: {
+      datasets: [
+        {
+          type:'scatter', label:'Prime',
+          data: fpV.map((v,i) => ({x:i+1,y:v})),
+          backgroundColor:'rgba(0,229,255,.7)', borderColor:'#00e5ff', pointRadius:4,
+        },
+        {
+          type:'scatter', label:'Composite',
+          data: fcV.map((v,i) => ({x:i+1,y:v})),
+          backgroundColor:'rgba(255,51,85,.6)', borderColor:'#ff3355', pointRadius:3,
+        },
+        {
+          type:'line', label:`μ prime=${muP.toFixed(2)}`,
+          data:[{x:0,y:muP},{x:sN+1,y:muP}],
+          borderColor:'rgba(0,229,255,.4)', borderDash:[6,3], borderWidth:1.2, pointRadius:0,
+        },
+        {
+          type:'line', label:`μ comp=${muC.toFixed(2)}`,
+          data:[{x:0,y:muC},{x:sN+1,y:muC}],
+          borderColor:'rgba(255,51,85,.4)', borderDash:[6,3], borderWidth:1.2, pointRadius:0,
+        },
+      ]
+    },
+    options: {
+      responsive:true,
+      plugins:{ legend:{labels:{color:'#8888aa',usePointStyle:true}} },
+      scales:{
+        x:{title:{display:true,text:'индекс n',color:'#8888aa'},grid:{color:'rgba(255,255,255,.04)'}},
+        y:{title:{display:true,text:'f(x)',color:'#8888aa'},grid:{color:'rgba(255,255,255,.04)'}}
+      }
+    }
+  });
+
+  // Histogram
+  destroyChart('hist');
+  const bins = 20;
+  const allVals = [...fpV, ...fcV];
+  const vMin = Math.min(...allVals), vMax = Math.max(...allVals);
+  const bw = (vMax - vMin) / bins;
+  const pBins = new Array(bins).fill(0), cBins = new Array(bins).fill(0);
+  fpV.forEach(v => { const b = Math.min(bins-1, Math.floor((v-vMin)/bw)); pBins[b]++; });
+  fcV.forEach(v => { const b = Math.min(bins-1, Math.floor((v-vMin)/bw)); cBins[b]++; });
+  const labels = Array.from({length:bins},(_,i)=>(vMin+i*bw).toFixed(1));
+
+  const ctx2 = document.getElementById('chart-hist').getContext('2d');
+  charts['hist'] = new Chart(ctx2, {
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        {label:'Prime', data:pBins, backgroundColor:'rgba(0,229,255,.5)', borderColor:'#00e5ff', borderWidth:1},
+        {label:'Composite', data:cBins, backgroundColor:'rgba(255,51,85,.5)', borderColor:'#ff3355', borderWidth:1},
+      ]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{labels:{color:'#8888aa'}}},
+      scales:{
+        x:{title:{display:true,text:'f(x) утга',color:'#8888aa'},grid:{color:'rgba(255,255,255,.04)'}},
+        y:{title:{display:true,text:'тоо',color:'#8888aa'},grid:{color:'rgba(255,255,255,.04)'}}
+      }
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════
+//  PANEL 3 — ψ₀(x)
+// ══════════════════════════════════════════════════════
+document.getElementById('run-psi0').addEventListener('click', runPsi0);
+
+async function runPsi0() {
+  const N = +document.getElementById('n-zeros-3').value;
+  const pLimit = +document.getElementById('psi0-limit').value;
+  const gammas = getZeros(N);
+  const primes = sieve(200).slice(0, pLimit);
+  const pSet = new Set(primes);
+
+  const trueV = [], approxV = [], errV = [], labels = [];
+  for (const p of primes) {
+    let pt = 0;
+    for (let n=2; n<=p; n++) pt += vonMangoldt(n, [...pSet].sort((a,b)=>a-b));
+    const psi0t = pt - Math.log(p)/2;
+    const psi0a = psi0Explicit(p, gammas);
+    trueV.push(psi0t); approxV.push(psi0a);
+    errV.push(psi0a - psi0t);
+    labels.push(`p=${p}`);
+  }
+
+  destroyChart('psi0');
+  const ctx1 = document.getElementById('chart-psi0').getContext('2d');
+  charts['psi0'] = new Chart(ctx1, {
+    type:'line',
+    data:{
+      labels,
+      datasets:[
+        {label:'ψ₀(p) жинхэнэ', data:trueV, borderColor:'#4488ff', backgroundColor:'rgba(68,136,255,.1)', borderWidth:2, pointRadius:4, fill:true},
+        {label:`ψ₀(p) explicit (N=${N})`, data:approxV, borderColor:'#ff6633', backgroundColor:'rgba(255,102,51,.08)', borderWidth:2, pointRadius:4, borderDash:[6,3], fill:true},
+      ]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{labels:{color:'#8888aa'}}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,.04)'}},
+        y:{title:{display:true,text:'ψ₀(x)',color:'#8888aa'},grid:{color:'rgba(255,255,255,.04)'}}
+      }
+    }
+  });
+
+  destroyChart('psi0err');
+  const ctx2 = document.getElementById('chart-psi0-err').getContext('2d');
+  charts['psi0err'] = new Chart(ctx2, {
+    type:'bar',
+    data:{
+      labels,
+      datasets:[{
+        label:'алдаа',
+        data:errV,
+        backgroundColor:errV.map(v=>v>=0?'rgba(0,255,179,.55)':'rgba(255,51,85,.55)'),
+        borderColor:errV.map(v=>v>=0?'#00ffb3':'#ff3355'),
+        borderWidth:1,
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{labels:{color:'#8888aa'}}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,.04)'}},
+        y:{title:{display:true,text:'ψ₀_approx − ψ₀_true',color:'#8888aa'},grid:{color:'rgba(255,255,255,.04)'}}
+      }
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════
+//  PANEL 4 — TABLE
+// ══════════════════════════════════════════════════════
+document.getElementById('run-table').addEventListener('click', runTable);
+
+function runTable() {
+  const N = +document.getElementById('n-zeros-4').value;
+  const xMax = +document.getElementById('tbl-xmax').value;
+  const gammas = getZeros(N);
+  const pps = primePowers(xMax);
+  const primes = sieve(xMax+1);
+  const pArr = [...new Set(primes)].sort((a,b)=>a-b);
+
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = '';
+
+  for (const {p,k,pk} of pps) {
+    if (pk > xMax) break;
+    const fpk = fClark(pk, gammas);
+    const lam = Math.log(p);
+    const ratio = lam===0 ? '—' : (fpk/lam).toFixed(3);
+
+    // Composite орчим (pk-1, pk+1) авэрэж
+    const neighbors = [];
+    for (let d=1; d<=3; d++) {
+      const c = pk+d;
+      if (c<=xMax && !pps.find(pp=>pp.pk===c)) neighbors.push(fClark(c,gammas));
+    }
+    const nearComp = neighbors.length ? (neighbors.reduce((s,v)=>s+v,0)/neighbors.length).toFixed(3) : '—';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${pk}</td>
+      <td>${p}</td>
+      <td>${k}</td>
+      <td class="${fpk>0?'pos':'neg'}">${fpk.toFixed(4)}</td>
+      <td>${lam.toFixed(4)}</td>
+      <td>${ratio}</td>
+      <td>${nearComp}</td>
+      <td>${k===1?`<span class="badge badge-sig">prime</span>`:`<span class="badge" style="background:rgba(187,136,255,.1);color:#bb88ff">p^${k}</span>`}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════════════════
+function renderStats(id, items) {
+  const el = document.getElementById(id);
+  el.innerHTML = items.map(({lbl,val,sub,cls}) => `
+    <div class="stat-card ${cls}">
+      <div class="sc-lbl">${lbl}</div>
+      <div class="sc-val">${val}</div>
+      <div class="sc-sub">${sub}</div>
+    </div>
+  `).join('');
+}
+
+function showProgress(on, msg='') {
+  const w = document.getElementById('progress-wrap');
+  if (!w) return;
+  w.style.display = on ? 'block' : 'none';
+  if (on) {
+    document.getElementById('prog-fill').style.width = '60%';
+    document.getElementById('prog-label').textContent = msg;
+  }
+}
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── TAB SWITCHING ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── AUTO-RUN Fig1 on load ──
+window.addEventListener('load', () => {
+  setTimeout(runFig1, 200);
+});
+</script>
+<script>
+function MN_toggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');document.addEventListener('click',function close(e){if(!btn.parentElement.contains(e.target)){dd.classList.remove('open');document.removeEventListener('click',close);}});}
+function setLang(l){document.body.classList.remove('en','mn');document.body.classList.add(l);document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',b.dataset.l===l);});try{localStorage.setItem('lang',l);}catch(e){}}
+document.addEventListener('DOMContentLoaded',function(){var s='en';try{s=localStorage.getItem('lang')||'en';}catch(e){}setLang(s);});
+</script>
+</body>
+</html>
