@@ -92,7 +92,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">Interactive Charts</span><span data-li="mn">Интерактив графикууд</span></div>
-    <h2><span data-lang="en">Visualizing the Results</span><span data-lang="mn">Үр дүнгийн дүрслэл</span></h2>
+    <h2><span data-li="en">Visualizing the Results</span><span data-li="mn">Үр дүнгийн дүрслэл</span></h2>
     <div class="chart-container"><div class="chart-title">BK Amplitude Law — A(p) vs B(p) = (log p)²/p</div><div id="chart-scatter" style="height:380px;"></div></div>
     <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
     <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — all 12 primes (zeros3)</span><span data-li="mn">12 прайм дээрх илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
@@ -138,34 +138,37 @@ document.addEventListener('DOMContentLoaded',function(){
   setLang(s);
 });
 </script>
-<script>
 
+<script>
 const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
 const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
 const C=3;
-const offs=[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02];
-const Ap_z3=Bp.map((b,i)=>b*C*(0.97+offs[i]));
-const Rp=Ap_z3.map((a,i)=>a/Bp[i]);
-const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{family:'JetBrains Mono',color:'#6b6880',size:11},xaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},yaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},margin:{t:20,r:20,b:50,l:60}};
+const Ap=Bp.map((b,i)=>b*C*(0.97+[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02][i]));
+const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{color:'#aaa'},margin:{t:25,r:20,b:50,l:60}};
+const PC={responsive:true,displayModeBar:false};
+
 function initCharts(){
-  if(window.chartsInited)return;window.chartsInited=true;
   Plotly.newPlot('chart-scatter',[
-    {x:Bp,y:Ap_z3,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',marker:{color:'#c9a84c',size:10},name:'zeros1',type:'scatter'},
-    {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',line:{color:'#4a9eff',dash:'dash',width:1},name:'BK prediction',type:'scatter'}
-  ],{...DL,xaxis:{...DL.xaxis,title:'B(p) = (log p)² / p'},yaxis:{...DL.yaxis,title:'A(p) observed'},legend:{bgcolor:'#111118',bordercolor:'#1e1e2e'}},PC);
-  Plotly.newPlot('chart-bar',[{x:['zeros1','zeros_ht','zeros6'],y:[0.6847,0.5113,0.4509],type:'bar',marker:{color:['#8a6f32','#c9a84c','#a08030']},text:['r=0.6847','r=0.5113','r=0.4509'],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,yaxis:{...DL.yaxis,range:[0.9,1.02],title:'Pearson r'},shapes:[{type:'line',x0:-.5,x1:2.5,y0:.94,y1:.94,line:{color:'#4caf7d',dash:'dot',width:1}}]},PC);
-  Plotly.newPlot('chart-prime',[{x:primes.map(p=>'p='+p),y:Ap_z3,type:'bar',marker:{color:primes.map(()=>'#4caf7d')},name:'A(p) zeros1'}],{...DL,xaxis:{...DL.xaxis,title:'Prime p'},yaxis:{...DL.yaxis,title:'A(p)'}},PC);
+    {x:Bp,y:Ap,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',type:'scatter'},
+    {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',type:'scatter'}
+  ],DL,PC);
+
+  Plotly.newPlot('chart-bar',[{
+    x:['zeros1','zeros_ht','zeros6'],
+    y:[0.6847,0.5113,0.4509],
+    type:'bar',
+    text:['r=0.6847','r=0.5113','r=0.4509'],
+    textposition:'outside'
+  }],{...DL,yaxis:{range:[0,0.85],title:'Pearson r'}},PC);
+
+  Plotly.newPlot('chart-prime',[{
+    x:primes.map(p=>'p='+p),
+    y:Ap,
+    type:'bar'
+  }],DL,PC);
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-  if(typeof Plotly !== 'undefined'){
-    initCharts();
-  } else {
-    var script = document.querySelector('script[src*="plotly"]');
-    if(script) script.addEventListener('load', initCharts);
-  }
-});
-
+document.addEventListener('DOMContentLoaded',initCharts);
 </script>
 </body>
 </html>
