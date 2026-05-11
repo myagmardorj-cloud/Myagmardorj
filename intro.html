@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>research.nexcore.ltd — Танилцуулга</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>research.nexcore.ltd</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
 <style>
+
 :root{
   --bg:#070710;--s1:#0e0e1c;--s2:#13131f;
   --c:#00d4ff;--b:#4d9fff;--g:#00e5a0;--r:#ff4d6d;--gold:#f0b429;
@@ -158,21 +159,38 @@ body{padding-top:54px !important;}
 
 .MN-dd a.MN-dd-active{color:#00d4ff !important;background:rgba(0,212,255,.08);}
 .MN-more button.MN-has-active{color:#00d4ff;background:rgba(0,212,255,.06);border-color:rgba(0,212,255,.15);}
+
 </style>
 </head>
 <body class="en">
 <nav class="MN">
-<a href="/index.html" class="MN-logo">research.nexcore.ltd</a>
+<a href="/paper1/" class="MN-logo">Nexcore Research</a>
 <div class="MN-links">
-<a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилц</span></a>
-<a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Зураг</span></a>
-<a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
-<span style="width:1px;height:16px;background:rgba(255,255,255,.12);margin:0 .3rem;display:inline-block;"></span>
-<a href="/paper1/" style="color:var(--cyan,#00d4ff) !important;"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
-<div style="display:flex;margin-left:.4rem;">
-<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
-<button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+<a href="/paper1/" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+<div class="MN-dd">
+<a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+<a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+<a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
+<a href="/paper1/steven_clark.html"><span data-li="en">Steven Clark f(x)</span><span data-li="mn">Стивен Кларк f(x)</span></a>
+<a href="/paper1/livestats.html"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.4rem 0;">
+<a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
+<a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт хариулт</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+<a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a>
+<a href="/paper1/discussion.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/changelog.html"><span data-li="en">Changelog</span><span data-li="mn">Өөрчлөлт</span></a>
+</div></span>
 </div>
+<div class="MN-lang">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
 
@@ -422,80 +440,46 @@ body{padding-top:54px !important;}
 </div>
 </section>
 
+
+
+
+
+
+
+<footer class="MN-foot">
+<span class="MN-foot-left"><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div class="MN-foot-center">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+</div>
+<span class="MN-foot-right"><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
+</footer>
 <script>
-const slides = document.querySelectorAll('.slide');
-const dotsEl = document.getElementById('nav-dots');
-const scCur = document.getElementById('sc-cur');
-const scTot = document.getElementById('sc-tot');
-scTot.textContent = slides.length;
-
-// Create dots
-slides.forEach((s,i) => {
-  const d = document.createElement('button');
-  d.className = 'dot' + (i===0?' active':'');
-  d.onclick = () => s.scrollIntoView({behavior:'smooth'});
-  dotsEl.appendChild(d);
-});
-
-// Intersection observer for slides
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const idx = [...slides].indexOf(entry.target);
-      document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===idx));
-      scCur.textContent = idx + 1;
-      // Animate content
-      const content = entry.target.querySelector('.slide-content');
-      if (content) {
-        setTimeout(() => content.classList.add('visible'), 100);
-      }
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  dd.classList.toggle('open');
+  document.addEventListener('click',function close(e){
+    if(!btn.parentElement.contains(e.target)){
+      dd.classList.remove('open');
+      document.removeEventListener('click',close);
     }
   });
-}, {threshold: 0.5});
-
-slides.forEach(s => observer.observe(s));
-
-// Trigger first slide immediately
-setTimeout(() => {
-  const first = slides[0]?.querySelector('.slide-content');
-  if (first) first.classList.add('visible');
-}, 200);
-
-// Language
-
-
-</script>
-<script>
-function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
-function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
-document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
-</script>
-
-
-
-<script>
-function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
-function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
-document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
+}
 function setLang(l){
   document.body.classList.remove('en','mn');
   document.body.classList.add(l);
-  document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
-  localStorage.setItem('lang',l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active',b.dataset.l===l);
+  });
+  try{localStorage.setItem('lang',l);}catch(e){}
 }
-(function(){setLang(localStorage.getItem('lang')||'en');})();
+document.addEventListener('DOMContentLoaded',function(){
+  var s='en';
+  try{s=localStorage.getItem('lang')||'en';}catch(e){}
+  setLang(s);
+});
 </script>
-<footer class="MN-foot">
-<span class="MN-foot-left">
-  <span data-li="en">Nexcore Research Platform · Open computational archive</span>
-  <span data-li="mn">Nexcore Судалгааны Платформ · Нээлттэй тооцооллын архив</span>
-</span>
-<div class="MN-foot-center">
-  <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
-  <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Зураг</span></a>
-  <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
-</div>
-<span class="MN-foot-right">v1.0.0</span>
-</footer>
 </body>
 </html>

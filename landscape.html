@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="mn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Математикийн Нээгдээгүй Бодлогууд — research.nexcore.ltd</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>research.nexcore.ltd</title>
 <style>
+
 :root{
   --bg:#070710;--s1:#0e0e1c;--s2:#13131f;--s3:#1a1a2e;
   --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);
@@ -135,8 +135,8 @@ footer{border-top:1px solid var(--border);padding:2rem;margin-top:3rem;display:f
 
 /* LANG */
 [data-lang]{display:none;}
-body.en [data-lang="en"]{display:block;}
-body.mn [data-lang="mn"]{display:block;}
+body.en [data-li="en"]{display:block;}
+body.mn [data-li="mn"]{display:block;}
 [data-li]{display:none;}
 body.en [data-li="en"]{display:inline;}
 body.mn [data-li="mn"]{display:inline;}
@@ -164,34 +164,39 @@ body.mn [data-li="mn"]{display:inline;}
   .nav-links{display:none;}
 }
 
-nav.MN{position:fixed;top:0;left:0;right:0;z-index:100;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);}
-.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;}
-.MN-links{display:flex;align-items:center;gap:.3rem;flex-wrap:nowrap;white-space:nowrap;}
-.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:#9999b8;text-decoration:none;padding:.28rem .55rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
-.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
-
-.MN-foot-left{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.MN-foot-center{display:flex;gap:.2rem;align-items:center;flex-shrink:0;}
-.MN-foot-right{flex:1;text-align:right;flex-shrink:0;}
-footer.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.22rem .5rem;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap;}
-footer.MN-foot a:hover{color:#00d4ff;background:rgba(0,212,255,.07);}
-
-nav.MN{position:fixed !important;top:0;left:0;right:0;z-index:900;}
-footer.MN-foot{position:fixed !important;bottom:0;left:0;right:0;z-index:900;
-  height:44px;display:flex;justify-content:space-between;align-items:center;
-  padding:0 1.5rem;background:rgba(7,7,16,.98);backdrop-filter:blur(24px);
-  border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;
-  font-size:.65rem;color:#5a5a7a;letter-spacing:.02em;}
-footer.MN-foot .MN-foot-left{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-footer.MN-foot .MN-foot-center{display:flex;gap:.2rem;align-items:center;flex-shrink:0;}
-footer.MN-foot .MN-foot-right{flex:1;text-align:right;}
-footer.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.22rem .5rem;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap;}
-footer.MN-foot a:hover{color:#00d4ff;background:rgba(0,212,255,.07);}
-body{padding-top:56px !important;padding-bottom:52px !important;}
 </style>
 </head>
-<body class="mn">
-
+<body class="en">
+<nav class="MN">
+<a href="/paper1/" class="MN-logo">Nexcore Research</a>
+<div class="MN-links">
+<a href="/paper1/" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+<div class="MN-dd">
+<a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+<a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+<a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
+<a href="/paper1/steven_clark.html"><span data-li="en">Steven Clark f(x)</span><span data-li="mn">Стивен Кларк f(x)</span></a>
+<a href="/paper1/livestats.html"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
+<hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.4rem 0;">
+<a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
+<a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт хариулт</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+<a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a>
+<a href="/paper1/discussion.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/changelog.html"><span data-li="en">Changelog</span><span data-li="mn">Өөрчлөлт</span></a>
+</div></span>
+</div>
+<div class="MN-lang">
+<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
+<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+</div>
+</nav>
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
 
@@ -206,20 +211,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
   </div>
 </div>
 
-<nav class="MN">
-<a href="/index.html" class="MN-logo">research.nexcore.ltd</a>
-<div class="MN-links">
-<a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилц</span></a>
-<a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Зураг</span></a>
-<a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
-<span style="width:1px;height:16px;background:rgba(255,255,255,.12);margin:0 .3rem;display:inline-block;"></span>
-<a href="/paper1/" style="color:var(--cyan,#00d4ff) !important;"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
-<div style="display:flex;margin-left:.4rem;">
-<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
-<button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
-</div>
-</div>
-</nav>
+
 
 <div class="wrap">
   <div class="page-header">
@@ -228,12 +220,12 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <span data-li="mn">Клейгийн математикийн хүрээлэн · 2026</span>
     </div>
     <div class="page-title">
-      <span data-lang="en">Mathematics <span class="hl">Unsolved Problems</span></span>
-      <span data-lang="mn">Математикийн <span class="hl">Нээгдээгүй Бодлогууд</span></span>
+      <span data-li="en">Mathematics <span class="hl">Unsolved Problems</span></span>
+      <span data-li="mn">Математикийн <span class="hl">Нээгдээгүй Бодлогууд</span></span>
     </div>
     <p class="page-sub">
-      <span data-lang="en">Next steps · Verified information · clay.math.org · 2026</span>
-      <span data-lang="mn">Дараагийн алхам · Зөвхөн баталгаажсан мэдээлэл · clay.math.org · 2026</span>
+      <span data-li="en">Next steps · Verified information · clay.math.org · 2026</span>
+      <span data-li="mn">Дараагийн алхам · Зөвхөн баталгаажсан мэдээлэл · clay.math.org · 2026</span>
     </p>
   </div>
 
@@ -256,29 +248,29 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       <div class="conn-card">
         <div class="conn-eq">RH ↔ GC ↔ TPC ↔ LIC</div>
         <div class="conn-desc">
-          <span data-lang="en">Prime number distribution · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
-          <span data-lang="mn">Прайм тооны тархалт · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
+          <span data-li="en">Prime number distribution · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
+          <span data-li="mn">Прайм тооны тархалт · zeros-ийн фаз · singular series S(h) · яцуун нийтлэг механизм бол Fourier-Mellin холбоос</span>
         </div>
       </div>
       <div class="conn-card">
         <div class="conn-eq">P≠NP ↔ BSD</div>
         <div class="conn-desc">
-          <span data-lang="en">Elliptic curve rank counting · polynomial algorithm байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
-          <span data-lang="mn">Эллиптик муруйн rank тооцоолох · polynomial цагийн алгоритм байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
+          <span data-li="en">Elliptic curve rank counting · polynomial algorithm байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
+          <span data-li="mn">Эллиптик муруйн rank тооцоолох · polynomial цагийн алгоритм байхгүй гэж үзвэл P≠NP-тэй шуud нийцтэй</span>
         </div>
       </div>
       <div class="conn-card">
         <div class="conn-eq">NS ↔ YM</div>
         <div class="conn-desc">
-          <span data-lang="en">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
-          <span data-lang="mn">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
+          <span data-li="en">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
+          <span data-li="mn">Хоёулаа өндөр хэмжээст орон зай · PDE · differential geometry · квант талбарын гүн асуулт</span>
         </div>
       </div>
       <div class="conn-card">
         <div class="conn-eq">ABC ↔ BSD ↔ HC</div>
         <div class="conn-desc">
-          <span data-lang="en">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
-          <span data-lang="mn">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
+          <span data-li="en">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
+          <span data-li="mn">Алгебрийн геометрийн нийтлэг үндэс · motivic cohomology · L-функцийн онцлог утгын бүтэц</span>
         </div>
       </div>
     </div>
@@ -286,16 +278,16 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 
   <!-- STATS -->
   <div class="stats-row">
-    <div class="stat-box"><div class="stat-val" style="color:var(--red);">6</div><div class="stat-lbl"><span data-lang="en">Clay unsolved</span><span data-lang="mn">Clay нээлттэй бодлого</span></div></div>
-    <div class="stat-box"><div class="stat-val" style="color:var(--green);">1</div><div class="stat-lbl"><span data-lang="en">Clay solved (Perelman 2003)</span><span data-lang="mn">Clay шийдэгдсэн</span></div></div>
-    <div class="stat-box"><div class="stat-val" style="color:var(--sub);">7</div><div class="stat-lbl"><span data-lang="en">Famous conjectures</span><span data-lang="mn">Нэрт чухал таамаглал</span></div></div>
-    <div class="stat-box"><div class="stat-val" style="color:var(--gold);">$6M</div><div class="stat-lbl"><span data-lang="en">Clay total prize</span><span data-lang="mn">Clay нийт шагнал</span></div></div>
-    <div class="stat-box"><div class="stat-val" style="color:var(--orange);">270+</div><div class="stat-lbl"><span data-lang="en">Years oldest open</span><span data-lang="mn">Хамтын онцлойн тоо (жил)</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--red);">6</div><div class="stat-lbl"><span data-li="en">Clay unsolved</span><span data-li="mn">Clay нээлттэй бодлого</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--green);">1</div><div class="stat-lbl"><span data-li="en">Clay solved (Perelman 2003)</span><span data-li="mn">Clay шийдэгдсэн</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--sub);">7</div><div class="stat-lbl"><span data-li="en">Famous conjectures</span><span data-li="mn">Нэрт чухал таамаглал</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--gold);">$6M</div><div class="stat-lbl"><span data-li="en">Clay total prize</span><span data-li="mn">Clay нийт шагнал</span></div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--orange);">270+</div><div class="stat-lbl"><span data-li="en">Years oldest open</span><span data-li="mn">Хамтын онцлойн тоо (жил)</span></div></div>
   </div>
 
   <!-- Computational Observation -->
   <div class="our-box">
-    <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.12);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--sub);">⚠️ <strong style="color:var(--red);">Note:</strong> <span data-lang="en">Numerical observations only — not a theorem, not a proof of RH. Independent verification required.</span><span data-lang="mn">Зөвхөн тоон ажиглалт — теорем биш, RH-н нотолгоо биш.</span></div><div class="our-box-title"><span data-li="en">★ Our research position</span><span data-li="mn">★ Манай судалгааны байр суурь</span></div>
+    <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.12);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--sub);">⚠️ <strong style="color:var(--red);">Note:</strong> <span data-li="en">Numerical observations only — not a theorem, not a proof of RH. Independent verification required.</span><span data-li="mn">Зөвхөн тоон ажиглалт — теорем биш, RH-н нотолгоо биш.</span></div><div class="our-box-title"><span data-li="en">★ Our research position</span><span data-li="mn">★ Манай судалгааны байр суурь</span></div>
     <table class="our-table">
       <thead>
         <tr>
@@ -305,11 +297,11 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
       </thead>
       <tbody>
         <tr><td>Problem</td><td>Riemann Hypothesis (#01)</td></tr>
-        <tr><td>Connection</td><td><span data-lang="en">Prime-indexed excess in zero spacing statistics</span><span data-lang="mn">Тэгийн зайн статистик дахь прайм-индекстэй илүүдэл</span></td></tr>
-        <tr><td>Result</td><td class="good">r = 0.017 (final, Chebyshev validated) · null result · prior r=0.5113 was intermediate only</td></tr>
-        <tr><td><span data-lang="en">Positioning</span><span data-lang="mn">Байр суурь</span></td><td class="warn"><span data-lang="en">Computational observation — empirically consistent with BK-type scaling</span><span data-lang="mn">Тооцооллын ажиглалт — BK-төрлийн scaling-тай нийцсэн</span></td></tr>
-        <tr><td><span data-lang="en">What it is NOT</span><span data-lang="mn">Юу биш вэ</span></td><td class="bad"><span data-lang="en">Not a confirmed theorem · Not a proof of RH</span><span data-lang="mn">Батлагдсан теорем биш · RH-н нотолгоо биш</span></td></tr>
-        <tr><td>Prize</td><td><span data-lang="en">$1,000,000 (Clay Institute) — if RH proven</span><span data-lang="mn">$1,000,000 (Клейн хүрээлэн) — RH батлагдвал</span></td></tr>
+        <tr><td>Connection</td><td><span data-li="en">Prime-indexed excess in zero spacing statistics</span><span data-li="mn">Тэгийн зайн статистик дахь прайм-индекстэй илүүдэл</span></td></tr>
+        <tr><td>Result</td><td class="good">r = 0.017 · null result (Chebyshev validated) · earlier r=0.9992 not reproducible</td></tr>
+        <tr><td><span data-li="en">Positioning</span><span data-li="mn">Байр суурь</span></td><td class="warn"><span data-li="en">Computational observation — empirically consistent with BK-type scaling</span><span data-li="mn">Тооцооллын ажиглалт — BK-төрлийн scaling-тай нийцсэн</span></td></tr>
+        <tr><td><span data-li="en">What it is NOT</span><span data-li="mn">Юу биш вэ</span></td><td class="bad"><span data-li="en">Not a confirmed theorem · Not a proof of RH</span><span data-li="mn">Батлагдсан теорем биш · RH-н нотолгоо биш</span></td></tr>
+        <tr><td>Prize</td><td><span data-li="en">$1,000,000 (Clay Institute) — if RH proven</span><span data-li="mn">$1,000,000 (Клейн хүрээлэн) — RH батлагдвал</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -320,42 +312,42 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
     <div class="steps-grid">
       <div class="step-box">
         <div class="step-n">1. <span data-li="en">COMPUTATION</span><span data-li="mn">ТООЦООЛОЛ</span></div>
-        <div class="step-title"><span data-lang="en">More data</span><span data-lang="mn">Илүү өгөгдөл</span></div>
+        <div class="step-title"><span data-li="en">More data</span><span data-li="mn">Илүү өгөгдөл</span></div>
         <ul class="step-items">
-          <li>X=10⁷, N=1000 <span data-lang="en">zeros</span><span data-lang="mn">тэгүүд</span></li>
+          <li>X=10⁷, N=1000 <span data-li="en">zeros</span><span data-li="mn">тэгүүд</span></li>
           <li>prime residual spectrum</li>
-          <li><span data-lang="en">Repeat test</span><span data-lang="mn">Давтан нотлох</span></li>
+          <li><span data-li="en">Repeat test</span><span data-li="mn">Давтан нотлох</span></li>
           <li>Bootstrap controls</li>
           <li>Window-stability tests</li>
         </ul>
       </div>
       <div class="step-box">
         <div class="step-n">2. <span data-li="en">VERIFICATION</span><span data-li="mn">БАТАЛГАА</span></div>
-        <div class="step-title"><span data-lang="en">Independent replication</span><span data-lang="mn">Бие даасан баталгаа</span></div>
+        <div class="step-title"><span data-li="en">Independent replication</span><span data-li="mn">Бие даасан баталгаа</span></div>
         <ul class="step-items">
           <li>E_zero ≈ F[E_prime]</li>
-          <li>p-value &lt; 0.01 <span data-lang="en">target</span><span data-lang="mn">зорилт</span></li>
-          <li>arXiv paper <span data-lang="en">submit</span><span data-lang="mn">илгээх</span></li>
+          <li>p-value &lt; 0.01 <span data-li="en">target</span><span data-li="mn">зорилт</span></li>
+          <li>arXiv paper <span data-li="en">submit</span><span data-li="mn">илгээх</span></li>
           <li>Peer review</li>
         </ul>
       </div>
       <div class="step-box">
         <div class="step-n">3. <span data-li="en">THEORY</span><span data-li="mn">ОНОЛ</span></div>
-        <div class="step-title"><span data-lang="en">Derive C ≈ 16.5</span><span data-lang="mn">C ≈ 16.5 онолоор гаргах</span></div>
+        <div class="step-title"><span data-li="en">Derive C ≈ 16.5</span><span data-li="mn">C ≈ 16.5 онолоор гаргах</span></div>
         <ul class="step-items">
           <li>Goldston-Suriajaya</li>
-          <li>2020-<span data-lang="en">r framework</span><span data-lang="mn">р хүрээ</span></li>
-          <li><span data-lang="en">Formal derivation</span><span data-lang="mn">Формал нотолгоо</span></li>
+          <li>2020-<span data-li="en">r framework</span><span data-li="mn">р хүрээ</span></li>
+          <li><span data-li="en">Formal derivation</span><span data-li="mn">Формал нотолгоо</span></li>
           <li>Explicit formula</li>
         </ul>
       </div>
       <div class="step-box">
         <div class="step-n">4. <span data-li="en">GOAL</span><span data-li="mn">ЗОРИЛТ</span></div>
-        <div class="step-title"><span data-lang="en">Toward RH</span><span data-lang="mn">RH руу</span></div>
+        <div class="step-title"><span data-li="en">Toward RH</span><span data-li="mn">RH руу</span></div>
         <ul class="step-items">
           <li>Montgomery ↔ H-L</li>
-          <li><span data-lang="en">New formula</span><span data-lang="mn">Нэгдсэн томьёо</span></li>
-          <li>RH <span data-lang="en">equivalent</span><span data-lang="mn">эквивалент</span></li>
+          <li><span data-li="en">New formula</span><span data-li="mn">Нэгдсэн томьёо</span></li>
+          <li>RH <span data-li="en">equivalent</span><span data-li="mn">эквивалент</span></li>
           <li>$1,000,000 🎯</li>
         </ul>
       </div>
@@ -364,8 +356,8 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 
   <div class="quote-box">
     <div class="quote">
-      <span data-lang="en">"Solving one problem is not the sum of solving a thousand problems. Numbers, space, structure, and information — all speak the same language."</span>
-      <span data-lang="mn">"Математикийн нэг бодлогыг шийдэх нь зуун бодлогын хааглыг нэгэн зэрэг онгойлгодог. Тоо, орон зай, хэлбэр, мэдээлэл — бүгд нэг хэлээр ярьдаг."</span>
+      <span data-li="en">"Solving one problem is not the sum of solving a thousand problems. Numbers, space, structure, and information — all speak the same language."</span>
+      <span data-li="mn">"Математикийн нэг бодлогыг шийдэх нь зуун бодлогын хааглыг нэгэн зэрэг онгойлгодог. Тоо, орон зай, хэлбэр, мэдээлэл — бүгд нэг хэлээр ярьдаг."</span>
     </div>
     <div class="quote-src">clay.math.org · arxiv.org · wikipedia.org · 2026</div>
   </div>
@@ -373,165 +365,41 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
   
 </div>
 
-<script>
-// CLAY PROBLEMS DATA
-const clayProbs = [
-  {id:'rh', tag:'RH', tagClass:'tag-rh', cardClass:'rh highlight',
-   name_en:'Riemann Hypothesis', name_mn:'Риманы Таамаглал',
-   desc_en:'All non-trivial zeros of ζ(s) have real part ½. Connected to prime distribution.',
-   desc_mn:'ζ(s)-ийн бүх тривиаль биш тэгүүд Re(s)=½ дээр байна. Прайм тархалттай холбоотой.',
-   tools:'RMT · GUE · L-функц · explicit formula',
-   our:true},
-  {id:'pnp', tag:'P≠NP', tagClass:'tag-pnp', cardClass:'pnp',
-   name_en:'P vs NP', name_mn:'P ба NP',
-   desc_en:'Can every verifiable problem be solved efficiently?',
-   desc_mn:'Хариуг шалгаж болдог бодлого болгоныг хурдан бодож болох уу?',
-   tools:'Boolean circuit · oracle · GCT'},
-  {id:'bsd', tag:'BSD', tagClass:'tag-bsd', cardClass:'bsd',
-   name_en:'Birch–Swinnerton-Dyer', name_mn:'Бирч–Суиннертон-Даер',
-   desc_en:'L(E,1)≠0 ↔ rank=0. Iwasawa theory framework.',
-   desc_mn:'L(E,1)≠0 ↔ rank=0. Ивасавагийн онол өргөтгөх.',
-   tools:'Elliptic curve · p-adic L-функц'},
-  {id:'ns', tag:'NS', tagClass:'tag-ns', cardClass:'ns',
-   name_en:'Navier–Stokes', name_mn:'Навье–Стокс',
-   desc_en:'Global regularity or blowup in 3D fluid equations.',
-   desc_mn:'Global regularity эсвэл жишээ жилжих олох.',
-   tools:'PDE · functional analysis · CFD'},
-  {id:'ym', tag:'YM', tagClass:'tag-ym', cardClass:'ym',
-   name_en:'Yang–Mills Mass Gap', name_mn:'Янг–Миллс Mass Gap',
-   desc_en:'Mass gap > 0 for quantum Yang-Mills theory.',
-   desc_mn:'Mass gap > 0 гэдгийг QFT хүрээнд нотлох.',
-   tools:'Quantum field theory · lattice gauge'},
-  {id:'hc', tag:'HC', tagClass:'tag-hc', cardClass:'hc',
-   name_en:'Hodge Conjecture', name_mn:'Ходж Таамаглал',
-   desc_en:'Hodge class = algebraic cycle in motivic cohomology.',
-   desc_mn:'Hodge class алгебрийн motivic cohomology.',
-   tools:'Algebraic geometry · K-theory'},
-  {id:'pc', tag:'PC ✓', tagClass:'tag-solved', cardClass:'pc',
-   name_en:"Poincaré Conjecture", name_mn:'Пуанкарегийн Т.',
-   desc_en:'SOLVED 2003 — Perelman via Ricci flow. Declined $1M prize.',
-   desc_mn:'ШИЙДЭГДСЭН — Перельман · Ricci flow · 2003',
-   tools:'Riemannian geometry · Ricci flow',
-   solved:true},
-];
 
-const conjProbs = [
-  {year:'GC 1742', name_en:'Goldbach', name_mn:'Гольдбахын Т.',
-   desc_en:'Every even number = sum of 2 primes. Chen(1966): p+p·q → p+p²',
-   desc_mn:'Тэгш тоо = 2 прайм нийлбэр. Chen(1966): p+p·q → p+p²',
-   status:'Circle method · sieve theory'},
-  {year:'TPC 1849', name_en:'Twin Prime', name_mn:'Ихэр Прайм Т.',
-   desc_en:'Infinitely many primes p with p+2 prime. Zhang(2013): gap<70M',
-   desc_mn:'Zhang(2013): gap<70M. Maynard(2014): gap<246',
-   status:'GPY sieve · Elliott-Halberstam'},
-  {year:'ABC', name_en:'ABC Conjecture', name_mn:'ABC Таамаглал',
-   desc_en:'Mochizuki IUT proof (2012) — нийтийн шалгалт үргэлжилж байна',
-   desc_mn:'Mochizuki IUT онол (2012) — нийтийн шалгалт үргэлжилж байна',
-   status:'Inter-universal Teichmüller'},
-  {year:'COL 1937', name_en:'Collatz', name_mn:'Коллатцын Т.',
-   desc_en:'Tao(2019): density 1 set → n+1 бүх p-д 1 хүрнэ?',
-   desc_mn:'Tao(2019): density 1 set → n+1 бүх p-д 1 хүрнэ?',
-   status:'Ergodic theory · cellular automata'},
-  {year:'GL', name_en:'Geom. Langlands', name_mn:'Геометрийн Ленглендс',
-   desc_en:'Ben-Zvi et al. 2024: geometric arithmetic Langlands proved',
-   desc_mn:'Ben-Zvi et al. 2024: геом. арифметик Ленгленд үлдсэн',
-   status:'D-module · perverse sheaf'},
-  {year:'LIC', name_en:'Linear Independence', name_mn:'Linear Independence',
-   desc_en:'γₙ/2π irrational numbers Q дээр линейн бие даасан эсэх?',
-   desc_mn:'γₙ/2π тооцоолол Q дээр шугаман бие даасан байна уу?',
-   status:'Transcendence theory · Baker'},
-  {year:'SZC', name_en:'Simple Zeros', name_mn:'Simple Zeros',
-   desc_en:'Риман zeros бүгд энгийн (кратнос 1) эсэх? Montgomery: >2/3 ✓',
-   desc_mn:'Риман zeros бүгд энгийн (кратнос 1) эсэх? Montgomery: >2/3 ✓',
-   status:'Pair correlation · RMT'},
-];
-
-// Render clay grid
-const clayGrid = document.getElementById('clay-grid');
-clayProbs.forEach(p => {
-  const div = document.createElement('div');
-  div.className = `prob-card ${p.cardClass}`;
-  div.onclick = () => openModal(p);
-  div.innerHTML = `
-    ${p.solved ? '<span class="solved-badge">SOLVED 2003</span>' : ''}
-    
-    <span class="prob-tag ${p.tagClass}">${p.tag}</span>
-    <div class="prob-name">
-      <span data-lang="en">${p.name_en}</span>
-      <span data-lang="mn">${p.name_mn}</span>
-    </div>
-    <div class="prob-desc">
-      <span data-lang="en">${p.desc_en}</span>
-      <span data-lang="mn">${p.desc_mn}</span>
-    </div>
-    <div class="prob-tools">${p.tools}</div>
-    ${p.our ? '<span class="our-badge">← Computational Observation</span>' : ''}
-  `;
-  clayGrid.appendChild(div);
-});
-
-// Render conjectures
-const conjGrid = document.getElementById('conj-grid');
-conjProbs.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'conj-card';
-  div.innerHTML = `
-    <div class="conj-year">${p.year}</div>
-    <div class="conj-name">
-      <span data-lang="en">${p.name_en}</span>
-      <span data-lang="mn">${p.name_mn}</span>
-    </div>
-    <div class="conj-desc">
-      <span data-lang="en">${p.desc_en}</span>
-      <span data-lang="mn">${p.desc_mn}</span>
-    </div>
-    <div class="conj-status">${p.status}</div>
-  `;
-  conjGrid.appendChild(div);
-});
-
-// Modal
-function openModal(p) {
-  const lang = document.body.className;
-  document.getElementById('m-tag').textContent = p.tag;
-  document.getElementById('m-tag').className = `modal-tag ${p.tagClass}`;
-  document.getElementById('m-title').textContent = lang==='mn' ? p.name_mn : p.name_en;
-  document.getElementById('m-body').textContent = lang==='mn' ? p.desc_mn : p.desc_en;
-  document.getElementById('m-tools').textContent = p.tools;
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal(e) {
-  if (e.target.id === 'modal') document.getElementById('modal').classList.remove('open');
-}
-
-// Language
-function setLang(lang) {
-  document.body.className = lang;
-  document.getElementById('lb-en').classList.toggle('active', lang==='en');
-  document.getElementById('lb-mn').classList.toggle('active', lang==='mn');
-  // Update dynamic content visibility
-  document.querySelectorAll('[data-lang]').forEach(el => {
-    el.style.display = el.dataset.lang === lang ? 'block' : 'none';
-  });
-  document.querySelectorAll('[data-li]').forEach(el => {
-    el.style.display = el.dataset.li === lang ? 'inline' : 'none';
-  });
-  localStorage.setItem('lang', lang);
-}
-const saved = localStorage.getItem('lang');
-if (saved) setLang(saved); else setLang('mn');
-</script>
 <footer class="MN-foot">
-<span class="MN-foot-left">
-  <span data-li="en">Nexcore Research Platform · Open computational archive</span>
-  <span data-li="mn">Nexcore Судалгааны Платформ · Нээлттэй тооцооллын архив</span>
-</span>
+<span class="MN-foot-left"><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
 <div class="MN-foot-center">
-  <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
-  <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Зураг</span></a>
-  <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
 </div>
-<span class="MN-foot-right">v1.0.0</span>
+<span class="MN-foot-right"><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
 </footer>
+<script>
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  dd.classList.toggle('open');
+  document.addEventListener('click',function close(e){
+    if(!btn.parentElement.contains(e.target)){
+      dd.classList.remove('open');
+      document.removeEventListener('click',close);
+    }
+  });
+}
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active',b.dataset.l===l);
+  });
+  try{localStorage.setItem('lang',l);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var s='en';
+  try{s=localStorage.getItem('lang')||'en';}catch(e){}
+  setLang(s);
+});
+</script>
 </body>
 </html>
