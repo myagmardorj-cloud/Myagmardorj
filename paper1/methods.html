@@ -64,10 +64,10 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
 <span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
 <div class="MN-dd">
-<a href="/paper1/#charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-<a href="/paper1/#calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
-<a href="/paper1/#lab"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
-<a href="/paper1/#livestats"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
+<a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+<a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+<a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
+<a href="/paper1/livestats.html"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
 <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.4rem 0;">
 <a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт хариулт</span></a>
@@ -159,6 +159,6 @@ document.addEventListener('click',function(e){
 </footer>
 <script>
 function MN_toggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');document.addEventListener('click',function close(e){if(!btn.parentElement.contains(e.target)){dd.classList.remove('open');document.removeEventListener('click',close);}});}
-function setLang(l){document.querySelectorAll('[data-li]').forEach(function(e){e.style.display=e.dataset.li===l?'':'none';});document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',b.dataset.l===l);});}
+);document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',b.dataset.l===l);});}
 </script>
 </body></html>

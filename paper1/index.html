@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>research.nexcore.ltd</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js">
+
+</script>
 <style>
 :root{
   --bg:#070710;--surface:#0e0e1c;--surface2:#13131f;
@@ -254,10 +256,10 @@ body{padding-bottom:42px !important;}
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
 <span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
 <div class="MN-dd">
-<a href="/paper1/#charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-<a href="/paper1/#calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
-<a href="/paper1/#lab"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
-<a href="/paper1/#livestats"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
+<a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+<a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+<a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
+<a href="/paper1/livestats.html"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
 <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.4rem 0;">
 <a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт хариулт</span></a>
@@ -339,8 +341,8 @@ body{padding-bottom:42px !important;}
       <a class="link-card" href="https://github.com/myagmardorj-cloud/Myagmardorj" target="_blank"><span class="li">⌨️</span><div><span class="lt">GitHub</span><span class="ld">Full code & data</span></div></a>
       <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank"><span class="li">💬</span><div><span class="lt">Math StackExchange</span><span class="ld">Discussion</span></div></a>
       <a class="link-card" href="mailto:myagmardorj@gmail.com"><span class="li">✉️</span><div><span class="lt">Contact</span><span class="ld">myagmardorj@gmail.com</span></div></a>
-      <a class="link-card" href="landscape.html" style="border-color:rgba(168,85,247,.25);background:rgba(168,85,247,.04);border-radius:12px;"><span class="li">🗺</span><div><span class="lt" style="color:#a855f7;"><span data-li="en">Problem Landscape</span><span data-li="mn">Бодлогын газрын зураг</span></span><span class="ld"><span data-li="en">Clay Prize · 7 problems · connections</span><span data-li="mn">Clay шагнал · 7 бодлого · холбоосууд</span></span></div></a>
-      <a class="link-card" href="verify.html" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);grid-column:span 2;"><span class="li">⚗️</span><div><span class="lt" style="color:var(--green);"><span data-li="en">Independent Analysis Lab</span><span data-li="mn">Бие даасан Шинжилгээний Лаб</span></span><span class="ld"><span data-li="en">Upload Odlyzko data → run in browser → compare results</span><span data-li="mn">Одлызко өгөгдөл upload → браузерт ажиллуул → үр дүн харьцуул</span></span></div></a>
+      <a class="link-card" href="/landscape.html" style="border-color:rgba(168,85,247,.25);background:rgba(168,85,247,.04);border-radius:12px;"><span class="li">🗺</span><div><span class="lt" style="color:#a855f7;"><span data-li="en">Problem Landscape</span><span data-li="mn">Бодлогын газрын зураг</span></span><span class="ld"><span data-li="en">Clay Prize · 7 problems · connections</span><span data-li="mn">Clay шагнал · 7 бодлого · холбоосууд</span></span></div></a>
+      <a class="link-card" href="/verify.html" style="border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);grid-column:span 2;"><span class="li">⚗️</span><div><span class="lt" style="color:var(--green);"><span data-li="en">Independent Analysis Lab</span><span data-li="mn">Бие даасан Шинжилгээний Лаб</span></span><span class="ld"><span data-li="en">Upload Odlyzko data → run in browser → compare results</span><span data-li="mn">Одлызко өгөгдөл upload → браузерт ажиллуул → үр дүн харьцуул</span></span></div></a>
     </div>
     <div class="disclaimer"><span data-lang="en">Independent computational observation. Not peer-reviewed. Fitting bias, normalization sensitivity, multiple-testing effects, finite-window artifacts, and dataset dependence have not been fully ruled out. Independent replication, bootstrap controls, window-stability tests, and explicit-formula derivation are required before this can be considered a research-grade contribution.</span><span data-lang="mn">Бие даасан тооцооллын ажиглалт. Peer review хийгдээгүй. Fitting bias, нормализацийн мэдрэмж, олон тестийн нөлөө, finite-window артефакт нарийн шалгагдаагүй. Бие даасан давталтжуулалт, bootstrap хяналт, цонхны тогтвортой байдлын тест шаардлагатай.</span></div>
   </div>
@@ -1066,7 +1068,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
       <div class="step-card"><div class="step-n">3</div><div class="step-text"><strong><span data-lang="en">Compare</span><span data-lang="mn">Харьцуулах</span></strong><span data-lang="en">Compare your r value with our published results.</span><span data-lang="mn">Өөрийн r утгыг манай нийтэлсэн үр дүнтэй харьцуулна.</span></div></div>
     </div>
     <div style="margin-top:1.5rem;">
-      <a class="link-card" href="verify.html" style="display:inline-flex;border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);border-radius:12px;">
+      <a class="link-card" href="/verify.html" style="display:inline-flex;border-color:rgba(0,229,160,.25);background:rgba(0,229,160,.04);border-radius:12px;">
         <span class="li">⚗️</span><div><span class="lt" style="color:var(--green);">Open Analysis Lab</span><span class="ld">Upload data and run analysis</span></div>
       </a>
     </div>
@@ -1652,11 +1654,7 @@ document.addEventListener('click',function(e){
     document.querySelectorAll('.MN-more button').forEach(function(b){b.classList.remove('MN-active');});
   }
 });
-function setLang(l){
-  document.body.className=(document.body.className||'').replace(/\ben\b|\bmn\b/g,'').trim()+' '+l;
-  document.querySelectorAll('.MN-lb').forEach(function(b){
-    b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));
-  });
+);
   document.querySelectorAll('.lang-btn,.lb').forEach(function(b){
     b.classList.toggle('active',(l==='en'&&b.textContent==='ENG')||(l==='mn'&&b.textContent==='МОН'));
   });
