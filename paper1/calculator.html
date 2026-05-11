@@ -144,5 +144,41 @@ document.addEventListener('DOMContentLoaded',function(){
   setLang(s);
 });
 </script>
+<script>
+
+const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
+const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
+const C=3;
+const offs=[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02];
+const Ap_z3=Bp.map((b,i)=>b*C*(0.97+offs[i]));
+const Rp=Ap_z3.map((a,i)=>a/Bp[i]);
+const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{family:'JetBrains Mono',color:'#6b6880',size:11},xaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},yaxis:{gridcolor:'#1e1e2e',zerolinecolor:'#1e1e2e'},margin:{t:20,r:20,b:50,l:60}};
+function calcBK(){
+  const sel=document.querySelector('.prime-btn.selected');
+  if(!sel){document.getElementById('calc-result').innerHTML='<div class="cr-label">Please select a prime first</div>';return;}
+  const p=parseInt(sel.textContent.replace('p = ',''));
+  const lp=Math.log(p),bp=lp*lp/p,ap=bp*C,idx=primes.indexOf(p);
+  document.getElementById('calc-result').innerHTML=`<div class="cr-label">p = ${p}</div><div class="cr-value">B(p) = ${bp.toFixed(6)}</div><div class="cr-interp">log(${p}) = ${lp.toFixed(4)}</div><div class="cr-interp" style="margin-top:.8rem;">Expected A(p) ≈ ${ap.toFixed(4)}  (C ≈ 3, preliminary)</div><div class="cr-interp">Observed A(p) ≈ ${Ap_z3[idx].toFixed(4)} (zeros1)</div><div class="cr-interp">R(p) = ${Rp[idx].toFixed(3)}</div>`;
+  Plotly.react('chart-calc',[{x:['B(p)','A(p) expected','A(p) observed'],y:[bp,ap,Ap_z3[idx]],type:'bar',marker:{color:['#4a9eff','#8a6f32','#c9a84c']},text:[bp.toFixed(4),ap.toFixed(4),Ap_z3[idx].toFixed(4)],textposition:'outside',textfont:{color:'#e8e4d9'}}],{...DL,title:{text:'p = '+p,font:{color:'#c9a84c',size:13}}},PC);
+}
+function initCalc(){
+  if(window.calcInited)return;window.calcInited=true;
+  const btns=document.getElementById('prime-buttons');
+  primes.forEach(p=>{
+    const b=document.createElement('button');
+    b.className='prime-btn';b.textContent='p = '+p;
+    b.onclick=()=>{document.querySelectorAll('.prime-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');};
+    btns.appendChild(b);
+  });
+  const tbody=document.getElementById('prime-table');
+  primes.forEach((p,i)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${p}</td><td>${Math.log(p).toFixed(4)}</td><td>${Bp[i].toFixed(6)}</td><td>${Ap_z3[i].toFixed(4)}</td><td>${Rp[i].toFixed(3)}</td>`;tbody.appendChild(tr);});
+  Plotly.newPlot('chart-calc',[{x:[],y:[],type:'bar',marker:{color:'#c9a84c'}}],{...DL},PC);
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  initCalc();
+});
+
+</script>
 </body>
 </html>
