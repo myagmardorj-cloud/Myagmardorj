@@ -165,49 +165,37 @@ body.mn [data-li="mn"]{display:inline;}
 }
 
 .MN{position:fixed;top:0;left:0;right:0;z-index:900;height:52px;display:flex;align-items:center;padding:0 1.5rem;gap:1rem;background:rgba(7,7,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
-.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;color:#eeeef8;text-decoration:none;letter-spacing:-.01em;margin-right:1rem;white-space:nowrap;}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;color:#eeeef8;text-decoration:none;margin-right:1rem;}
 .MN-links{display:flex;align-items:center;gap:.25rem;flex:1;}
 .MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;text-decoration:none;padding:.32rem .7rem;border-radius:8px;border:1px solid transparent;transition:all .2s;white-space:nowrap;}
-.MN-links a:hover,.MN-links a.MN-cur{color:#eeeef8;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1);}
-.MN-links a.MN-cur{color:#00d4ff;border-color:rgba(0,212,255,.2);background:rgba(0,212,255,.06);}
+.MN-links a:hover,.MN-cur{color:#eeeef8 !important;background:rgba(255,255,255,.07);}
+.MN-cur{color:#00d4ff !important;border-color:rgba(0,212,255,.2) !important;background:rgba(0,212,255,.06) !important;}
 .MN-more{position:relative;}
-.MN-more button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;background:none;border:1px solid transparent;padding:.32rem .7rem;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.MN-more button:hover{color:#eeeef8;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1);}
-.MN-dd{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#0e0e1c;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.5rem;min-width:180px;box-shadow:0 20px 40px rgba(0,0,0,.5);z-index:999;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:500;color:#9999b8;background:none;border:1px solid transparent;padding:.32rem .7rem;border-radius:8px;cursor:pointer;transition:all .2s;}
+.MN-more>button:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#0e0e1c;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.5rem;min-width:180px;box-shadow:0 20px 40px rgba(0,0,0,.5);z-index:9999;}
 .MN-dd.open{display:block;}
 .MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:#9999b8;text-decoration:none;padding:.4rem .8rem;border-radius:8px;transition:all .15s;}
-.MN-dd a:hover,.MN-dd a.MN-cur{color:#eeeef8;background:rgba(255,255,255,.07);}
-.MN-dd a.MN-cur{color:#00d4ff;}
+.MN-dd a:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
 .MN-lang{display:flex;gap:.3rem;margin-left:auto;}
 .MN-lb{font-size:.72rem;padding:.2rem .5rem;border-radius:6px;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a;cursor:pointer;transition:all .2s;}
 .MN-lb.MN-active{color:#eeeef8;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06);}
-@media(max-width:768px){.MN-links a:not(:first-child):not(.MN-more a){display:none;}.MN-more{display:flex;}}
-
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:900;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.85);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.06);font-size:.72rem;}
+.MN-foot-left{color:#5a5a7a;}
+.MN-foot-center{display:flex;gap:1rem;}
+.MN-foot-center a{color:#9999b8;text-decoration:none;transition:color .2s;}
+.MN-foot-center a:hover{color:#eeeef8;}
+.MN-foot-right a{color:#5a5a7a;text-decoration:none;}
+body{padding-top:60px;padding-bottom:52px;}
 </style>
 </head>
 <body class="mn">
-
-<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
-<div class="grid-bg"></div>
-
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
-    <div class="modal-tag" id="m-tag"></div>
-    <div class="modal-title" id="m-title"></div>
-    <div class="modal-body" id="m-body"></div>
-    <div class="modal-tools" id="m-tools"></div>
-  </div>
-</div>
-
 <nav class="MN">
 <a href="/paper1/" class="MN-logo">Nexcore Research</a>
 <div class="MN-links">
 <a href="/paper1/" class="MN-cur"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
-<span class="MN-more">
-<button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
 <div class="MN-dd">
 <a href="/paper1/#charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
 <a href="/paper1/#calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
@@ -231,6 +219,22 @@ body.mn [data-li="mn"]{display:inline;}
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
+
+<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<div class="grid-bg"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+    <div class="modal-tag" id="m-tag"></div>
+    <div class="modal-title" id="m-title"></div>
+    <div class="modal-body" id="m-body"></div>
+    <div class="modal-tools" id="m-tools"></div>
+  </div>
+</div>
+
+
 
 <div class="wrap">
   <div class="page-header">
@@ -381,10 +385,7 @@ body.mn [data-li="mn"]{display:inline;}
     <div class="quote-src">clay.math.org · arxiv.org · wikipedia.org · 2026</div>
   </div>
 
-  <footer>
-    <span>Myagmardorj Namnansuren · Mongolia · 2026</span>
-    <span>DOI: 10.5281/zenodo.20077673</span>
-  </footer>
+  
 </div>
 
 <script>
@@ -537,3 +538,18 @@ if (saved) setLang(saved); else setLang('mn');
 </script>
 </body>
 </html>
+<footer class="MN-foot">
+<span class="MN-foot-left"><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div class="MN-foot-center">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+</div>
+<span class="MN-foot-right"><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
+</footer>
+<script>
+function MN_toggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');document.addEventListener('click',function close(e){if(!btn.parentElement.contains(e.target)){dd.classList.remove('open');document.removeEventListener('click',close);}});}
+function setLang(l){document.querySelectorAll('[data-li]').forEach(function(e){e.style.display=e.dataset.li===l?'':'none';});document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',b.dataset.l===l);});}
+</script>
+</body></html>

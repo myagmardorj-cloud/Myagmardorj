@@ -62,8 +62,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <div class="MN-links">
 <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
-<span class="MN-more">
-<button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
 <div class="MN-dd">
 <a href="/paper1/#charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
 <a href="/paper1/#calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
@@ -73,7 +72,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт хариулт</span></a>
 <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
-<a href="/paper1/references.html" class="MN-cur"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+<a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
 <a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a>
 <a href="/paper1/discussion.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
 <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
@@ -87,22 +86,266 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
-<nav class="MN">
-<a href="/index.html" class="MN-logo">Nexcore Research</a>
-<div class="MN-links">
-<a href="/paper1/"><span data-li="en">Results · Formalism · More ▼ · ENG/MON
-<footer class="MN-foot">
-<span class="MN-foot-left">
-  <span data-li="en">Computational observations only — not a proof of RH</span>
-  <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
-</span>
-<div class="MN-foot-center">
-  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
-  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-  <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Судалгааны баримтууд</span></div>
+    <h2><span data-li="en">Code, Notes & Paper</span><span data-li="mn">Код, Тэмдэглэл & Өгүүлэл</span></h2>
+    <p class="prose" style="margin-bottom:2rem;"><span data-li="en">All source files from the GitHub repository, with explanations. Click any file to expand.</span><span data-li="mn">GitHub репозиторийн бүх файл тайлбарын хамт. Файл дарж задлаарай.</span></p>
+
+    <!-- FILE 1: analyze.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🐍</span>
+        <div class="file-meta">
+          <span class="file-name">analyze.py</span>
+          <div class="file-desc"><span data-li="en">Main analysis script — computes BK amplitude law correlation across zero datasets.</span><span data-li="mn">Гол шинжилгээний скрипт — BK амплитудын хуулийн корреляцийг тооцоолно.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">SciPy</span><span class="file-tag">Matplotlib</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-li="en">Loads Odlyzko zero data, computes spacing covariances C(h) for prime lags h=p, then tests the BK prediction A(p) ~ (log p)²/p using Pearson correlation. Outputs r value, p-value, and scatter plot.</span>
+            <span data-li="mn">Одлызкогийн тэгийн өгөгдлийг уншиж, прайм лаг h=p дээрх зайн ковариансыг C(h) тооцоолоод, Pearson корреляц ашиглан BK таамаглал A(p) ~ (log p)²/p-г шалгана. r утга, p-value, scatter plot гаргана.</span>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-li="en">Load zeros from <code>zeros4.txt</code> (Odlyzko high-T data)</span><span data-li="mn"><code>zeros4.txt</code>-аас тэгүүдийг уншина (Одлызкогийн өндөр-T өгөгдөл)</span></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text"><span data-li="en">Compute spacings δₙ = γₙ₊₁ − γₙ and center them</span><span data-li="mn">δₙ = γₙ₊₁ − γₙ зайнуудыг тооцоолж, төвлүүлнэ</span></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text"><span data-li="en">For each prime p: compute covariance C(p) = mean(δₙ · δₙ₊ₚ)</span><span data-li="mn">Прайм p бүрт: ковариансыг C(p) = mean(δₙ · δₙ₊ₚ) тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text"><span data-li="en">Compute Pearson r between C(p) and (log p)²/p</span><span data-li="mn">C(p) болон (log p)²/p хооронд Pearson r тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text"><span data-li="en">Save scatter plot → <code>scatter.png</code></span><span data-li="mn">Scatter plot хадгална → <code>scatter.png</code></span></div></div>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre id="code-analyze"><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+<span class="kw">from</span> scipy.stats <span class="kw">import</span> pearsonr
+
+<span class="cm"># Load zero heights</span>
+x = np.<span class="fn">loadtxt</span>(<span class="st">"zeros4.txt"</span>)
+
+<span class="cm"># Spacings</span>
+d = np.<span class="fn">diff</span>(x)
+d = d - d.<span class="fn">mean</span>()  <span class="cm"># center</span>
+
+primes = [<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>]
+vals = []
+
+<span class="kw">for</span> p <span class="kw">in</span> primes:
+    a = d[:-p]
+    b = d[p:]
+    c = np.<span class="fn">mean</span>(a<span class="op">*</span>b)  <span class="cm"># covariance at lag p</span>
+    vals.<span class="fn">append</span>(c)
+
+vals = np.<span class="fn">array</span>(vals)
+target = (np.<span class="fn">log</span>(primes)<span class="op">**</span><span class="nm">2</span>) <span class="op">/</span> np.<span class="fn">array</span>(primes)
+
+<span class="cm"># BK amplitude law test</span>
+r, pv = <span class="fn">pearsonr</span>(vals, target)
+<span class="fn">print</span>(<span class="st">"correlation ="</span>, r)
+<span class="fn">print</span>(<span class="st">"p-value ="</span>, pv)
+
+<span class="cm"># Scatter plot</span>
+plt.<span class="fn">scatter</span>(target, vals)
+plt.<span class="fn">xlabel</span>(<span class="st">r'$(\log p)^2/p$'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Amplitude'</span>)
+plt.<span class="fn">title</span>(<span class="st">'Prime-Locked Excess'</span>)
+plt.<span class="fn">savefig</span>(<span class="st">"scatter.png"</span>, dpi=<span class="nm">200</span>)</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 2: 01_power_spectrum.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📊</span>
+        <div class="file-meta">
+          <span class="file-name">code/01_power_spectrum.py</span>
+          <div class="file-desc"><span data-li="en">Computes the power spectrum S(τ) of Riemann zeros and plots peaks at prime frequencies.</span><span data-li="mn">Риман тэгүүдийн S(τ) power spectrum тооцоолж, прайм давтамж дээрх оргилуудыг зурна.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">Fourier</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-li="en">Computes S(τ) = |Σ e^{iτγₙ}|²/N for a range of τ values, then marks the prime frequencies τ_p = log(p)/2π on the spectrum. This was the first analysis that showed excess signal at prime positions.</span>
+            <span data-li="mn">τ утгуудын мужид S(τ) = |Σ e^{iτγₙ}|²/N тооцоолж, спектр дээр прайм давтамж τ_p = log(p)/2π-г тэмдэглэнэ. Энэ нь прайм позиц дээр илүүдэл дохио харуулсан анхны шинжилгээ байв.</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre><span class="cm">"""Тэгүүдийн power spectrum S(tau) тооцоолох"""</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+<span class="kw">def</span> <span class="fn">power_spectrum</span>(tau, gamma):
+    <span class="st">"""S(tau) = |Σ e^{i τ γ_n}|² / N"""</span>
+    N = <span class="fn">len</span>(gamma)
+    Z = np.<span class="fn">sum</span>(np.<span class="fn">exp</span>(<span class="nm">1j</span> <span class="op">*</span> tau <span class="op">*</span> gamma))
+    <span class="kw">return</span> np.<span class="fn">abs</span>(Z)<span class="op">**</span><span class="nm">2</span> <span class="op">/</span> N
+
+<span class="cm"># Prime frequencies τ_p = log(p) / 2π</span>
+primes = np.<span class="fn">array</span>([<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>])
+tau_p = np.<span class="fn">log</span>(primes) <span class="op">/</span> (<span class="nm">2</span><span class="op">*</span>np.pi)
+
+<span class="cm"># Full spectrum</span>
+tau_all = np.<span class="fn">linspace</span>(<span class="nm">0</span>, <span class="nm">0.8</span>, <span class="nm">1000</span>)
+S_all = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_all])
+S_obs = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_p])</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 3: framework_summary.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📐</span>
+        <div class="file-meta">
+          <span class="file-name">notes/framework_summary.md</span>
+          <div class="file-desc"><span data-li="en">Mellin operator framework — the mathematical foundation connecting prime operators to zeta zeros.</span><span data-li="mn">Меллин операторын хүрээ — прайм операторуудыг зета тэгүүдтэй холбосон математик суурь.</span></div>
+          <div class="file-tags"><span class="file-tag">Mathematics</span><span class="file-tag">Operator Theory</span><span class="file-tag">L²</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Mathematical framework</span><span data-li="mn">Математик хүрээ</span></div>
+            <span data-li="en">The Mellin transform framework provides an operator-theoretic explanation for why prime frequencies appear in zeta zero statistics. The key result is that the prime convolution operator acts as a multiplier via −ζ'/ζ.</span>
+            <span data-li="mn">Меллин хувиргалтын хүрээ нь прайм давтамжууд яагаад зета тэгийн статистикт гарч ирдгийг операторын онолоор тайлбарлана. Гол үр дүн нь прайм конволюцийн оператор −ζ'/ζ-ээр үржигч болж ажиллана.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#c9a84c;">## Hilbert space</span>
+H = L²((0,∞), dx/x)
+
+<span style="color:#c9a84c;">## Mellin transform</span>
+(Mf)(τ) = (1/√(2π)) ∫₀^∞ f(x) x^{-iτ} dx/x
+
+<span style="color:#c9a84c;">## Prime operator</span>
+(P_σ f)(x) = Σ_{n≥1} Λ(n)/n^σ · f(x/n)
+
+<span style="color:#c9a84c;">## Multiplier theorem  ← KEY RESULT</span>
+M[P_σ f](τ) = -ζ'(σ+iτ)/ζ(σ+iτ) · Mf(τ)
+
+<span style="color:#c9a84c;">## Energy identity</span>
+E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 4: failure_analysis.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🔍</span>
+        <div class="file-meta">
+          <span class="file-name">notes/failure_analysis.md</span>
+          <div class="file-desc"><span data-li="en">Why the initial BK amplitude test failed — and how the correct normalization was discovered.</span><span data-li="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
+          <div class="file-tags"><span class="file-tag">Analysis</span><span class="file-tag">Normalization</span><span class="file-tag">Debugging</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
+            <span data-li="en">Initial results showed r ≈ 0.4–0.6, suggesting BK law was not confirmed. The problem was the normalization: using τ_p = log(p)/2π (low-T formula) instead of the correct high-T unfolded frequency τ_p = log(p)/log(T/2π). Using the corrected normalization produced r ≈ 0.014 in this dataset.</span>
+            <span data-li="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Зассаны дараа r = 0.014 гарсан.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## ❌ WRONG normalization (low-T)</span>
+τ_p = log(p) / (2π)
+<span style="color:#585b70;"># → r ≈ 0.4–0.6, BK not confirmed</span>
+
+<span style="color:#4caf7d;">## ✅ CORRECT normalization (high-T unfolded)</span>
+τ_p = log(p) / log(T / 2π)
+<span style="color:#585b70;"># → r = 0.014</span>
+
+<span style="color:#c9a84c;">## Why this matters</span>
+<span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
+# The "unfolded" coordinate accounts for this
+# Montgomery's pair correlation uses this normalization</span></pre>
+          </div>
+          <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
+            <div class="note-label" style="color:var(--green);">Lesson learned</div>
+            <span data-li="en">Scientific failures are valuable. This failure led directly to the key insight that produced r = 0.014.</span>
+            <span data-li="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл r = 0.014 гаргасан гол ойлголтод шууд хүргэсэн.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 5: main.tex -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📝</span>
+        <div class="file-meta">
+          <span class="file-name">paper/main.tex</span>
+          <div class="file-desc"><span data-li="en">LaTeX source for the full research paper — the formal write-up of all results.</span><span data-li="mn">Бүрэн судалгааны өгүүллийн LaTeX эх — бүх үр дүнгийн албан ёсны бичгийн хэлбэр.</span></div>
+          <div class="file-tags"><span class="file-tag">LaTeX</span><span class="file-tag">PDF</span><span class="file-tag">Preprint</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Paper structure</span><span data-li="mn">Өгүүллийн бүтэц</span></div>
+            <span data-li="en">The paper contains: Abstract, Introduction (BK background), Methods (spacing covariance, normalization), Results (table with r values for all 3 datasets), Discussion, Limitations, Conclusion.</span>
+            <span data-li="mn">Өгүүлэл дараах хэсгүүдийг агуулна: Хураангуй, Танилцуулга (BK суурь), Арга (зайн ковариансыг, нормализаци), Үр дүн (3 датасетийн r утгын хүснэгт), Хэлэлцүүлэг, Хязгаарлалтууд, Дүгнэлт.</span>
+          </div>
+          <div style="margin-top:1rem;">
+            <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;">
+              <span class="li">📄</span><div><span class="lt"><span data-li="en">Download preprint</span><span data-li="mn">Preprint татах</span></span><span class="ld">zenodo.org/records/20077673</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
 </div>
-<span class="MN-foot-right">
-  <a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a>
-</span>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+});
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
+
+</body>
+</html>
+<footer class="MN-foot">
+<span class="MN-foot-left"><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div class="MN-foot-center">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+</div>
+<span class="MN-foot-right"><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
 </footer>
+<script>
+function MN_toggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');document.addEventListener('click',function close(e){if(!btn.parentElement.contains(e.target)){dd.classList.remove('open');document.removeEventListener('click',close);}});}
+function setLang(l){document.querySelectorAll('[data-li]').forEach(function(e){e.style.display=e.dataset.li===l?'':'none';});document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',b.dataset.l===l);});}
+</script>
+</body></html>

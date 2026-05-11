@@ -62,8 +62,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <div class="MN-links">
 <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
 <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
-<span class="MN-more">
-<button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
 <div class="MN-dd">
 <a href="/paper1/#charts"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
 <a href="/paper1/#calculator"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
@@ -72,7 +71,7 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.4rem 0;">
 <a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
 <a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт хариулт</span></a>
-<a href="/paper1/methods.html" class="MN-cur"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
 <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
 <a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a>
 <a href="/paper1/discussion.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
@@ -87,22 +86,79 @@ body{padding-top:56px !important;padding-bottom:52px !important;}
 <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
 </div>
 </nav>
-<nav class="MN">
-<a href="/index.html" class="MN-logo">Nexcore Research</a>
-<div class="MN-links">
-<a href="/paper1/"><span data-li="en">Results · Formalism · More ▼ · ENG/MON
-<footer class="MN-foot">
-<span class="MN-foot-left">
-  <span data-li="en">Computational observations only — not a proof of RH</span>
-  <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
-</span>
-<div class="MN-foot-center">
-  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
-  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-  <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Methods</span><span data-li="mn">Арга зүй</span></div>
+    <h2><span data-li="en">How the Analysis Works</span><span data-li="mn">Шинжилгээний арга</span></h2>
+    <div class="prose">
+      <span data-li="en">
+        <h3>1. Data</h3>
+        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros2 (100K zeros, T≈74,920), zeros3 (~10K zeros near T~10¹²), zeros4 (~10K zeros near T~10¹³).</p>
+        <h3>2. Spacing Covariance</h3>
+        <p>Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</p>
+      </span>
+      <span data-li="mn">
+        <h3>1. Өгөгдөл</h3>
+        <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</p>
+        <h3>2. Spacing Covariance</h3>
+        <p>δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</p>
+      </span>
+    </div>
+    <div class="formula-block" style="margin:1.5rem 0;">C(h) = (1/N−h) Σ (δₙ − δ̄)(δₙ₊ₕ − δ̄)</div>
+    <div class="prose">
+      <span data-li="en">
+        <h3>3. Key Normalization</h3>
+        <p>The correct prime frequency at height T is <code>τ_p = log(p) / log(T/2π)</code>. This unfolded normalization is essential — using <code>log(p)/2π</code> gives weak results (r≈0.4–0.6).</p>
+        <h3>4. BK Predictor</h3>
+        <p>Bogomolny–Keating (1996) predicted amplitude <code>A(p) ~ C·(log p)²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)²/p.</p>
+        <h3>5. Statistical Significance</h3>
+        <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as — — but see bootstrap controls for corrected estimates.</p>
+      </span>
+      <span data-li="mn">
+        <h3>3. Гол нормализаци</h3>
+        <p>T өндөрт зөв прайм давтамж нь <code>τ_p = log(p) / log(T/2π)</code>. Энэ задгай нормализаци зайлшгүй — <code>log(p)/2π</code> ашиглавал сул үр дүн (r≈0.4–0.6) гардаг.</p>
+        <h3>4. BK Таамаглагч</h3>
+        <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) хооронд Pearson корреляц тооцооллодог.</p>
+        <h3>5. Статистик ач холбогдол</h3>
+        <p>Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистикийн тодорхой артефакт биш гэж үзэж болно. Наив p = — — bootstrap-ийн засварласан тооцооллыг харна уу.</p>
+      </span>
+    </div>
+  </div>
+  
 </div>
-<span class="MN-foot-right">
-  <a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a>
-</span>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.MN-more')) document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});
+});
+(function(){setLang(localStorage.getItem('lang')||'en');})();
+</script>
+
+</body>
+</html>
+<footer class="MN-foot">
+<span class="MN-foot-left"><span data-li="en">Computational observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+<div class="MN-foot-center">
+<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
+<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+</div>
+<span class="MN-foot-right"><a href="https://zenodo.org/records/20077673" style="color:inherit;">DOI: 10.5281/zenodo.20077673</a></span>
 </footer>
+<script>
+function MN_toggle(btn){var dd=btn.nextElementSibling;dd.classList.toggle('open');document.addEventListener('click',function close(e){if(!btn.parentElement.contains(e.target)){dd.classList.remove('open');document.removeEventListener('click',close);}});}
+function setLang(l){document.querySelectorAll('[data-li]').forEach(function(e){e.style.display=e.dataset.li===l?'':'none';});document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',b.dataset.l===l);});}
+</script>
+</body></html>
