@@ -465,10 +465,17 @@ document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))M
 </script>
 
 
-<footer style="position:fixed;bottom:0;left:0;right:0;z-index:500;height:42px;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a;font-family:'JetBrains Mono',monospace;">
-<span>Computational observations only — not a theorem or proof of RH.</span>
-<div style="display:flex;"><a href="index.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Results</a><a href="verify.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Verify</a><a href="intro.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Intro</a><a href="landscape.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Landscape</a><a href="formalism.html" style="color:#5a5a7a;text-decoration:none;padding:.2rem .5rem;">Formalism</a></div>
-<span>v1.0.0 · <a href="https://zenodo.org/records/20077673" style="color:#5a5a7a;">DOI</a></span>
+<footer class="MN-foot">
+<span class="MN-foot-left">
+  <span data-li="en">Nexcore Research Platform · Open computational archive</span>
+  <span data-li="mn">Nexcore Судалгааны Платформ · Нээлттэй тооцооллын архив</span>
+</span>
+<div class="MN-foot-center">
+  <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Зураг</span></a>
+  <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Харьцуулалт</span></a>
+</div>
+<span class="MN-foot-right">v1.0.0</span>
 </footer>
 <script>
 function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
