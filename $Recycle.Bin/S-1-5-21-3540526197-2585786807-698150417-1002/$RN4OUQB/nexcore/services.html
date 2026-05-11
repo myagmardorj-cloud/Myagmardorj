@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Үйлчилгээ — NexCore</title>
+<meta name="description" content="NexCore-ийн бүх IT үйлчилгээний жагсаалт. Веб, мобайл, AI, клауд, дизайн.">
+<link rel="stylesheet" href="style.css">
+<style>
+.services-full {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.service-full-card {
+  background: var(--surface);
+  padding: 52px 48px;
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.service-full-card:hover { background: var(--surface2); }
+.service-full-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s;
+}
+.service-full-card:hover::after { transform: scaleX(1); }
+.service-full-icon {
+  width: 60px; height: 60px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  background: rgba(0,245,196,0.04);
+  margin-bottom: 28px;
+  transition: border-color 0.3s;
+}
+.service-full-card:hover .service-full-icon { border-color: var(--border-hover); }
+.service-full-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem; font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.service-full-card > p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+.service-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.service-features li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.88rem; color: var(--muted);
+}
+.service-features li::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.service-tech {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 24px;
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.price-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 44px 36px;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.price-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+.price-card.featured {
+  border-color: rgba(0,245,196,0.3);
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(0,245,196,0.03) 100%);
+}
+.price-badge {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--accent); color: #000;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 100px;
+}
+.price-tier {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--muted); margin-bottom: 16px;
+}
+.price-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.8rem; font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #fff; margin-bottom: 4px;
+}
+.price-amount span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.price-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 28px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.price-features li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.88rem;
+}
+.price-features li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Tech stack */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.tech-item {
+  background: var(--surface);
+  padding: 28px 20px;
+  text-align: center;
+  transition: background 0.25s;
+}
+.tech-item:hover { background: var(--surface2); }
+.tech-item span { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+.tech-item p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+@media (max-width: 900px) {
+  .services-full { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="logo">Nex<span class="logo-dot">Core</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html" class="active">Үйлчилгээ</a></li>
+    <li><a href="projects.html">Төслүүд</a></li>
+    <li><a href="about.html">Бидний тухай</a></li>
+    <li><a href="team.html">Баг</a></li>
+    <li><a href="contact.html">Холбоо барих</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Ярилцацгаая</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="page-header-content">
+    <span class="section-label">Үйлчилгээ</span>
+    <h1>Бизнесийг <em>Цахимжуулна</em></h1>
+    <p>Таны бизнесийн өсөлтийг дэмжих дэвшилтэт технологийн шийдлүүд. Жижиг стартапаас том корпорациас хүртэл.</p>
+  </div>
+</div>
+
+<!-- SERVICES FULL -->
+<section class="section">
+  <div class="services-full stagger-grid">
+    <div class="service-full-card">
+      <div class="service-full-icon">🌐</div>
+      <h3>Веб Хөгжүүлэлт</h3>
+      <p>Орчин үеийн технологи ашиглан хурдан, хайлтад тохиромжтой, мобайл дээр сайн харагдах веб сайт болон платформ бүтээнэ.</p>
+      <ul class="service-features">
+        <li>Хариу үйлдэлтэй вебийн дизайн (Responsive)</li>
+        <li>Single Page Application (SPA)</li>
+        <li>E-commerce платформ</li>
+        <li>Удирдлагын хяналтын самбар</li>
+        <li>API интеграци</li>
+        <li>SEO оновчлол</li>
+      </ul>
+      <div class="service-tech">
+        <span class="tag">React</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">Vue.js</span>
+        <span class="tag">TypeScript</span>
+      </div>
+    </div>
+    <div class="service-full-card">
+      <div class="service-full-icon">📱</div>
+      <h3>Мобайл Апп Хөгжүүлэлт</h3>
+      <p>iOS болон Android дээр гүйцэтгэл өндөртэй, хэрэглэхэд хялбар мобайл аппликейшн бүтээнэ.</p>
+      <ul class="service-features">
+        <li>Cross-platform (Flutter, React Native)</li>
+        <li>Native iOS (Swift)</li>
+        <li>Native Android (Kotlin)</li>
+        <li>Push мэдэгдэл</li>
+        <li>Офлайн ажиллагаа</li>
+        <li>App Store / Play Store нийтлэлт</li>
+      </ul>
+      <div class="service-tech">
+        <span class="tag">Flutter</span>
+        <span class="tag">React Native</span>
+        <span class="tag">Swift</span>
+        <span class="tag">Kotlin</span>
+      </div>
+    </div>
+    <div class="service-full-card">
+      <div class="service-full-icon">☁️</div>
+      <h3>Клауд Шийдэл</h3>
+      <p>AWS, Azure, Google Cloud дэд бүтцийг ашиглан хэмжээ уян хатан, өртөг хэмнэлттэй систем байгуулна.</p>
+      <ul class="service-features">
+        <li>Cloud migration стратеги</li>
+        <li>Serverless архитектур</li>
+        <li>Container (Docker, Kubernetes)</li>
+        <li>CI/CD pipeline</li>
+        <li>24/7 хяналт ба дохиолол</li>
+        <li>Нөөцлөлт ба сэргээлт</li>
+      </ul>
+      <div class="service-tech">
+        <span class="tag">AWS</span>
+        <span class="tag">Azure</span>
+        <span class="tag">GCP</span>
+        <span class="tag">Docker</span>
+      </div>
+    </div>
+    <div class="service-full-card">
+      <div class="service-full-icon">🤖</div>
+      <h3>Хиймэл Оюун & ML</h3>
+      <p>Machine learning загвар, байгалийн хэлний боловсруулалт, дата шинжилгээний дэвшилтэт шийдлүүд.</p>
+      <ul class="service-features">
+        <li>GPT-д суурилсан чатбот</li>
+        <li>Зураг таних систем</li>
+        <li>Урьдчилсан таамаглал (Prediction)</li>
+        <li>Зөвлөмжийн систем</li>
+        <li>Дата дүрслэлт ба дашбоард</li>
+        <li>ML загварын deploymenт</li>
+      </ul>
+      <div class="service-tech">
+        <span class="tag">Python</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">LangChain</span>
+      </div>
+    </div>
+    <div class="service-full-card">
+      <div class="service-full-icon">🛡️</div>
+      <h3>Кибер Аюулгүй Байдал</h3>
+      <p>Таны системийн аюулгүй байдлыг хангах иж бүрэн шийдэл — шалгалтаас хамгаалалт хүртэл.</p>
+      <ul class="service-features">
+        <li>Нэвтрэлтийн туршилт (Pentest)</li>
+        <li>Кодын аюулгүй байдлын аудит</li>
+        <li>DDOS хамгаалалт</li>
+        <li>Zero Trust архитектур</li>
+        <li>Хэрэглэгчийн баталгаажуулалт (IAM)</li>
+        <li>Аюул заналхийллийн хяналт</li>
+      </ul>
+      <div class="service-tech">
+        <span class="tag">OWASP</span>
+        <span class="tag">Vault</span>
+        <span class="tag">WAF</span>
+        <span class="tag">SIEM</span>
+      </div>
+    </div>
+    <div class="service-full-card">
+      <div class="service-full-icon">🎨</div>
+      <h3>UI/UX Дизайн</h3>
+      <p>Хэрэглэгч төвтэй дизайны үйл явц — судалгаагаас эхлэн эцсийн визуал дизайн хүртэл.</p>
+      <ul class="service-features">
+        <li>Хэрэглэгчийн судалгаа (User Research)</li>
+        <li>Wireframe ба прототип</li>
+        <li>Дизайн систем</li>
+        <li>Ашиглалтын туршилт</li>
+        <li>Брэндийн дизайн</li>
+        <li>Motion дизайн</li>
+      </ul>
+      <div class="service-tech">
+        <span class="tag">Figma</span>
+        <span class="tag">Framer</span>
+        <span class="tag">Adobe XD</span>
+        <span class="tag">Lottie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TECH STACK -->
+<section class="section">
+  <span class="section-label">Технологи</span>
+  <h2 class="section-title">Бид ашигладаг <em>технологиуд</em></h2>
+  <div class="tech-grid">
+    <div class="tech-item reveal"><span>⚛️</span><p>React</p></div>
+    <div class="tech-item reveal" data-delay="50"><span>🔺</span><p>Next.js</p></div>
+    <div class="tech-item reveal" data-delay="100"><span>📱</span><p>Flutter</p></div>
+    <div class="tech-item reveal" data-delay="150"><span>🟢</span><p>Node.js</p></div>
+    <div class="tech-item reveal" data-delay="200"><span>🐍</span><p>Python</p></div>
+    <div class="tech-item reveal" data-delay="250"><span>☁️</span><p>AWS</p></div>
+    <div class="tech-item reveal" data-delay="300"><span>🐳</span><p>Docker</p></div>
+    <div class="tech-item reveal" data-delay="350"><span>⚙️</span><p>Kubernetes</p></div>
+    <div class="tech-item reveal" data-delay="400"><span>🔥</span><p>Firebase</p></div>
+    <div class="tech-item reveal" data-delay="450"><span>🗄️</span><p>PostgreSQL</p></div>
+    <div class="tech-item reveal" data-delay="500"><span>🤖</span><p>OpenAI</p></div>
+    <div class="tech-item reveal" data-delay="550"><span>🎨</span><p>Figma</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="section">
+  <span class="section-label">Үнийн санал</span>
+  <h2 class="section-title centered">Таны төсөвт <em>тохирсон</em> сонголт</h2>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-tier">Стартап</div>
+      <div class="price-amount">Хэлэлцэх <span>/ төсөл</span></div>
+      <p class="price-desc">Жижиг бизнес, стартапт тохиромжтой.</p>
+      <ul class="price-features">
+        <li>Веб эсвэл мобайл (нэг платформ)</li>
+        <li>Хэрэглэгчийн дизайн</li>
+        <li>3 сарын техник дэмжлэг</li>
+        <li>Суурь SEO</li>
+        <li>Эх код хүлээлгэх</li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center">Холбогдох</a>
+    </div>
+    <div class="price-card featured reveal" data-delay="100">
+      <div class="price-badge">Хамгийн Алдартай</div>
+      <div class="price-tier">Бизнес</div>
+      <div class="price-amount">Хэлэлцэх <span>/ төсөл</span></div>
+      <p class="price-desc">Ургаж буй компанид зориулсан иж бүрэн шийдэл.</p>
+      <ul class="price-features">
+        <li>Веб + мобайл хоёулаа</li>
+        <li>Клауд дэд бүтэц</li>
+        <li>6 сарын техник дэмжлэг</li>
+        <li>Дата шинжилгээ</li>
+        <li>API интеграци</li>
+        <li>Performance оновчлол</li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Холбогдох</a>
+    </div>
+    <div class="price-card reveal" data-delay="200">
+      <div class="price-tier">Энтерпрайс</div>
+      <div class="price-amount">Хэлэлцэх <span>/ жил</span></div>
+      <p class="price-desc">Том байгууллагад зориулсан дэвшилтэт шийдэл.</p>
+      <ul class="price-features">
+        <li>Иж бүрэн дижитал шийдэл</li>
+        <li>AI/ML интеграци</li>
+        <li>12 сарын дэмжлэг</li>
+        <li>Кибер аюулгүй байдал</li>
+        <li>Dedicated project manager</li>
+        <li>SLA баталгаа</li>
+      </ul>
+      <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center">Холбогдох</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Nex<span class="logo-dot">Core</span></a>
+      <p>Монголын бизнесийг дижитал ертөнцөд тэргүүлүүлэх зорилготой IT компани.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="#" class="social-btn">gh</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Үйлчилгээ</h5>
+      <ul>
+        <li><a href="services.html">Веб Хөгжүүлэлт</a></li>
+        <li><a href="services.html">Мобайл Апп</a></li>
+        <li><a href="services.html">Клауд</a></li>
+        <li><a href="services.html">AI & ML</a></li>
+        <li><a href="services.html">Кибер Аюулгүй</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Компани</h5>
+      <ul>
+        <li><a href="about.html">Бидний тухай</a></li>
+        <li><a href="team.html">Баг</a></li>
+        <li><a href="projects.html">Төслүүд</a></li>
+        <li><a href="#">Карьер</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Холбоо барих</h5>
+      <ul>
+        <li><a href="mailto:myagmardorj@gmail.com">myagmardorj@gmail.com</a></li>
+        <li><a href="tel:+97699113872">+976 9911-3872</a></li>
+        <li><a href="contact.html">Улаанбаатар, Монгол</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NexCore LLC. Бүх эрх хуулиар хамгаалагдсан.</span>
+    <span>Нууцлалын бодлого · Үйлчилгээний нөхцөл</span>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

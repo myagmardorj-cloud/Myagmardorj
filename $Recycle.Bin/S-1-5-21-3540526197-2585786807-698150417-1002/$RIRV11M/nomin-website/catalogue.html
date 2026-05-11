@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="mn"><head>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta name="theme-color" content="#1a2f7a">
+
+  <link rel="manifest" href="/manifest.json"><meta charset="UTF-8">
+<meta name="google-site-verification" content="YOUR_GSC_VERIFICATION_CODE_HERE"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://hunygqumohxinhndrcph.supabase.co" crossorigin>
+<link rel="dns-prefetch" href="https://hunygqumohxinhndrcph.supabase.co">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Группын танилцуулга | НОМИН Холдинг</title>
+  <link rel="dns-prefetch" href="https://hunygqumohxinhndrcph.supabase.co">
+  <meta name="description" content="НОМИН Холдинг группын танилцуулга каталог татах.">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=99">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T438RETRWL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T438RETRWL');
+</script>
+<link rel="canonical" href="https://silver.nomin.io/catalogue">
+<meta property="og:image" content="https://cdn.prod.website-files.com/5e2015b20c12243ff3623e9a/66570531ffa86494bd75a2b0_444761555_848410547313384_4275035861788166114_n.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+
+<meta property="og:url" content="https://silver.nomin.io/catalogue.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="НОМИН Холдинг ХХК">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "НОМИН Холдинг ХХК",
+  "alternateName": "Nomin Holding",
+  "url": "https://silver.nomin.io",
+  "logo": "https://silver.nomin.io/assets/nomin-logo.svg",
+  "foundingDate": "1992",
+  "numberOfEmployees": {"@type": "QuantitativeValue", "value": 6200},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Чингисийн өргөн чөлөө 15, Номин Юнайтед",
+    "addressLocality": "Улаанбаатар",
+    "addressCountry": "MN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+976-1800-2888",
+    "contactType": "customer service",
+    "availableLanguage": ["Mongolian","English","Russian"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/NominHoldingOfficial",
+    "https://www.youtube.com/channel/UCR7Sz7SYZAi782AnYuXOWzQ",
+    "https://nomin.mn"
+  ]
+}
+</script>
+<script src="assets/i18n-loader.js?v=99" defer></script>
+<script src="assets/stats-sync.js?v=99" defer></script>
+<!-- Performance Monitoring -->
+<script>
+// Web Vitals + Custom Monitoring
+(function() {
+  var SITE = 'silver.nomin.io';
+  
+  // Core Web Vitals
+  function reportVital(name, value, rating) {
+    // Supabase-д log хийх (optional)
+    if(navigator.sendBeacon) {
+      var data = JSON.stringify({
+        metric: name, value: Math.round(value),
+        rating: rating, url: location.pathname,
+        ts: Date.now()
+      });
+      // navigator.sendBeacon('/api/vitals', data);
+    }
+  }
+  
+  // Largest Contentful Paint
+  new PerformanceObserver(function(list) {
+    var entries = list.getEntries();
+    var last = entries[entries.length-1];
+    var v = last.startTime;
+    reportVital('LCP', v, v < 2500 ? 'good' : v < 4000 ? 'needs-improvement' : 'poor');
+  }).observe({type:'largest-contentful-paint', buffered:true});
+  
+  // First Input Delay
+  new PerformanceObserver(function(list) {
+    list.getEntries().forEach(function(e) {
+      var v = e.processingStart - e.startTime;
+      reportVital('FID', v, v < 100 ? 'good' : v < 300 ? 'needs-improvement' : 'poor');
+    });
+  }).observe({type:'first-input', buffered:true});
+  
+  // Cumulative Layout Shift
+  var clsValue = 0;
+  new PerformanceObserver(function(list) {
+    list.getEntries().forEach(function(e) {
+      if(!e.hadRecentInput) clsValue += e.value;
+    });
+    reportVital('CLS', clsValue*1000, clsValue < 0.1 ? 'good' : clsValue < 0.25 ? 'needs-improvement' : 'poor');
+  }).observe({type:'layout-shift', buffered:true});
+  
+  // JS Error tracking
+  window.addEventListener('error', function(e) {
+    console.error('[JS Error]', e.filename, e.lineno, e.message);
+  });
+  
+  // Page load time
+  window.addEventListener('load', function() {
+    var nav = performance.getEntriesByType('navigation')[0];
+    if(nav) reportVital('PageLoad', nav.loadEventEnd - nav.startTime, 
+      nav.loadEventEnd < 3000 ? 'good' : 'needs-improvement');
+  });
+})();
+</script>
+<meta property="og:title" content="Группын танилцуулга | НОМИН Холдинг">
+<meta property="og:description" content="НОМИН Холдинг группын дэлгэрэнгүй танилцуулга — 32 жилийн туршлага, 45 охин компани.">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Группын танилцуулга | НОМИН Холдинг">
+<meta name="twitter:description" content="НОМИН Холдинг группын дэлгэрэнгүй танилцуулга — 32 жилийн туршлага, 45 охин компани.">
+<style>.skip-nav{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}.skip-nav:focus{position:fixed;top:0;left:0;width:auto;height:auto;padding:.75rem 1.25rem;background:#1a2f7a;color:#fff;font-size:.9rem;font-weight:700;z-index:9999;border-radius:0 0 8px 0;text-decoration:none}</style>
+</head><body>
+<a href="#main-content" class="skip-nav" aria-label="Үндсэн агуулга руу шилжих">Үндсэн агуулга руу шилжих</a>
+
+<section class="page-hero" data-page="catalogue" style="background:linear-gradient(135deg,#1a2f7a,#2a4fca);padding:4rem 0 3rem;color:#fff">
+  <div class="container" id="page-static">
+    <div class="breadcrumb"><a href="index.html"><span data-t="tx_9219f9a9"><span data-t="bc_home">Нүүр</span></span></a><span>/</span><span class="current" data-t="catalogue_h1">Группын танилцуулга</span></div>
+    <h1 style="color:#fff;font-family:Montserrat,sans-serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800" data-t="catalogue_h1"><span data-t="tx_6b5e79a3">Группын танилцуулга</span></h1>
+    <p style="color:rgba(255,255,255,.75)" data-t="catalogue_sub"><span data-t="tx_4aad4ef8">Танилцуулга файл болон видео</span></p>
+  </div>
+</section>
+
+<main id="main-content" role="main"><section class="section"><div class="container" style="max-width:1000px">
+
+  <div style="text-align:center;margin-bottom:3rem">
+    <div style="font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:.75rem" data-t="cat_label"><span data-t="tx_3020deb7">Бидний тухай</span></div>
+    <h2 style="font-family:Montserrat,sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:1rem" data-t="cat_title"><span data-t="tx_17952082">НОМИН Холдинг Группын танилцуулга</span></h2>
+    <p style="color:var(--text-sec);max-width:680px;margin:0 auto;line-height:1.85" data-t="cat_desc">
+      Бид компанийн нийгмийн хариуцлагын асуудалд хандахдаа үйлчлүүлэгчид, харилцагчид, ажилчид, нийгэм, байгаль орчинд эерэг нөлөөлөл үзүүлж, урт хугацаанд тогтвортой хөгжихөд хувь нэмрээ оруулдаг.
+    </p>
+  </div>
+
+  <!-- 2 main cards (auto-lang click) -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem" id="cat-cards">
+
+    <!-- PDF card — click opens current language -->
+    <div onclick="openCatPdfAuto()" id="cat-pdf-card" style="background:linear-gradient(135deg,#0f172a,#1a2f7a,#2a4fca);border-radius:16px;padding:2.25rem 1.5rem;color:#fff;cursor:pointer;transition:all .2s;opacity:.55" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(26,47,122,.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="text-align:center">
+        <svg width="48" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5" style="margin:0 auto .9rem;display:block"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:1.15rem" data-t="cat_file_title">Танилцуулга файл</div>
+      </div>
+    </div>
+
+    <!-- Video card — click opens current language -->
+    <div onclick="playCatVideoAuto()" id="cat-video-card" style="background:linear-gradient(135deg,#1a0a0a,#7c0000,#cc2200);border-radius:16px;padding:2.25rem 1.5rem;color:#fff;cursor:pointer;transition:all .2s;opacity:.55" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(204,0,0,.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="text-align:center">
+        <div style="width:64px;height:64px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .9rem">
+          <div style="width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:22px solid #cc0000;margin-left:4px"></div>
+        </div>
+        <div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:1.15rem" data-t="cat_video_title">Танилцуулга видео</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cat-pdf-unavail" style="display:none;text-align:center;font-size:.82rem;color:#94a3b8;margin-bottom:1rem">⚠️ PDF файл байршуулагдаагүй байна</div>
+  <div id="cat-video-unavail" style="display:none;text-align:center;font-size:.82rem;color:#94a3b8;margin-bottom:1rem">⚠️ Видео байршуулагдаагүй байна</div>
+
+  <!-- PDF Viewer (хуудасны дотор embed) -->
+  <div id="cat-pdf-viewer" style="margin-bottom:3rem;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,.08);display:none">
+    <div style="background:var(--navy);padding:.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <span id="cat-pdf-lang-badge" style="font-size:.65rem;font-weight:800;padding:2px 10px;border-radius:8px;background:rgba(255,255,255,.15);color:#fff"></span>
+        <span style="color:#fff;font-weight:700;font-size:.9rem">📄 Танилцуулга файл</span>
+        <span id="cat-pdf-loading" style="color:rgba(255,255,255,.6);font-size:.7rem;display:none">⏳ Ачаалж байна...</span>
+      </div>
+      <div style="display:flex;gap:.4rem;align-items:center">
+        <a id="cat-pdf-download" href="javascript:void(0)" download
+           style="background:rgba(255,255,255,.15);color:#fff;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:6px;text-decoration:none;cursor:pointer">💾 Татах</a>
+        <a id="cat-pdf-newtab" href="javascript:void(0)" target="_blank" rel="noopener noreferrer"
+           style="background:rgba(255,255,255,.15);color:#fff;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:6px;text-decoration:none;cursor:pointer">Шинэ цонхонд ↗</a>
+        <button onclick="closeCatPdf()"
+           style="background:rgba(255,255,255,.15);color:#fff;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:6px;border:none;cursor:pointer">✕ Хаах</button>
+      </div>
+    </div>
+    <div style="position:relative;background:#f5f5f5;min-height:800px;max-height:85vh;overflow-y:auto">
+      <div id="cat-pdf-loader" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:1">
+        <div style="width:40px;height:40px;border:3px solid #e0e7ef;border-top-color:#2563eb;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem"></div>
+        <div style="color:#64748b;font-size:.82rem">PDF ачаалж байна...</div>
+        <div style="color:#94a3b8;font-size:.7rem;margin-top:.3rem">Бүх хуудсыг бэлдэж байна</div>
+      </div>
+      <!-- PDF хуудсыг энд canvas хэлбэрээр зурна -->
+      <div id="cat-pdf-canvas-container" style="padding:1rem 0"></div>
+    </div>
+  </div>
+  <style>@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}</style>
+
+  <!-- YouTube embed — 4 хэлний видео -->
+  <div id="cat-video-player" style="margin-bottom:3rem;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,.08);display:none">
+    <div style="background:var(--navy);padding:.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <span id="cat-video-lang-badge" style="font-size:.65rem;font-weight:800;padding:2px 10px;border-radius:8px;background:rgba(255,255,255,.15);color:#fff"></span>
+        <span style="color:#fff;font-weight:700;font-size:.9rem" data-t="cat_video_title">▶ Танилцуулга видео</span>
+      </div>
+      <a id="cat-video-yt-link" href="javascript:void(0)" target="_blank" rel="noopener noreferrer"
+         style="background:rgba(255,255,255,.15);color:#fff;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:6px;text-decoration:none">YouTube-д нээх ↗</a>
+    </div>
+    <div style="position:relative;padding-bottom:56.25%;background:#000">
+      <iframe id="cat-video-iframe"
+        src=""
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
+        title="НОМИН Холдинг видео"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div style="background:var(--blue);border-radius:16px;padding:2.5rem;color:#fff;margin-bottom:3rem">
+    <div style="text-align:center;margin-bottom:1.75rem">
+      <div style="font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:.4rem"><span data-t="tx_6bf3dc20">НОМИН Холдинг</span></div>
+      <h3 style="font-family:Montserrat,sans-serif;font-weight:800;font-size:1.3rem;color:#fff" data-t="cat_stats_title"><span data-t="tx_303c7a69">Тоон үзүүлэлтүүд</span></h3>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;text-align:center">
+      <div><div style="font-family:Montserrat,sans-serif;font-size:1.6rem;font-weight:900">32+</div><div style="font-size:.7rem;opacity:.75;margin-top:.2rem" data-t="stat_exp"><span data-t="tx_277886e9">Жил туршлага</span></div></div>
+      <div><div style="font-family:Montserrat,sans-serif;font-size:1.6rem;font-weight:900">45</div><div style="font-size:.7rem;opacity:.75;margin-top:.2rem" data-t="stat_sub"><span data-t="tx_2a2b88ea"><span data-t="ab_subs">Охин компани</span></span></div></div>
+      <div><div style="font-family:Montserrat,sans-serif;font-size:1.6rem;font-weight:900">6,200+</div><div style="font-size:.7rem;opacity:.75;margin-top:.2rem" data-t="stat_emp"><span data-t="tx_51278ff9"><span data-t="ab_jobs">Ажилчид</span></span></div></div>
+      <div><div style="font-family:Montserrat,sans-serif;font-size:1.6rem;font-weight:900">260+</div><div style="font-size:.7rem;opacity:.75;margin-top:.2rem" data-t="stat_brand"><span data-t="tx_e8b9aa64"><span data-t="ab_brands_cnt">Брэнд</span></span></div></div>
+      <div><div style="font-family:Montserrat,sans-serif;font-size:1.6rem;font-weight:900">800K+</div><div style="font-size:.7rem;opacity:.75;margin-top:.2rem" data-t="stat_card"><span data-t="tx_b6295b09"><span data-t="ab_bonus">Бонус карт</span></span></div></div>
+      <div><div style="font-family:Montserrat,sans-serif;font-size:1.6rem;font-weight:900">2M+</div><div style="font-size:.7rem;opacity:.75;margin-top:.2rem" data-t="stat_cust"><span data-t="tx_19fc2c12">Үйлчлүүлэгч</span></div></div>
+    </div>
+  </div>
+
+  <!-- Sectors grid -->
+  <div style="text-align:center;margin-bottom:1.5rem">
+    <h3 style="font-family:Montserrat,sans-serif;font-weight:800;font-size:1.2rem" data-t="cat_sectors"><span data-t="tx_e2ab4381">6 бизнесийн чиглэл</span></h3>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:2.5rem">
+    <a href="sector-retail.html" style="background:#fff;padding:1.5rem;text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='#fff'">
+      <div style="font-size:.64rem;font-weight:700;color:var(--blue);margin-bottom:.4rem">01</div>
+      <div style="font-size:1.2rem;margin-bottom:.4rem">🏬</div>
+      <div style="font-weight:700;font-size:.9rem;color:var(--navy)" data-t="dd_retail"><span data-t="tx_194a2d77">Борлуулалт үйлчилгээ</span></div>
+      <div style="font-size:.75rem;color:var(--text-sec);margin-top:.2rem" data-t="cat_s1sub"><span data-t="tx_8959e5c2">13 охин компани</span></div>
+    </a>
+    <a href="sector-import.html" style="background:#fff;padding:1.5rem;text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='#fff'">
+      <div style="font-size:.64rem;font-weight:700;color:var(--blue);margin-bottom:.4rem">02</div>
+      <div style="font-size:1.2rem;margin-bottom:.4rem">📦</div>
+      <div style="font-weight:700;font-size:.9rem;color:var(--navy)" data-t="dd_import"><span data-t="tx_17165eeb">Импорт / Экспорт</span></div>
+      <div style="font-size:.75rem;color:var(--text-sec);margin-top:.2rem" data-t="cat_s2sub"><span data-t="tx_db6018ab">10 охин компани</span></div>
+    </a>
+    <a href="sector-finance.html" style="background:#fff;padding:1.5rem;text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='#fff'">
+      <div style="font-size:.64rem;font-weight:700;color:var(--blue);margin-bottom:.4rem">03</div>
+      <div style="font-size:1.2rem;margin-bottom:.4rem">💳</div>
+      <div style="font-weight:700;font-size:.9rem;color:var(--navy)" data-t="dd_finance"><span data-t="tx_5ce5447f">Санхүү & Даатгал</span></div>
+      <div style="font-size:.75rem;color:var(--text-sec);margin-top:.2rem" data-t="cat_s3sub"><span data-t="tx_60e2ef3d">5 охин компани</span></div>
+    </a>
+    <a href="sector-construction.html" style="background:#fff;padding:1.5rem;text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='#fff'">
+      <div style="font-size:.64rem;font-weight:700;color:var(--blue);margin-bottom:.4rem">04</div>
+      <div style="font-size:1.2rem;margin-bottom:.4rem">🏗</div>
+      <div style="font-weight:700;font-size:.9rem;color:var(--navy)" data-t="dd_construction"><span data-t="tx_69f41ed6">Барилга / Үл хөдлөх</span></div>
+      <div style="font-size:.75rem;color:var(--text-sec);margin-top:.2rem" data-t="cat_s4sub"><span data-t="tx_387862ae">6 охин компани</span></div>
+    </a>
+    <a href="sector-tech.html" style="background:#fff;padding:1.5rem;text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='#fff'">
+      <div style="font-size:.64rem;font-weight:700;color:var(--blue);margin-bottom:.4rem">05</div>
+      <div style="font-size:1.2rem;margin-bottom:.4rem">💻</div>
+      <div style="font-weight:700;font-size:.9rem;color:var(--navy)" data-t="dd_tech"><span data-t="tx_d8871953">Технологи</span></div>
+      <div style="font-size:.75rem;color:var(--text-sec);margin-top:.2rem" data-t="cat_s5sub"><span data-t="tx_47f1b5f8">3 охин компани</span></div>
+    </a>
+    <a href="sector-aviation.html" style="background:#fff;padding:1.5rem;text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='#fff'">
+      <div style="font-size:.64rem;font-weight:700;color:var(--blue);margin-bottom:.4rem">06</div>
+      <div style="font-size:1.2rem;margin-bottom:.4rem">✈️</div>
+      <div style="font-weight:700;font-size:.9rem;color:var(--navy)" data-t="dd_aviation"><span data-t="tx_02a119c5">Агаарын тээвэр</span></div>
+      <div style="font-size:.75rem;color:var(--text-sec);margin-top:.2rem" data-t="cat_s6sub"><span data-t="tx_87d2d4af">7 охин компани</span></div>
+    </a>
+  </div>
+
+  <!-- ══ CHAIRMAN / ТУЗ ДАРГЫН ҮГ ══ -->
+  <div style="background:linear-gradient(135deg,#f8faff 0%,#eef1fd 100%);border-radius:20px;padding:2.5rem;margin-bottom:3rem;display:grid;grid-template-columns:320px 1fr;gap:2.5rem;align-items:center">
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(26,47,122,.18);background:#fff">
+      <picture>
+        <source srcset="assets/chairman-bayarsaikhan.webp" type="image/webp">
+        <img src="assets/chairman-bayarsaikhan.png" alt="Ш. Баярсайхан — НОМИН Холдингийн ТУЗ-ийн Дарга" loading="lazy" decoding="async" style="width:100%;height:auto;display:block">
+      </picture>
+    </div>
+    <div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem" data-t="ab_ceo_title">ТУЗ-ийн Даргын үг</div>
+      <h3 style="font-family:Montserrat,sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:.75rem;color:var(--navy)">Ш. Баярсайхан</h3>
+      <p style="color:var(--text-sec);line-height:1.75;font-size:.92rem;margin-bottom:.75rem" data-t="ab_ceo_desc">"НОМИН Холдинг" компани тасралтгүй манлайлан хөгжиж байгаад би маш их баяртай байна.</p>
+      <div style="font-size:.78rem;color:#94a3b8" data-t="ab_ceo_role">НОМИН Холдинг ХХК-ийн Төлөөлөн Удирдах Зөвлөлийн Дарга</div>
+    </div>
+  </div>
+
+  <!-- ══ TIMELINE / ТҮҮХЭН ЗАМНАЛ ══ -->
+  <div style="text-align:center;margin-bottom:2rem">
+    <div style="font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem" data-t="cat_timeline_label">ТҮҮХ</div>
+    <h3 style="font-family:Montserrat,sans-serif;font-weight:800;font-size:1.3rem" data-t="cat_timeline_title">34 жилийн замнал</h3>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:3rem">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;border-left:4px solid #1a2f7a">
+      <div style="font-family:Montserrat,sans-serif;font-size:1.3rem;font-weight:900;color:#1a2f7a">1992</div>
+      <div style="font-size:.78rem;color:var(--text-sec);margin-top:.3rem" data-t="his_1992_title">НОМИН Холдинг үүсгэн байгуулагдлаа</div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;border-left:4px solid #2a4fca">
+      <div style="font-family:Montserrat,sans-serif;font-size:1.3rem;font-weight:900;color:#2a4fca">2001</div>
+      <div style="font-size:.78rem;color:var(--text-sec);margin-top:.3rem" data-t="his_2001_title">Хайпермаркет нээгдэв</div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;border-left:4px solid #4d6fdc">
+      <div style="font-family:Montserrat,sans-serif;font-size:1.3rem;font-weight:900;color:#4d6fdc">2008</div>
+      <div style="font-size:.78rem;color:var(--text-sec);margin-top:.3rem" data-t="his_2008_title">Бонус карт систем нэвтрүүлэв</div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;border-left:4px solid #6b8ae8">
+      <div style="font-family:Montserrat,sans-serif;font-size:1.3rem;font-weight:900;color:#6b8ae8">2013</div>
+      <div style="font-size:.78rem;color:var(--text-sec);margin-top:.3rem" data-t="his_2013_title">Цахим худалдаа онлайн дэлгүүр</div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.25rem;border-left:4px solid #8656cd">
+      <div style="font-family:Montserrat,sans-serif;font-size:1.3rem;font-weight:900;color:#8656cd">2022</div>
+      <div style="font-size:.78rem;color:var(--text-sec);margin-top:.3rem" data-t="his_2022_title">Chingis Airlines</div>
+    </div>
+    <div style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border-radius:14px;padding:1.25rem">
+      <div style="font-family:Montserrat,sans-serif;font-size:1.3rem;font-weight:900">2025</div>
+      <div style="font-size:.78rem;opacity:.92;margin-top:.3rem" data-t="his_2024_title">Entrepreneur-2025 шагнал</div>
+    </div>
+  </div>
+
+  <!-- ══ KEY NUMBERS / САНХҮҮГИЙН ҮЗҮҮЛЭЛТ ══ -->
+  <div style="background:linear-gradient(135deg,#0f172a 0%,#1a2f7a 100%);border-radius:20px;padding:2.5rem;color:#fff;margin-bottom:3rem">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div style="font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:.5rem" data-t="ab_tax_label">ХУВЬ НЭМЭР</div>
+      <h3 style="font-family:Montserrat,sans-serif;font-weight:800;font-size:1.3rem;color:#fff" data-t="ab_tax_title">Улсын төсөвт</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;text-align:center">
+      <div style="border-right:1px solid rgba(255,255,255,.15);padding-right:1rem">
+        <div style="font-family:Montserrat,sans-serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">700+</div>
+        <div style="font-size:.8rem;opacity:.85;margin-top:.3rem" data-t="ab_tax_bn">тэрбум төгрөгийн татвар</div>
+      </div>
+      <div style="border-right:1px solid rgba(255,255,255,.15);padding-right:1rem">
+        <div style="font-family:Montserrat,sans-serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#34d399,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent">6%</div>
+        <div style="font-size:.8rem;opacity:.85;margin-top:.3rem" data-t="soc_stat3">хөдөлмөрийн зах зээлийн хувь</div>
+      </div>
+      <div>
+        <div style="font-family:Montserrat,sans-serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">34</div>
+        <div style="font-size:.8rem;opacity:.85;margin-top:.3rem" data-t="bus_34_subs">охин компани</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="javascript:void(0)" onclick="openCatPdfAuto()" class="btn-blue" style="padding:13px 28px;font-size:.9rem">📥 <span data-t="cat_download_btn">Танилцуулга татах</span></a>
+    <a href="about.html" class="btn-outline" style="padding:13px 28px;font-size:.9rem"><span data-t="cat_about_btn">Бидний тухай →</span></a>
+    <a href="contact.html" class="btn-outline" style="padding:13px 28px;font-size:.9rem"><span data-t="cat_contact_btn">Холбоо барих →</span></a>
+  </div>
+
+</div></section>
+
+</main>
+
+<script src="assets/cms.js?v=99"></script>
+<script defer src="assets/ai-features.js?v=99"></script>
+<script defer src="assets/i18n-sync.js?v=99"></script>
+<script src="assets/layout.js?v=99"></script>
+
+<div id="cms-sections" style="display:none"></div>
+<script src="/assets/cms-renderer.js?v=99"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var slug = 'catalogue';
+  var staticEl = document.getElementById('page-static');
+  typeof CMS !== 'undefined' && CMS.render(slug, '#cms-sections', {
+    staticSelector: '#page-static',
+    onEmpty: function(){ if(staticEl) staticEl.style.display=''; },
+    onRender: function(sections){ }
+  });
+});
+</script>
+<script src="assets/nomin-chat.min.js?v=99"></script>
+
+<script>
+var _catPdfMap={};
+var _catVidMap={};
+
+function getCurrentLang(){
+  return localStorage.getItem('nm_lang') || document.documentElement.lang || 'mn';
+}
+
+function openCatPdf(lang){
+  if(!_catPdfMap[lang]){ alert('Энэ хэлний PDF файл байршуулагдаагүй байна'); return; }
+  var url = _catPdfMap[lang];
+  var viewer = document.getElementById('cat-pdf-viewer');
+  var badge = document.getElementById('cat-pdf-lang-badge');
+  var dlink = document.getElementById('cat-pdf-download');
+  var newtab = document.getElementById('cat-pdf-newtab');
+  
+  if(!viewer){ 
+    window.open(url, '_blank', 'noopener,noreferrer'); 
+    return; 
+  }
+  
+  // Хэлний тэмдэглэгээ
+  var labels = {mn:'🇲🇳 Монгол', en:'🇬🇧 English', ru:'🇷🇺 Русский', zh:'🇨🇳 中文'};
+  if(badge) badge.textContent = labels[lang] || lang.toUpperCase();
+  
+  // Татах болон шинэ цонхны линк
+  if(dlink){ dlink.href = url; dlink.download = 'nomin-catalogue-'+lang+'.pdf'; }
+  if(newtab){ newtab.href = url; }
+  
+  viewer.style.display = '';
+  
+  // Loader харуулах
+  var loader = document.getElementById('cat-pdf-loader');
+  if(loader) loader.style.display = '';
+  
+  // PDF.js-ээр ачаалах
+  renderPdfWithPdfJs(url);
+  
+  // Scroll viewer-д
+  setTimeout(function(){
+    viewer.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
+}
+
+// PDF.js ашиглан PDF-г canvas-д зурна
+var _pdfJsLoaded = false;
+function loadPdfJs(callback){
+  if(_pdfJsLoaded && window.pdfjsLib){ callback(); return; }
+  var script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  script.onload = function(){
+    if(window.pdfjsLib){
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      _pdfJsLoaded = true;
+      callback();
+    }
+  };
+  script.onerror = function(){
+    alert('PDF.js библиотек ачаалагдсангүй. Шинэ цонхонд нээнэ үү.');
+  };
+  document.head.appendChild(script);
+}
+
+function renderPdfWithPdfJs(url){
+  loadPdfJs(function(){
+    var container = document.getElementById('cat-pdf-canvas-container');
+    if(!container) return;
+    container.innerHTML = '';
+    
+    pdfjsLib.getDocument(url).promise.then(function(pdf){
+      var loader = document.getElementById('cat-pdf-loader');
+      if(loader) loader.style.display = 'none';
+      
+      var numPages = pdf.numPages;
+      
+      // АЛХАМ 1: Бүх хуудсын placeholder-ыг зөв дарааллаар УРЬДЧИЛАН үүсгэх
+      var pageWraps = [];
+      for(var i = 1; i <= numPages; i++){
+        var pageWrap = document.createElement('div');
+        pageWrap.id = 'pdf-page-' + i;
+        pageWrap.style.cssText = 'margin-bottom:1rem;min-height:200px';
+        pageWrap.setAttribute('data-page', i);
+        
+        var pageLabel = document.createElement('div');
+        pageLabel.style.cssText = 'text-align:center;font-size:.7rem;color:#94a3b8;padding:4px 0;margin-bottom:4px';
+        pageLabel.textContent = i + ' / ' + numPages;
+        pageWrap.appendChild(pageLabel);
+        
+        var loadingDiv = document.createElement('div');
+        loadingDiv.style.cssText = 'text-align:center;padding:3rem;color:#cbd5e1;font-size:.8rem;background:#f8fafc;border-radius:8px';
+        loadingDiv.textContent = '⏳ Хуудас ' + i + ' ачаалж байна...';
+        loadingDiv.className = 'pdf-page-loading';
+        pageWrap.appendChild(loadingDiv);
+        
+        container.appendChild(pageWrap);
+        pageWraps.push(pageWrap);
+      }
+      
+      // АЛХАМ 2: Хуудас тус бүрийг дарааллаар нь render хийх (async-тэй ч placeholder нь зөв газартаа суусан)
+      for(var pageNum = 1; pageNum <= numPages; pageNum++){
+        (function(pNum){
+          pdf.getPage(pNum).then(function(page){
+            var scale = 1.5;
+            var viewport = page.getViewport({scale: scale});
+            
+            var canvas = document.createElement('canvas');
+            canvas.style.display = 'block';
+            canvas.style.margin = '0 auto 8px';
+            canvas.style.boxShadow = '0 2px 8px rgba(0,0,0,.1)';
+            canvas.style.maxWidth = '100%';
+            canvas.style.height = 'auto';
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            
+            // Тухайн placeholder-ыг олох
+            var pageWrap = document.getElementById('pdf-page-' + pNum);
+            if(!pageWrap) return;
+            
+            // Loading-ыг устгаж, canvas-ыг оруулах
+            var loading = pageWrap.querySelector('.pdf-page-loading');
+            if(loading) loading.remove();
+            pageWrap.appendChild(canvas);
+            
+            return page.render({
+              canvasContext: canvas.getContext('2d'),
+              viewport: viewport
+            }).promise;
+          }).catch(function(err){
+            console.error('Page ' + pNum + ' render error:', err);
+            var pageWrap = document.getElementById('pdf-page-' + pNum);
+            if(pageWrap){
+              var loading = pageWrap.querySelector('.pdf-page-loading');
+              if(loading){
+                loading.textContent = '❌ Хуудас ' + pNum + ' ачаалахад алдаа гарлаа';
+                loading.style.color = '#ef4444';
+              }
+            }
+          });
+        })(pageNum);
+      }
+    }).catch(function(err){
+      console.error('PDF load error:', err);
+      var loader = document.getElementById('cat-pdf-loader');
+      if(loader){
+        loader.innerHTML = '<div style="color:#ef4444;padding:2rem">❌ PDF ачаалж чадсангүй<br><small>Шинэ цонхонд нээнэ үү</small></div>';
+      }
+    });
+  });
+}
+
+function closeCatPdf(){
+  var viewer = document.getElementById('cat-pdf-viewer');
+  var container = document.getElementById('cat-pdf-canvas-container');
+  if(container) container.innerHTML = '';
+  if(viewer) viewer.style.display = 'none';
+  var cards = document.getElementById('cat-cards');
+  if(cards) cards.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function openCatPdfAuto(){
+  var lang = getCurrentLang();
+  if(_catPdfMap[lang]){ openCatPdf(lang); return; }
+  // Fallback: first available
+  var keys = Object.keys(_catPdfMap);
+  if(keys.length){ openCatPdf(keys[0]); return; }
+  alert('PDF файл байршуулагдаагүй байна');
+}
+
+function playCatVideoAuto(){
+  var lang = getCurrentLang();
+  if(_catVidMap[lang]){ playCatVideo(lang); return; }
+  var keys = Object.keys(_catVidMap);
+  if(keys.length){ playCatVideo(keys[0]); return; }
+  alert('Видео байршуулагдаагүй байна');
+}
+
+(function(){
+    var SB_URL = window.__NM_SB_URL__ || 'https://hunygqumohxinhndrcph.supabase.co';
+    var SB_KEY = window.__NM_SB_KEY__ || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1bnlncXVtb2h4aW5obmRyY3BoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzNTA4NjMsImV4cCI6MjA4OTkyNjg2M30.2eFxPABgxosblHajh85txP_yrv0VsDCbhxSVIcO3T88';
+    var LANGS = ['mn','en','ru','zh'];
+
+  // Fetch PDFs
+  var pdfKeys=LANGS.map(function(l){return '"nm_catalogue_pdf_'+l+'"';});
+  fetch(SB_URL+'/rest/v1/settings?key=in.('+pdfKeys.join(',')+')&select=key,value',{
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+  }).then(function(r){return r.ok?r.json():[];}).then(function(rows){
+    var found = 0;
+    (rows||[]).forEach(function(row){
+      var lang = row.key.replace('nm_catalogue_pdf_','');
+      if(row.value){
+        _catPdfMap[lang]=row.value;
+found++;
+      }
+    });
+    // Mark missing ones
+// Activate main card if any PDF exists
+    if(found>0){
+      var card=document.getElementById('cat-pdf-card');
+      if(card) card.style.opacity='1';
+    }
+    var unavail=document.getElementById('cat-pdf-unavail');
+    if(found===0 && unavail) unavail.style.display='';
+  }).catch(function(){
+var unavail=document.getElementById('cat-pdf-unavail');
+    if(unavail) unavail.style.display='';
+  });
+
+  // Fetch Videos
+  var vidKeys=LANGS.map(function(l){return '"nm_catalogue_video_'+l+'"';});
+  fetch(SB_URL+'/rest/v1/settings?key=in.('+vidKeys.join(',')+')&select=key,value',{
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+  }).then(function(r){return r.ok?r.json():[];}).then(function(rows){
+    var found=0;
+    (rows||[]).forEach(function(row){
+      var lang=row.key.replace('nm_catalogue_video_','');
+      if(row.value){
+        _catVidMap[lang]=row.value;
+found++;
+      }
+    });
+if(found>0){
+      var card=document.getElementById('cat-video-card');
+      if(card) card.style.opacity='1';
+    }
+    var unavail=document.getElementById('cat-video-unavail');
+    if(found===0 && unavail) unavail.style.display='';
+  }).catch(function(){
+var unavail=document.getElementById('cat-video-unavail');
+    if(unavail) unavail.style.display='';
+  });
+})();
+
+function playCatVideo(lang){
+  if(!_catVidMap[lang]){ alert('Энэ хэлний видео байршуулагдаагүй байна'); return; }
+  var raw=_catVidMap[lang];
+  // Extract video ID from different URL formats
+  var vid=raw;
+  var m=raw.match(/(?:youtube\.com\/embed\/|youtu\.be\/|youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/);
+  if(m) vid=m[1];
+
+  var iframe=document.getElementById('cat-video-iframe');
+  var player=document.getElementById('cat-video-player');
+  var badge=document.getElementById('cat-video-lang-badge');
+  var ytLink=document.getElementById('cat-video-yt-link');
+  var labels={mn:'МОН',en:'ENG',ru:'РУС',zh:'中文'};
+  var colors={mn:'#1a2f7a',en:'#0f6e56',ru:'#a32d2d',zh:'#ba7517'};
+
+  // Highlight active button
+  ['mn','en','ru','zh'].forEach(function(l){
+    var b=document.getElementById('cat-vid-btn-'+l);
+    if(!b) return;
+    if(l===lang){
+      b.style.background='rgba(255,255,255,.35)';
+      b.style.borderColor='#fff';
+      b.style.fontWeight='700';
+    } else {
+      b.style.background='rgba(255,255,255,.2)';
+      b.style.borderColor='rgba(255,255,255,.3)';
+      b.style.fontWeight='400';
+    }
+  });
+
+  iframe.src='https://www.youtube.com/embed/'+vid+'?rel=0&modestbranding=1&autoplay=1&origin='+encodeURIComponent(location.origin);
+  var ytLang={mn:'',en:'en',ru:'ru',zh:'zh-Hans'};
+  var hlParam = ytLang[lang] ? '&hl='+ytLang[lang]+'&cc_lang_pref='+ytLang[lang]+'&cc_load_policy=1' : '';
+  ytLink.href='https://www.youtube.com/watch?v='+vid+hlParam;
+  badge.textContent=labels[lang]||lang;
+  badge.style.background=colors[lang]||'#333';
+  player.style.display='';
+  player.scrollIntoView({behavior:'smooth',block:'center'});
+  _catActiveLang=lang;
+}
+</script>
+<script defer src="assets/cookie-consent.js?v=99"></script>
+<script defer src="assets/pwa.js?v=99"></script>
+<script defer src="assets/lead-capture.js?v=99"></script>
+</body></html>

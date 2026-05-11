@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Холбоо барих — NexCore</title>
+<meta name="description" content="NexCore-тэй холбогдоорой. Төслийн санал, асуулт, хамтын ажиллагааны талаар ярилцая.">
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Left info */
+.contact-info h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.contact-info h2 em { font-style: normal; color: var(--accent); }
+.contact-info > p { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 40px; }
+
+.contact-methods { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.contact-method {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none; color: inherit;
+  transition: border-color 0.25s;
+}
+.contact-method:hover { border-color: var(--border-hover); }
+.cm-icon {
+  width: 44px; height: 44px;
+  background: rgba(0,245,196,0.06);
+  border: 1px solid rgba(0,245,196,0.12);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.cm-content h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+.cm-content p { font-size: 0.85rem; color: var(--muted); }
+
+.office-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.office-card h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem; font-weight: 700;
+  margin-bottom: 8px;
+}
+.office-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+.office-hours {
+  margin-top: 10px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; color: var(--accent);
+}
+.office-hours::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Form */
+.contact-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-form-wrap::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.form-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.form-subtitle { font-size: 0.87rem; color: var(--muted); margin-bottom: 32px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+  cursor: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(0,245,196,0.4);
+  box-shadow: 0 0 0 3px rgba(0,245,196,0.06);
+}
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-group select option { background: var(--surface); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.budget-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.budget-opt {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  cursor: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+  text-align: center;
+}
+.budget-opt:hover, .budget-opt.selected {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0,245,196,0.06);
+}
+
+.form-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+  margin-top: 8px;
+}
+.form-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,245,196,0.3);
+}
+
+/* Success message */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+.form-success.show { display: block; }
+.success-icon { font-size: 3rem; margin-bottom: 16px; }
+.form-success h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  margin-bottom: 10px;
+}
+.form-success p { font-size: 0.9rem; color: var(--muted); }
+
+/* Map placeholder */
+.map-placeholder {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 300px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  margin-top: 48px;
+}
+.map-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,245,196,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,196,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.map-pin {
+  position: relative; z-index: 1;
+  text-align: center;
+}
+.map-pin span { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+.map-pin p {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem; font-weight: 700;
+  color: var(--accent);
+}
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 10px; overflow: hidden; }
+.faq-item { background: var(--surface); }
+.faq-q {
+  padding: 20px 24px;
+  cursor: none;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.92rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-q .arrow {
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: transform 0.25s, color 0.2s;
+}
+.faq-item.open .faq-q .arrow { transform: rotate(45deg); color: var(--accent); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s;
+  font-size: 0.87rem; color: var(--muted); line-height: 1.75;
+  padding: 0 24px;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+  .contact-form-wrap { padding: 32px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="logo">Nex<span class="logo-dot">Core</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Үйлчилгээ</a></li>
+    <li><a href="projects.html">Төслүүд</a></li>
+    <li><a href="about.html">Бидний тухай</a></li>
+    <li><a href="team.html">Баг</a></li>
+    <li><a href="contact.html" class="active">Холбоо барих</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Ярилцацгаая</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="page-header-content">
+    <span class="section-label">Холбоо барих</span>
+    <h1>Ярилцацгаая <em>Өнөөдөр</em></h1>
+    <p>Таны төслийн талаар мэдэхийг хүсч байна. Бид 24 цагийн дотор хариу өгнө.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="contact-layout">
+    <!-- Left -->
+    <div class="reveal">
+      <span class="section-label">Холбоо барих</span>
+      <h2 class="contact-info">Бидэнтэй <em>холбогдох</em> олон арга бий</h2>
+      <p style="font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:36px">Асуулт байна уу? Санал дэвшүүлэх гэж байна уу? Хамтын ажиллагааны тухай ярилцмаар байна уу? Биднийг олоход хялбар.</p>
+
+      <div class="contact-methods">
+        <a href="mailto:myagmardorj@gmail.com" class="contact-method">
+          <div class="cm-icon">📧</div>
+          <div class="cm-content">
+            <h4>Имэйл</h4>
+            <p>myagmardorj@gmail.com</p>
+          </div>
+        </a>
+        <a href="tel:+97699113872" class="contact-method">
+          <div class="cm-icon">📞</div>
+          <div class="cm-content">
+            <h4>Утас</h4>
+            <p>+976 9911-3872</p>
+          </div>
+        </a>
+        <a href="#" class="contact-method">
+          <div class="cm-icon">💬</div>
+          <div class="cm-content">
+            <h4>Messenger / WhatsApp</h4>
+            <p>@nexcoremn</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="office-card">
+        <h4>🏢 Улаанбаатарын Оффис</h4>
+        <p>Сүхбаатар дүүрэг, Энхтайвны өргөн чөлөө 17,<br>NexCore Tower, 8 давхар<br>Улаанбаатар 14200, Монгол улс</p>
+        <div class="office-hours">Даваа–Баасан: 09:00–18:00 (UTC+8)</div>
+      </div>
+
+      <div class="map-placeholder">
+        <div class="map-grid"></div>
+        <div class="map-pin">
+          <span>📍</span>
+          <p>NexCore Tower · Улаанбаатар</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="contact-form-wrap reveal" data-delay="150">
+      <div id="form-wrap">
+        <div class="form-title">Төслийн Захиалга</div>
+        <p class="form-subtitle">Таны төслийн талаар дэлгэрэнгүй мэдэгдэнэ үү.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Таны нэр *</label>
+            <input type="text" placeholder="Батбаяр Дорж" id="f-name">
+          </div>
+          <div class="form-group">
+            <label>Имэйл хаяг *</label>
+            <input type="email" placeholder="hello@company.mn" id="f-email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Компани / Байгууллага</label>
+            <input type="text" placeholder="Компанийн нэр" id="f-company">
+          </div>
+          <div class="form-group">
+            <label>Утасны дугаар</label>
+            <input type="tel" placeholder="+976 9900 0000" id="f-phone">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Үйлчилгээний төрөл *</label>
+          <select id="f-service">
+            <option value="" disabled selected>Сонгох...</option>
+            <option>Веб Хөгжүүлэлт</option>
+            <option>Мобайл Апп</option>
+            <option>Клауд Шийдэл</option>
+            <option>Хиймэл Оюун / ML</option>
+            <option>Кибер Аюулгүй Байдал</option>
+            <option>UI/UX Дизайн</option>
+            <option>Иж бүрэн шийдэл</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Төслийн Төсөв</label>
+          <div class="budget-options">
+            <button class="budget-opt" onclick="selectBudget(this)">5–15 сая ₮</button>
+            <button class="budget-opt" onclick="selectBudget(this)">15–50 сая ₮</button>
+            <button class="budget-opt" onclick="selectBudget(this)">50–100 сая ₮</button>
+            <button class="budget-opt" onclick="selectBudget(this)">100+ сая ₮</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Төслийн тухай *</label>
+          <textarea placeholder="Таны бизнес, хэрэгцээ, зорилго, цаг хугацааны хязгаар зэргийг дэлгэрэнгүй бичнэ үү..." id="f-message"></textarea>
+        </div>
+
+        <button class="form-submit" onclick="submitForm()">Захиалга илгээх →</button>
+      </div>
+
+      <div class="form-success" id="form-success">
+        <div class="success-icon">✅</div>
+        <h3>Амжилттай илгээгдлээ!</h3>
+        <p>Таны мессежийг хүлээн авлаа. Бид 24 цагийн дотор <strong>myagmardorj@gmail.com</strong> хаягаас хариу илгээнэ.</p>
+        <a href="index.html" class="btn btn-ghost" style="margin-top:24px">Нүүр хуудас руу буцах</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section">
+  <div style="max-width:700px;margin:0 auto">
+    <span class="section-label" style="text-align:center;display:block">Түгээмэл Асуулт</span>
+    <h2 class="section-title centered">Байнга <em>тавигддаг</em> асуултууд</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Төслийн хугацаа хэр үргэлжлэх вэ?
+          <span class="arrow">+</span>
+        </div>
+        <div class="faq-a">Энгийн вебсайт 4–8 долоо хоног, нарийн систем 3–6 сар байх нь ердийн хугацаа. Анхны уулзалт дээр таны хэрэгцээнд тулгуурлан тодорхой хугацааг тохирно.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Хөгжүүлэлтийн явцад хэрхэн харилцдаг вэ?
+          <span class="arrow">+</span>
+        </div>
+        <div class="faq-a">Бид 2 долоо хоног тутам дэвшлийн тайлан үзүүлдэг. Мөн Slack, Notion дээр байнгын холбоотой байж, таны санал шүүмжийг тухай бүр авдаг.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Эх код хэн эзэмшдэг вэ?
+          <span class="arrow">+</span>
+        </div>
+        <div class="faq-a">Бүрэн хэмжээний эх код, дизайн файл, баримт бичиг бүгд таных. Гэрээнд тодорхой заасан байдаг.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Гаргасны дараа дэмжлэг үзүүлдэг үү?
+          <span class="arrow">+</span>
+        </div>
+        <div class="faq-a">Тийм. Стандарт 3 сарын хүртэл үнэгүй техникийн дэмжлэг үзүүлдэг. Цаашид дэмжлэгийн гэрээ байгуулах боломжтой.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Хэрхэн эхлэх вэ?
+          <span class="arrow">+</span>
+        </div>
+        <div class="faq-a">Дээрх маягтыг бөглөнө үү. Бид 24 цагийн дотор холбогдоод, үнэгүй 30 минутын онлайн уулзалт зохион байгуулна.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Nex<span class="logo-dot">Core</span></a>
+      <p>Монголын бизнесийг дижитал ертөнцөд тэргүүлүүлэх зорилготой IT компани.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="#" class="social-btn">gh</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Үйлчилгээ</h5>
+      <ul>
+        <li><a href="services.html">Веб Хөгжүүлэлт</a></li>
+        <li><a href="services.html">Мобайл Апп</a></li>
+        <li><a href="services.html">Клауд</a></li>
+        <li><a href="services.html">AI & ML</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Компани</h5>
+      <ul>
+        <li><a href="about.html">Бидний тухай</a></li>
+        <li><a href="team.html">Баг</a></li>
+        <li><a href="projects.html">Төслүүд</a></li>
+        <li><a href="#">Карьер</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Холбоо барих</h5>
+      <ul>
+        <li><a href="mailto:myagmardorj@gmail.com">myagmardorj@gmail.com</a></li>
+        <li><a href="tel:+97699113872">+976 9911-3872</a></li>
+        <li><a href="contact.html">Улаанбаатар, Монгол</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NexCore LLC. Бүх эрх хуулиар хамгаалагдсан.</span>
+    <span>Нууцлалын бодлого · Үйлчилгээний нөхцөл</span>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+function selectBudget(el) {
+  document.querySelectorAll('.budget-opt').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const service = document.getElementById('f-service').value;
+  const message = document.getElementById('f-message').value.trim();
+
+  if (!name || !email || !service || !message) {
+    alert('Бүх шаардлагатай талбарыг бөглөнө үү (*)');
+    return;
+  }
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('form-success').classList.add('show');
+}
+</script>
+</body>
+</html>

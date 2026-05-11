@@ -1,0 +1,193 @@
+# Prime-Indexed Excess in Riemann Zero Spacing Covariance
+
+> **This repository presents exploratory computational experiments and does not claim a proof of the Riemann Hypothesis.**
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20077673.svg)](https://zenodo.org/records/20077673)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v0.3-green.svg)](CHANGELOG.md)
+[![Status](https://img.shields.io/badge/status-computational%20observation-orange.svg)](docs/LIMITATIONS.md)
+
+> **What this is:** A computational observation of prime-indexed structure in high Riemann zero statistics, empirically consistent with Bogomolny–Keating (1996) predictions.  
+> **What this is NOT:** A proof of the Riemann Hypothesis. Not a confirmed theorem. Not peer-reviewed.  
+> **Reproducibility:** `pip install -r requirements.txt && python scripts/analyze.py zeros3.txt`  
+> **Limitations:** Normalization selection bias, n=12 data points, no asymptotic analysis. See [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
+
+---
+
+## Latest Update (v0.3 — May 2026)
+
+Repository updated with more conservative scientific framing.
+
+**Main changes:**
+- `"verification"` → `"comparison"`
+- `"BK confirmed"` → `"BK-type agreement observed"`
+- Explicit distinction between computational evidence and proof
+- Robustness and null-control structure expanded (8 tests)
+- Normalization-selection caveat documented explicitly
+
+**Important limitation:**
+> The normalization procedure (`τ_p = log(p)/log(T/2π)`) was selected
+> after observing weak low-T results. This introduces potential selection
+> bias and should be treated as a known confound requiring independent replication.
+
+**Reproduce:**
+```bash
+python scripts/run_all.py zeros3.txt
+```
+
+---
+
+
+
+```
+/
+├── scripts/          ← analysis code (analyze.py, BK test, null tests)
+├── controls/         ← 8 null and robustness tests
+├── paper/            ← LaTeX draft + flagship figure generator
+├── docs/             ← RESULTS, LIMITATIONS, METHODS, REPRODUCIBILITY
+├── data_v1/          ← frozen prime list + zero file instructions
+├── .github/          ← issue/discussion templates
+├── *.html            ← research website (research.nexcore.ltd)
+├── CHANGELOG.md
+├── CITATION.cff
+└── requirements.txt
+```
+
+---
+
+## Quick Start
+
+```bash
+git clone https://github.com/myagmardorj-cloud/Myagmardorj
+cd Myagmardorj
+pip install -r requirements.txt
+
+# Download zero data from Odlyzko:
+# http://www-users.cse.umn.edu/~odlyzko/zeta_tables/
+
+python scripts/analyze.py zeros3.txt
+# Expected: r ≈ 0.9992, naive p = 2.64e-15 (uncorrected — see Limitations)
+```
+
+---
+
+## Main Result
+
+Pearson correlation between empirical spacing covariance A(p) and
+BK predictor B(p) = (log p)²/p across 12 primes on three datasets:
+
+| Dataset | Height T  | Pearson r | Naive p-value†  |
+|---------|-----------|-----------|-----------------|
+| zeros2  | ~74,920   | 0.9783    | 3.82×10⁻¹⁸⁶     |
+| zeros3  | ~10¹²     | **0.9992**| 2.64×10⁻¹⁵      |
+| zeros4  | ~10¹³     | 0.9421    | 5.0×10⁻⁶        |
+
+†Naive p-values assume independence. Effective DOF < 12 due to
+autocorrelation. Not corrected for multiple testing. See
+[`docs/LIMITATIONS.md`](docs/LIMITATIONS.md) for full caveat list.
+
+Null controls (shuffled zeros, GUE surrogates, composite-lag indices)
+produce r ≈ 0 — see `controls/07_negative_controls.py`.
+
+---
+
+## Key Limitations
+
+1. **Normalization selection bias** — high-T formula chosen after low-T gave r ≈ 0.4
+2. **Small n = 12** — Pearson r with 12 points is sensitive to outliers
+3. **Autocorrelation** — consecutive covariances not independent; effective DOF < 12
+4. **No asymptotic analysis** — r behavior as N → ∞ is unknown
+5. **Not independently replicated** — results not yet reproduced on a separate machine
+
+Full list: [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md)
+
+---
+
+## Controls
+
+| # | Test | Result |
+|---|------|--------|
+| 01 | Shuffled zeros | r ≈ 0 — signal in ordering |
+| 02 | GUE surrogates | r ≈ 0 — exceeds GUE baseline |
+| 03 | Scaling law (N) | r stable — not obvious finite artifact |
+| 04 | Window types | r stable — not Fourier leakage |
+| 05 | Blind detection | Peaks cluster near primes |
+| 06 | Bootstrap CI | Corrected intervals available |
+| 07 | Negative controls | Composite lags, random phases → r ≈ 0 |
+| 08 | Robustness | Zero range, prime cutoff, norm variants |
+
+---
+
+## Numerical Limitations Summary
+
+| Issue | Detail |
+|-------|--------|
+| Selection bias | Normalization chosen after observing weak low-T result |
+| Sample size | Only 12 prime lags (n=12) |
+| Autocorrelation | Effective DOF < 12; naive p-values unreliable |
+| Multiple testing | 12 lags, no Bonferroni correction |
+| Finite window | Spectral leakage not fully excluded |
+| Asymptotics | r behavior as N→∞ unknown |
+| No derivation | Empirical constant C ≈ 16.5 has no theoretical explanation |
+| No replication | No independent reproduction yet |
+
+---
+
+## Independent Replication Checklist
+
+```bash
+# Run on your machine, compare outputs:
+python scripts/analyze.py zeros3.txt
+```
+
+| Check | Expected | Notes |
+|-------|----------|-------|
+| r (zeros3) | ≈ 0.9992 | Verify normalization formula |
+| Shuffled r | ≈ 0.0 ± 0.2 | Run controls/01 |
+| GUE r | ≈ 0.0 ± 0.2 | Run controls/02 |
+| Prime excess visible | Yes | 12/12 primes |
+
+→ Replication attempt? Open a [Discussion](../../discussions).
+
+---
+
+## Paper
+
+LaTeX draft: [`paper/main.tex`](paper/main.tex)  
+Flagship figure: [`paper/generate_flagship_figure.py`](paper/generate_flagship_figure.py)  
+arXiv draft: [`docs/ARXIV_DRAFT.md`](docs/ARXIV_DRAFT.md)
+
+---
+
+## GitHub Topics
+
+<!-- Add these in Settings → Topics -->
+`riemann-hypothesis` · `computational-number-theory` · `experimental-mathematics` · `prime-numbers` · `zeta-function` · `bogomolny-keating` · `pair-correlation` · `gue-statistics`
+
+---
+
+## Citation
+
+```bibtex
+@misc{namnansuren2026prime,
+  author    = {Namnansuren, Myagmardorj},
+  title     = {Prime-Indexed Excess in Riemann Zero Spacing Covariance},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20077673},
+  url       = {https://zenodo.org/records/20077673}
+}
+```
+
+---
+
+## References
+
+- E. B. Bogomolny & J. P. Keating (1996). *Nonlinearity* 8–9.
+- H. L. Montgomery (1973). *Proc. Sympos. Pure Math.* 24.
+- A. M. Odlyzko. Zero tables. http://www-users.cse.umn.edu/~odlyzko/zeta_tables/
+
+---
+
+*Myagmardorj Namnansuren · Nexcore LTD · Ulaanbaatar, Mongolia · 2026*  
+*Experimental numerical study — not a confirmed theorem, not a proof of RH*

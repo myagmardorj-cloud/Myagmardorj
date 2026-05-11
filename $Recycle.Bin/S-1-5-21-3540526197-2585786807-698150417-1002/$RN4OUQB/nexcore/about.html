@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бидний тухай — NexCore</title>
+<meta name="description" content="NexCore компанийн түүх, эрхэм зорилго, үнэт зүйл болон алсын харааны тухай.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Story section */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.story-visual {
+  position: relative;
+}
+.story-card-main {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.story-card-main::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.story-year {
+  font-family: 'Syne', sans-serif;
+  font-size: 5rem; font-weight: 800;
+  letter-spacing: -0.05em;
+  color: rgba(0,245,196,0.08);
+  line-height: 1; margin-bottom: 8px;
+}
+.story-card-main h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em; margin-bottom: 12px;
+}
+.story-card-main p { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+.story-accent-card {
+  background: linear-gradient(135deg, rgba(0,245,196,0.08), rgba(99,102,241,0.08));
+  border: 1px solid rgba(0,245,196,0.15);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-top: 16px;
+}
+.story-accent-card p { font-size: 0.9rem; color: var(--text); font-style: italic; line-height: 1.7; }
+.story-accent-card cite { display: block; margin-top: 10px; font-size: 0.78rem; color: var(--muted); font-style: normal; }
+
+.story-content h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.story-content h2 em { font-style: normal; color: var(--accent); }
+.story-content p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+
+/* Values */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.value-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 36px 32px;
+  transition: border-color 0.3s;
+}
+.value-card:hover { border-color: var(--border-hover); }
+.value-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem; font-weight: 800;
+  color: rgba(0,245,196,0.15);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.value-card h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 10px;
+}
+.value-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -36px; top: 6px;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0,245,196,0.5);
+}
+.timeline-year {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.timeline-item h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 6px;
+}
+.timeline-item p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+
+/* Awards */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.award-item {
+  background: var(--surface);
+  padding: 36px 28px;
+  text-align: center;
+  transition: background 0.25s;
+}
+.award-item:hover { background: var(--surface2); }
+.award-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+.award-item h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+.award-item p { font-size: 0.78rem; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .story-grid { grid-template-columns: 1fr; gap: 48px; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .awards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .values-grid { grid-template-columns: 1fr; }
+  .awards-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="logo">Nex<span class="logo-dot">Core</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Үйлчилгээ</a></li>
+    <li><a href="projects.html">Төслүүд</a></li>
+    <li><a href="about.html" class="active">Бидний тухай</a></li>
+    <li><a href="team.html">Баг</a></li>
+    <li><a href="contact.html">Холбоо барих</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Ярилцацгаая</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="page-header-content">
+    <span class="section-label">Бидний тухай</span>
+    <h1>Технологийн <em>Хүч чадлаар</em></h1>
+    <p>2018 оноос хойш Монголын бизнесийн цахимжуулалтыг удирдан явуулж буй итгэмжтэй хамтрагч.</p>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar" style="border-top:1px solid var(--border);">
+  <div class="stat-item">
+    <span class="stat-num"><span data-target="200" data-suffix="+">200+</span></span>
+    <span class="stat-label">Амжилттай Төсөл</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num"><span data-target="50" data-suffix="+">50+</span></span>
+    <span class="stat-label">Мэргэшсэн Инженер</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num"><span data-target="8" data-suffix=" жил">8 жил</span></span>
+    <span class="stat-label">Туршлага</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num"><span data-target="15" data-suffix="+">15+</span></span>
+    <span class="stat-label">Улс орны харилцагч</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="section">
+  <div class="story-grid">
+    <div class="story-visual reveal">
+      <div class="story-card-main">
+        <div class="story-year">2018</div>
+        <h3>Эхлэлийн Түүх</h3>
+        <p>4 залуу инженер Улаанбаатарын жижиг оффист цугларч, Монголын технологийн ирээдүйг өөрчлөх мөрөөдлийг эхлүүлсэн.</p>
+      </div>
+      <div class="story-accent-card">
+        <p>"Монголын бизнесийг дэлхийн тэргүүлэгч технологитой холбоно гэсэн зорилго бидний гарааны цэг байсан."</p>
+        <cite>— Б. Батбаяр, CTO & Co-founder</cite>
+      </div>
+    </div>
+    <div class="story-content reveal" data-delay="150">
+      <span class="section-label">Бидний Түүх</span>
+      <h2>Жижиг <em>мөрөөдлөөс</em> том хэмжээний нөлөөлөл</h2>
+      <p>NexCore нь 2018 онд Улаанбаатарт үүсгэн байгуулагдсан бөгөөд анх 4 инженертэй эхэлсэн бяцхан стартап байлаа. Өнөөдөр бид 50 гаруй мэргэжилтэнтэй, Монголын тэргүүлэх IT компани болж өссөн.</p>
+      <p>Бид зөвхөн код бичдэг компани биш — бид таны бизнесийн хамтрагч. Таны бизнесийн зорилгыг ойлгож, тэрхүү зорилгод хүрэх хамгийн оновчтой технологийн замыг тодорхойлдог.</p>
+      <p>Манай хамт олон React-аас эхлэн AI хүртэл, мобайл аппаас клауд дэд бүтэц хүртэл бүхий л технологид туршлагатай мэргэжилтнүүдээс бүрдэнэ.</p>
+      <a href="team.html" class="btn btn-ghost" style="margin-top:12px">Баг танилцах</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VALUES -->
+<section class="section">
+  <span class="section-label">Үнэт Зүйл</span>
+  <h2 class="section-title">Бидний <em>итгэл үнэмшил</em></h2>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-num">01</div>
+      <h4>Чанарт Найдвар</h4>
+      <p>Бид тогтоосон хугацаанд, тогтоосон төсөвт чанартай бүтээгдэхүүн хүргэнэ. Амлалтаа биелүүлэх нь бидний үндсэн зарчим.</p>
+    </div>
+    <div class="value-card reveal" data-delay="80">
+      <div class="value-num">02</div>
+      <h4>Харилцагч Төвтэй</h4>
+      <p>Харилцагчийн амжилт бол бидний амжилт. Бид таны бизнесийг өөрийнхөө мэт ойлгож, хамтран ажилладаг.</p>
+    </div>
+    <div class="value-card reveal" data-delay="160">
+      <div class="value-num">03</div>
+      <h4>Байнгын Инноваци</h4>
+      <p>Технологи хурдацтай өөрчлөгдөж байгаа. Бид хамгийн сүүлийн дэвшлийг хянаж, харилцагчдадаа хамгийн сайн шийдлийг санал болгодог.</p>
+    </div>
+    <div class="value-card reveal" data-delay="240">
+      <div class="value-num">04</div>
+      <h4>Ил Тод Байдал</h4>
+      <p>Төслийн явц, зардал, хугацааны талаар бид үргэлж ил тод мэдээлэл өгдөг. Гайлт байхгүй.</p>
+    </div>
+    <div class="value-card reveal" data-delay="320">
+      <div class="value-num">05</div>
+      <h4>Баг Ажиллагаа</h4>
+      <p>Бид дангаараа ажиллахаас илүү хамтран ажиллахыг эрхэмлэнэ. Харилцагч болон дотоод баг хоёрын хамтын ажиллагаа үнэ цэнтэй.</p>
+    </div>
+    <div class="value-card reveal" data-delay="400">
+      <div class="value-num">06</div>
+      <h4>Дотоодын Хөгжил</h4>
+      <p>Монголын залуу хөгжүүлэгчдийг дэмжих, боловсруулах нь бидний нийгмийн хариуцлагын нэг хэсэг.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIMELINE -->
+<section class="section">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px">
+    <div>
+      <span class="section-label">Хөгжлийн Замнал</span>
+      <h2 class="section-title" style="margin-bottom:48px">Бидний <em>алхмууд</em></h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2018</div>
+          <h4>NexCore үүсгэн байгуулалт</h4>
+          <p>4 үүсгэн байгуулагч, анхны оффис, анхны 3 харилцагчтай ажлаа эхэллээ.</p>
+        </div>
+        <div class="timeline-item reveal" data-delay="80">
+          <div class="timeline-year">2019</div>
+          <h4>Анхны том төсөл</h4>
+          <p>Монголын банкны салбарт зориулсан анхны том хэмжээний вебийн платформыг амжилттай хүргэлээ.</p>
+        </div>
+        <div class="timeline-item reveal" data-delay="160">
+          <div class="timeline-year">2021</div>
+          <h4>Мобайл хэлтэс нээлт</h4>
+          <p>Flutter болон React Native мэргэшсэн мобайл хөгжүүлэлтийн баг байгуулж, өргөжлөө.</p>
+        </div>
+        <div class="timeline-item reveal" data-delay="240">
+          <div class="timeline-year">2023</div>
+          <h4>AI лаборатори</h4>
+          <p>Монгол хэлний боловсруулалт, ML загвар хөгжүүлэх AI судалгааны баг нээлт.</p>
+        </div>
+        <div class="timeline-item reveal" data-delay="320">
+          <div class="timeline-year">2025</div>
+          <h4>Олон улсын өргөжилт</h4>
+          <p>Сингапур болон Өмнөд Солонгост хамтрагч компаниудтай холбогдсон. 15+ улс орны харилцагчтай болсон.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="section-label">Шагнал Хүндэтгэл</span>
+      <h2 class="section-title" style="margin-bottom:48px">Хүлээн <em>зөвшөөрөлт</em></h2>
+      <div class="awards-grid" style="border-radius:10px;overflow:hidden">
+        <div class="award-item reveal">
+          <span class="award-icon">🏆</span>
+          <h4>Шилдэг IT</h4>
+          <p>МонголыN IT шагнал 2024</p>
+        </div>
+        <div class="award-item reveal" data-delay="80">
+          <span class="award-icon">⭐</span>
+          <h4>Инновацийн Шагнал</h4>
+          <p>Монголын Стартап 2023</p>
+        </div>
+        <div class="award-item reveal" data-delay="160">
+          <span class="award-icon">🌟</span>
+          <h4>Clutch Top 10</h4>
+          <p>Зүүн Ази 2024</p>
+        </div>
+        <div class="award-item reveal" data-delay="240">
+          <span class="award-icon">🎖️</span>
+          <h4>ISO 27001</span></h4>
+          <p>Мэдээллийн Аюулгүй</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Nex<span class="logo-dot">Core</span></a>
+      <p>Монголын бизнесийг дижитал ертөнцөд тэргүүлүүлэх зорилготой IT компани.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="#" class="social-btn">gh</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Үйлчилгээ</h5>
+      <ul>
+        <li><a href="services.html">Веб Хөгжүүлэлт</a></li>
+        <li><a href="services.html">Мобайл Апп</a></li>
+        <li><a href="services.html">Клауд</a></li>
+        <li><a href="services.html">AI & ML</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Компани</h5>
+      <ul>
+        <li><a href="about.html">Бидний тухай</a></li>
+        <li><a href="team.html">Баг</a></li>
+        <li><a href="projects.html">Төслүүд</a></li>
+        <li><a href="#">Карьер</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Холбоо барих</h5>
+      <ul>
+        <li><a href="mailto:myagmardorj@gmail.com">myagmardorj@gmail.com</a></li>
+        <li><a href="tel:+97699113872">+976 9911-3872</a></li>
+        <li><a href="contact.html">Улаанбаатар, Монгол</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NexCore LLC. Бүх эрх хуулиар хамгаалагдсан.</span>
+    <span>Нууцлалын бодлого · Үйлчилгээний нөхцөл</span>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

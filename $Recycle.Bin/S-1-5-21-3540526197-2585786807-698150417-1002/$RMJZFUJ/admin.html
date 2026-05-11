@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>НОМИН Холдинг — Админ Панел</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+/* ════════════════════════════════
+   CSS VARIABLES
+════════════════════════════════ */
+:root{
+  --blue:#4D68EF;--blue-d:#3a52d4;--blue-dd:#2a3fb8;
+  --blue-l:#EEF1FD;--blue-ll:#f5f7ff;
+  --side:#0d1526;--side2:#162035;--side-border:rgba(255,255,255,.07);
+  --text:#0f172a;--t2:#475569;--t3:#94a3b8;
+  --border:#e2e8f0;--border2:#f1f5f9;
+  --bg:#f1f5f9;--card:#fff;
+  --ok:#22c55e;--ok-l:#dcfce7;
+  --err:#ef4444;--err-l:#fee2e2;
+  --warn:#f59e0b;--warn-l:#fef3c7;
+  --purple:#8b5cf6;--purple-l:#ede9fe;
+  --r:8px;--r2:12px;
+  --sh:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --sh2:0 4px 20px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+input,textarea,select{font-family:inherit}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ════════════════════════════════
+   SUPABASE CONFIG SCREEN
+════════════════════════════════ */
+#config-screen{
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(135deg,#060e20 0%,#0d1f4a 50%,#0a1635 100%);
+  display:flex;align-items:center;justify-content:center;padding:1rem;
+}
+#config-screen.hidden{display:none}
+.cfg-box{background:#fff;border-radius:18px;padding:2.5rem;width:100%;max-width:480px;box-shadow:0 30px 100px rgba(0,0,0,.4)}
+.cfg-logo{display:flex;align-items:center;gap:12px;margin-bottom:2rem}
+.cfg-logo-sq{width:44px;height:44px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.1rem;flex-shrink:0}
+.cfg-logo-name{font-size:.8rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.1em;line-height:1.4}
+.cfg-logo-name strong{display:block;font-size:.9rem;color:var(--text)}
+.cfg-h{font-size:1.3rem;font-weight:800;color:var(--text);margin-bottom:.3rem}
+.cfg-sub{font-size:.78rem;color:var(--t2);line-height:1.6;margin-bottom:1.6rem}
+.cfg-note{background:var(--blue-ll);border:1px solid var(--blue-l);border-radius:8px;padding:.9rem 1rem;font-size:.74rem;color:var(--blue);line-height:1.65;margin-bottom:1.4rem}
+.cfg-note code{font-family:'JetBrains Mono',monospace;background:rgba(77,104,239,.12);padding:1px 5px;border-radius:3px;font-size:.85em}
+.cfg-field{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
+.cfg-field label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--t2)}
+.cfg-field input{border:1.5px solid var(--border);border-radius:7px;padding:11px 14px;font-size:.83rem;font-family:'JetBrains Mono',monospace;outline:none;transition:border-color .2s;background:var(--bg)}
+.cfg-field input:focus{border-color:var(--blue);background:#fff}
+.cfg-or{display:flex;align-items:center;gap:.8rem;margin:1.2rem 0;color:var(--t3);font-size:.72rem}
+.cfg-or::before,.cfg-or::after{content:'';flex:1;height:1px;background:var(--border)}
+.cfg-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:8px;font-size:.87rem;font-weight:700;transition:background .2s;margin-top:.3rem}
+.cfg-btn:hover{background:var(--blue-d)}
+.cfg-btn.secondary{background:var(--bg);color:var(--text);border:1.5px solid var(--border);margin-top:.5rem}
+.cfg-btn.secondary:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ════════════════════════════════
+   LOGIN SCREEN
+════════════════════════════════ */
+#login-screen{
+  position:fixed;inset:0;z-index:9998;
+  background:linear-gradient(135deg,#060e20 0%,#0d1f4a 50%,#0a1635 100%);
+  display:flex;align-items:center;justify-content:center;padding:1rem;
+  transition:opacity .35s;
+}
+#login-screen.hidden{opacity:0;pointer-events:none}
+.login-box{background:#fff;border-radius:18px;padding:2.5rem;width:100%;max-width:380px;box-shadow:0 30px 100px rgba(0,0,0,.4)}
+.login-logo{display:flex;align-items:center;gap:12px;margin-bottom:1.8rem}
+.login-logo-sq{width:40px;height:40px;background:var(--blue);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.95rem;flex-shrink:0}
+.login-h{font-size:1.4rem;font-weight:800;margin-bottom:.25rem}
+.login-sub{font-size:.78rem;color:var(--t2);margin-bottom:1.6rem}
+.lf{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
+.lf label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--t2)}
+.lf input{border:1.5px solid var(--border);border-radius:7px;padding:11px 14px;font-size:.85rem;outline:none;transition:border-color .2s;background:var(--bg)}
+.lf input:focus{border-color:var(--blue);background:#fff}
+.login-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:8px;font-size:.87rem;font-weight:700;transition:background .2s;margin-top:.3rem}
+.login-btn:hover{background:var(--blue-d)}
+.login-err{font-size:.73rem;color:var(--err);margin-top:.5rem;text-align:center;display:none}
+.login-loading{font-size:.75rem;color:var(--t3);text-align:center;margin-top:.5rem;display:none}
+
+/* ════════════════════════════════
+   MAIN APP LAYOUT
+════════════════════════════════ */
+#app{display:flex;height:100vh;overflow:hidden}
+#app.hidden{display:none}
+
+/* SIDEBAR */
+.sidebar{width:232px;background:var(--side);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;overflow-x:hidden}
+.sb-brand{padding:1.1rem 1.2rem;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--side-border)}
+.sb-brand-sq{width:32px;height:32px;background:var(--blue);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.82rem;flex-shrink:0}
+.sb-brand-txt{font-size:.67rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;line-height:1.45}
+.sb-brand-txt strong{display:block;font-size:.75rem;color:#fff;font-weight:700}
+.sb-env{margin:.6rem .7rem 0;background:rgba(77,104,239,.25);border:1px solid rgba(77,104,239,.35);border-radius:5px;padding:.35rem .7rem;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(77,104,239,.9)}
+.sb-section{padding:.8rem .8rem .15rem;font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.25)}
+.sb-item{display:flex;align-items:center;gap:9px;padding:.58rem .9rem;margin:1px .5rem;border-radius:6px;font-size:.76rem;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;transition:all .15s;position:relative;user-select:none}
+.sb-item:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.85)}
+.sb-item.active{background:var(--blue);color:#fff;font-weight:600}
+.sb-item svg{width:15px;height:15px;flex-shrink:0;opacity:.65}
+.sb-item.active svg{opacity:1}
+.sb-badge{margin-left:auto;min-width:18px;height:18px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.75);font-size:.6rem;font-weight:700;padding:0 5px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.sb-item.active .sb-badge{background:rgba(255,255,255,.22);color:#fff}
+.sb-badge.dot{width:7px;height:7px;min-width:7px;background:#ef4444;border-radius:50%;padding:0}
+.sb-divider{height:1px;background:var(--side-border);margin:.5rem .8rem}
+.sb-bottom{margin-top:auto;border-top:1px solid var(--side-border);padding:.7rem .5rem}
+.sb-user{padding:.5rem .9rem;display:flex;align-items:center;gap:8px;font-size:.74rem;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.sb-avatar{width:26px;height:26px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.65rem;font-weight:700;flex-shrink:0}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+
+/* TOPBAR */
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:0 1.6rem;height:54px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:1rem}
+.topbar-l{display:flex;align-items:center;gap:.7rem;min-width:0}
+.page-title{font-size:.9rem;font-weight:700;color:var(--text);white-space:nowrap}
+.bc{font-size:.68rem;color:var(--t3);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.bc-sep{color:var(--border)}
+.topbar-r{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.tb-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:6px;font-size:.74rem;font-weight:600;border:1.5px solid var(--border);background:#fff;color:var(--t2);transition:all .2s;cursor:pointer;white-space:nowrap}
+.tb-btn:hover{border-color:var(--blue);color:var(--blue)}
+.tb-btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tb-btn.primary:hover{background:var(--blue-d)}
+.tb-btn:disabled{opacity:.5;cursor:not-allowed}
+.tb-search{display:flex;align-items:center;gap:7px;background:var(--bg);border:1.5px solid var(--border);border-radius:6px;padding:6px 12px;width:190px;transition:border-color .2s}
+.tb-search:focus-within{border-color:var(--blue)}
+.tb-search input{border:none;background:none;outline:none;font-size:.75rem;width:100%;color:var(--text)}
+.tb-search input::placeholder{color:var(--t3)}
+.tb-dot{width:8px;height:8px;background:var(--ok);border-radius:50%;flex-shrink:0}
+.tb-dot.offline{background:var(--err)}
+
+/* CONTENT */
+.content{flex:1;overflow-y:auto;padding:1.4rem 1.6rem}
+
+/* ════════════════════════════════
+   PAGES
+════════════════════════════════ */
+.page{display:none}.page.active{display:block}
+
+/* ════════════════════════════════
+   CARDS / KPI
+════════════════════════════════ */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.4rem}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.2rem 1.3rem;box-shadow:var(--sh)}
+.kpi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}
+.kpi-label{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t2)}
+.kpi-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.kpi-val{font-size:1.8rem;font-weight:800;color:var(--text);line-height:1;font-variant-numeric:tabular-nums}
+.kpi-delta{font-size:.7rem;font-weight:600;margin-top:.3rem;display:flex;align-items:center;gap:3px}
+.kpi-delta.up{color:var(--ok)}.kpi-delta.down{color:var(--err)}.kpi-delta.neutral{color:var(--t3)}
+
+/* WIDGETS */
+.widget{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.2rem 1.4rem;box-shadow:var(--sh)}
+.wh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.wh-title{font-size:.78rem;font-weight:700;color:var(--text)}
+.wh-link{font-size:.7rem;color:var(--blue);font-weight:600;cursor:pointer}
+.dash-row{display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1.4rem}
+.bar-chart{display:flex;align-items:flex-end;gap:5px;height:76px}
+.bc-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
+.bc-bar{width:100%;background:var(--blue-l);border-radius:3px 3px 0 0;transition:height .5s,background .2s;cursor:default;position:relative}
+.bc-bar:hover{background:var(--blue)}
+.bc-label{font-size:.56rem;color:var(--t3)}
+.act-list{display:flex;flex-direction:column;gap:.65rem}
+.act-item{display:flex;align-items:flex-start;gap:9px}
+.act-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.act-body .act-txt{font-size:.74rem;color:var(--text);line-height:1.4}
+.act-body .act-time{font-size:.63rem;color:var(--t3);margin-top:2px}
+.qa-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.qa-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);padding:.9rem .7rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;cursor:pointer;transition:all .2s;text-align:center}
+.qa-btn:hover{border-color:var(--blue);background:var(--blue-ll)}
+.qa-btn .qa-ic{width:34px;height:34px;background:var(--blue-l);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s}
+.qa-btn:hover .qa-ic{background:var(--blue)}
+.qa-btn span{font-size:.7rem;font-weight:600;color:var(--t2)}
+.qa-btn:hover span{color:var(--blue)}
+
+/* ════════════════════════════════
+   TABLE
+════════════════════════════════ */
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;box-shadow:var(--sh)}
+.tbl-top{padding:.9rem 1.3rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.7rem}
+.tbl-top-title{font-size:.8rem;font-weight:700;color:var(--text)}
+.tbl-controls{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.tbl-srch{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:6px;padding:6px 10px;transition:border-color .2s}
+.tbl-srch:focus-within{border-color:var(--blue)}
+.tbl-srch input{border:none;background:none;outline:none;font-size:.73rem;width:140px;color:var(--text)}
+.f-sel{border:1.5px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.73rem;font-family:inherit;background:#fff;color:var(--t2);outline:none;cursor:pointer}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--bg);padding:.65rem 1.1rem;font-size:.63rem;font-weight:700;color:var(--t2);text-align:left;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--border);white-space:nowrap;position:sticky;top:0}
+tbody td{padding:.8rem 1.1rem;font-size:.77rem;color:var(--text);border-bottom:1px solid var(--border2);vertical-align:middle}
+tbody tr:last-child td{border:none}
+tbody tr:hover td{background:var(--blue-ll)}
+.td-main{font-weight:600;color:var(--text)}
+.td-sub{font-size:.67rem;color:var(--t3);margin-top:2px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:.63rem;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.badge::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.b-pub{background:var(--ok-l);color:#15803d}.b-pub::before{background:#22c55e}
+.b-draft{background:var(--warn-l);color:#92400e}.b-draft::before{background:var(--warn)}
+.b-arch{background:var(--border2);color:var(--t3)}.b-arch::before{background:var(--t3)}
+.b-open{background:var(--ok-l);color:#15803d}.b-open::before{background:#22c55e}
+.b-closed{background:var(--err-l);color:#b91c1c}.b-closed::before{background:var(--err)}
+.b-blue{background:var(--blue-l);color:var(--blue)}.b-blue::before{background:var(--blue)}
+.b-purple{background:var(--purple-l);color:#7c3aed}.b-purple::before{background:var(--purple)}
+.row-actions{display:flex;gap:4px}
+.ra-btn{width:28px;height:28px;border-radius:5px;border:1.5px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;transition:all .15s;color:var(--t2)}
+.ra-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-ll)}
+.ra-btn.del:hover{border-color:var(--err);color:var(--err);background:var(--err-l)}
+.tbl-foot{padding:.8rem 1.3rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);font-size:.7rem;color:var(--t2)}
+.pager{display:flex;gap:3px}
+.pg{width:27px;height:27px;border-radius:5px;border:1.5px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;cursor:pointer;transition:all .15s;color:var(--t2)}
+.pg:hover,.pg.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.empty-row{padding:2.5rem;text-align:center;color:var(--t3)}
+.empty-row .ei{font-size:2rem;margin-bottom:.5rem;opacity:.4}
+.empty-row .et{font-size:.8rem;font-weight:600;color:var(--t2);margin-bottom:.2rem}
+.empty-row .es{font-size:.7rem}
+
+/* ════════════════════════════════
+   MODAL
+════════════════════════════════ */
+.modal-bg{position:fixed;inset:0;background:rgba(10,20,45,.55);z-index:600;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(5px)}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:14px;width:100%;max-width:600px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.18)}
+.modal.wide{max-width:780px}
+.modal.sm{max-width:440px}
+.modal-h{padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:.5rem}
+.modal-title{font-size:.88rem;font-weight:700;color:var(--text)}
+.modal-cls{width:29px;height:29px;border-radius:5px;border:1.5px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;color:var(--t2);transition:all .15s;flex-shrink:0}
+.modal-cls:hover{border-color:var(--err);color:var(--err);background:var(--err-l)}
+.modal-body{padding:1.4rem;overflow-y:auto;flex:1}
+.modal-foot{padding:.9rem 1.4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.5rem;flex-shrink:0}
+
+/* TABS */
+.tabs{display:flex;gap:1px;border-bottom:2px solid var(--border);margin-bottom:1.2rem}
+.tab-btn{padding:.45rem 1rem;font-size:.73rem;font-weight:600;color:var(--t2);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .18s;white-space:nowrap}
+.tab-btn.active{color:var(--blue);border-color:var(--blue)}
+.tab-pane{display:none}.tab-pane.active{display:block}
+
+/* FORM */
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:.9rem}
+.fg label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--t2);display:flex;align-items:center;gap:5px}
+.fg label .req{color:var(--err)}
+.fg input,.fg textarea,.fg select{border:1.5px solid var(--border);border-radius:6px;padding:9px 12px;font-size:.82rem;color:var(--text);outline:none;background:var(--bg);transition:border-color .2s;width:100%}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--blue);background:#fff}
+.fg textarea{resize:vertical;min-height:90px;line-height:1.6}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg-check{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.8rem;font-weight:500;color:var(--text)}
+.fg-check input[type=checkbox]{width:16px;height:16px;accent-color:var(--blue);cursor:pointer;flex-shrink:0}
+.field-hint{font-size:.63rem;color:var(--t3);margin-top:2px}
+
+/* EDITOR */
+.editor-wrap{border:1.5px solid var(--border);border-radius:7px;overflow:hidden;transition:border-color .2s}
+.editor-wrap:focus-within{border-color:var(--blue)}
+.editor-tb{display:flex;gap:2px;padding:5px 7px;background:var(--bg);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.et-b{width:26px;height:26px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--t2);transition:all .15s}
+.et-b:hover{background:var(--blue-l);color:var(--blue)}
+.et-sep{width:1px;height:20px;background:var(--border);margin:0 3px;align-self:center;flex-shrink:0}
+.editor-area{border:none;min-height:180px;padding:1rem;font-size:.83rem;outline:none;background:#fff;color:var(--text);line-height:1.7;resize:vertical;width:100%;font-family:inherit}
+
+/* SETTINGS */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ss{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.3rem;box-shadow:var(--sh)}
+.ss-title{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px}
+.ss-title .ss-ic{width:22px;height:22px;background:var(--blue-l);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.75rem}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--border2)}
+.toggle-row:last-child{border:none}
+.tr-l{flex:1;min-width:0}
+.tr-label{font-size:.77rem;font-weight:500;color:var(--text)}
+.tr-hint{font-size:.63rem;color:var(--t3);margin-top:1px}
+.toggle{width:36px;height:20px;background:var(--border);border-radius:10px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.toggle.on{background:var(--blue)}
+.toggle::after{content:'';position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;top:2px;left:2px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.toggle.on::after{transform:translateX(16px)}
+
+/* USERS PAGE */
+.user-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.2rem;display:flex;align-items:center;gap:1rem;box-shadow:var(--sh);transition:all .2s}
+.user-card:hover{box-shadow:var(--sh2);border-color:var(--blue-l)}
+.user-av{width:42px;height:42px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0}
+.user-info{flex:1;min-width:0}
+.user-name{font-size:.82rem;font-weight:700;color:var(--text)}
+.user-email{font-size:.72rem;color:var(--t3);margin-top:1px}
+.user-role{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:4px}
+.role-admin{background:var(--blue-l);color:var(--blue)}
+.role-editor{background:var(--ok-l);color:#15803d}
+.role-viewer{background:var(--border2);color:var(--t2)}
+
+/* TOAST */
+#toast-wrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column-reverse;gap:.5rem;pointer-events:none}
+.toast{background:var(--side);color:#fff;padding:.65rem 1rem;border-radius:8px;font-size:.74rem;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.25);transform:translateX(110%);transition:transform .3s;pointer-events:auto;max-width:320px;line-height:1.4}
+.toast.show{transform:translateX(0)}
+.toast.success{background:#166534;border-left:3px solid var(--ok)}
+.toast.error{background:#7f1d1d;border-left:3px solid var(--err)}
+.toast.info{background:#1e3a5f;border-left:3px solid var(--blue)}
+
+/* LOADING SPINNER */
+.spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:inline-block;flex-shrink:0}
+.spin.blue{border-color:var(--blue-l);border-top-color:var(--blue)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.loading-overlay{position:absolute;inset:0;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;border-radius:inherit;z-index:10}
+
+/* MEDIA */
+@media(max-width:960px){
+  .sidebar{width:200px}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .dash-row,.settings-grid{grid-template-columns:1fr}
+  .qa-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SUPABASE CONFIG ═══════════════ -->
+<div id="config-screen">
+  <div class="cfg-box">
+    <div class="cfg-logo">
+      <div class="cfg-logo-sq">N</div>
+      <div class="cfg-logo-name"><strong>НОМИН Холдинг</strong>Админ систем тохиргоо</div>
+    </div>
+    <h2 class="cfg-h">Supabase холболт</h2>
+    <p class="cfg-sub">Анх удаа нэвтрэхдээ Supabase төслийн мэдээллээ оруулна уу. Энэ мэдээлэл браузерт хадгалагдана.</p>
+    <div class="cfg-note">
+      <strong>Хэрхэн авах вэ:</strong><br>
+      1. <a href="https://supabase.com" target="_blank" style="color:var(--blue);font-weight:700">supabase.com</a> дээр бүртгэлтэй нэвтрэх<br>
+      2. Төслөө нээж <code>Settings → API</code> руу орох<br>
+      3. <code>Project URL</code> болон <code>anon public</code> key-г хуулж оруулах
+    </div>
+    <div class="cfg-field">
+      <label>Project URL</label>
+      <input id="cfg-url" type="url" placeholder="https://xxxxxxxxxxxx.supabase.co" autocomplete="off">
+    </div>
+    <div class="cfg-field">
+      <label>Anon / Public Key</label>
+      <input id="cfg-key" type="text" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." autocomplete="off">
+    </div>
+    <button class="cfg-btn" onclick="saveConfig()">Холболт тохируулах →</button>
+    <div class="cfg-or">эсвэл</div>
+    <button class="cfg-btn secondary" onclick="useDemoMode()">🧪 Demo горимоор ажиллах (localStorage)</button>
+    <div id="cfg-err" style="font-size:.72rem;color:var(--err);margin-top:.6rem;text-align:center;display:none"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ LOGIN ═══════════════ -->
+<div id="login-screen" class="hidden">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="login-logo-sq">N</div>
+      <div style="font-size:.8rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.1em;line-height:1.4"><strong style="display:block;font-size:.9rem;color:var(--text)">НОМИН Холдинг</strong>Admin Panel</div>
+    </div>
+    <h2 class="login-h">Нэвтрэх</h2>
+    <p class="login-sub" id="login-mode-label">Supabase auth ашиглан нэвтэрнэ</p>
+    <div class="lf"><label>И-мэйл хаяг</label><input type="email" id="l-email" placeholder="admin@nomin.mn" autocomplete="email"></div>
+    <div class="lf"><label>Нууц үг</label><input type="password" id="l-pw" placeholder="••••••••" autocomplete="current-password" onkeypress="if(event.key==='Enter')doLogin()"></div>
+    <div class="login-err" id="l-err"></div>
+    <div class="login-loading" id="l-loading"><div class="spin blue" style="margin:0 auto"></div></div>
+    <button class="login-btn" id="l-btn" onclick="doLogin()">Нэвтрэх</button>
+    <div style="font-size:.65rem;color:var(--t3);text-align:center;margin-top:.8rem;display:flex;align-items:center;justify-content:center;gap:.5rem">
+      <span id="cfg-status-dot" class="tb-dot"></span>
+      <span id="cfg-status-txt">Supabase холбогдсон</span>
+      <span style="color:var(--border)">·</span>
+      <a onclick="resetConfig()" style="color:var(--blue);cursor:pointer;font-weight:600">Тохиргоо өөрчлөх</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN APP ═══════════════ -->
+<div id="app" class="hidden">
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <div class="sb-brand-sq">N</div>
+      <div class="sb-brand-txt"><strong>НОМИН Холдинг</strong>Admin Panel</div>
+    </div>
+    <div class="sb-env" id="sb-env-badge">● DEMO</div>
+
+    <div class="sb-section">Ерөнхий</div>
+    <div class="sb-item active" data-page="dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Хяналтын самбар
+    </div>
+    <div class="sb-item" data-page="stats">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      Статистик
+    </div>
+
+    <div class="sb-section">Контент</div>
+    <div class="sb-item" data-page="news">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+      Мэдээ / Нийтлэл
+      <span class="sb-badge" id="sb-news-cnt">—</span>
+    </div>
+    <div class="sb-item" data-page="pages">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Хуудасны текст
+    </div>
+
+    <div class="sb-section">Захиргаа</div>
+    <div class="sb-item" data-page="careers">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      Ажлын байр
+      <span class="sb-badge" id="sb-jobs-cnt">—</span>
+    </div>
+    <div class="sb-item" data-page="tender">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 12 2 2 4-4"/></svg>
+      Тендер
+      <span class="sb-badge" id="sb-tender-cnt">—</span>
+    </div>
+
+    <div class="sb-section">Систем</div>
+    <div class="sb-item" data-page="users">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Хэрэглэгчид
+    </div>
+    <div class="sb-item" data-page="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      Тохиргоо
+    </div>
+
+    <div class="sb-bottom">
+      <div class="sb-user">
+        <div class="sb-avatar" id="sb-avatar">А</div>
+        <div style="min-width:0"><div style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.7);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="sb-user-email">admin</div><div style="font-size:.6rem;color:rgba(255,255,255,.35)">Админ</div></div>
+      </div>
+      <div class="sb-item" onclick="doLogout()" style="color:rgba(239,68,68,.65)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Гарах
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-l">
+        <div><div class="page-title" id="pg-title">Хяналтын самбар</div><div class="bc">НОМИН <span class="bc-sep">/</span> <span id="pg-bc">Dashboard</span></div></div>
+      </div>
+      <div class="topbar-r">
+        <div class="tb-search"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input placeholder="Хайх..." id="topbar-search"></div>
+        <button class="tb-btn" id="topbar-add-btn" onclick="topbarAdd()" style="display:none">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span id="topbar-add-label">Нэмэх</span>
+        </button>
+        <div class="tb-dot" id="conn-dot" title="Холболт"></div>
+        <div class="sb-avatar" id="top-avatar" style="width:32px;height:32px;font-size:.7rem;cursor:pointer" onclick="goPage('settings')">А</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="page active" id="page-dashboard">
+        <div class="kpi-grid">
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Нийт мэдээ</div><div class="kpi-icon" style="background:var(--blue-l)">📰</div></div><div class="kpi-val" id="kpi-news">—</div><div class="kpi-delta neutral">нийт нийтлэл</div></div>
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Ажлын байр</div><div class="kpi-icon" style="background:var(--ok-l)">💼</div></div><div class="kpi-val" id="kpi-jobs">—</div><div class="kpi-delta up">нээлттэй зар</div></div>
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Тендер</div><div class="kpi-icon" style="background:var(--purple-l)">📋</div></div><div class="kpi-val" id="kpi-tender">—</div><div class="kpi-delta up">нээлттэй тендер</div></div>
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Хэрэглэгч</div><div class="kpi-icon" style="background:var(--warn-l)">👤</div></div><div class="kpi-val" id="kpi-users">—</div><div class="kpi-delta neutral">нийт</div></div>
+        </div>
+        <div class="dash-row">
+          <div class="widget"><div class="wh"><div class="wh-title">Мэдээний тоо (сараар)</div><a class="wh-link" onclick="goPage('news')">Бүгдийг үзэх →</a></div><div class="bar-chart" id="dash-chart"></div></div>
+          <div class="widget"><div class="wh"><div class="wh-title">Сүүлийн үйлдэл</div></div><div class="act-list" id="dash-activity"></div></div>
+        </div>
+        <div class="widget"><div class="wh"><div class="wh-title">Хурдан үйлдэл</div></div>
+          <div class="qa-grid">
+            <div class="qa-btn" onclick="goPage('news');openModal('news')"><div class="qa-ic">📰</div><span>Шинэ мэдээ</span></div>
+            <div class="qa-btn" onclick="goPage('careers');openModal('career')"><div class="qa-ic">💼</div><span>Ажлын байр</span></div>
+            <div class="qa-btn" onclick="goPage('tender');openModal('tender')"><div class="qa-ic">📋</div><span>Тендер нэмэх</span></div>
+            <div class="qa-btn" onclick="goPage('settings')"><div class="qa-ic">⚙️</div><span>Тохиргоо</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="page" id="page-stats">
+        <div class="kpi-grid" style="margin-bottom:1rem">
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Сарын үзэлт</div><div class="kpi-icon" style="background:var(--blue-l)">📈</div></div><div class="kpi-val">24,381</div><div class="kpi-delta up">↑ 12% өмнөх сараас</div></div>
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Нүүр хуудас</div><div class="kpi-icon" style="background:var(--ok-l)">🏠</div></div><div class="kpi-val">9,142</div><div class="kpi-delta up">↑ 8%</div></div>
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Карьер хуудас</div><div class="kpi-icon" style="background:var(--warn-l)">💼</div></div><div class="kpi-val">2,214</div><div class="kpi-delta up">↑ 22%</div></div>
+          <div class="kpi"><div class="kpi-top"><div class="kpi-label">Дундаж цаг</div><div class="kpi-icon" style="background:var(--purple-l)">⏱</div></div><div class="kpi-val">2:34</div><div class="kpi-delta neutral">мин/хуудас</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1rem">
+          <div class="widget">
+            <div class="wh-title" style="margin-bottom:1rem">Үзэлтийн динамик (2025–2026)</div>
+            <svg viewBox="0 0 700 130" style="width:100%;height:130px;overflow:visible">
+              <defs><linearGradient id="sgr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4D68EF" stop-opacity=".18"/><stop offset="100%" stop-color="#4D68EF" stop-opacity="0"/></linearGradient></defs>
+              <polygon points="0,110 58,96 117,88 175,68 233,78 292,52 350,44 408,58 467,32 525,22 583,28 641,18 700,12 700,130 0,130" fill="url(#sgr)"/>
+              <polyline points="0,110 58,96 117,88 175,68 233,78 292,52 350,44 408,58 467,32 525,22 583,28 641,18 700,12" fill="none" stroke="#4D68EF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <g font-size="8" fill="#94a3b8" font-family="Plus Jakarta Sans,sans-serif">
+                <text x="0" y="128">1с</text><text x="58" y="128">2с</text><text x="117" y="128">3с</text><text x="175" y="128">4с</text>
+                <text x="233" y="128">5с</text><text x="292" y="128">6с</text><text x="350" y="128">7с</text><text x="408" y="128">8с</text>
+                <text x="467" y="128">9с</text><text x="525" y="128">10с</text><text x="575" y="128">11с</text><text x="635" y="128">12с</text>
+              </g>
+            </svg>
+          </div>
+          <div class="widget">
+            <div class="wh-title" style="margin-bottom:1rem">Хэлний хуваарилалт</div>
+            <div style="display:flex;flex-direction:column;gap:.8rem">
+              <div><div style="display:flex;justify-content:space-between;font-size:.73rem;margin-bottom:4px"><span>🇲🇳 Монгол</span><strong>68%</strong></div><div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden"><div style="height:100%;width:68%;background:var(--blue);border-radius:3px;transition:width .7s .2s"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.73rem;margin-bottom:4px"><span>🇬🇧 English</span><strong>22%</strong></div><div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden"><div style="height:100%;width:22%;background:var(--ok);border-radius:3px;transition:width .7s .3s"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.73rem;margin-bottom:4px"><span>🇷🇺 Русский</span><strong>10%</strong></div><div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden"><div style="height:100%;width:10%;background:var(--purple);border-radius:3px;transition:width .7s .4s"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEWS -->
+      <div class="page" id="page-news">
+        <div class="tbl-wrap">
+          <div class="tbl-top">
+            <div class="tbl-top-title">Мэдээний жагсаалт</div>
+            <div class="tbl-controls">
+              <div class="tbl-srch"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input placeholder="Хайх..." oninput="filterNews(this.value)"></div>
+              <select class="f-sel" onchange="filterNewsSt(this.value)"><option value="">Бүх төлөв</option><option value="published">Нийтлэгдсэн</option><option value="draft">Ноорог</option><option value="archived">Архив</option></select>
+              <button class="tb-btn primary" onclick="openModal('news')">+ Шинэ мэдээ</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th style="width:40px"></th><th>Гарчиг</th><th>Ангилал</th><th>Огноо</th><th>Хэл</th><th>Төлөв</th><th>Онцлох</th><th style="width:90px">Үйлдэл</th></tr></thead>
+              <tbody id="news-tbody"><tr><td colspan="8"><div class="empty-row"><div class="spin blue" style="margin:0 auto"></div></div></td></tr></tbody>
+            </table>
+          </div>
+          <div class="tbl-foot"><span id="news-count">—</span><div class="pager" id="news-pager"></div></div>
+        </div>
+      </div>
+
+      <!-- PAGES EDITOR -->
+      <div class="page" id="page-pages">
+        <div style="display:grid;grid-template-columns:1fr 270px;gap:1rem">
+          <div class="widget">
+            <div class="tabs" id="pages-tabs"></div>
+            <div id="pages-panes"></div>
+          </div>
+          <div>
+            <div class="widget" style="margin-bottom:1rem">
+              <div class="wh"><div class="wh-title">📋 Хуудсууд</div></div>
+              <div id="pages-list" style="display:flex;flex-direction:column;gap:2px"></div>
+            </div>
+            <div class="widget">
+              <div class="wh"><div class="wh-title">🔍 SEO тохиргоо</div></div>
+              <div class="fg"><label>Page Title</label><input id="seo-title" placeholder="НОМИН Холдинг | ..."></div>
+              <div class="fg"><label>Meta Description</label><textarea id="seo-desc" style="min-height:65px" placeholder="Хуудасны тайлбар..."></textarea></div>
+              <button class="tb-btn primary" style="width:100%;justify-content:center" onclick="saveSeo()">SEO хадгалах</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAREERS -->
+      <div class="page" id="page-careers">
+        <div class="tbl-wrap">
+          <div class="tbl-top">
+            <div class="tbl-top-title">Ажлын байрны зар</div>
+            <div class="tbl-controls">
+              <div class="tbl-srch"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input placeholder="Хайх..." oninput="filterJobs(this.value)"></div>
+              <select class="f-sel" onchange="filterJobsSt(this.value)"><option value="">Бүх төлөв</option><option value="open">Нээлттэй</option><option value="closed">Хаалттай</option></select>
+              <button class="tb-btn primary" onclick="openModal('career')">+ Нэмэх</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th>Ажлын байр</th><th>Хэлтэс</th><th>Байршил</th><th>Цалин</th><th>Дуусах огноо</th><th>Төлөв</th><th style="width:90px">Үйлдэл</th></tr></thead>
+              <tbody id="jobs-tbody"><tr><td colspan="7"><div class="empty-row"><div class="spin blue" style="margin:0 auto"></div></div></td></tr></tbody>
+            </table>
+          </div>
+          <div class="tbl-foot"><span id="jobs-count">—</span></div>
+        </div>
+      </div>
+
+      <!-- TENDER -->
+      <div class="page" id="page-tender">
+        <div class="tbl-wrap">
+          <div class="tbl-top">
+            <div class="tbl-top-title">Тендерийн жагсаалт</div>
+            <div class="tbl-controls">
+              <div class="tbl-srch"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input placeholder="Хайх..." oninput="filterTenders(this.value)"></div>
+              <select class="f-sel" onchange="filterTendersSt(this.value)"><option value="">Бүх төлөв</option><option value="open">Нээлттэй</option><option value="closed">Хаалттай</option></select>
+              <button class="tb-btn primary" onclick="openModal('tender')">+ Нэмэх</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th>Тендерийн нэр</th><th>Байгууллага</th><th>Дүн</th><th>Нийтлэсэн</th><th>Дуусах</th><th>Төлөв</th><th style="width:90px">Үйлдэл</th></tr></thead>
+              <tbody id="tender-tbody"><tr><td colspan="7"><div class="empty-row"><div class="spin blue" style="margin:0 auto"></div></div></td></tr></tbody>
+            </table>
+          </div>
+          <div class="tbl-foot"><span id="tender-count">—</span></div>
+        </div>
+      </div>
+
+      <!-- USERS -->
+      <div class="page" id="page-users">
+        <div class="tbl-wrap" style="margin-bottom:1rem">
+          <div class="tbl-top">
+            <div class="tbl-top-title">Хэрэглэгчдийн жагсаалт</div>
+            <div class="tbl-controls"><button class="tb-btn primary" onclick="openModal('user')">+ Урих</button></div>
+          </div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th>И-мэйл</th><th>Нэр</th><th>Үүрэг</th><th>Нэвтэрсэн</th><th>Бүртгэсэн</th><th style="width:90px">Үйлдэл</th></tr></thead>
+              <tbody id="users-tbody"></tbody>
+            </table>
+          </div>
+          <div class="tbl-foot"><span id="users-count">—</span></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="page" id="page-settings">
+        <div class="settings-grid">
+          <div class="ss">
+            <div class="ss-title"><div class="ss-ic">🏢</div>Сайтын мэдээлэл</div>
+            <div class="fg"><label>Компанийн нэр</label><input id="st-name" value="НОМИН Холдинг ХХК"></div>
+            <div class="fg"><label>И-мэйл</label><input id="st-email" type="email" value="nomin@nomin.net"></div>
+            <div class="fg"><label>Утас</label><input id="st-phone" value="1800-2888"></div>
+            <div class="fg"><label>Хаяг</label><input id="st-addr" value="Хан-Уул дүүрэг, Чингисийн өргөн чөлөө, УБ 17042"></div>
+            <button class="tb-btn primary" onclick="saveSettings()">Хадгалах</button>
+          </div>
+          <div class="ss">
+            <div class="ss-title"><div class="ss-ic">⚙️</div>Систем тохиргоо</div>
+            <div class="toggle-row"><div class="tr-l"><div class="tr-label">Техник засвар горим</div><div class="tr-hint">Сайт түр хаагдана</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+            <div class="toggle-row"><div class="tr-l"><div class="tr-label">Мэдээний коммент</div><div class="tr-hint">Уншигчид коммент бичих</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="toggle-row"><div class="tr-l"><div class="tr-label">SEO индексжуулалт</div><div class="tr-hint">Хайлтын системд харагдах</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="toggle-row"><div class="tr-l"><div class="tr-label">И-мэйл мэдэгдэл</div><div class="tr-hint">Шинэ мессеж ирэхэд</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+          </div>
+          <div class="ss">
+            <div class="ss-title"><div class="ss-ic">🔑</div>Нууц үг солих</div>
+            <div class="fg"><label>Одоогийн нууц үг</label><input type="password" id="pw-old" placeholder="••••••••"></div>
+            <div class="fg"><label>Шинэ нууц үг</label><input type="password" id="pw-new" placeholder="••••••••"></div>
+            <div class="fg"><label>Давтах</label><input type="password" id="pw-rep" placeholder="••••••••"></div>
+            <button class="tb-btn primary" onclick="changePw()">Солих</button>
+          </div>
+          <div class="ss">
+            <div class="ss-title"><div class="ss-ic">🔌</div>Supabase холболт</div>
+            <div style="font-size:.75rem;color:var(--t2);line-height:1.7;margin-bottom:1rem" id="conn-info">—</div>
+            <button class="tb-btn" style="width:100%;justify-content:center;margin-bottom:.5rem" onclick="testConn()">🔌 Холболт шалгах</button>
+            <button class="tb-btn" style="width:100%;justify-content:center;color:var(--err);border-color:var(--err)" onclick="resetConfig()">⚠ Тохиргоо дахин оруулах</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ═══ NEWS MODAL ═══ -->
+<div class="modal-bg" id="modal-news">
+  <div class="modal wide">
+    <div class="modal-h"><div class="modal-title" id="news-modal-title">Шинэ мэдээ</div><button class="modal-cls" onclick="closeModal('modal-news')">✕</button></div>
+    <div class="modal-body">
+      <div class="tabs" id="news-tabs">
+        <button class="tab-btn active" onclick="switchTab(this,'nt-mn')">🇲🇳 Монгол</button>
+        <button class="tab-btn" onclick="switchTab(this,'nt-en')">🇬🇧 English</button>
+        <button class="tab-btn" onclick="switchTab(this,'nt-ru')">🇷🇺 Русский</button>
+        <button class="tab-btn" onclick="switchTab(this,'nt-cfg')">⚙️ Тохиргоо</button>
+      </div>
+      <div id="nt-mn" class="tab-pane active">
+        <div class="fg"><label>Гарчиг (МН) <span class="req">*</span></label><input id="n-title-mn" placeholder="Мэдээний гарчиг..."></div>
+        <div class="fg"><label>Хураангуй (МН)</label><textarea id="n-sub-mn" style="min-height:65px" placeholder="Товч тайлбар..."></textarea></div>
+        <div class="fg"><label>Агуулга (МН)</label>
+          <div class="editor-wrap"><div class="editor-tb">
+            <button class="et-b" onclick="fmt('**','**','n-body-mn')"><b>B</b></button>
+            <button class="et-b" onclick="fmt('*','*','n-body-mn')"><i>I</i></button>
+            <button class="et-b" onclick="fmt('\n## ','','n-body-mn')">H2</button>
+            <button class="et-b" onclick="fmt('\n### ','','n-body-mn')">H3</button>
+            <div class="et-sep"></div>
+            <button class="et-b" onclick="fmt('\n- ','','n-body-mn')">≡</button>
+            <button class="et-b" onclick="fmt('[','](url)','n-body-mn')">🔗</button>
+          </div><textarea class="editor-area" id="n-body-mn" placeholder="Мэдээний дэлгэрэнгүй агуулга..."></textarea></div>
+        </div>
+      </div>
+      <div id="nt-en" class="tab-pane">
+        <div class="fg"><label>Title (EN)</label><input id="n-title-en" placeholder="News title..."></div>
+        <div class="fg"><label>Summary (EN)</label><textarea id="n-sub-en" style="min-height:65px" placeholder="Brief summary..."></textarea></div>
+        <div class="fg"><label>Content (EN)</label><textarea class="editor-area" id="n-body-en" style="border:1.5px solid var(--border);border-radius:6px" placeholder="Full article..."></textarea></div>
+      </div>
+      <div id="nt-ru" class="tab-pane">
+        <div class="fg"><label>Заголовок (РУ)</label><input id="n-title-ru" placeholder="Заголовок..."></div>
+        <div class="fg"><label>Аннотация (РУ)</label><textarea id="n-sub-ru" style="min-height:65px" placeholder="Краткое описание..."></textarea></div>
+        <div class="fg"><label>Содержание (РУ)</label><textarea class="editor-area" id="n-body-ru" style="border:1.5px solid var(--border);border-radius:6px" placeholder="Полный текст..."></textarea></div>
+      </div>
+      <div id="nt-cfg" class="tab-pane">
+        <div class="fg-row">
+          <div class="fg"><label>Ангилал</label>
+            <select id="n-cat"><option>Компанийн мэдээ</option><option>Шагнал</option><option>Урамшуулал</option><option>Ойн тэмдэглэл</option><option>Бизнесийн мэдээ</option><option>Нийгмийн хариуцлага</option><option>Авиаци</option></select>
+          </div>
+          <div class="fg"><label>Огноо <span class="req">*</span></label><input type="date" id="n-date"></div>
+        </div>
+        <div class="fg-row">
+          <div class="fg"><label>Төлөв</label><select id="n-status"><option value="published">Нийтлэгдсэн</option><option value="draft">Ноорог</option><option value="archived">Архив</option></select></div>
+          <div class="fg"><label>Зургийн URL</label><input id="n-img" placeholder="https://..."></div>
+        </div>
+        <label class="fg-check"><input type="checkbox" id="n-featured"> Онцлох мэдээ болгох</label>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="tb-btn" onclick="closeModal('modal-news')">Цуцлах</button>
+      <button class="tb-btn primary" id="news-save-btn" onclick="saveNews()">
+        <span id="news-save-lbl">Хадгалах</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CAREER MODAL ═══ -->
+<div class="modal-bg" id="modal-career">
+  <div class="modal">
+    <div class="modal-h"><div class="modal-title" id="career-modal-title">Ажлын байр нэмэх</div><button class="modal-cls" onclick="closeModal('modal-career')">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label>Ажлын байрны нэр <span class="req">*</span></label><input id="j-title" placeholder="Маркетингийн менежер..."></div>
+      <div class="fg-row">
+        <div class="fg"><label>Хэлтэс / Нэгж</label><input id="j-dept" placeholder="Маркетинг хэлтэс"></div>
+        <div class="fg"><label>Байршил</label><input id="j-loc" placeholder="Улаанбаатар"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Цалингийн хүрээ</label><input id="j-salary" placeholder="2,500,000 — 4,000,000 ₮"></div>
+        <div class="fg"><label>Ажлын хэлбэр</label><select id="j-type"><option>Бүтэн цагийн</option><option>Хагас цагийн</option><option>Гэрээт</option><option>Дадлагажигч</option></select></div>
+      </div>
+      <div class="fg"><label>Дуусах огноо</label><input type="date" id="j-deadline"></div>
+      <div class="fg"><label>Тайлбар / Шаардлага</label><textarea id="j-desc" style="min-height:110px" placeholder="Ажлын байрны тайлбар, шаардлага..."></textarea></div>
+      <div class="fg"><label>Төлөв</label><select id="j-status"><option value="open">Нээлттэй</option><option value="closed">Хаалттай</option></select></div>
+    </div>
+    <div class="modal-foot">
+      <button class="tb-btn" onclick="closeModal('modal-career')">Цуцлах</button>
+      <button class="tb-btn primary" onclick="saveJob()">Хадгалах</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TENDER MODAL ═══ -->
+<div class="modal-bg" id="modal-tender">
+  <div class="modal">
+    <div class="modal-h"><div class="modal-title" id="tender-modal-title">Тендер нэмэх</div><button class="modal-cls" onclick="closeModal('modal-tender')">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label>Тендерийн нэр <span class="req">*</span></label><input id="t-title" placeholder="Тендерийн нэр..."></div>
+      <div class="fg-row">
+        <div class="fg"><label>Байгууллага / Хэлтэс</label><input id="t-org" placeholder="Номин Их Дэлгүүр"></div>
+        <div class="fg"><label>Нийт дүн</label><input id="t-amount" placeholder="150,000,000 ₮"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Нийтлэх огноо</label><input type="date" id="t-pub"></div>
+        <div class="fg"><label>Дуусах огноо</label><input type="date" id="t-deadline"></div>
+      </div>
+      <div class="fg"><label>Дэлгэрэнгүй тайлбар</label><textarea id="t-desc" style="min-height:90px" placeholder="Тендерийн нөхцөл, шаардлага..."></textarea></div>
+      <div class="fg"><label>Төлөв</label><select id="t-status"><option value="open">Нээлттэй</option><option value="closed">Хаалттай</option></select></div>
+    </div>
+    <div class="modal-foot">
+      <button class="tb-btn" onclick="closeModal('modal-tender')">Цуцлах</button>
+      <button class="tb-btn primary" onclick="saveTender()">Хадгалах</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ USER INVITE MODAL ═══ -->
+<div class="modal-bg" id="modal-user">
+  <div class="modal sm">
+    <div class="modal-h"><div class="modal-title">Хэрэглэгч урих</div><button class="modal-cls" onclick="closeModal('modal-user')">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label>И-мэйл хаяг <span class="req">*</span></label><input type="email" id="u-email" placeholder="user@nomin.mn"></div>
+      <div class="fg"><label>Нэр</label><input id="u-name" placeholder="Нэр..."></div>
+      <div class="fg"><label>Үүрэг</label><select id="u-role"><option value="editor">Editor — Контент засах</option><option value="viewer">Viewer — Зөвхөн харах</option><option value="admin">Admin — Бүрэн эрх</option></select></div>
+      <div style="font-size:.72rem;color:var(--t2);background:var(--bg);border-radius:6px;padding:.7rem;line-height:1.6">Урилгын и-мэйл Supabase-р автоматаар илгээгдэнэ. Хэрэглэгч и-мэйлээр нэвтрэн бүртгэлээ баталгаажуулна.</div>
+    </div>
+    <div class="modal-foot">
+      <button class="tb-btn" onclick="closeModal('modal-user')">Цуцлах</button>
+      <button class="tb-btn primary" onclick="inviteUser()">Урилга илгээх</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast-wrap"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// GLOBALS
+// ═══════════════════════════════════════════
+let supabase = null;
+let DEMO = false;
+let currentUser = null;
+let editId = {news:null, career:null, tender:null};
+let allNews=[], allJobs=[], allTenders=[];
+let newsFilter='', newsStatusFilter='';
+let jobsFilter='', jobsStatusFilter='';
+let tenderFilter='', tenderStatusFilter='';
+let activePage='home';
+
+const LS = {
+  get(k){try{return JSON.parse(localStorage.getItem('nomin_'+k))}catch{return null}},
+  set(k,v){try{localStorage.setItem('nomin_'+k,JSON.stringify(v))}catch{}},
+  del(k){try{localStorage.removeItem('nomin_'+k)}catch{}}
+};
+
+// ═══════════════════════════════════════════
+// SUPABASE CONFIG
+// ═══════════════════════════════════════════
+function saveConfig(){
+  const url = document.getElementById('cfg-url').value.trim();
+  const key = document.getElementById('cfg-key').value.trim();
+  if(!url||!key){showCfgErr('URL болон Key оруулна уу');return}
+  if(!url.startsWith('https://')){showCfgErr('URL https:// -ээр эхлэх ёстой');return}
+  try{
+    supabase = window.supabase.createClient(url, key);
+    LS.set('sb_url', url);
+    LS.set('sb_key', key);
+    DEMO = false;
+    document.getElementById('config-screen').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('hidden');
+    updateConnUI(true);
+  }catch(e){showCfgErr('Холболт үүсгэхэд алдаа: '+e.message)}
+}
+
+function useDemoMode(){
+  DEMO = true;
+  LS.set('demo', true);
+  seedDemoData();
+  document.getElementById('config-screen').classList.add('hidden');
+  document.getElementById('login-screen').classList.remove('hidden');
+  document.getElementById('login-mode-label').textContent = 'Demo горим — нэвтрэх: demo@nomin.mn / demo1234';
+  document.getElementById('l-email').value = 'demo@nomin.mn';
+  document.getElementById('l-pw').value = 'demo1234';
+  document.getElementById('cfg-status-dot').className = 'tb-dot';
+  document.getElementById('cfg-status-txt').textContent = 'Demo горим (localStorage)';
+}
+
+function resetConfig(){
+  LS.del('sb_url'); LS.del('sb_key'); LS.del('demo');
+  location.reload();
+}
+
+function showCfgErr(msg){
+  const el=document.getElementById('cfg-err');
+  el.textContent=msg; el.style.display='block';
+  setTimeout(()=>el.style.display='none',4000);
+}
+
+function updateConnUI(ok){
+  document.getElementById('conn-dot').className='tb-dot'+(ok?'':' offline');
+  document.getElementById('cfg-status-dot').className='tb-dot'+(ok?'':' offline');
+  document.getElementById('conn-info').innerHTML=ok?`<strong>Холбогдсон ✓</strong><br>URL: ${LS.get('sb_url')||'Demo режим'}`: '<strong style="color:var(--err)">Холбогдоогүй</strong>';
+}
+
+// ═══════════════════════════════════════════
+// LOGIN / LOGOUT
+// ═══════════════════════════════════════════
+async function doLogin(){
+  const email=document.getElementById('l-email').value.trim();
+  const pw=document.getElementById('l-pw').value;
+  const errEl=document.getElementById('l-err');
+  const loadEl=document.getElementById('l-loading');
+  errEl.style.display='none';
+  if(!email||!pw){errEl.textContent='И-мэйл болон нууц үгээ оруулна уу';errEl.style.display='block';return}
+  document.getElementById('l-btn').disabled=true;
+  loadEl.style.display='block';
+
+  if(DEMO){
+    if(email==='demo@nomin.mn'&&pw==='demo1234'){
+      currentUser={email,id:'demo',role:'admin'};
+      showApp();
+    } else {errEl.textContent='Буруу нэвтрэх мэдээлэл';errEl.style.display='block'}
+    loadEl.style.display='none';
+    document.getElementById('l-btn').disabled=false;
+    return;
+  }
+
+  try{
+    const {data,error}=await supabase.auth.signInWithPassword({email,password:pw});
+    if(error)throw error;
+    currentUser={email:data.user.email,id:data.user.id};
+    showApp();
+  }catch(e){
+    errEl.textContent=e.message||'Нэвтрэх амжилтгүй боллоо';
+    errEl.style.display='block';
+  }
+  loadEl.style.display='none';
+  document.getElementById('l-btn').disabled=false;
+}
+
+async function doLogout(){
+  if(!DEMO&&supabase) await supabase.auth.signOut();
+  currentUser=null;
+  document.getElementById('app').classList.add('hidden');
+  document.getElementById('login-screen').classList.remove('hidden');
+}
+
+function showApp(){
+  document.getElementById('login-screen').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  const email=currentUser?.email||'admin';
+  const init=(email[0]||'A').toUpperCase();
+  document.getElementById('sb-user-email').textContent=email;
+  document.getElementById('sb-avatar').textContent=init;
+  document.getElementById('top-avatar').textContent=init;
+  document.getElementById('sb-env-badge').textContent=DEMO?'● DEMO':'● LIVE';
+  document.getElementById('sb-env-badge').style.background=DEMO?'rgba(245,158,11,.2)':'rgba(34,197,94,.15)';
+  document.getElementById('sb-env-badge').style.color=DEMO?'#d97706':'#22c55e';
+  document.getElementById('sb-env-badge').style.borderColor=DEMO?'rgba(245,158,11,.3)':'rgba(34,197,94,.25)';
+  loadAll();
+  initPagesEditor();
+}
+
+// ═══════════════════════════════════════════
+// LOAD ALL DATA
+// ═══════════════════════════════════════════
+async function loadAll(){
+  await Promise.all([loadNews(), loadJobs(), loadTenders(), loadUsers()]);
+  refreshDash();
+}
+
+async function dbGet(table){
+  if(DEMO) return LS.get(table)||[];
+  try{
+    const {data,error}=await supabase.from(table).select('*').order('created_at',{ascending:false});
+    if(error)throw error;
+    return data||[];
+  }catch(e){toast('DB алдаа: '+e.message,'error');return[]}
+}
+
+async function dbUpsert(table, row){
+  if(DEMO){
+    const arr=LS.get(table)||[];
+    if(row.id&&arr.find(x=>x.id===row.id)){
+      const i=arr.findIndex(x=>x.id===row.id);
+      arr[i]={...arr[i],...row};
+    } else {
+      row.id=row.id||Date.now();
+      row.created_at=new Date().toISOString();
+      arr.unshift(row);
+    }
+    LS.set(table,arr);
+    return row;
+  }
+  try{
+    const {data,error}=await supabase.from(table).upsert(row).select().single();
+    if(error)throw error;
+    return data;
+  }catch(e){toast('Хадгалах алдаа: '+e.message,'error');return null}
+}
+
+async function dbDelete(table, id){
+  if(DEMO){
+    const arr=(LS.get(table)||[]).filter(x=>x.id!==id);
+    LS.set(table,arr);
+    return true;
+  }
+  try{
+    const {error}=await supabase.from(table).delete().eq('id',id);
+    if(error)throw error;
+    return true;
+  }catch(e){toast('Устгах алдаа: '+e.message,'error');return false}
+}
+
+// ═══════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════
+function refreshDash(){
+  const pubNews=allNews.filter(n=>n.status==='published').length;
+  const openJobs=allJobs.filter(j=>j.status==='open').length;
+  const openTenders=allTenders.filter(t=>t.status==='open').length;
+  document.getElementById('kpi-news').textContent=allNews.length;
+  document.getElementById('kpi-jobs').textContent=openJobs;
+  document.getElementById('kpi-tender').textContent=openTenders;
+  document.getElementById('sb-news-cnt').textContent=allNews.length;
+  document.getElementById('sb-jobs-cnt').textContent=openJobs;
+  document.getElementById('sb-tender-cnt').textContent=openTenders;
+  // chart
+  const months=['1с','2с','3с','4с','5с','6с','7с','8с','9с','10с','11с','12с'];
+  const seed=[2,4,3,6,5,7,4,8,10,9,7,allNews.length||5];
+  const max=Math.max(...seed)||1;
+  document.getElementById('dash-chart').innerHTML=months.map((m,i)=>`
+    <div class="bc-col">
+      <div class="bc-bar" style="height:${Math.max(4,Math.round(seed[i]/max*68))}px" title="${seed[i]}"></div>
+      <div class="bc-label">${m}</div>
+    </div>`).join('');
+  // activity
+  const acts=[
+    {color:'var(--blue)',txt:`${allNews.length} мэдээ нийт системд байна`,time:'Одоо'},
+    {color:'var(--ok)',txt:`${openJobs} нээлттэй ажлын зар`,time:'Шинэчлэгдсэн'},
+    {color:'var(--purple)',txt:`${openTenders} нээлттэй тендер`,time:'Шинэчлэгдсэн'},
+    {color:'var(--warn)',txt:'Систем хэвийн ажиллаж байна',time:'Өнөөдөр'},
+  ];
+  document.getElementById('dash-activity').innerHTML=acts.map(a=>`
+    <div class="act-item"><div class="act-dot" style="background:${a.color}"></div>
+    <div class="act-body"><div class="act-txt">${a.txt}</div><div class="act-time">${a.time}</div></div></div>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// NEWS
+// ═══════════════════════════════════════════
+async function loadNews(){
+  allNews=await dbGet('nomin_news');
+  renderNews();
+}
+
+function renderNews(){
+  let data=allNews;
+  if(newsFilter) data=data.filter(n=>(n.title_mn||'').toLowerCase().includes(newsFilter.toLowerCase())||(n.title_en||'').toLowerCase().includes(newsFilter.toLowerCase()));
+  if(newsStatusFilter) data=data.filter(n=>n.status===newsStatusFilter);
+  document.getElementById('news-count').textContent=`${data.length} мэдээ`;
+  const stBadge={published:'<span class="badge b-pub">Нийтлэгдсэн</span>',draft:'<span class="badge b-draft">Ноорог</span>',archived:'<span class="badge b-arch">Архив</span>'};
+  document.getElementById('news-tbody').innerHTML=data.length?data.map(n=>`
+    <tr>
+      <td><div style="width:38px;height:30px;background:var(--blue-l);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.85rem">📰</div></td>
+      <td style="max-width:300px"><div class="td-main" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${n.title_mn||'—'}</div><div class="td-sub">${n.sub_mn||''}</div></td>
+      <td><span class="badge b-blue">${n.category||'—'}</span></td>
+      <td style="font-size:.73rem;color:var(--t2);white-space:nowrap">${n.news_date||n.date||'—'}</td>
+      <td><span class="badge b-purple" style="font-size:.6rem">МН/EN/РУ</span></td>
+      <td>${stBadge[n.status]||'—'}</td>
+      <td style="font-size:.85rem">${n.featured?'⭐':'—'}</td>
+      <td><div class="row-actions">
+        <button class="ra-btn" onclick="editNews(${JSON.stringify(n.id).replace(/"/g,'&quot;')})" title="Засах">✏️</button>
+        <button class="ra-btn del" onclick="delNews(${JSON.stringify(n.id).replace(/"/g,'&quot;')})" title="Устгах">🗑</button>
+      </div></td>
+    </tr>`).join(''):`<tr><td colspan="8"><div class="empty-row"><div class="ei">📭</div><div class="et">Мэдээ олдсонгүй</div><div class="es">Шинэ мэдээ нэмэхийн тулд + Шинэ мэдээ товчийг дарна уу</div></div></td></tr>`;
+}
+
+function filterNews(v){newsFilter=v;renderNews()}
+function filterNewsSt(v){newsStatusFilter=v;renderNews()}
+
+function editNews(id){
+  const n=allNews.find(x=>x.id==id);
+  if(!n)return;
+  editId.news=id;
+  document.getElementById('news-modal-title').textContent='Мэдээ засах';
+  document.getElementById('n-title-mn').value=n.title_mn||'';
+  document.getElementById('n-sub-mn').value=n.sub_mn||'';
+  document.getElementById('n-body-mn').value=n.body_mn||'';
+  document.getElementById('n-title-en').value=n.title_en||'';
+  document.getElementById('n-sub-en').value=n.sub_en||'';
+  document.getElementById('n-body-en').value=n.body_en||'';
+  document.getElementById('n-title-ru').value=n.title_ru||'';
+  document.getElementById('n-sub-ru').value=n.sub_ru||'';
+  document.getElementById('n-body-ru').value=n.body_ru||'';
+  document.getElementById('n-cat').value=n.category||'Компанийн мэдээ';
+  document.getElementById('n-date').value=n.news_date||n.date||'';
+  document.getElementById('n-status').value=n.status||'draft';
+  document.getElementById('n-img').value=n.image_url||'';
+  document.getElementById('n-featured').checked=!!n.featured;
+  // reset tabs
+  resetTabs('news-tabs','nt-mn');
+  document.getElementById('modal-news').classList.add('open');
+}
+
+async function saveNews(){
+  const t=document.getElementById('n-title-mn').value.trim();
+  if(!t){toast('Монгол гарчиг оруулна уу','error');return}
+  const btn=document.getElementById('news-save-btn');
+  const lbl=document.getElementById('news-save-lbl');
+  btn.disabled=true; lbl.innerHTML='<div class="spin"></div>';
+  const row={
+    id: editId.news||undefined,
+    title_mn:t, sub_mn:document.getElementById('n-sub-mn').value.trim(), body_mn:document.getElementById('n-body-mn').value.trim(),
+    title_en:document.getElementById('n-title-en').value.trim(), sub_en:document.getElementById('n-sub-en').value.trim(), body_en:document.getElementById('n-body-en').value.trim(),
+    title_ru:document.getElementById('n-title-ru').value.trim(), sub_ru:document.getElementById('n-sub-ru').value.trim(), body_ru:document.getElementById('n-body-ru').value.trim(),
+    category:document.getElementById('n-cat').value,
+    news_date:document.getElementById('n-date').value, status:document.getElementById('n-status').value,
+    image_url:document.getElementById('n-img').value.trim(), featured:document.getElementById('n-featured').checked,
+  };
+  if(!row.id) delete row.id;
+  const saved=await dbUpsert('nomin_news', row);
+  btn.disabled=false; lbl.textContent='Хадгалах';
+  if(saved){closeModal('modal-news');await loadNews();refreshDash();toast(editId.news?'Мэдээ шинэчлэгдлээ ✓':'Шинэ мэдээ нэмэгдлээ ✓','success');editId.news=null}
+}
+
+async function delNews(id){
+  if(!confirm('Энэ мэдээг устгах уу?'))return;
+  const ok=await dbDelete('nomin_news',id);
+  if(ok){await loadNews();refreshDash();toast('Мэдээ устгагдлаа','success')}
+}
+
+// ═══════════════════════════════════════════
+// JOBS
+// ═══════════════════════════════════════════
+async function loadJobs(){
+  allJobs=await dbGet('nomin_jobs');
+  renderJobs();
+}
+function renderJobs(){
+  let data=allJobs;
+  if(jobsFilter) data=data.filter(j=>(j.title||'').toLowerCase().includes(jobsFilter.toLowerCase()));
+  if(jobsStatusFilter) data=data.filter(j=>j.status===jobsStatusFilter);
+  document.getElementById('jobs-count').textContent=`${data.length} зар`;
+  document.getElementById('jobs-tbody').innerHTML=data.length?data.map(j=>`
+    <tr>
+      <td><div class="td-main">${j.title||'—'}</div><div class="td-sub">${j.job_type||''}</div></td>
+      <td style="font-size:.77rem">${j.department||'—'}</td>
+      <td style="font-size:.77rem">${j.location||'—'}</td>
+      <td style="font-size:.74rem;color:var(--t2)">${j.salary||'—'}</td>
+      <td style="font-size:.73rem;color:var(--t2)">${j.deadline||'—'}</td>
+      <td><span class="badge ${j.status==='open'?'b-open':'b-closed'}">${j.status==='open'?'Нээлттэй':'Хаалттай'}</span></td>
+      <td><div class="row-actions">
+        <button class="ra-btn" onclick="editJob('${j.id}')">✏️</button>
+        <button class="ra-btn del" onclick="delJob('${j.id}')">🗑</button>
+      </div></td>
+    </tr>`).join(''):`<tr><td colspan="7"><div class="empty-row"><div class="ei">💼</div><div class="et">Ажлын байр байхгүй</div></div></td></tr>`;
+}
+function filterJobs(v){jobsFilter=v;renderJobs()}
+function filterJobsSt(v){jobsStatusFilter=v;renderJobs()}
+
+function editJob(id){
+  const j=allJobs.find(x=>x.id==id); if(!j)return;
+  editId.career=id;
+  document.getElementById('career-modal-title').textContent='Ажлын байр засах';
+  document.getElementById('j-title').value=j.title||'';
+  document.getElementById('j-dept').value=j.department||'';
+  document.getElementById('j-loc').value=j.location||'';
+  document.getElementById('j-salary').value=j.salary||'';
+  document.getElementById('j-type').value=j.job_type||'Бүтэн цагийн';
+  document.getElementById('j-deadline').value=j.deadline||'';
+  document.getElementById('j-desc').value=j.description||'';
+  document.getElementById('j-status').value=j.status||'open';
+  document.getElementById('modal-career').classList.add('open');
+}
+async function saveJob(){
+  const t=document.getElementById('j-title').value.trim();
+  if(!t){toast('Ажлын байрны нэр оруулна уу','error');return}
+  const row={id:editId.career||undefined,title:t,department:document.getElementById('j-dept').value.trim(),location:document.getElementById('j-loc').value.trim(),salary:document.getElementById('j-salary').value.trim(),job_type:document.getElementById('j-type').value,deadline:document.getElementById('j-deadline').value,description:document.getElementById('j-desc').value.trim(),status:document.getElementById('j-status').value};
+  if(!row.id)delete row.id;
+  const saved=await dbUpsert('nomin_jobs',row);
+  if(saved){closeModal('modal-career');await loadJobs();refreshDash();toast(editId.career?'Шинэчлэгдлээ ✓':'Нэмэгдлээ ✓','success');editId.career=null}
+}
+async function delJob(id){
+  if(!confirm('Устгах уу?'))return;
+  const ok=await dbDelete('nomin_jobs',id);
+  if(ok){await loadJobs();refreshDash();toast('Устгагдлаа','success')}
+}
+
+// ═══════════════════════════════════════════
+// TENDER
+// ═══════════════════════════════════════════
+async function loadTenders(){
+  allTenders=await dbGet('nomin_tenders');
+  renderTenders();
+}
+function renderTenders(){
+  let data=allTenders;
+  if(tenderFilter) data=data.filter(t=>(t.title||'').toLowerCase().includes(tenderFilter.toLowerCase()));
+  if(tenderStatusFilter) data=data.filter(t=>t.status===tenderStatusFilter);
+  document.getElementById('tender-count').textContent=`${data.length} тендер`;
+  document.getElementById('tender-tbody').innerHTML=data.length?data.map(t=>`
+    <tr>
+      <td><div class="td-main">${t.title||'—'}</div></td>
+      <td style="font-size:.77rem">${t.organization||'—'}</td>
+      <td style="font-size:.77rem;font-weight:700;color:var(--blue)">${t.amount||'—'}</td>
+      <td style="font-size:.73rem;color:var(--t2)">${t.published_date||'—'}</td>
+      <td style="font-size:.73rem;color:var(--t2)">${t.deadline||'—'}</td>
+      <td><span class="badge ${t.status==='open'?'b-open':'b-closed'}">${t.status==='open'?'Нээлттэй':'Хаалттай'}</span></td>
+      <td><div class="row-actions">
+        <button class="ra-btn" onclick="editTender('${t.id}')">✏️</button>
+        <button class="ra-btn del" onclick="delTender('${t.id}')">🗑</button>
+      </div></td>
+    </tr>`).join(''):`<tr><td colspan="7"><div class="empty-row"><div class="ei">📋</div><div class="et">Тендер байхгүй</div></div></td></tr>`;
+}
+function filterTenders(v){tenderFilter=v;renderTenders()}
+function filterTendersSt(v){tenderStatusFilter=v;renderTenders()}
+
+function editTender(id){
+  const t=allTenders.find(x=>x.id==id); if(!t)return;
+  editId.tender=id;
+  document.getElementById('tender-modal-title').textContent='Тендер засах';
+  document.getElementById('t-title').value=t.title||'';
+  document.getElementById('t-org').value=t.organization||'';
+  document.getElementById('t-amount').value=t.amount||'';
+  document.getElementById('t-pub').value=t.published_date||'';
+  document.getElementById('t-deadline').value=t.deadline||'';
+  document.getElementById('t-desc').value=t.description||'';
+  document.getElementById('t-status').value=t.status||'open';
+  document.getElementById('modal-tender').classList.add('open');
+}
+async function saveTender(){
+  const t=document.getElementById('t-title').value.trim();
+  if(!t){toast('Тендерийн нэр оруулна уу','error');return}
+  const row={id:editId.tender||undefined,title:t,organization:document.getElementById('t-org').value.trim(),amount:document.getElementById('t-amount').value.trim(),published_date:document.getElementById('t-pub').value,deadline:document.getElementById('t-deadline').value,description:document.getElementById('t-desc').value.trim(),status:document.getElementById('t-status').value};
+  if(!row.id)delete row.id;
+  const saved=await dbUpsert('nomin_tenders',row);
+  if(saved){closeModal('modal-tender');await loadTenders();refreshDash();toast(editId.tender?'Шинэчлэгдлээ ✓':'Нэмэгдлээ ✓','success');editId.tender=null}
+}
+async function delTender(id){
+  if(!confirm('Устгах уу?'))return;
+  const ok=await dbDelete('nomin_tenders',id);
+  if(ok){await loadTenders();refreshDash();toast('Устгагдлаа','success')}
+}
+
+// ═══════════════════════════════════════════
+// USERS
+// ═══════════════════════════════════════════
+async function loadUsers(){
+  if(DEMO){
+    const users=[{email:'demo@nomin.mn',name:'Demo Админ',role:'admin',last_sign_in_at:new Date().toISOString(),created_at:new Date().toISOString()}];
+    document.getElementById('kpi-users').textContent=users.length;
+    document.getElementById('users-count').textContent=`${users.length} хэрэглэгч`;
+    document.getElementById('users-tbody').innerHTML=users.map(u=>`
+      <tr><td style="font-size:.78rem;color:var(--blue)">${u.email}</td><td style="font-size:.78rem">${u.name||'—'}</td>
+      <td><span class="user-role role-${u.role}">${u.role}</span></td>
+      <td style="font-size:.72rem;color:var(--t3)">${u.last_sign_in_at?new Date(u.last_sign_in_at).toLocaleString('mn'):'—'}</td>
+      <td style="font-size:.72rem;color:var(--t3)">${new Date(u.created_at).toLocaleDateString('mn')}</td>
+      <td><div class="row-actions"><button class="ra-btn del" onclick="toast('Demo горимд хэрэглэгч устгах боломжгүй','info')">🗑</button></div></td></tr>`).join('');
+    return;
+  }
+  try{
+    const {data,error}=await supabase.auth.admin.listUsers();
+    if(error)throw error;
+    const users=data.users||[];
+    document.getElementById('kpi-users').textContent=users.length;
+    document.getElementById('users-count').textContent=`${users.length} хэрэглэгч`;
+    document.getElementById('users-tbody').innerHTML=users.map(u=>`
+      <tr><td style="font-size:.78rem;color:var(--blue)">${u.email||'—'}</td>
+      <td style="font-size:.78rem">${u.user_metadata?.name||'—'}</td>
+      <td><span class="user-role role-${u.user_metadata?.role||'viewer'}">${u.user_metadata?.role||'viewer'}</span></td>
+      <td style="font-size:.72rem;color:var(--t3)">${u.last_sign_in_at?new Date(u.last_sign_in_at).toLocaleString('mn'):'—'}</td>
+      <td style="font-size:.72rem;color:var(--t3)">${new Date(u.created_at).toLocaleDateString('mn')}</td>
+      <td><div class="row-actions"><button class="ra-btn del" onclick="delUser('${u.id}')">🗑</button></div></td></tr>`).join('');
+  }catch(e){
+    document.getElementById('users-tbody').innerHTML=`<tr><td colspan="6"><div class="empty-row"><div class="et">Admin API-д нэвтрэх эрх байхгүй</div><div class="es">Supabase service_role key шаардлагатай</div></div></td></tr>`;
+  }
+}
+
+async function inviteUser(){
+  const email=document.getElementById('u-email').value.trim();
+  const role=document.getElementById('u-role').value;
+  if(!email){toast('И-мэйл хаяг оруулна уу','error');return}
+  if(DEMO){toast('Demo горимд урилга илгээх боломжгүй. Бодит Supabase ашиглана уу.','info');closeModal('modal-user');return}
+  try{
+    const {error}=await supabase.auth.admin.inviteUserByEmail(email,{data:{role}});
+    if(error)throw error;
+    closeModal('modal-user');
+    toast(`${email} рүү урилга илгээгдлээ ✓`,'success');
+    await loadUsers();
+  }catch(e){toast('Урилга илгээхэд алдаа: '+e.message,'error')}
+}
+
+async function delUser(id){
+  if(!confirm('Хэрэглэгч устгах уу?'))return;
+  if(DEMO){toast('Demo горимд боломжгүй','info');return}
+  try{
+    const {error}=await supabase.auth.admin.deleteUser(id);
+    if(error)throw error;
+    await loadUsers();
+    toast('Хэрэглэгч устгагдлаа','success');
+  }catch(e){toast(e.message,'error')}
+}
+
+// ═══════════════════════════════════════════
+// PAGES EDITOR
+// ═══════════════════════════════════════════
+function initPagesEditor(){
+  const pages=[
+    {key:'home',label:'Нүүр хуудас',file:'index.html'},
+    {key:'about',label:'Бидний тухай',file:'about.html'},
+    {key:'business',label:'Бизнес',file:'business.html'},
+    {key:'news',label:'Мэдээ',file:'news.html'},
+    {key:'careers',label:'Карьер',file:'careers.html'},
+    {key:'contact',label:'Холбоо барих',file:'contact.html'},
+  ];
+  const saved=LS.get('nomin_pages')||{};
+  document.getElementById('pages-tabs').innerHTML=pages.map((p,i)=>`<button class="tab-btn ${i===0?'active':''}" onclick="switchPageTab('${p.key}',this)">${p.label}</button>`).join('');
+  document.getElementById('pages-panes').innerHTML=pages.map((p,i)=>{
+    const d=saved[p.key]||{h1:'',body:''};
+    return `<div class="tab-pane ${i===0?'active':''}" id="ptp-${p.key}">
+      <div class="fg"><label>Гарчиг (H1)</label><input id="pe-h1-${p.key}" value="${d.h1||''}" placeholder="Хуудасны гарчиг..."></div>
+      <div class="fg"><label>Үндсэн агуулга (Монгол)</label>
+        <div class="editor-wrap">
+          <div class="editor-tb">
+            ${['B','I','H2','H3'].map(c=>`<button class="et-b" onclick="fmt('${c==='B'?'**':'${c==='I'?'*':'\n'+c+' '}','${c==='B'?'**':c==='I'?'*':''}','pe-body-${p.key}')">${c}</button>`).join('')}
+            <div class="et-sep"></div>
+            <button class="et-b" onclick="fmt('\n- ','','pe-body-${p.key}')">≡</button>
+            <button class="et-b" onclick="fmt('[','](url)','pe-body-${p.key}')">🔗</button>
+          </div>
+          <textarea class="editor-area" id="pe-body-${p.key}" placeholder="Хуудасны дэлгэрэнгүй агуулга...">${d.body||''}</textarea>
+        </div>
+      </div>
+      <div style="display:flex;gap:.5rem;justify-content:flex-end;margin-top:.5rem">
+        <a href="${p.file}" target="_blank" class="tb-btn">👁 Харах</a>
+        <button class="tb-btn primary" onclick="savePage('${p.key}')">💾 Хадгалах</button>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('pages-list').innerHTML=pages.map(p=>`
+    <div onclick="switchPageTab2('${p.key}')" style="padding:.45rem .7rem;border-radius:5px;cursor:pointer;font-size:.74rem;font-weight:500;color:var(--t2);transition:all .15s;display:flex;justify-content:space-between;align-items:center" onmouseover="this.style.background='var(--blue-ll)';this.style.color='var(--blue)'" onmouseout="this.style.background='';this.style.color='var(--t2)'">
+      <span>${p.label}</span>
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </div>`).join('');
+  activePage='home'; loadSeo('home');
+}
+
+function switchPageTab(key,el){
+  activePage=key;
+  document.querySelectorAll('#pages-panes .tab-pane').forEach(p=>p.classList.remove('active'));
+  const tp=document.getElementById('ptp-'+key); if(tp)tp.classList.add('active');
+  document.querySelectorAll('#pages-tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  if(el)el.classList.add('active');
+  loadSeo(key);
+}
+function switchPageTab2(key){
+  const btns=document.querySelectorAll('#pages-tabs .tab-btn');
+  const pages=['home','about','business','news','careers','contact'];
+  const idx=pages.indexOf(key);
+  if(idx>=0) switchPageTab(key, btns[idx]);
+}
+function savePage(key){
+  const pages=LS.get('nomin_pages')||{};
+  pages[key]={h1:document.getElementById('pe-h1-'+key).value,body:document.getElementById('pe-body-'+key).value};
+  LS.set('nomin_pages',pages);
+  toast('Хадгалагдлаа ✓','success');
+}
+function loadSeo(key){
+  const pages=LS.get('nomin_pages')||{};
+  const p=pages[key]||{};
+  document.getElementById('seo-title').value=p.seo_title||'';
+  document.getElementById('seo-desc').value=p.seo_desc||'';
+}
+function saveSeo(){
+  const pages=LS.get('nomin_pages')||{};
+  if(!pages[activePage])pages[activePage]={};
+  pages[activePage].seo_title=document.getElementById('seo-title').value;
+  pages[activePage].seo_desc=document.getElementById('seo-desc').value;
+  LS.set('nomin_pages',pages);
+  toast('SEO хадгалагдлаа ✓','success');
+}
+
+// ═══════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════
+function saveSettings(){
+  LS.set('site_cfg',{name:document.getElementById('st-name').value,email:document.getElementById('st-email').value,phone:document.getElementById('st-phone').value,addr:document.getElementById('st-addr').value});
+  toast('Тохиргоо хадгалагдлаа ✓','success');
+}
+function changePw(){
+  const o=document.getElementById('pw-old').value,n=document.getElementById('pw-new').value,r=document.getElementById('pw-rep').value;
+  if(!o||!n){toast('Бүх талбарыг бөглөнө үү','error');return}
+  if(n!==r){toast('Шинэ нууц үг таарахгүй байна','error');return}
+  if(n.length<6){toast('Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой','error');return}
+  if(DEMO){toast('Demo горимд нууц үг солих боломжгүй','info');return}
+  supabase?.auth.updateUser({password:n}).then(({error})=>{
+    if(error){toast(error.message,'error');return}
+    toast('Нууц үг амжилттай солигдлоо ✓','success');
+    ['pw-old','pw-new','pw-rep'].forEach(id=>document.getElementById(id).value='');
+  });
+}
+async function testConn(){
+  if(DEMO){toast('Demo горим идэвхтэй — Supabase холбогдоогүй','info');return}
+  try{
+    const {error}=await supabase.from('nomin_news').select('count',{count:'exact',head:true});
+    toast(error?'Холболт амжилтгүй: '+error.message:'Supabase холбогдсон ✓ ('+(LS.get('sb_url')||'')+')', error?'error':'success');
+  }catch(e){toast('Холболт алдаа: '+e.message,'error')}
+}
+
+async function inviteUser(){
+  const email=document.getElementById('u-email').value.trim();
+  const name=document.getElementById('u-name').value.trim();
+  const role=document.getElementById('u-role').value;
+  if(!email){toast('И-мэйл хаяг оруулна уу','error');return}
+  if(DEMO){toast('Demo горимд урилга илгээх боломжгүй','info');closeModal('modal-user');return}
+  try{
+    const {error}=await supabase.auth.admin.inviteUserByEmail(email,{data:{name,role}});
+    if(error)throw error;
+    closeModal('modal-user');
+    toast(`${email} рүү урилга илгээгдлээ ✓`,'success');
+  }catch(e){toast('Алдаа: '+e.message,'error')}
+}
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+const PAGE_META={
+  dashboard:{title:'Хяналтын самбар',bc:'Dashboard',add:null},
+  stats:{title:'Статистик',bc:'Statistics',add:null},
+  news:{title:'Мэдээ / Нийтлэл',bc:'News',add:'news',addLabel:'+ Шинэ мэдээ'},
+  pages:{title:'Хуудасны текст',bc:'Pages',add:null},
+  careers:{title:'Ажлын байр',bc:'Careers',add:'career',addLabel:'+ Нэмэх'},
+  tender:{title:'Тендер',bc:'Tender',add:'tender',addLabel:'+ Нэмэх'},
+  users:{title:'Хэрэглэгчид',bc:'Users',add:'user',addLabel:'+ Урих'},
+  settings:{title:'Тохиргоо',bc:'Settings',add:null},
+};
+
+function goPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name)?.classList.add('active');
+  document.querySelectorAll('.sb-item[data-page]').forEach(i=>i.classList.toggle('active',i.dataset.page===name));
+  const m=PAGE_META[name]||{title:name,bc:name};
+  document.getElementById('pg-title').textContent=m.title;
+  document.getElementById('pg-bc').textContent=m.bc;
+  const addBtn=document.getElementById('topbar-add-btn');
+  const addLbl=document.getElementById('topbar-add-label');
+  if(m.add){addBtn.style.display='inline-flex';addLbl.textContent=m.addLabel||'+ Нэмэх'}
+  else addBtn.style.display='none';
+}
+function topbarAdd(){
+  const cur=document.querySelector('.sb-item.active')?.dataset?.page;
+  const m=PAGE_META[cur];
+  if(m?.add) openModal(m.add);
+}
+
+document.querySelectorAll('.sb-item[data-page]').forEach(item=>{
+  item.addEventListener('click',()=>goPage(item.dataset.page));
+});
+
+// ═══════════════════════════════════════════
+// MODALS
+// ═══════════════════════════════════════════
+function openModal(type){
+  const modalMap={news:'modal-news',career:'modal-career',tender:'modal-tender',user:'modal-user'};
+  const id=modalMap[type]; if(!id)return;
+  editId[type==='career'?'career':type]=null;
+  if(type==='news'){
+    document.getElementById('news-modal-title').textContent='Шинэ мэдээ';
+    ['n-title-mn','n-sub-mn','n-body-mn','n-title-en','n-sub-en','n-body-en','n-title-ru','n-sub-ru','n-body-ru','n-img'].forEach(i=>document.getElementById(i).value='');
+    document.getElementById('n-cat').value='Компанийн мэдээ';
+    document.getElementById('n-date').value=new Date().toISOString().slice(0,10);
+    document.getElementById('n-status').value='draft';
+    document.getElementById('n-featured').checked=false;
+    resetTabs('news-tabs','nt-mn');
+  } else if(type==='career'){
+    document.getElementById('career-modal-title').textContent='Ажлын байр нэмэх';
+    ['j-title','j-dept','j-loc','j-salary','j-desc'].forEach(i=>document.getElementById(i).value='');
+    document.getElementById('j-deadline').value=new Date(Date.now()+30*86400000).toISOString().slice(0,10);
+    document.getElementById('j-type').value='Бүтэн цагийн';
+    document.getElementById('j-status').value='open';
+  } else if(type==='tender'){
+    document.getElementById('tender-modal-title').textContent='Тендер нэмэх';
+    ['t-title','t-org','t-amount','t-desc'].forEach(i=>document.getElementById(i).value='');
+    document.getElementById('t-pub').value=new Date().toISOString().slice(0,10);
+    document.getElementById('t-deadline').value=new Date(Date.now()+45*86400000).toISOString().slice(0,10);
+    document.getElementById('t-status').value='open';
+  } else if(type==='user'){
+    ['u-email','u-name'].forEach(i=>document.getElementById(i).value='');
+  }
+  document.getElementById(id).classList.add('open');
+}
+function closeModal(id){document.getElementById(id)?.classList.remove('open')}
+
+document.querySelectorAll('.modal-bg').forEach(bg=>bg.addEventListener('click',e=>{if(e.target===bg)bg.classList.remove('open')}));
+
+// ═══════════════════════════════════════════
+// TABS HELPERS
+// ═══════════════════════════════════════════
+function switchTab(btn, paneId){
+  const tabs=btn.closest('.tabs'); if(!tabs)return;
+  tabs.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const modal=btn.closest('.modal-body')||btn.closest('.modal');
+  if(modal) modal.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById(paneId)?.classList.add('active');
+}
+function resetTabs(tabsId, firstPaneId){
+  document.querySelectorAll('#'+tabsId+' .tab-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+  const modal=document.getElementById(tabsId)?.closest('.modal-body')||document.getElementById(tabsId)?.closest('.modal');
+  if(modal) modal.querySelectorAll('.tab-pane').forEach((p,i)=>p.classList.toggle('active',i===0));
+}
+
+// Editor format
+function fmt(before, after, fieldId){
+  const el=document.getElementById(fieldId); if(!el)return;
+  const s=el.selectionStart, e=el.selectionEnd, sel=el.value.substring(s,e);
+  const rep=before+sel+after;
+  el.value=el.value.substring(0,s)+rep+el.value.substring(e);
+  el.focus(); el.setSelectionRange(s+before.length, s+before.length+sel.length);
+}
+
+// ═══════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════
+function toast(msg, type=''){
+  const w=document.getElementById('toast-wrap');
+  const div=document.createElement('div');
+  div.className='toast '+(type||'');
+  div.textContent=msg;
+  w.appendChild(div);
+  requestAnimationFrame(()=>div.classList.add('show'));
+  setTimeout(()=>{div.classList.remove('show');setTimeout(()=>div.remove(),350)},3000);
+}
+
+// ═══════════════════════════════════════════
+// DEMO DATA SEED
+// ═══════════════════════════════════════════
+function seedDemoData(){
+  if(!LS.get('nomin_news')) LS.set('nomin_news',[
+    {id:1,title_mn:'"Номин Холдинг" ХХК "Entrepreneur-2025"-аас Оны шилдэг аж ахуйн нэгжээр шалгарлаа',title_en:'Nomin Holding Named Company of the Year',title_ru:'АО «Номин Холдинг» — Компания года',sub_mn:'Монгол Улсын эдийн засгийн хөгжилд оруулж буй хувь нэмрийг бататгалаа.',category:'Шагнал',news_date:'2025-12-24',status:'published',featured:true,created_at:new Date().toISOString()},
+    {id:2,title_mn:'"ЦАЛГИМ ХАЛГИМ" — супер азтангуудаа хүлээн авлаа',title_en:'Tsalgim Halgim — Winners Announced',title_ru:'«Цалгим Халгим» — победители',sub_mn:'Хайнанд аялах эрх болон iPhone 17 Pro Max зэрэг бэлгүүдийг гардан авлаа.',category:'Урамшуулал',news_date:'2026-03-13',status:'published',featured:false,created_at:new Date().toISOString()},
+    {id:3,title_mn:'Итгэл дээр бүтсэн 25 жил — "Номин Даатгал"',title_en:'25 Years Built on Trust',title_ru:'25 лет на доверии',sub_mn:'"Номин Даатгал" ХХК үүсгэн байгуулагдсаны 25 жилийн ой.',category:'Ойн тэмдэглэл',news_date:'2026-01-23',status:'published',featured:false,created_at:new Date().toISOString()},
+    {id:4,title_mn:'Chingis Airlines шинэ чиглэл нээлээ',title_en:'Chingis Airlines New Route',title_ru:'Chingis Airlines новый маршрут',sub_mn:'2026 онд шинэ олон улсын чиглэл нээгдэнэ.',category:'Бизнесийн мэдээ',news_date:'2026-02-10',status:'draft',featured:false,created_at:new Date().toISOString()},
+  ]);
+  if(!LS.get('nomin_jobs')) LS.set('nomin_jobs',[
+    {id:1,title:'Маркетингийн менежер',department:'Маркетинг хэлтэс',location:'Улаанбаатар',salary:'2,500,000—4,000,000 ₮',job_type:'Бүтэн цагийн',deadline:'2026-04-30',status:'open',description:'Маркетинг, сурталчилгааны ажлыг удирдах.',created_at:new Date().toISOString()},
+    {id:2,title:'Програм хангамжийн инженер',department:'IT хэлтэс',location:'Улаанбаатар',salary:'3,000,000—5,500,000 ₮',job_type:'Бүтэн цагийн',deadline:'2026-04-15',status:'open',description:'Вэб болон мобайл апп хөгжүүлэх.',created_at:new Date().toISOString()},
+    {id:3,title:'Борлуулалтын менежер',department:'Жижиглэн худалдаа',location:'Улаанбаатар',salary:'2,000,000—3,500,000 ₮',job_type:'Бүтэн цагийн',deadline:'2026-03-31',status:'closed',description:'Борлуулалтын баг удирдах.',created_at:new Date().toISOString()},
+  ]);
+  if(!LS.get('nomin_tenders')) LS.set('nomin_tenders',[
+    {id:1,title:'Оффисын тавилгын нийлүүлэлт',organization:'Номин Холдинг ХХК',amount:'150,000,000 ₮',published_date:'2026-02-01',deadline:'2026-03-31',status:'closed',description:'2026 оны тавилгын хангамж.',created_at:new Date().toISOString()},
+    {id:2,title:'IT тоног төхөөрөмж нийлүүлэлт',organization:'Номин Юнайтед',amount:'320,000,000 ₮',published_date:'2026-03-01',deadline:'2026-04-30',status:'open',description:'Компьютер, сервер нийлүүлэх.',created_at:new Date().toISOString()},
+    {id:3,title:'Барилгын материалын нийлүүлэлт',organization:'Номин Их Дэлгүүр',amount:'500,000,000 ₮',published_date:'2026-03-15',deadline:'2026-05-15',status:'open',description:'2026 оны барилгын материал.',created_at:new Date().toISOString()},
+  ]);
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+(function init(){
+  const sbUrl=LS.get('sb_url'), sbKey=LS.get('sb_key'), demo=LS.get('demo');
+  if(demo){
+    DEMO=true; seedDemoData();
+    document.getElementById('config-screen').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('hidden');
+    document.getElementById('login-mode-label').textContent='Demo горим — нэвтрэх: demo@nomin.mn / demo1234';
+    document.getElementById('cfg-status-dot').className='tb-dot';
+    document.getElementById('cfg-status-txt').textContent='Demo горим';
+    return;
+  }
+  if(sbUrl && sbKey){
+    try{
+      supabase=window.supabase.createClient(sbUrl, sbKey);
+      document.getElementById('config-screen').classList.add('hidden');
+      document.getElementById('login-screen').classList.remove('hidden');
+      updateConnUI(true);
+      // check existing session
+      supabase.auth.getSession().then(({data:{session}})=>{
+        if(session){
+          currentUser={email:session.user.email,id:session.user.id};
+          document.getElementById('login-screen').classList.add('hidden');
+          showApp();
+        }
+      });
+    }catch(e){console.error(e)}
+  }
+  // keyboard shortcuts
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape') document.querySelectorAll('.modal-bg.open').forEach(m=>m.classList.remove('open'));
+  });
+})();
+</script>
+</body>
+</html>
