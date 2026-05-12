@@ -1298,7 +1298,6 @@ document.addEventListener('DOMContentLoaded',function(){var s='en';try{s=localSt
 
 function showPanel(id, btn) {
   document.querySelectorAll('.panel').forEach(function(p) {
-    p.style.display = 'none';
     p.classList.remove('active');
   });
   document.querySelectorAll('.tab-btn').forEach(function(b) {
@@ -1306,7 +1305,6 @@ function showPanel(id, btn) {
   });
   var target = document.getElementById('panel-' + id);
   if (target) {
-    target.style.display = 'block';
     target.classList.add('active');
   }
   if (btn) btn.classList.add('active');
