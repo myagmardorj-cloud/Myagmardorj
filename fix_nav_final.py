@@ -172,7 +172,7 @@ PLATFORM_FOOTER = """
 
 PAPER_NAV = """
 <nav class="MN">
-  <a href="/paper1/" class="MN-logo">Nexcore Research</a>
+  <a href="/" class="MN-logo">Nexcore Research</a>
   <div class="MN-links">
     <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
     <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
