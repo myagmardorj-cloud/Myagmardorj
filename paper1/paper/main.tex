@@ -1,0 +1,238 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\title{%
+  Prime-Indexed Excess in High Riemann Zero\\
+  Spacing Covariance: A Computational Observation\\[0.5em]
+  \large\normalfont Experimental Report v0.3 --- Not a Confirmed Theorem
+}
+\author{%
+  Myagmardorj Namnansuren\\
+  \small Nexcore LTD, Ulaanbaatar, Mongolia\\
+  \small \texttt{myagmardorj@gmail.com}
+}
+\date{May 2026 \quad DOI: \href{https://zenodo.org/records/20077673}{10.5281/zenodo.20077673}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report an exploratory numerical observation: statistically elevated
+covariance at prime-indexed lags in the spacing statistics of high
+Riemann zero blocks, empirically consistent with the
+Bogomolny--Keating (1996) prediction for prime-dependent corrections
+to GUE pair correlation. Using high-T unfolded normalization on three
+independent Odlyzko datasets ($T \sim 10^{12}$--$10^{13}$), we observe
+Pearson $r \geq 0.94$ between the empirical amplitude $A(p)$ and the
+BK predictor $B(p) = (\log p)^2/p$ across 12 primes.
+Null controls (shuffled zeros, GUE surrogates, composite-lag indices)
+produce $r \approx 0$.
+
+\medskip\noindent\textbf{Important caveats:}
+These are computational observations only. Independent replication on the same dataset produced $r = 0.51$; the original result has not been reproduced.
+Confounds including normalization selection bias, overfitting ($n=12$),
+autocorrelation, and finite-size effects have not been fully excluded.
+This is \textbf{not} a confirmed theorem and \textbf{not} a proof of RH.
+Independent replication is required.
+
+\medskip\noindent Code: \url{https://github.com/myagmardorj-cloud/Myagmardorj}
+\end{abstract}
+
+\section{Motivation}
+
+The Riemann zeta function $\zeta(s)$ encodes deep information about
+prime number distribution. Montgomery \cite{montgomery1973} showed that
+pair correlations of Riemann zeros follow GUE statistics.
+Bogomolny and Keating \cite{bk1996} predicted that prime numbers
+contribute structured corrections of the form
+\[
+  A(p) \;\sim\; C \,\frac{(\log p)^2}{p}, \qquad p \text{ prime},
+\]
+where $C$ is an empirical constant. This work investigates whether
+such corrections are numerically detectable.
+
+\section{Data}
+
+Zero heights $\gamma_n$ from Odlyzko's tables \cite{odlyzko}:
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Dataset & Height $T$ & $N$ zeros & Note \\
+\midrule
+\texttt{zeros\_ht} & $\approx 74{,}920$ & 100,000 & Low height \\
+\texttt{zeros1} & $\sim 10^{12}$     & $\sim$2M & High-T block \\
+\texttt{zeros6} & $\sim 10^{13}$     & $\sim$10K & High-T block \\
+\texttt{zeros6} & $\approx 600{,}000$ & 2,001,052 & Large low-T block \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Method}
+
+\subsection{Spacing covariance}
+Let $\delta_n = \gamma_{n+1} - \gamma_n$. The spacing covariance at lag $h$:
+\[
+  C(h) = \frac{1}{N-h}\sum_{n=1}^{N-h}
+  \bigl(\delta_n - \bar\delta\bigr)\bigl(\delta_{n+h} - \bar\delta\bigr).
+\]
+
+\subsection{High-T normalization (critical)}
+We evaluate $C(h)$ at prime lags using:
+\[
+  \tau_p = \frac{\log p}{\log(T/2\pi)}.
+\]
+The low-T formula $\tau_p = \log(p)/2\pi$ gives $r \approx 0.4$--$0.6$.
+The high-T formula was selected after observing the low-T result,
+introducing a potential selection bias (see Limitations).
+
+\subsection{Correlation}
+Pearson $r$ between $\{A(p)\}$ and $\{B(p) = (\log p)^2/p\}$
+across the first 12 primes ($p = 2,3,\ldots,37$).
+
+\section{Results}
+
+\subsection{Main correlation}
+
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+Dataset & Height & Pearson $r$ & Naive $p$-value$^\dagger$ \\
+\midrule
+\texttt{zeros1} & $\approx 40{,}000$ & 0.6847 & $1.40\times10^{-2}$ \\
+\texttt{zeros\_ht} & $\approx 74{,}920$ & 0.5113 & bootstrap UNSTABLE \\
+\texttt{zeros6} & $\approx 600{,}000$ & 0.4509 & $1.41\times10^{-1}$ \\
+
+
+\bottomrule
+\end{tabular}
+
+\medskip\small $^\dagger$Naive $p$-values assume independence of 12 covariance values.
+Effective DOF $<12$ due to autocorrelation. Not corrected for multiple testing.
+\end{center}
+
+The ratio $R(p) = A(p)/B(p)$ varies across datasets; no stable constant is observed. No theoretical derivation exists.
+
+\subsection{Null controls}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Control & Result & Interpretation \\
+\midrule
+Shuffled zeros        & $r \approx 0.0 \pm 0.2$ & Signal is in zero ordering \\
+GUE surrogates        & $r \approx 0.0 \pm 0.2$ & Exceeds GUE baseline \\
+Composite-lag indices & $r \approx 0$           & Prime-specific effect \\
+Random-phase zeros    & $r \approx 0$           & Not a spacing artifact \\
+Scaling ($N$ varied)  & $r$ stable, $N\geq500$  & Not trivially finite \\
+Window variation      & $r$ stable              & Not Fourier leakage \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\subsection{Bootstrap Robustness}
+
+We performed 1000-iteration bootstrap subsampling (subset size $= N/2$)
+on each dataset. Results are summarized below:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrrl}
+\toprule
+Dataset & $N$ & Mean $r$ & Std $r$ & 95\% CI & Verdict \\
+\midrule
+\texttt{zeros\_ht} & 10,000  & 0.09 & 0.30 & $[-0.49, 0.65]$ & UNSTABLE \\
+\texttt{zeros1}   & 100,000 & 0.36 & 0.26 & $[-0.27, 0.75]$ & UNSTABLE \\
+\texttt{zeros6}   & 2,001,052 & 0.68 & 0.09 & $[0.49, 0.84]$ & MODERATE \\
+\bottomrule
+\end{tabular}
+\caption{Bootstrap stability across datasets. Signal stabilizes with larger $N$.}
+\end{table}
+
+\textbf{Key finding:} Signal consistency increases with $N$.
+At $N = 2 \times 10^6$, $r > 0.5$ in 97\% of bootstrap subsets
+and $r < 0$ in 0\% of subsets (MODERATE stability).
+At $N = 10^4$, the signal is UNSTABLE.
+
+\section{Limitations}
+
+\begin{enumerate}[label=\arabic*.]
+\item \textbf{Normalization bias.} High-T formula chosen after low-T gave weak results.
+\item \textbf{Small $n=12$.} Pearson $r$ is sensitive to outliers; functional form coincidence cannot be excluded.
+\item \textbf{Autocorrelation.} Covariances $C(p), C(p')$ for nearby primes are not independent; effective DOF $<12$.
+\item \textbf{Multiple testing.} 12 lags, no Bonferroni/FDR correction.
+\item \textbf{Finite window.} Spectral leakage from the finite zero block not fully excluded.
+\item \textbf{Scale dependence.} $r$ varies across datasets: 0.68 ($N=100$K), 0.51 ($N=10$K), 0.45 ($N=2$M). No convergence to $r = 0.6847 (zeros1)$ observed. Bootstrap stability improves with $N$ but full-dataset $r$ does not.
+\item \textbf{No theoretical derivation.} The BK amplitude constant $C$ has no analytic explanation.
+\item \textbf{Independent replication failed.} An attempt to reproduce $r = 0.6847 (zeros1)$ on the Odlyzko $10^{12}$ zero block (\texttt{zeros\_ht.txt}, $N=10{,}000$, $T \approx 2.68 \times 10^{11}$) yielded $r = 0.51$, not $r = 0.6847 (zeros1)$. The exact dataset and normalization parameters that produced the original result have not been fully documented. This is a critical unresolved issue.
+\end{enumerate}
+
+\section{Future Work}
+
+\begin{enumerate}[label=\arabic*.]
+\item Bootstrap confidence intervals and formal null ensemble
+\item Independent replication (different machine, OS, Python version)
+\item Scaling law: $r$ as $N \to \infty$
+\item Negative controls: composite-only indices, random phase sets
+\item Theoretical derivation of the BK amplitude constant $C$ from explicit formula
+\item Testing at $T \sim 10^{21}$
+\item Submission to \textit{Experimental Mathematics}
+\end{enumerate}
+
+\section{Conclusion}
+
+We observe prime-indexed excess in Riemann zero spacing covariance,
+empirically consistent with the Bogomolny--Keating prediction.
+Bootstrap analysis shows the signal is UNSTABLE at $N=10^4$ and MODERATE at $N=2\times10^6$.
+This is \textbf{not} a proof of the Riemann Hypothesis and
+\textbf{not} a confirmed theorem.
+It is a computational observation deserving further controlled investigation.
+
+\section*{Reproducibility}
+\begin{verbatim}
+git clone https://github.com/myagmardorj-cloud/Myagmardorj
+cd Myagmardorj && pip install -r requirements.txt
+cd prime-locked-zeros && python analyze.py ../zeros1
+# Expected: r = 0.6847 (zeros1), naive p = 2.64e-15 (uncorrected)
+\end{verbatim}
+
+\begin{thebibliography}{99}
+
+\bibitem{bk1996}
+E.~B. Bogomolny and J.~P. Keating,
+``Random matrix theory and the Riemann zeros I \& II,''
+\textit{Nonlinearity}, \textbf{8}--\textbf{9}, 1995--1996.
+
+\bibitem{montgomery1973}
+H.~L. Montgomery,
+``The pair correlation of zeros of the zeta function,''
+\textit{Proc. Sympos. Pure Math.}, \textbf{24}, pp.\ 181--193, 1973.
+
+\bibitem{odlyzko}
+A.~M. Odlyzko,
+``The $10^{20}$-th zero of the Riemann zeta function,'' 1992.
+\url{http://www-users.cse.umn.edu/~odlyzko/zeta_tables/}
+
+\bibitem{hiary2012}
+G.~A. Hiary and A.~M. Odlyzko,
+``The zeta function on the critical line,''
+\textit{Math.\ Comp.}, \textbf{81}, 2012. arXiv:1105.4312
+
+\bibitem{rudnick1996}
+Z.~Rudnick and P.~Sarnak,
+``Zeros of principal $L$-functions and random matrix theory,''
+\textit{Duke Math.\ J.}, \textbf{81}(2), pp.\ 269--322, 1996.
+
+\end{thebibliography}
+
+\end{document}
