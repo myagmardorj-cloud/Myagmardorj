@@ -152,7 +152,7 @@ PLATFORM_NAV = """
   </div>
   <div>
     <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
-    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
   </div>
 </nav>
 """
@@ -199,7 +199,7 @@ PAPER_NAV = """
   </div>
   <div>
     <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
-    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
   </div>
 </nav>
 """
@@ -223,16 +223,25 @@ PAPER_FOOTER = """
 """
 
 def strip_all_nav_footer(html):
+    # Remove nav and footer tags
     html = re.sub(r"<nav[\s\S]*?</nav>", "", html, flags=re.I)
     html = re.sub(r"<footer[\s\S]*?</footer>", "", html, flags=re.I)
+    # Remove old SPA nav inline links
+    html = re.sub(r'<a[^>]*class="MN-logo"[^>]*>.*?</a>', "", html)
+    # Remove duplicate MASTER_CSS blocks
+    parts = html.split("/* === FINAL MASTER NAV FOOTER === */")
+    if len(parts) > 2:
+        html = parts[0] + "/* === FINAL MASTER NAV FOOTER === */" + parts[-1]
     return html
 
-def inject_css(html):
-    if "FINAL MASTER NAV FOOTER" not in html:
-        if "</style>" in html:
-            html = html.replace("</style>", MASTER_CSS + "\n</style>", 1)
-        else:
-            html = html.replace("</head>", f"<style>{MASTER_CSS}</style></head>", 1)
+def inject_css(html, skip_panel_override=False):
+    # Remove old MASTER_CSS block first
+    html = re.sub(r"/\* === FINAL MASTER NAV FOOTER === \*/[\s\S]*?(?=</style>|$)", "", html)
+    # Add fresh CSS
+    if "</style>" in html:
+        html = html.replace("</style>", MASTER_CSS + "\n</style>", 1)
+    else:
+        html = html.replace("</head>", f"<style>{MASTER_CSS}</style></head>", 1)
     return html
 
 def inject_js(html):
@@ -257,7 +266,20 @@ for p in platform_pages:
         fix(p, PLATFORM_NAV, PLATFORM_FOOTER)
 
 for p in paper_pages:
-    fix(p, PAPER_NAV, PAPER_FOOTER)
+    if p.name == "steven_clark.html":
+        # Only update nav/footer, preserve panel CSS
+        html = p.read_text(encoding="utf-8", errors="ignore")
+        html = html.replace("data-lang=", "data-li=")
+        html = re.sub(r"<body[^>]*>", '<body class="en">', html, count=1, flags=re.I)
+        html = strip_all_nav_footer(html)
+        html = html.replace('<body class="en">', '<body class="en">\n' + PAPER_NAV, 1)
+        html = html.replace("</body>", PAPER_FOOTER + "\n</body>", 1)
+        # Only add nav JS, NOT full MASTER_CSS (preserve panel CSS)
+        if "function MN_toggle(btn)" not in html:
+            html = html.replace("</body>", MASTER_JS + "\n</body>", 1)
+        p.write_text(html, encoding="utf-8")
+    else:
+        fix(p, PAPER_NAV, PAPER_FOOTER)
 
 # Ensure site-map exists
 sitemap = ROOT / "site-map.html"
