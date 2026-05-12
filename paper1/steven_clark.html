@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="mn">
 <head>
 <meta charset="UTF-8">
@@ -278,56 +278,17 @@ footer a { color: var(--cyan); text-decoration: none; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--s3); border-radius: 2px; }
 
-.MN{position:fixed;top:0;left:0;right:0;z-index:9999;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.98);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.08);}
-.MN-logo{color:#00d4ff;text-decoration:none;font-weight:700;white-space:nowrap;font-family:'Space Grotesk',sans-serif;font-size:.88rem;}
-.MN-links{display:flex;align-items:center;gap:.35rem;}
-.MN-links a,.MN-more button{color:#9999b8;text-decoration:none;padding:.28rem .55rem;border-radius:7px;background:none;border:none;font-size:.78rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
-.MN-links a:hover,.MN-links a.MN-cur{color:#fff;background:rgba(255,255,255,.07);}
-.MN-more{position:relative;}
-.MN-dd{display:none;position:absolute;top:42px;right:0;min-width:210px;padding:.45rem;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.55);}
-.MN-dd.open{display:block;}
-.MN-dd a{display:block;padding:.38rem .75rem;color:#9999b8;text-decoration:none;font-size:.78rem;border-radius:6px;}
-.MN-dd a:hover,.MN-dd a.MN-cur{color:#fff;background:rgba(255,255,255,.07);}
-.MN-lb{font-size:.65rem;padding:.25rem .55rem;border:1px solid rgba(255,255,255,.12);background:transparent;color:#777;cursor:pointer;border-radius:4px;}
-.MN-lb.MN-active{background:#007bff;color:#fff;border-color:transparent;}
-[data-li]{display:none;}
-body.en [data-li="en"]{display:inline;}
-body.mn [data-li="mn"]{display:inline;}
+/* Tab panel system */
+.panel { display: none !important; }
+.panel.active { display: block !important; }
+.tab-nav { display: flex; gap: .5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: .5rem; }
+.tab-btn { background: none; border: none; color: var(--sub, #9999b8); font-size: .82rem; padding: .5rem 1rem; cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; font-family: 'JetBrains Mono', monospace; letter-spacing: .05em; }
+.tab-btn:hover { color: var(--cyan, #00d4ff); }
+.tab-btn.active { color: var(--cyan, #00d4ff); border-bottom-color: var(--cyan, #00d4ff); }
 
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
 </head>
 <body>
-<nav class="MN">
-<a href="/" class="MN-logo">Nexcore Research</a>
-<div class="MN-links">
-<a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-<a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
-<span class="MN-more"><button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
-<div class="MN-dd">
-<a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-<a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
-<a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний лаб</span></a>
-<a href="/paper1/steven_clark.html" class="MN-cur"><span data-li="en">Steven Clark f(x)</span><span data-li="mn">Стивен Кларк f(x)</span></a>
-<a href="/paper1/livestats.html"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
-<hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.4rem 0;">
-<a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
-<a href="/paper1/faq.html"><span data-li="en">FAQ</span><span data-li="mn">Асуулт хариулт</span></a>
-<a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
-<a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
-<a href="/paper1/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Судалгааны зам</span></a>
-<a href="/paper1/discussion.html"><span data-li="en">Discussion</span><span data-li="mn">Хэлэлцүүлэг</span></a>
-<a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-<a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Хуулбарлах</span></a>
-<a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-<a href="/paper1/changelog.html"><span data-li="en">Changelog</span><span data-li="mn">Өөрчлөлт</span></a>
-</div></span>
-</div>
-<div class="MN-lang">
-<button class="MN-lb MN-active" data-l="en" onclick="setLang('en')">ENG</button>
-<button class="MN-lb" data-l="mn" onclick="setLang('mn')">МОН</button>
-</div>
-</nav>
 
 <header>
   <div class="header-eyebrow">Nexcore Research · Computational Number Theory</div>
@@ -337,15 +298,14 @@ body.mn [data-li="mn"]{display:inline;}
 </header>
 
 <!-- TABS -->
-
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="fig1">① Figure (1) Давталт</button>
+  <button class="tab-btn" data-tab="pvc">② Prime vs Composite</button>
+  <button class="tab-btn" data-tab="psi0">③ ψ₀(x) Explicit</button>
+  <button class="tab-btn" data-tab="table">④ Тооцооны хүснэгт</button>
+</nav>
 
 <!-- ═══════════════════════════════════ PANEL 1 ═══ -->
-<div class="tab-nav">
-  <button class="tab-btn active" data-panel="panel-fig1">⊙ Figure (1) Давталт</button>
-  <button class="tab-btn" data-panel="panel-pvc">⊕ Prime vs Composite</button>
-  <button class="tab-btn" data-panel="panel-psi0">⊗ ψ₀(x) Explicit</button>
-  <button class="tab-btn" data-panel="panel-table">⊞ Тооцооны хүснэгт</button>
-</div>
 <div class="panel active" id="panel-fig1">
 
   <div class="sec-label">Тохиргоо</div>
@@ -571,14 +531,6 @@ document.getElementById('zeros-file').addEventListener('change', e => {
   reader.readAsText(f);
 });
 
-
-function showPanel(id, btn){
-  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
-  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-  var panel = document.getElementById('panel-'+id);
-  if(panel) panel.classList.add('active');
-  if(btn) btn.classList.add('active');
-}
 function getZeros(N) {
   const src = userZeros || ZEROS_100;
   return src.slice(0, Math.min(N, src.length));
@@ -1034,29 +986,52 @@ window.addEventListener('load', () => {
 });
 </script>
 <script>
-function MN_toggle(btn){
-  var dd=btn.nextElementSibling;
-  if(!dd) return;
-  dd.classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.MN-more')){
-    document.querySelectorAll('.MN-dd').forEach(function(d){ d.classList.remove('open'); });
-  }
-});
-function setLang(l){
-  document.body.classList.remove('en','mn');
-  document.body.classList.add(l);
-  document.querySelectorAll('.MN-lb').forEach(function(b){
-    b.classList.toggle('MN-active', b.dataset.l===l);
+
+// Tab switching
+function showPanel(panelId) {
+  document.querySelectorAll('.panel').forEach(function(p) {
+    p.classList.remove('active');
   });
-  try{ localStorage.setItem('lang',l); }catch(e){}
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  var panel = document.getElementById(panelId);
+  if (panel) panel.classList.add('active');
+  var btn = document.querySelector('[data-panel="' + panelId + '"]');
+  if (btn) btn.classList.add('active');
 }
-document.addEventListener('DOMContentLoaded',function(){
-  var l='en';
-  try{ l=localStorage.getItem('lang')||'en'; }catch(e){}
-  setLang(l);
-});</script>
+
+// Init tabs on load
+document.addEventListener('DOMContentLoaded', function() {
+  // Show first panel by default
+  document.querySelectorAll('.panel').forEach(function(p, i) {
+    if (i === 0) p.classList.add('active');
+  });
+  // Set first tab active
+  var firstBtn = document.querySelector('.tab-btn');
+  if (firstBtn) firstBtn.classList.add('active');
+  
+  // Attach click events to all tab buttons
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var panelId = this.getAttribute('data-panel');
+      if (panelId) showPanel(panelId);
+    });
+  });
+
+  // Connect run buttons to functions
+  var runMap = {
+    'run-fig1':  typeof runFig1  !== 'undefined' ? runFig1  : null,
+    'run-pvc':   typeof runPVC   !== 'undefined' ? runPVC   : null,
+    'run-psi0':  typeof runPsi0  !== 'undefined' ? runPsi0  : null,
+    'run-table': typeof runTable !== 'undefined' ? runTable : null,
+  };
+  Object.keys(runMap).forEach(function(id) {
+    var btn = document.getElementById(id);
+    if (btn && runMap[id]) btn.addEventListener('click', runMap[id]);
+  });
+});
+
+</script>
 </body>
 </html>
-
