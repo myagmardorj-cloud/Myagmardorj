@@ -118,8 +118,8 @@ header h1 em {
 .tab-btn.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
 /* ── PANELS ── */
-.panel { display: none; padding: 2.5rem 2rem 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-.panel.active { display: block; animation: fadeUp .35s ease; }
+.panel { display: none !important; padding: 2.5rem 2rem 4rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.panel.active { display: block !important; animation: fadeUp .35s ease; }
 @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
 /* ── CONTROLS ── */
@@ -1300,6 +1300,22 @@ function showPanel(id, btn){
   if(panel) panel.classList.add('active');
   if(btn) btn.classList.add('active');
 }
+document.addEventListener('DOMContentLoaded', function() {
+  // Ensure first panel is active
+  var panels = document.querySelectorAll('.panel');
+  var haslActive = false;
+  panels.forEach(function(p) { if(p.classList.contains('active')) hasActive = true; });
+  if (!hasActive && panels.length > 0) panels[0].classList.add('active');
+  // Init tabs
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var id = this.getAttribute('onclick');
+      if (!id) return;
+      var match = id.match(/showPanel\(['"]([^'"]+)['"]/);
+      if (match) showPanel(match[1], this);
+    });
+  });
+});
 
 // Connect run buttons to their functions
 document.addEventListener('DOMContentLoaded', function(){
