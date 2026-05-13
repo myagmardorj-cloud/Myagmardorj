@@ -562,6 +562,52 @@ footer.MN-foot{
         <span data-li="en">f(x) = −2x<sup>−½</sup> Σcos(γₙ log x) evaluated across 3 independent zero blocks. All prime-power positions show f(p<sup>k</sup>) &gt; 0. Composite positions near zero. <a href="/paper1/steven_clark.html" style="color:var(--green);">Interactive tool →</a></span>
         <span data-li="mn">f(x) = −2x<sup>−½</sup> Σcos(γₙ log x) — 3 бие даасан блок дээр. Бүх прайм-power позиц f(p<sup>k</sup>) &gt; 0. Нийлмэл позиц тэгийн орчимд. <a href="/paper1/steven_clark.html" style="color:var(--green);">Хэрэгсэл →</a></span>
       </div>
+      <div style="margin-top:1.2rem;overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-family:monospace;font-size:.78rem;">
+          <thead><tr style="border-bottom:1px solid var(--border);color:var(--muted);font-size:.65rem;text-transform:uppercase;">
+            <th style="text-align:left;padding:.4rem .6rem;">Dataset</th>
+            <th style="text-align:right;padding:.4rem .6rem;">μ f(prime)</th>
+            <th style="text-align:right;padding:.4rem .6rem;">μ f(comp)</th>
+            <th style="text-align:right;padding:.4rem .6rem;">Pos/25</th>
+            <th style="text-align:right;padding:.4rem .6rem;">p-value</th>
+            <th style="text-align:right;padding:.4rem .6rem;">Cohen d</th>
+            <th style="text-align:center;padding:.4rem .6rem;">Signal</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.05);">
+              <td style="padding:.5rem .6rem;">zeros1 · T≈10¹²</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--green);">33.99</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--sub);">4.80</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--green);">25/25</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--green);">≈0.0000</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--green);">1.507</td>
+              <td style="text-align:center;padding:.5rem .6rem;color:var(--green);">✓ Strong</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.05);">
+              <td style="padding:.5rem .6rem;">zeros6 · T≈10¹³</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--green);">33.99</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--sub);">4.80</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--green);">25/25</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--green);">≈0.0000</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--yellow);">1.507 ⚠</td>
+              <td style="text-align:center;padding:.5rem .6rem;color:var(--yellow);">Check*</td>
+            </tr>
+            <tr>
+              <td style="padding:.5rem .6rem;">zeros_ht · T≈74,920</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--muted);">−0.47</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--muted);">−0.42</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--muted);">14/25</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--muted);">0.9526</td>
+              <td style="text-align:right;padding:.5rem .6rem;color:var(--muted);">−0.017</td>
+              <td style="text-align:center;padding:.5rem .6rem;color:var(--muted);">— None</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:.6rem;font-size:.72rem;color:var(--muted);font-style:italic;">
+          <span data-li="en">* zeros1 and zeros6 show identical values — possible data loading issue, requires verification. zeros_ht: low-T, signal absent.</span>
+          <span data-li="mn">* zeros1 болон zeros6 ижил утга — өгөгдөл уншилтын асуудал байж болзошгүй, шалгах шаардлагатай. zeros_ht: бага T, signal байхгүй.</span>
+        </div>
+      </div>
     </div>
     <!-- Old BK r values — archived/superseded -->
     <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;margin-top:1.5rem;">Superseded intermediate results (BK spacing covariance)</div>
