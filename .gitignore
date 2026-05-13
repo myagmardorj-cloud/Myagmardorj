@@ -44,3 +44,9 @@ results/*/*.csv
 !scatter_zeros*.png
 
 Myagmardorj/
+
+paper1/intro.html
+paper1/landscape.html
+paper1/verify.html
+paper1/contact.html
+paper1/site-map.html
