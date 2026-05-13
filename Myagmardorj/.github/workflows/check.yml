@@ -1,0 +1,28 @@
+name: Check HTML/JS
+
+on: [push]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Check JS syntax in HTML files
+        run: |
+          for f in *.html; do
+            echo "Checking $f..."
+            node -e "
+              const fs = require('fs');
+              const c = fs.readFileSync('$f', 'utf8');
+              const scripts = c.match(/<script>([\s\S]*?)<\/script>/g) || [];
+              scripts.forEach((s, i) => {
+                const js = s.replace(/<\/?script>/g, '');
+                try { new Function(js); console.log('  script', i+1, 'OK'); }
+                catch(e) { console.error('  ERROR in $f script', i+1, ':', e.message); process.exit(1); }
+              });
+            "
+          done
+          echo "All OK"

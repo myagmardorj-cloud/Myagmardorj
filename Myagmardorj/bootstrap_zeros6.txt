@@ -1,0 +1,7 @@
+Bootstrap analysis — zeros6.txt
+N=2001052, subset_size=1000526, iterations=1000
+mean_r=0.6795
+std_r=0.0886
+ci_low=0.4865
+ci_high=0.8368
+verdict=MODERATE — some variability, interpret cautiously

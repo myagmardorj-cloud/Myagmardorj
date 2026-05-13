@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>References · research.nexcore.ltd</title>
+<style>
+
+:root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
+nav.MN{position:fixed;top:0;left:0;right:0;z-index:500;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;flex-shrink:0;}
+.MN-links{display:flex;align-items:center;gap:.2rem;flex-shrink:0;}
+.MN-links>a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);text-decoration:none;padding:.28rem .6rem;border-radius:7px;transition:all .2s;white-space:nowrap;}
+.MN-links>a:hover,.MN-links>a.MN-cur{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-more{position:relative;}
+.MN-more>button{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;color:var(--sub);background:none;border:none;padding:.28rem .6rem;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.MN-more>button:hover{color:var(--text);background:rgba(255,255,255,.07);}
+.MN-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:rgba(12,12,24,.98);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.4rem;min-width:160px;z-index:600;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.6);}
+.MN-dd.open{display:block;}
+.MN-dd a{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;color:var(--sub);text-decoration:none;padding:.36rem .85rem;border-radius:8px;transition:background .15s;white-space:nowrap;}
+.MN-dd a:hover{color:var(--text);background:rgba(255,255,255,.06);}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:.26rem .55rem;background:none;border:1px solid rgba(255,255,255,.12);color:var(--muted);cursor:pointer;transition:all .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}
+.MN-lb:last-child{border-radius:0 4px 4px 0;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,var(--cyan));color:#fff;border-color:transparent;}
+[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+footer.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;background:rgba(7,7,16,.98);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#5a5a7a;letter-spacing:.02em;}footer.MN-foot .MN-foot-left{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}footer.MN-foot .MN-foot-center{display:flex;gap:.2rem;align-items:center;flex-shrink:0;}footer.MN-foot .MN-foot-right{flex:1;text-align:right;flex-shrink:0;}footer.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.22rem .5rem;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap;}footer.MN-foot a:hover{color:#00d4ff;background:rgba(0,212,255,.07);}footer.MN-foot .foot-sep{width:1px;height:12px;background:rgba(255,255,255,.1);margin:0 .3rem;}
+.MN-foot a{color:var(--muted);text-decoration:none;padding:.2rem .4rem;transition:color .2s;}
+.MN-foot a:hover{color:var(--cyan);}
+.container{max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:-.02em;}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.8rem;overflow:hidden;}
+.faq-q{padding:1rem 1.2rem;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--s1);transition:background .2s;}
+.faq-q:hover{background:var(--s2);}
+.faq-arrow{color:var(--muted);font-size:.8rem;flex-shrink:0;transition:transform .2s;}
+.faq-a{display:none;padding:1rem 1.2rem;font-size:.9rem;color:var(--sub);line-height:1.7;border-top:1px solid var(--border);}
+.faq-a.open{display:block;}
+
+nav.MN{position:fixed !important;top:0;left:0;right:0;z-index:900;}
+footer.MN-foot{position:fixed !important;bottom:0;left:0;right:0;z-index:900;
+  height:44px;display:flex;justify-content:space-between;align-items:center;
+  padding:0 1.5rem;background:rgba(7,7,16,.98);backdrop-filter:blur(24px);
+  border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;color:#5a5a7a;letter-spacing:.02em;}
+footer.MN-foot .MN-foot-left{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+footer.MN-foot .MN-foot-center{display:flex;gap:.2rem;align-items:center;flex-shrink:0;}
+footer.MN-foot .MN-foot-right{flex:1;text-align:right;}
+footer.MN-foot a{color:#5a5a7a;text-decoration:none;padding:.22rem .5rem;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap;}
+footer.MN-foot a:hover{color:#00d4ff;background:rgba(0,212,255,.07);}
+body{padding-top:56px !important;padding-bottom:52px !important;}
+
+
+/* === MASTER FIXED NAV / FOOTER === */
+[data-li]{display:none!important;}
+body.en [data-li="en"]{display:inline!important;}
+body.mn [data-li="mn"]{display:inline!important;}
+
+body{
+  padding-top:56px!important;
+  padding-bottom:52px!important;
+}
+
+nav.MN{
+  position:fixed!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  z-index:9999!important;
+  height:48px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  padding:0 1.5rem!important;
+  background:rgba(7,7,16,.98)!important;
+  backdrop-filter:blur(22px)!important;
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+
+footer.MN-foot{
+  position:fixed!important;
+  bottom:0!important;
+  left:0!important;
+  right:0!important;
+  z-index:9999!important;
+  height:44px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  padding:0 1.5rem!important;
+  background:rgba(7,7,16,.98)!important;
+  backdrop-filter:blur(22px)!important;
+  border-top:1px solid rgba(255,255,255,.08)!important;
+  font-family:monospace!important;
+  font-size:.65rem!important;
+  color:#5a5a7a!important;
+}
+
+.MN-logo{
+  color:#00d4ff!important;
+  text-decoration:none!important;
+  font-weight:700!important;
+}
+
+.MN-links{
+  display:flex!important;
+  align-items:center!important;
+  gap:.35rem!important;
+}
+
+.MN-links a,
+.MN-more button,
+.MN-foot a{
+  color:#9999b8!important;
+  text-decoration:none!important;
+  padding:.28rem .55rem!important;
+  border-radius:7px!important;
+  background:none!important;
+  border:none!important;
+  font-size:.78rem!important;
+  cursor:pointer!important;
+}
+
+.MN-links a:hover,
+.MN-links a.MN-cur,
+.MN-foot a:hover{
+  color:#fff!important;
+  background:rgba(255,255,255,.07)!important;
+}
+
+.MN-dd{
+  display:none!important;
+  position:absolute!important;
+  top:42px!important;
+  right:0!important;
+  min-width:190px!important;
+  padding:.45rem!important;
+  background:rgba(12,12,24,.98)!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:12px!important;
+  box-shadow:0 8px 30px rgba(0,0,0,.55)!important;
+}
+
+.MN-dd.open{display:block!important;}
+
+.MN-dd a{
+  display:block!important;
+  padding:.38rem .75rem!important;
+}
+
+.MN-more{position:relative!important;}
+
+.MN-lb{
+  font-size:.65rem!important;
+  padding:.25rem .55rem!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:transparent!important;
+  color:#777!important;
+  cursor:pointer!important;
+}
+
+.MN-lb.MN-active{
+  background:#007bff!important;
+  color:#fff!important;
+}
+
+.MN-foot-left{flex:1!important;}
+.MN-foot-center{display:flex!important;gap:.25rem!important;align-items:center!important;}
+.MN-foot-right{flex:1!important;text-align:right!important;}
+
+
+
+/* === FINAL MASTER NAV FOOTER === */
+[data-li]{display:none!important;}
+body.en [data-li="en"]{display:inline!important;}
+body.mn [data-li="mn"]{display:inline!important;}
+
+body{padding-top:56px!important;padding-bottom:52px!important;}
+
+nav.MN{
+  position:fixed!important;
+  top:0!important;left:0!important;right:0!important;
+  z-index:9999!important;
+  height:48px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  padding:0 1.5rem!important;
+  background:rgba(7,7,16,.98)!important;
+  backdrop-filter:blur(22px)!important;
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+
+.MN-logo{
+  color:#00d4ff!important;
+  text-decoration:none!important;
+  font-weight:700!important;
+  white-space:nowrap!important;
+}
+
+.MN-links{display:flex!important;align-items:center!important;gap:.35rem!important;}
+
+.MN-links a,.MN-more button,.MN-foot a{
+  color:#9999b8!important;
+  text-decoration:none!important;
+  padding:.28rem .55rem!important;
+  border-radius:7px!important;
+  background:none!important;
+  border:none!important;
+  font-size:.78rem!important;
+  cursor:pointer!important;
+}
+
+.MN-links a:hover,.MN-links a.MN-cur,.MN-foot a:hover{
+  color:#fff!important;
+  background:rgba(255,255,255,.07)!important;
+}
+
+.MN-more{position:relative!important;}
+
+.MN-dd{
+  display:none!important;
+  position:absolute!important;
+  top:42px!important;
+  right:0!important;
+  min-width:210px!important;
+  padding:.45rem!important;
+  background:rgba(12,12,24,.98)!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:12px!important;
+  box-shadow:0 8px 30px rgba(0,0,0,.55)!important;
+}
+
+.MN-dd.open{display:block!important;}
+.MN-dd a{display:block!important;padding:.38rem .75rem!important;}
+
+.MN-lb{
+  font-size:.65rem!important;
+  padding:.25rem .55rem!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:transparent!important;
+  color:#777!important;
+  cursor:pointer!important;
+}
+.MN-lb.MN-active{background:#007bff!important;color:#fff!important;}
+
+footer.MN-foot{
+  position:fixed!important;
+  bottom:0!important;left:0!important;right:0!important;
+  z-index:9999!important;
+  height:44px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  padding:0 1.5rem!important;
+  background:rgba(7,7,16,.98)!important;
+  backdrop-filter:blur(22px)!important;
+  border-top:1px solid rgba(255,255,255,.08)!important;
+  font-family:monospace!important;
+  font-size:.65rem!important;
+  color:#5a5a7a!important;
+}
+
+.MN-foot-left{flex:1!important;}
+.MN-foot-center{display:flex!important;gap:.25rem!important;align-items:center!important;}
+.MN-foot-right{flex:1!important;text-align:right!important;}
+
+</style>
+</head>
+<!-- PAGE_ROLE: References | Bibliography and source references. -->
+<body class="en">
+
+<nav class="MN">
+  <a href="/" class="MN-logo">Nexcore Research</a>
+  <div class="MN-links">
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+    <span class="MN-more">
+      <button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+      <div class="MN-dd">
+        <a href="/paper1/charts.html">Charts / Графикууд</a>
+        <a href="/paper1/calculator.html">Calculator / Тооцоолол</a>
+        <a href="/paper1/lab.html">Analysis Lab / Шинжилгээний лаб</a>
+        <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+        <a href="/paper1/livestats.html">Live Stats / Шууд тоо</a>
+        <a href="/paper1/nulltests.html">Null Tests / Null тестүүд</a>
+        <a href="/paper1/faq.html">FAQ / Асуулт</a>
+        <a href="/paper1/methods.html">Methods / Аргачлал</a>
+        <a href="/paper1/references.html">References / Эшлэл</a>
+        <a href="/paper1/roadmap.html">Roadmap / Зам</a>
+        <a href="/paper1/discussion.html">Discussion / Хэлэлцүүлэг</a>
+        <a href="/paper1/about.html">About / Тухай</a>
+        <a href="/paper1/replication.html">Replicate / Давтах</a>
+        <a href="/paper1/data.html">Data / Өгөгдөл</a>
+        <a href="/paper1/changelog.html">Changelog / Өөрчлөлт</a>
+      </div>
+    </span>
+  </div>
+  <div>
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Судалгааны баримтууд</span></div>
+    <h2><span data-li="en">Code, Notes & Paper</span><span data-li="mn">Код, Тэмдэглэл & Өгүүлэл</span></h2>
+    <p class="prose" style="margin-bottom:2rem;"><span data-li="en">All source files from the GitHub repository, with explanations. Click any file to expand.</span><span data-li="mn">GitHub репозиторийн бүх файл тайлбарын хамт. Файл дарж задлаарай.</span></p>
+
+    <!-- FILE 1: analyze.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🐍</span>
+        <div class="file-meta">
+          <span class="file-name">analyze.py</span>
+          <div class="file-desc"><span data-li="en">Main analysis script — computes BK amplitude law correlation across zero datasets.</span><span data-li="mn">Гол шинжилгээний скрипт — BK амплитудын хуулийн корреляцийг тооцоолно.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">SciPy</span><span class="file-tag">Matplotlib</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-li="en">Loads Odlyzko zero data, computes spacing covariances C(h) for prime lags h=p, then tests the BK prediction A(p) ~ (log p)²/p using Pearson correlation. Outputs r value, p-value, and scatter plot.</span>
+            <span data-li="mn">Одлызкогийн тэгийн өгөгдлийг уншиж, прайм лаг h=p дээрх зайн ковариансыг C(h) тооцоолоод, Pearson корреляц ашиглан BK таамаглал A(p) ~ (log p)²/p-г шалгана. r утга, p-value, scatter plot гаргана.</span>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-li="en">Load zeros from <code>zeros4.txt</code> (Odlyzko high-T data)</span><span data-li="mn"><code>zeros4.txt</code>-аас тэгүүдийг уншина (Одлызкогийн өндөр-T өгөгдөл)</span></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text"><span data-li="en">Compute spacings δₙ = γₙ₊₁ − γₙ and center them</span><span data-li="mn">δₙ = γₙ₊₁ − γₙ зайнуудыг тооцоолж, төвлүүлнэ</span></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text"><span data-li="en">For each prime p: compute covariance C(p) = mean(δₙ · δₙ₊ₚ)</span><span data-li="mn">Прайм p бүрт: ковариансыг C(p) = mean(δₙ · δₙ₊ₚ) тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text"><span data-li="en">Compute Pearson r between C(p) and (log p)²/p</span><span data-li="mn">C(p) болон (log p)²/p хооронд Pearson r тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text"><span data-li="en">Save scatter plot → <code>scatter.png</code></span><span data-li="mn">Scatter plot хадгална → <code>scatter.png</code></span></div></div>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre id="code-analyze"><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+<span class="kw">from</span> scipy.stats <span class="kw">import</span> pearsonr
+
+<span class="cm"># Load zero heights</span>
+x = np.<span class="fn">loadtxt</span>(<span class="st">"zeros4.txt"</span>)
+
+<span class="cm"># Spacings</span>
+d = np.<span class="fn">diff</span>(x)
+d = d - d.<span class="fn">mean</span>()  <span class="cm"># center</span>
+
+primes = [<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>]
+vals = []
+
+<span class="kw">for</span> p <span class="kw">in</span> primes:
+    a = d[:-p]
+    b = d[p:]
+    c = np.<span class="fn">mean</span>(a<span class="op">*</span>b)  <span class="cm"># covariance at lag p</span>
+    vals.<span class="fn">append</span>(c)
+
+vals = np.<span class="fn">array</span>(vals)
+target = (np.<span class="fn">log</span>(primes)<span class="op">**</span><span class="nm">2</span>) <span class="op">/</span> np.<span class="fn">array</span>(primes)
+
+<span class="cm"># BK amplitude law test</span>
+r, pv = <span class="fn">pearsonr</span>(vals, target)
+<span class="fn">print</span>(<span class="st">"correlation ="</span>, r)
+<span class="fn">print</span>(<span class="st">"p-value ="</span>, pv)
+
+<span class="cm"># Scatter plot</span>
+plt.<span class="fn">scatter</span>(target, vals)
+plt.<span class="fn">xlabel</span>(<span class="st">r'$(\log p)^2/p$'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Amplitude'</span>)
+plt.<span class="fn">title</span>(<span class="st">'Prime-Locked Excess'</span>)
+plt.<span class="fn">savefig</span>(<span class="st">"scatter.png"</span>, dpi=<span class="nm">200</span>)</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 2: 01_power_spectrum.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📊</span>
+        <div class="file-meta">
+          <span class="file-name">code/01_power_spectrum.py</span>
+          <div class="file-desc"><span data-li="en">Computes the power spectrum S(τ) of Riemann zeros and plots peaks at prime frequencies.</span><span data-li="mn">Риман тэгүүдийн S(τ) power spectrum тооцоолж, прайм давтамж дээрх оргилуудыг зурна.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">Fourier</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-li="en">Computes S(τ) = |Σ e^{iτγₙ}|²/N for a range of τ values, then marks the prime frequencies τ_p = log(p)/2π on the spectrum. This was the first analysis that showed excess signal at prime positions.</span>
+            <span data-li="mn">τ утгуудын мужид S(τ) = |Σ e^{iτγₙ}|²/N тооцоолж, спектр дээр прайм давтамж τ_p = log(p)/2π-г тэмдэглэнэ. Энэ нь прайм позиц дээр илүүдэл дохио харуулсан анхны шинжилгээ байв.</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre><span class="cm">"""Тэгүүдийн power spectrum S(tau) тооцоолох"""</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+<span class="kw">def</span> <span class="fn">power_spectrum</span>(tau, gamma):
+    <span class="st">"""S(tau) = |Σ e^{i τ γ_n}|² / N"""</span>
+    N = <span class="fn">len</span>(gamma)
+    Z = np.<span class="fn">sum</span>(np.<span class="fn">exp</span>(<span class="nm">1j</span> <span class="op">*</span> tau <span class="op">*</span> gamma))
+    <span class="kw">return</span> np.<span class="fn">abs</span>(Z)<span class="op">**</span><span class="nm">2</span> <span class="op">/</span> N
+
+<span class="cm"># Prime frequencies τ_p = log(p) / 2π</span>
+primes = np.<span class="fn">array</span>([<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>])
+tau_p = np.<span class="fn">log</span>(primes) <span class="op">/</span> (<span class="nm">2</span><span class="op">*</span>np.pi)
+
+<span class="cm"># Full spectrum</span>
+tau_all = np.<span class="fn">linspace</span>(<span class="nm">0</span>, <span class="nm">0.8</span>, <span class="nm">1000</span>)
+S_all = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_all])
+S_obs = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_p])</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 3: framework_summary.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📐</span>
+        <div class="file-meta">
+          <span class="file-name">notes/framework_summary.md</span>
+          <div class="file-desc"><span data-li="en">Mellin operator framework — the mathematical foundation connecting prime operators to zeta zeros.</span><span data-li="mn">Меллин операторын хүрээ — прайм операторуудыг зета тэгүүдтэй холбосон математик суурь.</span></div>
+          <div class="file-tags"><span class="file-tag">Mathematics</span><span class="file-tag">Operator Theory</span><span class="file-tag">L²</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Mathematical framework</span><span data-li="mn">Математик хүрээ</span></div>
+            <span data-li="en">The Mellin transform framework provides an operator-theoretic explanation for why prime frequencies appear in zeta zero statistics. The key result is that the prime convolution operator acts as a multiplier via −ζ'/ζ.</span>
+            <span data-li="mn">Меллин хувиргалтын хүрээ нь прайм давтамжууд яагаад зета тэгийн статистикт гарч ирдгийг операторын онолоор тайлбарлана. Гол үр дүн нь прайм конволюцийн оператор −ζ'/ζ-ээр үржигч болж ажиллана.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#c9a84c;">## Hilbert space</span>
+H = L²((0,∞), dx/x)
+
+<span style="color:#c9a84c;">## Mellin transform</span>
+(Mf)(τ) = (1/√(2π)) ∫₀^∞ f(x) x^{-iτ} dx/x
+
+<span style="color:#c9a84c;">## Prime operator</span>
+(P_σ f)(x) = Σ_{n≥1} Λ(n)/n^σ · f(x/n)
+
+<span style="color:#c9a84c;">## Multiplier theorem  ← KEY RESULT</span>
+M[P_σ f](τ) = -ζ'(σ+iτ)/ζ(σ+iτ) · Mf(τ)
+
+<span style="color:#c9a84c;">## Energy identity</span>
+E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 4: failure_analysis.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🔍</span>
+        <div class="file-meta">
+          <span class="file-name">notes/failure_analysis.md</span>
+          <div class="file-desc"><span data-li="en">Why the initial BK amplitude test failed — and how the correct normalization was discovered.</span><span data-li="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
+          <div class="file-tags"><span class="file-tag">Analysis</span><span class="file-tag">Normalization</span><span class="file-tag">Debugging</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
+            <span data-li="en">Initial results showed r ≈ 0.4–0.6, suggesting BK law was not confirmed. The problem was the normalization: using τ_p = log(p)/2π (low-T formula) instead of the correct high-T unfolded frequency τ_p = log(p)/log(T/2π). Using the corrected normalization produced r ≈ 0.014 in this dataset.</span>
+            <span data-li="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Зассаны дараа r = 0.014 гарсан.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## ❌ WRONG normalization (low-T)</span>
+τ_p = log(p) / (2π)
+<span style="color:#585b70;"># → r ≈ 0.4–0.6, BK not confirmed</span>
+
+<span style="color:#4caf7d;">## ✅ CORRECT normalization (high-T unfolded)</span>
+τ_p = log(p) / log(T / 2π)
+<span style="color:#585b70;"># → r = 0.014</span>
+
+<span style="color:#c9a84c;">## Why this matters</span>
+<span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
+# The "unfolded" coordinate accounts for this
+# Montgomery's pair correlation uses this normalization</span></pre>
+          </div>
+          <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
+            <div class="note-label" style="color:var(--green);">Lesson learned</div>
+            <span data-li="en">Scientific failures are valuable. This failure led directly to the key insight that produced r = 0.014.</span>
+            <span data-li="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл r = 0.014 гаргасан гол ойлголтод шууд хүргэсэн.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 5: main.tex -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📝</span>
+        <div class="file-meta">
+          <span class="file-name">paper/main.tex</span>
+          <div class="file-desc"><span data-li="en">LaTeX source for the full research paper — the formal write-up of all results.</span><span data-li="mn">Бүрэн судалгааны өгүүллийн LaTeX эх — бүх үр дүнгийн албан ёсны бичгийн хэлбэр.</span></div>
+          <div class="file-tags"><span class="file-tag">LaTeX</span><span class="file-tag">PDF</span><span class="file-tag">Preprint</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Paper structure</span><span data-li="mn">Өгүүллийн бүтэц</span></div>
+            <span data-li="en">The paper contains: Abstract, Introduction (BK background), Methods (spacing covariance, normalization), Results (table with r values for all 3 datasets), Discussion, Limitations, Conclusion.</span>
+            <span data-li="mn">Өгүүлэл дараах хэсгүүдийг агуулна: Хураангуй, Танилцуулга (BK суурь), Арга (зайн ковариансыг, нормализаци), Үр дүн (3 датасетийн r утгын хүснэгт), Хэлэлцүүлэг, Хязгаарлалтууд, Дүгнэлт.</span>
+          </div>
+          <div style="margin-top:1rem;">
+            <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;">
+              <span class="li">📄</span><div><span class="lt"><span data-li="en">Download preprint</span><span data-li="mn">Preprint татах</span></span><span class="ld">zenodo.org/records/20077673</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+<script>
+function MN_toggle(btn){
+  var dd=btn.nextElementSibling;
+  dd.classList.toggle('open');
+  document.addEventListener('click',function close(e){
+    if(!btn.parentElement.contains(e.target)){
+      dd.classList.remove('open');
+      document.removeEventListener('click',close);
+    }
+  });
+}
+function setLang(l){
+  document.body.classList.remove('en','mn');
+  document.body.classList.add(l);
+  document.querySelectorAll('.MN-lb').forEach(function(b){
+    b.classList.toggle('MN-active',b.dataset.l===l);
+  });
+  try{localStorage.setItem('lang',l);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var s='en';
+  try{s=localStorage.getItem('lang')||'en';}catch(e){}
+  setLang(s);
+});
+</script>
+
+
+
+
+<footer class="MN-foot">
+  <span class="MN-foot-left">
+    <span data-li="en">Computational observations only — not a proof of RH</span>
+    <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+  </span>
+  <span class="MN-foot-center">
+    <a href="/paper1/">Results</a>
+    <a href="/paper1/replication.html">Replicate</a>
+    <a href="/paper1/data.html">Data</a>
+    <a href="/paper1/about.html">About</a>
+  </span>
+  <span class="MN-foot-right">
+    <a href="https://zenodo.org/records/20077673">DOI</a>
+  </span>
+</footer>
+
+</body>
+</html>
+
+
