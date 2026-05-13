@@ -26,4 +26,27 @@
 <tr><td><code>/paper1/data.html</code></td><td>Data</td><td>Datasets, downloads, checksums.</td></tr>
 <tr><td><code>/paper1/changelog.html</code></td><td>Changelog</td><td>Version history.</td></tr>
 <tr><td><code>/paper1/steven_clark.html</code></td><td>Steven Clark f(x)</td><td>Separate formula analysis/reference page.</td></tr></tbody></table>
+
+// ── NAV ACTIVE STATE + MOBILE ──
+(function(){
+  var path = window.location.pathname;
+  // Active state
+  document.querySelectorAll('.MN-links a, .MN-drop-menu a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href) return;
+    if(href === path || (href !== '/' && path.startsWith(href.replace(/\/$/,'')))){
+      a.classList.add('MN-active');
+    }
+  });
+  // Mobile burger
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('open');
+      mobile.classList.toggle('open');
+    });
+  }
+})();
+
 </body></html>

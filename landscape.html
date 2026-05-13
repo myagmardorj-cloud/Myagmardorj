@@ -395,30 +395,25 @@ footer.MN-foot{
     <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
     <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
     <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
-    <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+    <div class="MN-drop">
+      <a href="/paper1/"><span data-li="en">Research #001 ▾</span><span data-li="mn">Судалгаа #001 ▾</span></a>
+      <div class="MN-drop-menu">
+        <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+        <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+        <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+        <a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тестүүд</span></a>
+        <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+        <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+        <a href="/paper1/changelog.html"><span data-li="en">Changelog</span><span data-li="mn">Өөрчлөлт</span></a>
+      </div>
+    </div>
   </div>
-  <div>
+  <div style="display:flex;align-items:center;gap:.5rem;">
     <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
     <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
 
@@ -872,5 +867,28 @@ window.addEventListener('load',()=>{rhZeta();});
     
   </div>
 </div>
+
+// ── NAV ACTIVE STATE + MOBILE ──
+(function(){
+  var path = window.location.pathname;
+  // Active state
+  document.querySelectorAll('.MN-links a, .MN-drop-menu a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href) return;
+    if(href === path || (href !== '/' && path.startsWith(href.replace(/\/$/,'')))){
+      a.classList.add('MN-active');
+    }
+  });
+  // Mobile burger
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('open');
+      mobile.classList.toggle('open');
+    });
+  }
+})();
+
 </body>
 </html>
