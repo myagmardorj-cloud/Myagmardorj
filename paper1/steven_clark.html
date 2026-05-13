@@ -318,18 +318,7 @@ footer a { color: var(--cyan); text-decoration: none; }
 
 
 /* === NAV HARD FIX: corrected selector, dropdown, mobile, language === */
-.MN{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;height:52px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 1.25rem!important;background:rgba(7,7,16,.96)!important;backdrop-filter:blur(24px)!important;-webkit-backdrop-filter:blur(24px)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;box-shadow:0 8px 30px rgba(0,0,0,.22)!important;}
-.MN-logo{font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif!important;font-size:.9rem!important;font-weight:700!important;background:linear-gradient(135deg,#00d4ff,#4d9fff)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;text-decoration:none!important;white-space:nowrap!important;}
-.MN-links{display:flex!important;align-items:center!important;gap:.15rem!important;white-space:nowrap!important;min-width:0!important;}
-.MN-links a,.MN-drop-btn{font-family:'Plus Jakarta Sans',sans-serif!important;font-size:.77rem!important;color:#9999b8!important;text-decoration:none!important;padding:.36rem .62rem!important;border-radius:8px!important;border:0!important;background:transparent!important;cursor:pointer!important;line-height:1.2!important;transition:color .2s,background .2s,box-shadow .2s!important;}
-.MN-links a:hover,.MN-drop-btn:hover,.MN-drop:focus-within .MN-drop-btn{color:#eeeef8!important;background:rgba(255,255,255,.08)!important;}
-.MN-links a.MN-active,.MN-drop-btn.MN-active{color:#00d4ff!important;background:rgba(0,212,255,.10)!important;box-shadow:inset 0 -2px 0 #00d4ff!important;}
-.MN-platform{color:#6f6f8e!important;margin-left:.15rem!important;}
-.MN-actions{display:flex!important;align-items:center!important;gap:.28rem!important;flex-shrink:0!important;}
-.MN-lb{font-family:'JetBrains Mono',monospace!important;font-size:.64rem!important;padding:.28rem .55rem!important;border-radius:6px!important;border:1px solid rgba(255,255,255,.12)!important;background:rgba(255,255,255,.05)!important;color:#777796!important;cursor:pointer!important;}
-.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff)!important;color:#fff!important;border-color:transparent!important;}
-.MN-drop{position:relative!important;display:inline-flex!important;align-items:center!important;}
-.MN-drop-menu{display:none!important;position:absolute!important;top:calc(100% + 10px)!important;left:50%!important;transform:translateX(-50%)!important;min-width:220px!important;max-height:70vh!important;overflow:auto!important;padding:.5rem!important;background:rgba(10,10,24,.98)!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:12px!important;box-shadow:0 18px 50px rgba(0,0,0,.45)!important;z-index:10000!important;}
+
 .MN-drop:hover .MN-drop-menu,.MN-drop:focus-within .MN-drop-menu,.MN-drop.MN-open .MN-drop-menu{display:block!important;}
 .MN-drop-menu a{display:block!important;padding:.48rem .75rem!important;border-radius:8px!important;color:#9999b8!important;}
 .MN-drop-menu a:hover{color:#eeeef8!important;background:rgba(255,255,255,.08)!important;}
@@ -345,7 +334,7 @@ footer a { color: var(--cyan); text-decoration: none; }
 body{padding-top:64px!important;}
 [data-li]{display:none!important;}html[data-lang="en"] [data-li="en"],html[data-lang="mn"] [data-li="mn"]{display:contents!important;}
 @media(max-width:1100px){.MN-links a,.MN-drop-btn{font-size:.72rem!important;padding:.34rem .48rem!important}.MN-logo{font-size:.82rem!important}}
-@media(max-width:900px){.MN-links{display:none!important}.MN-burger{display:flex!important}.MN{height:52px!important;padding:0 1rem!important}.MN-mobile.open{grid-template-columns:1fr!important}}
+@media(max-width:900px){.MN-links{display:none!important}.MN-burger{display:flex!important}.MN-mobile.open{grid-template-columns:1fr!important}}
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
