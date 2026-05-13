@@ -1,1 +1,1 @@
-﻿{"routes":[{"src":"/paper1","dest":"/paper1/index.html"},{"src":"/paper1/","dest":"/paper1/index.html"},{"src":"/paper1/(.+)","dest":"/paper1/$1"}]}
+﻿{"version":2,"rewrites":[{"source":"/paper1","destination":"/paper1/index.html"},{"source":"/paper1/","destination":"/paper1/index.html"}]}
