@@ -1,5 +1,39 @@
 ## Quick Reproduction
 
+### Analysis 1 — BK Spacing Covariance (null result)
+
+```bash
+git clone https://github.com/myagmardorj-cloud/Myagmardorj
+cd Myagmardorj
+pip install -r requirements.txt
+python scripts/analyze.py zeros_ht.txt
+# Expected: r ≈ 0.51 (UNSTABLE bootstrap)
+# Note: Earlier r=0.9992 was normalization bias — not reproducible
+```
+
+### Analysis 2 — Steven Clark f(x) Explicit Formula ⭐
+
+```bash
+# zeros1.txt (T≈74,920, 100K zeros)
+python paper1/scripts/fx_analysis.py zeros1.txt
+# Expected: μ f(prime) ≈ 4087, μ f(comp) ≈ 343, pos=17/17, Cohen d≈1.674, p≈0
+
+# zeros6.txt high-T block (T≈600,270+)
+# IMPORTANT: use --start 1000000 to avoid overlap with zeros1
+python paper1/scripts/fx_analysis.py zeros6.txt --start 1000000
+# Expected: μ f(prime) ≈ 2979, μ f(comp) ≈ 251, pos=17/17, Cohen d≈1.659, p≈0
+
+# zeros_ht.txt (first 10K zeros)
+python paper1/scripts/fx_analysis.py zeros_ht.txt
+# Expected: μ f(prime) ≈ 538, μ f(comp) ≈ 44, pos=17/17, Cohen d≈1.673, p≈0
+```
+
+> **Bug note:** zeros6.txt contains zeros1.txt as a subset (both start at T~14).
+> Always use `--start 1000000` for zeros6 to get an independent high-T block.
+
+> **Caution:** f(p) signal is consistent across datasets but has NOT been
+> independently replicated on a separate machine/codebase. Cohen d ≈ 1.674
+> is a computational observation — not a confirmed theorem.
 
 ## Current Observed Correlations
 
