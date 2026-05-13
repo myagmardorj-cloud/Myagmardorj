@@ -181,6 +181,7 @@ footer.MN-foot{
 
 
 
+
 /* === FINAL MASTER NAV FOOTER === */
 [data-li]{display:none!important;}
 body.en [data-li="en"]{display:inline!important;}
@@ -282,20 +283,39 @@ footer.MN-foot{
 <body class="en">
 
 <nav class="MN">
-  <a href="/index.html" class="MN-logo">research.nexcore.ltd</a>
+  <a href="/" class="MN-logo">Nexcore Research</a>
   <div class="MN-links">
-    <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
-    <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
-    <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
-    <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
-    <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
-    <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал тодорхойлолт</span></a>
+    <span class="MN-more">
+      <button onclick="MN_toggle(this)"><span data-li="en">More ▾</span><span data-li="mn">Дэлгэрэнгүй ▾</span></button>
+      <div class="MN-dd">
+        <a href="/paper1/charts.html">Charts / Графикууд</a>
+        <a href="/paper1/calculator.html">Calculator / Тооцоолол</a>
+        <a href="/paper1/lab.html">Analysis Lab / Шинжилгээний лаб</a>
+        <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+        <a href="/paper1/livestats.html">Live Stats / Шууд тоо</a>
+        <a href="/paper1/nulltests.html">Null Tests / Null тестүүд</a>
+        <a href="/paper1/faq.html">FAQ / Асуулт</a>
+        <a href="/paper1/methods.html">Methods / Аргачлал</a>
+        <a href="/paper1/references.html">References / Эшлэл</a>
+        <a href="/paper1/roadmap.html">Roadmap / Зам</a>
+        <a href="/paper1/discussion.html">Discussion / Хэлэлцүүлэг</a>
+        <a href="/paper1/about.html">About / Тухай</a>
+        <a href="/paper1/replication.html">Replicate / Давтах</a>
+        <a href="/paper1/data.html">Data / Өгөгдөл</a>
+        <a href="/paper1/changelog.html">Changelog / Өөрчлөлт</a>
+      </div>
+    </span>
   </div>
   <div>
     <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
     <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
   </div>
 </nav>
+
+
+
 
 
 
@@ -479,15 +499,23 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
+
+
+
 <footer class="MN-foot">
-  <span class="MN-foot-left">Platform · Open archive</span>
-  <span class="MN-foot-center">
-    <a href="/intro.html">Intro</a>
-    <a href="/landscape.html">Landscape</a>
-    <a href="/verify.html">Verify</a>
-    <a href="/site-map.html">Site Map</a>
+  <span class="MN-foot-left">
+    <span data-li="en">Computational observations only — not a proof of RH</span>
+    <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
   </span>
-  <span class="MN-foot-right">v1.0</span>
+  <span class="MN-foot-center">
+    <a href="/paper1/">Results</a>
+    <a href="/paper1/replication.html">Replicate</a>
+    <a href="/paper1/data.html">Data</a>
+    <a href="/paper1/about.html">About</a>
+  </span>
+  <span class="MN-foot-right">
+    <a href="https://zenodo.org/records/20077673">DOI</a>
+  </span>
 </footer>
 
 </body>
