@@ -604,8 +604,8 @@ footer.MN-foot{
           </tbody>
         </table>
         <div style="margin-top:.6rem;font-size:.72rem;color:var(--muted);font-style:italic;">
-          <span data-li="en">* zeros1 and zeros6 show identical values — possible data loading issue, requires verification. zeros_ht: low-T, signal absent.</span>
-          <span data-li="mn">* zeros1 болон zeros6 ижил утга — өгөгдөл уншилтын асуудал байж болзошгүй, шалгах шаардлагатай. zeros_ht: бага T, signal байхгүй.</span>
+          <span data-li="en">* BUG FIXED (2026-05-13): zeros6.txt contains zeros1.txt as a subset (both start T~14). Earlier identical results were caused by this overlap. Corrected analysis uses zeros6[start=1,000,000] for T~600,270+. Signal confirmed on all 3 independent T-ranges. See <code>scripts/fx_analysis.py --start 1000000</code></span>
+          <span data-li="mn">* АЛДАА ЗАСАГДСАН (2026-05-13): zeros6.txt нь zeros1.txt-ийг бүрэн агуулна (хоёулаа T~14-с эхэлнэ). Өмнөх ижил үр дүн энэ давхцлаас үүссэн. Засварласан шинжилгээ: zeros6[start=1,000,000] → T~600,270+. 3 бие даасан T-range бүгдэд signal батлагдсан.</span>
         </div>
       </div>
     </div>
