@@ -533,6 +533,127 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <div style="max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;">
 
+  
+  <!-- Риманы таамаглал тайлбар -->
+  <div style="margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.07);padding-top:2.5rem;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#00d4ff;margin-bottom:.5rem;">
+      <span data-li="en">Background · Riemann Hypothesis</span>
+      <span data-li="mn">Үндэслэл · Риманы таамаглал</span>
+    </div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.8rem;letter-spacing:-.02em;">
+      <span data-li="en">What is the Riemann Hypothesis?</span>
+      <span data-li="mn">Риманы таамаглал гэж юу вэ?</span>
+    </h2>
+    <p style="font-size:.92rem;color:#9999b8;line-height:1.8;margin-bottom:1.5rem;">
+      <span data-li="en">The Riemann Hypothesis is one of the most famous and important unsolved problems in mathematics — specifically in number theory. It was proposed in 1859 by German mathematician Bernhard Riemann. In short, it expresses that the distribution of prime numbers follows a very precise regularity.</span>
+      <span data-li="mn">Риманы таамаглал нь математикийн, тэр дундаа тооны онолын хамгийн алдартай, чухал бөгөөд одоог хүртэл батлагдаагүй байгаа таамаглалуудын нэг юм. Энэхүү таамаглалыг 1859 онд Германы математикч Бернхард Риман дэвшүүлжээ. Товчхондоо, энэ нь ерөнхий тоонуудын тархалт маш нарийн зүй тогтолтой гэдгийг илэрхийлдэг.</span>
+    </p>
+
+    <!-- Үндсэн ойлголт -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">CORE CONCEPTS</span>
+      <span data-li="mn">ҮНДСЭН ОЙЛГОЛТ</span>
+    </div>
+
+    <!-- 1. Зета функц -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.2rem;margin-bottom:.8rem;">
+      <div style="font-size:.85rem;font-weight:600;color:#eeeef8;margin-bottom:.5rem;">
+        1. <span data-li="en">Riemann Zeta Function ζ(s)</span>
+           <span data-li="mn">Риманы зета функц ζ(s)</span>
+      </div>
+      <p style="font-size:.88rem;color:#9999b8;line-height:1.7;margin-bottom:.6rem;">
+        <span data-li="en">Defined for complex numbers s:</span>
+        <span data-li="mn">s цогцолбор тооны хувьд тодорхойлогддог функц:</span>
+      </p>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.88rem;color:#00d4ff;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.1);border-radius:8px;padding:.8rem;text-align:center;">
+        ζ(s) = Σ 1/nˢ = 1/1ˢ + 1/2ˢ + 1/3ˢ + …
+      </div>
+    </div>
+
+    <!-- 2. Тэглэгч утгууд -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.2rem;margin-bottom:.8rem;">
+      <div style="font-size:.85rem;font-weight:600;color:#eeeef8;margin-bottom:.5rem;">
+        2. <span data-li="en">Zeros of ζ(s)</span>
+           <span data-li="mn">Тэглэгч утгууд (Zeros)</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+        <div style="background:rgba(77,159,255,.06);border:1px solid rgba(77,159,255,.15);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.78rem;font-weight:600;color:#4d9fff;margin-bottom:.3rem;">
+            <span data-li="en">Trivial zeros</span>
+            <span data-li="mn">Тривиал тэглэгчүүд</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#9999b8;">s = −2, −4, −6, …</div>
+        </div>
+        <div style="background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.15);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.78rem;font-weight:600;color:#00e5a0;margin-bottom:.3rem;">
+            <span data-li="en">Non-trivial zeros</span>
+            <span data-li="mn">Нон-тривиал тэглэгчүүд</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#9999b8;">0 &lt; Re(s) &lt; 1</div>
+          <div style="font-size:.75rem;color:#5a5a7a;margin-top:.2rem;">
+            <span data-li="en">critical strip</span>
+            <span data-li="mn">шүүмжлэлт зурвас</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Таамаглал -->
+    <div style="background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.15);border-radius:12px;padding:1.3rem;margin-bottom:1.5rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#ffd700;letter-spacing:.1em;margin-bottom:.6rem;">
+        <span data-li="en">THE CONJECTURE</span>
+        <span data-li="mn">ТААМАГЛАЛЫН ТОМЬЁОЛОЛ</span>
+      </div>
+      <p style="font-size:.95rem;color:#eeeef8;line-height:1.8;font-style:italic;">
+        <span data-li="en">"All non-trivial zeros of the Riemann zeta function have real part equal to 1/2" — i.e. they lie on the critical line Re(s) = 1/2, of the form s = 1/2 + it.</span>
+        <span data-li="mn">"Риманы зета функцийн бүх нон-тривиал тэглэгчүүд нь Re(s) = 1/2 гэсэн бодит хэсгийг агуулна" — өөрөөр хэлбэл s = 1/2 + it хэлбэртэй шүүмжлэлт шугам дээр оршино.</span>
+      </p>
+    </div>
+
+    <!-- Яагаад чухал -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">WHY IT MATTERS</span>
+      <span data-li="mn">ЯАГААД ЧУХАЛ ВЭ?</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin-bottom:1.5rem;">
+      <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:.8rem;font-weight:600;color:#eeeef8;margin-bottom:.4rem;">
+          <span data-li="en">Prime distribution</span>
+          <span data-li="mn">Ерөнхий тооны тархалт</span>
+        </div>
+        <div style="font-size:.82rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">If true, primes follow a very precise, regular distribution.</span>
+          <span data-li="mn">Үнэн бол ерөнхий тоонуудын тархалт маш тодорхой, жигд хязгаарт байдаг.</span>
+        </div>
+      </div>
+      <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:.8rem;font-weight:600;color:#eeeef8;margin-bottom:.4rem;">
+          <span data-li="en">Mathematical foundation</span>
+          <span data-li="mn">Математикийн үндэс</span>
+        </div>
+        <div style="font-size:.82rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">Hundreds of theorems depend on it being true. Proving it unlocks them all.</span>
+          <span data-li="mn">Олон зуун теорем үүн дээр суурилдаг. Батлагдвал тэр бүгд шууд үнэн болно.</span>
+        </div>
+      </div>
+      <div style="background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.12);border-radius:10px;padding:1rem;">
+        <div style="font-size:.8rem;font-weight:600;color:#ffd700;margin-bottom:.4rem;">
+          <span data-li="en">Clay Millennium Prize</span>
+          <span data-li="mn">Клейн мянганы асуудал</span>
+        </div>
+        <div style="font-size:.82rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">$1,000,000 prize from the Clay Mathematics Institute — unsolved since 1859.</span>
+          <span data-li="mn">Clay Mathematics Institute-ийн 1 сая ам.долларын шагнал — 1859 оноос хойш шийдэгдээгүй.</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:.88rem;color:#5a5a7a;font-style:italic;line-height:1.7;">
+      <span data-li="en">In short: the Riemann Hypothesis is the key to unlocking the mysterious distribution of prime numbers.</span>
+      <span data-li="mn">Товчхондоо, Риманы таамаглал нь ерөнхий тоонуудын нууцлаг тархалтыг тайлах түлхүүр юм.</span>
+    </p>
+  </div>
+
   <!-- Судалгаа #001 тайлбар -->
   <div style="margin-top:3rem;border-top:1px solid rgba(255,255,255,.07);padding-top:2.5rem;">
     <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#00d4ff;margin-bottom:.5rem;">
