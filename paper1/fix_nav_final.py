@@ -139,6 +139,36 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 """
 
+
+
+# Steven Clark panel system - always injected fresh
+PANEL_CSS_JS = """
+<style>
+/* Panel tab system */
+.panel { display: none !important; }
+.panel.active { display: block !important; }
+.tab-nav { display:flex; gap:.5rem; margin-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,.1); padding-bottom:.5rem; }
+.tab-btn { background:none; border:none; border-bottom:2px solid transparent; color:#9999b8; padding:.5rem 1rem; cursor:pointer; font-size:.82rem; font-family:monospace; letter-spacing:.05em; transition:all .2s; }
+.tab-btn.active { color:#00d4ff; border-bottom-color:#00d4ff; }
+.tab-btn:hover { color:#eeeef8; }
+</style>
+<script>
+function showPanel(id, btn) {
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  var t = document.getElementById('panel-' + id);
+  if (t) t.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var first = document.querySelector('.panel');
+  if (first) first.classList.add('active');
+  var firstBtn = document.querySelector('.tab-btn');
+  if (firstBtn) firstBtn.classList.add('active');
+});
+</script>
+"""
+
 PLATFORM_NAV = """
 <nav class="MN">
   <a href="/index.html" class="MN-logo">research.nexcore.ltd</a>
@@ -265,21 +295,30 @@ for p in platform_pages:
     if p.exists():
         fix(p, PLATFORM_NAV, PLATFORM_FOOTER)
 
-PLATFORM_FILES = {"index.html","intro.html","landscape.html",
-                  "verify.html","roadmap.html","contact.html","site-map.html"}
+PLATFORM_FILES = {
+    "index.html", "intro.html", "landscape.html",
+    "verify.html", "roadmap.html", "contact.html", "site-map.html"
+}
 
 for p in paper_pages:
     if p.name in PLATFORM_FILES:
         continue  # platform файл paper1/-д байвал хөндөхгүй
     if p.name == "steven_clark.html":
-        # Only update nav/footer, preserve panel CSS
+        # Special handling: nav/footer + panel system
         html = p.read_text(encoding="utf-8", errors="ignore")
         html = html.replace("data-lang=", "data-li=")
         html = re.sub(r"<body[^>]*>", '<body class="en">', html, count=1, flags=re.I)
         html = strip_all_nav_footer(html)
+        # Remove old panel CSS/JS to avoid duplicates
+        html = re.sub(r"<style>\s*/\* Panel tab system \*/[\s\S]*?</style>\s*<script>\s*function showPanel[\s\S]*?</script>", "", html)
+        html = re.sub(r"function showPanel[^}]+\}[\s\S]{0,200}function showPanel", "function showPanel", html)
+        # Add nav
         html = html.replace('<body class="en">', '<body class="en">\n' + PAPER_NAV, 1)
+        # Add panel CSS+JS before </head>
+        html = html.replace("</head>", PANEL_CSS_JS + "\n</head>")
+        # Add footer
         html = html.replace("</body>", PAPER_FOOTER + "\n</body>", 1)
-        # Only add nav JS, NOT full MASTER_CSS (preserve panel CSS)
+        # Add nav JS
         if "function MN_toggle(btn)" not in html:
             html = html.replace("</body>", MASTER_JS + "\n</body>", 1)
         p.write_text(html, encoding="utf-8")
