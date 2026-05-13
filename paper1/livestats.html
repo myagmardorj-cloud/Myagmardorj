@@ -67,6 +67,35 @@ nav/* ── UNIFIED NAV v3 ── */
 @media(max-width:768px){.MN-links{display:none!important;}.MN-burger{display:flex!important;}}
 
 </style>
+
+<style id="MN-nav-fix-css">
+/* === Nexcore menu final hard-fix === */
+[data-li]{display:none!important;}
+body.en [data-li="en"]{display:inline!important;}
+body.mn [data-li="mn"]{display:inline!important;}
+nav.MN{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:10000!important;height:48px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 1.25rem!important;background:rgba(7,7,16,.98)!important;backdrop-filter:blur(22px)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;box-sizing:border-box!important;}
+body{padding-top:56px!important;}
+.MN-logo{color:#00d4ff!important;text-decoration:none!important;font-weight:700!important;white-space:nowrap!important;}
+.MN-links{display:flex!important;align-items:center!important;gap:.22rem!important;white-space:nowrap!important;}
+.MN-links a,.MN-drop>a{color:#9999b8!important;text-decoration:none!important;padding:.34rem .56rem!important;border-radius:7px!important;font-size:.76rem!important;line-height:1!important;display:inline-flex!important;align-items:center!important;}
+.MN-links a:hover,.MN-drop:hover>a{color:#fff!important;background:rgba(255,255,255,.075)!important;}
+.MN-links a.MN-active,.MN-drop>a.MN-active,.MN-drop.MN-parent-active>a,.MN-mobile a.MN-active{color:#00d4ff!important;background:rgba(0,212,255,.10)!important;border-bottom:2px solid #00d4ff!important;}
+.MN-drop{position:relative!important;display:inline-flex!important;align-items:center!important;}
+.MN-drop-menu{display:none!important;position:absolute!important;top:100%!important;left:0!important;min-width:220px!important;background:rgba(10,10,24,.98)!important;border:1px solid rgba(255,255,255,.10)!important;border-radius:10px!important;padding:.45rem!important;z-index:10002!important;box-shadow:0 12px 34px rgba(0,0,0,.45)!important;}
+.MN-drop:hover .MN-drop-menu,.MN-drop:focus-within .MN-drop-menu{display:block!important;}
+.MN-drop-menu a{display:block!important;width:100%!important;box-sizing:border-box!important;padding:.48rem .72rem!important;border-bottom:0!important;}
+.MN-burger{display:none!important;flex-direction:column!important;gap:4px!important;padding:.45rem!important;background:transparent!important;border:0!important;cursor:pointer!important;}
+.MN-burger span{display:block!important;width:21px!important;height:2px!important;background:#9999b8!important;border-radius:2px!important;}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)!important;}
+.MN-burger.open span:nth-child(2){opacity:0!important;}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)!important;}
+.MN-mobile{display:none!important;position:fixed!important;top:48px!important;left:0!important;right:0!important;z-index:9999!important;background:rgba(7,7,16,.985)!important;border-bottom:1px solid rgba(255,255,255,.1)!important;padding:.8rem 1rem!important;box-shadow:0 14px 32px rgba(0,0,0,.38)!important;}
+.MN-mobile.open{display:flex!important;flex-direction:column!important;gap:.25rem!important;}
+.MN-mobile a{color:#9999b8!important;text-decoration:none!important;padding:.55rem .7rem!important;border-radius:8px!important;font-size:.86rem!important;}
+.MN-mobile a:hover{color:#fff!important;background:rgba(255,255,255,.075)!important;}
+@media(max-width:768px){.MN-links{display:none!important}.MN-burger{display:flex!important}nav.MN{padding:0 .85rem!important}.MN-logo{font-size:.86rem!important}}
+</style>
+
 </head>
 <!-- PAGE_ROLE: Live Stats | Zenodo/GitHub impact statistics. -->
 <body class="en">
@@ -329,6 +358,80 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   }
 })();
+
+
+<script id="MN-nav-fix-js">
+(function(){
+  function norm(path){
+    if(!path) return '';
+    try{ path = new URL(path, window.location.origin).pathname; }catch(e){}
+    path = path.replace(/\/+/g,'/');
+    if(path.endsWith('/index.html')) path = path.slice(0,-10);
+    if(path.length>1 && path.endsWith('/')) path = path.slice(0,-1);
+    return path || '/';
+  }
+  window.setLang = function(l){
+    l = (l === 'mn') ? 'mn' : 'en';
+    document.body.classList.remove('en','mn');
+    document.body.classList.add(l);
+    document.querySelectorAll('.MN-lb').forEach(function(b){ b.classList.toggle('MN-active', b.dataset.l === l); });
+    try{ localStorage.setItem('lang', l); }catch(e){}
+  };
+  function ensureMobile(){
+    if(document.querySelector('.MN-mobile')) return;
+    var links = document.querySelector('.MN-links');
+    var nav = document.querySelector('nav.MN');
+    if(!links || !nav) return;
+    var m = document.createElement('div');
+    m.className = 'MN-mobile';
+    links.querySelectorAll('a[href]').forEach(function(a){
+      if(a.getAttribute('href') === '#') return;
+      var c = a.cloneNode(true);
+      c.removeAttribute('style');
+      m.appendChild(c);
+    });
+    nav.insertAdjacentElement('afterend', m);
+  }
+  function setActive(){
+    var cur = norm(window.location.pathname);
+    document.querySelectorAll('nav.MN a[href], .MN-mobile a[href]').forEach(function(a){
+      var href = a.getAttribute('href');
+      if(!href || href === '#') return;
+      var target = norm(href);
+      var active = (cur === target) || (target === '/paper1' && (cur === '/paper1'));
+      a.classList.toggle('MN-active', active);
+    });
+    document.querySelectorAll('.MN-drop').forEach(function(d){
+      d.classList.toggle('MN-parent-active', !!d.querySelector('.MN-drop-menu a.MN-active'));
+    });
+  }
+  function bindBurger(){
+    var btn = document.querySelector('.MN-burger');
+    var mobile = document.querySelector('.MN-mobile');
+    if(!btn || !mobile || btn.dataset.mnBound) return;
+    btn.dataset.mnBound='1';
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      btn.classList.toggle('open');
+      mobile.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e){
+      if(!btn.contains(e.target) && !mobile.contains(e.target)){
+        btn.classList.remove('open');
+        mobile.classList.remove('open');
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var l='en';
+    try{ l=localStorage.getItem('lang')||'en'; }catch(e){}
+    window.setLang(l);
+    ensureMobile();
+    setActive();
+    bindBurger();
+  });
+})();
+</script>
 
 </body>
 </html>
