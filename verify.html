@@ -357,77 +357,543 @@ footer.MN-foot{
     <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
   </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div></div>
+<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
 
+<div class="wrap">
+  <header>
+    <a class="back-link" href="/">← research.nexcore.ltd</a>
+    <div style="display:flex;gap:0;margin-bottom:1rem;">
+      
+    </div>
+    <h1>Prime-Correlation <span data-li="en">Analysis Lab</span><span data-li="mn">Шинжилгээний Лаб</span></h1>
+    <p class="tagline"><span data-li="en">Run the exact analysis in your browser. Upload any Odlyzko zero data and check whether the prime-indexed excess pattern replicates in your data — no server, no installation.</span><span data-li="mn">Браузерт яг шинжилгээ ажиллуул. Одлызкогийн тэгийн өгөгдөл upload хийж прайм-индекстэй илүүдлийн хэв маяг өөрийн өгөгдөлд давтагдах эсэхийг шалга — сервер, суулгалт шаардахгүй.</span></p>
+  </header>
 
-
-
-
-
-
-
-<main class="container">
-  <div class="section-label"><span data-li="en">Verification Gateway</span><span data-li="mn">Шалгах гарц</span></div>
-  <h1><span data-li="en">Independent Analysis & Replication</span><span data-li="mn">Бие даасан шинжилгээ ба давтан шалгалт</span></h1>
-  <p><span data-li="en">This page is the platform-level gateway for checking research archives. It does not replace paper-specific tools; it points to the correct archive page.</span><span data-li="mn">Энэ хуудас нь судалгааны архивуудыг шалгах платформын ерөнхий гарц юм. Тухайн судалгааны тусгай хэрэгслийг орлохгүй, харин зөв архивын хуудас руу чиглүүлнэ.</span></p>
-  <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem;">
-    <div class="card"><h3>Research #001 Lab</h3><p><span data-li="en">Run the RH/BK-type numerical analysis tool.</span><span data-li="mn">RH/BK-төрлийн тооцооллын шинжилгээний хэрэгсэл ажиллуулах.</span></p><p><a href="/paper1/lab.html"><span data-li="en">Open analysis lab →</span><span data-li="mn">Шинжилгээний лаб нээх →</span></a></p></div>
-    <div class="card"><h3><span data-li="en">Replication Steps</span><span data-li="mn">Давтан шалгах алхам</span></h3><p><span data-li="en">Commands, environment, and expected outputs for Research #001.</span><span data-li="mn">Research #001-ийн команд, орчин, хүлээгдсэн гаралт.</span></p><p><a href="/paper1/replication.html"><span data-li="en">View replication →</span><span data-li="mn">Давтан шалгалт →</span></a></p></div>
-    <div class="card"><h3><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></h3><p><span data-li="en">Dataset notes, source files, and archive references.</span><span data-li="mn">Өгөгдлийн тайлбар, эх файлууд, архивын холбоос.</span></p><p><a href="/paper1/data.html"><span data-li="en">Open data page →</span><span data-li="mn">Өгөгдөл нээх →</span></a></p></div>
+  <div class="steps">
+    <div class="step-card"><div class="step-n">1</div><div class="step-text"><strong>Upload zeros</strong>Odlyzko zero file (one number per line, imaginary parts γₙ)</div></div>
+    <div class="step-card"><div class="step-n">2</div><div class="step-text"><strong>Configure</strong>Select primes to test and normalization height T</div></div>
+    <div class="step-card"><div class="step-n">3</div><div class="step-text"><strong>Run & compare</strong>Get r, p-value, scatter plot — compare with published results</div></div>
   </div>
-</main>
 
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2rem;">
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:1rem;">Known bootstrap results</div>
+  <table style="width:100%;font-size:.82rem;border-collapse:collapse;">
+    <thead><tr style="color:var(--sub);font-size:.72rem;border-bottom:1px solid var(--border);">
+      <th style="text-align:left;padding:.4rem .5rem;font-weight:500;">Dataset</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">N</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">r</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">Bootstrap</th>
+      <th style="text-align:center;padding:.4rem .5rem;font-weight:500;">Verdict</th>
+    </tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:.45rem .5rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.75rem;">zeros1</td>
+        <td style="text-align:center;padding:.45rem .5rem;color:var(--sub);">100K</td>
+        <td style="text-align:center;">0.6847</td>
+        <td style="text-align:center;color:var(--sub);">0.36 &#177; 0.26</td>
+        <td style="text-align:center;color:#ff4d6d;font-weight:600;">UNSTABLE</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:.45rem .5rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.75rem;">zeros_ht</td>
+        <td style="text-align:center;padding:.45rem .5rem;color:var(--sub);">10K</td>
+        <td style="text-align:center;">0.5113</td>
+        <td style="text-align:center;color:var(--sub);">0.09 &#177; 0.30</td>
+        <td style="text-align:center;color:#ff4d6d;font-weight:600;">UNSTABLE</td>
+      </tr>
+      <tr>
+        <td style="padding:.45rem .5rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.75rem;">zeros6</td>
+        <td style="text-align:center;padding:.45rem .5rem;color:var(--sub);">2M</td>
+        <td style="text-align:center;">0.4509</td>
+        <td style="text-align:center;color:var(--sub);">0.68 &#177; 0.09</td>
+        <td style="text-align:center;color:#00e5a0;font-weight:600;">MODERATE</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:.75rem;color:var(--sub);margin-top:.8rem;">Signal stability improves with N. Upload your file to compare.</p>
+</div>
+  <div class="upload-zone" id="drop-zone">
+    <input type="file" id="file-input" accept=".txt,.dat,.csv">
+    <div class="upload-icon">📂</div>
+    <div class="upload-title" id="upload-title">Drop Odlyzko zero file here</div>
+    <div class="upload-sub">or click to browse</div>
+    <div class="upload-hint">Format: one γₙ per line (plain text). Example: zeros_ht, zeros1, zeros6 from Odlyzko's site (zeros2/3/4 on their server).</div>
+  </div>
 
+  <div class="config-row">
+    <div class="config-box">
+      <div class="config-label">Height T (approx)</div>
+      <input type="number" id="height-T" value="74920" step="1">
+      <div style="font-size:.7rem;color:var(--muted);margin-top:.4rem;">zeros_ht≈74920 · zeros1≈10¹²</div>
+    </div>
+    <div class="config-box">
+      <div class="config-label">Max zeros to use</div>
+      <input type="number" id="max-zeros" value="10000" step="1000">
+    </div>
+    <div class="config-box">
+      <div class="config-label">Primes to test</div>
+      <select id="prime-set">
+        <option value="12">First 12 (2..37)</option>
+        <option value="8">First 8 (2..19)</option>
+        <option value="20">First 20 (2..71)</option>
+      </select>
+    </div>
+  </div>
 
+  <button class="run-btn" id="run-btn" disabled onclick="runAnalysis()">
+    <span data-li="en">▶ Run Analysis</span><span data-li="mn">▶ Шинжилгээ ажиллуулах</span>
+  </button>
+  <button class="run-btn" id="boot-btn" disabled onclick="runBootstrap()" style="background:rgba(240,180,41,.15);border-color:rgba(240,180,41,.3);color:var(--gold);margin-top:.5rem;">
+    <span data-li="en">⚡ Bootstrap (200×)</span><span data-li="mn">⚡ Bootstrap шалгалт</span>
+  </button>
+  <!--replaced-->
+    ▶ Run BK Analysis
+  </button>
 
+  <div class="log-box" id="log-box"></div>
 
+  <!-- RESULTS -->
+  <div class="results" id="results">
 
+    <div class="r-banner">
+      <div class="r-big">
+        <div class="rv" id="res-r">—</div>
+        <div class="rl">Pearson r</div>
+      </div>
+      <div class="r-divider"></div>
+      <div class="r-stats">
+        <div class="r-stat"><div class="rs-label">p-value</div><div class="rs-val" id="res-pv">—</div></div>
+        <div class="r-stat"><div class="rs-label">Primes positive</div><div class="rs-val" id="res-pos">—</div></div>
+        <div class="r-stat"><div class="rs-label">Zeros used</div><div class="rs-val" id="res-n">—</div></div>
+        <div class="r-stat"><div class="rs-label">C ≈ A/B ratio</div><div class="rs-val" id="res-c">—</div></div>
+      </div>
+    </div>
 
+    <div class="compare-box">
+      <div class="compare-title"><span data-li="en">Bootstrap reference results</span><span data-li="mn">Bootstrap лавлах үр дүн</span></div>
+      <div style="overflow-x:auto;margin-bottom:1rem;">
+        <table style="width:100%;font-size:.8rem;border-collapse:collapse;">
+          <thead><tr style="color:var(--sub);font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.08em;">
+            <th style="text-align:left;padding:.4rem .6rem;border-bottom:1px solid var(--border);">Dataset</th>
+            <th style="text-align:center;padding:.4rem .6rem;border-bottom:1px solid var(--border);">N</th>
+            <th style="text-align:center;padding:.4rem .6rem;border-bottom:1px solid var(--border);">r</th>
+            <th style="text-align:center;padding:.4rem .6rem;border-bottom:1px solid var(--border);">Bootstrap mean r</th>
+            <th style="text-align:center;padding:.4rem .6rem;border-bottom:1px solid var(--border);">Verdict</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.4rem .6rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);">zeros1</td>
+              <td style="text-align:center;padding:.4rem .6rem;color:var(--sub);">100K</td>
+              <td style="text-align:center;padding:.4rem .6rem;">0.6847</td>
+              <td style="text-align:center;padding:.4rem .6rem;">0.36 ± 0.26</td>
+              <td style="text-align:center;padding:.4rem .6rem;color:var(--red);">UNSTABLE</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.4rem .6rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);">zeros_ht</td>
+              <td style="text-align:center;padding:.4rem .6rem;color:var(--sub);">10K</td>
+              <td style="text-align:center;padding:.4rem .6rem;">0.5113</td>
+              <td style="text-align:center;padding:.4rem .6rem;">0.09 ± 0.30</td>
+              <td style="text-align:center;padding:.4rem .6rem;color:var(--red);">UNSTABLE</td>
+            </tr>
+            <tr>
+              <td style="padding:.4rem .6rem;font-family:'JetBrains Mono',monospace;color:var(--cyan);">zeros6</td>
+              <td style="text-align:center;padding:.4rem .6rem;color:var(--sub);">2M</td>
+              <td style="text-align:center;padding:.4rem .6rem;">0.4509</td>
+              <td style="text-align:center;padding:.4rem .6rem;">0.68 ± 0.09</td>
+              <td style="text-align:center;padding:.4rem .6rem;color:var(--green);">MODERATE</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface2);border-radius:10px;padding:.8rem 1rem;">
+        <div style="font-size:.8rem;color:var(--sub);">Your result:</div>
+        <div class="cmp-r match" id="cmp-yours" style="font-size:1.4rem;font-weight:700;color:var(--cyan);">—</div>
+      </div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-label">A(p) vs B(p) = (log p)²/p — BK amplitude scaling</div>
+      <div id="scatter-chart" style="height:340px;"></div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-label">Prime excess A(p) at each prime</div>
+      <div id="bar-chart" style="height:280px;"></div>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-label">Prime data table</div>
+      <table class="prime-table">
+        <thead><tr><th>p</th><th>B(p) = (log p)²/p</th><th>A(p) observed</th><th>R(p) = A/B</th><th>Excess</th></tr></thead>
+        <tbody id="prime-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="disclaimer">
+      ⚠️ <strong>Known Limitations:</strong> These are computational observations only. Fitting bias, normalization sensitivity, multiple-testing effects, and finite-window artifacts have not been fully ruled out. Independent independent replication, bootstrap controls, and peer review are needed before drawing any strong conclusions.
+    </div>
+  </div>
+
+<div class="results" id="bootstrap-results" style="margin-top:1.5rem;">
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:.65rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;">
+    <span data-li="en">Bootstrap Stability Test</span><span data-li="mn">Bootstrap тогтвортой байдлын шалгалт</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-bottom:1rem;">
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <div style="font-size:.7rem;color:var(--sub);margin-bottom:.3rem;">Mean r</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--cyan);" id="boot-mean">—</div>
+    </div>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <div style="font-size:.7rem;color:var(--sub);margin-bottom:.3rem;">Std r</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--cyan);" id="boot-std">—</div>
+    </div>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <div style="font-size:.7rem;color:var(--sub);margin-bottom:.3rem;">95% CI low</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--cyan);" id="boot-ci-lo">—</div>
+    </div>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <div style="font-size:.7rem;color:var(--sub);margin-bottom:.3rem;">95% CI high</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--cyan);" id="boot-ci-hi">—</div>
+    </div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;" id="boot-verdict">
+    <span data-li="en">Run bootstrap to see stability verdict.</span>
+    <span data-li="mn">Bootstrap ажиллуулж тогтвортой байдлыг шалга.</span>
+  </div>
+  <div id="boot-log" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--sub);margin-top:.8rem;"></div>
+</div>
+</div>
 
 <script>
-function MN_toggle(btn){
-  var dd = btn.nextElementSibling;
-  if(!dd) return;
-  dd.classList.toggle('open');
-}
+const PRIMES_12 = [2,3,5,7,11,13,17,19,23,29,31,37];
+const PRIMES_8  = [2,3,5,7,11,13,17,19];
+const PRIMES_20 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71];
 
-document.addEventListener('click', function(e){
-  if(!e.target.closest('.MN-more')){
-    document.querySelectorAll('.MN-dd').forEach(function(d){
-      d.classList.remove('open');
-    });
-  }
+let zeros = null;
+
+const DL = {
+  paper_bgcolor:'#0e0e1c', plot_bgcolor:'#0e0e1c',
+  font:{family:'Space Grotesk', color:'#5a5a7a', size:11},
+  xaxis:{gridcolor:'rgba(255,255,255,.05)', zerolinecolor:'rgba(255,255,255,.05)'},
+  yaxis:{gridcolor:'rgba(255,255,255,.05)', zerolinecolor:'rgba(255,255,255,.05)'},
+  margin:{t:16,r:16,b:50,l:60}
+};
+const PC = {responsive:true, displayModeBar:false};
+
+// File upload
+document.getElementById('file-input').addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (f) loadFile(f);
 });
 
+const dz = document.getElementById('drop-zone');
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag'); });
+dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
+dz.addEventListener('drop', e => {
+  e.preventDefault(); dz.classList.remove('drag');
+  const f = e.dataTransfer.files[0];
+  if (f) loadFile(f);
+});
+
+function loadFile(f) {
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const lines = ev.target.result.trim().split('\n');
+    zeros = [];
+    for (const l of lines) {
+      const v = parseFloat(l.trim());
+      if (!isNaN(v)) zeros.push(v);
+    }
+    dz.classList.add('has-file');
+    document.getElementById('upload-title').textContent =
+      `✅ ${f.name} — ${zeros.length.toLocaleString()} zeros loaded`;
+    document.getElementById('run-btn').disabled = false;
+    log(`Loaded ${zeros.length.toLocaleString()} zeros from ${f.name}`, 'ok');
+  };
+  reader.readAsText(f);
+}
+
+function log(msg, cls='') {
+  const box = document.getElementById('log-box');
+  box.classList.add('show');
+  const d = document.createElement('div');
+  d.className = 'log-line' + (cls ? ' log-'+cls : '');
+  d.textContent = '› ' + msg;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+function pearsonr(x, y) {
+  const n = x.length;
+  const mx = x.reduce((a,b)=>a+b)/n;
+  const my = y.reduce((a,b)=>a+b)/n;
+  let num=0, dx2=0, dy2=0;
+  for (let i=0;i<n;i++){
+    const dxi=x[i]-mx, dyi=y[i]-my;
+    num+=dxi*dyi; dx2+=dxi*dxi; dy2+=dyi*dyi;
+  }
+  const r = num/Math.sqrt(dx2*dy2);
+  // t-test p-value approximation
+  const t = r*Math.sqrt((n-2)/(1-r*r));
+  const p = 2*(1 - tCDF(Math.abs(t), n-2));
+  return {r, p};
+}
+
+// Approximate t-distribution CDF using regularized incomplete beta
+function tCDF(t, df) {
+  const x = df/(df+t*t);
+  return 1 - 0.5*betai(df/2, 0.5, x);
+}
+function betai(a, b, x) {
+  // Simple continued fraction approximation
+  if (x < 0 || x > 1) return 0;
+  if (x === 0) return 0;
+  if (x === 1) return 1;
+  const lbeta = lgamma(a)+lgamma(b)-lgamma(a+b);
+  const front = Math.exp(Math.log(x)*a + Math.log(1-x)*b - lbeta) / a;
+  // Lentz continued fraction
+  let d=1-((a+b)*x)/(a+1), f=1+1e-30, c=f;
+  d=1/d; f=c*d;
+  for (let m=1;m<=100;m++){
+    let aa=m*(b-m)*x/((a+2*m-1)*(a+2*m));
+    d=1+aa*d; c=1+aa/c;
+    d=1/d; f*=c*d;
+    aa=-(a+m)*(a+b+m)*x/((a+2*m)*(a+2*m+1));
+    d=1+aa*d; c=1+aa/c;
+    d=1/d; f*=c*d;
+    if (Math.abs(c*d-1)<1e-8) break;
+  }
+  return front*f;
+}
+function lgamma(x) {
+  const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];
+  let y=x, tmp=x+5.5;
+  tmp-=(x+0.5)*Math.log(tmp);
+  let ser=1.000000000190015;
+  for(let j=0;j<6;j++) ser+=c[j]/++y;
+  return -tmp+Math.log(2.5066282746310005*ser/x);
+}
+
+function runAnalysis() {
+  if (!zeros) return;
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('log-box').innerHTML = '';
+
+  const T = parseFloat(document.getElementById('height-T').value) || 74920;
+  const maxN = parseInt(document.getElementById('max-zeros').value) || 10000;
+  const pset = document.getElementById('prime-set').value;
+  const primes = pset==='8' ? PRIMES_8 : pset==='20' ? PRIMES_20 : PRIMES_12;
+
+  const data = zeros.slice(0, Math.min(maxN, zeros.length));
+  const N = data.length;
+
+  log(`Using ${N.toLocaleString()} zeros, T ≈ ${T.toExponential(2)}`);
+  log(`Testing ${primes.length} primes: ${primes.slice(0,6).join(', ')}...`);
+  log(`Normalization: τ_p = log(p)/log(T/2π)`);
+
+  // Spacings
+  const delta = [];
+  for (let i=0;i<N-1;i++) delta.push(data[i+1]-data[i]);
+  const mean_d = delta.reduce((a,b)=>a+b)/delta.length;
+  const cd = delta.map(d=>d-mean_d);
+
+  log(`Mean spacing: ${mean_d.toFixed(6)}`);
+
+  // Covariance at each prime lag
+  const Ap = [];
+  const Bp = [];
+  const tableRows = [];
+
+  for (const p of primes) {
+    // Lag = p (using prime directly as lag index)
+    let cov = 0;
+    const len = cd.length - p;
+    if (len < 10) { log(`Lag ${p} too large, skipping`,'err'); continue; }
+    for (let i=0;i<len;i++) cov += cd[i]*cd[i+p];
+    cov /= len;
+
+    const lp = Math.log(p);
+    const bp = lp*lp/p;
+
+    Ap.push(cov);
+    Bp.push(bp);
+    tableRows.push({p, cov, bp, ratio: cov/bp, pos: cov>0});
+  }
+
+  // Pearson correlation
+  const {r, p: pval} = pearsonr(Ap, Bp);
+  const posCount = tableRows.filter(x=>x.pos).length;
+  const C_est = Ap.reduce((a,b)=>a+b)/Ap.length / (Bp.reduce((a,b)=>a+b)/Bp.length);
+
+  log(`r = ${r.toFixed(4)}`, 'hi');
+  log(`p-value = ${pval.toExponential(3)}`, 'hi');
+  log(`${posCount}/${tableRows.length} primes positive`, posCount===tableRows.length?'ok':'');
+  log(`C ≈ ${C_est.toFixed(2)}`);
+
+  // Format p-value nicely
+  const pvStr = pval < 1e-10 ? pval.toExponential(2) : pval.toFixed(6);
+
+  // Update UI
+  const rEl = document.getElementById('res-r');
+  rEl.textContent = r.toFixed(4);
+  rEl.style.color = r > 0.7 ? 'var(--green)' : r > 0.5 ? 'var(--gold)' : 'var(--red)';
+
+  document.getElementById('res-pv').textContent = pvStr;
+  document.getElementById('res-pv').className = 'rs-val ' + (pval < 0.001 ? 'good' : 'warn');
+  document.getElementById('res-pos').textContent = `${posCount}/${tableRows.length}`;
+  document.getElementById('res-pos').className = 'rs-val ' + (posCount===tableRows.length?'good':'warn');
+  document.getElementById('res-n').textContent = N.toLocaleString();
+  document.getElementById('res-c').textContent = C_est.toFixed(2);
+  document.getElementById('cmp-yours').textContent = r.toFixed(4);
+
+  // Prime table
+  const tbody = document.getElementById('prime-tbody');
+  tbody.innerHTML = '';
+  for (const row of tableRows) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${row.p}</td><td>${row.bp.toFixed(6)}</td><td>${row.cov.toFixed(6)}</td><td>${isNaN(row.ratio)?'—':row.ratio.toFixed(2)}</td><td class="${row.pos?'pos':'neg'}">${row.pos?'✅ +':'❌ −'}</td>`;
+    tbody.appendChild(tr);
+  }
+
+  // Scatter plot
+  Plotly.newPlot('scatter-chart', [
+    {x:Bp, y:Ap, mode:'markers+text', text:primes.map(p=>'p='+p),
+     textposition:'top center', marker:{color:'#00d4ff',size:10}, name:'Your result', type:'scatter'},
+    {x:[0, Math.max(...Bp)*1.1], y:[0, Math.max(...Bp)*1.1*C_est],
+     mode:'lines', line:{color:'#4d9fff',dash:'dash',width:1},
+     name:'Fit (C='+C_est.toFixed(1)+')', type:'scatter'}
+  ], {...DL,
+    xaxis:{...DL.xaxis,title:'B(p) = (log p)²/p'},
+    yaxis:{...DL.yaxis,title:'A(p) observed'},
+    legend:{bgcolor:'#0e0e1c',bordercolor:'rgba(255,255,255,.06)'}
+  }, PC);
+
+  // Bar chart
+  Plotly.newPlot('bar-chart', [{
+    x: primes.map(p=>'p='+p),
+    y: Ap,
+    type:'bar',
+    marker:{color: Ap.map(a=>a>0?'#00e5a0':'#ff4d6d')},
+    name:'A(p)'
+  }], {...DL,
+    xaxis:{...DL.xaxis,title:'Prime p'},
+    yaxis:{...DL.yaxis,title:'A(p)'},
+    shapes:[{type:'line',x0:-.5,x1:primes.length-.5,y0:0,y1:0,
+      line:{color:'rgba(255,255,255,.3)',width:1}}]
+  }, PC);
+
+  document.getElementById('results').classList.add('show');
+  log('Analysis complete!', 'ok');
+}
+
+function setVLang(lang){if(typeof setLang==="function")setLang(lang);}
+
+// Enable bootstrap button when file loaded
+const origLoad = loadFile;
+function loadFile(f) {
+  origLoad(f);
+  setTimeout(function(){
+    var bb = document.getElementById('boot-btn');
+    if(bb) bb.disabled = false;
+  }, 500);
+}
+
+function pearsonrArr(x, y) {
+  return pearsonr(x, y).r;
+}
+
+function runBootstrap() {
+  if (!zeros) return;
+  var N_BOOT = 200;
+  var br = document.getElementById('bootstrap-results');
+  br.style.display = 'block';
+  var logEl = document.getElementById('boot-log');
+  logEl.textContent = 'Running ' + N_BOOT + ' bootstrap iterations...';
+
+  var T = parseFloat(document.getElementById('height-T').value) || 74920;
+  var maxN = parseInt(document.getElementById('max-zeros').value) || 10000;
+  var pset = document.getElementById('prime-set').value;
+  var primes = pset==='8' ? PRIMES_8 : pset==='20' ? PRIMES_20 : PRIMES_12;
+  var data = zeros.slice(0, Math.min(maxN, zeros.length));
+  var N = data.length;
+  var subSize = Math.floor(N / 2);
+
+  function getR(subset) {
+    var delta = [];
+    for(var i=0;i<subset.length-1;i++) delta.push(subset[i+1]-subset[i]);
+    var md = delta.reduce(function(a,b){return a+b;})/delta.length;
+    var cd = delta.map(function(d){return d-md;});
+    var Ap=[], Bp=[];
+    for(var pi=0;pi<primes.length;pi++){
+      var p=primes[pi], cov=0, len=cd.length-p;
+      if(len<10) continue;
+      for(var i=0;i<len;i++) cov+=cd[i]*cd[i+p];
+      cov/=len;
+      Ap.push(cov); Bp.push(Math.log(p)*Math.log(p)/p);
+    }
+    return pearsonr(Ap,Bp).r;
+  }
+
+  setTimeout(function(){
+    var rs = [];
+    for(var i=0;i<N_BOOT;i++){
+      var idx = [];
+      while(idx.length < subSize){
+        var r = Math.floor(Math.random()*(N-1));
+        idx.push(r);
+      }
+      idx.sort(function(a,b){return a-b;});
+      var subset = idx.map(function(i){return data[i];});
+      rs.push(getR(subset));
+    }
+    rs.sort(function(a,b){return a-b;});
+    var mean = rs.reduce(function(a,b){return a+b;})/rs.length;
+    var std = Math.sqrt(rs.reduce(function(a,b){return a+(b-mean)*(b-mean);},0)/rs.length);
+    var ci_lo = rs[Math.floor(rs.length*0.025)];
+    var ci_hi = rs[Math.floor(rs.length*0.975)];
+    var pos = rs.filter(function(r){return r>0;}).length;
+    var high = rs.filter(function(r){return r>0.8;}).length;
+
+    document.getElementById('boot-mean').textContent = mean.toFixed(4);
+    document.getElementById('boot-std').textContent = std.toFixed(4);
+    document.getElementById('boot-ci-lo').textContent = ci_lo.toFixed(4);
+    document.getElementById('boot-ci-hi').textContent = ci_hi.toFixed(4);
+
+    var verdict, color;
+    if(std < 0.1 && mean > 0.7){ verdict='STABLE — signal robust'; color='var(--green)'; }
+    else if(std < 0.2){ verdict='MODERATE — interpret cautiously'; color='var(--gold)'; }
+    else { verdict='UNSTABLE — high variance'; color='var(--red)'; }
+
+    var vEl = document.getElementById('boot-verdict');
+    vEl.innerHTML = '<span style="color:'+color+';font-weight:600;">'+verdict+'</span><br><span style="font-size:.8rem;color:var(--sub);">'+pos+'/'+N_BOOT+' subsets r>0 &nbsp;|&nbsp; '+high+'/'+N_BOOT+' r>0.8 &nbsp;|&nbsp; n='+N_BOOT+'×'+subSize+' zeros</span>';
+    logEl.textContent = 'Bootstrap complete.';
+  }, 50);
+}
+
+</script>
+
+<script>
+function MN_close(){document.querySelectorAll('.MN-dd').forEach(function(d){d.classList.remove('open');});}
+function MN_toggle(btn){var dd=btn.nextElementSibling;var open=dd.classList.toggle('open');btn.classList.toggle('MN-active',open);}
+document.addEventListener('click',function(e){if(!e.target.closest('.MN-more'))MN_close();});
 function setLang(l){
   document.body.classList.remove('en','mn');
   document.body.classList.add(l);
-  document.querySelectorAll('.MN-lb').forEach(function(b){
-    b.classList.toggle('MN-active', b.dataset.l === l);
-  });
-  try{ localStorage.setItem('lang', l); }catch(e){}
+  document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('MN-active',(l==='en'&&b.dataset.l==='en')||(l==='mn'&&b.dataset.l==='mn'));});
+  localStorage.setItem('lang',l);
 }
-
-document.addEventListener('DOMContentLoaded', function(){
-  var l = 'en';
-  try{ l = localStorage.getItem('lang') || 'en'; }catch(e){}
-  setLang(l);
-});
+(function(){setLang(localStorage.getItem('lang')||'en');})();
 </script>
-
-
-
+<footer class="MN-foot">
+  <span class="MN-foot-left">Platform · Open archive</span>
+  <span class="MN-foot-center">
+    <a href="/intro.html">Intro</a>
+    <a href="/landscape.html">Landscape</a>
+    <a href="/verify.html">Verify</a>
+    <a href="/site-map.html">Site Map</a>
+  </span>
+  <span class="MN-foot-right">v1.0</span>
+</footer>
 
 <script>
 
@@ -552,23 +1018,5 @@ document.getElementById('run-btn').addEventListener('click',function(){
 });
 
 </script>
-
-
-
-
-
-
-
-<footer class="MN-foot">
-  <span class="MN-foot-left">Platform · Open archive</span>
-  <span class="MN-foot-center">
-    <a href="/intro.html">Intro</a>
-    <a href="/landscape.html">Landscape</a>
-    <a href="/verify.html">Verify</a>
-    <a href="/site-map.html">Site Map</a>
-  </span>
-  <span class="MN-foot-right">v1.0</span>
-</footer>
-
 </body>
 </html>
