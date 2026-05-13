@@ -1,7 +1,35 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Site Content Map · research.nexcore.ltd</title>
-<style>body{font-family:system-ui;background:#070710;color:#eee;padding:2rem;line-height:1.6}a{color:#00d4ff}table{border-collapse:collapse;width:100%;margin-top:1rem}td,th{border:1px solid #333;padding:.6rem;text-align:left}th{background:#111827}code{color:#9ae6ff}</style></head>
+<style>body{font-family:system-ui;background:#070710;color:#eee;padding:2rem;line-height:1.6}a{color:#00d4ff}table{border-collapse:collapse;width:100%;margin-top:1rem}td,th{border:1px solid #333;padding:.6rem;text-align:left}th{background:#111827}code{color:#9ae6ff}/* ── UNIFIED NAV v3 ── */
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;}
+.MN-links{display:flex;align-items:center;gap:.2rem;flex-wrap:nowrap;white-space:nowrap;}
+.MN-links a{font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;color:#9999b8;text-decoration:none;padding:.3rem .6rem;border-radius:6px;transition:color .2s,background .2s;}
+.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.08);}
+.MN-links a.MN-active{color:#00d4ff;background:rgba(0,212,255,.1);border-bottom:2px solid #00d4ff;}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:.28rem .6rem;border:none;cursor:pointer;transition:background .2s,color .2s;}
+.MN-lb:first-child{border-radius:4px 0 0 4px;}
+.MN-lb:last-child{border-radius:0 4px 4px 0;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;}
+.MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:#5a5a7a;border:1px solid rgba(255,255,255,.12);}
+.MN-drop{position:relative;}
+.MN-drop-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,24,.97);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.5rem;min-width:200px;z-index:1000;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.MN-drop:hover .MN-drop-menu{display:block;}
+.MN-drop-menu a{display:block;padding:.4rem .8rem;color:#9999b8;font-size:.73rem;border-radius:6px;white-space:nowrap;}
+.MN-drop-menu a:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
+.MN-drop-menu a.MN-active{color:#00d4ff;}
+.MN-burger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.4rem;border:none;background:none;}
+.MN-burger span{display:block;width:20px;height:2px;background:#9999b8;border-radius:2px;transition:all .3s;}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
+.MN-burger.open span:nth-child(2){opacity:0;}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
+.MN-mobile{display:none;position:fixed;top:48px;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.1);padding:1rem;z-index:899;flex-direction:column;gap:.3rem;}
+.MN-mobile.open{display:flex;}
+.MN-mobile a{padding:.5rem .8rem;color:#9999b8;font-size:.85rem;border-radius:8px;text-decoration:none;}
+.MN-mobile a:hover,.MN-mobile a.MN-active{color:#00d4ff;background:rgba(0,212,255,.08);}
+@media(max-width:768px){.MN-links{display:none;}.MN-burger{display:flex;}}
+</style></head>
 <body><h1>Site Content Map</h1><p>One URL = one menu name = one purpose. No information is deleted; duplicated material is summarized and linked to its canonical page.</p>
 <table><thead><tr><th>URL</th><th>Menu name</th><th>Purpose</th></tr></thead><tbody><tr><td><code>/index.html</code></td><td>Platform Home</td><td>Platform landing page for all research archives.</td></tr>
 <tr><td><code>/intro.html</code></td><td>Platform Introduction</td><td>What Nexcore Research Platform is.</td></tr>
@@ -29,16 +57,39 @@
 
 // ── NAV ACTIVE STATE + MOBILE ──
 (function(){
-  var path = window.location.pathname;
-  // Active state
+  function cleanPath(v){
+    if(!v) return '';
+    v = v.split('#')[0].split('?')[0];
+    if(v === '') return '';
+    var a = document.createElement('a');
+    a.href = v;
+    var p = a.pathname || v;
+    p = p.replace(/\/index\.html$/, '/');
+    if(p.length > 1) p = p.replace(/\/$/, '');
+    return p;
+  }
+
+  var path = cleanPath(window.location.pathname);
+
   document.querySelectorAll('.MN-links a, .MN-drop-menu a, .MN-mobile a').forEach(function(a){
     var href = a.getAttribute('href');
-    if(!href) return;
-    if(href === path || (href !== '/' && path.startsWith(href.replace(/\/$/,'')))){
-      a.classList.add('MN-active');
+    if(!href || href === '#') return;
+
+    var target = cleanPath(href);
+    var isActive = false;
+
+    if(target === path){
+      isActive = true;
     }
+
+    // Root platform pages: mark the Research dropdown parent when inside /paper1.
+    if(target === '/paper1' && path.indexOf('/paper1') === 0 && a.closest('.MN-drop') && !a.closest('.MN-drop-menu')){
+      isActive = true;
+    }
+
+    if(isActive) a.classList.add('MN-active');
   });
-  // Mobile burger
+
   var burger = document.querySelector('.MN-burger');
   var mobile = document.querySelector('.MN-mobile');
   if(burger && mobile){
@@ -49,4 +100,29 @@
   }
 })();
 
+<script>
+(function(){
+  var path = window.location.pathname;
+  document.querySelectorAll('.MN-links a, .MN-drop-menu a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    // Exact match or subpath match (but /paper1/ shouldn't match /paper1/methods.html as Results)
+    var norm = href.replace(/\/$/,'');
+    var pathNorm = path.replace(/\/$/,'');
+    if(pathNorm === norm || (norm.length > 1 && norm !== '/paper1' && pathNorm.startsWith(norm + '/'))) {
+      a.classList.add('MN-active');
+    } else if(norm === pathNorm) {
+      a.classList.add('MN-active');
+    }
+  });
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click',function(){
+      burger.classList.toggle('open');
+      mobile.classList.toggle('open');
+    });
+  }
+})();
+</script>
 </body></html>
