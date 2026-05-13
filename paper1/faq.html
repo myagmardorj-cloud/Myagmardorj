@@ -9,7 +9,7 @@
 :root{--bg:#070710;--s1:#0e0e1c;--s2:#13131f;--border:rgba(255,255,255,.07);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--blue:#4d9fff;--green:#00e5a0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:48px;}
-nav/* ── UNIFIED NAV v3 ── */
+/* ── UNIFIED NAV v3 ── */
 .MN{position:fixed;top:0;left:0;right:0;z-index:900;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background:rgba(7,7,16,.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);}
 .MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;}
 .MN-links{display:flex;align-items:center;gap:.2rem;flex-wrap:nowrap;white-space:nowrap;}
@@ -44,51 +44,116 @@ nav/* ── UNIFIED NAV v3 ── */
 /* ── NAV HOTFIX: dropdown + mobile + active state ── */
 }
 
+
+
+/* === NAV HARD FIX: corrected selector, dropdown, mobile, language === */
+.MN{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:9999!important;height:52px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 1.25rem!important;background:rgba(7,7,16,.96)!important;backdrop-filter:blur(24px)!important;-webkit-backdrop-filter:blur(24px)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;box-shadow:0 8px 30px rgba(0,0,0,.22)!important;}
+.MN-logo{font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif!important;font-size:.9rem!important;font-weight:700!important;background:linear-gradient(135deg,#00d4ff,#4d9fff)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;text-decoration:none!important;white-space:nowrap!important;}
+.MN-links{display:flex!important;align-items:center!important;gap:.15rem!important;white-space:nowrap!important;min-width:0!important;}
+.MN-links a,.MN-drop-btn{font-family:'Plus Jakarta Sans',sans-serif!important;font-size:.77rem!important;color:#9999b8!important;text-decoration:none!important;padding:.36rem .62rem!important;border-radius:8px!important;border:0!important;background:transparent!important;cursor:pointer!important;line-height:1.2!important;transition:color .2s,background .2s,box-shadow .2s!important;}
+.MN-links a:hover,.MN-drop-btn:hover,.MN-drop:focus-within .MN-drop-btn{color:#eeeef8!important;background:rgba(255,255,255,.08)!important;}
+.MN-links a.MN-active,.MN-drop-btn.MN-active{color:#00d4ff!important;background:rgba(0,212,255,.10)!important;box-shadow:inset 0 -2px 0 #00d4ff!important;}
+.MN-platform{color:#6f6f8e!important;margin-left:.15rem!important;}
+.MN-actions{display:flex!important;align-items:center!important;gap:.28rem!important;flex-shrink:0!important;}
+.MN-lb{font-family:'JetBrains Mono',monospace!important;font-size:.64rem!important;padding:.28rem .55rem!important;border-radius:6px!important;border:1px solid rgba(255,255,255,.12)!important;background:rgba(255,255,255,.05)!important;color:#777796!important;cursor:pointer!important;}
+.MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff)!important;color:#fff!important;border-color:transparent!important;}
+.MN-drop{position:relative!important;display:inline-flex!important;align-items:center!important;}
+.MN-drop-menu{display:none!important;position:absolute!important;top:calc(100% + 10px)!important;left:50%!important;transform:translateX(-50%)!important;min-width:220px!important;max-height:70vh!important;overflow:auto!important;padding:.5rem!important;background:rgba(10,10,24,.98)!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:12px!important;box-shadow:0 18px 50px rgba(0,0,0,.45)!important;z-index:10000!important;}
+.MN-drop:hover .MN-drop-menu,.MN-drop:focus-within .MN-drop-menu,.MN-drop.MN-open .MN-drop-menu{display:block!important;}
+.MN-drop-menu a{display:block!important;padding:.48rem .75rem!important;border-radius:8px!important;color:#9999b8!important;}
+.MN-drop-menu a:hover{color:#eeeef8!important;background:rgba(255,255,255,.08)!important;}
+.MN-burger{display:none!important;flex-direction:column!important;gap:4px!important;padding:.45rem!important;border:0!important;background:transparent!important;cursor:pointer!important;}
+.MN-burger span{display:block!important;width:21px!important;height:2px!important;background:#9999b8!important;border-radius:2px!important;transition:.25s!important;}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)!important;}
+.MN-burger.open span:nth-child(2){opacity:0!important;}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)!important;}
+.MN-mobile{display:none!important;position:fixed!important;top:52px!important;left:0!important;right:0!important;z-index:9998!important;max-height:calc(100vh - 52px)!important;overflow:auto!important;padding:.75rem 1rem 1rem!important;background:rgba(7,7,16,.98)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;box-shadow:0 18px 40px rgba(0,0,0,.35)!important;}
+.MN-mobile.open{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.4rem!important;}
+.MN-mobile a{display:block!important;padding:.65rem .75rem!important;border-radius:10px!important;text-decoration:none!important;color:#aaaac4!important;background:rgba(255,255,255,.035)!important;border:1px solid rgba(255,255,255,.06)!important;font-size:.86rem!important;}
+.MN-mobile a.MN-active{color:#00d4ff!important;background:rgba(0,212,255,.10)!important;border-color:rgba(0,212,255,.22)!important;}
+body{padding-top:64px!important;}
+[data-li]{display:none!important;}html[data-lang="en"] [data-li="en"],html[data-lang="mn"] [data-li="mn"]{display:contents!important;}
+@media(max-width:1100px){.MN-links a,.MN-drop-btn{font-size:.72rem!important;padding:.34rem .48rem!important}.MN-logo{font-size:.82rem!important}}
+@media(max-width:900px){.MN-links{display:none!important}.MN-burger{display:flex!important}.MN{height:52px!important;padding:0 1rem!important}.MN-mobile.open{grid-template-columns:1fr!important}}
+
 </style>
 <link rel="stylesheet" href="../assets/nav-fix.css">
 </head>
 <!-- PAGE_ROLE: FAQ | Questions and answers. -->
 <body class="en">
 
-<nav class="MN">
-  <a href="/paper1/" class="MN-logo">Results</a>
+<nav class="MN" aria-label="Paper navigation">
+  <a href="/paper1/" class="MN-logo">Nexcore Research</a>
   <div class="MN-links">
-    <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
-    <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-    <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
-    <a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Лаб</span></a>
-    <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
-    <a href="/paper1/faq.html">FAQ</a>
-    <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
-    <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
-    <a href="/paper1/nulltests.html"><span data-li="en">Null Tests</span><span data-li="mn">Null тест</span></a>
-    <a href="/paper1/livestats.html"><span data-li="en">Live Stats</span><span data-li="mn">Шууд тоо</span></a>
-    <a href="/paper1/roadmap.html">Roadmap</a>
-    <a href="/paper1/discussion.html">Discussion</a>
-    <a href="/paper1/about.html">About</a>
-    <a href="/" style="color:#5a5a7a;font-size:.72rem;margin-left:.5rem;">← Platform</a>
+    <a href="/paper1/">Results</a>
+    <a href="/paper1/formalism.html">Formalism</a>
+    <a href="/paper1/methods.html">Methods</a>
+    <a href="/paper1/nulltests.html">Null Tests</a>
+    <a href="/paper1/steven_clark.html">f(x)</a>
+    <div class="MN-drop">
+      <button class="MN-drop-btn" type="button" aria-haspopup="true" aria-expanded="false">More ▾</button>
+      <div class="MN-drop-menu" role="menu">
+        <a href="/paper1/charts.html">Charts</a>
+        <a href="/paper1/calculator.html">Calculator</a>
+        <a href="/paper1/lab.html">Analysis Lab</a>
+        <a href="/paper1/livestats.html">Live Stats</a>
+        <a href="/paper1/data.html">Data</a>
+        <a href="/paper1/replication.html">Replication</a>
+        <a href="/paper1/references.html">References</a>
+        <a href="/paper1/discussion.html">Discussion</a>
+        <a href="/paper1/faq.html">FAQ</a>
+        <a href="/paper1/changelog.html">Changelog</a>
+        <a href="/paper1/roadmap.html">Roadmap</a>
+        <a href="/paper1/about.html">About</a>
+      </div>
+    </div>
+    <a href="/" class="MN-platform">← Platform</a>
   </div>
-  <div style="display:flex;align-items:center;gap:.3rem;">
-    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
-    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
-    <button class="MN-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="MN-actions">
+    <button class="MN-lb" type="button" data-l="en">ENG</button>
+    <button class="MN-lb" type="button" data-l="mn">MN</button>
+    <button class="MN-burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="MN-mobile">
-  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-  <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
-  <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
-  <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
-  <a href="/paper1/lab.html">Analysis Lab</a>
-  <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
-  <a href="/paper1/faq.html">FAQ</a>
-  <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
-  <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+<div class="MN-mobile" aria-label="Mobile navigation">
+  <a href="/paper1/">Results</a>
+  <a href="/paper1/formalism.html">Formalism</a>
+  <a href="/paper1/methods.html">Methods</a>
   <a href="/paper1/nulltests.html">Null Tests</a>
+  <a href="/paper1/steven_clark.html">f(x)</a>
+  <a href="/paper1/charts.html">Charts</a>
+  <a href="/paper1/calculator.html">Calculator</a>
+  <a href="/paper1/lab.html">Analysis Lab</a>
   <a href="/paper1/livestats.html">Live Stats</a>
-  <a href="/paper1/roadmap.html">Roadmap</a>
+  <a href="/paper1/data.html">Data</a>
+  <a href="/paper1/replication.html">Replication</a>
+  <a href="/paper1/references.html">References</a>
   <a href="/paper1/discussion.html">Discussion</a>
+  <a href="/paper1/faq.html">FAQ</a>
+  <a href="/paper1/changelog.html">Changelog</a>
+  <a href="/paper1/roadmap.html">Roadmap</a>
   <a href="/paper1/about.html">About</a>
+  <a href="/">← Platform</a>
+</div>
+<div class="MN-mobile" aria-label="Mobile navigation">
+  <a href="/paper1/">Results</a>
+  <a href="/paper1/formalism.html">Formalism</a>
+  <a href="/paper1/methods.html">Methods</a>
+  <a href="/paper1/nulltests.html">Null Tests</a>
+  <a href="/paper1/steven_clark.html">f(x)</a>
+  <a href="/paper1/charts.html">Charts</a>
+  <a href="/paper1/calculator.html">Calculator</a>
+  <a href="/paper1/lab.html">Analysis Lab</a>
+  <a href="/paper1/livestats.html">Live Stats</a>
+  <a href="/paper1/data.html">Data</a>
+  <a href="/paper1/replication.html">Replication</a>
+  <a href="/paper1/references.html">References</a>
+  <a href="/paper1/discussion.html">Discussion</a>
+  <a href="/paper1/faq.html">FAQ</a>
+  <a href="/paper1/changelog.html">Changelog</a>
+  <a href="/paper1/roadmap.html">Roadmap</a>
+  <a href="/paper1/about.html">About</a>
+  <a href="/">← Platform</a>
 </div>
 <div class="container">
 <div class="section-label"><span data-li="en">FAQ</span><span data-li="mn">Асуулт & Хариулт</span></div>
@@ -215,54 +280,76 @@ nav/* ── UNIFIED NAV v3 ── */
     <a href="https://zenodo.org/records/20077673">DOI</a>
   </span>
 </footer>
+
 <script>
-// ── NAV ACTIVE STATE + MOBILE ──
+// === NAV HARD FIX: active state, mobile menu, dropdown click, language ===
 (function(){
   function cleanPath(v){
     if(!v) return '';
-    v = v.split('#')[0].split('?')[0];
-    if(v === '') return '';
+    v = String(v).split('#')[0].split('?')[0];
+    if(!v) return '';
     var a = document.createElement('a');
     a.href = v;
     var p = a.pathname || v;
-    p = p.replace(/\/index\.html$/, '/');
-    if(p.length > 1) p = p.replace(/\/$/, '');
-    return p;
+    p = p.replace(/\/index\.html$/,'/');
+    if(p.length > 1) p = p.replace(/\/$/,'');
+    return p || '/';
   }
+  function setLang(lang){
+    lang = lang === 'mn' ? 'mn' : 'en';
+    document.documentElement.setAttribute('data-lang', lang);
+    try{localStorage.setItem('MN_lang', lang);}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(btn){
+      btn.classList.toggle('MN-active', btn.getAttribute('data-l') === lang);
+    });
+  }
+  window.setLang = setLang;
+  var saved = 'en';
+  try{ saved = localStorage.getItem('MN_lang') || 'en'; }catch(e){}
+  setLang(saved);
 
   var path = cleanPath(window.location.pathname);
-
-  document.querySelectorAll('.MN-links a, .MN-drop-menu a, .MN-mobile a').forEach(function(a){
+  document.querySelectorAll('.MN a, .MN-mobile a').forEach(function(a){
     var href = a.getAttribute('href');
     if(!href || href === '#') return;
-
     var target = cleanPath(href);
-    var isActive = false;
-
-    if(target === path){
-      isActive = true;
+    var active = target === path || (target === '/paper1' && (path === '/paper1' || path === '/paper1/'));
+    a.classList.toggle('MN-active', active);
+    var drop = a.closest('.MN-drop');
+    if(active && drop){
+      var btn = drop.querySelector('.MN-drop-btn');
+      if(btn) btn.classList.add('MN-active');
     }
-
-    // Root platform pages: mark the Research dropdown parent when inside /paper1.
-    if(target === '/paper1' && path.indexOf('/paper1') === 0 && a.closest('.MN-drop') && !a.closest('.MN-drop-menu')){
-      isActive = true;
-    }
-
-    if(isActive) a.classList.add('MN-active');
   });
 
   var burger = document.querySelector('.MN-burger');
   var mobile = document.querySelector('.MN-mobile');
   if(burger && mobile){
     burger.addEventListener('click', function(){
-      burger.classList.toggle('open');
-      mobile.classList.toggle('open');
+      var open = !mobile.classList.contains('open');
+      burger.classList.toggle('open', open);
+      mobile.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+    mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click', function(){mobile.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
   }
+  document.querySelectorAll('.MN-lb').forEach(function(btn){btn.addEventListener('click', function(){setLang(btn.getAttribute('data-l'));});});
+  document.querySelectorAll('.MN-drop-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var wrap = btn.closest('.MN-drop');
+      if(!wrap) return;
+      var open = !wrap.classList.contains('MN-open');
+      document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+      wrap.classList.toggle('MN-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.MN-drop')) document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+  });
 })();
 </script>
-
-<script src="../assets/nav-fix.js" defer></script>
 </body>
 </html>
 
