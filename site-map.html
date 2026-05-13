@@ -31,7 +31,27 @@
 @media(max-width:768px){.MN-links{display:none;}.MN-burger{display:flex;}}
 </style><link rel="stylesheet" href="assets/nav-fix.css">
 </head>
-<body><h1>Site Content Map</h1><p>One URL = one menu name = one purpose. No information is deleted; duplicated material is summarized and linked to its canonical page.</p>
+<body>
+<nav class="MN">
+  <a href="/" class="MN-logo">research.nexcore.ltd</a>
+  <div class="MN-links">
+    <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.3rem;">
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="MN-mobile">
+  <a href="/intro.html">Intro</a>
+  <a href="/landscape.html">Landscape</a>
+  <a href="/verify.html">Verify</a>
+  <a href="/paper1/">Research #001</a>
+</div><h1>Site Content Map</h1><p>One URL = one menu name = one purpose. No information is deleted; duplicated material is summarized and linked to its canonical page.</p>
 <table><thead><tr><th>URL</th><th>Menu name</th><th>Purpose</th></tr></thead><tbody><tr><td><code>/index.html</code></td><td>Platform Home</td><td>Platform landing page for all research archives.</td></tr>
 <tr><td><code>/intro.html</code></td><td>Platform Introduction</td><td>What Nexcore Research Platform is.</td></tr>
 <tr><td><code>/landscape.html</code></td><td>Mathematical Landscape</td><td>Mathematical problem context and Clay-problem map.</td></tr>
