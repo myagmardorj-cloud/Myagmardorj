@@ -22,7 +22,7 @@ nav/* ── UNIFIED NAV v3 ── */
 .MN-lb.MN-active{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;}
 .MN-lb:not(.MN-active){background:rgba(255,255,255,.05);color:#5a5a7a;border:1px solid rgba(255,255,255,.12);}
 .MN-drop{position:relative;}
-.MN-drop-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,24,.97);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.5rem;min-width:200px;z-index:1000;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.MN-drop-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,24,.97);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.5rem;min-width:220px;max-height:80vh;overflow-y:auto;z-index:1000;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,.4);}
 .MN-drop:hover .MN-drop-menu{display:block;}
 .MN-drop-menu a{display:block;padding:.4rem .8rem;color:#9999b8;font-size:.73rem;border-radius:6px;white-space:nowrap;}
 .MN-drop-menu a:hover{color:#eeeef8;background:rgba(255,255,255,.07);}
@@ -344,8 +344,7 @@ nav/* ── UNIFIED NAV v3 ── */
     <a href="https://zenodo.org/records/20077673">DOI</a>
   </span>
 </footer>
-
-
+<script>
 // ── NAV ACTIVE STATE + MOBILE ──
 (function(){
   function cleanPath(v){
@@ -390,6 +389,7 @@ nav/* ── UNIFIED NAV v3 ── */
     });
   }
 })();
+</script>
 
 <script src="../assets/nav-fix.js" defer></script>
 </body>
