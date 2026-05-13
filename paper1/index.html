@@ -23,7 +23,12 @@
 .MN-mobile.open{display:flex;}
 .MN-mobile a{padding:.5rem .8rem;color:#9999b8;font-size:.85rem;border-radius:8px;text-decoration:none;}
 .MN-mobile a:hover,.MN-mobile a.MN-active{color:#00d4ff;background:rgba(0,212,255,.08);}
-@media(max-width:768px){.MN-links{display:none;}.MN-burger{display:flex;}}</style>
+@media(max-width:768px){.MN-links{display:none;}.MN-burger{display:flex;}}[data-li]{display:none;}
+body.en [data-li="en"]{display:inline;}
+body.mn [data-li="mn"]{display:inline;}
+body.en [data-li="en"].block{display:block;}
+body.mn [data-li="mn"].block{display:block;}
+</style>
 </head>
 <!-- PAGE_ROLE: Research #001 Results | Main result summary for the RH/BK-type numerical archive. -->
 <body class="en">
