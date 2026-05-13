@@ -70,7 +70,6 @@ body{padding-top:64px!important;}
 </head>
 <!-- PAGE_ROLE: FAQ | Questions and answers. -->
 <body class="en">
-
 <nav class="MN">
   <a href="/paper1/" class="MN-logo">Results</a>
   <div class="MN-links">
@@ -95,6 +94,21 @@ body{padding-top:64px!important;}
     <button class="MN-burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="MN-mobile">
+  <a href="/paper1/">Results</a>
+  <a href="/paper1/formalism.html">Formalism</a>
+  <a href="/paper1/charts.html">Charts</a>
+  <a href="/paper1/calculator.html">Calculator</a>
+  <a href="/paper1/lab.html">Analysis Lab</a>
+  <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+  <a href="/paper1/faq.html">FAQ</a>
+  <a href="/paper1/methods.html">Methods</a>
+  <a href="/paper1/nulltests.html">Null Tests</a>
+  <a href="/paper1/about.html">About</a>
+  <a href="/">← Platform</a>
+</div>
+
+
 <div class="MN-mobile" aria-label="Mobile navigation">
   <a href="/paper1/">Results</a>
   <a href="/paper1/formalism.html">Formalism</a>
@@ -245,22 +259,6 @@ body{padding-top:64px!important;}
 
 
 
-<footer class="MN-foot">
-  <span class="MN-foot-left">
-    <span data-li="en">Computational observations only — not a proof of RH</span>
-    <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
-  </span>
-  <span class="MN-foot-center">
-    <a href="/paper1/">Results</a>
-    <a href="/paper1/replication.html">Replicate</a>
-    <a href="/paper1/data.html">Data</a>
-    <a href="/paper1/about.html">About</a>
-  </span>
-  <span class="MN-foot-right">
-    <a href="https://zenodo.org/records/20077673">DOI</a>
-  </span>
-</footer>
-
 <script>
 // === NAV HARD FIX: active state, mobile menu, dropdown click, language ===
 (function(){
@@ -330,6 +328,20 @@ body{padding-top:64px!important;}
   });
 })();
 </script>
+<footer class="MN-foot">
+  <span class="MN-foot-left">
+    <span data-li="en">Observations only — not a proof of RH</span>
+    <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+    &nbsp;·&nbsp;
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+    &nbsp;·&nbsp;
+    <a href="https://doi.org/10.5281/zenodo.20077673" target="_blank">DOI</a>
+  </span>
+  <span class="MN-foot-right">v0.4</span>
+</footer>
 </body>
 </html>
 
