@@ -100,8 +100,19 @@ PLAT_NAV = """<nav class="MN">
 # PLATFORM FOOTER
 # ═══════════════════════════════════
 PLAT_FOOT = """<footer class="MN-foot">
-  <span><span data-li="en">Platform · Open archive</span><span data-li="mn">Платформ · Нээлттэй архив</span><span class="MN-foot-sep">·</span><a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><span class="MN-foot-sep">·</span><a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a><span class="MN-foot-sep">·</span><a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a><span class="MN-foot-sep">·</span><a href="/site-map.html">Site Map</a></span>
-  <span style="margin-left:auto">v1.0</span>
+  <span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">
+    <span data-li="en">Platform · Open archive</span>
+    <span data-li="mn">Платформ · Нээлттэй архив</span>
+    <span class="MN-foot-sep">·</span>
+    <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/site-map.html">Site Map</a>
+  </span>
+  <span>v1.0</span>
 </footer>"""
 
 # ═══════════════════════════════════
