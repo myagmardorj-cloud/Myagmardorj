@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="mn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Charts · research.nexcore.ltd</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+"""
+nav_template.py — НЭГ ЭХ СУРВАЛЖ
+===================================
+Энэ файлд nav, footer, CSS бүгдийг засна.
+Дараа нь: python rebuild_nav.py
 
-<style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
+Platform nav: 6 link
+Paper1 nav:  17 link + ← Platform
+"""
+
+# ═══════════════════════════════════
+# CSS — нэг удаа засна
+# ═══════════════════════════════════
+NAV_CSS = """[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
 .MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
 .MN-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
@@ -36,10 +38,77 @@
 .MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
 .MN-foot a:hover{color:#9999b8}
 .MN-foot-sep{opacity:.3;margin:0 2px}
-@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}</style>
-</head>
-<body class="en">
-<nav class="MN">
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}"""
+
+# ═══════════════════════════════════
+# JS — нэг удаа засна
+# ═══════════════════════════════════
+NAV_JS = """<script>
+(function(){
+  function setLang(l){
+    l=l==='mn'?'mn':'en';
+    document.body.className=l;
+    try{localStorage.setItem('lang',l)}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  }
+  window.setLang=setLang;
+  var path=window.location.pathname.replace(/\\/$/,'').replace(/\\/index\\.html$/,'/');
+  document.querySelectorAll('.MN-links a,.MN-mob a').forEach(function(a){
+    var h=(a.getAttribute('href')||'').replace(/\\/$/,'').replace(/\\/index\\.html$/,'/');
+    if(h&&h===path)a.classList.add('MN-active');
+  });
+  var burger=document.querySelector('.MN-burger');
+  var mob=document.querySelector('.MN-mob');
+  if(burger&&mob){
+    burger.addEventListener('click',function(){burger.classList.toggle('open');mob.classList.toggle('open')});
+    document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}});
+  }
+  try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
+})();
+</script>"""
+
+# ═══════════════════════════════════
+# PLATFORM NAV — 6 link
+# Засах бол энд засна
+# ═══════════════════════════════════
+PLAT_NAV = """<nav class="MN">
+  <a href="/" class="MN-logo">research.nexcore.ltd</a>
+  <div class="MN-links">
+    <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+    <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
+    <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+  </div>
+  <div class="MN-btns">
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="MN-mob">
+  <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+  <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+  <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+  <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
+  <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+</div>"""
+
+# ═══════════════════════════════════
+# PLATFORM FOOTER
+# ═══════════════════════════════════
+PLAT_FOOT = """<footer class="MN-foot">
+  <span><span data-li="en">Platform · Open archive</span><span data-li="mn">Платформ · Нээлттэй архив</span><span class="MN-foot-sep">·</span><a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><span class="MN-foot-sep">·</span><a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a><span class="MN-foot-sep">·</span><a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a><span class="MN-foot-sep">·</span><a href="/site-map.html">Site Map</a></span>
+  <span style="margin-left:auto">v1.0</span>
+</footer>"""
+
+# ═══════════════════════════════════
+# PAPER1 NAV — 17 link
+# Засах бол энд засна
+# ═══════════════════════════════════
+P1_NAV = """<nav class="MN">
   <a href="/paper1/" class="MN-logo">Results</a>
   <div class="MN-sep"></div>
   <div class="MN-links">
@@ -89,140 +158,12 @@
   <a href="/paper1/changelog.html">Changelog</a>
   <hr>
   <a href="/">← Platform</a>
-</div>
-<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
-<div class="container" style="padding-top:3rem;">
-  <div class="section">
-    <div class="section-label"><span data-li="en">Interactive Charts</span><span data-li="mn">Интерактив графикууд</span></div>
-    <h2><span data-li="en">Visualizing the Results</span><span data-li="mn">Үр дүнгийн дүрслэл</span></h2>
-    <div class="chart-container"><div class="chart-title">BK Amplitude Law — A(p) vs B(p) = (log p)²/p</div><div id="chart-scatter" style="height:380px;"></div></div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
-    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — all 12 primes (zeros3)</span><span data-li="mn">12 прайм дээрх илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
-  </div>
-  
-</div>
-</div>
+</div>"""
 
-
-
-
-
-
-
-
-
-
-<script>
-const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
-const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
-const C=3;
-const Ap=Bp.map((b,i)=>b*C*(0.97+[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02][i]));
-const DL={paper_bgcolor:'#111118',plot_bgcolor:'#111118',font:{color:'#aaa'},margin:{t:25,r:20,b:50,l:60}};
-const PC={responsive:true,displayModeBar:false};
-
-function initCharts(){
-  Plotly.newPlot('chart-scatter',[
-    {x:Bp,y:Ap,mode:'markers+text',text:primes.map(p=>'p='+p),textposition:'top center',type:'scatter'},
-    {x:[0,Math.max(...Bp)*1.1],y:[0,Math.max(...Bp)*1.1*C],mode:'lines',type:'scatter'}
-  ],DL,PC);
-
-  Plotly.newPlot('chart-bar',[{
-    x:['zeros1','zeros_ht','zeros6'],
-    y:[0.6847,0.5113,0.4509],
-    type:'bar',
-    text:['r=0.6847','r=0.5113','r=0.4509'],
-    textposition:'outside'
-  }],{...DL,yaxis:{range:[0,0.85],title:'Pearson r'}},PC);
-
-  Plotly.newPlot('chart-prime',[{
-    x:primes.map(p=>'p='+p),
-    y:Ap,
-    type:'bar'
-  }],DL,PC);
-}
-
-document.addEventListener('DOMContentLoaded',initCharts);
-</script>
-
-
-
-
-
-
-
-
-
-
-<script>
-// === NAV HARD FIX: active state, mobile menu, dropdown click, language ===
-(function(){
-  function cleanPath(v){
-    if(!v) return '';
-    v = String(v).split('#')[0].split('?')[0];
-    if(!v) return '';
-    var a = document.createElement('a');
-    a.href = v;
-    var p = a.pathname || v;
-    p = p.replace(/\/index\.html$/,'/');
-    if(p.length > 1) p = p.replace(/\/$/,'');
-    return p || '/';
-  }
-  function setLang(lang){
-    lang = lang === 'mn' ? 'mn' : 'en';
-    document.documentElement.setAttribute('data-lang', lang);
-    try{localStorage.setItem('MN_lang', lang);}catch(e){}
-    document.querySelectorAll('.MN-lb').forEach(function(btn){
-      btn.classList.toggle('MN-active', btn.getAttribute('data-l') === lang);
-    });
-  }
-  window.setLang = setLang;
-  var saved = 'en';
-  try{ saved = localStorage.getItem('MN_lang') || 'en'; }catch(e){}
-  setLang(saved);
-
-  var path = cleanPath(window.location.pathname);
-  document.querySelectorAll('.MN a, .MN-mobile a').forEach(function(a){
-    var href = a.getAttribute('href');
-    if(!href || href === '#') return;
-    var target = cleanPath(href);
-    var active = target === path || (target === '/paper1' && (path === '/paper1' || path === '/paper1/'));
-    a.classList.toggle('MN-active', active);
-    var drop = a.closest('.MN-drop');
-    if(active && drop){
-      var btn = drop.querySelector('.MN-drop-btn');
-      if(btn) btn.classList.add('MN-active');
-    }
-  });
-
-  var burger = document.querySelector('.MN-burger');
-  var mobile = document.querySelector('.MN-mobile');
-  if(burger && mobile){
-    burger.addEventListener('click', function(){
-      var open = !mobile.classList.contains('open');
-      burger.classList.toggle('open', open);
-      mobile.classList.toggle('open', open);
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click', function(){mobile.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
-  }
-  document.querySelectorAll('.MN-lb').forEach(function(btn){btn.addEventListener('click', function(){setLang(btn.getAttribute('data-l'));});});
-  document.querySelectorAll('.MN-drop-btn').forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      var wrap = btn.closest('.MN-drop');
-      if(!wrap) return;
-      var open = !wrap.classList.contains('MN-open');
-      document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
-      wrap.classList.toggle('MN-open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  });
-  document.addEventListener('click', function(e){
-    if(!e.target.closest('.MN-drop')) document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
-  });
-})();
-</script>
-<footer class="MN-foot">
+# ═══════════════════════════════════
+# PAPER1 FOOTER
+# ═══════════════════════════════════
+P1_FOOT = """<footer class="MN-foot">
   <span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">
     <span data-li="en" style="font-style:italic">Observations only — not a proof of RH</span>
     <span data-li="mn" style="font-style:italic">Тооцооллын ажиглалт — RH нотолгоо биш</span>
@@ -238,29 +179,21 @@ document.addEventListener('DOMContentLoaded',initCharts);
     <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a>
   </span>
   <span>v0.4</span>
-</footer>
-<script>
-(function(){
-  function setLang(l){
-    l=l==='mn'?'mn':'en';
-    document.body.className=l;
-    try{localStorage.setItem('lang',l)}catch(e){}
-    document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
-  }
-  window.setLang=setLang;
-  var path=window.location.pathname.replace(/\/$/,'').replace(/\/index\.html$/,'/');
-  document.querySelectorAll('.MN-links a,.MN-mob a').forEach(function(a){
-    var h=(a.getAttribute('href')||'').replace(/\/$/,'').replace(/\/index\.html$/,'/');
-    if(h&&h===path)a.classList.add('MN-active');
-  });
-  var burger=document.querySelector('.MN-burger');
-  var mob=document.querySelector('.MN-mob');
-  if(burger&&mob){
-    burger.addEventListener('click',function(){burger.classList.toggle('open');mob.classList.toggle('open')});
-    document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}});
-  }
-  try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
-})();
-</script>
-</body>
-</html>
+</footer>"""
+
+# ═══════════════════════════════════
+# ФАЙЛЫН ЖАГСААЛТ
+# ═══════════════════════════════════
+PLAT_FILES = [
+    'contact.html', 'index.html', 'intro.html',
+    'landscape.html', 'roadmap.html', 'site-map.html', 'verify.html'
+]
+
+P1_FILES = [
+    'paper1/about.html', 'paper1/calculator.html', 'paper1/changelog.html',
+    'paper1/charts.html', 'paper1/data.html', 'paper1/discussion.html',
+    'paper1/faq.html', 'paper1/formalism.html', 'paper1/index.html',
+    'paper1/lab.html', 'paper1/livestats.html', 'paper1/methods.html',
+    'paper1/nulltests.html', 'paper1/references.html', 'paper1/replication.html',
+    'paper1/roadmap.html', 'paper1/steven_clark.html'
+]

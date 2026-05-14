@@ -6,19 +6,19 @@
 <title>Mathematical Landscape · research.nexcore.ltd</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
 <style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
-.MN{position:fixed;top:0;left:0;right:0;z-index:900;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
-.MN-sep{width:1px;height:20px;background:rgba(255,255,255,.1);flex-shrink:0;margin:0 4px}
-.MN-links{display:flex;align-items:center;justify-content:center;gap:2px;flex:1;flex-wrap:wrap;overflow:visible}
-.MN-links a{font-size:.72rem;color:#9999b8;text-decoration:none;padding:3px 7px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap;flex-shrink:0}
+.MN-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
+.MN-links{display:flex;align-items:center;justify-content:center;gap:2px;flex:1;flex-wrap:wrap}
+.MN-links a{font-size:.72rem;color:#9999b8;text-decoration:none;padding:3px 6px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap}
 .MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07)}
 .MN-links a.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff;padding-bottom:1px}
-.MN-plat{font-size:.7rem;color:#5a5a7a;text-decoration:none;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:3px;transition:color .15s,border-color .15s}
+.MN-plat{font-size:.7rem;color:#5a5a7a;text-decoration:none;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0;transition:color .15s,border-color .15s}
 .MN-plat:hover{color:#9999b8;border-color:rgba(255,255,255,.15)}
-.MN-plat svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .MN-btns{display:flex;gap:3px;flex-shrink:0}
 .MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:3px 8px;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a}
 .MN-lb.on{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent}
@@ -27,12 +27,12 @@
 .MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
 .MN-burger.open span:nth-child(2){opacity:0}
 .MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
-.MN-mob{display:none;position:fixed;top:48px;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:.75rem 1.25rem;z-index:899;flex-direction:column;gap:2px}
+.MN-mob{display:none;position:fixed;top:0;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:3.5rem 1.25rem 1rem;z-index:899;flex-direction:column;gap:2px}
 .MN-mob.open{display:flex}
 .MN-mob a{font-size:.82rem;color:#9999b8;text-decoration:none;padding:6px 8px;border-radius:6px}
 .MN-mob a:hover,.MN-mob a.MN-active{color:#00d4ff;background:rgba(0,212,255,.07)}
 .MN-mob hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:4px 0}
-.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;justify-content:space-between;align-items:center;padding:0 1.25rem;background:rgba(7,7,16,.98);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a}
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;align-items:center;padding:0 1.25rem;background:rgba(7,7,16,.98);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a}
 .MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
 .MN-foot a:hover{color:#9999b8}
 .MN-foot-sep{opacity:.3;margin:0 2px}
@@ -41,7 +41,7 @@
 <body class="en">
 <nav class="MN">
   <a href="/" class="MN-logo">research.nexcore.ltd</a>
-  <div class="MN-links" style="margin:0 .75rem">
+  <div class="MN-links">
     <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
     <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
     <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
@@ -52,7 +52,7 @@
   <div class="MN-btns">
     <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
     <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
-    <button class="MN-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="MN-burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="MN-mob">
@@ -63,7 +63,6 @@
   <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
   <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
 </div>
-
 <div class="mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
 <div class="grid-bg"></div>
 
@@ -369,145 +368,9 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
   </div>
 </div>
-
-<script>
-(function(){
-const PRIMES=[2,3,5,7,11,13,17,19,23,29,31,37];
-const ZEROS=[14.1347,21.0220,25.0109,30.4249,32.9351,37.5862,40.9187,43.3271,48.0052,49.7738];
-
-function rhTab(id,btn){
-  document.querySelectorAll('.rh-tab').forEach(b=>b.classList.remove('rh-active'));
-  btn.classList.add('rh-active');
-  document.querySelectorAll('.rh-panel').forEach(p=>p.classList.remove('rh-show'));
-  document.getElementById('rh-'+id).classList.add('rh-show');
-  ({zeta:rhZeta,strip:rhStrip,zeros:rhTrack,primes:rhPrimes,bk:rhBK})[id]();
-}
-window.rhTab=rhTab;
-
-function gc(id){const el=document.getElementById(id);const c=el.getContext('2d');c.canvas.width=el.offsetWidth||640;return c;}
-const BG='#070710',FG='#9999b8',CY='#00d4ff',RD='#ff4d6d',BL='#185FA5';
-
-function rhZeta(){
-  const s=parseFloat(document.getElementById('rh-re').value);
-  const N=parseInt(document.getElementById('rh-n').value);
-  document.getElementById('rh-re-o').textContent=s.toFixed(1);
-  document.getElementById('rh-n-o').textContent=N;
-  let sum=0; for(let n=1;n<=N;n++) sum+=1/Math.pow(n,s);
-  const ex=s===2?Math.PI*Math.PI/6:null;
-  document.getElementById('rh-za').textContent=sum.toFixed(4);
-  document.getElementById('rh-ze').textContent=ex?Math.abs(sum-ex).toExponential(2):'—';
-  const c=gc('rh-cz'),W=c.canvas.width,H=c.canvas.height;
-  c.fillStyle=BG;c.fillRect(0,0,W,H);
-  const pts=[];let p=0;
-  for(let n=1;n<=N;n++){p+=1/Math.pow(n,s);pts.push(p);}
-  const maxV=pts[pts.length-1]*1.05;
-  const y=v=>H-20-(v/maxV)*(H-40);
-  c.strokeStyle=BL;c.lineWidth=1.5;c.beginPath();
-  pts.forEach((v,i)=>{const x=20+(i/(N-1))*(W-40);i?c.lineTo(x,y(v)):c.moveTo(x,y(v));});c.stroke();
-  if(ex){c.strokeStyle=RD;c.lineWidth=1;c.setLineDash([4,3]);c.beginPath();c.moveTo(20,y(ex));c.lineTo(W-20,y(ex));c.stroke();c.setLineDash([]);}
-}
-window.rhZeta=rhZeta;
-
-function rhStrip(){
-  const im=parseFloat(document.getElementById('rh-im').value);
-  document.getElementById('rh-im-o').textContent=im;
-  const c=gc('rh-cs'),W=c.canvas.width,H=c.canvas.height;
-  c.fillStyle=BG;c.fillRect(0,0,W,H);
-  const rx=r=>30+(r)*(W-60),iy=i=>20+(i/im)*(H-40);
-  c.strokeStyle='rgba(255,255,255,.08)';c.lineWidth=0.5;
-  [0,.25,.5,.75,1].forEach(r=>{c.beginPath();c.moveTo(rx(r),20);c.lineTo(rx(r),H-20);c.stroke();c.fillStyle=FG;c.font='10px monospace';c.fillText(r.toFixed(2),rx(r)-10,H-5);});
-  c.strokeStyle=CY;c.lineWidth=2;c.beginPath();c.moveTo(rx(.5),15);c.lineTo(rx(.5),H-20);c.stroke();
-  c.fillStyle=CY;c.font='11px monospace';c.fillText('Re(s)=½',rx(.5)+5,16);
-  const list=document.getElementById('rh-zlist');list.innerHTML='';
-  ZEROS.filter(t=>t<=im).forEach(t=>{
-    c.fillStyle=RD;c.beginPath();c.arc(rx(.5),iy(t),5,0,Math.PI*2);c.fill();
-    const pill=document.createElement('span');pill.className='rh-zpill';pill.textContent='γ≈'+t.toFixed(2);list.appendChild(pill);
-  });
-}
-window.rhStrip=rhStrip;
-
-function zh(T,n=150){let r=0,i=0;for(let k=1;k<=n;k++){const l=Math.log(k),p=Math.pow(k,.5);r+=Math.cos(T*l)/p;i-=Math.sin(T*l)/p;}return{r,i,m:Math.sqrt(r*r+i*i)};}
-
-function rhTrack(){
-  const T=parseFloat(document.getElementById('rh-t').value);
-  document.getElementById('rh-t-o').textContent=T.toFixed(1);
-  const z=zh(T);
-  document.getElementById('rh-zm').textContent=z.m.toFixed(4);
-  document.getElementById('rh-zr').textContent=z.r.toFixed(4);
-  document.getElementById('rh-zi').textContent=z.i.toFixed(4);
-  const c=gc('rh-ct'),W=c.canvas.width,H=c.canvas.height;
-  c.fillStyle=BG;c.fillRect(0,0,W,H);
-  const pts=[];for(let t=0;t<=50;t+=.3){const z=zh(t,80);pts.push(z);}
-  const rs=pts.map(p=>p.r),is=pts.map(p=>p.i);
-  const mnr=Math.min(...rs),mxr=Math.max(...rs),mni=Math.min(...is),mxi=Math.max(...is);
-  const pad=28,tx=r=>pad+(r-mnr)/(mxr-mnr)*(W-2*pad),ty=i=>H-pad-(i-mni)/(mxi-mni)*(H-2*pad);
-  c.strokeStyle='rgba(24,95,165,.6)';c.lineWidth=1;c.beginPath();
-  pts.forEach((p,i)=>i?c.lineTo(tx(p.r),ty(p.i)):c.moveTo(tx(p.r),ty(p.i)));c.stroke();
-  c.fillStyle='rgba(0,229,160,.8)';c.beginPath();c.arc(tx(0),ty(0),4,0,Math.PI*2);c.fill();
-  ZEROS.filter(t=>t<=50).forEach(tz=>{const pz=zh(tz,80);c.fillStyle='rgba(255,77,109,.6)';c.beginPath();c.arc(tx(pz.r),ty(pz.i),3,0,Math.PI*2);c.fill();});
-  const cur=zh(T,80);c.fillStyle=RD;c.beginPath();c.arc(tx(cur.r),ty(cur.i),6,0,Math.PI*2);c.fill();
-}
-window.rhTrack=rhTrack;
-
-function rhPrimes(){
-  const X=parseInt(document.getElementById('rh-px').value);
-  document.getElementById('rh-px-o').textContent=X;
-  const s=new Uint8Array(X+1).fill(1);s[0]=s[1]=0;
-  for(let i=2;i*i<=X;i++)if(s[i])for(let j=i*i;j<=X;j+=i)s[j]=0;
-  let pix=0;for(let i=2;i<=X;i++)if(s[i])pix++;
-  const lix=X/Math.log(X);
-  document.getElementById('rh-pix').textContent=pix;
-  document.getElementById('rh-lix').textContent=lix.toFixed(1);
-  document.getElementById('rh-perr').textContent=(Math.abs(pix-lix)/pix*100).toFixed(1)+'%';
-  const c=gc('rh-cp'),W=c.canvas.width,H=c.canvas.height;
-  c.fillStyle=BG;c.fillRect(0,0,W,H);
-  const step=Math.max(1,Math.floor(X/W));
-  const pp=[],pl=[];let cnt=0;
-  for(let x=2;x<=X;x++){if(s[x])cnt++;if(x%step===0||x===X){pp.push({x,y:cnt});pl.push({x,y:x/Math.log(x)});}}
-  const maxY=Math.max(...pp.map(p=>p.y))*1.05;
-  const px=x=>20+(x/X)*(W-40),py=y=>H-20-(y/maxY)*(H-40);
-  c.strokeStyle=BL;c.lineWidth=1.5;c.beginPath();pp.forEach((p,i)=>i?c.lineTo(px(p.x),py(p.y)):c.moveTo(px(p.x),py(p.y)));c.stroke();
-  c.strokeStyle=RD;c.lineWidth=1;c.setLineDash([4,3]);c.beginPath();pl.forEach((p,i)=>i?c.lineTo(px(p.x),py(p.y)):c.moveTo(px(p.x),py(p.y)));c.stroke();c.setLineDash([]);
-  c.fillStyle=BL;c.font='11px monospace';c.fillText('π(x)',24,14);
-  c.fillStyle=RD;c.fillText('x/ln(x)',60,14);
-}
-window.rhPrimes=rhPrimes;
-
-function pearR(xs,ys){const n=xs.length,mx=xs.reduce((a,b)=>a+b)/n,my=ys.reduce((a,b)=>a+b)/n;let nu=0,dx=0,dy=0;for(let i=0;i<n;i++){nu+=(xs[i]-mx)*(ys[i]-my);dx+=(xs[i]-mx)**2;dy+=(ys[i]-my)**2;}return nu/Math.sqrt(dx*dy);}
-
-function rhBK(){
-  const C=parseFloat(document.getElementById('rh-bc').value);
-  document.getElementById('rh-bc-o').textContent=C.toFixed(1);
-  const Bp=PRIMES.map(p=>Math.pow(Math.log(p),2)/p);
-  const Ap=Bp.map((b,i)=>b*C*(0.97+[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02][i]));
-  document.getElementById('rh-br').textContent=pearR(Bp,Ap).toFixed(4);
-  const c=gc('rh-cb'),W=c.canvas.width,H=c.canvas.height;
-  c.fillStyle=BG;c.fillRect(0,0,W,H);
-  const pad=28,mxB=Math.max(...Bp)*1.1,mxA=Math.max(...Ap)*1.1;
-  const sx=b=>pad+(b/mxB)*(W-2*pad),sy=a=>H-pad-(a/mxA)*(H-2*pad);
-  c.strokeStyle='rgba(255,255,255,.05)';c.lineWidth=0.5;
-  [.25,.5,.75,1].forEach(t=>{c.beginPath();c.moveTo(pad,sy(t*mxA));c.lineTo(W-pad,sy(t*mxA));c.stroke();c.beginPath();c.moveTo(sx(t*mxB),pad);c.lineTo(sx(t*mxB),H-pad);c.stroke();});
-  c.strokeStyle='rgba(0,229,160,.3)';c.lineWidth=1;c.setLineDash([3,2]);c.beginPath();c.moveTo(pad,H-pad);c.lineTo(W-pad,pad);c.stroke();c.setLineDash([]);
-  Bp.forEach((b,i)=>{c.fillStyle=BL;c.beginPath();c.arc(sx(b),sy(Ap[i]),4,0,Math.PI*2);c.fill();c.fillStyle=FG;c.font='9px monospace';c.fillText('p='+PRIMES[i],sx(b)+5,sy(Ap[i])-3);});
-}
-window.rhBK=rhBK;
-
-window.addEventListener('load',()=>{rhZeta();});
-})();
-</script>
-
-<!-- Хуучин zip-аас авсан бодлогуудын холбоо + судалгааны байр суурь -->
-<div style="max-width:900px;margin:3rem auto;padding:0 2rem;">
-  <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:2rem;">
-    
-  </div>
-  <div style="margin-top:2rem;border-top:1px solid rgba(255,255,255,.07);padding-top:2rem;">
-    
-  </div>
-</div>
 <footer class="MN-foot">
   <span><span data-li="en">Platform · Open archive</span><span data-li="mn">Платформ · Нээлттэй архив</span><span class="MN-foot-sep">·</span><a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a><span class="MN-foot-sep">·</span><a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a><span class="MN-foot-sep">·</span><a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a><span class="MN-foot-sep">·</span><a href="/site-map.html">Site Map</a></span>
-  <span>v1.0</span>
+  <span style="margin-left:auto">v1.0</span>
 </footer>
 <script>
 (function(){
