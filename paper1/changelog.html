@@ -36,7 +36,166 @@
 .MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
 .MN-foot a:hover{color:#9999b8}
 .MN-foot-sep{opacity:.3;margin:0 2px}
-@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}</style>
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
+
+/* ── ROOT VARIABLES ── */
+:root{
+  --bg:#070710;--s1:#0d0d1a;--s2:#12121f;--s3:#181828;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
+  --cyan:#00d4ff;--green:#00e5a0;--red:#ff4d6d;--yellow:#ffd166;
+}
+
+/* ── BASE ── */
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
+*{box-sizing:border-box}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--text);line-height:1.3;margin-top:0}
+h1{font-size:1.9rem;font-weight:600;margin-bottom:1rem}
+h2{font-size:1.35rem;font-weight:600;margin-bottom:.75rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+h4{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+p{color:var(--sub);margin-bottom:1rem;line-height:1.75}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--text);font-weight:600}
+em{color:var(--sub)}
+code{font-family:'JetBrains Mono',monospace;font-size:.82em;color:var(--cyan);background:rgba(0,212,255,.08);padding:.1em .4em;border-radius:4px}
+pre{font-family:'JetBrains Mono',monospace;font-size:.82rem;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;overflow-x:auto;color:var(--text);line-height:1.65}
+sup,sub{font-size:.7em}
+
+/* ── LAYOUT ── */
+.page-wrap,.container,.wrap{max-width:960px;margin:0 auto;padding:3rem 2rem 2rem}
+.section{margin-bottom:3rem}
+
+/* ── SECTION LABELS ── */
+.section-label,.sec-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+
+/* ── CARDS ── */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;transition:border-color .15s}
+.card:hover{border-color:var(--border2)}
+.card-sm{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+.card-accent{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.18);border-radius:14px;padding:1.5rem}
+
+/* ── STAT / METRIC CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2rem}
+.stat-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan))}
+.stat-card.c-cyan{--accent:var(--cyan)}.stat-card.c-green{--accent:var(--green)}.stat-card.c-red{--accent:var(--red)}.stat-card.c-yellow{--accent:var(--yellow)}.stat-card.c-muted{--accent:var(--muted)}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.25rem}
+.stat-label{font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.stat-note{font-size:.72rem;color:var(--sub);margin-top:.3rem}
+
+/* ── FORMULA / MATH BLOCKS ── */
+.formula{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--text);background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.25rem;overflow-x:auto;line-height:1.8;margin:1rem 0}
+.formula-sm{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--cyan);background:rgba(0,212,255,.06);border-radius:6px;padding:.25rem .6rem;display:inline-block}
+.def-block{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.def-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.def-note{font-size:.82rem;color:var(--sub);margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.5rem}
+.math-inline{font-family:'JetBrains Mono',monospace;color:var(--text);font-size:.9em}
+
+/* ── DISCLAIMER / WARNING ── */
+.disclaimer{background:rgba(255,209,102,.04);border:1px solid rgba(255,209,102,.18);border-radius:12px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:.85rem;color:var(--sub);line-height:1.7}
+.disclaimer strong{color:var(--yellow)}
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:.9rem 1.1rem;font-size:.85rem;color:var(--sub);line-height:1.6}
+
+/* ── BADGES ── */
+.badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.2rem .6rem;border-radius:5px;display:inline-block;font-weight:500}
+.badge-cyan{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.22)}
+.badge-red{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.22)}
+.badge-yellow{background:rgba(255,209,102,.1);color:var(--yellow);border:1px solid rgba(255,209,102,.22)}
+.badge-muted{background:rgba(90,90,122,.12);color:var(--muted);border:1px solid rgba(90,90,122,.22)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .15s;border:none;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{background:var(--s2);color:var(--sub);border:1px solid var(--border2)}
+.btn-secondary:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.btn-outline{background:rgba(0,212,255,.07);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.btn-outline:hover{background:rgba(0,212,255,.12)}
+/* legacy */
+.run-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff;border:none;transition:opacity .15s}
+.run-btn:hover{opacity:.88}
+
+/* ── TABLES ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0}
+.data-table th{text-align:left;padding:.5rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.data-table td{padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--sub);font-family:'JetBrains Mono',monospace}
+.data-table tr:hover td{background:rgba(255,255,255,.02);color:var(--text)}
+.data-table td:first-child{color:var(--cyan);font-weight:600}
+.data-table td.pos{color:var(--green)}.data-table td.neg{color:var(--red)}.data-table td.warn{color:var(--yellow)}
+
+/* ── PROSE ── */
+.prose{color:var(--sub);line-height:1.8;font-size:.93rem}
+.prose h2,.prose h3{color:var(--text);margin:1.75rem 0 .6rem}
+.prose p{margin-bottom:1rem}
+.prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1rem}
+.prose li{margin-bottom:.35rem}
+.prose blockquote{border-left:3px solid var(--cyan);margin:1rem 0;padding:.75rem 1rem;color:var(--sub);font-style:italic;background:var(--s1);border-radius:0 8px 8px 0}
+
+/* ── RESULT DISPLAY ── */
+.result-banner{border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.result-banner.null{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2)}
+.result-banner.positive{background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.2)}
+.result-banner.negative{background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2)}
+.r-number{font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:700;line-height:1}
+.r-desc{font-size:.88rem;color:var(--sub);line-height:1.5}
+
+/* ── CHART CONTAINERS ── */
+.chart-wrap{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem}
+.chart-title{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.chart-title span{color:var(--cyan)}
+
+/* ── FORMS / CONTROLS ── */
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem}
+.ctrl-group{display:flex;flex-direction:column;gap:.3rem}
+.ctrl-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ctrl-input{background:var(--s2);border:1px solid var(--border2);border-radius:7px;padding:.35rem .65rem;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.83rem;width:90px;transition:border-color .15s}
+.ctrl-input:focus{outline:none;border-color:var(--cyan)}
+
+/* ── STEP LIST ── */
+.step-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.step-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:10px}
+.step-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(0,212,255,.12);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-family:'JetBrains Mono',monospace;font-weight:700;margin-top:.15rem}
+.step-content h4{font-size:.9rem;color:var(--text);margin-bottom:.2rem}
+.step-content p{font-size:.83rem;color:var(--sub);margin:0}
+
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.65rem;overflow:hidden;transition:border-color .15s}
+.faq-item:hover{border-color:var(--border2)}
+.faq-q{padding:1rem 1.25rem;cursor:pointer;font-size:.92rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'▾';font-size:.8rem;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(180deg)}
+.faq-a{padding:0 1.25rem 1rem;font-size:.88rem;color:var(--sub);line-height:1.75;display:none}
+.faq-item.open .faq-q{border-bottom:1px solid var(--border)}
+.faq-item.open .faq-a{display:block}
+
+/* ── UPLOAD ZONE ── */
+.upload-zone{border:2px dashed var(--border2);border-radius:14px;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.01)}
+.upload-zone:hover{border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.03)}
+.upload-title{font-size:.95rem;color:var(--text);font-weight:500;margin-bottom:.3rem}
+.upload-sub{font-size:.78rem;color:var(--muted)}
+
+/* ── UTILS ── */
+.text-cyan{color:var(--cyan)}.text-green{color:var(--green)}.text-red{color:var(--red)}.text-yellow{color:var(--yellow)}.text-muted{color:var(--muted)}.text-sub{color:var(--sub)}
+.mono{font-family:'JetBrains Mono',monospace}
+.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.tag{display:inline-block;font-size:.68rem;padding:.15rem .5rem;border-radius:4px;font-family:'JetBrains Mono',monospace;background:var(--s2);color:var(--sub);border:1px solid var(--border)}
+
+/* ── LINKS ── */
+.link-card{display:block;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;text-decoration:none;transition:all .15s;margin-bottom:.65rem}
+.link-card:hover{border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.03)}
+.link-card-title{font-size:.92rem;color:var(--text);font-weight:500;margin-bottom:.2rem}
+.link-card-desc{font-size:.82rem;color:var(--sub);line-height:1.5}
+.link-card-meta{font-size:.7rem;color:var(--muted);margin-top:.3rem;font-family:'JetBrains Mono',monospace}
+
+/* ── REMOVE DECORATIVE ── */
+.mesh,.grid-bg,.orb,.o1,.o2,.o3{display:none !important}
+
+</style>
 </head>
 <body class="en">
 <nav class="MN">
@@ -90,7 +249,7 @@
   <hr>
   <a href="/">← Platform</a>
 </div>
-<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div class="page-wrap">
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">Research Updates</span><span data-li="mn">Судалгааны шинэчлэлүүд</span></div>
@@ -318,7 +477,23 @@
   });
 })();
 </script>
-
+<footer class="MN-foot">
+  <span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">
+    <span data-li="en" style="font-style:italic">Observations only — not a proof of RH</span>
+    <span data-li="mn" style="font-style:italic">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a>
+  </span>
+  <span>v0.4</span>
+</footer>
 <script>
 (function(){
   function setLang(l){
@@ -340,35 +515,6 @@
     document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}});
   }
   try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
-})();
-</script>
-<footer class="MN-foot">
-  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
-  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
-    <a href="/paper1/" class="MN-flink"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-    <span style="color:#404058">·</span>
-    <a href="/paper1/replication.html" class="MN-flink"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
-    <span style="color:#404058">·</span>
-    <a href="/paper1/data.html" class="MN-flink"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-    <span style="color:#404058">·</span>
-    <a href="/paper1/about.html" class="MN-flink"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-    <span style="color:#404058">·</span>
-    <a href="https://zenodo.org/records/20077673" target="_blank" class="MN-flink">DOI</a>
-  </span>
-  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v0.4</span>
-</footer>
-<style>
-.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}
-.MN-flink:hover{color:#9999b8}
-.MN-flink.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff}
-</style>
-<script>
-(function(){
-  var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");
-  document.querySelectorAll(".MN-flink").forEach(function(a){
-    var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");
-    if(h&&h===path)a.classList.add("MN-active");
-  });
 })();
 </script>
 </body>
