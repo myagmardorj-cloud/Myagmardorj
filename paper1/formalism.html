@@ -37,7 +37,7 @@
 .MN-foot a:hover{color:#9999b8}
 .MN-foot-sep{opacity:.3;margin:0 2px}
 @media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
-.MN-foot-link{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s;border-bottom:2px solid transparent;padding-bottom:0}
+.MN-foot-link{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s;border-bottom:2px solid transparent}
 .MN-foot-link:hover{color:#9999b8}
 .MN-foot-link.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff}
 </style>
@@ -239,10 +239,11 @@
 })();
 </script>
 <footer class="MN-foot">
-  <span style="display:flex;align-items:center;gap:4px;flex:1">
-    <span data-li="en" style="font-style:italic;color:#3a3a5a;margin-right:2px">Observations only — not a proof of RH</span>
-    <span data-li="mn" style="font-style:italic;color:#3a3a5a;margin-right:2px">Тооцооллын ажиглалт — RH нотолгоо биш</span>
-    <span class="MN-foot-sep">·</span>
+  <span style="flex-shrink:0;font-style:italic;color:#3a3a5a;font-size:.62rem">
+    <span data-li="en">Observations only — not a proof of RH</span>
+    <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+  </span>
+  <span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">
     <a href="/paper1/" class="MN-foot-link"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
     <span class="MN-foot-sep">·</span>
     <a href="/paper1/replication.html" class="MN-foot-link"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
@@ -253,7 +254,7 @@
     <span class="MN-foot-sep">·</span>
     <a href="https://zenodo.org/records/20077673" target="_blank" class="MN-foot-link">DOI</a>
   </span>
-  <span style="flex-shrink:0">v0.4</span>
+  <span style="flex-shrink:0;color:#3a3a5a;font-size:.62rem">v0.4</span>
 </footer>
 <script>
 (function(){
