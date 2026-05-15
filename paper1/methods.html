@@ -47,7 +47,7 @@
 }
 
 /* ── BASE ── */
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:72px}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
 *{box-sizing:border-box}
 
 /* ── TYPOGRAPHY ── */
@@ -258,32 +258,32 @@ sup,sub{font-size:.7em}
       <span data-li="en">
         <h3>1. Data</h3>
         <p><span data-li="en">Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)).</span><span data-li="mn">Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар жагсаасан.</span> Three datasets tested: zeros2 (100K zeros, T≈74,920), zeros3 (~10K zeros near T~10¹²), zeros4 (~10K zeros near T~10¹³).</p>
-        <h3>2. Spacing Covariance</h3>
-        <p>Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</p>
+        <h3><span data-li="en">2. Spacing Covariance</span><span data-li="mn">2. Spacing Covariance</span></h3>
+        <p><span data-li="en">Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</span><span data-li="mn">δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</span></p>
       </span>
       <span data-li="mn">
         <h3>1. Өгөгдөл</h3>
-        <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</p>
-        <h3>2. Spacing Covariance</h3>
-        <p>δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</p>
+        <p><span data-li="en">Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)).</span><span data-li="mn">Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</span></p>
+        
+        
       </span>
     </div>
     <div class="formula-block" style="margin:1.5rem 0;">C(h) = (1/N−h) Σ (δₙ − δ̄)(δₙ₊ₕ − δ̄)</div>
     <div class="prose">
       <span data-li="en">
-        <h3>3. Key Normalization</h3>
+        <h3><span data-li="en">3. Key Normalization</span><span data-li="mn">3. Гол нормализаци</span></h3>
         <p>The correct prime frequency at height T is <code>τ_p = log(p) / log(T/2π)</code>. This unfolded normalization is essential — using <code>log(p)/2π</code> gives weak results (r≈0.4–0.6).</p>
-        <h3>4. BK Predictor</h3>
+        <h3><span data-li="en">4. BK Predictor</span><span data-li="mn">4. BK Таамаглагч</span></h3>
         <p>Bogomolny–Keating (1996) predicted amplitude <code>A(p) ~ C·(log p)²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)²/p.</p>
-        <h3>5. Statistical Significance</h3>
-        <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as — — but see bootstrap controls for corrected estimates.</p>
+        <h3><span data-li="en">5. Statistical Significance</span><span data-li="mn">5. Статистик ач холбогдол</span></h3>
+        <p><span data-li="en">Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as — — but see bootstrap controls for corrected estimates.</span><span data-li="mn">Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистик хиймэл биш гэдгийг харуулж байна.</span></p>
       </span>
       <span data-li="mn">
-        <h3>3. Гол нормализаци</h3>
+        
         <p>T өндөрт зөв прайм давтамж нь <code>τ_p = log(p) / log(T/2π)</code>. Энэ задгай нормализаци зайлшгүй — <code>log(p)/2π</code> ашиглавал сул үр дүн (r≈0.4–0.6) гардаг.</p>
-        <h3>4. BK Таамаглагч</h3>
+        
         <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) хооронд Pearson корреляц тооцооллодог.</p>
-        <h3>5. Статистик ач холбогдол</h3>
+        
         <p>Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистикийн тодорхой артефакт биш гэж үзэж болно. Наив p = — — bootstrap-ийн засварласан тооцооллыг харна уу.</p>
       </span>
     </div>

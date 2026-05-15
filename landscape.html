@@ -47,7 +47,7 @@
 }
 
 /* ── BASE ── */
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:72px}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
 *{box-sizing:border-box}
 
 /* ── TYPOGRAPHY ── */
@@ -465,14 +465,14 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="rh-stat"><div class="rh-stat-label">Алдаа</div><div class="rh-stat-val" id="rh-ze">—</div></div>
       </div>
       <canvas class="rh-canvas" id="rh-cz" height="150"></canvas>
-      <p class="rh-note">s=2 үед ζ(2)=π²/6≈1.6449. N нэмэгдэх тусам алдаа хурдан буурна.</p>
+      <p class="rh-note"><span data-li="en">At s=2: ζ(2)=π²/6≈1.6449. Error decreases rapidly as N grows.</span><span data-li="mn">s=2 үед ζ(2)=π²/6≈1.6449. N нэмэгдэх тусам алдаа хурдан буурна.</span></p>
     </div>
 
     <div id="rh-strip" class="rh-panel">
       <div class="rh-sl"><label>Im(s) max</label><input type="range" min="10" max="100" step="5" value="30" id="rh-im" oninput="rhStrip()"><span id="rh-im-o">30</span></div>
       <canvas class="rh-canvas" id="rh-cs" height="200"></canvas>
       <div class="rh-zero-list" id="rh-zlist"></div>
-      <p class="rh-note">Бүх тэглэгч Re(s)=½ шугаман дээр — энэ бол таамаглалын гол мэдэгдэл.</p>
+      <p class="rh-note"><span data-li="en">All zeros lie on the Re(s)=½ line — this is the core statement of RH.</span><span data-li="mn">Бүх тэглэгч Re(s)=½ шугаман дээр — энэ бол таамаглалын гол мэдэгдэл.</span></p>
     </div>
 
     <div id="rh-zeros" class="rh-panel">
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="rh-stat"><div class="rh-stat-label">Im(ζ)</div><div class="rh-stat-val" id="rh-zi">—</div></div>
       </div>
       <canvas class="rh-canvas" id="rh-ct" height="190"></canvas>
-      <p class="rh-note">Улаан цэг = одоогийн T. Замнал гарал руу ойртоход |ζ|≈0 → тэглэгч.</p>
+      <p class="rh-note"><span data-li="en">Red dot = current T. As path approaches origin, |ζ|≈0 → zero.</span><span data-li="mn">Улаан цэг = одоогийн T. Замнал гарал руу ойртоход |ζ|≈0 → тэглэгч.</span></p>
     </div>
 
     <div id="rh-primes" class="rh-panel">
@@ -494,7 +494,7 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="rh-stat"><div class="rh-stat-label">Алдаа %</div><div class="rh-stat-val" id="rh-perr">—</div></div>
       </div>
       <canvas class="rh-canvas" id="rh-cp" height="170"></canvas>
-      <p class="rh-note">π(x)=x хүртэлх ерөнхий тооны тоо. x томрох тусам x/ln(x) сайжирна.</p>
+      <p class="rh-note"><span data-li="en">π(x) = prime counting function up to x. Approximation improves as x grows.</span><span data-li="mn">π(x)=x хүртэлх ерөнхий тооны тоо. x томрох тусам x/ln(x) сайжирна.</span></p>
     </div>
 
     <div id="rh-bk" class="rh-panel">

@@ -47,7 +47,7 @@
 }
 
 /* ── BASE ── */
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:72px}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
 *{box-sizing:border-box}
 
 /* ── TYPOGRAPHY ── */
@@ -673,33 +673,33 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     <div class="prose">
       <span data-li="en">
         <h3>1. Data</h3>
-        <p>Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros_ht (100K zeros, T≈74,920), zeros1 (~2M zeros near T~10¹²), zeros6 (~10K zeros near T~10¹³).</p>
-        <h3>2. Spacing Covariance</h3>
-        <p>Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</p>
+        <p><span data-li="en">Odlyzko's zero tables: high-precision tabulations of γₙ (imaginary parts of non-trivial zeros of ζ(s)). Three datasets tested: zeros_ht (100K zeros, T≈74,920), zeros1 (~2M zeros near T~10¹²), zeros6 (~10K zeros near T~10¹³).</span><span data-li="mn">Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</span></p>
+        <h3><span data-li="en">2. Spacing Covariance</span><span data-li="mn">2. Spacing Covariance</span></h3>
+        <p><span data-li="en">Let δₙ = γₙ₊₁ − γₙ be consecutive zero spacings. Define shifted covariance at lag h:</span><span data-li="mn">δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</span></p>
       </span>
       <span data-li="mn">
         <h3>1. Өгөгдөл</h3>
-        <p>Одлызкогийн тэгийн хүснэгт: ζ(s)-ийн тривиаль биш тэгүүдийн γₙ-г өндөр нарийвчлалтайгаар тооцсон. Гурван датасет тест хийгдсэн.</p>
-        <h3>2. Spacing Covariance</h3>
-        <p>δₙ = γₙ₊₁ − γₙ гэж тодорхойлно. h лаг дээрх шилжсэн ковариансыг:</p>
+        
+        
+        
       </span>
     </div>
     <div class="formula-block" style="margin:1.5rem 0;">C(h) = (1/N−h) Σ (δₙ − δ̄)(δₙ₊ₕ − δ̄)</div>
     <div class="prose">
       <span data-li="en">
-        <h3>3. Key Normalization</h3>
+        <h3><span data-li="en">3. Key Normalization</span><span data-li="mn">3. Гол нормализаци</span></h3>
         <p>The correct prime frequency at height T is <code>τ_p = log(p) / log(T/2π)</code>. This unfolded normalization is essential — using <code>log(p)/2π</code> gives weak results (r≈0.4–0.6).</p>
-        <h3>4. BK Predictor</h3>
+        <h3><span data-li="en">4. BK Predictor</span><span data-li="mn">4. BK Таамаглагч</span></h3>
         <p>Bogomolny–Keating (1996) predicted amplitude <code>A(p) ~ C·(log p)²/p</code>. We test Pearson correlation between observed A(p) and B(p) = (log p)²/p.</p>
-        <h3>5. Statistical Significance</h3>
-        <p>Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as — — but see bootstrap controls for corrected estimates.</p>
+        <h3><span data-li="en">5. Statistical Significance</span><span data-li="mn">5. Статистик ач холбогдол</span></h3>
+        <p><span data-li="en">Permutation tests (shuffled zeros) did not reproduce the observed pattern, suggesting the signal is not an obvious statistical artifact. Naive p-values as low as — — but see bootstrap controls for corrected estimates.</span><span data-li="mn">Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистик хиймэл биш гэдгийг харуулж байна.</span></p>
       </span>
       <span data-li="mn">
-        <h3>3. Гол нормализаци</h3>
+        
         <p>T өндөрт зөв прайм давтамж нь <code>τ_p = log(p) / log(T/2π)</code>. Энэ задгай нормализаци зайлшгүй — <code>log(p)/2π</code> ашиглавал сул үр дүн (r≈0.4–0.6) гардаг.</p>
-        <h3>4. BK Таамаглагч</h3>
+        
         <p>Богомолны–Китинг (1996) <code>A(p) ~ C·(log p)²/p</code> гэж таамагласан. Ажиглагдсан A(p) болон B(p) хооронд Pearson корреляц тооцооллодог.</p>
-        <h3>5. Статистик ач холбогдол</h3>
+        
         <p>Permutation тест (холилдуулсан тэгүүд) ижил хэв маягийг давтаагүй — дохио нь статистикийн тодорхой артефакт биш гэж үзэж болно. Наив p = — — bootstrap-ийн засварласан тооцооллыг харна уу.</p>
       </span>
     </div>
@@ -1206,7 +1206,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           <span style="font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:var(--cyan);letter-spacing:.12em;">2026-05-08</span>
         </div>
         <h3 style="font-size:1rem;color:var(--text);margin-bottom:.5rem;"><span data-li="en">Zenodo preprint published · DOI obtained</span><span data-li="mn">Zenodo preprint нийтлэгдсэн · DOI авсан</span></h3>
-        <p style="font-size:.88rem;color:var(--sub);">DOI: 10.5281/zenodo.20077673</p>
+        <p style="font-size:.88rem;color:var(--sub);"><span data-li="en">DOI: 10.5281/zenodo.20077673</span><span data-li="mn">DOI: 10.5281/zenodo.20077673</span></p>
       </div>
 
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
@@ -1459,7 +1459,7 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
           </div>
           <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2);padding:.2rem .6rem;border-radius:4px;">v2 PUBLISHED</span>
         </div>
-        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">DOI: 10.5281/zenodo.20077673 · Indexed in OpenAIRE</p>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;"><span data-li="en">DOI: 10.5281/zenodo.20077673 · Indexed in OpenAIRE</span><span data-li="mn">DOI: 10.5281/zenodo.20077673 · OpenAIRE-д индекслэгдсэн</span></p>
         <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;border-radius:10px;">
           <span class="li">🔗</span><div><span class="lt">View preprint</span><span class="ld">zenodo.org/records/20077673</span></div>
         </a>
@@ -1538,10 +1538,10 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
 <div class="container" style="padding-top:3rem;">
   <div class="section">
     <div class="section-label"><span data-li="en">About</span><span data-li="mn">Тухай</span></div>
-    <h2>Myagmardorj Namnansuren</h2>
+    <h2><span data-li="en">Myagmardorj Namnansuren</span><span data-li="mn">Мягмардорж Намнансүрэн</span></h2>
     <div class="prose" style="margin-bottom:2rem;">
-      <span data-li="en"><p>Independent researcher based in Ulaanbaatar, Mongolia. Director at Nexcore LTD. Interested in numerical computation, number theory, and random matrix theory.</p><p>This research began as a computational exploration of the Bogomolny–Keating predictions for prime-correlated structure in Riemann zero statistics. Using Odlyzko's zero data, computational observations consistent with the BK amplitude law were found across multiple independent datasets.</p></span>
-      <span data-li="mn"><p>Улаанбаатар, Монгол дахь бие даасан судлаач. Nexcore LTD-ийн захирал. Тоон тооцоолол, тооны онол, санамсаргүй матрицын онолыг судалдаг.</p><p>Богомолны–Китингийн таамаглалыг тоон аргаар шалгах оролдлогоос эхэлсэн судалгаанд BK амплитудын хуулийн хүчтэй нотолгоо олдсон.</p></span>
+      <span data-li="en"><p><span data-li="en">Independent researcher based in Ulaanbaatar, Mongolia. Director at Nexcore LTD. Interested in numerical computation, number theory, and random matrix theory.</span><span data-li="mn">Улаанбаатар, Монгол дахь бие даасан судлаач. Nexcore LTD-ийн захирал. Компьютерийн шинжлэх ухаан болон хавсарга математикийн суурьтай.</span></p><p><span data-li="en">This research began as a computational exploration of the Bogomolny–Keating predictions for prime-correlated structure in Riemann zero statistics. Using Odlyzko's zero data, computational observations consistent with the BK amplitude law were found across multiple independent datasets.</span><span data-li="mn">Богомолны–Китингийн таамаглалыг тоон аргаар шалгах оролдлогоос эхэлсэн судалгаа. Одлызкогийн гурван бие даасан тэгийн датасет ашигласан. Теорем батлаагүй — ажиглалтын судалгаа.</span></p></span>
+      <span data-li="mn"></span>
     </div>
     <div class="section-label"><span data-li="en">Citation</span><span data-li="mn">Ишлэл</span></div>
     <p style="margin-bottom:1rem;font-size:.9rem;color:var(--muted);">BibTeX</p>
