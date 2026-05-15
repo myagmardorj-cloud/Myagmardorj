@@ -36,11 +36,7 @@
 .MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
 .MN-foot a:hover{color:#9999b8}
 .MN-foot-sep{opacity:.3;margin:0 2px}
-@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
-.MN-foot-link{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s;border-bottom:2px solid transparent}
-.MN-foot-link:hover{color:#9999b8}
-.MN-foot-link.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff}
-</style>
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}</style>
 </head>
 <body class="en">
 <nav class="MN">
@@ -410,24 +406,6 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
   });
 })();
 </script>
-<footer class="MN-foot">
-  <span style="flex-shrink:0;font-style:italic;color:#3a3a5a;font-size:.62rem">
-    <span data-li="en">Observations only — not a proof of RH</span>
-    <span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
-  </span>
-  <span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">
-    <a href="/paper1/" class="MN-foot-link"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-    <span class="MN-foot-sep">·</span>
-    <a href="/paper1/replication.html" class="MN-foot-link"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
-    <span class="MN-foot-sep">·</span>
-    <a href="/paper1/data.html" class="MN-foot-link"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-    <span class="MN-foot-sep">·</span>
-    <a href="/paper1/about.html" class="MN-foot-link"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-    <span class="MN-foot-sep">·</span>
-    <a href="https://zenodo.org/records/20077673" target="_blank" class="MN-foot-link">DOI</a>
-  </span>
-  <span style="flex-shrink:0;color:#3a3a5a;font-size:.62rem">v0.4</span>
-</footer>
 <script>
 (function(){
   function setLang(l){
@@ -449,6 +427,36 @@ E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
     document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}});
   }
   try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
+})();
+</script>
+<footer class="MN-foot" style="display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem">
+  <span style="font-style:italic;color:#3a3a5a;font-size:.62rem;white-space:nowrap;flex-shrink:0">
+    <span data-li="en">Observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+  </span>
+  <span style="display:flex;align-items:center;gap:6px;justify-content:center;flex:1;padding:0 1rem">
+    <a href="/paper1/" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <span style="color:#2a2a3a;font-size:.6rem">·</span>
+    <a href="/paper1/replication.html" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <span style="color:#2a2a3a;font-size:.6rem">·</span>
+    <a href="/paper1/data.html" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <span style="color:#2a2a3a;font-size:.6rem">·</span>
+    <a href="/paper1/about.html" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+    <span style="color:#2a2a3a;font-size:.6rem">·</span>
+    <a href="https://zenodo.org/records/20077673" target="_blank" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink">DOI</a>
+  </span>
+  <span style="color:#3a3a5a;font-size:.62rem;flex-shrink:0">v0.4</span>
+</footer>
+<style>
+.MN-flink:hover{color:#9999b8 !important}
+.MN-flink.MN-active{color:#00d4ff !important;border-bottom-color:#00d4ff !important}
+</style>
+<script>
+(function(){
+  var path=window.location.pathname.replace(/\/$/,'').replace(/\/index\.html$/,'/');
+  document.querySelectorAll('.MN-flink').forEach(function(a){
+    var h=(a.getAttribute('href')||'').replace(/\/$/,'').replace(/\/index\.html$/,'/');
+    if(h&&h===path)a.classList.add('MN-active');
+  });
 })();
 </script>
 </body>
