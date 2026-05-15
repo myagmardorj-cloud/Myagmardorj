@@ -269,6 +269,7 @@
   });
 })();
 </script>
+
 <script>
 (function(){
   function setLang(l){
@@ -292,33 +293,32 @@
   try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
 })();
 </script>
-<footer class="MN-foot" style="display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem">
-  <span style="font-style:italic;color:#3a3a5a;font-size:.62rem;white-space:nowrap;flex-shrink:0">
-    <span data-li="en">Observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+<footer class="MN-foot">
+  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
+    <a href="/paper1/" class="MN-flink"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/replication.html" class="MN-flink"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/data.html" class="MN-flink"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/about.html" class="MN-flink"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+    <span style="color:#404058">·</span>
+    <a href="https://zenodo.org/records/20077673" target="_blank" class="MN-flink">DOI</a>
   </span>
-  <span style="display:flex;align-items:center;gap:6px;justify-content:center;flex:1;padding:0 1rem">
-    <a href="/paper1/" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
-    <span style="color:#2a2a3a;font-size:.6rem">·</span>
-    <a href="/paper1/replication.html" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
-    <span style="color:#2a2a3a;font-size:.6rem">·</span>
-    <a href="/paper1/data.html" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
-    <span style="color:#2a2a3a;font-size:.6rem">·</span>
-    <a href="/paper1/about.html" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
-    <span style="color:#2a2a3a;font-size:.6rem">·</span>
-    <a href="https://zenodo.org/records/20077673" target="_blank" style="font-size:.65rem;color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent" class="MN-flink">DOI</a>
-  </span>
-  <span style="color:#3a3a5a;font-size:.62rem;flex-shrink:0">v0.4</span>
+  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v0.4</span>
 </footer>
 <style>
-.MN-flink:hover{color:#9999b8 !important}
-.MN-flink.MN-active{color:#00d4ff !important;border-bottom-color:#00d4ff !important}
+.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}
+.MN-flink:hover{color:#9999b8}
+.MN-flink.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff}
 </style>
 <script>
 (function(){
-  var path=window.location.pathname.replace(/\/$/,'').replace(/\/index\.html$/,'/');
-  document.querySelectorAll('.MN-flink').forEach(function(a){
-    var h=(a.getAttribute('href')||'').replace(/\/$/,'').replace(/\/index\.html$/,'/');
-    if(h&&h===path)a.classList.add('MN-active');
+  var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");
+  document.querySelectorAll(".MN-flink").forEach(function(a){
+    var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");
+    if(h&&h===path)a.classList.add("MN-active");
   });
 })();
 </script>
