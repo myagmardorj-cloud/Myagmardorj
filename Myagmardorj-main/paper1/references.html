@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>References · research.nexcore.ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.MN-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
+.MN-links{display:flex;align-items:center;justify-content:center;gap:2px;flex:1;flex-wrap:wrap}
+.MN-links a{font-size:.72rem;color:#9999b8;text-decoration:none;padding:3px 6px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap}
+.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07)}
+.MN-links a.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff;padding-bottom:1px}
+.MN-plat{font-size:.7rem;color:#5a5a7a;text-decoration:none;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0;transition:color .15s,border-color .15s}
+.MN-plat:hover{color:#9999b8;border-color:rgba(255,255,255,.15)}
+.MN-btns{display:flex;gap:3px;flex-shrink:0}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:3px 8px;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a}
+.MN-lb.on{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent}
+.MN-burger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.4rem;border:none;background:none;flex-shrink:0}
+.MN-burger span{display:block;width:18px;height:1.5px;background:#9999b8;border-radius:2px;transition:all .25s}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.MN-burger.open span:nth-child(2){opacity:0}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.MN-mob{display:none;position:fixed;top:0;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:3.5rem 1.25rem 1rem;z-index:899;flex-direction:column;gap:2px}
+.MN-mob.open{display:flex}
+.MN-mob a{font-size:.82rem;color:#9999b8;text-decoration:none;padding:6px 8px;border-radius:6px}
+.MN-mob a:hover,.MN-mob a.MN-active{color:#00d4ff;background:rgba(0,212,255,.07)}
+.MN-mob hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:4px 0}
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;align-items:center;padding:0 1.25rem;background:rgba(7,7,16,.98);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a}
+.MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
+.MN-foot a:hover{color:#9999b8}
+.MN-foot-sep{opacity:.3;margin:0 2px}
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
+
+/* ── ROOT VARIABLES ── */
+:root{
+  --bg:#070710;--s1:#0d0d1a;--s2:#12121f;--s3:#181828;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
+  --cyan:#00d4ff;--green:#00e5a0;--red:#ff4d6d;--yellow:#ffd166;
+}
+
+/* ── BASE ── */
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
+*{box-sizing:border-box}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--text);line-height:1.3;margin-top:0}
+h1{font-size:1.9rem;font-weight:600;margin-bottom:1rem}
+h2{font-size:1.35rem;font-weight:600;margin-bottom:.75rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+h4{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+p{color:var(--sub);margin-bottom:1rem;line-height:1.75}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--text);font-weight:600}
+em{color:var(--sub)}
+code{font-family:'JetBrains Mono',monospace;font-size:.82em;color:var(--cyan);background:rgba(0,212,255,.08);padding:.1em .4em;border-radius:4px}
+pre{font-family:'JetBrains Mono',monospace;font-size:.82rem;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;overflow-x:auto;color:var(--text);line-height:1.65}
+sup,sub{font-size:.7em}
+
+/* ── LAYOUT ── */
+.page-wrap,.container,.wrap{max-width:960px;margin:0 auto;padding:3rem 2rem 2rem}
+.section{margin-bottom:3rem}
+
+/* ── SECTION LABELS ── */
+.section-label,.sec-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+
+/* ── CARDS ── */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;transition:border-color .15s}
+.card:hover{border-color:var(--border2)}
+.card-sm{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+.card-accent{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.18);border-radius:14px;padding:1.5rem}
+
+/* ── STAT / METRIC CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2rem}
+.stat-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan))}
+.stat-card.c-cyan{--accent:var(--cyan)}.stat-card.c-green{--accent:var(--green)}.stat-card.c-red{--accent:var(--red)}.stat-card.c-yellow{--accent:var(--yellow)}.stat-card.c-muted{--accent:var(--muted)}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.25rem}
+.stat-label{font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.stat-note{font-size:.72rem;color:var(--sub);margin-top:.3rem}
+
+/* ── FORMULA / MATH BLOCKS ── */
+.formula{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--text);background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.25rem;overflow-x:auto;line-height:1.8;margin:1rem 0}
+.formula-sm{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--cyan);background:rgba(0,212,255,.06);border-radius:6px;padding:.25rem .6rem;display:inline-block}
+.def-block{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.def-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.def-note{font-size:.82rem;color:var(--sub);margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.5rem}
+.math-inline{font-family:'JetBrains Mono',monospace;color:var(--text);font-size:.9em}
+
+/* ── DISCLAIMER / WARNING ── */
+.disclaimer{background:rgba(255,209,102,.04);border:1px solid rgba(255,209,102,.18);border-radius:12px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:.85rem;color:var(--sub);line-height:1.7}
+.disclaimer strong{color:var(--yellow)}
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:.9rem 1.1rem;font-size:.85rem;color:var(--sub);line-height:1.6}
+
+/* ── BADGES ── */
+.badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.2rem .6rem;border-radius:5px;display:inline-block;font-weight:500}
+.badge-cyan{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.22)}
+.badge-red{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.22)}
+.badge-yellow{background:rgba(255,209,102,.1);color:var(--yellow);border:1px solid rgba(255,209,102,.22)}
+.badge-muted{background:rgba(90,90,122,.12);color:var(--muted);border:1px solid rgba(90,90,122,.22)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .15s;border:none;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{background:var(--s2);color:var(--sub);border:1px solid var(--border2)}
+.btn-secondary:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.btn-outline{background:rgba(0,212,255,.07);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.btn-outline:hover{background:rgba(0,212,255,.12)}
+/* legacy */
+.run-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff;border:none;transition:opacity .15s}
+.run-btn:hover{opacity:.88}
+
+/* ── TABLES ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0}
+.data-table th{text-align:left;padding:.5rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.data-table td{padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--sub);font-family:'JetBrains Mono',monospace}
+.data-table tr:hover td{background:rgba(255,255,255,.02);color:var(--text)}
+.data-table td:first-child{color:var(--cyan);font-weight:600}
+.data-table td.pos{color:var(--green)}.data-table td.neg{color:var(--red)}.data-table td.warn{color:var(--yellow)}
+
+/* ── PROSE ── */
+.prose{color:var(--sub);line-height:1.8;font-size:.93rem}
+.prose h2,.prose h3{color:var(--text);margin:1.75rem 0 .6rem}
+.prose p{margin-bottom:1rem}
+.prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1rem}
+.prose li{margin-bottom:.35rem}
+.prose blockquote{border-left:3px solid var(--cyan);margin:1rem 0;padding:.75rem 1rem;color:var(--sub);font-style:italic;background:var(--s1);border-radius:0 8px 8px 0}
+
+/* ── RESULT DISPLAY ── */
+.result-banner{border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.result-banner.null{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2)}
+.result-banner.positive{background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.2)}
+.result-banner.negative{background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2)}
+.r-number{font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:700;line-height:1}
+.r-desc{font-size:.88rem;color:var(--sub);line-height:1.5}
+
+/* ── CHART CONTAINERS ── */
+.chart-wrap{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem}
+.chart-title{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.chart-title span{color:var(--cyan)}
+
+/* ── FORMS / CONTROLS ── */
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem}
+.ctrl-group{display:flex;flex-direction:column;gap:.3rem}
+.ctrl-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ctrl-input{background:var(--s2);border:1px solid var(--border2);border-radius:7px;padding:.35rem .65rem;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.83rem;width:90px;transition:border-color .15s}
+.ctrl-input:focus{outline:none;border-color:var(--cyan)}
+
+/* ── STEP LIST ── */
+.step-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.step-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:10px}
+.step-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(0,212,255,.12);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-family:'JetBrains Mono',monospace;font-weight:700;margin-top:.15rem}
+.step-content h4{font-size:.9rem;color:var(--text);margin-bottom:.2rem}
+.step-content p{font-size:.83rem;color:var(--sub);margin:0}
+
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.65rem;overflow:hidden;transition:border-color .15s}
+.faq-item:hover{border-color:var(--border2)}
+.faq-q{padding:1rem 1.25rem;cursor:pointer;font-size:.92rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'▾';font-size:.8rem;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(180deg)}
+.faq-a{padding:0 1.25rem 1rem;font-size:.88rem;color:var(--sub);line-height:1.75;display:none}
+.faq-item.open .faq-q{border-bottom:1px solid var(--border)}
+.faq-item.open .faq-a{display:block}
+
+/* ── UPLOAD ZONE ── */
+.upload-zone{border:2px dashed var(--border2);border-radius:14px;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.01)}
+.upload-zone:hover{border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.03)}
+.upload-title{font-size:.95rem;color:var(--text);font-weight:500;margin-bottom:.3rem}
+.upload-sub{font-size:.78rem;color:var(--muted)}
+
+/* ── UTILS ── */
+.text-cyan{color:var(--cyan)}.text-green{color:var(--green)}.text-red{color:var(--red)}.text-yellow{color:var(--yellow)}.text-muted{color:var(--muted)}.text-sub{color:var(--sub)}
+.mono{font-family:'JetBrains Mono',monospace}
+.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.tag{display:inline-block;font-size:.68rem;padding:.15rem .5rem;border-radius:4px;font-family:'JetBrains Mono',monospace;background:var(--s2);color:var(--sub);border:1px solid var(--border)}
+
+/* ── LINKS ── */
+.link-card{display:block;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;text-decoration:none;transition:all .15s;margin-bottom:.65rem}
+.link-card:hover{border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.03)}
+.link-card-title{font-size:.92rem;color:var(--text);font-weight:500;margin-bottom:.2rem}
+.link-card-desc{font-size:.82rem;color:var(--sub);line-height:1.5}
+.link-card-meta{font-size:.7rem;color:var(--muted);margin-top:.3rem;font-family:'JetBrains Mono',monospace}
+
+/* ── REMOVE DECORATIVE ── */
+.mesh,.grid-bg,.orb,.o1,.o2,.o3{display:none !important}
+
+</style>
+</head>
+<body class="en">
+<nav class="MN">
+  <a href="/paper1/" class="MN-logo">Results</a>
+  <div class="MN-sep"></div>
+  <div class="MN-links">
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+    <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+    <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+    <a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Лаб</span></a>
+    <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+    <a href="/paper1/faq.html">FAQ</a>
+    <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+    <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+    <a href="/paper1/nulltests.html">Null Tests</a>
+    <a href="/paper1/livestats.html">Live Stats</a>
+    <a href="/paper1/roadmap.html">Roadmap</a>
+    <a href="/paper1/discussion.html">Discussion</a>
+    <a href="/paper1/about.html">About</a>
+    <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <a href="/paper1/changelog.html">Changelog</a>
+  </div>
+  <div class="MN-sep"></div>
+  <a href="/" class="MN-plat">← Platform</a>
+  <div class="MN-btns">
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="MN-mob">
+  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+  <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+  <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+  <a href="/paper1/lab.html">Analysis Lab</a>
+  <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+  <a href="/paper1/faq.html">FAQ</a>
+  <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+  <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+  <a href="/paper1/nulltests.html">Null Tests</a>
+  <a href="/paper1/livestats.html">Live Stats</a>
+  <a href="/paper1/roadmap.html">Roadmap</a>
+  <a href="/paper1/discussion.html">Discussion</a>
+  <a href="/paper1/about.html">About</a>
+  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+  <a href="/paper1/changelog.html">Changelog</a>
+  <hr>
+  <a href="/">← Platform</a>
+</div>
+<div class="page-wrap">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Research Files</span><span data-li="mn">Судалгааны баримтууд</span></div>
+    <h2><span data-li="en">Code, Notes & Paper</span><span data-li="mn">Код, Тэмдэглэл & Өгүүлэл</span></h2>
+    <p class="prose" style="margin-bottom:2rem;"><span data-li="en">All source files from the GitHub repository, with explanations. Click any file to expand.</span><span data-li="mn">GitHub репозиторийн бүх файл тайлбарын хамт. Файл дарж задлаарай.</span></p>
+
+    <!-- FILE 1: analyze.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🐍</span>
+        <div class="file-meta">
+          <span class="file-name">analyze.py</span>
+          <div class="file-desc"><span data-li="en">Main analysis script — computes BK amplitude law correlation across zero datasets.</span><span data-li="mn">Гол шинжилгээний скрипт — BK амплитудын хуулийн корреляцийг тооцоолно.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">SciPy</span><span class="file-tag">Matplotlib</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-li="en">Loads Odlyzko zero data, computes spacing covariances C(h) for prime lags h=p, then tests the BK prediction A(p) ~ (log p)²/p using Pearson correlation. Outputs r value, p-value, and scatter plot.</span>
+            <span data-li="mn">Одлызкогийн тэгийн өгөгдлийг уншиж, прайм лаг h=p дээрх зайн ковариансыг C(h) тооцоолоод, Pearson корреляц ашиглан BK таамаглал A(p) ~ (log p)²/p-г шалгана. r утга, p-value, scatter plot гаргана.</span>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text"><span data-li="en">Load zeros from <code>zeros4.txt</code> (Odlyzko high-T data)</span><span data-li="mn"><code>zeros4.txt</code>-аас тэгүүдийг уншина (Одлызкогийн өндөр-T өгөгдөл)</span></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text"><span data-li="en">Compute spacings δₙ = γₙ₊₁ − γₙ and center them</span><span data-li="mn">δₙ = γₙ₊₁ − γₙ зайнуудыг тооцоолж, төвлүүлнэ</span></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text"><span data-li="en">For each prime p: compute covariance C(p) = mean(δₙ · δₙ₊ₚ)</span><span data-li="mn">Прайм p бүрт: ковариансыг C(p) = mean(δₙ · δₙ₊ₚ) тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text"><span data-li="en">Compute Pearson r between C(p) and (log p)²/p</span><span data-li="mn">C(p) болон (log p)²/p хооронд Pearson r тооцоолно</span></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text"><span data-li="en">Save scatter plot → <code>scatter.png</code></span><span data-li="mn">Scatter plot хадгална → <code>scatter.png</code></span></div></div>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre id="code-analyze"><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+<span class="kw">from</span> scipy.stats <span class="kw">import</span> pearsonr
+
+<span class="cm"># Load zero heights</span>
+x = np.<span class="fn">loadtxt</span>(<span class="st">"zeros4.txt"</span>)
+
+<span class="cm"># Spacings</span>
+d = np.<span class="fn">diff</span>(x)
+d = d - d.<span class="fn">mean</span>()  <span class="cm"># center</span>
+
+primes = [<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>]
+vals = []
+
+<span class="kw">for</span> p <span class="kw">in</span> primes:
+    a = d[:-p]
+    b = d[p:]
+    c = np.<span class="fn">mean</span>(a<span class="op">*</span>b)  <span class="cm"># covariance at lag p</span>
+    vals.<span class="fn">append</span>(c)
+
+vals = np.<span class="fn">array</span>(vals)
+target = (np.<span class="fn">log</span>(primes)<span class="op">**</span><span class="nm">2</span>) <span class="op">/</span> np.<span class="fn">array</span>(primes)
+
+<span class="cm"># BK amplitude law test</span>
+r, pv = <span class="fn">pearsonr</span>(vals, target)
+<span class="fn">print</span>(<span class="st">"correlation ="</span>, r)
+<span class="fn">print</span>(<span class="st">"p-value ="</span>, pv)
+
+<span class="cm"># Scatter plot</span>
+plt.<span class="fn">scatter</span>(target, vals)
+plt.<span class="fn">xlabel</span>(<span class="st">r'$(\log p)^2/p$'</span>)
+plt.<span class="fn">ylabel</span>(<span class="st">'Amplitude'</span>)
+plt.<span class="fn">title</span>(<span class="st">'Prime-Locked Excess'</span>)
+plt.<span class="fn">savefig</span>(<span class="st">"scatter.png"</span>, dpi=<span class="nm">200</span>)</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 2: 01_power_spectrum.py -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📊</span>
+        <div class="file-meta">
+          <span class="file-name">code/01_power_spectrum.py</span>
+          <div class="file-desc"><span data-li="en">Computes the power spectrum S(τ) of Riemann zeros and plots peaks at prime frequencies.</span><span data-li="mn">Риман тэгүүдийн S(τ) power spectrum тооцоолж, прайм давтамж дээрх оргилуудыг зурна.</span></div>
+          <div class="file-tags"><span class="file-tag">Python</span><span class="file-tag">NumPy</span><span class="file-tag">Fourier</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">What this does</span><span data-li="mn">Юу хийдэг вэ</span></div>
+            <span data-li="en">Computes S(τ) = |Σ e^{iτγₙ}|²/N for a range of τ values, then marks the prime frequencies τ_p = log(p)/2π on the spectrum. This was the first analysis that showed excess signal at prime positions.</span>
+            <span data-li="mn">τ утгуудын мужид S(τ) = |Σ e^{iτγₙ}|²/N тооцоолж, спектр дээр прайм давтамж τ_p = log(p)/2π-г тэмдэглэнэ. Энэ нь прайм позиц дээр илүүдэл дохио харуулсан анхны шинжилгээ байв.</span>
+          </div>
+          <div class="code-block">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre><span class="cm">"""Тэгүүдийн power spectrum S(tau) тооцоолох"""</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+<span class="kw">def</span> <span class="fn">power_spectrum</span>(tau, gamma):
+    <span class="st">"""S(tau) = |Σ e^{i τ γ_n}|² / N"""</span>
+    N = <span class="fn">len</span>(gamma)
+    Z = np.<span class="fn">sum</span>(np.<span class="fn">exp</span>(<span class="nm">1j</span> <span class="op">*</span> tau <span class="op">*</span> gamma))
+    <span class="kw">return</span> np.<span class="fn">abs</span>(Z)<span class="op">**</span><span class="nm">2</span> <span class="op">/</span> N
+
+<span class="cm"># Prime frequencies τ_p = log(p) / 2π</span>
+primes = np.<span class="fn">array</span>([<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">13</span>,<span class="nm">17</span>,<span class="nm">19</span>,<span class="nm">23</span>,<span class="nm">29</span>,<span class="nm">31</span>,<span class="nm">37</span>])
+tau_p = np.<span class="fn">log</span>(primes) <span class="op">/</span> (<span class="nm">2</span><span class="op">*</span>np.pi)
+
+<span class="cm"># Full spectrum</span>
+tau_all = np.<span class="fn">linspace</span>(<span class="nm">0</span>, <span class="nm">0.8</span>, <span class="nm">1000</span>)
+S_all = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_all])
+S_obs = np.<span class="fn">array</span>([<span class="fn">power_spectrum</span>(t, gamma) <span class="kw">for</span> t <span class="kw">in</span> tau_p])</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 3: framework_summary.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📐</span>
+        <div class="file-meta">
+          <span class="file-name">notes/framework_summary.md</span>
+          <div class="file-desc"><span data-li="en">Mellin operator framework — the mathematical foundation connecting prime operators to zeta zeros.</span><span data-li="mn">Меллин операторын хүрээ — прайм операторуудыг зета тэгүүдтэй холбосон математик суурь.</span></div>
+          <div class="file-tags"><span class="file-tag">Mathematics</span><span class="file-tag">Operator Theory</span><span class="file-tag">L²</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Mathematical framework</span><span data-li="mn">Математик хүрээ</span></div>
+            <span data-li="en">The Mellin transform framework provides an operator-theoretic explanation for why prime frequencies appear in zeta zero statistics. The key result is that the prime convolution operator acts as a multiplier via −ζ'/ζ.</span>
+            <span data-li="mn">Меллин хувиргалтын хүрээ нь прайм давтамжууд яагаад зета тэгийн статистикт гарч ирдгийг операторын онолоор тайлбарлана. Гол үр дүн нь прайм конволюцийн оператор −ζ'/ζ-ээр үржигч болж ажиллана.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#c9a84c;">## Hilbert space</span>
+H = L²((0,∞), dx/x)
+
+<span style="color:#c9a84c;">## Mellin transform</span>
+(Mf)(τ) = (1/√(2π)) ∫₀^∞ f(x) x^{-iτ} dx/x
+
+<span style="color:#c9a84c;">## Prime operator</span>
+(P_σ f)(x) = Σ_{n≥1} Λ(n)/n^σ · f(x/n)
+
+<span style="color:#c9a84c;">## Multiplier theorem  ← KEY RESULT</span>
+M[P_σ f](τ) = -ζ'(σ+iτ)/ζ(σ+iτ) · Mf(τ)
+
+<span style="color:#c9a84c;">## Energy identity</span>
+E(σ,ε,X) = ∫_R |ζ'/ζ(σ+iτ)|² |φ̂(τ)|² dτ</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 4: failure_analysis.md -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">🔍</span>
+        <div class="file-meta">
+          <span class="file-name">notes/failure_analysis.md</span>
+          <div class="file-desc"><span data-li="en">Why the initial BK amplitude test failed — and how the correct normalization was discovered.</span><span data-li="mn">Яагаад анхны BK амплитудын тест амжилтгүй болсон — зөв нормализаци хэрхэн олдсон.</span></div>
+          <div class="file-tags"><span class="file-tag">Analysis</span><span class="file-tag">Normalization</span><span class="file-tag">Debugging</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">The key insight</span><span data-li="mn">Гол ойлголт</span></div>
+            <span data-li="en">Initial results showed r ≈ 0.4–0.6, suggesting BK law was not confirmed. The problem was the normalization: using τ_p = log(p)/2π (low-T formula) instead of the correct high-T unfolded frequency τ_p = log(p)/log(T/2π). Using the corrected normalization produced r ≈ 0.014 in this dataset.</span>
+            <span data-li="mn">Анхны үр дүнд r ≈ 0.4–0.6 гарч, BK хууль батлагдаагүй мэт харагдав. Асуудал нь нормализацид байсан: зөв өндөр-T задгай давтамж τ_p = log(p)/log(T/2π)-н оронд τ_p = log(p)/2π (бага-T томьёо) ашигласан байв. Зассаны дараа r = 0.014 гарсан.</span>
+          </div>
+          <div class="code-block" style="background:#0a0a12;">
+            <button class="code-copy" onclick="copyCode(this)">COPY</button>
+            <pre style="color:#c8d3f5;"><span style="color:#e05c5c;">## ❌ WRONG normalization (low-T)</span>
+τ_p = log(p) / (2π)
+<span style="color:#585b70;"># → r ≈ 0.4–0.6, BK not confirmed</span>
+
+<span style="color:#4caf7d;">## ✅ CORRECT normalization (high-T unfolded)</span>
+τ_p = log(p) / log(T / 2π)
+<span style="color:#585b70;"># → r = 0.014</span>
+
+<span style="color:#c9a84c;">## Why this matters</span>
+<span style="color:#585b70;"># At height T, zeros have mean spacing ~2π/log(T/2π)
+# The "unfolded" coordinate accounts for this
+# Montgomery's pair correlation uses this normalization</span></pre>
+          </div>
+          <div class="note-block" style="border-left-color:var(--green);margin-top:1rem;">
+            <div class="note-label" style="color:var(--green);">Lesson learned</div>
+            <span data-li="en">Scientific failures are valuable. This failure led directly to the key insight that produced r = 0.014.</span>
+            <span data-li="mn">Шинжлэх ухааны бүтэлгүйдэл үнэтэй. Энэ бүтэлгүйдэл r = 0.014 гаргасан гол ойлголтод шууд хүргэсэн.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE 5: main.tex -->
+    <div class="file-card">
+      <div class="file-header" onclick="toggleFile(this)">
+        <span class="file-icon">📝</span>
+        <div class="file-meta">
+          <span class="file-name">paper/main.tex</span>
+          <div class="file-desc"><span data-li="en">LaTeX source for the full research paper — the formal write-up of all results.</span><span data-li="mn">Бүрэн судалгааны өгүүллийн LaTeX эх — бүх үр дүнгийн албан ёсны бичгийн хэлбэр.</span></div>
+          <div class="file-tags"><span class="file-tag">LaTeX</span><span class="file-tag">PDF</span><span class="file-tag">Preprint</span></div>
+        </div>
+        <span class="file-toggle">▼</span>
+      </div>
+      <div class="file-body">
+        <div class="file-body-inner">
+          <div class="note-block">
+            <div class="note-label"><span data-li="en">Paper structure</span><span data-li="mn">Өгүүллийн бүтэц</span></div>
+            <span data-li="en">The paper contains: Abstract, Introduction (BK background), Methods (spacing covariance, normalization), Results (table with r values for all 3 datasets), Discussion, Limitations, Conclusion.</span>
+            <span data-li="mn">Өгүүлэл дараах хэсгүүдийг агуулна: Хураангуй, Танилцуулга (BK суурь), Арга (зайн ковариансыг, нормализаци), Үр дүн (3 датасетийн r утгын хүснэгт), Хэлэлцүүлэг, Хязгаарлалтууд, Дүгнэлт.</span>
+          </div>
+          <div style="margin-top:1rem;">
+            <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;">
+              <span class="li">📄</span><div><span class="lt"><span data-li="en">Download preprint</span><span data-li="mn">Preprint татах</span></span><span class="ld">zenodo.org/records/20077673</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// === NAV HARD FIX: active state, mobile menu, dropdown click, language ===
+(function(){
+  function cleanPath(v){
+    if(!v) return '';
+    v = String(v).split('#')[0].split('?')[0];
+    if(!v) return '';
+    var a = document.createElement('a');
+    a.href = v;
+    var p = a.pathname || v;
+    p = p.replace(/\/index\.html$/,'/');
+    if(p.length > 1) p = p.replace(/\/$/,'');
+    return p || '/';
+  }
+  function setLang(lang){
+    lang = lang === 'mn' ? 'mn' : 'en';
+    document.documentElement.setAttribute('data-lang', lang);
+    try{localStorage.setItem('MN_lang', lang);}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(btn){
+      btn.classList.toggle('MN-active', btn.getAttribute('data-l') === lang);
+    });
+  }
+  window.setLang = setLang;
+  var saved = 'en';
+  try{ saved = localStorage.getItem('MN_lang') || 'en'; }catch(e){}
+  setLang(saved);
+
+  var path = cleanPath(window.location.pathname);
+  document.querySelectorAll('.MN a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    var target = cleanPath(href);
+    var active = target === path || (target === '/paper1' && (path === '/paper1' || path === '/paper1/'));
+    a.classList.toggle('MN-active', active);
+    var drop = a.closest('.MN-drop');
+    if(active && drop){
+      var btn = drop.querySelector('.MN-drop-btn');
+      if(btn) btn.classList.add('MN-active');
+    }
+  });
+
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      var open = !mobile.classList.contains('open');
+      burger.classList.toggle('open', open);
+      mobile.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click', function(){mobile.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
+  }
+  document.querySelectorAll('.MN-lb').forEach(function(btn){btn.addEventListener('click', function(){setLang(btn.getAttribute('data-l'));});});
+  document.querySelectorAll('.MN-drop-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var wrap = btn.closest('.MN-drop');
+      if(!wrap) return;
+      var open = !wrap.classList.contains('MN-open');
+      document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+      wrap.classList.toggle('MN-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.MN-drop')) document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+  });
+})();
+</script>
+<footer class="MN-foot">
+  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
+    <a href="/paper1/" class="MN-flink"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/replication.html" class="MN-flink"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/data.html" class="MN-flink"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/about.html" class="MN-flink"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+    <span style="color:#404058">·</span>
+    <a href="https://zenodo.org/records/20077673" target="_blank" class="MN-flink">DOI</a>
+  </span>
+  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v0.4</span>
+</footer>
+<style>.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}.MN-flink:hover{color:#9999b8}.MN-flink.MN-active{color:#00d4ff;border-bottom-color:#00d4ff}</style>
+<script>(function(){var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");document.querySelectorAll(".MN-flink").forEach(function(a){var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");if(h&&h===path)a.classList.add("MN-active")})})();</script>
+<script>
+(function(){
+  function setLang(l){
+    l=l==='mn'?'mn':'en';
+    document.body.className=l;
+    try{localStorage.setItem('lang',l)}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  }
+  window.setLang=setLang;
+  var path=window.location.pathname.replace(/\/$/,'').replace(/\/index\.html$/,'/');
+  document.querySelectorAll('.MN-links a,.MN-mob a').forEach(function(a){
+    var h=(a.getAttribute('href')||'').replace(/\/$/,'').replace(/\/index\.html$/,'/');
+    if(h&&h===path)a.classList.add('MN-active');
+  });
+  var burger=document.querySelector('.MN-burger');
+  var mob=document.querySelector('.MN-mob');
+  if(burger&&mob){
+    burger.addEventListener('click',function(){burger.classList.toggle('open');mob.classList.toggle('open')});
+    document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}});
+  }
+  try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
+})();
+</script>
+</body>
+</html>

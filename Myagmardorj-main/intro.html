@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Platform Introduction · research.nexcore.ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.MN-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
+.MN-links{display:flex;align-items:center;justify-content:center;gap:2px;flex:1;flex-wrap:wrap}
+.MN-links a{font-size:.72rem;color:#9999b8;text-decoration:none;padding:3px 6px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap}
+.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07)}
+.MN-links a.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff;padding-bottom:1px}
+.MN-plat{font-size:.7rem;color:#5a5a7a;text-decoration:none;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0;transition:color .15s,border-color .15s}
+.MN-plat:hover{color:#9999b8;border-color:rgba(255,255,255,.15)}
+.MN-btns{display:flex;gap:3px;flex-shrink:0}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:3px 8px;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a}
+.MN-lb.on{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent}
+.MN-burger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.4rem;border:none;background:none;flex-shrink:0}
+.MN-burger span{display:block;width:18px;height:1.5px;background:#9999b8;border-radius:2px;transition:all .25s}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.MN-burger.open span:nth-child(2){opacity:0}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.MN-mob{display:none;position:fixed;top:0;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:3.5rem 1.25rem 1rem;z-index:899;flex-direction:column;gap:2px}
+.MN-mob.open{display:flex}
+.MN-mob a{font-size:.82rem;color:#9999b8;text-decoration:none;padding:6px 8px;border-radius:6px}
+.MN-mob a:hover,.MN-mob a.MN-active{color:#00d4ff;background:rgba(0,212,255,.07)}
+.MN-mob hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:4px 0}
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;align-items:center;padding:0 1.25rem;background:rgba(7,7,16,.98);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a}
+.MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
+.MN-foot a:hover{color:#9999b8}
+.MN-foot-sep{opacity:.3;margin:0 2px}
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
+
+/* ── ROOT VARIABLES ── */
+:root{
+  --bg:#070710;--s1:#0d0d1a;--s2:#12121f;--s3:#181828;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
+  --cyan:#00d4ff;--green:#00e5a0;--red:#ff4d6d;--yellow:#ffd166;
+}
+
+/* ── BASE ── */
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
+*{box-sizing:border-box}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--text);line-height:1.3;margin-top:0}
+h1{font-size:1.9rem;font-weight:600;margin-bottom:1rem}
+h2{font-size:1.35rem;font-weight:600;margin-bottom:.75rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+h4{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+p{color:var(--sub);margin-bottom:1rem;line-height:1.75}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--text);font-weight:600}
+em{color:var(--sub)}
+code{font-family:'JetBrains Mono',monospace;font-size:.82em;color:var(--cyan);background:rgba(0,212,255,.08);padding:.1em .4em;border-radius:4px}
+pre{font-family:'JetBrains Mono',monospace;font-size:.82rem;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;overflow-x:auto;color:var(--text);line-height:1.65}
+sup,sub{font-size:.7em}
+
+/* ── LAYOUT ── */
+.page-wrap,.container,.wrap{max-width:960px;margin:0 auto;padding:3rem 2rem 2rem}
+.section{margin-bottom:3rem}
+
+/* ── SECTION LABELS ── */
+.section-label,.sec-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+
+/* ── CARDS ── */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;transition:border-color .15s}
+.card:hover{border-color:var(--border2)}
+.card-sm{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+.card-accent{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.18);border-radius:14px;padding:1.5rem}
+
+/* ── STAT / METRIC CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2rem}
+.stat-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan))}
+.stat-card.c-cyan{--accent:var(--cyan)}.stat-card.c-green{--accent:var(--green)}.stat-card.c-red{--accent:var(--red)}.stat-card.c-yellow{--accent:var(--yellow)}.stat-card.c-muted{--accent:var(--muted)}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.25rem}
+.stat-label{font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.stat-note{font-size:.72rem;color:var(--sub);margin-top:.3rem}
+
+/* ── FORMULA / MATH BLOCKS ── */
+.formula{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--text);background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.25rem;overflow-x:auto;line-height:1.8;margin:1rem 0}
+.formula-sm{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--cyan);background:rgba(0,212,255,.06);border-radius:6px;padding:.25rem .6rem;display:inline-block}
+.def-block{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.def-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.def-note{font-size:.82rem;color:var(--sub);margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.5rem}
+.math-inline{font-family:'JetBrains Mono',monospace;color:var(--text);font-size:.9em}
+
+/* ── DISCLAIMER / WARNING ── */
+.disclaimer{background:rgba(255,209,102,.04);border:1px solid rgba(255,209,102,.18);border-radius:12px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:.85rem;color:var(--sub);line-height:1.7}
+.disclaimer strong{color:var(--yellow)}
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:.9rem 1.1rem;font-size:.85rem;color:var(--sub);line-height:1.6}
+
+/* ── BADGES ── */
+.badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.2rem .6rem;border-radius:5px;display:inline-block;font-weight:500}
+.badge-cyan{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.22)}
+.badge-red{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.22)}
+.badge-yellow{background:rgba(255,209,102,.1);color:var(--yellow);border:1px solid rgba(255,209,102,.22)}
+.badge-muted{background:rgba(90,90,122,.12);color:var(--muted);border:1px solid rgba(90,90,122,.22)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .15s;border:none;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{background:var(--s2);color:var(--sub);border:1px solid var(--border2)}
+.btn-secondary:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.btn-outline{background:rgba(0,212,255,.07);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.btn-outline:hover{background:rgba(0,212,255,.12)}
+/* legacy */
+.run-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff;border:none;transition:opacity .15s}
+.run-btn:hover{opacity:.88}
+
+/* ── TABLES ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0}
+.data-table th{text-align:left;padding:.5rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.data-table td{padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--sub);font-family:'JetBrains Mono',monospace}
+.data-table tr:hover td{background:rgba(255,255,255,.02);color:var(--text)}
+.data-table td:first-child{color:var(--cyan);font-weight:600}
+.data-table td.pos{color:var(--green)}.data-table td.neg{color:var(--red)}.data-table td.warn{color:var(--yellow)}
+
+/* ── PROSE ── */
+.prose{color:var(--sub);line-height:1.8;font-size:.93rem}
+.prose h2,.prose h3{color:var(--text);margin:1.75rem 0 .6rem}
+.prose p{margin-bottom:1rem}
+.prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1rem}
+.prose li{margin-bottom:.35rem}
+.prose blockquote{border-left:3px solid var(--cyan);margin:1rem 0;padding:.75rem 1rem;color:var(--sub);font-style:italic;background:var(--s1);border-radius:0 8px 8px 0}
+
+/* ── RESULT DISPLAY ── */
+.result-banner{border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.result-banner.null{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2)}
+.result-banner.positive{background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.2)}
+.result-banner.negative{background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2)}
+.r-number{font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:700;line-height:1}
+.r-desc{font-size:.88rem;color:var(--sub);line-height:1.5}
+
+/* ── CHART CONTAINERS ── */
+.chart-wrap{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem}
+.chart-title{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.chart-title span{color:var(--cyan)}
+
+/* ── FORMS / CONTROLS ── */
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem}
+.ctrl-group{display:flex;flex-direction:column;gap:.3rem}
+.ctrl-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ctrl-input{background:var(--s2);border:1px solid var(--border2);border-radius:7px;padding:.35rem .65rem;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.83rem;width:90px;transition:border-color .15s}
+.ctrl-input:focus{outline:none;border-color:var(--cyan)}
+
+/* ── STEP LIST ── */
+.step-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.step-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:10px}
+.step-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(0,212,255,.12);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-family:'JetBrains Mono',monospace;font-weight:700;margin-top:.15rem}
+.step-content h4{font-size:.9rem;color:var(--text);margin-bottom:.2rem}
+.step-content p{font-size:.83rem;color:var(--sub);margin:0}
+
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.65rem;overflow:hidden;transition:border-color .15s}
+.faq-item:hover{border-color:var(--border2)}
+.faq-q{padding:1rem 1.25rem;cursor:pointer;font-size:.92rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'▾';font-size:.8rem;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(180deg)}
+.faq-a{padding:0 1.25rem 1rem;font-size:.88rem;color:var(--sub);line-height:1.75;display:none}
+.faq-item.open .faq-q{border-bottom:1px solid var(--border)}
+.faq-item.open .faq-a{display:block}
+
+/* ── UPLOAD ZONE ── */
+.upload-zone{border:2px dashed var(--border2);border-radius:14px;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.01)}
+.upload-zone:hover{border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.03)}
+.upload-title{font-size:.95rem;color:var(--text);font-weight:500;margin-bottom:.3rem}
+.upload-sub{font-size:.78rem;color:var(--muted)}
+
+/* ── UTILS ── */
+.text-cyan{color:var(--cyan)}.text-green{color:var(--green)}.text-red{color:var(--red)}.text-yellow{color:var(--yellow)}.text-muted{color:var(--muted)}.text-sub{color:var(--sub)}
+.mono{font-family:'JetBrains Mono',monospace}
+.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.tag{display:inline-block;font-size:.68rem;padding:.15rem .5rem;border-radius:4px;font-family:'JetBrains Mono',monospace;background:var(--s2);color:var(--sub);border:1px solid var(--border)}
+
+/* ── LINKS ── */
+.link-card{display:block;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;text-decoration:none;transition:all .15s;margin-bottom:.65rem}
+.link-card:hover{border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.03)}
+.link-card-title{font-size:.92rem;color:var(--text);font-weight:500;margin-bottom:.2rem}
+.link-card-desc{font-size:.82rem;color:var(--sub);line-height:1.5}
+.link-card-meta{font-size:.7rem;color:var(--muted);margin-top:.3rem;font-family:'JetBrains Mono',monospace}
+
+/* ── REMOVE DECORATIVE ── */
+.mesh,.grid-bg,.orb,.o1,.o2,.o3{display:none !important}
+
+</style>
+</head>
+<body class="en">
+<nav class="MN">
+  <a href="/" class="MN-logo">research.nexcore.ltd</a>
+  <div class="MN-links">
+    <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+    <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
+    <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+  </div>
+  <div class="MN-btns">
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="MN-mob">
+  <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+  <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+  <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+  <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
+  <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+</div>
+<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div></div>
+<div class="grid-bg"></div>
+
+
+
+
+
+
+
+
+<main class="container">
+  <div class="section-label"><span data-li="en">Platform Introduction</span><span data-li="mn">Платформын танилцуулга</span></div>
+  <h1><span data-li="en">Nexcore Research Platform</span><span data-li="mn">Nexcore Судалгааны Платформ</span></h1>
+  <p><span data-li="en">This site is an open computational research platform. Each research archive has its own pages, data, methods, replication notes, and limitations.</span><span data-li="mn">Энэ сайт нь нээлттэй тооцооллын судалгааны платформ юм. Судалгаа бүр өөрийн үр дүн, өгөгдөл, аргачлал, давтан шалгах заавар, хязгаарлалттай байна.</span></p>
+  <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem;">
+    <div class="card"><h3>Research #001</h3><p><span data-li="en">Numerical observations related to Riemann zero statistics and BK-type scaling.</span><span data-li="mn">Риманы тэгийн статистик ба BK-төрлийн scaling-тэй холбоотой тооцооллын ажиглалт.</span></p><p><a href="/paper1/"><span data-li="en">Open archive →</span><span data-li="mn">Архив нээх →</span></a></p></div>
+    <div class="card"><h3><span data-li="en">Verification</span><span data-li="mn">Шалгалт</span></h3><p><span data-li="en">The platform links each result to replication paths and source material.</span><span data-li="mn">Платформ нь үр дүн бүрийг давтан шалгах зам ба эх материалтай холбодог.</span></p><p><a href="/verify.html"><span data-li="en">Verification gateway →</span><span data-li="mn">Шалгах гарц →</span></a></p></div>
+    <div class="card"><h3><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></h3><p><span data-li="en">Context for mathematical problems and where each archive fits.</span><span data-li="mn">Математикийн бодлогуудын хүрээ ба архивуудын байрлал.</span></p><p><a href="/landscape.html"><span data-li="en">View landscape →</span><span data-li="mn">Хүрээ харах →</span></a></p></div>
+  </div>
+
+  <!-- BK–RH CONNECTION EXPLAINER -->
+  <div style="margin-top:3rem;border-top:1px solid rgba(255,255,255,.06);padding-top:3rem;">
+    <div class="section-label">
+      <span data-li="en">Research #001 · Context</span>
+      <span data-li="mn">Судалгаа #001 · Тайлбар</span>
+    </div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:1.2rem;">
+      <span data-li="en">How This Research Connects to the Riemann Hypothesis</span>
+      <span data-li="mn">Энэ судалгаа Риманы таамаглалтай хэрхэн холбогдох вэ?</span>
+    </h2>
+
+    <!-- Step 1 -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#00d4ff;margin-bottom:.7rem;">
+        <span data-li="en">Step 1 — The BK Conjecture</span>
+        <span data-li="mn">Алхам 1 — Богомолны–Китингийн таамаглал</span>
+      </div>
+      <p style="font-size:.9rem;color:#9999b8;line-height:1.75;margin:0;">
+        <span data-li="en">The Bogomolny–Keating (1996) conjecture predicts that the spacing covariance C(τ) of Riemann zeros carries a prime-indexed signal: A(p) ∼ C·(log p)²/p. If true, this is a deep structural link between the zeros of ζ(s) and prime numbers.</span>
+        <span data-li="mn">Богомолны–Китинг (1996) таамаглал нь Риманы тэгийн зайн ковариант C(τ) нь анхны тооны индекстэй дохио агуулна гэж урьдчилан таамаглана: <strong style="color:#eeeef8;">A(p) ∼ C·(log p)²/p</strong>. Хэрэв үнэн бол энэ нь ζ(s)-ийн тэгүүд ба анхны тоонуудын хоорондох гүн бүтцийн холбоо юм.</span>
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#00d4ff;margin-bottom:.7rem;">
+        <span data-li="en">Step 2 — What Was Tested</span>
+        <span data-li="mn">Алхам 2 — Юуг шалгасан вэ?</span>
+      </div>
+      <p style="font-size:.9rem;color:#9999b8;line-height:1.75;margin:0 0 .8rem;">
+        <span data-li="en">Three Odlyzko zero datasets at extreme heights (T ~ 10¹², 10¹³) were used to compute empirical A(p) values at prime lags p = 2, 3, 5, …, 37. These were then compared with the BK predictor B(p) = (log p)²/p using Pearson correlation.</span>
+        <span data-li="mn">Одлызкогийн гурван датасетийг өндөр T (~ 10¹², 10¹³) дээр ашиглаж прайм лаг p = 2, 3, 5, …, 37 дахь эмпирик A(p) утгыг тооцоолов. Үүнийг BK урьдчилсан утга B(p) = (log p)²/p-тай Pearson корреляцийн аргаар харьцуулав.</span>
+      </p>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.25rem .7rem;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);color:#00d4ff;border-radius:6px;">zeros1 · T~10¹²</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.25rem .7rem;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);color:#00d4ff;border-radius:6px;">zeros_ht · T~74,920</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.25rem .7rem;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18);color:#00d4ff;border-radius:6px;">zeros6 · T~10¹³</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.25rem .7rem;background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.15);color:#00e5a0;border-radius:6px;">p = 2,3,5,7,11,13,17,19,23,29,31,37</span>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#00d4ff;margin-bottom:.7rem;">
+        <span data-li="en">Step 3 — The Final Result</span>
+        <span data-li="mn">Алхам 3 — Эцсийн үр дүн</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:.8rem;">
+        <div style="background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.18);border-radius:10px;padding:.8rem 1.4rem;text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:#ff4d6d;line-height:1;">r = 0.017</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#5a5a7a;margin-top:.3rem;letter-spacing:.1em;">PEARSON r · NULL RESULT</div>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <p style="font-size:.88rem;color:#9999b8;line-height:1.75;margin:0;">
+            <span data-li="en">After Chebyshev ψ₀(x) explicit-formula validation (credit: Steven Clark, Math StackExchange #5135941), no significant BK-type correlation was found. Earlier intermediate values (r = 0.45–0.68) were superseded.</span>
+            <span data-li="mn">Chebyshev ψ₀(x) тодорхой томьёогоор баталгаажуулсны дараа (Steven Clark, Math StackExchange #5135941), мэдэгдэхүйц BK-төрлийн корреляц олдсонгүй. Өмнөх завсрын утгууд (r = 0.45–0.68) хуучирсан гэж тооцогдов.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why null results matter -->
+    <div style="background:rgba(0,229,160,.03);border:1px solid rgba(0,229,160,.12);border-left:3px solid #00e5a0;border-radius:0 12px 12px 0;padding:1.4rem 1.8rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#00e5a0;margin-bottom:.6rem;">
+        <span data-li="en">Why "Not Found" Matters in Science</span>
+        <span data-li="mn">Яагаад "Олдсонгүй" гэсэн үр дүн шинжлэх ухаанд чухал вэ?</span>
+      </div>
+      <p style="font-size:.88rem;color:#9999b8;line-height:1.75;margin:0;">
+        <span data-li="en">A null result — finding no significant effect — is scientifically valuable. It narrows the space of what is possible, prevents the research community from pursuing dead ends, and demonstrates honest, reproducible methodology. This result honestly reports r = 0.017 rather than claiming a false discovery.</span>
+        <span data-li="mn">
+          Null буюу "хамаарал олдсонгүй" гэсэн үр дүн нь шинжлэх ухаанд маш чухал ач холбогдолтой:
+          <br><br>
+          <strong style="color:#eeeef8;">① Боломжийн орон зайг хязгаарлана</strong> — Ямар арга хандлага ажиллахгүйг тогтоосноор судлаачид цаашдаа буруу замаар явахгүй.
+          <br>
+          <strong style="color:#eeeef8;">② Шударга шинжлэх ухааны жишээ</strong> — r = 0.017 гэсэн үнэнийг мэдээлэх нь r = 0.68 гэсэн завсрын, тогтворгүй үр дүнг мэдээлэхээс хамаагүй үнэ цэнэтэй.
+          <br>
+          <strong style="color:#eeeef8;">③ Давталтын чанар</strong> — Эдгээр үр дүнг хэн ч Одлызкогийн өгөгдөл дээр <code style="font-family:'JetBrains Mono',monospace;font-size:.82em;color:#00d4ff;">python scripts/analyze.py</code> ажиллуулж шалгах боломжтой.
+          <br>
+          <strong style="color:#eeeef8;">④ Нийтлэлийн баримтжуулалт</strong> — Experimental Mathematics сэтгүүлд татан авалт илгээсэн нь шинжлэх ухааны ёс зүйн нэг хэсэг юм.
+        </span>
+      </p>
+    </div>
+
+    <!-- Summary flow -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.5rem 2rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#5a5a7a;margin-bottom:1rem;">
+        <span data-li="en">Research Flow Summary</span>
+        <span data-li="mn">Судалгааны явцын хураангуй</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;">
+        <span style="padding:.3rem .8rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:#00d4ff;border-radius:6px;"><span data-li="en">Odlyzko zeros</span><span data-li="mn">Одлызкогийн тэгүүд</span></span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="padding:.3rem .8rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:#00d4ff;border-radius:6px;"><span data-li="en">Unfolding</span><span data-li="mn">Нормалчлал</span></span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="padding:.3rem .8rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:#00d4ff;border-radius:6px;">A(p) <span data-li="en">covariance</span><span data-li="mn">ковариант</span></span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="padding:.3rem .8rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:#00d4ff;border-radius:6px;">Pearson r</span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="padding:.3rem .8rem;background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.2);color:#ff4d6d;border-radius:6px;font-weight:700;">r = 0.017 · NULL</span>
+      </div>
+      <p style="font-size:.78rem;color:#5a5a7a;margin:.8rem 0 0;line-height:1.6;">
+        <span data-li="en">Honest computational observation. Not a proof of RH. Not a confirmed theorem. Open data, open code.</span>
+        <span data-li="mn">Шударга тооцооллын ажиглалт. RH-н нотолгоо биш. Батлагдсан теорем биш. Нээлттэй өгөгдөл, нээлттэй код.</span>
+      </p>
+    </div>
+  </div>
+  <!-- END BK–RH CONNECTION EXPLAINER -->
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;">
+
+  
+  <!-- Риманы таамаглал тайлбар -->
+  <div style="margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.07);padding-top:2.5rem;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#00d4ff;margin-bottom:.5rem;">
+      <span data-li="en">Background · Riemann Hypothesis</span>
+      <span data-li="mn">Үндэслэл · Риманы таамаглал</span>
+    </div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.8rem;letter-spacing:-.02em;">
+      <span data-li="en">What is the Riemann Hypothesis?</span>
+      <span data-li="mn">Риманы таамаглал гэж юу вэ?</span>
+    </h2>
+    <p style="font-size:.92rem;color:#9999b8;line-height:1.8;margin-bottom:1.5rem;">
+      <span data-li="en">The Riemann Hypothesis is one of the most famous and important unsolved problems in mathematics — specifically in number theory. It was proposed in 1859 by German mathematician Bernhard Riemann. In short, it expresses that the distribution of prime numbers follows a very precise regularity.</span>
+      <span data-li="mn">Риманы таамаглал нь математикийн, тэр дундаа тооны онолын хамгийн алдартай, чухал бөгөөд одоог хүртэл батлагдаагүй байгаа таамаглалуудын нэг юм. Энэхүү таамаглалыг 1859 онд Германы математикч Бернхард Риман дэвшүүлжээ. Товчхондоо, энэ нь ерөнхий тоонуудын тархалт маш нарийн зүй тогтолтой гэдгийг илэрхийлдэг.</span>
+    </p>
+
+    <!-- Үндсэн ойлголт -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">CORE CONCEPTS</span>
+      <span data-li="mn">ҮНДСЭН ОЙЛГОЛТ</span>
+    </div>
+
+    <!-- 1. Зета функц -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.2rem;margin-bottom:.8rem;">
+      <div style="font-size:.85rem;font-weight:600;color:#eeeef8;margin-bottom:.5rem;">
+        1. <span data-li="en">Riemann Zeta Function ζ(s)</span>
+           <span data-li="mn">Риманы зета функц ζ(s)</span>
+      </div>
+      <p style="font-size:.88rem;color:#9999b8;line-height:1.7;margin-bottom:.6rem;">
+        <span data-li="en">Defined for complex numbers s:</span>
+        <span data-li="mn">s цогцолбор тооны хувьд тодорхойлогддог функц:</span>
+      </p>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.88rem;color:#00d4ff;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.1);border-radius:8px;padding:.8rem;text-align:center;">
+        ζ(s) = Σ 1/nˢ = 1/1ˢ + 1/2ˢ + 1/3ˢ + …
+      </div>
+    </div>
+
+    <!-- 2. Тэглэгч утгууд -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.2rem;margin-bottom:.8rem;">
+      <div style="font-size:.85rem;font-weight:600;color:#eeeef8;margin-bottom:.5rem;">
+        2. <span data-li="en">Zeros of ζ(s)</span>
+           <span data-li="mn">Тэглэгч утгууд (Zeros)</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
+        <div style="background:rgba(77,159,255,.06);border:1px solid rgba(77,159,255,.15);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.78rem;font-weight:600;color:#4d9fff;margin-bottom:.3rem;">
+            <span data-li="en">Trivial zeros</span>
+            <span data-li="mn">Тривиал тэглэгчүүд</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#9999b8;">s = −2, −4, −6, …</div>
+        </div>
+        <div style="background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.15);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.78rem;font-weight:600;color:#00e5a0;margin-bottom:.3rem;">
+            <span data-li="en">Non-trivial zeros</span>
+            <span data-li="mn">Нон-тривиал тэглэгчүүд</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#9999b8;">0 &lt; Re(s) &lt; 1</div>
+          <div style="font-size:.75rem;color:#5a5a7a;margin-top:.2rem;">
+            <span data-li="en">critical strip</span>
+            <span data-li="mn">шүүмжлэлт зурвас</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Таамаглал -->
+    <div style="background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.15);border-radius:12px;padding:1.3rem;margin-bottom:1.5rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#ffd700;letter-spacing:.1em;margin-bottom:.6rem;">
+        <span data-li="en">THE CONJECTURE</span>
+        <span data-li="mn">ТААМАГЛАЛЫН ТОМЬЁОЛОЛ</span>
+      </div>
+      <p style="font-size:.95rem;color:#eeeef8;line-height:1.8;font-style:italic;">
+        <span data-li="en">"All non-trivial zeros of the Riemann zeta function have real part equal to 1/2" — i.e. they lie on the critical line Re(s) = 1/2, of the form s = 1/2 + it.</span>
+        <span data-li="mn">"Риманы зета функцийн бүх нон-тривиал тэглэгчүүд нь Re(s) = 1/2 гэсэн бодит хэсгийг агуулна" — өөрөөр хэлбэл s = 1/2 + it хэлбэртэй шүүмжлэлт шугам дээр оршино.</span>
+      </p>
+    </div>
+
+    <!-- Яагаад чухал -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">WHY IT MATTERS</span>
+      <span data-li="mn">ЯАГААД ЧУХАЛ ВЭ?</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin-bottom:1.5rem;">
+      <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:.8rem;font-weight:600;color:#eeeef8;margin-bottom:.4rem;">
+          <span data-li="en">Prime distribution</span>
+          <span data-li="mn">Ерөнхий тооны тархалт</span>
+        </div>
+        <div style="font-size:.82rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">If true, primes follow a very precise, regular distribution.</span>
+          <span data-li="mn">Үнэн бол ерөнхий тоонуудын тархалт маш тодорхой, жигд хязгаарт байдаг.</span>
+        </div>
+      </div>
+      <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:.8rem;font-weight:600;color:#eeeef8;margin-bottom:.4rem;">
+          <span data-li="en">Mathematical foundation</span>
+          <span data-li="mn">Математикийн үндэс</span>
+        </div>
+        <div style="font-size:.82rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">Hundreds of theorems depend on it being true. Proving it unlocks them all.</span>
+          <span data-li="mn">Олон зуун теорем үүн дээр суурилдаг. Батлагдвал тэр бүгд шууд үнэн болно.</span>
+        </div>
+      </div>
+      <div style="background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.12);border-radius:10px;padding:1rem;">
+        <div style="font-size:.8rem;font-weight:600;color:#ffd700;margin-bottom:.4rem;">
+          <span data-li="en">Clay Millennium Prize</span>
+          <span data-li="mn">Клейн мянганы асуудал</span>
+        </div>
+        <div style="font-size:.82rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">$1,000,000 prize from the Clay Mathematics Institute — unsolved since 1859.</span>
+          <span data-li="mn">Clay Mathematics Institute-ийн 1 сая ам.долларын шагнал — 1859 оноос хойш шийдэгдээгүй.</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:.88rem;color:#5a5a7a;font-style:italic;line-height:1.7;">
+      <span data-li="en">In short: the Riemann Hypothesis is the key to unlocking the mysterious distribution of prime numbers.</span>
+      <span data-li="mn">Товчхондоо, Риманы таамаглал нь ерөнхий тоонуудын нууцлаг тархалтыг тайлах түлхүүр юм.</span>
+    </p>
+  </div>
+
+  <!-- Судалгаа #001 тайлбар -->
+  <div style="margin-top:3rem;border-top:1px solid rgba(255,255,255,.07);padding-top:2.5rem;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#00d4ff;margin-bottom:.5rem;">
+      <span data-li="en">Research #001 · Explanation</span>
+      <span data-li="mn">Судалгаа #001 · Тайлбар</span>
+    </div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:2rem;letter-spacing:-.02em;">
+      <span data-li="en">How This Research Connects to the Riemann Hypothesis</span>
+      <span data-li="mn">Энэ судалгаа Риманы таамаглалтай хэрхэн холбогдох вэ?</span>
+    </h2>
+
+    <!-- Step 1 -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#00d4ff;margin-bottom:.6rem;">
+        <span data-li="en">Step 1 — Bogomolny–Keating Conjecture</span>
+        <span data-li="mn">Алхам 1 — Богомолны–Китингийн таамаглал</span>
+      </div>
+      <p style="font-size:.92rem;color:#9999b8;line-height:1.8;">
+        <span data-li="en">The Bogomolny–Keating (1996) conjecture predicts that the spacing covariance C(τ) of Riemann zeros contains a prime-indexed signal: A(p) ∼ C·(log p)²/p. If true, this represents a deep structural connection between the zeros of ζ(s) and the prime numbers.</span>
+        <span data-li="mn">Богомолны–Китинг (1996) таамаглал нь Риманы тэгийн зайн ковариант C(τ) нь анхны тооны индекстэй дохио агуулна гэж урьдчилан таамаглана: A(p) ∼ C·(log p)²/p. Хэрэв үнэн бол энэ нь ζ(s)-ийн тэгүүд ба анхны тоонуудын хоорондох гүн бүтцийн холбоо юм.</span>
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#00d4ff;margin-bottom:.6rem;">
+        <span data-li="en">Step 2 — What Was Tested?</span>
+        <span data-li="mn">Алхам 2 — Юуг шалгасан вэ?</span>
+      </div>
+      <p style="font-size:.92rem;color:#9999b8;line-height:1.8;">
+        <span data-li="en">Three Odlyzko zero datasets at extreme heights (T ~ 10¹², 10¹³) were used to compute empirical A(p) values at prime lags p = 2, 3, 5, …, 37. These were compared against the BK prediction B(p) = (log p)²/p using Pearson correlation.</span>
+        <span data-li="mn">Одлызкогийн гурван датасетийг өндөр T (~ 10¹², 10¹³) дээр ашиглаж прайм лаг p = 2, 3, 5, …, 37 дахь эмпирик A(p) утгыг тооцоолов. Үүнийг BK урьдчилсан утга B(p) = (log p)²/p-тай Pearson корреляцийн аргаар харьцуулав.</span>
+      </p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.25rem .6rem;background:rgba(0,212,255,.08);color:#00d4ff;border:1px solid rgba(0,212,255,.2);border-radius:4px;">zeros1 · T~10¹²</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.25rem .6rem;background:rgba(0,212,255,.08);color:#00d4ff;border:1px solid rgba(0,212,255,.2);border-radius:4px;">zeros_ht · T~74,920</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.25rem .6rem;background:rgba(0,212,255,.08);color:#00d4ff;border:1px solid rgba(0,212,255,.2);border-radius:4px;">zeros6 · T~10¹³</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.25rem .6rem;background:rgba(77,159,255,.08);color:#4d9fff;border:1px solid rgba(77,159,255,.2);border-radius:4px;">p = 2,3,5,7,11,13,17,19,23,29,31,37</span>
+      </div>
+    </div>
+
+    <!-- Step 3 — Result -->
+    <div style="background:rgba(255,77,109,.04);border:1px solid rgba(255,77,109,.2);border-radius:14px;padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#00d4ff;margin-bottom:.6rem;">
+        <span data-li="en">Step 3 — Final Result</span>
+        <span data-li="mn">Алхам 3 — Эцсийн үр дүн</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;color:#eeeef8;">r = 0.017</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:#ff4d6d;letter-spacing:.1em;">PEARSON r · NULL RESULT</div>
+        </div>
+      </div>
+      <p style="font-size:.92rem;color:#9999b8;line-height:1.8;">
+        <span data-li="en">After Chebyshev ψ₀(x) explicit-formula validation (credit: Steven Clark, Math StackExchange #5135941), no significant BK-type correlation was found. Earlier intermediate values (r = 0.45–0.68) were superseded.</span>
+        <span data-li="mn">Chebyshev ψ₀(x) тодорхой томьёогоор баталгаажуулсны дараа (Steven Clark, Math StackExchange #5135941), мэдэгдэхүйц BK-төрлийн корреляц олдсонгүй. Өмнөх завсрын утгууд (r = 0.45–0.68) хуучирсан гэж тооцогдов.</span>
+      </p>
+    </div>
+
+    <!-- Why null matters -->
+    <div style="background:rgba(0,229,160,.03);border:1px solid rgba(0,229,160,.15);border-radius:14px;padding:1.5rem;margin-bottom:1rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#00e5a0;margin-bottom:.8rem;">
+        <span data-li="en">Why does a "null result" matter in science?</span>
+        <span data-li="mn">Яагаад "Олдсонгүй" гэсэн үр дүн шинжлэх ухаанд чухал вэ?</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+        <div style="background:rgba(255,255,255,.03);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.8rem;color:#eeeef8;font-weight:600;margin-bottom:.3rem;">① <span data-li="en">Narrows the possibility space</span><span data-li="mn">Боломжийн орон зайг хязгаарлана</span></div>
+          <div style="font-size:.82rem;color:#9999b8;"><span data-li="en">Establishing what doesn't work guides future researchers away from unproductive directions.</span><span data-li="mn">Ямар арга хандлага ажиллахгүйг тогтоосноор судлаачид цаашдаа буруу замаар явахгүй.</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.8rem;color:#eeeef8;font-weight:600;margin-bottom:.3rem;">② <span data-li="en">Honest science</span><span data-li="mn">Шударга шинжлэх ухааны жишээ</span></div>
+          <div style="font-size:.82rem;color:#9999b8;"><span data-li="en">Reporting r = 0.017 is far more valuable than reporting unstable intermediate values.</span><span data-li="mn">r = 0.017 гэсэн үнэнийг мэдээлэх нь тогтворгүй завсрын үр дүн мэдээлэхээс хамаагүй үнэ цэнэтэй.</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.8rem;color:#eeeef8;font-weight:600;margin-bottom:.3rem;">③ <span data-li="en">Reproducibility</span><span data-li="mn">Давталтын чанар</span></div>
+          <div style="font-size:.82rem;color:#9999b8;"><span data-li="en">Anyone can verify by running <code style="color:#00d4ff">python scripts/analyze.py</code> on the Odlyzko data.</span><span data-li="mn">Хэн ч <code style="color:#00d4ff">python scripts/analyze.py</code> ажиллуулж шалгах боломжтой.</span></div>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border-radius:8px;padding:.8rem;">
+          <div style="font-size:.8rem;color:#eeeef8;font-weight:600;margin-bottom:.3rem;">④ <span data-li="en">Publication ethics</span><span data-li="mn">Нийтлэлийн баримтжуулалт</span></div>
+          <div style="font-size:.82rem;color:#9999b8;"><span data-li="en">Withdrawal from Experimental Mathematics is part of scientific ethics.</span><span data-li="mn">Experimental Mathematics сэтгүүлд татан авалт илгээсэн нь шинжлэх ухааны ёс зүйн нэг хэсэг юм.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary flow -->
+    <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(14,14,28,.4);border-radius:10px;border:1px solid rgba(255,255,255,.05);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;margin-bottom:.6rem;">
+        <span data-li="en">Research process summary</span>
+        <span data-li="mn">Судалгааны явцын хураангуй</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:.72rem;">
+        <span style="color:#9999b8;"><span data-li="en">Odlyzko zeros</span><span data-li="mn">Одлызкогийн тэгүүд</span></span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="color:#9999b8;"><span data-li="en">Normalization</span><span data-li="mn">Нормалчлал</span></span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="color:#9999b8;">A(p) <span data-li="en">covariance</span><span data-li="mn">ковариант</span></span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="color:#9999b8;">Pearson r</span>
+        <span style="color:#5a5a7a;">→</span>
+        <span style="color:#ff4d6d;font-weight:700;">r = 0.017 · NULL</span>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <p style="margin-top:1.5rem;font-size:.82rem;color:#5a5a7a;line-height:1.7;font-style:italic;">
+      <span data-li="en">Honest computational observation. Not a proof of RH. Not a confirmed theorem. Open data, open code.</span>
+      <span data-li="mn">Шударга тооцооллын ажиглалт. RH-н нотолгоо биш. Батлагдсан теорем биш. Нээлттэй өгөгдөл, нээлттэй код.</span>
+    </p>
+  </div>
+</div>
+
+<script>
+// ── NAV ACTIVE STATE + MOBILE ──
+(function(){
+  function cleanPath(v){
+    if(!v) return '';
+    v = v.split('#')[0].split('?')[0];
+    if(v === '') return '';
+    var a = document.createElement('a');
+    a.href = v;
+    var p = a.pathname || v;
+    p = p.replace(/\/index\.html$/, '/');
+    if(p.length > 1) p = p.replace(/\/$/, '');
+    return p;
+  }
+
+  var path = cleanPath(window.location.pathname);
+
+  document.querySelectorAll('.MN-links a, .MN-drop-menu a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+
+    var target = cleanPath(href);
+    var isActive = false;
+
+    if(target === path){
+      isActive = true;
+    }
+
+    // Root platform pages: mark the Research dropdown parent when inside /paper1.
+    if(target === '/paper1' && path.indexOf('/paper1') === 0 && a.closest('.MN-drop') && !a.closest('.MN-drop-menu')){
+      isActive = true;
+    }
+
+    if(isActive) a.classList.add('MN-active');
+  });
+
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('open');
+      mobile.classList.toggle('open');
+    });
+  }
+})();
+</script>
+<footer class="MN-foot">
+  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Platform · Open archive</span><span data-li="mn">Платформ · Нээлттэй архив</span></span>
+  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
+    <a href="/intro.html" class="MN-flink"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/landscape.html" class="MN-flink"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/verify.html" class="MN-flink"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/site-map.html" class="MN-flink">Site Map</a>
+  </span>
+  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v1.0</span>
+</footer>
+<style>.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}.MN-flink:hover{color:#9999b8}.MN-flink.MN-active{color:#00d4ff;border-bottom-color:#00d4ff}</style>
+<script>(function(){var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");document.querySelectorAll(".MN-flink").forEach(function(a){var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");if(h&&h===path)a.classList.add("MN-active")})})();</script>
+<footer class="MN-foot">
+  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Platform · Open archive</span><span data-li="mn">Платформ · Нээлттэй архив</span></span>
+  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
+    <a href="/intro.html" class="MN-flink"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/landscape.html" class="MN-flink"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/verify.html" class="MN-flink"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/site-map.html" class="MN-flink">Site Map</a>
+  </span>
+  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v1.0</span>
+</footer>
+<style>.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}.MN-flink:hover{color:#9999b8}.MN-flink.MN-active{color:#00d4ff;border-bottom-color:#00d4ff}</style>
+<script>(function(){var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");document.querySelectorAll(".MN-flink").forEach(function(a){var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");if(h&&h===path)a.classList.add("MN-active")})})();</script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Discussion · research.nexcore.ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.MN-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
+.MN-links{display:flex;align-items:center;justify-content:center;gap:2px;flex:1;flex-wrap:wrap}
+.MN-links a{font-size:.72rem;color:#9999b8;text-decoration:none;padding:3px 6px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap}
+.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07)}
+.MN-links a.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff;padding-bottom:1px}
+.MN-plat{font-size:.7rem;color:#5a5a7a;text-decoration:none;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0;transition:color .15s,border-color .15s}
+.MN-plat:hover{color:#9999b8;border-color:rgba(255,255,255,.15)}
+.MN-btns{display:flex;gap:3px;flex-shrink:0}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:3px 8px;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a}
+.MN-lb.on{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent}
+.MN-burger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.4rem;border:none;background:none;flex-shrink:0}
+.MN-burger span{display:block;width:18px;height:1.5px;background:#9999b8;border-radius:2px;transition:all .25s}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.MN-burger.open span:nth-child(2){opacity:0}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.MN-mob{display:none;position:fixed;top:0;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:3.5rem 1.25rem 1rem;z-index:899;flex-direction:column;gap:2px}
+.MN-mob.open{display:flex}
+.MN-mob a{font-size:.82rem;color:#9999b8;text-decoration:none;padding:6px 8px;border-radius:6px}
+.MN-mob a:hover,.MN-mob a.MN-active{color:#00d4ff;background:rgba(0,212,255,.07)}
+.MN-mob hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:4px 0}
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;align-items:center;padding:0 1.25rem;background:rgba(7,7,16,.98);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a}
+.MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
+.MN-foot a:hover{color:#9999b8}
+.MN-foot-sep{opacity:.3;margin:0 2px}
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
+
+/* ── ROOT VARIABLES ── */
+:root{
+  --bg:#070710;--s1:#0d0d1a;--s2:#12121f;--s3:#181828;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
+  --cyan:#00d4ff;--green:#00e5a0;--red:#ff4d6d;--yellow:#ffd166;
+}
+
+/* ── BASE ── */
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
+*{box-sizing:border-box}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--text);line-height:1.3;margin-top:0}
+h1{font-size:1.9rem;font-weight:600;margin-bottom:1rem}
+h2{font-size:1.35rem;font-weight:600;margin-bottom:.75rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+h4{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+p{color:var(--sub);margin-bottom:1rem;line-height:1.75}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--text);font-weight:600}
+em{color:var(--sub)}
+code{font-family:'JetBrains Mono',monospace;font-size:.82em;color:var(--cyan);background:rgba(0,212,255,.08);padding:.1em .4em;border-radius:4px}
+pre{font-family:'JetBrains Mono',monospace;font-size:.82rem;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;overflow-x:auto;color:var(--text);line-height:1.65}
+sup,sub{font-size:.7em}
+
+/* ── LAYOUT ── */
+.page-wrap,.container,.wrap{max-width:960px;margin:0 auto;padding:3rem 2rem 2rem}
+.section{margin-bottom:3rem}
+
+/* ── SECTION LABELS ── */
+.section-label,.sec-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+
+/* ── CARDS ── */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;transition:border-color .15s}
+.card:hover{border-color:var(--border2)}
+.card-sm{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+.card-accent{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.18);border-radius:14px;padding:1.5rem}
+
+/* ── STAT / METRIC CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2rem}
+.stat-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan))}
+.stat-card.c-cyan{--accent:var(--cyan)}.stat-card.c-green{--accent:var(--green)}.stat-card.c-red{--accent:var(--red)}.stat-card.c-yellow{--accent:var(--yellow)}.stat-card.c-muted{--accent:var(--muted)}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.25rem}
+.stat-label{font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.stat-note{font-size:.72rem;color:var(--sub);margin-top:.3rem}
+
+/* ── FORMULA / MATH BLOCKS ── */
+.formula{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--text);background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.25rem;overflow-x:auto;line-height:1.8;margin:1rem 0}
+.formula-sm{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--cyan);background:rgba(0,212,255,.06);border-radius:6px;padding:.25rem .6rem;display:inline-block}
+.def-block{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.def-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.def-note{font-size:.82rem;color:var(--sub);margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.5rem}
+.math-inline{font-family:'JetBrains Mono',monospace;color:var(--text);font-size:.9em}
+
+/* ── DISCLAIMER / WARNING ── */
+.disclaimer{background:rgba(255,209,102,.04);border:1px solid rgba(255,209,102,.18);border-radius:12px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:.85rem;color:var(--sub);line-height:1.7}
+.disclaimer strong{color:var(--yellow)}
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:.9rem 1.1rem;font-size:.85rem;color:var(--sub);line-height:1.6}
+
+/* ── BADGES ── */
+.badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.2rem .6rem;border-radius:5px;display:inline-block;font-weight:500}
+.badge-cyan{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.22)}
+.badge-red{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.22)}
+.badge-yellow{background:rgba(255,209,102,.1);color:var(--yellow);border:1px solid rgba(255,209,102,.22)}
+.badge-muted{background:rgba(90,90,122,.12);color:var(--muted);border:1px solid rgba(90,90,122,.22)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .15s;border:none;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{background:var(--s2);color:var(--sub);border:1px solid var(--border2)}
+.btn-secondary:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.btn-outline{background:rgba(0,212,255,.07);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.btn-outline:hover{background:rgba(0,212,255,.12)}
+/* legacy */
+.run-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff;border:none;transition:opacity .15s}
+.run-btn:hover{opacity:.88}
+
+/* ── TABLES ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0}
+.data-table th{text-align:left;padding:.5rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.data-table td{padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--sub);font-family:'JetBrains Mono',monospace}
+.data-table tr:hover td{background:rgba(255,255,255,.02);color:var(--text)}
+.data-table td:first-child{color:var(--cyan);font-weight:600}
+.data-table td.pos{color:var(--green)}.data-table td.neg{color:var(--red)}.data-table td.warn{color:var(--yellow)}
+
+/* ── PROSE ── */
+.prose{color:var(--sub);line-height:1.8;font-size:.93rem}
+.prose h2,.prose h3{color:var(--text);margin:1.75rem 0 .6rem}
+.prose p{margin-bottom:1rem}
+.prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1rem}
+.prose li{margin-bottom:.35rem}
+.prose blockquote{border-left:3px solid var(--cyan);margin:1rem 0;padding:.75rem 1rem;color:var(--sub);font-style:italic;background:var(--s1);border-radius:0 8px 8px 0}
+
+/* ── RESULT DISPLAY ── */
+.result-banner{border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.result-banner.null{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2)}
+.result-banner.positive{background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.2)}
+.result-banner.negative{background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2)}
+.r-number{font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:700;line-height:1}
+.r-desc{font-size:.88rem;color:var(--sub);line-height:1.5}
+
+/* ── CHART CONTAINERS ── */
+.chart-wrap{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem}
+.chart-title{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.chart-title span{color:var(--cyan)}
+
+/* ── FORMS / CONTROLS ── */
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem}
+.ctrl-group{display:flex;flex-direction:column;gap:.3rem}
+.ctrl-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ctrl-input{background:var(--s2);border:1px solid var(--border2);border-radius:7px;padding:.35rem .65rem;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.83rem;width:90px;transition:border-color .15s}
+.ctrl-input:focus{outline:none;border-color:var(--cyan)}
+
+/* ── STEP LIST ── */
+.step-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.step-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:10px}
+.step-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(0,212,255,.12);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-family:'JetBrains Mono',monospace;font-weight:700;margin-top:.15rem}
+.step-content h4{font-size:.9rem;color:var(--text);margin-bottom:.2rem}
+.step-content p{font-size:.83rem;color:var(--sub);margin:0}
+
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.65rem;overflow:hidden;transition:border-color .15s}
+.faq-item:hover{border-color:var(--border2)}
+.faq-q{padding:1rem 1.25rem;cursor:pointer;font-size:.92rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'▾';font-size:.8rem;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(180deg)}
+.faq-a{padding:0 1.25rem 1rem;font-size:.88rem;color:var(--sub);line-height:1.75;display:none}
+.faq-item.open .faq-q{border-bottom:1px solid var(--border)}
+.faq-item.open .faq-a{display:block}
+
+/* ── UPLOAD ZONE ── */
+.upload-zone{border:2px dashed var(--border2);border-radius:14px;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.01)}
+.upload-zone:hover{border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.03)}
+.upload-title{font-size:.95rem;color:var(--text);font-weight:500;margin-bottom:.3rem}
+.upload-sub{font-size:.78rem;color:var(--muted)}
+
+/* ── UTILS ── */
+.text-cyan{color:var(--cyan)}.text-green{color:var(--green)}.text-red{color:var(--red)}.text-yellow{color:var(--yellow)}.text-muted{color:var(--muted)}.text-sub{color:var(--sub)}
+.mono{font-family:'JetBrains Mono',monospace}
+.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.tag{display:inline-block;font-size:.68rem;padding:.15rem .5rem;border-radius:4px;font-family:'JetBrains Mono',monospace;background:var(--s2);color:var(--sub);border:1px solid var(--border)}
+
+/* ── LINKS ── */
+.link-card{display:block;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;text-decoration:none;transition:all .15s;margin-bottom:.65rem}
+.link-card:hover{border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.03)}
+.link-card-title{font-size:.92rem;color:var(--text);font-weight:500;margin-bottom:.2rem}
+.link-card-desc{font-size:.82rem;color:var(--sub);line-height:1.5}
+.link-card-meta{font-size:.7rem;color:var(--muted);margin-top:.3rem;font-family:'JetBrains Mono',monospace}
+
+/* ── REMOVE DECORATIVE ── */
+.mesh,.grid-bg,.orb,.o1,.o2,.o3{display:none !important}
+
+</style>
+</head>
+<body class="en">
+<nav class="MN">
+  <a href="/paper1/" class="MN-logo">Results</a>
+  <div class="MN-sep"></div>
+  <div class="MN-links">
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+    <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+    <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+    <a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Лаб</span></a>
+    <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+    <a href="/paper1/faq.html">FAQ</a>
+    <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+    <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+    <a href="/paper1/nulltests.html">Null Tests</a>
+    <a href="/paper1/livestats.html">Live Stats</a>
+    <a href="/paper1/roadmap.html">Roadmap</a>
+    <a href="/paper1/discussion.html">Discussion</a>
+    <a href="/paper1/about.html">About</a>
+    <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <a href="/paper1/changelog.html">Changelog</a>
+  </div>
+  <div class="MN-sep"></div>
+  <a href="/" class="MN-plat">← Platform</a>
+  <div class="MN-btns">
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="MN-mob">
+  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+  <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+  <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+  <a href="/paper1/lab.html">Analysis Lab</a>
+  <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+  <a href="/paper1/faq.html">FAQ</a>
+  <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+  <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+  <a href="/paper1/nulltests.html">Null Tests</a>
+  <a href="/paper1/livestats.html">Live Stats</a>
+  <a href="/paper1/roadmap.html">Roadmap</a>
+  <a href="/paper1/discussion.html">Discussion</a>
+  <a href="/paper1/about.html">About</a>
+  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+  <a href="/paper1/changelog.html">Changelog</a>
+  <hr>
+  <a href="/">← Platform</a>
+</div>
+<div class="page-wrap">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Community Discussion</span><span data-li="mn">Нийгэмлэгийн хэлэлцүүлэг</span></div>
+    <h2><span data-li="en">Where We've Shared This Work</span><span data-li="mn">Ажлаа хаана хуваалцсан</span></h2>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem;">
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">📐</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Math StackExchange</div>
+            <div style="font-size:.78rem;color:var(--muted);">math.stackexchange.com</div>
+          </div>
+          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,229,160,.12);color:var(--green);border:1px solid rgba(0,229,160,.3);padding:.2rem .6rem;border-radius:4px;">ACCEPTED ✓</span>
+        </div>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
+          <span data-li="en">Question: "Numerical verification of Bogomolny-Keating prime peaks in Riemann zero power spectrum". Answered by Steven Clark (9,500+ rep) who suggested the explicit formula framework. Answer accepted.</span>
+          <span data-li="mn">Асуулт: "Риман тэгийн power spectrum дэх Богомолны-Китингийн прайм оргилуудыг тоон баталгаажуулах". Steven Clark (9,500+ rep) тодорхой томьёоны хүрээг санал болгон хариулсан. Хариулт accepted хийгдсэн.</span>
+        </p>
+        <a class="link-card" href="https://math.stackexchange.com/questions/5135941" target="_blank" style="display:inline-flex;border-radius:10px;">
+          <span class="li">🔗</span><div><span class="lt">View question & answer</span><span class="ld">math.stackexchange.com/questions/5135941</span></div>
+        </a>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">🟠</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Reddit r/mathematics</div>
+            <div style="font-size:.78rem;color:var(--muted);">reddit.com/r/mathematics</div>
+          </div>
+        </div>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">
+          <span data-li="en">Post: "Numerical observation: BK-type prime-lock scaling in high Riemann zero blocks (r = 0.014) — looking for literature references"</span>
+          <span data-li="mn">Пост: "Тоон ажиглалт: өндөр Риман тэгийн блок дахь BK-төрлийн прайм-lock scaling (r = 0.014) — уран зохиолын лавлагаа хайж байна"</span>
+        </p>
+        <a class="link-card" href="https://reddit.com/r/mathematics" target="_blank" style="display:inline-flex;border-radius:10px;">
+          <span class="li">🔗</span><div><span class="lt">r/mathematics</span><span class="ld">reddit.com/r/mathematics</span></div>
+        </a>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">✉️</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;"><span data-li="en">Direct correspondence</span><span data-li="mn">Шууд захидал харилцаа</span></div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-li="en">Contacted leading researchers</span><span data-li="mn">Тэргүүлэгч судлаачидтай холбогдсон</span></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+          <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
+            <div style="font-size:.85rem;font-weight:600;">Andrew Odlyzko</div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-li="en">Replied with form letter (high request volume)</span><span data-li="mn">Маягт захидлаар хариулсан (хүсэлт их)</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.9rem;">
+            <div style="font-size:.85rem;font-weight:600;">Jonathan Keating</div>
+            <div style="font-size:.78rem;color:var(--muted);"><span data-li="en">Email sent, awaiting reply</span><span data-li="mn">Майл явуулсан, хариу хүлээж байна</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">📄</span>
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;">Zenodo Preprint</div>
+            <div style="font-size:.78rem;color:var(--muted);">zenodo.org</div>
+          </div>
+          <span style="margin-left:auto;font-family:'Space Grotesk',sans-serif;font-size:.65rem;background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2);padding:.2rem .6rem;border-radius:4px;">v2 PUBLISHED</span>
+        </div>
+        <p style="font-size:.88rem;color:var(--sub);margin-bottom:1rem;">DOI: 10.5281/zenodo.20077673 · Indexed in OpenAIRE</p>
+        <a class="link-card" href="https://zenodo.org/records/20077673" target="_blank" style="display:inline-flex;border-radius:10px;">
+          <span class="li">🔗</span><div><span class="lt">View preprint</span><span class="ld">zenodo.org/records/20077673</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="max-width:860px;margin:0 auto;padding:2rem 2rem 3rem;">
+
+  <!-- Scientific Positioning -->
+  <div style="margin-top:2.5rem;border-top:1px solid rgba(255,255,255,.07);padding-top:2.5rem;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#00d4ff;margin-bottom:.5rem;">
+      <span data-li="en">Scientific Positioning</span>
+      <span data-li="mn">Шинжлэх ухааны байр суурь</span>
+    </div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1rem;letter-spacing:-.02em;">
+      <span data-li="en">What does this research actually mean?</span>
+      <span data-li="mn">Энэ судалгаа яг юуг хэлж байна вэ?</span>
+    </h2>
+
+    <!-- Key distinction -->
+    <div style="background:rgba(255,215,0,.04);border:1px solid rgba(255,215,0,.2);border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;margin-bottom:.6rem;">
+        <span style="color:#ff4d6d;">✗ &nbsp;</span>
+        <span style="color:#9999b8;">"<span data-li="en">RH proved</span><span data-li="mn">RH нотолсон</span>"</span>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;">
+        <span style="color:#00e5a0;">✓ &nbsp;</span>
+        <span style="color:#eeeef8;">"<span data-li="en">BK-type finite-size scaling consistent numerical phenomenon observed</span><span data-li="mn">BK-төрлийн finite-size scaling-тэй нийцсэн тооцооллын үзэгдэл ажиглагдсан</span>"</span>
+      </div>
+    </div>
+
+    <p style="font-size:.9rem;color:#9999b8;line-height:1.8;margin-bottom:1.5rem;">
+      <span data-li="en">This work falls into the category of: numerical correlation, asymptotic fitting, phenomenological scaling law, and heuristic structure detection. Scientifically valuable — but requires further steps before any claim about RH.</span>
+      <span data-li="mn">Энэ ажил дараах ангилалд орно: тооцооллын корреляц, асимптот fitting, феноменологийн scaling хуулийн, эвристик бүтцийн илрүүлэлт. Шинжлэх ухааны хувьд үнэ цэнтэй — гэхдээ RH-тэй холбоо хийхийн өмнө нэмэлт алхам шаардлагатай.</span>
+    </p>
+
+    <!-- 3 cautions -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">3 CAUTIONS</span>
+      <span data-li="mn">БОЛГООМЖЛОХ 3 ЗҮЙЛ</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:1.5rem;">
+      <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:.82rem;font-weight:600;color:#ffd700;margin-bottom:.4rem;">1. Overfitting</div>
+        <div style="font-size:.8rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">Constants like π, e, 2, 3 can emerge randomly from finite windows.</span>
+          <span data-li="mn">π, e, 2, 3 зэрэг тогтмолууд finite window-оос санамсаргүй гарч ирж болно.</span>
+        </div>
+      </div>
+      <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:.82rem;font-weight:600;color:#ffd700;margin-bottom:.4rem;">2. Multiple testing</div>
+        <div style="font-size:.8rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">C≈3 may emerge from many ratio/normalization/smoothing combinations tested.</span>
+          <span data-li="mn">Олон ratio, normalization дундаас C≈3 санамсаргүй гарч болно. Preregistered pipeline шаардлагатай.</span>
+        </div>
+      </div>
+      <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:1rem;">
+        <div style="font-size:.82rem;font-weight:600;color:#ffd700;margin-bottom:.4rem;">3. Logical gap</div>
+        <div style="font-size:.8rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">C≈3 ⇒ Re(ρ)=½ has no rigorous connection yet. The hardest step remains.</span>
+          <span data-li="mn">C≈3 ⇒ Re(ρ)=½ хатуу логик холбоо байхгүй. Хамгийн том алхам дутуу.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BK Framework -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">BOGOMOLNY–KEATING FRAMEWORK</span>
+      <span data-li="mn">БОГОМОЛНЫ–КИТИНГ ХҮРЭЭ</span>
+    </div>
+    <div style="background:rgba(14,14,28,.6);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#00d4ff;text-align:center;margin-bottom:.8rem;">
+        R₂(s) = R_GUE(s) + prime corrections
+      </div>
+      <p style="font-size:.88rem;color:#9999b8;line-height:1.7;">
+        <span data-li="en">Bogomolny & Keating (1996) connected zero spacing statistics, prime oscillations, and finite-size corrections. If our scaling is genuinely stable, it may be conceptually consistent with this framework — representing a finite-N spectral correction or arithmetic oscillation amplitude.</span>
+        <span data-li="mn">Богомолны ба Китинг (1996) тэгийн зайн статистик, прайм осцилляци, finite-size засварыг холбосон. Манай scaling үнэхээр тогтвортой бол энэ хүрээтэй концепцийн хувьд нийцэж — finite-N спектрал засвар эсвэл арифметикийн осцилляцийн амплитуд байж магадгүй.</span>
+      </p>
+    </div>
+
+    <!-- Next steps -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">NEXT STEPS</span>
+      <span data-li="mn">ДАРААГИЙН АЛХАМ</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:2rem;">
+      <div style="background:rgba(0,229,160,.03);border:1px solid rgba(0,229,160,.12);border-radius:10px;padding:1rem;">
+        <div style="font-size:.82rem;font-weight:600;color:#00e5a0;margin-bottom:.4rem;">A. Statistical paper</div>
+        <div style="font-size:.8rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">Bootstrap protocol, confidence intervals, finite-size scaling, null models, sensitivity analysis.</span>
+          <span data-li="mn">Bootstrap, итгэлийн интервал, finite-size scaling, null загвар, мэдрэмжийн шинжилгээ.</span>
+        </div>
+      </div>
+      <div style="background:rgba(0,229,160,.03);border:1px solid rgba(0,229,160,.12);border-radius:10px;padding:1rem;">
+        <div style="font-size:.82rem;font-weight:600;color:#00e5a0;margin-bottom:.4rem;">B. Independent replication</div>
+        <div style="font-size:.8rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">Mathematica, Sage, PARI/GP, Python/mpmath — independent verification required.</span>
+          <span data-li="mn">Mathematica, Sage, PARI/GP-р бие даасан баталгаажуулалт шаардлагатай.</span>
+        </div>
+      </div>
+      <div style="background:rgba(0,229,160,.03);border:1px solid rgba(0,229,160,.12);border-radius:10px;padding:1rem;">
+        <div style="font-size:.82rem;font-weight:600;color:#00e5a0;margin-bottom:.4rem;">C. Theoretical derivation</div>
+        <div style="font-size:.8rem;color:#9999b8;line-height:1.6;">
+          <span data-li="en">Derive C=3 from explicit formula, diagonal approximation, or trace formula.</span>
+          <span data-li="mn">C=3-г explicit formula, diagonal approximation, trace formula-аас гаргах.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#5a5a7a;letter-spacing:.1em;margin-bottom:.8rem;">
+      <span data-li="en">ACADEMIC TIMELINE</span>
+      <span data-li="mn">АКАДЕМИК ОН ЦАГ</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.5rem;">
+      <div style="display:flex;gap:1rem;align-items:baseline;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#00d4ff;min-width:44px;">1859</span>
+        <span style="font-size:.85rem;color:#9999b8;">Bernhard Riemann — <span data-li="en">proposes the Riemann Hypothesis</span><span data-li="mn">Риманы таамаглалыг дэвшүүлэв</span></span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:baseline;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#00d4ff;min-width:44px;">1973</span>
+        <span style="font-size:.85rem;color:#9999b8;">Hugh Montgomery — <span data-li="en">discovers GUE-type pair correlation in zeros</span><span data-li="mn">тэгүүдийн GUE-төрлийн хос корреляцийг нээв</span></span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:baseline;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#00d4ff;min-width:44px;">1996</span>
+        <span style="font-size:.85rem;color:#9999b8;">Bogomolny & Keating — <span data-li="en">formulate prime-correction framework for zero statistics</span><span data-li="mn">тэгийн статистикийн прайм-засварын хүрээг томьёолов</span></span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:baseline;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#00d4ff;min-width:44px;">2000</span>
+        <span style="font-size:.85rem;color:#9999b8;">Clay Mathematics Institute — <span data-li="en">announces $1M Millennium Prize for RH</span><span data-li="mn">RH-д $1М Millennium шагнал зарлав</span></span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:baseline;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);border-radius:8px;padding:.6rem .8rem;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#00d4ff;min-width:44px;">2026</span>
+        <span style="font-size:.85rem;color:#eeeef8;">Myagmardorj N. — <span data-li="en">reports numerical BK-type scaling behavior with moderate bootstrap stability (N=2×10⁶). Experimental observation, not a proof.</span><span data-li="mn">дунд зэргийн bootstrap тогтвортой байдалтай BK-төрлийн scaling-ийн тооцооллын ажиглалтыг мэдэгдэв (N=2×10⁶). Туршилтын ажиглалт — нотолгоо биш.</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// === NAV HARD FIX: active state, mobile menu, dropdown click, language ===
+(function(){
+  function cleanPath(v){
+    if(!v) return '';
+    v = String(v).split('#')[0].split('?')[0];
+    if(!v) return '';
+    var a = document.createElement('a');
+    a.href = v;
+    var p = a.pathname || v;
+    p = p.replace(/\/index\.html$/,'/');
+    if(p.length > 1) p = p.replace(/\/$/,'');
+    return p || '/';
+  }
+  function setLang(lang){
+    lang = lang === 'mn' ? 'mn' : 'en';
+    document.documentElement.setAttribute('data-lang', lang);
+    try{localStorage.setItem('MN_lang', lang);}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(btn){
+      btn.classList.toggle('MN-active', btn.getAttribute('data-l') === lang);
+    });
+  }
+  window.setLang = setLang;
+  var saved = 'en';
+  try{ saved = localStorage.getItem('MN_lang') || 'en'; }catch(e){}
+  setLang(saved);
+
+  var path = cleanPath(window.location.pathname);
+  document.querySelectorAll('.MN a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    var target = cleanPath(href);
+    var active = target === path || (target === '/paper1' && (path === '/paper1' || path === '/paper1/'));
+    a.classList.toggle('MN-active', active);
+    var drop = a.closest('.MN-drop');
+    if(active && drop){
+      var btn = drop.querySelector('.MN-drop-btn');
+      if(btn) btn.classList.add('MN-active');
+    }
+  });
+
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      var open = !mobile.classList.contains('open');
+      burger.classList.toggle('open', open);
+      mobile.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click', function(){mobile.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
+  }
+  document.querySelectorAll('.MN-lb').forEach(function(btn){btn.addEventListener('click', function(){setLang(btn.getAttribute('data-l'));});});
+  document.querySelectorAll('.MN-drop-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var wrap = btn.closest('.MN-drop');
+      if(!wrap) return;
+      var open = !wrap.classList.contains('MN-open');
+      document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+      wrap.classList.toggle('MN-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.MN-drop')) document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+  });
+})();
+</script>
+<footer class="MN-foot">
+  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Observations only — not a proof of RH</span><span data-li="mn">Тооцооллын ажиглалт — RH нотолгоо биш</span></span>
+  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
+    <a href="/paper1/" class="MN-flink"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/replication.html" class="MN-flink"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/data.html" class="MN-flink"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/paper1/about.html" class="MN-flink"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+    <span style="color:#404058">·</span>
+    <a href="https://zenodo.org/records/20077673" target="_blank" class="MN-flink">DOI</a>
+  </span>
+  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v0.4</span>
+</footer>
+<style>.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}.MN-flink:hover{color:#9999b8}.MN-flink.MN-active{color:#00d4ff;border-bottom-color:#00d4ff}</style>
+<script>(function(){var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");document.querySelectorAll(".MN-flink").forEach(function(a){var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");if(h&&h===path)a.classList.add("MN-active")})})();</script>
+<script>
+(function(){
+  function setLang(l){
+    l=l==='mn'?'mn':'en';
+    document.body.className=l;
+    try{localStorage.setItem('lang',l)}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  }
+  window.setLang=setLang;
+  var path=window.location.pathname.replace(/\/$/,'').replace(/\/index\.html$/,'/');
+  document.querySelectorAll('.MN-links a,.MN-mob a').forEach(function(a){
+    var h=(a.getAttribute('href')||'').replace(/\/$/,'').replace(/\/index\.html$/,'/');
+    if(h&&h===path)a.classList.add('MN-active');
+  });
+  var burger=document.querySelector('.MN-burger');
+  var mob=document.querySelector('.MN-mob');
+  if(burger&&mob){
+    burger.addEventListener('click',function(){burger.classList.toggle('open');mob.classList.toggle('open')});
+    document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}});
+  }
+  try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
+})();
+</script>
+</body>
+</html>

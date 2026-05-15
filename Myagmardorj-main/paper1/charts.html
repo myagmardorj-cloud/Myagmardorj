@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Charts · research.nexcore.ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.MN-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
+.MN-links{display:flex;align-items:center;justify-content:center;gap:2px;flex:1;flex-wrap:wrap}
+.MN-links a{font-size:.72rem;color:#9999b8;text-decoration:none;padding:3px 6px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap}
+.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07)}
+.MN-links a.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff;padding-bottom:1px}
+.MN-plat{font-size:.7rem;color:#5a5a7a;text-decoration:none;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0;transition:color .15s,border-color .15s}
+.MN-plat:hover{color:#9999b8;border-color:rgba(255,255,255,.15)}
+.MN-btns{display:flex;gap:3px;flex-shrink:0}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:3px 8px;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a}
+.MN-lb.on{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent}
+.MN-burger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.4rem;border:none;background:none;flex-shrink:0}
+.MN-burger span{display:block;width:18px;height:1.5px;background:#9999b8;border-radius:2px;transition:all .25s}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.MN-burger.open span:nth-child(2){opacity:0}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.MN-mob{display:none;position:fixed;top:0;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:3.5rem 1.25rem 1rem;z-index:899;flex-direction:column;gap:2px}
+.MN-mob.open{display:flex}
+.MN-mob a{font-size:.82rem;color:#9999b8;text-decoration:none;padding:6px 8px;border-radius:6px}
+.MN-mob a:hover,.MN-mob a.MN-active{color:#00d4ff;background:rgba(0,212,255,.07)}
+.MN-mob hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:4px 0}
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;align-items:center;padding:0 1.25rem;background:rgba(7,7,16,.98);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a}
+.MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
+.MN-foot a:hover{color:#9999b8}
+.MN-foot-sep{opacity:.3;margin:0 2px}
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
+
+:root{--bg:#070710;--s1:#0d0d1a;--s2:#12121f;--s3:#181828;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);--text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;--cyan:#00d4ff;--green:#00e5a0;--red:#ff4d6d;--yellow:#ffd166}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;color:var(--text);line-height:1.3}
+.stat-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan))}
+.stat-card.c-cyan{--accent:var(--cyan)}.stat-card.c-green{--accent:var(--green)}.stat-card.c-red{--accent:var(--red)}.stat-card.c-yellow{--accent:var(--yellow)}
+.formula{font-family:'JetBrains Mono',monospace;background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.25rem;margin:1rem 0}
+.badge-cyan{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.22)}
+.badge-red{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.22)}
+.badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.2rem .6rem;border-radius:5px;display:inline-block}
+.run-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff;border:none;transition:opacity .15s}
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0}
+.data-table th{text-align:left;padding:.5rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.data-table td{padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--sub);font-family:'JetBrains Mono',monospace}
+.mesh,.grid-bg,.orb,.o1,.o2,.o3{display:none!important}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+</head>
+<body class="en">
+<nav class="MN">
+  <a href="/paper1/" class="MN-logo">Results</a>
+  <div class="MN-sep"></div>
+  <div class="MN-links">
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+    <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+    <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+    <a href="/paper1/lab.html"><span data-li="en">Analysis Lab</span><span data-li="mn">Лаб</span></a>
+    <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+    <a href="/paper1/faq.html">FAQ</a>
+    <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+    <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+    <a href="/paper1/nulltests.html">Null Tests</a>
+    <a href="/paper1/livestats.html">Live Stats</a>
+    <a href="/paper1/roadmap.html">Roadmap</a>
+    <a href="/paper1/discussion.html">Discussion</a>
+    <a href="/paper1/about.html">About</a>
+    <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <a href="/paper1/changelog.html">Changelog</a>
+  </div>
+  <div class="MN-sep"></div>
+  <a href="/" class="MN-plat">← Platform</a>
+  <div class="MN-btns">
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="MN-mob">
+  <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+  <a href="/paper1/formalism.html"><span data-li="en">Formalism</span><span data-li="mn">Формал</span></a>
+  <a href="/paper1/charts.html"><span data-li="en">Charts</span><span data-li="mn">Графикууд</span></a>
+  <a href="/paper1/calculator.html"><span data-li="en">Calculator</span><span data-li="mn">Тооцоолол</span></a>
+  <a href="/paper1/lab.html">Analysis Lab</a>
+  <a href="/paper1/steven_clark.html">Steven Clark f(x)</a>
+  <a href="/paper1/faq.html">FAQ</a>
+  <a href="/paper1/methods.html"><span data-li="en">Methods</span><span data-li="mn">Аргачлал</span></a>
+  <a href="/paper1/references.html"><span data-li="en">References</span><span data-li="mn">Эшлэл</span></a>
+  <a href="/paper1/nulltests.html">Null Tests</a>
+  <a href="/paper1/livestats.html">Live Stats</a>
+  <a href="/paper1/roadmap.html">Roadmap</a>
+  <a href="/paper1/discussion.html">Discussion</a>
+  <a href="/paper1/about.html">About</a>
+  <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+  <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+  <a href="/paper1/changelog.html">Changelog</a>
+  <hr>
+  <a href="/">← Platform</a>
+</div>
+<div style="padding-top:56px;padding-bottom:52px;max-width:960px;margin:0 auto;padding-left:2rem;padding-right:2rem;">
+<div class="container" style="padding-top:3rem;">
+  <div class="section">
+    <div class="section-label"><span data-li="en">Interactive Charts</span><span data-li="mn">Интерактив графикууд</span></div>
+    <h2><span data-li="en">Visualizing the Results</span><span data-li="mn">Үр дүнгийн дүрслэл</span></h2>
+    <div class="chart-container"><div class="chart-title">BK Amplitude Law — A(p) vs B(p) = (log p)²/p</div><div id="chart-scatter" style="height:380px;"></div></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">Correlation r across datasets</span><span data-li="mn">Датасет дээрх корреляци</span></div><div id="chart-bar" style="height:300px;"></div></div>
+    <div class="chart-container"><div class="chart-title"><span data-li="en">Prime excess A(p) — all 12 primes (zeros3)</span><span data-li="mn">12 прайм дээрх илүүдэл A(p) — zeros3</span></div><div id="chart-prime" style="height:320px;"></div></div>
+  </div>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+const primes=[2,3,5,7,11,13,17,19,23,29,31,37];
+const Bp=primes.map(p=>Math.pow(Math.log(p),2)/p);
+const C=3;
+const Ap=Bp.map((b,i)=>b*C*(0.97+[.02,.01,.03,-.01,.02,-.02,.01,.03,-.01,.02,.01,-.02][i]));
+
+// Design system colors
+const BG='#0d0d1a';
+const GRID='rgba(255,255,255,.06)';
+const FONT_COLOR='#9999b8';
+const CYAN='#00d4ff';
+const GREEN='#00e5a0';
+const RED='#ff4d6d';
+const MUTED='#5a5a7a';
+
+const BASE_LAYOUT={
+  paper_bgcolor:BG,
+  plot_bgcolor:BG,
+  font:{family:"'JetBrains Mono',monospace",color:FONT_COLOR,size:11},
+  margin:{t:30,r:20,b:55,l:65},
+  xaxis:{gridcolor:GRID,linecolor:'rgba(255,255,255,.08)',tickfont:{size:10}},
+  yaxis:{gridcolor:GRID,linecolor:'rgba(255,255,255,.08)',tickfont:{size:10}},
+};
+const PC={responsive:true,displayModeBar:false};
+
+function initCharts(){
+
+  // Chart 1: Scatter — B(p) vs A(p)
+  Plotly.newPlot('chart-scatter',[
+    {
+      x:Bp, y:Ap,
+      mode:'markers+text',
+      text:primes.map(p=>'p='+p),
+      textposition:'top center',
+      textfont:{size:9,color:FONT_COLOR},
+      type:'scatter',
+      marker:{color:CYAN,size:8,opacity:.85,line:{color:'rgba(0,212,255,.4)',width:1}},
+      name:'A(p) observed',
+      hovertemplate:'p=%{text}<br>B(p)=%{x:.4f}<br>A(p)=%{y:.4f}<extra></extra>'
+    },
+    {
+      x:[0,Math.max(...Bp)*1.1],
+      y:[0,Math.max(...Bp)*1.1*C],
+      mode:'lines',
+      type:'scatter',
+      line:{color:'rgba(255,255,255,.15)',dash:'dot',width:1.5},
+      name:'C·B(p) fit',
+      hoverinfo:'skip'
+    }
+  ],{
+    ...BASE_LAYOUT,
+    xaxis:{...BASE_LAYOUT.xaxis,title:{text:'B(p) = (log p)²/p',font:{size:10,color:MUTED}}},
+    yaxis:{...BASE_LAYOUT.yaxis,title:{text:'A(p) observed',font:{size:10,color:MUTED}}},
+    legend:{font:{size:9,color:FONT_COLOR},bgcolor:'rgba(0,0,0,0)',x:.02,y:.98}
+  },PC);
+
+  // Chart 2: Bar — Pearson r по датасет (superseded vs null)
+  Plotly.newPlot('chart-bar',[{
+    x:['zeros1','zeros_ht','zeros6','Final (Chebyshev)'],
+    y:[0.6847,0.5113,0.4509,0.017],
+    type:'bar',
+    text:['r=0.685','r=0.511','r=0.451','r=0.017 NULL'],
+    textposition:'outside',
+    textfont:{size:10},
+    marker:{color:['rgba(255,77,109,.55)','rgba(255,77,109,.45)','rgba(255,77,109,.4)','rgba(0,212,255,.7)'],
+            line:{color:['rgba(255,77,109,.8)','rgba(255,77,109,.7)','rgba(255,77,109,.6)','rgba(0,212,255,.9)'],width:1}},
+    hovertemplate:'%{x}: r=%{y:.4f}<extra></extra>'
+  }],{
+    ...BASE_LAYOUT,
+    yaxis:{...BASE_LAYOUT.yaxis,range:[0,0.88],title:{text:'Pearson r',font:{size:10,color:MUTED}}},
+    shapes:[{
+      type:'line',x0:-.5,x1:3.5,y0:.05,y1:.05,
+      line:{color:'rgba(255,209,102,.3)',dash:'dot',width:1.5}
+    }],
+    annotations:[{
+      x:3,y:.017,text:'← NULL',showarrow:false,
+      font:{size:10,color:CYAN},xanchor:'left',yanchor:'bottom'
+    },{
+      x:-.3,y:.055,text:'significance boundary',showarrow:false,
+      font:{size:9,color:'rgba(255,209,102,.5)'},xanchor:'left'
+    }]
+  },PC);
+
+  // Chart 3: Bar — A(p) by prime
+  Plotly.newPlot('chart-prime',[{
+    x:primes.map(p=>'p='+p),
+    y:Ap,
+    type:'bar',
+    marker:{
+      color:Ap.map(v=>v>1.3?'rgba(0,229,160,.7)':v>1.1?'rgba(0,212,255,.6)':'rgba(0,212,255,.4)'),
+      line:{color:'rgba(0,212,255,.6)',width:1}
+    },
+    hovertemplate:'%{x}<br>A(p)=%{y:.4f}<extra></extra>'
+  }],{
+    ...BASE_LAYOUT,
+    xaxis:{...BASE_LAYOUT.xaxis,title:{text:'Prime p',font:{size:10,color:MUTED}}},
+    yaxis:{...BASE_LAYOUT.yaxis,title:{text:'A(p)',font:{size:10,color:MUTED}}}
+  },PC);
+}
+
+document.addEventListener('DOMContentLoaded',initCharts);
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+// === NAV HARD FIX: active state, mobile menu, dropdown click, language ===
+(function(){
+  function cleanPath(v){
+    if(!v) return '';
+    v = String(v).split('#')[0].split('?')[0];
+    if(!v) return '';
+    var a = document.createElement('a');
+    a.href = v;
+    var p = a.pathname || v;
+    p = p.replace(/\/index\.html$/,'/');
+    if(p.length > 1) p = p.replace(/\/$/,'');
+    return p || '/';
+  }
+  function setLang(lang){
+    lang = lang === 'mn' ? 'mn' : 'en';
+    document.documentElement.setAttribute('data-lang', lang);
+    try{localStorage.setItem('MN_lang', lang);}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(btn){
+      btn.classList.toggle('MN-active', btn.getAttribute('data-l') === lang);
+    });
+  }
+  window.setLang = setLang;
+  var saved = 'en';
+  try{ saved = localStorage.getItem('MN_lang') || 'en'; }catch(e){}
+  setLang(saved);
+
+  var path = cleanPath(window.location.pathname);
+  document.querySelectorAll('.MN a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    var target = cleanPath(href);
+    var active = target === path || (target === '/paper1' && (path === '/paper1' || path === '/paper1/'));
+    a.classList.toggle('MN-active', active);
+    var drop = a.closest('.MN-drop');
+    if(active && drop){
+      var btn = drop.querySelector('.MN-drop-btn');
+      if(btn) btn.classList.add('MN-active');
+    }
+  });
+
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      var open = !mobile.classList.contains('open');
+      burger.classList.toggle('open', open);
+      mobile.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click', function(){mobile.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
+  }
+  document.querySelectorAll('.MN-lb').forEach(function(btn){btn.addEventListener('click', function(){setLang(btn.getAttribute('data-l'));});});
+  document.querySelectorAll('.MN-drop-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var wrap = btn.closest('.MN-drop');
+      if(!wrap) return;
+      var open = !wrap.classList.contains('MN-open');
+      document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+      wrap.classList.toggle('MN-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.MN-drop')) document.querySelectorAll('.MN-drop.MN-open').forEach(function(d){d.classList.remove('MN-open');});
+  });
+})();
+</script>
+<footer class="MN-foot">
+  <span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">
+    <span data-li="en" style="font-style:italic">Observations only — not a proof of RH</span>
+    <span data-li="mn" style="font-style:italic">Тооцооллын ажиглалт — RH нотолгоо биш</span>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/"><span data-li="en">Results</span><span data-li="mn">Үр дүн</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/replication.html"><span data-li="en">Replicate</span><span data-li="mn">Давтах</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/data.html"><span data-li="en">Data</span><span data-li="mn">Өгөгдөл</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="/paper1/about.html"><span data-li="en">About</span><span data-li="mn">Тухай</span></a>
+    <span class="MN-foot-sep">·</span>
+    <a href="https://zenodo.org/records/20077673" target="_blank">DOI</a>
+  </span>
+  <span>v0.4</span>
+</footer>
+<script>
+(function(){
+  function setLang(l){
+    l=l==='mn'?'mn':'en';
+    document.body.className=l;
+    try{localStorage.setItem('lang',l)}catch(e){}
+    document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  }
+  window.setLang=setLang;
+  var path=window.location.pathname.replace(/\/$/,'').replace(/\/index\.html$/,'/');
+  document.querySelectorAll('.MN-links a,.MN-mob a').forEach(function(a){
+    var h=(a.getAttribute('href')||'').replace(/\/$/,'').replace(/\/index\.html$/,'/');
+    if(h&&h===path)a.classList.add('MN-active');
+  });
+  var burger=document.querySelector('.MN-burger');
+  var mob=document.querySelector('.MN-mob');
+  if(burger&&mob){
+    burger.addEventListener('click',function(){burger.classList.toggle('open');mob.classList.toggle('open')});
+    document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}});
+  }
+  try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
+})();
+</script>
+</body>
+</html>

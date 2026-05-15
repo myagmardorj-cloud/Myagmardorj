@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Platform Home · research.nexcore.ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Plus+Jakarta+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
+.MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.MN-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0}
+.MN-links{display:flex;align-items:center;justify-content:center;gap:2px;flex:1;flex-wrap:wrap}
+.MN-links a{font-size:.72rem;color:#9999b8;text-decoration:none;padding:3px 6px;border-radius:5px;transition:color .15s,background .15s;white-space:nowrap}
+.MN-links a:hover{color:#eeeef8;background:rgba(255,255,255,.07)}
+.MN-links a.MN-active{color:#00d4ff;border-bottom:2px solid #00d4ff;padding-bottom:1px}
+.MN-plat{font-size:.7rem;color:#5a5a7a;text-decoration:none;padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0;transition:color .15s,border-color .15s}
+.MN-plat:hover{color:#9999b8;border-color:rgba(255,255,255,.15)}
+.MN-btns{display:flex;gap:3px;flex-shrink:0}
+.MN-lb{font-family:'JetBrains Mono',monospace;font-size:.62rem;padding:3px 8px;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.1);background:none;color:#5a5a7a}
+.MN-lb.on{background:linear-gradient(135deg,#0055ff,#00d4ff);color:#fff;border-color:transparent}
+.MN-burger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.4rem;border:none;background:none;flex-shrink:0}
+.MN-burger span{display:block;width:18px;height:1.5px;background:#9999b8;border-radius:2px;transition:all .25s}
+.MN-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.MN-burger.open span:nth-child(2){opacity:0}
+.MN-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.MN-mob{display:none;position:fixed;top:0;left:0;right:0;background:rgba(7,7,16,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:3.5rem 1.25rem 1rem;z-index:899;flex-direction:column;gap:2px}
+.MN-mob.open{display:flex}
+.MN-mob a{font-size:.82rem;color:#9999b8;text-decoration:none;padding:6px 8px;border-radius:6px}
+.MN-mob a:hover,.MN-mob a.MN-active{color:#00d4ff;background:rgba(0,212,255,.07)}
+.MN-mob hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin:4px 0}
+.MN-foot{position:fixed;bottom:0;left:0;right:0;z-index:500;height:40px;display:flex;align-items:center;padding:0 1.25rem;background:rgba(7,7,16,.98);border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:#5a5a7a}
+.MN-foot a{color:#5a5a7a;text-decoration:none;padding:2px 5px;border-radius:4px;transition:color .15s}
+.MN-foot a:hover{color:#9999b8}
+.MN-foot-sep{opacity:.3;margin:0 2px}
+@media(max-width:768px){.MN-links,.MN-sep,.MN-plat{display:none}.MN-burger{display:flex}}
+
+/* ── ROOT VARIABLES ── */
+:root{
+  --bg:#070710;--s1:#0d0d1a;--s2:#12121f;--s3:#181828;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --text:#eeeef8;--sub:#9999b8;--muted:#5a5a7a;
+  --cyan:#00d4ff;--green:#00e5a0;--red:#ff4d6d;--yellow:#ffd166;
+}
+
+/* ── BASE ── */
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;padding-top:56px;padding-bottom:52px}
+*{box-sizing:border-box}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--text);line-height:1.3;margin-top:0}
+h1{font-size:1.9rem;font-weight:600;margin-bottom:1rem}
+h2{font-size:1.35rem;font-weight:600;margin-bottom:.75rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+h4{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+p{color:var(--sub);margin-bottom:1rem;line-height:1.75}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--text);font-weight:600}
+em{color:var(--sub)}
+code{font-family:'JetBrains Mono',monospace;font-size:.82em;color:var(--cyan);background:rgba(0,212,255,.08);padding:.1em .4em;border-radius:4px}
+pre{font-family:'JetBrains Mono',monospace;font-size:.82rem;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;overflow-x:auto;color:var(--text);line-height:1.65}
+sup,sub{font-size:.7em}
+
+/* ── LAYOUT ── */
+.page-wrap,.container,.wrap{max-width:960px;margin:0 auto;padding:3rem 2rem 2rem}
+.section{margin-bottom:3rem}
+
+/* ── SECTION LABELS ── */
+.section-label,.sec-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:block}
+
+/* ── CARDS ── */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;transition:border-color .15s}
+.card:hover{border-color:var(--border2)}
+.card-sm{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+.card-accent{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.18);border-radius:14px;padding:1.5rem}
+
+/* ── STAT / METRIC CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2rem}
+.stat-card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--cyan))}
+.stat-card.c-cyan{--accent:var(--cyan)}.stat-card.c-green{--accent:var(--green)}.stat-card.c-red{--accent:var(--red)}.stat-card.c-yellow{--accent:var(--yellow)}.stat-card.c-muted{--accent:var(--muted)}
+.stat-val{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.25rem}
+.stat-label{font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.stat-note{font-size:.72rem;color:var(--sub);margin-top:.3rem}
+
+/* ── FORMULA / MATH BLOCKS ── */
+.formula{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--text);background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:1rem 1.25rem;overflow-x:auto;line-height:1.8;margin:1rem 0}
+.formula-sm{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--cyan);background:rgba(0,212,255,.06);border-radius:6px;padding:.25rem .6rem;display:inline-block}
+.def-block{background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.def-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.def-note{font-size:.82rem;color:var(--sub);margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.5rem}
+.math-inline{font-family:'JetBrains Mono',monospace;color:var(--text);font-size:.9em}
+
+/* ── DISCLAIMER / WARNING ── */
+.disclaimer{background:rgba(255,209,102,.04);border:1px solid rgba(255,209,102,.18);border-radius:12px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:.85rem;color:var(--sub);line-height:1.7}
+.disclaimer strong{color:var(--yellow)}
+.note{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);border-radius:10px;padding:.9rem 1.1rem;font-size:.85rem;color:var(--sub);line-height:1.6}
+
+/* ── BADGES ── */
+.badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.2rem .6rem;border-radius:5px;display:inline-block;font-weight:500}
+.badge-cyan{background:rgba(0,212,255,.12);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.badge-green{background:rgba(0,229,160,.1);color:var(--green);border:1px solid rgba(0,229,160,.22)}
+.badge-red{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.22)}
+.badge-yellow{background:rgba(255,209,102,.1);color:var(--yellow);border:1px solid rgba(255,209,102,.22)}
+.badge-muted{background:rgba(90,90,122,.12);color:var(--muted);border:1px solid rgba(90,90,122,.22)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .15s;border:none;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{background:var(--s2);color:var(--sub);border:1px solid var(--border2)}
+.btn-secondary:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.btn-outline{background:rgba(0,212,255,.07);color:var(--cyan);border:1px solid rgba(0,212,255,.25)}
+.btn-outline:hover{background:rgba(0,212,255,.12)}
+/* legacy */
+.run-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:500;background:linear-gradient(135deg,#0044cc,#00d4ff);color:#fff;border:none;transition:opacity .15s}
+.run-btn:hover{opacity:.88}
+
+/* ── TABLES ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0}
+.data-table th{text-align:left;padding:.5rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.data-table td{padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--sub);font-family:'JetBrains Mono',monospace}
+.data-table tr:hover td{background:rgba(255,255,255,.02);color:var(--text)}
+.data-table td:first-child{color:var(--cyan);font-weight:600}
+.data-table td.pos{color:var(--green)}.data-table td.neg{color:var(--red)}.data-table td.warn{color:var(--yellow)}
+
+/* ── PROSE ── */
+.prose{color:var(--sub);line-height:1.8;font-size:.93rem}
+.prose h2,.prose h3{color:var(--text);margin:1.75rem 0 .6rem}
+.prose p{margin-bottom:1rem}
+.prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1rem}
+.prose li{margin-bottom:.35rem}
+.prose blockquote{border-left:3px solid var(--cyan);margin:1rem 0;padding:.75rem 1rem;color:var(--sub);font-style:italic;background:var(--s1);border-radius:0 8px 8px 0}
+
+/* ── RESULT DISPLAY ── */
+.result-banner{border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.result-banner.null{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2)}
+.result-banner.positive{background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.2)}
+.result-banner.negative{background:rgba(255,77,109,.05);border:1px solid rgba(255,77,109,.2)}
+.r-number{font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:700;line-height:1}
+.r-desc{font-size:.88rem;color:var(--sub);line-height:1.5}
+
+/* ── CHART CONTAINERS ── */
+.chart-wrap{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem}
+.chart-title{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.chart-title span{color:var(--cyan)}
+
+/* ── FORMS / CONTROLS ── */
+.ctrl-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem}
+.ctrl-group{display:flex;flex-direction:column;gap:.3rem}
+.ctrl-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ctrl-input{background:var(--s2);border:1px solid var(--border2);border-radius:7px;padding:.35rem .65rem;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.83rem;width:90px;transition:border-color .15s}
+.ctrl-input:focus{outline:none;border-color:var(--cyan)}
+
+/* ── STEP LIST ── */
+.step-list{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.step-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);border-radius:10px}
+.step-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(0,212,255,.12);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-family:'JetBrains Mono',monospace;font-weight:700;margin-top:.15rem}
+.step-content h4{font-size:.9rem;color:var(--text);margin-bottom:.2rem}
+.step-content p{font-size:.83rem;color:var(--sub);margin:0}
+
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:.65rem;overflow:hidden;transition:border-color .15s}
+.faq-item:hover{border-color:var(--border2)}
+.faq-q{padding:1rem 1.25rem;cursor:pointer;font-size:.92rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'▾';font-size:.8rem;color:var(--muted);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(180deg)}
+.faq-a{padding:0 1.25rem 1rem;font-size:.88rem;color:var(--sub);line-height:1.75;display:none}
+.faq-item.open .faq-q{border-bottom:1px solid var(--border)}
+.faq-item.open .faq-a{display:block}
+
+/* ── UPLOAD ZONE ── */
+.upload-zone{border:2px dashed var(--border2);border-radius:14px;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.01)}
+.upload-zone:hover{border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.03)}
+.upload-title{font-size:.95rem;color:var(--text);font-weight:500;margin-bottom:.3rem}
+.upload-sub{font-size:.78rem;color:var(--muted)}
+
+/* ── UTILS ── */
+.text-cyan{color:var(--cyan)}.text-green{color:var(--green)}.text-red{color:var(--red)}.text-yellow{color:var(--yellow)}.text-muted{color:var(--muted)}.text-sub{color:var(--sub)}
+.mono{font-family:'JetBrains Mono',monospace}
+.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
+.tag{display:inline-block;font-size:.68rem;padding:.15rem .5rem;border-radius:4px;font-family:'JetBrains Mono',monospace;background:var(--s2);color:var(--sub);border:1px solid var(--border)}
+
+/* ── LINKS ── */
+.link-card{display:block;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;text-decoration:none;transition:all .15s;margin-bottom:.65rem}
+.link-card:hover{border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.03)}
+.link-card-title{font-size:.92rem;color:var(--text);font-weight:500;margin-bottom:.2rem}
+.link-card-desc{font-size:.82rem;color:var(--sub);line-height:1.5}
+.link-card-meta{font-size:.7rem;color:var(--muted);margin-top:.3rem;font-family:'JetBrains Mono',monospace}
+
+/* ── REMOVE DECORATIVE ── */
+.mesh,.grid-bg,.orb,.o1,.o2,.o3{display:none !important}
+
+</style>
+</head>
+<body class="en">
+<nav class="MN">
+  <a href="/" class="MN-logo">research.nexcore.ltd</a>
+  <div class="MN-links">
+    <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+    <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
+    <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+  </div>
+  <div class="MN-btns">
+    <button class="MN-lb" data-l="en" onclick="setLang('en')">ENG</button>
+    <button class="MN-lb" data-l="mn" onclick="setLang('mn')">MN</button>
+    <button class="MN-burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="MN-mob">
+  <a href="/intro.html"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+  <a href="/landscape.html"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+  <a href="/verify.html"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+  <a href="/roadmap.html"><span data-li="en">Roadmap</span><span data-li="mn">Зам</span></a>
+  <a href="/contact.html"><span data-li="en">Contact</span><span data-li="mn">Холбоо</span></a>
+  <a href="/paper1/"><span data-li="en">Research #001</span><span data-li="mn">Судалгаа #001</span></a>
+</div>
+<div class="mesh"><div class="orb o1"></div><div class="orb o2"></div></div>
+<div class="grid-bg"></div>
+
+
+
+
+
+
+
+
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">
+      <span data-li="en">Independent Computational Mathematics · Ulaanbaatar, Mongolia</span>
+      <span data-li="mn">Бие даасан тооцооллын математик · Улаанбаатар, Монгол</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-li="en">Nexcore<br><span class="hl">Research Platform</span></span>
+      <span data-li="mn">Нэкскор<br><span class="hl">Судалгааны Платформ</span></span>
+    </h1>
+    <p class="hero-sub">
+      <span data-li="en">Computational explorations in number theory, analytic mathematics, and numerical verification of open conjectures.</span>
+      <span data-li="mn">Тооны онол, аналитик математик, нээлттэй таамаглалуудын тоон баталгаажуулалтын судалгаа.</span>
+    </p>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-val">1</div>
+        <div class="hstat-lbl"><span data-li="en">Published</span><span data-li="mn">Нийтлэгдсэн</span></div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">3</div>
+        <div class="hstat-lbl"><span data-li="en">Datasets</span><span data-li="mn">Датасет</span></div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">167</div>
+        <div class="hstat-lbl"><span data-li="en">Years RH open</span><span data-li="mn">RH нээлттэй жил</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:5rem;">
+    <div class="sec-label">
+      <span data-li="en">Research Papers</span><span data-li="mn">Судалгааны өгүүллүүд</span>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-meta">
+        <span class="paper-num">Paper #001</span>
+        <span class="paper-tag tag-nt">number-theory</span>
+        <span class="paper-tag tag-pub">
+          <span data-li="en">Published</span><span data-li="mn">Нийтлэгдсэн</span>
+        </span>
+        <span class="paper-date">May 2026</span>
+      </div>
+      <div class="paper-title">
+        <span data-li="en">Numerical Observations on Prime-Correlated Structure in High Riemann Zero Blocks</span>
+        <span data-li="mn">Өндөр Риман Тэгийн Блок дахь Прайм-Корреляцийн Бүтэцийн Тоон Ажиглалт</span>
+      </div>
+      <div class="paper-authors">Myagmardorj Namnansuren · Nexcore LTD · Ulaanbaatar</div>
+      <div class="paper-abstract">
+        <span data-li="en">Computational observations consistent with the Bogomolny–Keating amplitude law A(p) ∼ C·(log p)²/p in high Riemann zero spacing covariance. Tested across three independent Odlyzko datasets. Not a confirmed theorem, not a proof of RH — an exploratory computational study.</span>
+        <span data-li="mn">Богомолны–Китингийн амплитудын хуулийн тооцооллын ажиглалт. Гурван бие даасан датасет дээр тест хийгдсэн. Батлагдсан теорем биш, RH-н нотолгоо биш — туршилтын судалгаа.</span>
+      </div>
+      <div class="paper-results">
+        <span class="result-pill good">zeros1: r = 0.6847 (superseded)</span>
+        <span class="result-pill">zeros_ht: r = 0.5113 (superseded)</span>
+        <span class="result-pill">zeros6: r = 0.4509 (superseded)</span>
+        <span class="result-pill">bootstrap: zeros6 MODERATE | Final (Chebyshev): r = 0.017 — NULL</span>
+      </div>
+      <div class="paper-links">
+        <a href="/paper1/" class="plink primary">
+          <span data-li="en">🔬 Open Research Archive →</span>
+          <span data-li="mn">🔬 Судалгааны архив нээх →</span>
+        </a>
+        <a href="https://zenodo.org/records/20077673" class="plink">📄 Preprint (DOI)</a>
+        <a href="https://github.com/myagmardorj-cloud/Myagmardorj" class="plink">⌨️ GitHub</a>
+        <a href="/verify.html" class="plink">⚗️ Verify</a>
+      </div>
+    </div>
+
+    <div class="coming-card">
+      <div class="paper-title coming-title">
+        <span data-li="en">Paper #002 · Planned</span>
+        <span data-li="mn">Өгүүлэл #002 · Төлөвлөсөн</span>
+      </div>
+      <div class="coming-sub">
+        <span data-li="en">P vs NP Problem — Can every efficiently verifiable problem be efficiently solved? (Clay Millennium Prize)</span>
+        <span data-li="mn">P vs NP бодлого — Хурдан шалгагдах бодлого бүрийг хурдан бодох боломжтой юу? (Clay шагналт бодлого)</span>
+      </div>
+    </div>
+
+    <div class="coming-card">
+      <div class="paper-title coming-title">
+        <span data-li="en">Paper #003 · Planned</span>
+        <span data-li="mn">Өгүүлэл #003 · Төлөвлөсөн</span>
+      </div>
+      <div class="coming-sub">
+        <span data-li="en">Birch & Swinnerton-Dyer Conjecture — Rational points on elliptic curves and L-functions. (Clay Millennium Prize)</span>
+        <span data-li="mn">Birch & Swinnerton-Dyer таамаглал — Эллиптик муруй дээрх рационал цэгүүд. (Clay шагналт бодлого)</span>
+      </div>
+    </div>
+
+    <div class="coming-card">
+      <div class="paper-title coming-title">
+        <span data-li="en">Paper #004 · Planned</span>
+        <span data-li="mn">Өгүүлэл #004 · Төлөвлөсөн</span>
+      </div>
+      <div class="coming-sub">
+        <span data-li="en">Navier–Stokes Existence and Smoothness — Do smooth solutions always exist for fluid dynamics equations in 3D? (Clay Millennium Prize)</span>
+        <span data-li="mn">Navier–Stokes — 3D шингэний хөдөлгөөний тэгшитгэл үргэлж гөлгөр шийдтэй юу? (Clay шагналт бодлого)</span>
+      </div>
+    </div>
+
+    <div class="coming-card">
+      <div class="paper-title coming-title">
+        <span data-li="en">Paper #005 · Planned</span>
+        <span data-li="mn">Өгүүлэл #005 · Төлөвлөсөн</span>
+      </div>
+      <div class="coming-sub">
+        <span data-li="en">Yang–Mills Mass Gap — Prove quantum Yang–Mills theory has a positive mass gap. (Clay Millennium Prize)</span>
+        <span data-li="mn">Yang–Mills масс завсар — Квант Yang–Mills онол эерэг масс завсартай гэдгийг батал. (Clay шагналт бодлого)</span>
+      </div>
+    </div>
+
+    <div class="coming-card">
+      <div class="paper-title coming-title">
+        <span data-li="en">Paper #006 · Planned</span>
+        <span data-li="mn">Өгүүлэл #006 · Төлөвлөсөн</span>
+      </div>
+      <div class="coming-sub">
+        <span data-li="en">Hodge Conjecture — Algebraic cycles and cohomology classes in algebraic geometry. (Clay Millennium Prize)</span>
+        <span data-li="mn">Hodge таамаглал — Алгебрийн геометр дэх алгебрийн циклүүд. (Clay шагналт бодлого)</span>
+      </div>
+    </div>
+
+    <div class="coming-card">
+      <div class="paper-title coming-title">
+        <span data-li="en">Paper #007 · Planned</span>
+        <span data-li="mn">Өгүүлэл #007 · Төлөвлөсөн</span>
+      </div>
+      <div class="coming-sub">
+        <span data-li="en">Goldbach Conjecture — Every even integer greater than 2 is the sum of two primes. (Open since 1742)</span>
+        <span data-li="mn">Goldbach таамаглал — 2-оос их бүх тэгш тоо хоёр анхны тооны нийлбэр. (1742-аас нээлттэй)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">
+    <span data-li="en">Researcher</span><span data-li="mn">Судлаач</span>
+  </div>
+  <div class="about-box">
+    <div class="about-avatar">M</div>
+    <div>
+      <div class="about-name">Myagmardorj Namnansuren</div>
+      <div class="about-role">
+        <span data-li="en">Independent Researcher · Director, Nexcore LTD · Ulaanbaatar, Mongolia</span>
+        <span data-li="mn">Бие даасан судлаач · Nexcore LTD захирал · Улаанбаатар, Монгол</span>
+      </div>
+      <div class="about-bio">
+        <span data-li="en">Independent computational mathematician interested in numerical exploration of open problems in analytic number theory. Particular focus on Riemann zeta zeros, prime number distribution, and Bogomolny–Keating random matrix predictions.</span>
+        <span data-li="mn">Аналитик тооны онолын нээлттэй асуудлуудыг тоон аргаар судалдаг бие даасан математикч. Риман зета тэгүүд, анхны тооны тархалт, Богомолны–Китингийн санамсаргүй матрицын таамаглалд анхаарлаа хандуулдаг.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// ── NAV ACTIVE STATE + MOBILE ──
+(function(){
+  function cleanPath(v){
+    if(!v) return '';
+    v = v.split('#')[0].split('?')[0];
+    if(v === '') return '';
+    var a = document.createElement('a');
+    a.href = v;
+    var p = a.pathname || v;
+    p = p.replace(/\/index\.html$/, '/');
+    if(p.length > 1) p = p.replace(/\/$/, '');
+    return p;
+  }
+
+  var path = cleanPath(window.location.pathname);
+
+  document.querySelectorAll('.MN-links a, .MN-drop-menu a, .MN-mobile a').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+
+    var target = cleanPath(href);
+    var isActive = false;
+
+    if(target === path){
+      isActive = true;
+    }
+
+    // Root platform pages: mark the Research dropdown parent when inside /paper1.
+    if(target === '/paper1' && path.indexOf('/paper1') === 0 && a.closest('.MN-drop') && !a.closest('.MN-drop-menu')){
+      isActive = true;
+    }
+
+    if(isActive) a.classList.add('MN-active');
+  });
+
+  var burger = document.querySelector('.MN-burger');
+  var mobile = document.querySelector('.MN-mobile');
+  if(burger && mobile){
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('open');
+      mobile.classList.toggle('open');
+    });
+  }
+})();
+</script>
+<footer class="MN-foot">
+  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Platform · Open archive</span><span data-li="mn">Платформ · Нээлттэй архив</span></span>
+  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
+    <a href="/intro.html" class="MN-flink"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/landscape.html" class="MN-flink"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/verify.html" class="MN-flink"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/site-map.html" class="MN-flink">Site Map</a>
+  </span>
+  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v1.0</span>
+</footer>
+<style>.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}.MN-flink:hover{color:#9999b8}.MN-flink.MN-active{color:#00d4ff;border-bottom-color:#00d4ff}</style>
+<script>(function(){var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");document.querySelectorAll(".MN-flink").forEach(function(a){var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");if(h&&h===path)a.classList.add("MN-active")})})();</script>
+<footer class="MN-foot">
+  <span style="font-style:italic;color:#5a5a7a;font-size:.63rem;white-space:nowrap;flex-shrink:0"><span data-li="en">Platform · Open archive</span><span data-li="mn">Платформ · Нээлттэй архив</span></span>
+  <span style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center">
+    <a href="/intro.html" class="MN-flink"><span data-li="en">Intro</span><span data-li="mn">Танилцуулга</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/landscape.html" class="MN-flink"><span data-li="en">Landscape</span><span data-li="mn">Хүрээ</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/verify.html" class="MN-flink"><span data-li="en">Verify</span><span data-li="mn">Шалгах</span></a>
+    <span style="color:#404058">·</span>
+    <a href="/site-map.html" class="MN-flink">Site Map</a>
+  </span>
+  <span style="color:#5a5a7a;font-size:.63rem;flex-shrink:0">v1.0</span>
+</footer>
+<style>.MN-flink{font-size:.65rem;color:#7070a0;text-decoration:none;padding:2px 5px;border-radius:4px;border-bottom:2px solid transparent;transition:color .15s}.MN-flink:hover{color:#9999b8}.MN-flink.MN-active{color:#00d4ff;border-bottom-color:#00d4ff}</style>
+<script>(function(){var path=window.location.pathname.replace(/\/$/,"").replace(/\/index\.html$/,"/");document.querySelectorAll(".MN-flink").forEach(function(a){var h=(a.getAttribute("href")||"").replace(/\/$/,"").replace(/\/index\.html$/,"/");if(h&&h===path)a.classList.add("MN-active")})})();</script>
+</body>
+</html>
