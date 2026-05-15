@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Steven Clark Formula Analysis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>[data-li]{display:none}body.en [data-li=en]{display:inline}body.mn [data-li=mn]{display:inline}
 .MN{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(7,7,16,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07);padding:.4rem 1.25rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .MN-logo{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:600;background:linear-gradient(135deg,#00d4ff,#4d9fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;white-space:nowrap;flex-shrink:0}
@@ -194,8 +193,7 @@ sup,sub{font-size:.7em}
 .mesh,.grid-bg,.orb,.o1,.o2,.o3{display:none !important}
 
 </style>
-<style>
-:root {
+<style>:root {
   --bg:     #06060f;
   --s1:     #0c0c1a;
   --s2:     #111122;
@@ -463,8 +461,7 @@ footer a { color: var(--cyan); text-decoration: none; }
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--s3); border-radius: 2px; }
-</style>
+::-webkit-scrollbar-thumb { background: var(--s3); border-radius: 2px; }</style>
 </head>
 <body class="en">
 <nav class="MN">
@@ -1214,21 +1211,6 @@ window.addEventListener('load', () => {
 .MN-flink:hover{color:#9999b8}
 .MN-flink.MN-active{color:#00d4ff;border-bottom-color:#00d4ff}
 </style>
-<script>
-(function(){
-  function setLang(l){l=l==='mn'?'mn':'en';document.body.className=l;try{localStorage.setItem('lang',l)}catch(e){}document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)})}
-  window.setLang=setLang;
-  var path=window.location.pathname.replace(/\/$/,'').replace(/\/index\.html$/,'/');
-  document.querySelectorAll('.MN-links a,.MN-mob a,.MN-flink').forEach(function(a){
-    var h=(a.getAttribute('href')||'').replace(/\/$/,'').replace(/\/index\.html$/,'/');
-    if(h&&h===path)a.classList.add('MN-active');
-  });
-  var burger=document.querySelector('.MN-burger');
-  var mob=document.querySelector('.MN-mob');
-  if(burger&&mob){burger.addEventListener('click',function(){burger.classList.toggle('open');mob.classList.toggle('open')});document.addEventListener('click',function(e){if(!e.target.closest('nav')&&!e.target.closest('.MN-mob')){burger.classList.remove('open');mob.classList.remove('open')}})}
-  try{setLang(localStorage.getItem('lang')||'en')}catch(e){setLang('en')}
-})();
-</script>
 <script>
 (function(){
   function setLang(l){l=l==='mn'?'mn':'en';document.body.className=l;try{localStorage.setItem('lang',l)}catch(e){}document.querySelectorAll('.MN-lb').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)})}
